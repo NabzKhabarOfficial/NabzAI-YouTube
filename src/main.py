@@ -126,7 +126,7 @@ def _short_label(text, limit=22):
 def draw_case_visual(d, beat, ci, mode="case"):
     """Render a reusable visual archetype instead of repeating one card layout."""
     section = str(beat.get("section", beat.get("subject", "")))
-    archetype = ci % 5
+    archetype = (ci + variant) % 5
     title = _short_label(beat["subject"], 28)
 
     if archetype == 0:
@@ -226,7 +226,7 @@ def draw_case_visual(d, beat, ci, mode="case"):
 
 
 def draw_action_visual(d, beat, ci):
-    archetype = (ci + 1) % 4
+    archetype = (ci + 1 + variant) % 4
     if archetype == 0:
         # Animated-looking stack of cards
         labels = ["RAW INPUT", "AI PASS", "HUMAN CHECK", "FINAL"]
@@ -272,12 +272,13 @@ def draw_action_visual(d, beat, ci):
             d.text((x+25, 450), lab, font=font(21), fill=WHITE)
             d.text((x+25, 485), "PASS", font=font(18), fill=GREEN)
 
-def make_scene(title, label, index, total, episode, output):
+def make_scene(title, label, index, total, episode, output, variant=0):
     im = Image.new("RGB", (W, H), BG)
     add_glow(im, (1050, 170), 220)
     d = ImageDraw.Draw(im)
     plan = episode["scene_plan"][index-1]
     kind = plan["kind"]
+    variant = int(plan.get("variant", variant))
     header(d, label, index, total)
 
     if kind == "hook":
@@ -437,6 +438,12 @@ def make_scene(title, label, index, total, episode, output):
         d.text((780,475),"NO EMPTY HYPE",font=font(22),fill=MUTED)
         d.text((62, 575), "Subscribe for the next experiment.", font=font(28), fill=GREEN)
 
+    # Variant-specific shot language makes each narration beat feel like a new camera shot.
+    if variant:
+        d.rounded_rectangle((980, 112, 1218, 150), radius=16, outline=PURPLE, width=2)
+        d.text((1002, 121), f"SHOT {variant+1}", font=font(16), fill=PURPLE)
+        d.line((62, 104 + (variant * 19), 340 + variant * 170, 104 + (variant * 19)), fill=PURPLE, width=4)
+
     # Subtle animated HUD accents make each beat feel like a designed motion graphic.
     if kind not in ("hook", "takeaway"):
         pulse = 10 + ((index * 7) % 18)
@@ -489,11 +496,23 @@ def main():
     }
     (work / "metadata.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    # Split every story beat into two distinct visual shots. This prevents a 6-minute
+    # episode from becoming a slideshow with one card sitting on screen for ~20 seconds.
+    base_plan = list(episode["scene_plan"])
+    expanded_plan = []
+    for plan in base_plan:
+        for variant in range(2):
+            shot = dict(plan)
+            shot["variant"] = variant
+            shot["label"] = plan["label"] if variant == 0 else f"{plan['label']} • CUT"
+            expanded_plan.append(shot)
+    episode["scene_plan"] = expanded_plan
+
     scenes=[]
-    total=len(episode["scene_plan"])
-    for i, plan in enumerate(episode["scene_plan"], 1):
+    total=len(expanded_plan)
+    for i, plan in enumerate(expanded_plan, 1):
         path=work / f"scene_{i:02d}.png"
-        make_scene(episode["title"], plan["label"], i, total, episode, path)
+        make_scene(episode["title"], plan["label"], i, total, episode, path, plan.get("variant", 0))
         scenes.append(path)
 
     visual_report = validate_scene_set(scenes)
