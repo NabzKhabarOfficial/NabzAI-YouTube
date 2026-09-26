@@ -1,15 +1,23 @@
 from pathlib import Path
 import json
+import shutil
 import subprocess
 import imageio_ffmpeg
 
 FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
+FFPROBE = shutil.which("ffprobe")
 
 def _probe(path):
-    r = subprocess.run([FFMPEG, "-v", "error", "-show_streams", "-show_format", "-of", "json", "-i", str(path)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    if not FFPROBE:
+        raise RuntimeError("Quality gate: ffprobe is required but was not found on the runner.")
+    r = subprocess.run([FFPROBE, "-v", "error", "-show_streams", "-show_format", "-of", "json", str(path)],
+                       stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if r.returncode:
-        raise RuntimeError("Quality gate: FFmpeg probe failed: " + r.stderr[-600:])
-    return json.loads(r.stdout)
+        raise RuntimeError("Quality gate: ffprobe probe failed: " + r.stderr[-800:])
+    try:
+        return json.loads(r.stdout)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Quality gate: ffprobe returned invalid JSON.") from exc
 
 def validate_video(path, expected_width=1280, expected_height=720, min_seconds=120):
     p = Path(path)
@@ -28,7 +36,9 @@ def validate_video(path, expected_width=1280, expected_height=720, min_seconds=1
         raise RuntimeError("Quality gate: unexpected video dimensions.")
     if video.get("codec_name") != "h264" or audio.get("codec_name") != "aac":
         raise RuntimeError("Quality gate: expected H.264 video and AAC audio.")
-    decode = subprocess.run([FFMPEG, "-v", "error", "-i", str(p), "-f", "null", "-"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+    decode = subprocess.run([FFMPEG, "-v", "error", "-i", str(p), "-f", "null", "-"],
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if decode.returncode:
-        raise RuntimeError("Quality gate: decode failed: " + decode.stderr[-600:])
-    return {"duration": duration, "width": video["width"], "height": video["height"], "video_codec": video["codec_name"], "audio_codec": audio["codec_name"]}
+        raise RuntimeError("Quality gate: decode failed: " + decode.stderr[-800:])
+    return {"duration": duration, "width": video["width"], "height": video["height"],
+            "video_codec": video["codec_name"], "audio_codec": audio["codec_name"]}
