@@ -48,19 +48,19 @@ def _motion_filters(i, total, each, width, height, fps):
     """
     motion = i % 4
     if motion == 0:
-        z = "min(1.0+0.14*(time/each),1.14)"
+        z = f"min(1.0+0.14*(time/{each:.6f}),1.14)"
         x = "((iw-iw/zoom)/2)+55*sin(time*0.42)"
         y = "((ih-ih/zoom)/2)+28*cos(time*0.35)"
     elif motion == 1:
-        z = "min(1.13,1.0+0.13*(time/each))"
+        z = f"min(1.13,1.0+0.13*(time/{each:.6f}))"
         x = "((iw-iw/zoom)/2)-60*sin(time*0.36)"
         y = "((ih-ih/zoom)/2)+34*sin(time*0.30)"
     elif motion == 2:
-        z = "max(1.01,1.13-0.12*(time/each))"
+        z = f"max(1.01,1.13-0.12*(time/{each:.6f}))"
         x = "((iw-iw/zoom)/2)+65*cos(time*0.32)"
         y = "((ih-ih/zoom)/2)-30*sin(time*0.40)"
     else:
-        z = "min(1.15,1.0+0.15*(time/each))"
+        z = f"min(1.15,1.0+0.15*(time/{each:.6f}))"
         x = "((iw-iw/zoom)/2)-55*cos(time*0.38)"
         y = "((ih-ih/zoom)/2)-34*cos(time*0.29)"
 
