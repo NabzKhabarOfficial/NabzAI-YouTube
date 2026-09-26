@@ -1,14 +1,18 @@
 name: NabzAI-YouTube
-# next-gen validation trigger
-# motion-pass
-# zoompan-fix
-# timeline-fix
-# zoompan-time-fix
-# drawbox-enable-fix
-# zoompan-duration-fix
+# production-safe preview pipeline
+# free-first / no automatic public upload
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: "Build mode"
+        required: true
+        default: "test"
+        type: choice
+        options:
+          - test
+          - short
   push:
     branches:
       - main
@@ -21,7 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -30,15 +34,62 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Build story-driven English long-form preview
-        run: python -m src.main --mode test
+
+      - name: Run regression tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Build scheduled production preview
+        if: github.event_name == 'schedule'
+        run: python -m src.main --mode scheduled
+
+      - name: Build manual preview
+        if: github.event_name != 'schedule'
+        env:
+          MANUAL_MODE: ${{ inputs.mode || 'test' }}
+        run: python -m src.main --mode "$MANUAL_MODE"
+
+      - name: Persist scheduled topic state
+        if: github.event_name == 'schedule'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/published.json
+          if git diff --cached --quiet; then
+            echo "No topic state changes to commit."
+          else
+            git commit -m "chore: record scheduled NABZ AI topic"
+            git push
+          fi
+
+      - name: Verify generated artifacts
+        run: |
+          test -f output/*/video.mp4
+          test -f output/*/thumbnail.jpg
+          test -f output/*/quality.json
+          python - <<'PY'
+          import glob, json, os
+          videos = glob.glob("output/*/video.mp4")
+          assert videos, "No video artifact found"
+          for video in videos:
+              folder = os.path.dirname(video)
+              report = json.load(open(os.path.join(folder, "quality.json"), encoding="utf-8"))
+              assert report["visual_gate"] == "passed"
+              assert report["story_structure_gate"] == "passed"
+              assert report["video_codec"] == "h264"
+              assert report["audio_codec"] == "aac"
+              assert report["duration"] >= 120
+          print("Artifact gate: PASS")
+          PY
+
       - name: Upload preview artifacts
         uses: actions/upload-artifact@v4
         with:
