@@ -502,12 +502,14 @@ def main():
     }
     (work / "metadata.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    # Split every story beat into two distinct visual shots. This prevents a 6-minute
-    # episode from becoming a slideshow with one card sitting on screen for ~20 seconds.
-    base_plan = list(episode["scene_plan"])
+    # Expand only visual-heavy case/action/proof beats. Narrative/control beats
+    # stay single-shot so the timeline gains real visual variety instead of near-duplicate
+    # pairs that can trip the diversity gate.
+    visual_kinds = {"case", "action", "proof"}
     expanded_plan = []
-    for plan in base_plan:
-        for variant in range(2):
+    for plan in episode["scene_plan"]:
+        variants = 2 if plan.get("kind") in visual_kinds else 1
+        for variant in range(variants):
             shot = dict(plan)
             shot["variant"] = variant
             shot["label"] = plan["label"] if variant == 0 else f"{plan['label']} • CUT"
