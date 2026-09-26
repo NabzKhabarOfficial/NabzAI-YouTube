@@ -49,21 +49,21 @@ def _motion_filters(i, total, each, width, height, fps):
     """
     motion = i % 4
     if motion == 0:
-        z = "min(zoom+0.00022,1.055)"
+        z = "min(zoom+0.00055,1.14)"
         x = "iw/2-(iw/zoom/2)"
         y = "ih/2-(ih/zoom/2)"
     elif motion == 1:
-        z = "min(zoom+0.00018,1.045)"
-        x = "iw/2-(iw/zoom/2)+18"
-        y = "ih/2-(ih/zoom/2)-10"
+        z = "min(zoom+0.00048,1.13)"
+        x = "iw/2-(iw/zoom/2)+70"
+        y = "ih/2-(ih/zoom/2)-35"
     elif motion == 2:
-        z = "max(zoom-0.00016,1.015)"
-        x = "iw/2-(iw/zoom/2)-18"
-        y = "ih/2-(ih/zoom/2)+10"
+        z = "max(zoom-0.00042,1.015)"
+        x = "iw/2-(iw/zoom/2)-70"
+        y = "ih/2-(ih/zoom/2)+35"
     else:
-        z = "min(zoom+0.00020,1.050)"
-        x = "iw/2-(iw/zoom/2)-12"
-        y = "ih/2-(ih/zoom/2)+14"
+        z = "min(zoom+0.00050,1.135)"
+        x = "iw/2-(iw/zoom/2)-55"
+        y = "ih/2-(ih/zoom/2)+45"
 
     # Different beats get different sweep directions to avoid a repetitive
     # "Ken Burns only" feeling.
@@ -86,7 +86,7 @@ def _motion_filters(i, total, each, width, height, fps):
     )
 
     return (
-        f"scale={int(width*1.07)}:{int(height*1.07)},"
+        f"scale={int(width*1.16)}:{int(height*1.16)},"
         f"zoompan=z='{z}':x='{x}':y='{y}':"
         f"d=1:s={width}x{height}:fps={fps},format=yuv420p,"
         # Animated light sweep.
