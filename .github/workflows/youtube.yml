@@ -5,6 +5,7 @@ name: NabzAI-YouTube
 # timeline-fix
 # zoompan-time-fix
 # drawbox-enable-fix
+# zoompan-duration-fix
 
 on:
   workflow_dispatch:
