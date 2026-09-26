@@ -312,6 +312,39 @@ def make_scene(title, label, index, total, episode, output):
             d.text((x+25,y+23), n, font=font(24), fill=CYAN)
             d.text((x+90,y+24), q, font=font(25), fill=WHITE)
 
+    elif kind in ("impact", "limitation"):
+        ci = plan["case_index"]
+        beat = episode["beats"][ci]
+        if kind == "impact":
+            badge(d, 62, 120, "IMPACT", YELLOW)
+            d.text((62, 185), "WHAT ACTUALLY CHANGES?", font=font(40), fill=WHITE)
+            metrics = [
+                ("TIME", "less repetition", GREEN),
+                ("QUALITY", "same target", CYAN),
+                ("REVIEW", "visible checkpoint", YELLOW),
+            ]
+            for i, (lab, val, col) in enumerate(metrics):
+                x = 62 + i * 385
+                rounded_panel(d, (x, 310, x + 330, 535), fill=PANEL2, outline=(65, 80, 110))
+                d.text((x + 24, 340), lab, font=font(20), fill=col)
+                d.text((x + 24, 405), val.upper(), font=font(24), fill=WHITE)
+                d.rounded_rectangle((x + 24, 470, x + 306, 494), radius=12, fill=(29, 38, 56))
+                d.rounded_rectangle((x + 24, 470, x + 230, 494), radius=12, fill=col)
+            draw_text_box(d, (62, 575), beat["example"], 19, fill=MUTED,
+                          max_width=1120, gap=5, max_lines=2)
+        else:
+            badge(d, 62, 120, "LIMIT", RED)
+            d.text((62, 185), "WHEN THIS WORKFLOW BREAKS", font=font(40), fill=WHITE)
+            rounded_panel(d, (62, 310, 575, 570), fill=(18, 51, 42), outline=(55, 111, 91))
+            d.text((95, 345), "WORKS WHEN", font=font(20), fill=GREEN)
+            draw_text_box(d, (95, 405), "the input is clear and the output can be checked quickly.",
+                          24, fill=WHITE, max_width=420, gap=8, max_lines=4)
+            rounded_panel(d, (720, 310, 1218, 570), fill=(47, 25, 33), outline=(101, 53, 66))
+            d.text((755, 345), "BREAKS WHEN", font=font(20), fill=RED)
+            draw_text_box(d, (755, 405), beat["twist"], 24, fill=WHITE,
+                          max_width=410, gap=8, max_lines=4)
+            d.text((62, 610), "THE LIMIT IS PART OF THE RESULT.", font=font(20), fill=YELLOW)
+
     elif kind in ("action", "check"):
         ci = plan["case_index"]
         beat = episode["beats"][ci]
@@ -452,7 +485,7 @@ def main():
         "keywords": topic.get("keywords", []),
         "word_count": episode["word_count"],
         "scene_count": len(episode["scene_plan"]),
-        "story_format": "hook → stakes → test → case/proof → failure → workflow → scorecard → takeaway → cliffhanger",
+        "story_format": "hook → stakes → test → case/action/proof/impact/check/limit → failure → workflow → scorecard → takeaway → cliffhanger",
     }
     (work / "metadata.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
 
