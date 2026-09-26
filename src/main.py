@@ -123,7 +123,7 @@ def _short_label(text, limit=22):
     return out or str(text).upper()[:limit]
 
 
-def draw_case_visual(d, beat, ci, mode="case"):
+def draw_case_visual(d, beat, ci, mode="case", variant=0):
     """Render a reusable visual archetype instead of repeating one card layout."""
     section = str(beat.get("section", beat.get("subject", "")))
     archetype = (ci + variant) % 5
@@ -225,7 +225,7 @@ def draw_case_visual(d, beat, ci, mode="case"):
             d.text((365, yy-5), val, font=font(18), fill=MUTED)
 
 
-def draw_action_visual(d, beat, ci):
+def draw_action_visual(d, beat, ci, variant=0):
     archetype = (ci + 1 + variant) % 4
     if archetype == 0:
         # Animated-looking stack of cards
@@ -353,7 +353,7 @@ def make_scene(title, label, index, total, episode, output, variant=0):
             badge(d, 62, 120, "THE MOVE", PURPLE)
             d.text((62, 185), beat["subject"].upper(), font=font(42), fill=WHITE)
             draw_text_box(d, (62, 245), beat["setup"], 25, fill=MUTED, max_width=1080, gap=7, max_lines=2)
-            draw_action_visual(d, beat, ci)
+            draw_action_visual(d, beat, ci, variant)
         else:
             badge(d, 62, 120, "VERIFY", GREEN)
             d.text((62, 185), "THE OUTPUT MUST SURVIVE A CHECK", font=font(38), fill=WHITE)
@@ -378,11 +378,11 @@ def make_scene(title, label, index, total, episode, output, variant=0):
             badge(d, 62, 120, f"CASE {ci+1:02d}", CYAN)
             d.text((62, 185), beat["subject"].upper(), font=font(44), fill=WHITE)
             draw_text_box(d, (62, 245), beat["setup"], 25, fill=MUTED, max_width=1080, gap=7, max_lines=2)
-            draw_case_visual(d, beat, ci, "case")
+            draw_case_visual(d, beat, ci, "case", variant)
         else:
             badge(d, 62, 120, "PROOF", GREEN)
             d.text((62, 185), "MAKE THE CHANGE VISIBLE", font=font(40), fill=WHITE)
-            draw_case_visual(d, beat, ci, "proof")
+            draw_case_visual(d, beat, ci, "proof", variant)
             draw_text_box(d, (62, 610), beat["example"], 19, fill=MUTED, max_width=1120, gap=5, max_lines=2)
 
     elif kind == "failure":
