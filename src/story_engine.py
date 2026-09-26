@@ -58,20 +58,48 @@ def build_episode(topic: dict, target_minutes: int = 6) -> dict:
     beats = []
     for i, section in enumerate(sections):
         subject = subjects[i] if i < len(subjects) else section
+        archetypes = [
+            (
+                f"Start with the real bottleneck: {subject}. Show what the person does now, "
+                f"then isolate the one step this idea is supposed to change.",
+                f"Run {subject} on one concrete task. Compare the old path with the new path, "
+                f"and measure the part that actually changed.",
+                f"The trap with {subject} is invisible cleanup. If the new result needs more "
+                f"correction than the old workflow, the apparent speed gain is misleading.",
+            ),
+            (
+                f"Put {subject} under a simple test: one clear input, one expected output, "
+                f"and one condition that would make the experiment fail.",
+                f"Instead of describing {subject}, use it on a realistic example and capture "
+                f"the exact output that a person would have to review.",
+                f"Watch for the failure boundary with {subject}: impressive output is not enough "
+                f"if an important detail is missing or unverifiable.",
+            ),
+            (
+                f"Treat {subject} like a product demo with the hype removed. First define the "
+                f"job, then show the smallest useful action it can perform.",
+                f"Take {subject} from messy starting material to a visible result. The audience "
+                f"should be able to see the transformation, not just hear a claim about it.",
+                f"The limitation of {subject} matters as much as the benefit. Keep the checkpoint "
+                f"that catches the most expensive mistake.",
+            ),
+            (
+                f"Ask a sharper question about {subject}: where does it save a human a decision, "
+                f"a repeated action, or a chunk of cleanup?",
+                f"Use {subject} once before and once after the workflow change. Compare time, "
+                f"quality, and review effort instead of relying on a vague feeling.",
+                f"Do not count automation as a win if {subject} moves the work somewhere harder "
+                f"to notice. The final check must expose that tradeoff.",
+            ),
+        ]
+        setup, example, twist = archetypes[i % len(archetypes)]
         beats.append({
             "number": i + 1,
             "subject": str(subject),
             "section": str(section),
-            "setup": f"First, look at {subject}. The useful question is what this changes in a real task.",
-            "example": (
-                f"Imagine the starting point before {subject}: the work is slower, scattered, "
-                f"or requires several manual steps. Now give the workflow one clear input and "
-                f"one measurable outcome. That makes the improvement visible instead of theoretical."
-            ),
-            "twist": (
-                f"Here is the catch with {subject}: a faster answer is not automatically a better "
-                f"answer. Check the output against the requirement before you trust it."
-            ),
+            "setup": setup,
+            "example": example,
+            "twist": twist,
         })
 
     blocks = []
