@@ -1,0 +1,6 @@
+{
+  "channel_language": "fa-IR",
+  "video": {"width": 1280, "height": 720, "fps": 30},
+  "voice": {"enabled": true, "voice": "fa-IR-DilaraNeural", "rate": "+0%", "volume": "+0%"},
+  "youtube": {"enabled": false, "privacy_status": "private", "category_id": "27"}
+}
