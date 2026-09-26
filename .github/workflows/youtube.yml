@@ -15,7 +15,7 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -26,7 +26,7 @@ jobs:
           cache: pip
       - name: Install dependencies
         run: pip install -r requirements.txt
-      - name: Build English long-form preview
+      - name: Build story-driven English long-form preview
         run: python -m src.main --mode test
       - name: Upload preview artifacts
         uses: actions/upload-artifact@v4
