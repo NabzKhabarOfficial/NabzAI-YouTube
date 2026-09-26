@@ -16,7 +16,7 @@ jobs:
           python-version: '3.12'
           cache: pip
       - run: pip install -r requirements.txt
-      - run: python -m src.main
+      - run: python -m src.main --mode test
       - uses: actions/upload-artifact@v4
         with:
           name: nabz-ai-youtube-preview
