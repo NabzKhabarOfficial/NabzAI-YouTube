@@ -151,7 +151,9 @@ def _scene_plan(case_count: int) -> list[dict]:
     ]
     for i in range(case_count):
         plan.append({"kind": "case", "label": f"CASE {i + 1:02d}", "case_index": i})
+        plan.append({"kind": "action", "label": "THE MOVE", "case_index": i})
         plan.append({"kind": "proof", "label": "PROOF", "case_index": i})
+        plan.append({"kind": "check", "label": "VERIFY", "case_index": i})
     plan.extend([
         {"kind": "failure", "label": "THE CATCH"},
         {"kind": "workflow", "label": "THE PATTERN"},
