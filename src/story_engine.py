@@ -146,21 +146,30 @@ def build_episode(topic: dict, target_minutes: int = 6) -> dict:
     the failures that teach us what the hype leaves out.
     """).strip()
 
-    words = " ".join([opening, *blocks, mid, ending]).split()
+    # The duration gate must measure the actual rendered script.
     target_words = max(780, int(target_minutes * 145))
-    if len(words) < target_words:
+    script = "\n\n".join([opening, *blocks, mid, ending])
+
+    if len(script.split()) < target_words:
         extra = dedent("""
         Before you copy any workflow, write down the exact input it needs, the result you expect,
         the easiest way to verify that result, and the most expensive mistake it could make.
         This tiny checklist turns a clever demonstration into a repeatable process.
 
+        Run the workflow twice when possible. The first pass tells you whether the idea works at
+        all. The second pass tells you whether the result is repeatable. Compare the correction
+        needed after each pass, because a fast first result is not useful if every output needs
+        long manual cleanup.
+
         Also remember that the best workflow is not always the most automated one. Sometimes one
         human checkpoint is the difference between useful automation and a polished mistake.
+        Keep that checkpoint explicit: define what must be checked, what counts as failure, and
+        what should happen when the check fails. This makes the process safer to repeat and easier
+        to improve in the next experiment.
         """).strip()
-        while len(words) < target_words:
-            words.extend(extra.split())
+        while len(script.split()) < target_words:
+            script += "\n\n" + extra
 
-    script = "\n\n".join([opening, *blocks, mid, ending])
     return {
         "title": title,
         "hook": hook,
