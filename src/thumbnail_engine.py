@@ -1,17 +1,41 @@
 from pathlib import Path
-from PIL import Image,ImageDraw,ImageFont
-def make_thumbnail(title,output_path):
-    p=Path(output_path); p.parent.mkdir(parents=True,exist_ok=True)
-    im=Image.new('RGB',(1280,720),(18,18,24)); d=ImageDraw.Draw(im)
-    fp='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'; f=ImageFont.truetype(fp,58) if Path(fp).exists() else ImageFont.load_default()
-    d.rounded_rectangle((45,45,1235,675),radius=35,outline='white',width=4)
-    words=title.split(); lines=[]; line=''
-    for w in words:
-        t=(line+' '+w).strip()
-        if d.textbbox((0,0),t,font=f)[2]>1080 and line: lines.append(line); line=w
-        else: line=t
+from PIL import Image, ImageDraw, ImageFont
+
+def _font(size):
+    candidates = [
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf"
+    ]
+    for fp in candidates:
+        if Path(fp).exists():
+            return ImageFont.truetype(fp, size)
+    return ImageFont.load_default()
+
+def _wrap(draw, text, font, max_width):
+    lines=[]; line=""
+    for word in text.split():
+        test=(line+" "+word).strip()
+        if draw.textbbox((0,0),test,font=font)[2] <= max_width:
+            line=test
+        else:
+            if line: lines.append(line)
+            line=word
     if line: lines.append(line)
-    y=250
+    return lines
+
+def make_thumbnail(title, output_path):
+    p=Path(output_path); p.parent.mkdir(parents=True,exist_ok=True)
+    im=Image.new("RGB",(1280,720),(12,16,28)); d=ImageDraw.Draw(im)
+    d.rounded_rectangle((35,35,1245,685),radius=38,outline=(235,235,235),width=3)
+    badge_font=_font(28); title_font=_font(68)
+    d.rounded_rectangle((70,70,330,125),radius=18,fill=(235,235,235))
+    d.text((92,82),"NABZ AI",font=badge_font,fill=(12,16,28))
+    lines=_wrap(d,title,title_font,1050)
+    y=230
     for line in lines[:4]:
-        box=d.textbbox((0,0),line,font=f); d.text(((1280-(box[2]-box[0]))/2,y),line,font=f,fill='white'); y+=75
-    im.save(p,quality=95); return p
+        box=d.textbbox((0,0),line,font=title_font)
+        d.text(((1280-(box[2]-box[0]))/2,y),line,font=title_font,fill=(245,245,245))
+        y += 88
+    d.text((70,620),"PRACTICAL AI • TOOLS • AUTOMATION",font=_font(25),fill=(210,210,210))
+    im.save(p,quality=95,optimize=True)
+    return p
