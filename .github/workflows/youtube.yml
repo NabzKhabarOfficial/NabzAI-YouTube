@@ -1,23 +1,35 @@
 name: NabzAI-YouTube
+
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 8 * * *'
+    - cron: "30 8 * * *"
+
+concurrency:
+  group: nabz-ai-youtube
+  cancel-in-progress: false
+
 permissions:
   contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: "3.12"
           cache: pip
-      - run: pip install -r requirements.txt
-      - run: python -m src.main --mode test
-      - uses: actions/upload-artifact@v4
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Build English long-form preview
+        run: python -m src.main --mode test
+      - name: Upload preview artifacts
+        uses: actions/upload-artifact@v4
         with:
           name: nabz-ai-youtube-preview
           path: output/
