@@ -65,8 +65,8 @@ def _probe_with_ffmpeg(path):
 def validate_scene_set(scene_paths, min_unique_ratio=0.72):
     """Catch accidental repeated/static scene sets before delivery."""
     paths = [Path(p) for p in scene_paths]
-    if len(paths) < 12:
-        raise RuntimeError("Visual gate: too few scenes for a long-form episode.")
+    if len(paths) < 24:
+        raise RuntimeError("Visual gate: too few shots for a long-form episode; expected at least 24 distinct shots.")
     for p in paths:
         if not p.exists() or p.stat().st_size < 5000:
             raise RuntimeError(f"Visual gate: invalid scene asset: {p.name}")
