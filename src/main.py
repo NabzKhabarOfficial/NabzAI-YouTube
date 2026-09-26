@@ -1,7 +1,7 @@
 import argparse
 import json
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 
 from .topic_engine import choose_topic
 from .story_engine import build_episode
@@ -451,6 +451,12 @@ def make_scene(title, label, index, total, episode, output, variant=0):
         d.line((1090, 92, 1140, 92), fill=(72,210,255), width=2)
 
     progress(d, index, total)
+
+    # Alternate cuts get a genuine visual grade change, not just a label.
+    if variant:
+        im = ImageEnhance.Brightness(im).enhance(1.08)
+        im = ImageEnhance.Contrast(im).enhance(1.05)
+
     im.save(output, quality=95)
 
 
