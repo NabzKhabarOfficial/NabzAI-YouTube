@@ -37,21 +37,35 @@ def render_video(audio_path, scene_paths, output_path, width=1280, height=720, f
     duration = _duration(audio_path)
     if not scene_paths:
         raise RuntimeError("At least one scene is required.")
+
     each = max(1.0, duration / len(scene_paths))
     inputs, filters = [], []
+
     for i, scene in enumerate(scene_paths):
+        frames = max(1, int(each * fps))
         inputs += ["-loop", "1", "-t", f"{each:.3f}", "-i", str(scene)]
-        filters.append(f"[{i}:v]scale={width}:{height}:force_original_aspect_ratio=decrease,"
-                       f"pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,format=yuv420p[v{i}]")
+        # Gentle Ken-Burns motion: every visual has movement instead of being a static card.
+        filters.append(
+            f"[{i}:v]scale={int(width*1.06)}:{int(height*1.06)},"
+            f"zoompan=z='min(zoom+0.00035,1.045)':"
+            f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
+            f"d={frames}:s={width}x{height}:fps={fps},format=yuv420p[v{i}]"
+        )
+
     concat_inputs = "".join(f"[v{i}]" for i in range(len(scene_paths)))
     filters.append(f"{concat_inputs}concat=n={len(scene_paths)}:v=1:a=0[v]")
-    cmd = [FFMPEG, "-y"] + inputs + ["-i", str(audio_path), "-filter_complex", ";".join(filters),
-           "-map", "[v]", "-map", f"{len(scene_paths)}:a", "-r", str(fps),
-           "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
-           "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart", str(p)]
+
+    cmd = [
+        FFMPEG, "-y", *inputs, "-i", str(audio_path),
+        "-filter_complex", ";".join(filters),
+        "-map", "[v]", "-map", f"{len(scene_paths)}:a",
+        "-r", str(fps), "-c:v", "libx264", "-preset", "veryfast",
+        "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k",
+        "-shortest", "-movflags", "+faststart", str(p)
+    ]
     r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if r.returncode:
-        raise RuntimeError("Video rendering failed: " + r.stderr[-1600:])
+        raise RuntimeError("Video rendering failed: " + r.stderr[-2200:])
     if not p.exists() or p.stat().st_size < 10000:
         raise RuntimeError("Video rendering produced an invalid file.")
     return p
@@ -59,10 +73,14 @@ def render_video(audio_path, scene_paths, output_path, width=1280, height=720, f
 def render_short(audio_path, card_path, output_path, width=1080, height=1920, fps=30):
     p = Path(output_path)
     p.parent.mkdir(parents=True, exist_ok=True)
-    cmd = [FFMPEG, "-y", "-loop", "1", "-i", str(card_path), "-i", str(audio_path),
-           "-vf", f"scale={width}:{height}:force_original_aspect_ratio=decrease,pad={width}:{height}:(ow-iw)/2:(oh-ih)/2",
-           "-r", str(fps), "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p",
-           "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart", str(p)]
+    cmd = [
+        FFMPEG, "-y", "-loop", "1", "-i", str(card_path), "-i", str(audio_path),
+        "-vf", f"scale={width}:{height}:force_original_aspect_ratio=decrease,"
+               f"pad={width}:{height}:(ow-iw)/2:(oh-ih)/2",
+        "-r", str(fps), "-c:v", "libx264", "-preset", "veryfast",
+        "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k",
+        "-shortest", "-movflags", "+faststart", str(p)
+    ]
     r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if r.returncode:
         raise RuntimeError("Short rendering failed: " + r.stderr[-1200:])
