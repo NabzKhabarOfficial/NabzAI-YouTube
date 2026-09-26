@@ -263,6 +263,12 @@ def make_scene(title, label, index, total, episode, output):
         d.text((780,475),"NO EMPTY HYPE",font=font(22),fill=MUTED)
         d.text((62, 575), "Subscribe for the next experiment.", font=font(28), fill=GREEN)
 
+    # Subtle animated HUD accents make each beat feel like a designed motion graphic.
+    if kind not in ("hook", "takeaway"):
+        pulse = 10 + ((index * 7) % 18)
+        d.ellipse((1160-pulse, 92-pulse, 1160+pulse, 92+pulse), outline=(72,210,255), width=2)
+        d.line((1090, 92, 1140, 92), fill=(72,210,255), width=2)
+
     progress(d, index, total)
     im.save(output, quality=95)
 
