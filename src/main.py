@@ -65,8 +65,7 @@ def arrow(draw, a, b, fill=ACCENT, width=6):
     draw.line((x1, y1, x2, y2), fill=fill, width=width)
     r = 12
     direction = 1 if x2 >= x1 else -1
-    d = ImageDraw.Draw(draw._image if hasattr(draw, "_image") else draw)
-    d.polygon([(x2, y2), (x2-direction*r*2, y2-r), (x2-direction*r*2, y2+r)], fill=fill)
+    draw.polygon([(x2, y2), (x2-direction*r*2, y2-r), (x2-direction*r*2, y2+r)], fill=fill)
 
 def header(d, label, index, total):
     d.text((70, 42), "NABZ AI", font=font(25), fill=ACCENT)
