@@ -151,6 +151,35 @@ def make_scene(title, label, index, total, episode, output):
             d.text((x+25,y+23), n, font=font(24), fill=CYAN)
             d.text((x+90,y+24), q, font=font(25), fill=WHITE)
 
+    elif kind in ("action", "check"):
+        ci = plan["case_index"]
+        beat = episode["beats"][ci]
+        if kind == "action":
+            badge(d, 62, 120, "THE MOVE", PURPLE)
+            d.text((62, 185), beat["subject"].upper(), font=font(46), fill=WHITE)
+            draw_text_box(d, (62, 255), "Turn the idea into one concrete workflow.", 30, fill=MUTED, max_width=760, gap=8, max_lines=2)
+            steps = [("01", "INPUT", "clear task"), ("02", "ACTION", "one change"), ("03", "OUTPUT", "measurable result")]
+            for i, (n, label, value) in enumerate(steps):
+                x = 62 + i * 385
+                rounded_panel(d, (x, 390, x + 330, 560), fill=PANEL2, outline=(78, 68, 120))
+                d.text((x + 24, 415), n, font=font(22), fill=PURPLE)
+                d.text((x + 24, 462), label, font=font(22), fill=MUTED)
+                d.text((x + 24, 510), value, font=font(25), fill=WHITE)
+                if i < 2:
+                    arrow(d, (x + 338, 480), (x + 375, 480), PURPLE, 5)
+        else:
+            badge(d, 62, 120, "VERIFY", GREEN)
+            d.text((62, 185), "CHECK BEFORE YOU TRUST IT", font=font(42), fill=WHITE)
+            checks = [("CLAIM", "Is the result actually supported?"), ("OUTPUT", "Does it match the requested format?"), ("COST", "Did review time erase the gain?")]
+            y = 310
+            for label, value in checks:
+                rounded_panel(d, (62, y, 1218, y + 92), fill=PANEL, outline=(54, 79, 76))
+                d.text((90, y + 25), "✓", font=font(30), fill=GREEN)
+                d.text((145, y + 23), label, font=font(20), fill=GREEN)
+                d.text((285, y + 23), value, font=font(22), fill=WHITE)
+                y += 112
+            draw_text_box(d, (62, 645), beat["twist"], 20, fill=MUTED, max_width=1120, gap=6, max_lines=1)
+
     elif kind in ("case","proof"):
         ci = plan["case_index"]
         beat = episode["beats"][ci]
