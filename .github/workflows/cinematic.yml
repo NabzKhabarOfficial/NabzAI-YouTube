@@ -1,0 +1,69 @@
+name: NabzAI Cinematic Short
+
+on:
+  workflow_dispatch:
+    inputs:
+      quality:
+        description: "Cinematic generation profile"
+        required: true
+        default: "free"
+        type: choice
+        options:
+          - free
+
+concurrency:
+  group: nabz-ai-cinematic
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  cinematic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-cinematic.txt
+
+      - name: Regression tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Generate cinematic short film
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python -m src.cinematic_short
+
+      - name: Cinematic quality gate
+        run: |
+          test -f output/cinematic-short/final_film.mp4
+          test -f output/cinematic-short/quality.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path("output/cinematic-short/quality.json").read_text(encoding="utf-8"))
+          assert report["gates"]["passed"] is True
+          assert report["gates"]["realistic_video_required"] is True
+          assert report["gates"]["character_reference_required"] is True
+          assert report["gates"]["story_structure_required"] is True
+          assert report["duration_seconds"] >= 7
+          print("Cinematic artifact gate: PASS")
+          PY
+
+      - name: Upload final film
+        uses: actions/upload-artifact@v4
+        with:
+          name: nabz-ai-cinematic-short
+          path: output/cinematic-short/
+          retention-days: 7
