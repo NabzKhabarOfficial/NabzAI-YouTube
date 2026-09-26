@@ -48,19 +48,19 @@ def _motion_filters(i, total, each, width, height, fps):
     """
     motion = i % 4
     if motion == 0:
-        z = f"min(1.0+0.14*(time/{each:.6f}),1.14)"
+        z = f"min(1.0+0.17*(time/{each:.6f}),1.17)"
         x = "((iw-iw/zoom)/2)+55*sin(time*0.42)"
         y = "((ih-ih/zoom)/2)+28*cos(time*0.35)"
     elif motion == 1:
-        z = f"min(1.13,1.0+0.13*(time/{each:.6f}))"
+        z = f"min(1.16,1.0+0.16*(time/{each:.6f}))"
         x = "((iw-iw/zoom)/2)-60*sin(time*0.36)"
         y = "((ih-ih/zoom)/2)+34*sin(time*0.30)"
     elif motion == 2:
-        z = f"max(1.01,1.13-0.12*(time/{each:.6f}))"
+        z = f"max(1.01,1.16-0.15*(time/{each:.6f}))"
         x = "((iw-iw/zoom)/2)+65*cos(time*0.32)"
         y = "((ih-ih/zoom)/2)-30*sin(time*0.40)"
     else:
-        z = f"min(1.15,1.0+0.15*(time/{each:.6f}))"
+        z = f"min(1.18,1.0+0.18*(time/{each:.6f}))"
         x = "((iw-iw/zoom)/2)-55*cos(time*0.38)"
         y = "((ih-ih/zoom)/2)-34*cos(time*0.29)"
 
@@ -110,7 +110,7 @@ def render_video(audio_path, scene_paths, output_path, width=1280, height=720, f
     if not scene_paths:
         raise RuntimeError("At least one scene is required.")
 
-    transition = 0.28 if len(scene_paths) > 1 else 0.0
+    transition = 0.34 if len(scene_paths) > 1 else 0.0
     each = max(
         1.5,
         (duration + transition * max(0, len(scene_paths) - 1)) / len(scene_paths),
@@ -130,7 +130,7 @@ def render_video(audio_path, scene_paths, output_path, width=1280, height=720, f
     for i in range(1, len(scene_paths)):
         out = f"x{i}"
         offset = i * each - i * transition
-        transitions = ("fade", "smoothleft", "wipeleft", "slideright", "circleopen")
+        transitions = ("fade", "smoothleft", "wipeleft", "slideright", "circleopen", "hblur", "radial")
         transition_name = transitions[(i - 1) % len(transitions)]
         filters.append(
             f"[{current}][v{i}]xfade=transition={transition_name}:duration={transition:.2f}:offset={offset:.3f}[{out}]"
