@@ -11,15 +11,15 @@ from .quality_gate import validate_video
 
 ROOT = Path(__file__).resolve().parents[1]
 W, H = 1280, 720
-BG = (9, 13, 24)
-PANEL = (20, 27, 44)
-PANEL2 = (28, 37, 58)
+BG = (7, 12, 24)
+PANEL = (18, 28, 48)
 WHITE = (245, 247, 250)
-MUTED = (166, 177, 198)
-ACCENT = (80, 190, 255)
-GREEN = (72, 214, 150)
-YELLOW = (255, 198, 75)
-RED = (255, 100, 110)
+MUTED = (158, 173, 198)
+ACCENT = (77, 201, 255)
+GREEN = (78, 220, 154)
+YELLOW = (255, 198, 74)
+RED = (255, 91, 110)
+PURPLE = (167, 120, 255)
 
 def load_settings():
     return json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))
@@ -56,106 +56,141 @@ def text_box(draw, xy, text, size, fill=WHITE, max_width=1000, gap=10):
         y += size + gap
     return y
 
-def panel(draw, box, fill=PANEL2, outline=(48, 61, 88), radius=24):
+def panel(draw, box, fill=PANEL, outline=(47, 66, 96), radius=22):
     draw.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=2)
 
-def arrow(draw, a, b, fill=ACCENT):
+def arrow(draw, a, b, fill=ACCENT, width=6):
     x1, y1 = a
     x2, y2 = b
-    draw.line((x1, y1, x2, y2), fill=fill, width=7)
-    r = 13
-    if x2 >= x1:
-        draw.polygon([(x2, y2), (x2-r*2, y2-r), (x2-r*2, y2+r)], fill=fill)
-    else:
-        draw.polygon([(x2, y2), (x2+r*2, y2-r), (x2+r*2, y2+r)], fill=fill)
+    draw.line((x1, y1, x2, y2), fill=fill, width=width)
+    r = 12
+    direction = 1 if x2 >= x1 else -1
+    d = ImageDraw.Draw(draw._image if hasattr(draw, "_image") else draw)
+    d.polygon([(x2, y2), (x2-direction*r*2, y2-r), (x2-direction*r*2, y2+r)], fill=fill)
 
-def make_scene(title, label, index, output):
+def header(d, label, index, total):
+    d.text((70, 42), "NABZ AI", font=font(25), fill=ACCENT)
+    d.text((220, 42), label, font=font(22), fill=MUTED)
+    d.text((1115, 42), f"{index:02d}/{total:02d}", font=font(22), fill=MUTED)
+    d.line((70, 88, 1210, 88), fill=(37, 53, 80), width=2)
+
+def metric(d, box, number, caption, color):
+    panel(d, box, fill=(15, 24, 42), outline=(42, 60, 88), radius=18)
+    x1, y1, x2, y2 = box
+    d.text((x1+22, y1+18), number, font=font(40), fill=color)
+    d.text((x1+22, y1+70), caption, font=font(18), fill=MUTED)
+
+def make_scene(title, label, index, total, topic, output):
     im = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(im)
-
-    # Everything stays inside a generous central safe zone for mobile playback.
-    d.text((80, 52), "NABZ AI", font=font(25), fill=ACCENT)
-    d.text((220, 52), f"{label}  /  {index:02d}", font=font(25), fill=MUTED)
-    d.line((80, 100, 1200, 100), fill=(43, 54, 78), width=2)
+    header(d, label, index, total)
 
     if index == 1:
-        d.text((80, 145), "THE OUTCOME", font=font(22), fill=ACCENT)
-        text_box(d, (80, 185), title, 52, max_width=760, gap=8)
-        for x, name, color in [(80, "AI TOOL", ACCENT), (440, "WORKFLOW", GREEN), (800, "TIME SAVED", YELLOW)]:
-            panel(d, (x, 485, x+320, 615))
-            d.ellipse((x+25, 510, x+55, 540), fill=color)
-            d.text((x+75, 507), name, font=font(22), fill=WHITE)
-        panel(d, (875, 155, 1200, 430), fill=(16, 23, 38))
-        d.text((915, 190), "7", font=font(96), fill=ACCENT)
-        d.text((915, 300), "useful tools", font=font(27), fill=WHITE)
-        d.text((915, 350), "not hype", font=font(27), fill=MUTED)
-    elif index == 2:
-        d.text((80, 140), "THE PROBLEM", font=font(22), fill=RED)
-        text_box(d, (80, 180), title, 46, max_width=760)
-        panel(d, (80, 420, 370, 590))
-        d.text((115, 450), "INPUT", font=font(21), fill=MUTED)
-        d.text((115, 500), "too much noise", font=font(25), fill=WHITE)
-        arrow(d, (390, 505), (520, 505), RED)
-        panel(d, (540, 420, 850, 590), fill=(48, 24, 34), outline=(100, 55, 65))
-        d.text((575, 450), "RISK", font=font(21), fill=RED)
-        d.text((575, 500), "confident mistake", font=font(25), fill=WHITE)
-        arrow(d, (870, 505), (1000, 505), GREEN)
-        panel(d, (1020, 420, 1200, 590), fill=(18, 48, 39), outline=(48, 100, 80))
-        d.text((1040, 450), "FIX", font=font(21), fill=GREEN)
-        d.text((1040, 500), "clear goal", font=font(22), fill=WHITE)
-    elif index == 3:
-        d.text((80, 140), "THE METHOD", font=font(22), fill=ACCENT)
-        text_box(d, (80, 180), title, 46, max_width=1060)
-        steps = [("01", "GOAL"), ("02", "CONTEXT"), ("03", "TEST"), ("04", "CHECK")]
-        xs = [80, 365, 650, 935]
-        for j, (num, name) in enumerate(steps):
-            panel(d, (xs[j], 430, xs[j]+220, 575))
-            d.text((xs[j]+22, 448), num, font=font(27), fill=ACCENT)
-            d.text((xs[j]+22, 500), name, font=font(23), fill=WHITE)
-            if j < 3:
-                arrow(d, (xs[j]+225, 505), (xs[j+1]-10, 505))
-    elif index == 4:
-        d.text((80, 140), "REAL EXAMPLE", font=font(22), fill=GREEN)
-        text_box(d, (80, 180), title, 46, max_width=1060)
-        panel(d, (80, 370, 575, 590), fill=(43, 29, 31), outline=(92, 58, 65))
-        d.text((115, 400), "BEFORE", font=font(22), fill=RED)
-        d.text((115, 455), "generic request", font=font(27), fill=WHITE)
-        d.text((115, 505), "↓ unclear output", font=font(24), fill=MUTED)
-        arrow(d, (610, 480), (670, 480), GREEN)
-        panel(d, (705, 370, 1200, 590), fill=(18, 48, 39), outline=(48, 100, 80))
-        d.text((740, 400), "AFTER", font=font(22), fill=GREEN)
-        d.text((740, 455), "goal + context", font=font(27), fill=WHITE)
-        d.text((740, 505), "✓ usable result", font=font(24), fill=GREEN)
-    elif index == 5:
-        d.text((80, 140), "QUALITY CHECK", font=font(22), fill=YELLOW)
-        text_box(d, (80, 180), title, 46, max_width=1060)
-        checks = ["Goal is clear", "Claims are verified", "Sensitive data removed", "Output matches the format"]
-        y = 390
-        for item in checks:
-            panel(d, (80, y, 1200, y+55), fill=(17, 25, 40))
-            d.ellipse((105, y+13, 135, y+43), fill=GREEN)
-            d.text((112, y+10), "✓", font=font(23), fill=BG)
-            d.text((165, y+12), item, font=font(22), fill=WHITE)
-            y += 65
-    else:
-        d.text((80, 140), "TAKEAWAY", font=font(22), fill=ACCENT)
-        text_box(d, (80, 180), title, 46, max_width=1060)
-        for y, (num, name) in zip([400, 478, 556], [("01", "START SMALL"), ("02", "MEASURE"), ("03", "IMPROVE")]):
-            panel(d, (80, y, 1200, y+65))
-            d.text((110, y+17), num, font=font(22), fill=ACCENT)
-            d.text((190, y+17), name, font=font(24), fill=WHITE)
+        d.text((70, 135), "STOP SCROLLING", font=font(25), fill=RED)
+        text_box(d, (70, 178), title, 52, max_width=760, gap=7)
+        panel(d, (885, 130, 1210, 430), fill=(21, 31, 52), outline=(70, 92, 130))
+        d.text((935, 165), "THE", font=font(22), fill=MUTED)
+        d.text((930, 205), "REAL", font=font(55), fill=WHITE)
+        d.text((930, 275), "TEST", font=font(55), fill=ACCENT)
+        metric(d, (70, 500, 330, 630), "01", "REAL TASK", ACCENT)
+        metric(d, (355, 500, 615, 630), "02", "LESS FRICTION", GREEN)
+        metric(d, (640, 500, 900, 630), "03", "MEASURED", YELLOW)
+        metric(d, (925, 500, 1210, 630), "04", "NO HYPE", PURPLE)
 
-    d.text((80, 665), "PRACTICAL AI  •  TOOLS  •  AUTOMATION", font=font(20), fill=MUTED)
-    d.text((1130, 665), f"{index}/6", font=font(20), fill=MUTED)
+    elif index == 2:
+        d.text((70, 130), "THE PAIN", font=font(25), fill=RED)
+        text_box(d, (70, 170), "Most people add AI tools before they remove the actual bottleneck.", 42, max_width=1050)
+        for x, label2 in [(90, "TASK"), (380, "TOOL"), (670, "TOOL"), (960, "TOOL")]:
+            panel(d, (x, 400, x+220, 555), fill=(22, 27, 43), outline=(60, 65, 90))
+            d.text((x+24, 425), label2, font=font(20), fill=MUTED)
+            d.text((x+24, 470), "MORE WORK", font=font(25), fill=WHITE)
+        arrow(d, (315, 477), (370, 477), RED)
+        arrow(d, (605, 477), (660, 477), RED)
+        arrow(d, (895, 477), (950, 477), RED)
+        d.text((90, 600), "The goal is not more software. It is less wasted effort.", font=font(27), fill=WHITE)
+
+    elif index in (3, 4, 5, 6, 7, 8):
+        n = index - 2
+        d.text((70, 125), f"CASE {n:02d}", font=font(24), fill=ACCENT)
+        d.text((70, 165), f"CAPABILITY {n:02d}", font=font(46), fill=WHITE)
+        task = ["RESEARCH", "WRITING", "MEETINGS", "AUTOMATION", "CODING", "DOCUMENTS"][n-1]
+        d.text((70, 235), task, font=font(58), fill=ACCENT)
+        panel(d, (70, 350, 500, 600), fill=(20, 29, 49))
+        d.text((105, 385), "BEFORE", font=font(21), fill=RED)
+        d.text((105, 440), "MANUAL STEPS", font=font(31), fill=WHITE)
+        d.text((105, 495), "slow • repetitive", font=font(22), fill=MUTED)
+        arrow(d, (535, 475), (680, 475), GREEN, 8)
+        panel(d, (715, 350, 1210, 600), fill=(16, 43, 38), outline=(51, 111, 92))
+        d.text((750, 385), "AFTER", font=font(21), fill=GREEN)
+        d.text((750, 440), "AI-ASSISTED", font=font(31), fill=WHITE)
+        d.text((750, 495), "faster • checked", font=font(22), fill=GREEN)
+        metric(d, (70, 625, 360, 690), "INPUT", "clear goal", ACCENT)
+        metric(d, (385, 625, 675, 690), "PROCESS", "one workflow", PURPLE)
+        metric(d, (700, 625, 990, 690), "OUTPUT", "verified", GREEN)
+
+    elif index == 9:
+        d.text((70, 130), "THE FAILURE MODE", font=font(25), fill=RED)
+        text_box(d, (70, 175), "Fast output is not automatically good output.", 46, max_width=1000)
+        panel(d, (70, 350, 360, 570), fill=(48, 23, 31), outline=(100, 50, 65))
+        d.text((105, 390), "AI ANSWER", font=font(23), fill=RED)
+        d.text((105, 445), "sounds right", font=font(30), fill=WHITE)
+        d.text((105, 495), "but may be wrong", font=font(22), fill=MUTED)
+        arrow(d, (400, 460), (535, 460), YELLOW)
+        panel(d, (570, 350, 850, 570), fill=(45, 39, 22), outline=(105, 90, 45))
+        d.text((610, 390), "CHECK", font=font(23), fill=YELLOW)
+        d.text((610, 445), "source", font=font(30), fill=WHITE)
+        d.text((610, 495), "test • compare", font=font(22), fill=MUTED)
+        arrow(d, (890, 460), (1025, 460), GREEN)
+        panel(d, (1060, 350, 1210, 570), fill=(17, 48, 39), outline=(50, 105, 83))
+        d.text((1085, 390), "OK", font=font(23), fill=GREEN)
+        d.text((1085, 445), "✓", font=font(48), fill=GREEN)
+
+    elif index == 10:
+        d.text((70, 130), "THE WORKFLOW", font=font(25), fill=PURPLE)
+        text_box(d, (70, 175), "A good AI workflow is a chain, not a magic button.", 44, max_width=1050)
+        nodes = [("01", "INPUT"), ("02", "AI"), ("03", "CHECK"), ("04", "ACTION")]
+        xs = [70, 355, 640, 925]
+        for j, (num, name) in enumerate(nodes):
+            panel(d, (xs[j], 390, xs[j]+220, 555), fill=(20, 29, 49))
+            d.text((xs[j]+24, 412), num, font=font(23), fill=ACCENT)
+            d.text((xs[j]+24, 470), name, font=font(27), fill=WHITE)
+            if j < 3:
+                arrow(d, (xs[j]+225, 472), (xs[j+1]-10, 472), PURPLE)
+
+    elif index == 11:
+        d.text((70, 130), "SCORECARD", font=font(25), fill=YELLOW)
+        text_box(d, (70, 175), "Keep the workflow only if it wins on the things that matter.", 42, max_width=1060)
+        rows = [("TIME", GREEN), ("QUALITY", ACCENT), ("EFFORT", YELLOW), ("RISK", RED)]
+        y = 365
+        for name, color in rows:
+            d.text((90, y), name, font=font(22), fill=WHITE)
+            d.rounded_rectangle((250, y+5, 1080, y+35), radius=14, fill=(27, 36, 56))
+            width = {"TIME": 620, "QUALITY": 540, "EFFORT": 430, "RISK": 250}[name]
+            d.rounded_rectangle((250, y+5, 250+width, y+35), radius=14, fill=color)
+            y += 70
+
+    else:
+        d.text((70, 135), "TAKEAWAY", font=font(25), fill=ACCENT)
+        text_box(d, (70, 180), title, 45, max_width=1080)
+        d.text((75, 380), "START SMALL", font=font(38), fill=WHITE)
+        d.text((75, 435), "MEASURE THE BASELINE", font=font(38), fill=ACCENT)
+        d.text((75, 490), "KEEP ONLY WHAT WORKS", font=font(38), fill=GREEN)
+        panel(d, (810, 350, 1210, 590), fill=(18, 28, 48), outline=(65, 83, 116))
+        d.text((860, 395), "NABZ AI", font=font(34), fill=ACCENT)
+        d.text((860, 455), "PRACTICAL", font=font(25), fill=WHITE)
+        d.text((860, 500), "NOT HYPE", font=font(25), fill=MUTED)
+
+    d.text((70, 690), "PRACTICAL AI  •  WORKFLOWS  •  EXPERIMENTS", font=font(17), fill=MUTED)
     im.save(output, quality=95)
 
 def make_short_card(title, path):
     im = Image.new("RGB", (1080, 1920), BG)
     d = ImageDraw.Draw(im)
-    panel(d, (55, 55, 1025, 1865), fill=(15, 21, 35), outline=(52, 68, 98), radius=42)
-    d.text((90, 110), "NABZ AI", font=font(34), fill=ACCENT)
-    text_box(d, (90, 620), title, 60, max_width=880, gap=12)
-    d.text((90, 1710), "Practical AI • Tools • Automation", font=font(25), fill=MUTED)
+    panel(d, (45, 45, 1035, 1875), fill=(15, 22, 38), outline=(55, 75, 108), radius=44)
+    d.text((85, 110), "NABZ AI", font=font(34), fill=ACCENT)
+    d.text((85, 340), "ONE IDEA", font=font(26), fill=YELLOW)
+    text_box(d, (85, 410), title, 58, max_width=880, gap=13)
+    d.text((85, 1680), "Practical AI • Workflows • Experiments", font=font(25), fill=MUTED)
     im.save(path, quality=95)
 
 def main():
@@ -173,12 +208,11 @@ def main():
     (work / "script.txt").write_text(script, encoding="utf-8")
     (work / "metadata.json").write_text(json.dumps({"title": title, "description": description, "tags": topic["tags"], "keywords": topic["keywords"]}, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    labels = ["HOOK", "THE PROBLEM", "THE METHOD", "REAL EXAMPLE", "QUALITY CHECK", "TAKEAWAY"]
+    labels = ["HOOK", "THE PAIN", "CASE 01", "CASE 02", "CASE 03", "CASE 04", "CASE 05", "CASE 06", "FAILURE", "WORKFLOW", "SCORECARD", "TAKEAWAY"]
     scenes = []
     for i, label in enumerate(labels, 1):
-        scene_title = title if i == 1 else topic["sections"][min(i - 2, len(topic["sections"]) - 1)]
-        path = work / f"scene_{i}.png"
-        make_scene(scene_title, label, i, path)
+        path = work / f"scene_{i:02d}.png"
+        make_scene(title, label, i, len(labels), topic, path)
         scenes.append(path)
 
     audio = work / "voice.mp3"
@@ -187,6 +221,8 @@ def main():
     render_video(audio, scenes, video, cfg["video"]["width"], cfg["video"]["height"], cfg["video"]["fps"])
     make_thumbnail(title, work / "thumbnail.jpg")
     report = validate_video(video, cfg["video"]["width"], cfg["video"]["height"], 120)
+    report["scene_count"] = len(scenes)
+    report["visual_storytelling"] = "12 visual beats with transitions"
     (work / "quality.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
 
     if args.mode == "short":
@@ -199,6 +235,7 @@ def main():
     print("READY:", video)
     print("TITLE:", title)
     print("DURATION_SECONDS:", report["duration"])
+    print("SCENE_COUNT:", len(scenes))
     print("MODE:", args.mode)
 
 if __name__ == "__main__":
