@@ -1,60 +1,76 @@
 from textwrap import dedent
 
 STRUCTURES = [
-    "Start with the pain point, then show the fix, an example, a warning, and a practical checklist.",
-    "Start with a test question, define the test, show observations, explain failures, then give the result.",
-    "Start with the desired outcome, map the workflow, walk through each stage, add quality checks, then summarize.",
-    "Start with the decision, compare use cases rather than hype, show tradeoffs, then give a selection framework.",
-    "Open with the common mistake, explain why it happens, show corrections, then finish with a prevention checklist."
+    "Open with a sharp problem, prove why it matters, then solve it through concrete examples.",
+    "Open with a test question, define the test, show the evidence, explain the failure points, then give the result.",
+    "Open with the desired outcome, build the workflow visually in words, test each stage, then summarize.",
+    "Open with the decision, compare real use cases and tradeoffs, then give a practical selection rule.",
+    "Open with the common mistake, demonstrate it, correct it, and finish with a prevention checklist."
 ]
 
 def build_script(topic, target_minutes=6):
     structure = STRUCTURES[sum(ord(c) for c in topic["id"]) % len(STRUCTURES)]
     sections = topic["sections"]
-    plan = "\n".join(f"- {s.title()}" for s in sections)
-    examples = "\n".join(
-        f"Example {i}: take a realistic case involving {s} and show what changes in practice."
-        for i, s in enumerate(sections, 1)
-    )
-    target_words = max(700, int(target_minutes * 140))
+    target_words = max(750, int(target_minutes * 135))
+    section_blocks = []
+
+    for i, section in enumerate(sections, 1):
+        section_blocks.append(dedent(f"""
+        PART {i} — {section.upper()}
+
+        Here is the practical point. {section.capitalize()} should be treated as a specific task, not as a vague AI promise.
+
+        Imagine a real user facing this problem. First show the starting situation. Then show what changes when the workflow is applied. Give one concrete example with a clear input, action, and result.
+
+        The useful question is not whether the tool sounds impressive. The useful question is what work disappears, what work becomes faster, and what still needs human judgment.
+
+        Before moving on, check one limitation. If the output can be wrong, incomplete, outdated, or dependent on context, say exactly where that risk appears and how to catch it.
+        """).strip())
+
     script = dedent(f"""
     {topic["hook"]}
 
-    Today we are going to make this practical. The goal is not to make AI sound impressive. The goal is to get a useful result with a workflow you can actually repeat.
-
-    Here is the plan:
-    {plan}
+    In this video, we are going to test the idea behind that statement instead of repeating another generic AI list. The goal is simple: show what changes in a real workflow, what does not, and where you should still be careful.
 
     {structure}
 
-    STEP 1 — {sections[0].upper()}
-    Start by defining the outcome in one sentence. If you cannot explain what success looks like, an AI tool cannot reliably produce it either. Write down the input, the desired output, and what would make the output unacceptable.
+    WHAT WE ARE TESTING
 
-    STEP 2 — {sections[1].upper() if len(sections) > 1 else "THE WORKFLOW"}
-    Give the model the context that changes the answer, while removing irrelevant noise. A useful instruction usually contains the task, relevant background, constraints, and the format you want back.
+    We will use four questions throughout the video:
+    What is the starting task?
+    What does AI actually change?
+    What does the finished result look like?
+    What can still go wrong?
 
-    STEP 3 — {sections[2].upper() if len(sections) > 2 else "TEST THE RESULT"}
-    Test the workflow on a real example. Do not judge it because the answer sounds confident. Check whether it satisfies the goal and whether important claims can be verified.
+    {chr(10).join(section_blocks)}
 
-    STEP 4 — {sections[3].upper() if len(sections) > 3 else "ADD A QUALITY CHECK"}
-    Add a checkpoint for accuracy, missing information, privacy, and edge cases. If the result fails, change one part of the process at a time so you know what fixed it.
+    THE REAL-WORLD TEST
 
-    REALISTIC EXAMPLES
-    {examples}
+    Now take the strongest idea from the examples and apply it to one small task you already do. Measure the manual version first. Then run the AI-assisted version under the same conditions. Compare time, quality, corrections, and the amount of human review required.
 
-    THE IMPORTANT LIMITATION
-    AI is a tool, not a guarantee. It can produce plausible mistakes, misunderstand a requirement, or confidently fill gaps in its knowledge. For important decisions, verify the result against trustworthy sources and keep a human in the loop.
+    If the AI version is not clearly better, do not force it into the workflow. That result is useful too. Automation is valuable when it removes friction without creating a larger verification problem.
 
-    QUICK CHECKLIST
-    Before reusing this workflow, ask: Is the goal clear? Is the input sufficient? Are the constraints explicit? Can the output be checked? Did the process avoid sensitive information that should not be shared?
+    THE LIMITATION
+
+    AI can produce confident mistakes, miss important context, or give an answer that looks polished but does not satisfy the actual requirement. Treat important outputs as drafts until they pass the relevant checks.
+
+    FINAL CHECK
+
+    Before you reuse this workflow, ask:
+    Is the goal measurable?
+    Is the input sufficient?
+    Is the output easy to verify?
+    What failure would be most expensive?
+    Where does a human need to make the final decision?
 
     FINAL TAKEAWAY
-    {topic["title"]} is useful when it removes friction without removing judgment. Start with one small real task, measure the result, and improve the workflow based on what actually happens.
 
-    If this was useful, subscribe for practical AI workflows, tools, experiments, and automation that focus on results instead of hype.
+    {topic["title"]} is not about using more AI. It is about using the right capability at the right point in a real workflow. Start with one measurable task, compare the result with your baseline, and keep only what genuinely improves the process.
+
+    If this video helped, subscribe to NABZ AI for practical experiments, useful tools, automation workflows, and honest limitations—not generic AI hype.
     """).strip()
-    filler = ("\n\nOne more practical point: keep the first version simple. A small workflow with a clear checkpoint is easier to improve than a complicated system you cannot inspect. "
-              "Once it works, document the successful instructions, inputs, expected output, and failure cases so the next run starts from a known baseline.")
+
+    filler = "\n\nOne final practical note: document the successful input, expected output, verification step, and known failure cases. That turns a one-time experiment into a workflow you can improve instead of repeating from scratch."
     while len(script.split()) < target_words:
         script += filler
     return script
@@ -64,7 +80,7 @@ def make_title(topic):
 
 def make_description(topic):
     tags = " ".join("#" + x.replace(" ", "") for x in topic["tags"])
-    return f"{topic['title']}\n\nA practical NABZ AI guide with examples, tradeoffs, and a workflow you can test yourself.\n\nThis video focuses on useful, original educational content rather than generic AI hype.\n\n{tags}"
+    return f"{topic['title']}\n\nA practical NABZ AI video built around concrete examples, measurable workflows, and the limitations worth knowing.\n\n{tags}"
 
 def make_short_script(topic):
-    return f"{topic['hook']} Here is the practical idea: define the goal, give the AI the right context, test the result, and add a quality check. Start with one small real task and measure whether it actually saves time. Follow NABZ AI for practical AI workflows."
+    return f"{topic['hook']} The key is to test one real task: define the goal, give the AI the right context, check the result, and compare it with your manual baseline. Keep what saves time without creating extra work. Follow NABZ AI for practical AI workflows."
