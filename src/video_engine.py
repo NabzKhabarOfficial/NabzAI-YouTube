@@ -38,7 +38,8 @@ def render_video(audio_path, scene_paths, output_path, width=1280, height=720, f
     if not scene_paths:
         raise RuntimeError("At least one scene is required.")
 
-    each = max(1.0, duration / len(scene_paths))
+    transition = 0.35 if len(scene_paths) > 1 else 0.0
+    each = max(1.0, (duration + transition * max(0, len(scene_paths) - 1)) / len(scene_paths))
     inputs, filters = [], []
 
     for i, scene in enumerate(scene_paths):
@@ -49,13 +50,19 @@ def render_video(audio_path, scene_paths, output_path, width=1280, height=720, f
             f"fps={fps},format=yuv420p[v{i}]"
         )
 
-    concat_inputs = "".join(f"[v{i}]" for i in range(len(scene_paths)))
-    filters.append(f"{concat_inputs}concat=n={len(scene_paths)}:v=1:a=0[v]")
+    current = "v0"
+    for i in range(1, len(scene_paths)):
+        out = f"x{i}"
+        offset = i * each - i * transition
+        filters.append(
+            f"[{current}][v{i}]xfade=transition=fade:duration={transition:.2f}:offset={offset:.3f}[{out}]"
+        )
+        current = out
 
     cmd = [
         FFMPEG, "-y", *inputs, "-i", str(audio_path),
         "-filter_complex", ";".join(filters),
-        "-map", "[v]", "-map", f"{len(scene_paths)}:a",
+        "-map", f"[{current}]", "-map", f"{len(scene_paths)}:a",
         "-r", str(fps), "-c:v", "libx264", "-preset", "veryfast",
         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k",
         "-shortest", "-movflags", "+faststart", str(p)
