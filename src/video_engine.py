@@ -42,14 +42,11 @@ def render_video(audio_path, scene_paths, output_path, width=1280, height=720, f
     inputs, filters = [], []
 
     for i, scene in enumerate(scene_paths):
-        frames = max(1, int(each * fps))
-        inputs += ["-loop", "1", "-t", f"{each:.3f}", "-i", str(scene)]
-        # Gentle Ken-Burns motion: every visual has movement instead of being a static card.
+        inputs += ["-loop", "1", "-framerate", str(fps), "-t", f"{each:.3f}", "-i", str(scene)]
         filters.append(
-            f"[{i}:v]scale={int(width*1.06)}:{int(height*1.06)},"
-            f"zoompan=z='min(zoom+0.00035,1.045)':"
-            f"x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':"
-            f"d={frames}:s={width}x{height}:fps={fps},format=yuv420p[v{i}]"
+            f"[{i}:v]scale={width}:{height}:force_original_aspect_ratio=decrease,"
+            f"pad={width}:{height}:(ow-iw)/2:(oh-ih)/2,"
+            f"fps={fps},format=yuv420p[v{i}]"
         )
 
     concat_inputs = "".join(f"[v{i}]" for i in range(len(scene_paths)))
