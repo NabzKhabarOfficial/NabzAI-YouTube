@@ -1,7 +1,17 @@
 name: NabzAI-YouTube
+# next-gen validation trigger
+# motion-pass
+# zoompan-fix
+# timeline-fix
+# zoompan-time-fix
+# drawbox-enable-fix
+# zoompan-duration-fix
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - next-gen-animation
   schedule:
     - cron: "30 8 * * *"
 

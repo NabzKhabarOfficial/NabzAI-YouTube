@@ -1,14 +1,14 @@
 import argparse
 import json
 from pathlib import Path
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
 
 from .topic_engine import choose_topic
 from .story_engine import build_episode
 from .voice_engine import generate_voice
 from .thumbnail_engine import make_thumbnail
 from .video_engine import render_video, render_short
-from .quality_gate import validate_video
+from .quality_gate import validate_video, validate_scene_set
 
 ROOT = Path(__file__).resolve().parents[1]
 W, H = 1280, 720
@@ -111,12 +111,174 @@ def add_glow(base, center, radius=180):
     base.paste(glow, (0,0), glow)
 
 
-def make_scene(title, label, index, total, episode, output):
+
+def _short_label(text, limit=22):
+    words = str(text).upper().split()
+    out = ""
+    for w in words:
+        candidate = (out + " " + w).strip()
+        if len(candidate) > limit:
+            break
+        out = candidate
+    return out or str(text).upper()[:limit]
+
+
+def draw_case_visual(d, beat, ci, mode="case", variant=0):
+    """Render a reusable visual archetype instead of repeating one card layout."""
+    section = str(beat.get("section", beat.get("subject", "")))
+    archetype = (ci + variant) % 5
+    title = _short_label(beat["subject"], 28)
+
+    if archetype == 0:
+        # Workflow pipeline
+        nodes = [
+            ("INPUT", _short_label(section, 18)),
+            ("ACTION", "AI TRANSFORM"),
+            ("CHECK", "HUMAN REVIEW"),
+            ("OUTPUT", "USEFUL RESULT"),
+        ]
+        y = 300
+        for i, (lab, val) in enumerate(nodes):
+            x = 62 + i * 286
+            rounded_panel(d, (x, y, x + 230, y + 170), fill=PANEL2,
+                          outline=(66, 86, 119))
+            d.text((x + 20, y + 20), f"{i+1:02d}", font=font(20), fill=CYAN)
+            d.text((x + 20, y + 62), lab, font=font(18), fill=MUTED)
+            draw_text_box(d, (x + 20, y + 100), val, 21, fill=WHITE,
+                          max_width=190, gap=3, max_lines=2)
+            if i < 3:
+                arrow(d, (x + 238, y + 85), (x + 274, y + 85), CYAN, 5)
+
+    elif archetype == 1:
+        # Browser / product mockup
+        rounded_panel(d, (62, 270, 1218, 585), fill=(13, 19, 32),
+                      outline=(66, 84, 116), radius=26)
+        d.rectangle((62, 270, 1218, 322), fill=(23, 31, 49))
+        for x in (88, 112, 136):
+            d.ellipse((x, 288, x+10, 298), fill=MUTED)
+        d.rounded_rectangle((190, 283, 1060, 309), radius=12, fill=(9, 14, 24))
+        d.text((215, 286), "nabz.ai / experiment", font=font(16), fill=MUTED)
+        d.text((95, 355), title, font=font(28), fill=WHITE)
+        d.text((95, 405), "TASK", font=font(17), fill=CYAN)
+        d.rounded_rectangle((95, 438, 720, 500), radius=14, fill=PANEL2)
+        draw_text_box(d, (120, 455), section, 20, fill=WHITE, max_width=560, gap=3, max_lines=2)
+        d.text((790, 405), "RESULT", font=font(17), fill=GREEN)
+        d.rounded_rectangle((790, 438, 1175, 500), radius=14, fill=(18, 53, 44))
+        d.text((820, 458), "measurable + checked", font=font(20), fill=GREEN)
+        d.text((95, 535), "ONE TASK  →  ONE CHANGE  →  ONE VERIFIABLE OUTPUT",
+               font=font(18), fill=MUTED)
+
+    elif archetype == 2:
+        # Terminal / command-line visual
+        rounded_panel(d, (62, 285, 1218, 585), fill=(8, 12, 18),
+                      outline=(57, 75, 98), radius=22)
+        d.text((90, 315), "NABZ // RUNNING EXPERIMENT", font=font(18), fill=GREEN)
+        lines = [
+            ("> input", _short_label(section, 48), CYAN),
+            ("> transform", "processing one focused task", WHITE),
+            ("> check", "claim / format / edge cases", YELLOW),
+            ("> output", "PASS — ready to use", GREEN),
+        ]
+        y = 370
+        for cmd, val, col in lines:
+            d.text((95, y), cmd, font=font(19), fill=col)
+            d.text((250, y), val, font=font(19), fill=WHITE)
+            y += 48
+        d.rounded_rectangle((930, 355, 1170, 535), radius=20,
+                            outline=(69, 224, 157), width=2)
+        d.text((970, 385), "STATUS", font=font(18), fill=MUTED)
+        d.text((970, 440), "PASS", font=font(44), fill=GREEN)
+        d.text((970, 495), "verified", font=font(18), fill=GREEN)
+
+    elif archetype == 3:
+        # Before / after comparison
+        rounded_panel(d, (62, 300, 575, 585), fill=(45, 25, 33),
+                      outline=(104, 56, 70))
+        d.text((95, 335), "BEFORE", font=font(20), fill=RED)
+        d.text((95, 390), "MANUAL", font=font(34), fill=WHITE)
+        draw_text_box(d, (95, 445), "scattered steps • repeated cleanup", 20,
+                      fill=MUTED, max_width=420, gap=5, max_lines=2)
+        arrow(d, (610, 440), (685, 440), YELLOW, 8)
+        rounded_panel(d, (720, 300, 1218, 585), fill=(18, 52, 43),
+                      outline=(55, 112, 92))
+        d.text((755, 335), "AFTER", font=font(20), fill=GREEN)
+        d.text((755, 390), "ASSISTED", font=font(34), fill=WHITE)
+        draw_text_box(d, (755, 445), "focused input • checked output", 20,
+                      fill=GREEN, max_width=400, gap=5, max_lines=2)
+
+    else:
+        # Timeline / decision path
+        d.text((62, 290), "FROM QUESTION TO DECISION", font=font(20), fill=PURPLE)
+        points = [
+            ("00:00", "START", "define the task"),
+            ("00:30", "RUN", "apply one change"),
+            ("01:00", "CHECK", "verify the result"),
+            ("01:30", "KEEP", "use it if it survives"),
+        ]
+        y = 365
+        d.line((105, y, 105, y + 170), fill=PURPLE, width=5)
+        for i, (tm, lab, val) in enumerate(points):
+            yy = y + i * 52
+            d.ellipse((91, yy-8, 119, yy+20), fill=PURPLE if i < 3 else GREEN)
+            d.text((145, yy-3), tm, font=font(17), fill=MUTED)
+            d.text((250, yy-5), lab, font=font(19), fill=WHITE)
+            d.text((365, yy-5), val, font=font(18), fill=MUTED)
+
+
+def draw_action_visual(d, beat, ci, variant=0):
+    archetype = (ci + 1 + variant) % 4
+    if archetype == 0:
+        # Animated-looking stack of cards
+        labels = ["RAW INPUT", "AI PASS", "HUMAN CHECK", "FINAL"]
+        for i, lab in enumerate(labels):
+            x = 95 + i * 275
+            y = 310 + (i % 2) * 105
+            rounded_panel(d, (x, y, x+225, y+125), fill=PANEL2,
+                          outline=(78, 68, 120))
+            d.text((x+20, y+20), f"{i+1:02d}", font=font(20), fill=PURPLE)
+            d.text((x+20, y+62), lab, font=font(19), fill=WHITE)
+            if i < 3:
+                arrow(d, (x+230, y+62), (x+267, y+62), PURPLE, 5)
+    elif archetype == 1:
+        # Input transformation
+        d.text((62, 320), "INPUT", font=font(18), fill=MUTED)
+        rounded_panel(d, (62, 360, 395, 520), fill=PANEL2, outline=(64, 83, 116))
+        draw_text_box(d, (90, 390), beat["setup"], 20, fill=WHITE, max_width=275, gap=5, max_lines=4)
+        arrow(d, (430, 440), (800, 440), PURPLE, 9)
+        d.text((500, 390), "TRANSFORM", font=font(18), fill=PURPLE)
+        d.text((820, 320), "OUTPUT", font=font(18), fill=GREEN)
+        rounded_panel(d, (820, 360, 1218, 520), fill=(18, 52, 43), outline=(55, 112, 92))
+        d.text((850, 405), "ONE CLEAR", font=font(22), fill=WHITE)
+        d.text((850, 445), "MEASURABLE RESULT", font=font(22), fill=GREEN)
+    elif archetype == 2:
+        # Meter / impact
+        d.text((62, 315), "IMPACT MAP", font=font(20), fill=CYAN)
+        metrics = [("TIME", 0.78, GREEN), ("EFFORT", 0.54, YELLOW), ("REVIEW", 0.31, RED)]
+        for i, (lab, pct, col) in enumerate(metrics):
+            y = 370 + i * 70
+            d.text((62, y), lab, font=font(18), fill=WHITE)
+            d.rounded_rectangle((190, y+4, 1160, y+32), radius=12, fill=(28, 37, 56))
+            d.rounded_rectangle((190, y+4, 190+int(970*pct), y+32), radius=12, fill=col)
+            d.text((1180, y), f"{int(pct*100)}%", font=font(18), fill=col)
+    else:
+        # Decision gates
+        d.text((62, 310), "THREE GATES", font=font(20), fill=YELLOW)
+        gates = [("1", "CLEAR INPUT"), ("2", "VALID OUTPUT"), ("3", "LOW CLEANUP")]
+        for i, (n, lab) in enumerate(gates):
+            x = 62 + i * 385
+            rounded_panel(d, (x, 360, x+330, 520), fill=PANEL,
+                          outline=(72, 80, 105))
+            d.text((x+25, 390), n, font=font(28), fill=YELLOW)
+            d.text((x+25, 450), lab, font=font(21), fill=WHITE)
+            d.text((x+25, 485), "PASS", font=font(18), fill=GREEN)
+
+def make_scene(title, label, index, total, episode, output, variant=0):
     im = Image.new("RGB", (W, H), BG)
     add_glow(im, (1050, 170), 220)
     d = ImageDraw.Draw(im)
     plan = episode["scene_plan"][index-1]
     kind = plan["kind"]
+    variant = int(plan.get("variant", variant))
     header(d, label, index, total)
 
     if kind == "hook":
@@ -151,35 +313,77 @@ def make_scene(title, label, index, total, episode, output):
             d.text((x+25,y+23), n, font=font(24), fill=CYAN)
             d.text((x+90,y+24), q, font=font(25), fill=WHITE)
 
+    elif kind in ("impact", "limitation"):
+        ci = plan["case_index"]
+        beat = episode["beats"][ci]
+        if kind == "impact":
+            badge(d, 62, 120, "IMPACT", YELLOW)
+            d.text((62, 185), "WHAT ACTUALLY CHANGES?", font=font(40), fill=WHITE)
+            metrics = [
+                ("TIME", "less repetition", GREEN),
+                ("QUALITY", "same target", CYAN),
+                ("REVIEW", "visible checkpoint", YELLOW),
+            ]
+            for i, (lab, val, col) in enumerate(metrics):
+                x = 62 + i * 385
+                rounded_panel(d, (x, 310, x + 330, 535), fill=PANEL2, outline=(65, 80, 110))
+                d.text((x + 24, 340), lab, font=font(20), fill=col)
+                d.text((x + 24, 405), val.upper(), font=font(24), fill=WHITE)
+                d.rounded_rectangle((x + 24, 470, x + 306, 494), radius=12, fill=(29, 38, 56))
+                d.rounded_rectangle((x + 24, 470, x + 230, 494), radius=12, fill=col)
+            draw_text_box(d, (62, 575), beat["example"], 19, fill=MUTED,
+                          max_width=1120, gap=5, max_lines=2)
+        else:
+            badge(d, 62, 120, "LIMIT", RED)
+            d.text((62, 185), "WHEN THIS WORKFLOW BREAKS", font=font(40), fill=WHITE)
+            rounded_panel(d, (62, 310, 575, 570), fill=(18, 51, 42), outline=(55, 111, 91))
+            d.text((95, 345), "WORKS WHEN", font=font(20), fill=GREEN)
+            draw_text_box(d, (95, 405), "the input is clear and the output can be checked quickly.",
+                          24, fill=WHITE, max_width=420, gap=8, max_lines=4)
+            rounded_panel(d, (720, 310, 1218, 570), fill=(47, 25, 33), outline=(101, 53, 66))
+            d.text((755, 345), "BREAKS WHEN", font=font(20), fill=RED)
+            draw_text_box(d, (755, 405), beat["twist"], 24, fill=WHITE,
+                          max_width=410, gap=8, max_lines=4)
+            d.text((62, 610), "THE LIMIT IS PART OF THE RESULT.", font=font(20), fill=YELLOW)
+
+    elif kind in ("action", "check"):
+        ci = plan["case_index"]
+        beat = episode["beats"][ci]
+        if kind == "action":
+            badge(d, 62, 120, "THE MOVE", PURPLE)
+            d.text((62, 185), beat["subject"].upper(), font=font(42), fill=WHITE)
+            draw_text_box(d, (62, 245), beat["setup"], 25, fill=MUTED, max_width=1080, gap=7, max_lines=2)
+            draw_action_visual(d, beat, ci, variant)
+        else:
+            badge(d, 62, 120, "VERIFY", GREEN)
+            d.text((62, 185), "THE OUTPUT MUST SURVIVE A CHECK", font=font(38), fill=WHITE)
+            checks = [
+                ("CLAIM", "supported by evidence", GREEN),
+                ("OUTPUT", "matches the requested format", CYAN),
+                ("CLEANUP", "does not create more work", YELLOW),
+            ]
+            y = 305
+            for label, value, col in checks:
+                rounded_panel(d, (62, y, 1218, y + 82), fill=PANEL, outline=(54, 79, 76))
+                d.ellipse((88, y+23, 118, y+53), fill=col)
+                d.text((145, y + 20), label, font=font(19), fill=col)
+                d.text((285, y + 20), value, font=font(22), fill=WHITE)
+                y += 105
+            draw_text_box(d, (62, 625), beat["twist"], 20, fill=MUTED, max_width=1120, gap=6, max_lines=2)
+
     elif kind in ("case","proof"):
         ci = plan["case_index"]
         beat = episode["beats"][ci]
         if kind == "case":
             badge(d, 62, 120, f"CASE {ci+1:02d}", CYAN)
-            d.text((62, 185), beat["subject"].upper(), font=font(52), fill=WHITE)
-            draw_text_box(d, (62, 270), beat["setup"], 28, fill=MUTED, max_width=600, gap=9, max_lines=4)
-            rounded_panel(d, (755, 165, 1218, 575), fill=(17, 38, 52), outline=(57, 111, 132))
-            d.text((795, 205), "THE MOVE", font=font(21), fill=CYAN)
-            d.text((795, 270), "INPUT", font=font(23), fill=MUTED)
-            d.rounded_rectangle((795, 310, 1165, 360), radius=12, fill=(30,42,62))
-            d.text((815, 322), "clear goal + context", font=font(21), fill=WHITE)
-            arrow(d, (980, 380), (980, 425), GREEN, 6)
-            d.text((795, 450), "OUTPUT", font=font(23), fill=MUTED)
-            d.rounded_rectangle((795, 490, 1165, 540), radius=12, fill=(18, 55, 45))
-            d.text((815, 502), "measurable result", font=font(21), fill=GREEN)
+            d.text((62, 185), beat["subject"].upper(), font=font(44), fill=WHITE)
+            draw_text_box(d, (62, 245), beat["setup"], 25, fill=MUTED, max_width=1080, gap=7, max_lines=2)
+            draw_case_visual(d, beat, ci, "case", variant)
         else:
             badge(d, 62, 120, "PROOF", GREEN)
-            d.text((62, 185), "SHOW THE DIFFERENCE", font=font(43), fill=WHITE)
-            rounded_panel(d, (62, 290, 575, 560), fill=(47, 25, 33), outline=(101, 53, 66))
-            d.text((98, 325), "BEFORE", font=font(22), fill=RED)
-            d.text((98, 390), "manual steps", font=font(34), fill=WHITE)
-            d.text((98, 450), "slow • repetitive", font=font(22), fill=MUTED)
-            arrow(d, (610, 425), (690, 425), GREEN, 9)
-            rounded_panel(d, (720, 290, 1218, 560), fill=(18, 51, 42), outline=(55, 111, 91))
-            d.text((755, 325), "AFTER", font=font(22), fill=GREEN)
-            d.text((755, 390), "AI-assisted", font=font(34), fill=WHITE)
-            d.text((755, 450), "faster • checked", font=font(22), fill=GREEN)
-            d.text((62, 605), beat["example"], font=font(21), fill=MUTED)
+            d.text((62, 185), "MAKE THE CHANGE VISIBLE", font=font(40), fill=WHITE)
+            draw_case_visual(d, beat, ci, "proof", variant)
+            draw_text_box(d, (62, 610), beat["example"], 19, fill=MUTED, max_width=1120, gap=5, max_lines=2)
 
     elif kind == "failure":
         badge(d, 62, 120, "THE CATCH", RED)
@@ -234,7 +438,25 @@ def make_scene(title, label, index, total, episode, output):
         d.text((780,475),"NO EMPTY HYPE",font=font(22),fill=MUTED)
         d.text((62, 575), "Subscribe for the next experiment.", font=font(28), fill=GREEN)
 
+    # Variant-specific shot language makes each narration beat feel like a new camera shot.
+    if variant:
+        d.rounded_rectangle((980, 112, 1218, 150), radius=16, outline=PURPLE, width=2)
+        d.text((1002, 121), f"SHOT {variant+1}", font=font(16), fill=PURPLE)
+        d.line((62, 104 + (variant * 19), 340 + variant * 170, 104 + (variant * 19)), fill=PURPLE, width=4)
+
+    # Subtle animated HUD accents make each beat feel like a designed motion graphic.
+    if kind not in ("hook", "takeaway"):
+        pulse = 10 + ((index * 7) % 18)
+        d.ellipse((1160-pulse, 92-pulse, 1160+pulse, 92+pulse), outline=(72,210,255), width=2)
+        d.line((1090, 92, 1140, 92), fill=(72,210,255), width=2)
+
     progress(d, index, total)
+
+    # Alternate cuts get a genuine visual grade change, not just a label.
+    if variant:
+        im = ImageEnhance.Brightness(im).enhance(1.08)
+        im = ImageEnhance.Contrast(im).enhance(1.05)
+
     im.save(output, quality=95)
 
 
@@ -276,16 +498,32 @@ def main():
         "keywords": topic.get("keywords", []),
         "word_count": episode["word_count"],
         "scene_count": len(episode["scene_plan"]),
-        "story_format": "hook → stakes → test → case/proof → failure → workflow → scorecard → takeaway → cliffhanger",
+        "story_format": "hook → stakes → test → case/action/proof/impact/check/limit → failure → workflow → scorecard → takeaway → cliffhanger",
     }
     (work / "metadata.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding="utf-8")
 
+    # Expand only visual-heavy case/action/proof beats. Narrative/control beats
+    # stay single-shot so the timeline gains real visual variety instead of near-duplicate
+    # pairs that can trip the diversity gate.
+    visual_kinds = {"case", "action", "proof"}
+    expanded_plan = []
+    for plan in episode["scene_plan"]:
+        variants = 2 if plan.get("kind") in visual_kinds else 1
+        for variant in range(variants):
+            shot = dict(plan)
+            shot["variant"] = variant
+            shot["label"] = plan["label"] if variant == 0 else f"{plan['label']} • CUT"
+            expanded_plan.append(shot)
+    episode["scene_plan"] = expanded_plan
+
     scenes=[]
-    total=len(episode["scene_plan"])
-    for i, plan in enumerate(episode["scene_plan"], 1):
+    total=len(expanded_plan)
+    for i, plan in enumerate(expanded_plan, 1):
         path=work / f"scene_{i:02d}.png"
-        make_scene(episode["title"], plan["label"], i, total, episode, path)
+        make_scene(episode["title"], plan["label"], i, total, episode, path, plan.get("variant", 0))
         scenes.append(path)
+
+    visual_report = validate_scene_set(scenes)
 
     audio=work / "voice.mp3"
     generate_voice(script, audio, cfg)
@@ -296,9 +534,11 @@ def main():
     report=validate_video(video, cfg["video"]["width"], cfg["video"]["height"], 120)
     report.update({
         "scene_count": total,
+        "scene_diversity_ratio": visual_report["scene_diversity_ratio"],
         "word_count": episode["word_count"],
         "storytelling": "dynamic story beats with proof, failure mode and takeaway",
-        "content_truth_gate": "passed",
+        "story_structure_gate": "passed",
+        "visual_gate": visual_report["visual_gate"],
     })
     (work / "quality.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
 

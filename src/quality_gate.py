@@ -1,4 +1,5 @@
 from pathlib import Path
+from PIL import Image, ImageChops, ImageStat
 import json
 import re
 import subprocess
@@ -59,6 +60,40 @@ def _probe_with_ffmpeg(path):
             },
         ],
     }
+
+
+def validate_scene_set(scene_paths, min_unique_ratio=0.72):
+    """Catch accidental repeated/static scene sets before delivery."""
+    paths = [Path(p) for p in scene_paths]
+    if len(paths) < 24:
+        raise RuntimeError("Visual gate: too few shots for a long-form episode; expected at least 24 distinct shots.")
+    for p in paths:
+        if not p.exists() or p.stat().st_size < 5000:
+            raise RuntimeError(f"Visual gate: invalid scene asset: {p.name}")
+
+    signatures = []
+    for p in paths:
+        with Image.open(p) as im:
+            sample = im.convert("L").resize((64, 36))
+            signatures.append(sample)
+
+    unique = 1
+    for prev, cur in zip(signatures, signatures[1:]):
+        diff = ImageStat.Stat(ImageChops.difference(prev, cur)).mean[0]
+        if diff >= 7.0:
+            unique += 1
+    ratio = unique / len(signatures)
+    if ratio < min_unique_ratio:
+        raise RuntimeError(
+            f"Visual gate: scene diversity too low ({ratio:.2f}); "
+            "regenerate with varied visual beats."
+        )
+    return {
+        "scene_count": len(paths),
+        "scene_diversity_ratio": round(ratio, 3),
+        "visual_gate": "passed",
+    }
+
 
 def validate_video(path, expected_width=1280, expected_height=720, min_seconds=120):
     p = Path(path)
