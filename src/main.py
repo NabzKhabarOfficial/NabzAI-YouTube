@@ -8,7 +8,7 @@ from .story_engine import build_episode
 from .voice_engine import generate_voice
 from .thumbnail_engine import make_thumbnail
 from .video_engine import render_video, render_short
-from .quality_gate import validate_video
+from .quality_gate import validate_video, validate_scene_set
 
 ROOT = Path(__file__).resolve().parents[1]
 W, H = 1280, 720
@@ -496,6 +496,8 @@ def main():
         make_scene(episode["title"], plan["label"], i, total, episode, path)
         scenes.append(path)
 
+    visual_report = validate_scene_set(scenes)
+
     audio=work / "voice.mp3"
     generate_voice(script, audio, cfg)
     video=work / "video.mp4"
@@ -505,9 +507,11 @@ def main():
     report=validate_video(video, cfg["video"]["width"], cfg["video"]["height"], 120)
     report.update({
         "scene_count": total,
+        "scene_diversity_ratio": visual_report["scene_diversity_ratio"],
         "word_count": episode["word_count"],
         "storytelling": "dynamic story beats with proof, failure mode and takeaway",
-        "content_truth_gate": "passed",
+        "story_structure_gate": "passed",
+        "visual_gate": visual_report["visual_gate"],
     })
     (work / "quality.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
 
