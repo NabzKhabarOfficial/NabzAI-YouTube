@@ -2,6 +2,9 @@ name: NabzAI-YouTube
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - next-gen-animation
   schedule:
     - cron: "30 8 * * *"
 
