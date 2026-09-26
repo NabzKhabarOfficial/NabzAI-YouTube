@@ -9,6 +9,7 @@ from .voice_engine import generate_voice
 from .thumbnail_engine import make_thumbnail
 from .video_engine import render_video, render_short
 from .quality_gate import validate_video, validate_scene_set
+from .topic_engine import mark_published
 
 ROOT = Path(__file__).resolve().parents[1]
 W, H = 1280, 720
@@ -475,7 +476,7 @@ def make_short_card(title, path):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--mode", choices=["test", "short"], default="test")
+    ap.add_argument("--mode", choices=["test", "short", "scheduled"], default="test")
     args = ap.parse_args()
 
     cfg = load_settings()
@@ -552,6 +553,9 @@ def main():
         card=work / "short_card.png"
         make_short_card(episode["title"], card)
         render_short(short_audio, card, work / "short.mp4", cfg["shorts"]["width"], cfg["shorts"]["height"], cfg["shorts"]["fps"])
+
+    if args.mode == "scheduled":
+        mark_published(topic["id"])
 
     print("READY:", video)
     print("TITLE:", episode["title"])
