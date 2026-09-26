@@ -99,7 +99,7 @@ def _motion_filters(i, total, each, width, height, fps):
         f"color=0x48d2ff@0.90:t=fill,"
         f"drawbox=x='62':y=96:w=1156:h=2:"
         f"color=0x48d2ff@0.30:t=fill:"
-        f"enable='between(time,{sweep_start:.3f},{sweep_end:.3f})'"
+        f"enable='between(t,{sweep_start:.3f},{sweep_end:.3f})'"
     )
 
 
