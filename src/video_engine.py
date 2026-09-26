@@ -96,6 +96,11 @@ def _motion_filters(i, total, each, width, height, fps):
         # the text or cards.
         f"drawbox=x='64+80*sin(t*0.75)':y=94:w=120:h=2:"
         f"color=0x48d2ff@0.24:t=fill,"
+        # A short mid-beat sweep creates a visible event instead of leaving
+        # the viewer on one static card for the entire narration beat.
+        f"drawbox=x='62+1156*min(t/{each:.6f},1)':y=96:w=4:h=580:"
+        f"color=0x48d2ff@0.42:t=fill:"
+        f"enable='between(t,{each*0.44:.3f},{each*0.54:.3f})',"
         # Progress marker moves continuously during each beat.
         f"drawbox=x='{progress_x}':y=681:w=8:h=18:"
         f"color=0x48d2ff@0.90:t=fill"
@@ -129,8 +134,10 @@ def render_video(audio_path, scene_paths, output_path, width=1280, height=720, f
     for i in range(1, len(scene_paths)):
         out = f"x{i}"
         offset = i * each - i * transition
+        transitions = ("fade", "smoothleft", "wipeleft", "slideright", "circleopen")
+        transition_name = transitions[(i - 1) % len(transitions)]
         filters.append(
-            f"[{current}][v{i}]xfade=transition=fade:duration={transition:.2f}:offset={offset:.3f}[{out}]"
+            f"[{current}][v{i}]xfade=transition={transition_name}:duration={transition:.2f}:offset={offset:.3f}[{out}]"
         )
         current = out
 
