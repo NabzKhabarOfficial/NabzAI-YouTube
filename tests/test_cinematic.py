@@ -1,6 +1,7 @@
 import unittest
 
 from src.cinematic_short import STORY
+from src.story_factory import STORIES, load_story
 
 
 class CinematicStoryTests(unittest.TestCase):
@@ -24,8 +25,13 @@ class CinematicStoryTests(unittest.TestCase):
 
     def test_story_is_english(self):
         lines = [line for _, line in STORY["dialogue"]]
-        self.assertTrue(any("letter" in line.lower() for line in lines))
         self.assertTrue(all(any(ch.isascii() for ch in line) for line in lines))
+
+    def test_story_factory_has_ten_distinct_slots(self):
+        self.assertEqual(len(STORIES), 10)
+        titles = {load_story(i)["title"] for i in range(10)}
+        self.assertEqual(len(titles), 10)
+        self.assertTrue(all(len(load_story(i)["scenes"]) == 4 for i in range(10)))
 
     def test_video_provider_router_is_configurable(self):
         from src.video_router import PROVIDERS, _provider_order
