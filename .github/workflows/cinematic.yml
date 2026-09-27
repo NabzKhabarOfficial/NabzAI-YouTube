@@ -40,6 +40,14 @@ jobs:
       - name: Regression tests
         run: python -m unittest discover -s tests -v
 
+      - name: Restore cinematic progress cache
+        uses: actions/cache/restore@v4
+        with:
+          path: output/cinematic-short/work
+          key: nabz-ai-cinematic-progress-${{ github.run_id }}
+          restore-keys: |
+            nabz-ai-cinematic-progress-
+
       - name: Verify Hugging Face token is present
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
@@ -86,9 +94,18 @@ jobs:
           print("Cinematic technical gate: PASS")
           PY
 
-      - name: Upload final film
+      - name: Save cinematic progress cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: output/cinematic-short/work
+          key: nabz-ai-cinematic-progress-${{ github.run_id }}
+
+      - name: Upload cinematic output and progress
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: nabz-ai-cinematic-short
           path: output/cinematic-short/
           retention-days: 7
+          if-no-files-found: warn
