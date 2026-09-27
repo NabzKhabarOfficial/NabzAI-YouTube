@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import json
 import os
-import shutil
 import subprocess
 import tempfile
 from pathlib import Path
@@ -15,40 +14,52 @@ OUT = ROOT / "output" / "cinematic-short"
 WORK = OUT / "work"
 
 STORY = {
-    "title": "The Last Letter",
-    "logline": "On a rainy night, a man returns to deliver a letter he promised would change everything.",
+    "title": "نامه‌ای که دیر رسید",
+    "logline": "مردی پس از سال‌ها در یک شب بارانی برمی‌گردد تا نامه‌ای قدیمی را به زنی برساند؛ اما نامه فقط یک خداحافظی نیست.",
+    "language": "fa-IR",
     "characters": {
-        "man": "A fictional man in his early 30s, dark short hair, light stubble, charcoal wool coat, tired but calm expression.",
-        "woman": "A fictional woman in her late 20s, shoulder-length dark brown hair, beige sweater, expressive eyes, restrained emotion.",
+        "man": "مردی خیالی حدود ۳۲ ساله، موهای کوتاه مشکی، ته‌ریش طبیعی، پالتوی پشمی زغالی، چهره خسته اما آرام، ظاهر کاملاً انسانی و فوتورئال.",
+        "woman": "زنی خیالی حدود ۲۹ ساله، موهای قهوه‌ای تیره تا روی شانه، پلیور کرم‌رنگ، چشم‌های طبیعی و حالت چهره احساسی اما کنترل‌شده، ظاهر کاملاً انسانی و فوتورئال.",
     },
     "dialogue": [
-        ("woman", "I never thought you would come back."),
-        ("man", "I said I would. Until you read this letter, it was never over."),
-        ("woman", "Then maybe it isn't too late."),
+        ("woman", "فکر نمی‌کردم دوباره برگردی."),
+        ("man", "گفته بودم برمی‌گردم. فقط باید این نامه را به تو می‌رساندم."),
+        ("woman", "پس چرا این‌همه سال صبر کردی؟"),
+        ("man", "چون نمی‌خواستم قبل از اینکه آماده باشی، حقیقت را بدانی."),
     ],
     "scenes": [
         {
             "id": 1,
             "seconds": 3.0,
-            "prompt": "Cinematic live-action short film, rainy night outside an old apartment building. The same two fictional characters from the reference must keep their exact identity. The man stands alone under a streetlamp, holding a sealed envelope, wet charcoal coat, breathing slowly, looking toward one apartment window. Natural human movement, subtle emotion, realistic rain, practical lighting, 35mm lens, shallow depth of field, restrained color grade, handheld camera, photorealistic, no text, no subtitles."
+            "dialogue": [("man", "گفته بودم برمی‌گردم.")],
+            "prompt": "Photorealistic live-action cinematic short film. Same fictional adult man from the character bible, exact identity and wardrobe: early 30s, short black hair, natural light stubble, charcoal wool coat. Rainy night outside an old apartment building. He walks toward the entrance holding a sealed envelope, slows under a streetlamp, breath visible in cold air, looks up toward one lit window. Natural human walking, subtle facial emotion, realistic wet skin and fabric, physically plausible rain, practical street lighting, 35mm lens, shallow depth of field, restrained film color grade, gentle handheld camera. No cartoon, no CGI look, no text, no subtitles, no watermark.",
         },
         {
             "id": 2,
             "seconds": 3.0,
-            "prompt": "Continue the same live-action short film with the exact same two fictional characters and wardrobe from the reference. The woman opens the apartment door and freezes when she sees the man. He raises the sealed envelope slightly. She looks shocked, then emotional. Natural facial reactions and body language, realistic skin and eyes, rainy night light spilling into the doorway, slow cinematic push-in, 50mm lens, shallow depth of field, photorealistic film look, no text, no subtitles."
+            "dialogue": [("woman", "فکر نمی‌کردم دوباره برگردی.")],
+            "prompt": "Photorealistic live-action continuation, same fictional adult man and same fictional adult woman, exact identity and wardrobe as the reference. The apartment door opens. The woman in her late 20s with shoulder-length dark brown hair and beige sweater freezes when she sees the man. He stands quietly with the sealed envelope. She takes one small breath and looks from his face to the envelope. Natural eye movement, believable human body language, realistic skin texture, subtle emotion, rainy street light entering the doorway, slow cinematic push-in, 50mm lens, shallow depth of field. No cartoon, no CGI look, no text, no subtitles, no watermark.",
         },
         {
             "id": 3,
             "seconds": 3.0,
-            "prompt": "Final scene of the same live-action short film, exact same characters and wardrobe. Inside a quiet dim apartment, the man places the sealed envelope on a wooden table. The woman opens it and finds an old photograph. Her expression softens and she looks at him through tears; he gives a small relieved smile. End on a close-up of their hands beside the photograph, warm practical lamp light, subtle camera movement, cinematic 85mm close-up, natural human motion, photorealistic, emotional but understated, no text, no subtitles."
+            "dialogue": [("man", "فقط باید این نامه را به تو می‌رساندم.")],
+            "prompt": "Photorealistic live-action continuation, exact same two fictional adults, exact faces, hair and wardrobe. Inside the quiet apartment, the man places the sealed envelope on a wooden table. The woman remains standing opposite him, uncertain. He gently slides the envelope toward her. She hesitates, reaches for it, and looks at him. Restrained realistic acting, tiny hand movement, natural blinking and breathing, warm practical lamp light contrasting with the cool rainy window, cinematic over-the-shoulder composition, 50mm lens, subtle dolly movement, realistic film texture. No cartoon, no CGI look, no text, no subtitles, no watermark.",
+        },
+        {
+            "id": 4,
+            "seconds": 3.0,
+            "dialogue": [("woman", "پس چرا این‌همه سال صبر کردی؟")],
+            "prompt": "Photorealistic live-action final beat, exact same fictional man and woman, consistent faces, hair and wardrobe. Close-up at the wooden table: the woman opens the old envelope and finds a faded photograph. Her eyes become wet but she stays composed. The man watches silently. She looks up at him; he gives a small relieved smile. End with both hands resting beside the photograph as rain softly moves on the window in the background. Natural human emotion, realistic eyes and skin, subtle breathing, cinematic 85mm close-up, warm practical lighting, shallow depth of field, understated film color grade. No melodrama, no cartoon, no CGI look, no text, no subtitles, no watermark.",
         },
     ],
 }
 
 NEGATIVE = (
-    "cartoon, anime, illustration, CGI, plastic skin, wax face, distorted face, "
-    "extra fingers, extra limbs, duplicate people, deformed hands, blurry face, "
-    "text, subtitles, watermark, logo, frozen motion, unnatural movement"
+    "cartoon, anime, illustration, CGI, 3d render, plastic skin, wax face, "
+    "doll face, deformed face, asymmetrical eyes, extra fingers, extra limbs, "
+    "duplicate person, fused hands, malformed hands, unnatural joints, blurry face, "
+    "flicker, frozen motion, jerky motion, text, subtitles, watermark, logo"
 )
 
 
@@ -65,9 +76,7 @@ def _local_file(value):
     if value is None:
         return None
     if isinstance(value, str):
-        if Path(value).is_file():
-            return value
-        return None
+        return value if Path(value).is_file() else None
     if isinstance(value, dict):
         for key in ("path", "url", "video", "image"):
             candidate = value.get(key)
@@ -83,44 +92,63 @@ def _local_file(value):
 
 def _download_remote(space_url: str, remote_path: str, suffix: str):
     import urllib.request
+
     target = WORK / ("remote_" + next(tempfile._get_candidate_names()) + suffix)
-    url = f"{space_url}/file={remote_path.lstrip('/')}"
-    urllib.request.urlretrieve(url, target)
-    if not target.exists() or target.stat().st_size < 10_000:
-        raise RuntimeError("Remote Space returned an invalid media file.")
-    return str(target)
+    path = remote_path.lstrip("/")
+    candidates = [
+        f"{space_url}/file={path}",
+        f"{space_url}/gradio_api/file={path}",
+    ]
+    last_error = None
+    for url in candidates:
+        try:
+            urllib.request.urlretrieve(url, target)
+            if target.exists() and target.stat().st_size >= 10_000:
+                return str(target)
+        except Exception as exc:
+            last_error = exc
+    raise RuntimeError(f"Remote Space returned an invalid media file: {last_error}")
 
 
 def _resolve_media(result, space_url: str | None = None, suffix=".mp4"):
     local = _local_file(result)
     if local:
         return local
-    if isinstance(result, str) and result.startswith("/") and space_url:
-        return _download_remote(space_url, result, suffix)
-    if isinstance(result, (list, tuple)):
-        for item in result:
-            if isinstance(item, str) and item.startswith("/") and space_url:
-                try:
-                    return _download_remote(space_url, item, suffix)
-                except Exception:
-                    pass
-    raise RuntimeError(f"Space returned no usable media: {str(result)[:400]}")
+
+    values = result if isinstance(result, (list, tuple)) else [result]
+    for value in values:
+        if isinstance(value, dict):
+            for key in ("path", "url"):
+                value = value.get(key)
+                if isinstance(value, str):
+                    break
+        if isinstance(value, str) and value.startswith("/") and space_url:
+            try:
+                return _download_remote(space_url, value, suffix)
+            except Exception:
+                continue
+
+    raise RuntimeError(f"Space returned no usable media: {str(result)[:500]}")
 
 
 def generate_character_reference():
     client = _client("black-forest-labs/FLUX.1-schnell")
     prompt = (
-        "Photorealistic cinematic character reference photograph for a fictional short film. "
+        "Photorealistic cinematic character reference photograph for a fictional live-action short film. "
         "Exactly two fictional adult humans standing together, full body, neutral relaxed pose, "
-        "front three-quarter view. Man early 30s, dark short hair, light stubble, charcoal wool coat. "
+        "front three-quarter view. Man early 30s, short black hair, natural light stubble, charcoal wool coat. "
         "Woman late 20s, shoulder-length dark brown hair, beige sweater. Natural skin texture, realistic eyes, "
-        "ordinary attractive faces, subtle imperfections, realistic proportions, neutral studio background, "
+        "ordinary believable faces, subtle imperfections, realistic proportions, neutral studio background, "
         "soft film lighting, 50mm photography, no text, no logo."
     )
     result = client.predict(
         prompt, 42, False, 1024, 1024, 4, api_name="/infer"
     )
-    return _resolve_media(result, "https://black-forest-labs-flux-1-schnell.hf.space", ".png")
+    return _resolve_media(
+        result,
+        "https://black-forest-labs-flux-1-schnell.hf.space",
+        ".png",
+    )
 
 
 def generate_scene(reference: str, scene: dict, seed: int):
@@ -146,108 +174,141 @@ def generate_scene(reference: str, scene: dict, seed: int):
     )
 
 
-def concat_videos(scene_paths: list[str], output: Path):
-    list_file = WORK / "concat.txt"
-    lines = []
-    for path in scene_paths:
-        safe = str(Path(path).resolve()).replace("'", "'\\''")
-        lines.append(f"file '{safe}'")
-    list_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
+def _render_scene_with_audio(video: str, audio: Path, output: Path):
+    # Keep each spoken line attached to its own shot so dialogue never drifts
+    # into a later scene.
     cmd = [
-        FFMPEG, "-y", "-f", "concat", "-safe", "0", "-i", str(list_file),
+        FFMPEG, "-y", "-i", video, "-i", str(audio),
+        "-map", "0:v:0", "-map", "1:a:0",
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "19",
-        "-pix_fmt", "yuv420p", "-r", "24", "-an",
+        "-pix_fmt", "yuv420p", "-r", "16",
+        "-c:a", "aac", "-b:a", "128k", "-shortest",
         "-movflags", "+faststart", str(output),
     ]
     r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if r.returncode:
-        raise RuntimeError("Scene concatenation failed: " + r.stderr[-1800:])
+        raise RuntimeError("Scene audio/video mux failed: " + r.stderr[-1600:])
+    if not output.exists() or output.stat().st_size < 50_000:
+        raise RuntimeError("Scene mux produced an invalid file.")
 
 
-def build_dialogue_audio(output: Path):
+def _make_dialogue_audio(scene: dict, index: int) -> Path:
     cfg = json.loads((ROOT / "config/settings.json").read_text(encoding="utf-8"))
-    parts = []
     voices = {
-        "woman": "en-US-AriaNeural",
-        "man": "en-US-GuyNeural",
+        "woman": "fa-IR-DilaraNeural",
+        "man": "fa-IR-FaridNeural",
     }
-    for idx, (speaker, line) in enumerate(STORY["dialogue"], 1):
-        path = WORK / f"dialogue_{idx}.mp3"
-        generate_voice(line, path, {**cfg, "voice": {**cfg["voice"], "voice": voices[speaker]}})
+    lines = scene.get("dialogue") or []
+    if not lines:
+        raise RuntimeError(f"Scene {index} has no dialogue.")
+
+    parts = []
+    for part_index, (speaker, line) in enumerate(lines, 1):
+        path = WORK / f"scene_{index}_line_{part_index}.mp3"
+        generate_voice(
+            line,
+            path,
+            {**cfg, "voice": {**cfg["voice"], "voice": voices[speaker]}},
+        )
         parts.append(path)
 
-    manifest = WORK / "dialogue_concat.txt"
+    # Join multiple lines inside a scene if a future story adds them.
+    manifest = WORK / f"scene_{index}_audio.txt"
     manifest.write_text(
         "\n".join(f"file '{p.resolve()}'" for p in parts) + "\n",
         encoding="utf-8",
     )
+    output = WORK / f"scene_{index}_audio.m4a"
     cmd = [
         FFMPEG, "-y", "-f", "concat", "-safe", "0", "-i", str(manifest),
-        "-c:a", "aac", "-b:a", "160k", str(output),
+        "-c:a", "aac", "-b:a", "128k", str(output),
     ]
     r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if r.returncode:
         raise RuntimeError("Dialogue audio rendering failed: " + r.stderr[-1200:])
+    return output
 
 
-def mux_final(video: Path, audio: Path, output: Path):
+def _concat_scene_clips(clips: list[Path], output: Path):
+    manifest = WORK / "final_concat.txt"
+    manifest.write_text(
+        "\n".join(f"file '{p.resolve()}'" for p in clips) + "\n",
+        encoding="utf-8",
+    )
     cmd = [
-        FFMPEG, "-y", "-i", str(video), "-i", str(audio),
-        "-map", "0:v:0", "-map", "1:a:0",
-        "-c:v", "copy", "-c:a", "aac", "-b:a", "160k",
-        "-shortest", "-movflags", "+faststart", str(output),
+        FFMPEG, "-y", "-f", "concat", "-safe", "0", "-i", str(manifest),
+        "-c:v", "libx264", "-preset", "veryfast", "-crf", "19",
+        "-pix_fmt", "yuv420p", "-r", "16",
+        "-c:a", "aac", "-b:a", "128k",
+        "-movflags", "+faststart", str(output),
     ]
     r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if r.returncode:
-        raise RuntimeError("Final mux failed: " + r.stderr[-1500:])
+        raise RuntimeError("Final concatenation failed: " + r.stderr[-1800:])
+
+
+def _technical_gate(path: Path):
+    duration = _probe_duration(path)
+    if duration < 10:
+        raise RuntimeError(f"Cinematic quality gate failed: duration={duration:.2f}s")
+
+    probe = subprocess.run(
+        [
+            FFMPEG, "-hide_banner", "-i", str(path),
+        ],
+        stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+    )
+    stderr = probe.stderr
+    if "Video:" not in stderr:
+        raise RuntimeError("Cinematic quality gate failed: no video stream.")
+    if "Audio:" not in stderr:
+        raise RuntimeError("Cinematic quality gate failed: no audio stream.")
+    if path.stat().st_size < 500_000:
+        raise RuntimeError("Cinematic quality gate failed: final file is unexpectedly small.")
+    return duration
 
 
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     WORK.mkdir(parents=True, exist_ok=True)
 
-    # Anonymous ZeroGPU users have a small daily quota. Three short shots are
-    # deliberately used for the first fully-free proof film. A HF_TOKEN can
-    # be added later to access the larger free-account quota.
+    print("[cinematic] creating persistent character reference")
     reference = generate_character_reference()
-    scene_paths = []
-    for i, scene in enumerate(STORY["scenes"], 1):
-        print(f"[cinematic] generating scene {i}/{len(STORY['scenes'])}")
-        scene_path = generate_scene(reference, scene, seed=9100 + i)
-        scene_paths.append(scene_path)
 
-    silent = WORK / "silent.mp4"
-    concat_videos(scene_paths, silent)
-
-    audio = WORK / "dialogue.m4a"
-    build_dialogue_audio(audio)
+    scene_clips = []
+    for index, scene in enumerate(STORY["scenes"], 1):
+        print(f"[cinematic] generating scene {index}/{len(STORY['scenes'])}")
+        scene_video = generate_scene(reference, scene, seed=9100 + index)
+        scene_audio = _make_dialogue_audio(scene, index)
+        scene_clip = WORK / f"scene_{index}_final.mp4"
+        _render_scene_with_audio(scene_video, scene_audio, scene_clip)
+        scene_clips.append(scene_clip)
 
     final = OUT / "final_film.mp4"
-    mux_final(silent, audio, final)
-
-    duration = _probe_duration(final)
-    if duration < 7:
-        raise RuntimeError(f"Cinematic quality gate failed: duration={duration:.2f}s")
-    if final.stat().st_size < 500_000:
-        raise RuntimeError("Cinematic quality gate failed: final file is unexpectedly small.")
+    _concat_scene_clips(scene_clips, final)
+    duration = _technical_gate(final)
 
     report = {
         "title": STORY["title"],
         "logline": STORY["logline"],
-        "scene_count": len(scene_paths),
+        "language": STORY["language"],
+        "scene_count": len(scene_clips),
         "duration_seconds": round(duration, 2),
         "characters": STORY["characters"],
         "generation": {
             "character_reference": "FLUX.1-schnell ZeroGPU",
             "video_model": "Wan2.2 14B Fast ZeroGPU",
             "post": "FFmpeg",
-            "voice": "Edge TTS",
+            "voice": "Edge TTS Persian",
             "paid_services_required": False,
         },
         "gates": {
-            "realistic_video_required": True,
+            "photorealistic_prompt_contract": True,
             "character_reference_required": True,
             "story_structure_required": True,
+            "persian_dialogue_required": True,
+            "audio_stream_required": True,
+            "video_stream_required": True,
             "passed": True,
         },
     }
