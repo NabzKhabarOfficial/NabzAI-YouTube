@@ -5,7 +5,7 @@ from src.cinematic_short import STORY
 
 class CinematicStoryTests(unittest.TestCase):
     def test_story_has_short_film_structure(self):
-        self.assertEqual(STORY["language"], "fa-IR")
+        self.assertEqual(STORY["language"], "en-US")
         self.assertEqual(len(STORY["scenes"]), 4)
         self.assertEqual(len(STORY["dialogue"]), 4)
         self.assertGreaterEqual(sum(s["seconds"] for s in STORY["scenes"]), 10.0)
@@ -22,9 +22,10 @@ class CinematicStoryTests(unittest.TestCase):
         self.assertGreater(len(STORY["characters"]["man"]), 30)
         self.assertGreater(len(STORY["characters"]["woman"]), 30)
 
-    def test_story_is_persian(self):
-        self.assertTrue(any("نامه" in line for _, line in STORY["dialogue"]))
-        self.assertTrue(any("برگردی" in line for _, line in STORY["dialogue"]))
+    def test_story_is_english(self):
+        lines = [line for _, line in STORY["dialogue"]]
+        self.assertTrue(any("letter" in line.lower() for line in lines))
+        self.assertTrue(all(any(ch.isascii() for ch in line) for line in lines))
 
 
 if __name__ == "__main__":
