@@ -8,6 +8,7 @@ from pathlib import Path
 
 from .voice_engine import generate_voice
 from .video_engine import FFMPEG, _probe_duration
+from .video_router import generate_scene_with_fallback
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "output" / "cinematic-short"
@@ -144,14 +145,10 @@ def generate_character_reference():
 
 
 def generate_scene(reference: str, scene: dict, seed: int):
-    client = _client("zerogpu-aoti/wan2-2-fp8da-aoti-faster")
-    from gradio_client import handle_file
-    result = client.predict(
-        handle_file(reference), scene["prompt"], 4, NEGATIVE,
-        float(scene["seconds"]), 1.0, 1.0, int(seed), False,
-        api_name="/generate_video",
-    )
-    return _resolve_media(result, "https://zerogpu-aoti-wan2-2-fp8da-aoti-faster.hf.space", ".mp4")
+    media, provider = generate_scene_with_fallback(reference, scene, seed)
+    print(f"[cinematic] selected video provider={provider}")
+    return media, provider
+
 
 
 def _render_scene_with_audio(video: str, audio: Path, output: Path):
@@ -224,17 +221,20 @@ def main():
     print("[cinematic] creating persistent character reference")
     reference = generate_character_reference()
     scene_clips = []
+    providers_used = []
     for index, scene in enumerate(STORY["scenes"], 1):
         scene_clip = WORK / f"scene_{index}_final.mp4"
         if scene_clip.exists() and scene_clip.stat().st_size >= 50_000:
             print(f"[cinematic] reusing cached scene {index}/{len(STORY['scenes'])}")
             scene_clips.append(scene_clip)
+            providers_used.append("cached")
             continue
         print(f"[cinematic] generating scene {index}/{len(STORY['scenes'])}")
-        scene_video = generate_scene(reference, scene, seed=9100 + index)
+        scene_video, provider = generate_scene(reference, scene, seed=9100 + index)
         scene_audio = _make_dialogue_audio(scene, index)
         _render_scene_with_audio(scene_video, scene_audio, scene_clip)
         scene_clips.append(scene_clip)
+        providers_used.append(provider)
     if len(scene_clips) != len(STORY["scenes"]):
         raise RuntimeError("Cinematic generation incomplete: cached progress is preserved for the next run.")
     final = OUT / "final_film.mp4"
@@ -246,7 +246,7 @@ def main():
         "duration_seconds": round(duration, 2), "characters": STORY["characters"],
         "generation": {
             "character_reference": "FLUX.1-schnell ZeroGPU",
-            "video_model": "Wan2.2 14B Fast ZeroGPU", "post": "FFmpeg",
+            "video_model": providers_used, "post": "FFmpeg",
             "voice": "Edge TTS English", "paid_services_required": False,
         },
         "gates": {
