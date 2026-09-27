@@ -122,6 +122,10 @@ def _resolve_media(result, space_url: str | None = None, suffix=".mp4"):
 
 
 def generate_character_reference():
+    cached = WORK / "character_reference.png"
+    if cached.exists() and cached.stat().st_size >= 10_000:
+        print("[cinematic] reusing cached character reference")
+        return str(cached)
     client = _client("black-forest-labs/FLUX.1-schnell")
     prompt = (
         "Photorealistic cinematic character reference photograph for a fictional live-action short film. "
@@ -132,7 +136,11 @@ def generate_character_reference():
         "50mm photography, no text, no logo."
     )
     result = client.predict(prompt, 42, False, 1024, 1024, 4, api_name="/infer")
-    return _resolve_media(result, "https://black-forest-labs-flux-1-schnell.hf.space", ".png")
+    source = _resolve_media(result, "https://black-forest-labs-flux-1-schnell.hf.space", ".png")
+    cached = WORK / "character_reference.png"
+    if Path(source).resolve() != cached.resolve():
+        cached.write_bytes(Path(source).read_bytes())
+    return str(cached)
 
 
 def generate_scene(reference: str, scene: dict, seed: int):
@@ -217,12 +225,18 @@ def main():
     reference = generate_character_reference()
     scene_clips = []
     for index, scene in enumerate(STORY["scenes"], 1):
+        scene_clip = WORK / f"scene_{index}_final.mp4"
+        if scene_clip.exists() and scene_clip.stat().st_size >= 50_000:
+            print(f"[cinematic] reusing cached scene {index}/{len(STORY['scenes'])}")
+            scene_clips.append(scene_clip)
+            continue
         print(f"[cinematic] generating scene {index}/{len(STORY['scenes'])}")
         scene_video = generate_scene(reference, scene, seed=9100 + index)
         scene_audio = _make_dialogue_audio(scene, index)
-        scene_clip = WORK / f"scene_{index}_final.mp4"
         _render_scene_with_audio(scene_video, scene_audio, scene_clip)
         scene_clips.append(scene_clip)
+    if len(scene_clips) != len(STORY["scenes"]):
+        raise RuntimeError("Cinematic generation incomplete: cached progress is preserved for the next run.")
     final = OUT / "final_film.mp4"
     _concat_scene_clips(scene_clips, final)
     duration = _technical_gate(final)
