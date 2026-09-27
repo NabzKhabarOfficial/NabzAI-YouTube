@@ -3,9 +3,36 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-from gradio_client import handle_file
+from gradio_client import Client, handle_file
+import tempfile
+import urllib.request
 
-from .cinematic_short import _client, _resolve_media
+ROOT = Path(__file__).resolve().parents[1]
+WORK = ROOT / "output" / "cinematic-short" / "work"
+
+def _client(space: str):
+    token = os.getenv("HF_TOKEN", "").strip() or None
+    return Client(space, hf_token=token)
+
+def _resolve_media(result, space_url: str, suffix=".mp4"):
+    values = result if isinstance(result, (list, tuple)) else [result]
+    for value in values:
+        if isinstance(value, dict):
+            value = value.get("path") or value.get("url")
+        if isinstance(value, str):
+            p = Path(value)
+            if p.is_file():
+                return str(p)
+            if value.startswith("/"):
+                target = WORK / ("router_remote_" + next(tempfile._get_candidate_names()) + suffix)
+                for url in (f"{space_url}/file={value.lstrip('/')}", f"{space_url}/gradio_api/file={value.lstrip('/')}"):
+                    try:
+                        urllib.request.urlretrieve(url, target)
+                        if target.exists() and target.stat().st_size >= 10_000:
+                            return str(target)
+                    except Exception:
+                        pass
+    raise RuntimeError("Space returned no usable video media")
 
 NEGATIVE = (
     "cartoon, anime, illustration, CGI, 3d render, plastic skin, wax face, "
