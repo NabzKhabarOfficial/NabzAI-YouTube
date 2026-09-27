@@ -67,7 +67,7 @@ jobs:
           assert report["gates"]["photorealistic_prompt_contract"] is True
           assert report["gates"]["character_reference_required"] is True
           assert report["gates"]["story_structure_required"] is True
-          assert report["gates"]["persian_dialogue_required"] is True
+          assert report["gates"]["english_dialogue_required"] is True
           assert report["gates"]["audio_stream_required"] is True
           assert report["gates"]["video_stream_required"] is True
           assert report["duration_seconds"] >= 10
