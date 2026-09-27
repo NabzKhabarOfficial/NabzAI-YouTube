@@ -27,6 +27,11 @@ class CinematicStoryTests(unittest.TestCase):
         self.assertTrue(any("letter" in line.lower() for line in lines))
         self.assertTrue(all(any(ch.isascii() for ch in line) for line in lines))
 
+    def test_video_provider_router_is_configurable(self):
+        from src.video_router import PROVIDERS, _provider_order
+        self.assertEqual([name for name, _ in PROVIDERS], ["ltx2", "wan22"])
+        self.assertEqual(_provider_order(), ["ltx2", "wan22"])
+
 
 if __name__ == "__main__":
     unittest.main()
