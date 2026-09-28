@@ -37,6 +37,14 @@ class CinematicStoryTests(unittest.TestCase):
         from src.video_router import PROVIDERS, _provider_order
         self.assertEqual([name for name, _ in PROVIDERS], ["agnes", "ltx2", "wan22"])
         self.assertEqual(_provider_order(), ["ltx2", "wan22"])
+        import os
+        old = os.environ.get("AGNES_API_KEY")
+        os.environ["AGNES_API_KEY"] = "test"
+        try:
+            self.assertEqual(_provider_order()[0], "agnes")
+        finally:
+            if old is None: os.environ.pop("AGNES_API_KEY", None)
+            else: os.environ["AGNES_API_KEY"] = old
 
 
 if __name__ == "__main__":
