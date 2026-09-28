@@ -12,7 +12,7 @@ WORK = ROOT / "output" / "cinematic-short" / "work"
 
 def _client(space: str):
     token = os.getenv("HF_TOKEN", "").strip() or None
-    return Client(space, hf_token=token)
+    return Client(space, token=token)
 
 def _resolve_media(result, space_url: str, suffix=".mp4"):
     values = result if isinstance(result, (list, tuple)) else [result]
@@ -42,16 +42,78 @@ NEGATIVE = (
 )
 
 PROVIDERS = [
+    ("agnes", "https://apihub.agnes-ai.com"),
     ("ltx2", "Lightricks/ltx-2"),
     ("wan22", "zerogpu-aoti/wan2-2-fp8da-aoti-faster"),
 ]
 
 
 def _provider_order():
-    raw = os.getenv("NABZ_VIDEO_PROVIDERS", "ltx2,wan22")
-    wanted = [x.strip().lower() for x in raw.split(",") if x.strip()]
+    raw = os.getenv("NABZ_VIDEO_PROVIDERS", "").strip()
+    if raw:
+        wanted = [x.strip().lower() for x in raw.split(",") if x.strip()]
+    else:
+        wanted = ["agnes", "ltx2", "wan22"] if os.getenv("AGNES_API_KEY", "").strip() else ["ltx2", "wan22"]
     valid = {name for name, _ in PROVIDERS}
-    return [x for x in wanted if x in valid] or ["ltx2", "wan22"]
+    return [x for x in wanted if x in valid and (x != "agnes" or os.getenv("AGNES_API_KEY", "").strip())] or ["ltx2", "wan22"]
+
+
+def _generate_agnes(reference: str, scene: dict, seed: int):
+    import json
+    import time
+    import urllib.error
+    import urllib.parse
+    import urllib.request
+
+    key = os.getenv("AGNES_API_KEY", "").strip()
+    if not key:
+        raise RuntimeError("AGNES_API_KEY is not configured")
+
+    base = "https://apihub.agnes-ai.com"
+    headers = {"Authorization": f"Bearer {key}", "Content-Type": "application/json"}
+    # Agnes is the no-GPU production path. The reference image is represented
+    # by the same fixed character bible in every scene prompt.
+    prompt = (
+        "Photorealistic live-action cinematic short film, real human actors, "
+        "natural skin and eyes, realistic hands, physical camera movement, "
+        "35mm/50mm lens, shallow depth of field, consistent adult characters, "
+        "restrained film lighting and color grade. "
+        + scene["prompt"]
+        + " No CGI, cartoon, anime, illustration, text, subtitles, watermark or logo."
+    )
+    seconds = max(3.0, min(float(scene["seconds"]), 5.0))
+    payload = json.dumps({
+        "model": "agnes-video-v2.0",
+        "prompt": prompt,
+        "width": 1152,
+        "height": 648,
+        "num_frames": int(round(seconds * 24)) + 1,
+        "frame_rate": 24,
+    }).encode("utf-8")
+    req = urllib.request.Request(base + "/v1/videos", data=payload, headers=headers, method="POST")
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+    video_id = data.get("video_id") or data.get("task_id")
+    if not video_id:
+        raise RuntimeError(f"Agnes did not return a video id: {data}")
+
+    deadline = time.time() + 900
+    while time.time() < deadline:
+        query = urllib.parse.urlencode({"video_id": video_id})
+        poll = urllib.request.Request(base + "/agnesapi?" + query, headers={"Authorization": f"Bearer {key}"})
+        with urllib.request.urlopen(poll, timeout=60) as resp:
+            status = json.loads(resp.read().decode("utf-8"))
+        state = str(status.get("status", "")).lower()
+        if state == "completed" and status.get("video_url"):
+            target = WORK / ("agnes_" + next(tempfile._get_candidate_names()) + ".mp4")
+            urllib.request.urlretrieve(status["video_url"], target)
+            if target.exists() and target.stat().st_size >= 50_000:
+                return str(target)
+            raise RuntimeError("Agnes returned an invalid video file")
+        if state == "failed":
+            raise RuntimeError(str(status.get("error", "Agnes generation failed")))
+        time.sleep(30)
+    raise TimeoutError("Agnes video generation timed out after 15 minutes")
 
 
 def _generate_ltx(reference: str, scene: dict, seed: int):
@@ -88,7 +150,7 @@ def _generate_wan(reference: str, scene: dict, seed: int):
 
 def generate_scene_with_fallback(reference: str, scene: dict, seed: int):
     errors = []
-    generators = {"ltx2": _generate_ltx, "wan22": _generate_wan}
+    generators = {"agnes": _generate_agnes, "ltx2": _generate_ltx, "wan22": _generate_wan}
 
     for name in _provider_order():
         print(f"[video-router] trying provider={name}")
