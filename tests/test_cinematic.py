@@ -1,3 +1,4 @@
+import os
 import unittest
 
 from src.cinematic_short import STORY
@@ -38,7 +39,6 @@ class CinematicStoryTests(unittest.TestCase):
         self.assertEqual([name for name, _ in PROVIDERS], ["agnes", "ltx2", "wan22"])
         os.environ.pop("AGNES_API_KEY", None)
         self.assertEqual(_provider_order(), ["ltx2", "wan22"])
-        import os
         old = os.environ.get("AGNES_API_KEY")
         os.environ["AGNES_API_KEY"] = "test"
         try:
