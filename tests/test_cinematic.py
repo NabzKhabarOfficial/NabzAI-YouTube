@@ -36,6 +36,7 @@ class CinematicStoryTests(unittest.TestCase):
     def test_video_provider_router_is_configurable(self):
         from src.video_router import PROVIDERS, _provider_order
         self.assertEqual([name for name, _ in PROVIDERS], ["agnes", "ltx2", "wan22"])
+        os.environ.pop("AGNES_API_KEY", None)
         self.assertEqual(_provider_order(), ["ltx2", "wan22"])
         import os
         old = os.environ.get("AGNES_API_KEY")
