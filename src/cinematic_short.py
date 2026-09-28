@@ -138,7 +138,8 @@ def _technical_gate(path: Path, expected_seconds: float):
 def main():
     OUT.mkdir(parents=True, exist_ok=True); WORK.mkdir(parents=True, exist_ok=True)
     print(f"[cinematic] story slot={STORY['slot']} title={STORY['title']}")
-    reference = generate_character_reference()
+    use_agnes = bool(os.getenv("AGNES_API_KEY", "").strip())
+    reference = "" if use_agnes else generate_character_reference()
     scene_clips, providers_used = [], []
     expected_seconds = sum(float(scene.get("seconds", 3.5)) for scene in STORY["scenes"])
     for index, scene in enumerate(STORY["scenes"], 1):
