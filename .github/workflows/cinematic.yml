@@ -25,6 +25,9 @@ jobs:
   cinematic:
     runs-on: ubuntu-latest
     timeout-minutes: 35
+    env:
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -46,12 +49,16 @@ jobs:
           key: nabz-ai-cinematic-progress-${{ github.run_id }}
           restore-keys: |
             nabz-ai-cinematic-progress-
-      - name: Verify Hugging Face token is present
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      - name: Verify video provider credentials
         run: |
-          test -n "$HF_TOKEN"
-          echo "HF_TOKEN is configured (value is not printed)."
+          if [ -n "$AGNES_API_KEY" ]; then
+            echo "Agnes API key configured; using no-GPU production provider."
+          elif [ -n "$HF_TOKEN" ]; then
+            echo "Hugging Face token configured; using HF fallback providers."
+          else
+            echo "No video provider credential configured."
+            exit 1
+          fi
       - name: Select story slot
         env:
           NABZ_STORY_SLOT: ${{ github.run_number }}
