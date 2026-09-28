@@ -1,6 +1,6 @@
 name: NabzAI-YouTube
-# production-safe preview pipeline
-# free-first / no automatic public upload
+# production-safe YouTube pipeline
+# free-first: scheduled generation; upload only when YOUTUBE_TOKEN is explicitly configured
 
 on:
   workflow_dispatch:
@@ -31,6 +31,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 40
+    env:
+      YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -58,6 +60,24 @@ jobs:
         env:
           MANUAL_MODE: ${{ inputs.mode || 'test' }}
         run: python -m src.main --mode "$MANUAL_MODE"
+
+      - name: Upload scheduled episode to YouTube
+        if: github.event_name == 'schedule' && env.YOUTUBE_TOKEN != ''
+        env:
+          YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json, glob, os
+          from src.youtube_uploader import upload_video
+          videos = glob.glob("output/*/video.mp4")
+          if not videos:
+              raise SystemExit("No generated video found.")
+          video = videos[0]
+          folder = os.path.dirname(video)
+          meta = json.load(open(os.path.join(folder, "metadata.json"), encoding="utf-8"))
+          video_id = upload_video(video, meta["title"], meta["description"], meta.get("tags", []), os.environ["YOUTUBE_TOKEN"], privacy_status="public", category_id="27")
+          print("YOUTUBE_VIDEO_ID:", video_id)
+          PY
 
       - name: Persist scheduled topic state
         if: github.event_name == 'schedule'
