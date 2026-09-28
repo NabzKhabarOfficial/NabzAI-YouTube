@@ -23,7 +23,9 @@ def _client(space: str):
     except ImportError as exc:
         raise RuntimeError("gradio_client is required for cinematic mode.") from exc
     token = os.getenv("HF_TOKEN", "").strip() or None
-    return Client(space, hf_token=token)
+    # Gradio 6 removes hf_token; token works on current clients and avoids
+    # a deprecation warning without changing the free-only architecture.
+    return Client(space, token=token)
 
 
 def _local_file(value):
