@@ -56,7 +56,7 @@ def load_story(slot: int | None = None) -> dict:
     for i, (speaker, line) in enumerate(dialogue, 1):
         scenes.append({
             "id": i,
-            "seconds": 3.0,
+            "seconds": 3.5,
             "dialogue": [(speaker, line)],
             "prompt": (
                 "Photorealistic live-action cinematic short film. Same fictional adult man and woman from the character bible, "
