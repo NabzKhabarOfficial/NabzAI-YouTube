@@ -61,7 +61,6 @@ def _provider_order():
 def _generate_agnes(reference: str, scene: dict, seed: int):
     import json
     import time
-    import urllib.error
     import urllib.parse
     import urllib.request
 
@@ -82,13 +81,17 @@ def _generate_agnes(reference: str, scene: dict, seed: int):
         + " No CGI, cartoon, anime, illustration, text, subtitles, watermark or logo."
     )
     seconds = max(3.0, min(float(scene["seconds"]), 5.0))
+    # Agnes requires num_frames = 8n + 1. Round to the closest legal frame count.
+    frames = max(9, min(441, 8 * round((seconds * 24 - 1) / 8) + 1))
     payload = json.dumps({
         "model": "agnes-video-v2.0",
         "prompt": prompt,
+        "negative_prompt": NEGATIVE,
         "width": 1152,
-        "height": 648,
-        "num_frames": int(round(seconds * 24)) + 1,
+        "height": 768,
+        "num_frames": frames,
         "frame_rate": 24,
+        "seed": int(seed),
     }).encode("utf-8")
     req = urllib.request.Request(base + "/v1/videos", data=payload, headers=headers, method="POST")
     with urllib.request.urlopen(req, timeout=60) as resp:
@@ -99,14 +102,17 @@ def _generate_agnes(reference: str, scene: dict, seed: int):
 
     deadline = time.time() + 900
     while time.time() < deadline:
-        query = urllib.parse.urlencode({"video_id": video_id})
+        query = urllib.parse.urlencode({"video_id": video_id, "model_name": "agnes-video-v2.0"})
         poll = urllib.request.Request(base + "/agnesapi?" + query, headers={"Authorization": f"Bearer {key}"})
         with urllib.request.urlopen(poll, timeout=60) as resp:
             status = json.loads(resp.read().decode("utf-8"))
         state = str(status.get("status", "")).lower()
-        if state == "completed" and status.get("video_url"):
+        result_url = status.get("url") or status.get("video_url")
+        if state == "completed" and result_url:
+            if not str(result_url).startswith("https://"):
+                raise RuntimeError("Agnes returned a non-HTTPS video URL")
             target = WORK / ("agnes_" + next(tempfile._get_candidate_names()) + ".mp4")
-            urllib.request.urlretrieve(status["video_url"], target)
+            urllib.request.urlretrieve(result_url, target)
             if target.exists() and target.stat().st_size >= 50_000:
                 return str(target)
             raise RuntimeError("Agnes returned an invalid video file")
