@@ -16,13 +16,6 @@ OUT = ROOT / "output" / "cinematic-short"
 WORK = OUT / "work"
 STORY = load_story()
 
-NEGATIVE = (
-    "cartoon, anime, illustration, CGI, 3d render, plastic skin, wax face, "
-    "doll face, deformed face, asymmetrical eyes, extra fingers, extra limbs, "
-    "duplicate person, fused hands, malformed hands, unnatural joints, blurry face, "
-    "flicker, frozen motion, jerky motion, text, subtitles, watermark, logo"
-)
-
 
 def _client(space: str):
     try:
@@ -89,8 +82,19 @@ def generate_character_reference():
     return str(cached)
 
 
-def _render_scene_with_audio(video: str, audio: Path, output: Path):
-    r = subprocess.run([FFMPEG, "-y", "-i", video, "-i", str(audio), "-map", "0:v:0", "-map", "1:a:0", "-c:v", "libx264", "-preset", "veryfast", "-crf", "19", "-pix_fmt", "yuv420p", "-r", "16", "-c:a", "aac", "-b:a", "128k", "-shortest", "-movflags", "+faststart", str(output)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+def _render_scene_with_audio(video: str, audio: Path, output: Path, target_seconds: float):
+    # Never let short TTS truncate a cinematic shot. Pad the shorter stream and force
+    # every scene to its planned duration, which prevents the previous 9.8s final.
+    vf = f"tpad=stop_mode=clone:stop_duration={max(0.1, target_seconds):.2f}"
+    af = f"apad=pad_dur={max(0.1, target_seconds):.2f}"
+    r = subprocess.run([
+        FFMPEG, "-y", "-i", video, "-i", str(audio),
+        "-filter_complex", f"[0:v]{vf}[v];[1:a]{af}[a]",
+        "-map", "[v]", "-map", "[a]", "-t", f"{target_seconds:.2f}",
+        "-c:v", "libx264", "-preset", "veryfast", "-crf", "19",
+        "-pix_fmt", "yuv420p", "-r", "16", "-c:a", "aac", "-b:a", "128k",
+        "-movflags", "+faststart", str(output)
+    ], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if r.returncode or not output.exists() or output.stat().st_size < 50_000:
         raise RuntimeError("Scene audio/video mux failed: " + r.stderr[-1600:])
 
@@ -118,9 +122,11 @@ def _concat_scene_clips(clips: list[Path], output: Path):
     if r.returncode: raise RuntimeError("Final concatenation failed: " + r.stderr[-1800:])
 
 
-def _technical_gate(path: Path):
+def _technical_gate(path: Path, expected_seconds: float):
     duration = _probe_duration(path)
-    if duration < 10: raise RuntimeError(f"Quality gate failed: duration={duration:.2f}s")
+    minimum = max(12.0, expected_seconds - 0.6)
+    if duration < minimum:
+        raise RuntimeError(f"Quality gate failed: duration={duration:.2f}s expected>={minimum:.2f}s")
     probe = subprocess.run([FFMPEG, "-hide_banner", "-i", str(path)], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if "Video:" not in probe.stderr or "Audio:" not in probe.stderr: raise RuntimeError("Quality gate failed: missing audio/video stream")
     if path.stat().st_size < 500_000: raise RuntimeError("Quality gate failed: final file unexpectedly small")
@@ -132,18 +138,19 @@ def main():
     print(f"[cinematic] story slot={STORY['slot']} title={STORY['title']}")
     reference = generate_character_reference()
     scene_clips, providers_used = [], []
+    expected_seconds = sum(float(scene.get("seconds", 3.5)) for scene in STORY["scenes"])
     for index, scene in enumerate(STORY["scenes"], 1):
         scene_clip = WORK / f"scene_{index}_final.mp4"
         if scene_clip.exists() and scene_clip.stat().st_size >= 50_000:
             scene_clips.append(scene_clip); providers_used.append("cached"); continue
         scene_video, provider = generate_scene_with_fallback(reference, scene, seed=9100 + STORY["slot"] * 100 + index)
         scene_audio = _make_dialogue_audio(scene, index)
-        _render_scene_with_audio(scene_video, scene_audio, scene_clip)
+        _render_scene_with_audio(scene_video, scene_audio, scene_clip, float(scene.get("seconds", 3.5)))
         scene_clips.append(scene_clip); providers_used.append(provider)
     final = OUT / "final_film.mp4"
     _concat_scene_clips(scene_clips, final)
-    duration = _technical_gate(final)
-    report = {"title": STORY["title"], "logline": STORY["logline"], "language": STORY["language"], "story_slot": STORY["slot"], "scene_count": len(scene_clips), "duration_seconds": round(duration,2), "generation": {"video_model": providers_used, "post": "FFmpeg", "voice": "Edge TTS English", "paid_services_required": False}, "gates": {"character_reference_required": True, "story_structure_required": True, "english_dialogue_required": True, "audio_stream_required": True, "video_stream_required": True, "passed": True}}
+    duration = _technical_gate(final, expected_seconds)
+    report = {"title": STORY["title"], "logline": STORY["logline"], "language": STORY["language"], "story_slot": STORY["slot"], "scene_count": len(scene_clips), "duration_seconds": round(duration,2), "generation": {"video_model": providers_used, "post": "FFmpeg", "voice": "Edge TTS English", "paid_services_required": False}, "gates": {"character_reference_required": True, "story_structure_required": True, "english_dialogue_required": True, "audio_stream_required": True, "video_stream_required": True, "minimum_duration_seconds": 12.0, "passed": True}}
     (OUT / "quality.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     (OUT / "story.json").write_text(json.dumps(STORY, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"READY: {final}")
