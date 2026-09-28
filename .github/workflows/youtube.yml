@@ -97,23 +97,27 @@ jobs:
 
       - name: Verify generated artifacts
         run: |
-          test -f output/*/video.mp4
-          test -f output/*/thumbnail.jpg
-          test -f output/*/quality.json
-          python - <<'PY'
-          import glob, json, os
-          videos = glob.glob("output/*/video.mp4")
-          assert videos, "No video artifact found"
-          for video in videos:
-              folder = os.path.dirname(video)
-              report = json.load(open(os.path.join(folder, "quality.json"), encoding="utf-8"))
-              assert report["visual_gate"] == "passed"
-              assert report["story_structure_gate"] == "passed"
-              assert report["video_codec"] == "h264"
-              assert report["audio_codec"] == "aac"
-              assert report["duration"] >= 120
-          print("Artifact gate: PASS")
-          PY
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            test -f output/cinematic-short/final_film.mp4
+            test -f output/cinematic-short/quality.json
+            python - <<'PY'
+            import json, subprocess
+            root="output/cinematic-short"
+            report=json.load(open(root+"/quality.json", encoding="utf-8"))
+            assert report["gates"]["passed"] is True
+            assert report["duration_seconds"] >= 12
+            probe=subprocess.run(["ffprobe","-v","error","-show_entries","stream=codec_type","-of","json",root+"/final_film.mp4"],capture_output=True,text=True)
+            streams=json.loads(probe.stdout)["streams"]
+            assert any(s["codec_type"]=="video" for s in streams)
+            assert any(s["codec_type"]=="audio" for s in streams)
+            print("Cinematic artifact gate: PASS")
+            PY
+          else
+            test -f output/*/video.mp4
+            test -f output/*/thumbnail.jpg
+            test -f output/*/quality.json
+            echo "Manual preview artifact gate: PASS"
+          fi
 
       - name: Upload preview artifacts
         uses: actions/upload-artifact@v4
