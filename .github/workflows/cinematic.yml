@@ -10,8 +10,9 @@ on:
         type: choice
         options:
           - free
-  schedule:
-    - cron: "7 */2 * * *"
+  # Automatic runs are intentionally disabled. The free Hugging Face
+  # ZeroGPU quota is finite; scheduling retries after quota exhaustion only
+  # burns Actions time and cannot produce a better film.
 
 concurrency:
   group: nabz-ai-cinematic
