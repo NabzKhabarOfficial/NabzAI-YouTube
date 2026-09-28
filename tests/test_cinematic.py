@@ -35,7 +35,7 @@ class CinematicStoryTests(unittest.TestCase):
 
     def test_video_provider_router_is_configurable(self):
         from src.video_router import PROVIDERS, _provider_order
-        self.assertEqual([name for name, _ in PROVIDERS], ["ltx2", "wan22"])
+        self.assertEqual([name for name, _ in PROVIDERS], ["agnes", "ltx2", "wan22"])
         self.assertEqual(_provider_order(), ["ltx2", "wan22"])
 
 
