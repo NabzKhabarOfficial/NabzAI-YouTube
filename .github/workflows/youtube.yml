@@ -67,7 +67,7 @@ jobs:
 
       - name: Verify generated artifacts
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.mode }}" = "cinematic" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.mode }}" = "cinematic" ]; then
             test -f output/cinematic-short/final_film.mp4
             test -f output/cinematic-short/quality.json
             python -c 'import json,subprocess; root="output/cinematic-short"; report=json.load(open(root+"/quality.json",encoding="utf-8")); assert report["gates"]["passed"] is True; assert report["duration_seconds"] >= 12; probe=subprocess.run(["ffprobe","-v","error","-show_entries","stream=codec_type","-of","json",root+"/final_film.mp4"],capture_output=True,text=True); streams=json.loads(probe.stdout)["streams"]; assert any(s["codec_type"]=="video" for s in streams); assert any(s["codec_type"]=="audio" for s in streams); print("Cinematic artifact gate: PASS")'
