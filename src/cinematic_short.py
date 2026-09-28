@@ -153,7 +153,7 @@ def main():
     final = OUT / "final_film.mp4"
     _concat_scene_clips(scene_clips, final)
     duration = _technical_gate(final, expected_seconds)
-    report = {"title": STORY["title"], "logline": STORY["logline"], "language": STORY["language"], "story_slot": STORY["slot"], "scene_count": len(scene_clips), "duration_seconds": round(duration,2), "generation": {"video_model": providers_used, "post": "FFmpeg", "voice": "Edge TTS English", "paid_services_required": False}, "gates": {"character_reference_required": True, "story_structure_required": True, "english_dialogue_required": True, "audio_stream_required": True, "video_stream_required": True, "minimum_duration_seconds": 12.0, "passed": True}}
+    report = {"title": STORY["title"], "logline": STORY["logline"], "language": STORY["language"], "story_slot": STORY["slot"], "scene_count": len(scene_clips), "duration_seconds": round(duration,2), "generation": {"video_model": providers_used, "post": "FFmpeg", "voice": "Edge TTS English", "paid_services_required": False}, "gates": {"character_reference_required": not use_agnes, "character_prompt_consistency_required": True, "story_structure_required": True, "english_dialogue_required": True, "audio_stream_required": True, "video_stream_required": True, "minimum_duration_seconds": 12.0, "passed": True}}
     (OUT / "quality.json").write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
     (OUT / "story.json").write_text(json.dumps(STORY, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"READY: {final}")
