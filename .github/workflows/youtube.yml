@@ -13,6 +13,7 @@ on:
         options:
           - test
           - short
+          - cinematic
   push:
     branches:
       - main
@@ -53,20 +54,20 @@ jobs:
         run: python -m unittest discover -s tests -v
 
       - name: Build scheduled cinematic episode
-        if: github.event_name == 'schedule'
+        if: github.event_name == 'schedule' || inputs.mode == 'cinematic'
         run: |
           test -n "$AGNES_API_KEY"
           python -m src.cinematic_short
 
       - name: Build manual preview
-        if: github.event_name != 'schedule'
+        if: github.event_name != 'schedule' && inputs.mode != 'cinematic'
         env:
           MANUAL_MODE: ${{ inputs.mode || 'test' }}
         run: python -m src.main --mode "$MANUAL_MODE"
 
       - name: Verify generated artifacts
         run: |
-          if [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ inputs.mode }}" = "cinematic" ]; then
             test -f output/cinematic-short/final_film.mp4
             test -f output/cinematic-short/quality.json
             python -c 'import json,subprocess; root="output/cinematic-short"; report=json.load(open(root+"/quality.json",encoding="utf-8")); assert report["gates"]["passed"] is True; assert report["duration_seconds"] >= 12; probe=subprocess.run(["ffprobe","-v","error","-show_entries","stream=codec_type","-of","json",root+"/final_film.mp4"],capture_output=True,text=True); streams=json.loads(probe.stdout)["streams"]; assert any(s["codec_type"]=="video" for s in streams); assert any(s["codec_type"]=="audio" for s in streams); print("Cinematic artifact gate: PASS")'
@@ -78,7 +79,7 @@ jobs:
           fi
 
       - name: Upload scheduled cinematic episode to YouTube
-        if: github.event_name == 'schedule' && env.YOUTUBE_TOKEN != ''
+        if: (github.event_name == 'schedule' || inputs.mode == 'cinematic') && env.YOUTUBE_TOKEN != ''
         run: |
           python -c 'import json,os; from src.youtube_uploader import upload_video; root="output/cinematic-short"; video=os.path.join(root,"final_film.mp4"); story=json.load(open(os.path.join(root,"story.json"),encoding="utf-8")); description=story["logline"]+"\\n\\nNABZ AI — cinematic short film.\\n#AI #ShortFilm #NabzAI"; video_id=upload_video(video,story["title"],description,["AI","short film","cinematic","Nabz AI"],os.environ["YOUTUBE_TOKEN"],privacy_status="private",category_id="24"); print("YOUTUBE_VIDEO_ID:",video_id)'
 
