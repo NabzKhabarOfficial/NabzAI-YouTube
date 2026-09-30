@@ -47,23 +47,35 @@ def load_story(slot: int | None = None) -> dict:
         "woman": "Fictional adult woman in her late 20s, shoulder-length dark brown hair, beige sweater, expressive natural eyes, realistic human face and proportions.",
     }
     actions = [
-        f"Establish {location}. The two characters approach while carrying or noticing {prop}.",
-        f"The woman notices {prop} and reacts with restrained emotion while the man watches quietly.",
-        f"The man places {prop} between them and explains why he brought it. The woman hesitates before responding.",
-        f"Both characters finally face the truth connected to {prop} and share a quiet, hopeful look as the scene ends.",
+        f"Establish {location} with the two characters already present in the same world. The camera slowly moves toward them while they notice {prop}.",
+        f"Stay with both characters in the same physical space. The woman notices {prop}, reacts with restrained emotion, and the man watches quietly. Use a subtle over-the-shoulder camera move.",
+        f"The man places {prop} between them and explains why he brought it. The woman hesitates before responding. Use a natural medium close-up with a gentle cinematic push-in.",
+        f"Both characters finally face the truth connected to {prop}. They share a quiet, hopeful look as the camera slowly pulls back, preserving their identities and wardrobe.",
     ]
     scenes = []
     for i, (speaker, line) in enumerate(dialogue, 1):
         scenes.append({
             "id": i,
-            "seconds": 3.5,
+            "seconds": 4.0,
             "dialogue": [(speaker, line)],
             "prompt": (
-                "Photorealistic live-action cinematic short film. Same fictional adult man and woman from the character bible, "
-                "exact identities, faces, hair and wardrobe across every scene. " + actions[i - 1] + " "
-                "Natural human acting, realistic skin texture, believable hands and eyes, subtle breathing and blinking, "
-                "physically plausible lighting and movement, 35mm or 50mm lens, shallow depth of field, restrained film color grade. "
-                "No cartoon, no anime, no CGI look, no plastic skin, no duplicate people, no text, no subtitles, no watermark."
+                "Photorealistic live-action cinematic short film. Use the supplied character reference as the identity anchor. "
+                "The exact same fictional adult man and woman must remain the same people in every shot: identical faces, hair, age, body proportions and wardrobe. "
+                "Do not introduce any additional people. "
+                + actions[i - 1] + " "
+                "Natural human acting, realistic skin pores, believable hands and eyes, subtle breathing and blinking, "
+                "physically plausible lighting and motion, 35mm or 50mm lens, shallow depth of field, restrained film color grade, "
+                "realistic environmental detail and continuous live-action cinematography. "
+                "No cartoon, no anime, no CGI look, no plastic skin, no wax face, no duplicate person, no identity drift, "
+                "no different hairstyle, no different clothing, no text, no subtitles, no watermark."
             ),
         })
-    return {"title": title, "logline": logline, "language": "en-US", "characters": characters, "dialogue": dialogue, "scenes": scenes, "slot": index}
+    return {
+        "title": title,
+        "logline": logline,
+        "language": "en-US",
+        "characters": characters,
+        "dialogue": dialogue,
+        "scenes": scenes,
+        "slot": index,
+    }
