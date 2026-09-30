@@ -1,7 +1,7 @@
 import os
 import unittest
 
-from src.cinematic_short import STORY
+from src.cinematic_short import PIPELINE_VERSION, STORY
 from src.story_factory import STORIES, load_story
 
 
@@ -10,12 +10,13 @@ class CinematicStoryTests(unittest.TestCase):
         self.assertEqual(STORY["language"], "en-US")
         self.assertEqual(len(STORY["scenes"]), 4)
         self.assertEqual(len(STORY["dialogue"]), 4)
-        self.assertGreaterEqual(sum(s["seconds"] for s in STORY["scenes"]), 10.0)
+        self.assertEqual(sum(s["seconds"] for s in STORY["scenes"]), 16.0)
         for scene in STORY["scenes"]:
             self.assertIn("prompt", scene)
-            self.assertGreaterEqual(scene["seconds"], 2.5)
+            self.assertEqual(scene["seconds"], 4.0)
             self.assertIn("same", scene["prompt"].lower())
             self.assertIn("photorealistic", scene["prompt"].lower())
+            self.assertIn("character reference", scene["prompt"].lower())
             self.assertTrue(scene["dialogue"])
 
     def test_character_bible_exists(self):
@@ -27,6 +28,12 @@ class CinematicStoryTests(unittest.TestCase):
     def test_story_is_english(self):
         lines = [line for _, line in STORY["dialogue"]]
         self.assertTrue(all(any(ch.isascii() for ch in line) for line in lines))
+
+    def test_reference_pipeline_is_versioned(self):
+        self.assertIn("character-reference", PIPELINE_VERSION)
+        from src.video_router import NEGATIVE
+        self.assertIn("identity drift", NEGATIVE)
+        self.assertIn("different clothing", NEGATIVE)
 
     def test_story_factory_has_ten_distinct_slots(self):
         self.assertEqual(len(STORIES), 10)
@@ -44,8 +51,10 @@ class CinematicStoryTests(unittest.TestCase):
         try:
             self.assertEqual(_provider_order()[0], "agnes")
         finally:
-            if old is None: os.environ.pop("AGNES_API_KEY", None)
-            else: os.environ["AGNES_API_KEY"] = old
+            if old is None:
+                os.environ.pop("AGNES_API_KEY", None)
+            else:
+                os.environ["AGNES_API_KEY"] = old
 
 
 if __name__ == "__main__":
