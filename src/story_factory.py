@@ -68,6 +68,8 @@ def load_story(slot: int | None = None) -> dict:
             "The exact same fictional adult man and woman must remain the same people in every shot: identical faces, hair, age, body proportions and wardrobe. "
             "Do not introduce any additional people or change the location, time of day, wardrobe or facial identity. "
             + action + " "
+            f"Maintain strict location continuity: all six shots must stay in the exact same {location}, with the same time of day, weather, background architecture and practical lighting. "
+            "Never replace the setting with a studio, generic backdrop or different location. "
             "Maintain continuity with the previous shot and create physically plausible movement rather than a static slideshow. "
             "Natural human acting, realistic skin pores, believable hands and eyes, subtle breathing and blinking, "
             "physically plausible lighting and motion, 35mm or 50mm lens, shallow depth of field, restrained film color grade, "
