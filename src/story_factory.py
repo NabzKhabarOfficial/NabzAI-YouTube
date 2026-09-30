@@ -29,6 +29,11 @@ DIALOGUES = [
     [("woman", "You still remember the recipe."), ("man", "I remember who taught me."), ("woman", "Then make one more cup."), ("man", "For both of us.")],
 ]
 
+# Six-shot rhythm: establish → introduce → breathe → reveal → reaction → resolve.
+# Only four shots carry dialogue; the silent beats give the film visual breathing room
+# without adding extra TTS cost.
+DIALOGUE_SCENES = (0, 1, 3, 4)
+
 
 def _slot() -> int:
     raw = os.getenv("NABZ_STORY_SLOT", "")
@@ -47,28 +52,34 @@ def load_story(slot: int | None = None) -> dict:
         "woman": "Fictional adult woman in her late 20s, shoulder-length dark brown hair, beige sweater, expressive natural eyes, realistic human face and proportions.",
     }
     actions = [
-        f"Establish {location} with the two characters already present in the same world. The camera slowly moves toward them while they notice {prop}.",
-        f"Stay with both characters in the same physical space. The woman notices {prop}, reacts with restrained emotion, and the man watches quietly. Use a subtle over-the-shoulder camera move.",
-        f"The man places {prop} between them and explains why he brought it. The woman hesitates before responding. Use a natural medium close-up with a gentle cinematic push-in.",
-        f"Both characters finally face the truth connected to {prop}. They share a quiet, hopeful look as the camera slowly pulls back, preserving their identities and wardrobe.",
+        f"SHOT 1 — Establish {location}. Begin with a wide environmental view, then make a slow physical dolly toward the two characters as they notice {prop}. Keep both actors naturally grounded in the same space.",
+        f"SHOT 2 — Stay in the same location and continue the action. Move into a medium two-shot with a gentle lateral camera move. One character reaches toward {prop} while the other watches, creating a clear visual continuation from the previous shot.",
+        f"SHOT 3 — A quiet visual beat. Cut to a close detail of {prop} in the characters' hands, then rack focus toward their faces. Use subtle hand movement, breathing and eye movement; no dialogue is required.",
+        f"SHOT 4 — Return to a medium close-up of both characters. The man places {prop} between them and explains why it matters. Use a restrained push-in while the woman reacts naturally, preserving the exact identity and wardrobe.",
+        f"SHOT 5 — Emotional reaction. Hold a close two-shot, then make a slow arc around the pair as they finally understand what {prop} means. Their expressions change subtly rather than becoming exaggerated.",
+        f"SHOT 6 — Resolution. Pull back into a wider composition as both characters share a quiet, hopeful look and the physical action settles. End on a clean cinematic image that could naturally cut to black.",
     ]
     scenes = []
-    for i, (speaker, line) in enumerate(dialogue, 1):
+    dialogue_iter = iter(dialogue)
+    for i, action in enumerate(actions):
+        line_pair = [next(dialogue_iter)] if i in DIALOGUE_SCENES else []
+        prompt = (
+            "Photorealistic live-action cinematic short film. Use the supplied character reference as the identity anchor. "
+            "The exact same fictional adult man and woman must remain the same people in every shot: identical faces, hair, age, body proportions and wardrobe. "
+            "Do not introduce any additional people or change the location, time of day, wardrobe or facial identity. "
+            + action + " "
+            "Maintain continuity with the previous shot and create physically plausible movement rather than a static slideshow. "
+            "Natural human acting, realistic skin pores, believable hands and eyes, subtle breathing and blinking, "
+            "physically plausible lighting and motion, 35mm or 50mm lens, shallow depth of field, restrained film color grade, "
+            "realistic environmental detail and continuous live-action cinematography. "
+            "No cartoon, anime, CGI look, plastic skin, wax face, duplicate person, identity drift, different hairstyle, "
+            "different clothing, extra limbs, malformed hands, text, subtitles, watermark or logo."
+        )
         scenes.append({
-            "id": i,
+            "id": i + 1,
             "seconds": 4.0,
-            "dialogue": [(speaker, line)],
-            "prompt": (
-                "Photorealistic live-action cinematic short film. Use the supplied character reference as the identity anchor. "
-                "The exact same fictional adult man and woman must remain the same people in every shot: identical faces, hair, age, body proportions and wardrobe. "
-                "Do not introduce any additional people. "
-                + actions[i - 1] + " "
-                "Natural human acting, realistic skin pores, believable hands and eyes, subtle breathing and blinking, "
-                "physically plausible lighting and motion, 35mm or 50mm lens, shallow depth of field, restrained film color grade, "
-                "realistic environmental detail and continuous live-action cinematography. "
-                "No cartoon, no anime, no CGI look, no plastic skin, no wax face, no duplicate person, no identity drift, "
-                "no different hairstyle, no different clothing, no text, no subtitles, no watermark."
-            ),
+            "dialogue": line_pair,
+            "prompt": prompt,
         })
     return {
         "title": title,
