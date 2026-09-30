@@ -84,6 +84,7 @@ jobs:
           python - <<'PY'
           import json, subprocess
           from pathlib import Path
+          from imageio_ffmpeg import get_ffmpeg_exe
           root = Path("output/cinematic-short")
           report = json.loads((root/"quality.json").read_text(encoding="utf-8"))
           assert report["gates"]["passed"] is True
@@ -92,16 +93,14 @@ jobs:
           assert report["resolution"] == "1280x720"
           assert all(float(x) >= 3.0 for x in report["motion_scores"])
           film = root/"final_film.mp4"
+          ffmpeg = get_ffmpeg_exe()
           probe = subprocess.run(
-              ["ffprobe","-v","error","-show_entries","stream=codec_type,width,height",
-               "-of","json",str(film)],
+              [ffmpeg, "-hide_banner", "-i", str(film)],
               capture_output=True, text=True
           )
-          assert probe.returncode == 0, probe.stderr
-          streams = json.loads(probe.stdout)["streams"]
-          video = next(s for s in streams if s.get("codec_type") == "video")
-          assert video.get("width") == 1280 and video.get("height") == 720
-          assert any(s.get("codec_type") == "audio" for s in streams)
+          info = probe.stderr
+          assert "Video:" in info and "Audio:" in info, info[-1500:]
+          assert "1280x720" in info, info[-1500:]
           print("Cinematic publish gate: PASS")
           PY
 
