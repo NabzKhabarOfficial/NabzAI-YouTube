@@ -70,7 +70,7 @@ jobs:
           if [ "${{ github.event_name }}" = "schedule" ] || [ "${{ github.event_name }}" = "push" ] || [ "${{ inputs.mode }}" = "cinematic" ]; then
             test -f output/cinematic-short/final_film.mp4
             test -f output/cinematic-short/quality.json
-            python -c 'import json,subprocess; root="output/cinematic-short"; report=json.load(open(root+"/quality.json",encoding="utf-8")); assert report["gates"]["passed"] is True; assert report["duration_seconds"] >= 12; probe=subprocess.run(["ffprobe","-v","error","-show_entries","stream=codec_type","-of","json",root+"/final_film.mp4"],capture_output=True,text=True); streams=json.loads(probe.stdout)["streams"]; assert any(s["codec_type"]=="video" for s in streams); assert any(s["codec_type"]=="audio" for s in streams); print("Cinematic artifact gate: PASS")'
+            python -c 'import json,subprocess; from imageio_ffmpeg import get_ffmpeg_exe; root="output/cinematic-short"; report=json.load(open(root+"/quality.json",encoding="utf-8")); assert report["gates"]["passed"] is True; assert report["duration_seconds"] >= 12; probe=subprocess.run([get_ffmpeg_exe(),"-hide_banner","-i",root+"/final_film.mp4"],capture_output=True,text=True); info=probe.stderr; assert "Video:" in info and "Audio:" in info, info[-1200:]; print("Cinematic artifact gate: PASS")'
           else
             test -f output/*/video.mp4
             test -f output/*/thumbnail.jpg
@@ -96,9 +96,11 @@ jobs:
             git push
           fi
 
-      - name: Upload preview artifacts
+      - name: Upload generated artifacts for diagnosis and review
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: nabz-ai-youtube-preview
+          name: nabz-ai-youtube-output
           path: output/
+          if-no-files-found: ignore
           retention-days: 3
