@@ -17,7 +17,7 @@ OUT = ROOT / "output" / "cinematic-short"
 WORK = OUT / "work"
 STORY = load_story()
 
-PIPELINE_VERSION = "2026-09-30-character-reference-v3-six-shot"
+PIPELINE_VERSION = "2026-09-30-character-reference-v4-location-six-shot"
 SCENE_SECONDS = 4.0
 
 
