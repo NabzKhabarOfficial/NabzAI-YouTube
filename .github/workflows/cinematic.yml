@@ -10,9 +10,6 @@ on:
         type: choice
         options:
           - free
-  # Automatic runs are intentionally disabled. The free Hugging Face
-  # ZeroGPU quota is finite; scheduling retries after quota exhaustion only
-  # burns Actions time and cannot produce a better film.
 
 concurrency:
   group: nabz-ai-cinematic
@@ -24,24 +21,28 @@ permissions:
 jobs:
   cinematic:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 45
     env:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
           cache: pip
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           pip install -r requirements-cinematic.txt
+
       - name: Regression tests
         run: python -m unittest discover -s tests -v
+
       - name: Restore cinematic progress cache
         uses: actions/cache/restore@v4
         with:
@@ -49,51 +50,63 @@ jobs:
           key: nabz-ai-cinematic-progress-${{ github.run_id }}
           restore-keys: |
             nabz-ai-cinematic-progress-
+
       - name: Verify video provider credentials
         run: |
           if [ -n "$AGNES_API_KEY" ]; then
-            echo "Agnes API key configured; using no-GPU production provider."
+            echo "Agnes API key configured."
           elif [ -n "$HF_TOKEN" ]; then
             echo "Hugging Face token configured; using HF fallback providers."
           else
             echo "No video provider credential configured."
             exit 1
           fi
+
       - name: Select story slot
         env:
           NABZ_STORY_SLOT: ${{ github.run_number }}
         run: echo "NABZ_STORY_SLOT=$NABZ_STORY_SLOT" >> "$GITHUB_ENV"
+
       - name: Generate cinematic short film
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: python -m src.cinematic_short
-      - name: Cinematic technical quality gate
+
+      - name: Cinematic publish gate
         run: |
           test -f output/cinematic-short/final_film.mp4
           test -f output/cinematic-short/quality.json
+          test -f output/cinematic-short/story.json
+          test -f output/cinematic-short/thumbnail.jpg
           python - <<'PY'
           import json, subprocess
           from pathlib import Path
-          root=Path("output/cinematic-short")
-          report=json.loads((root/"quality.json").read_text(encoding="utf-8"))
+          root = Path("output/cinematic-short")
+          report = json.loads((root/"quality.json").read_text(encoding="utf-8"))
           assert report["gates"]["passed"] is True
-          assert report["gates"]["audio_stream_required"] is True
-          assert report["gates"]["video_stream_required"] is True
-          assert report["duration_seconds"] >= 10
-          film=root/"final_film.mp4"
-          probe=subprocess.run(["ffprobe","-v","error","-show_entries","stream=codec_type,width,height,r_frame_rate","-of","json",str(film)],capture_output=True,text=True)
+          assert report["scene_count"] == 6
+          assert report["duration_seconds"] >= 23.5
+          assert report["resolution"] == "1280x720"
+          assert all(float(x) >= 3.0 for x in report["motion_scores"])
+          film = root/"final_film.mp4"
+          probe = subprocess.run(
+              ["ffprobe","-v","error","-show_entries","stream=codec_type,width,height",
+               "-of","json",str(film)],
+              capture_output=True, text=True
+          )
           assert probe.returncode == 0, probe.stderr
-          streams=json.loads(probe.stdout)["streams"]
-          assert any(s.get("codec_type")=="video" for s in streams)
-          assert any(s.get("codec_type")=="audio" for s in streams)
-          print("Cinematic technical gate: PASS")
+          streams = json.loads(probe.stdout)["streams"]
+          video = next(s for s in streams if s.get("codec_type") == "video")
+          assert video["width"] == 1280 and video["height"] == 720
+          assert any(s.get("codec_type") == "audio" for s in streams)
+          print("Cinematic publish gate: PASS")
           PY
+
       - name: Save cinematic progress cache
         if: always()
         uses: actions/cache/save@v4
         with:
           path: output/cinematic-short/work
           key: nabz-ai-cinematic-progress-${{ github.run_id }}
+
       - name: Upload cinematic output and progress
         if: always()
         uses: actions/upload-artifact@v4
