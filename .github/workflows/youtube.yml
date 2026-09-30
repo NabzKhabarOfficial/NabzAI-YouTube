@@ -59,6 +59,12 @@ jobs:
       - name: Run regression tests
         run: python -m unittest discover -s tests -v
 
+      - name: Select cinematic story slot
+        if: github.event_name == 'schedule' || inputs.mode == 'cinematic'
+        env:
+          NABZ_STORY_SLOT: ${{ github.run_number }}
+        run: echo "NABZ_STORY_SLOT=$NABZ_STORY_SLOT" >> "$GITHUB_ENV"
+
       - name: Build scheduled cinematic episode
         if: github.event_name == 'schedule' || inputs.mode == 'cinematic'
         run: |
