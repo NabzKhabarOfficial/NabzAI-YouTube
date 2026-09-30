@@ -18,7 +18,7 @@ WORK.mkdir(parents=True, exist_ok=True)
 NEGATIVE = (
     "cartoon, anime, illustration, CGI, 3d render, plastic skin, wax face, "
     "doll face, deformed face, asymmetrical eyes, extra fingers, extra limbs, "
-    "duplicate person, fused hands, malformed hands, unnatural joints, blurry face, "
+    "duplicate person, fused hands, malformed hands, unnatural joints, blurry face, identity drift, "
     "identity change, different person, different hair, different clothing, "
     "face drift, age change, flicker, frozen motion, jerky motion, "
     "text, subtitles, watermark, logo"
