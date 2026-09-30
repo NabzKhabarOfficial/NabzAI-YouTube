@@ -306,10 +306,12 @@ def _motion_score(path: Path) -> float:
         frames = sorted(Path(td).glob("f_*.jpg"))
         if len(frames) < 4:
             return 0.0
-        from PIL import Image
-        import numpy as np
-        arrays = [np.asarray(Image.open(p), dtype=np.float32) for p in frames]
-        diffs = [float(np.abs(a - b).mean()) for a, b in zip(arrays, arrays[1:])]
+        from PIL import Image, ImageChops, ImageStat
+        arrays = [Image.open(p).convert("L") for p in frames]
+        diffs = [
+            float(ImageStat.Stat(ImageChops.difference(a, b)).mean[0])
+            for a, b in zip(arrays, arrays[1:])
+        ]
         return round(sum(diffs) / len(diffs), 2)
 
 
