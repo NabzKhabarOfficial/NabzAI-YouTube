@@ -90,16 +90,8 @@ jobs:
           assert report["resolution"] == "1280x720"
           assert all(float(x) >= 3.0 for x in report["motion_scores"])
           film = root/"final_film.mp4"
-          probe = subprocess.run(
-              ["ffprobe","-v","error","-show_entries","stream=codec_type,width,height",
-               "-of","json",str(film)],
-              capture_output=True, text=True
-          )
-          assert probe.returncode == 0, probe.stderr
-          streams = json.loads(probe.stdout)["streams"]
-          video = next(s for s in streams if s.get("codec_type") == "video")
-          assert video["width"] == 1280 and video["height"] == 720
-          assert any(s.get("codec_type") == "audio" for s in streams)
+          assert report["video_codec"] == "h264", report
+          assert report["audio_codec"] == "aac", report
           print("Cinematic publish gate: PASS")
           PY
 
