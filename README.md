@@ -42,6 +42,8 @@ Manual cinematic runs support three visibility choices:
 
 Public/unlisted publishing requires the `YOUTUBE_TOKEN` GitHub Actions secret containing an authorized YouTube OAuth token JSON. The uploader also sends the generated thumbnail and marks the upload as synthetic/altered media.
 
+YouTube may still force uploads from unverified API projects to `private`; Google documents an API-project audit requirement before such uploads can be made public through the API.
+
 Scheduled runs remain private when a YouTube token is configured, so an automatic schedule cannot unexpectedly publish a public video.
 
 ## Test locally
