@@ -12,10 +12,16 @@ on:
         type: choice
         options:
           - free
+      story_slot:
+        description: "Deterministic story slot for validation (0-9)"
+        required: true
+        default: "3"
+        type: choice
+        options: ["0","1","2","3","4","5","6","7","8","9"]
 
 concurrency:
   group: nabz-ai-cinematic
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -64,10 +70,12 @@ jobs:
             exit 1
           fi
 
-      - name: Select story slot
+      - name: Select deterministic story slot
         env:
-          NABZ_STORY_SLOT: ${{ github.run_number }}
-        run: echo "NABZ_STORY_SLOT=$NABZ_STORY_SLOT" >> "$GITHUB_ENV"
+          NABZ_STORY_SLOT: ${{ inputs.story_slot || 3 }}
+        run: |
+          echo "NABZ_STORY_SLOT=$NABZ_STORY_SLOT" >> "$GITHUB_ENV"
+          echo "Using story slot: $NABZ_STORY_SLOT"
 
       - name: Generate cinematic short film
         run: python -m src.cinematic_short
