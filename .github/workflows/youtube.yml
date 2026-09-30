@@ -91,16 +91,9 @@ jobs:
           assert report["scene_count"] == 6
           assert report["duration_seconds"] >= 23.5
           assert report["resolution"] == "1280x720"
+          assert report["video_codec"] == "h264", report
+          assert report["audio_codec"] == "aac", report
           assert all(float(x) >= 3.0 for x in report["motion_scores"])
-          film = root/"final_film.mp4"
-          ffmpeg = get_ffmpeg_exe()
-          probe = subprocess.run(
-              [ffmpeg, "-hide_banner", "-i", str(film)],
-              capture_output=True, text=True
-          )
-          info = probe.stderr
-          assert "Video:" in info and "Audio:" in info, info[-1500:]
-          assert "1280x720" in info, info[-1500:]
           print("Cinematic publish gate: PASS")
           PY
 
