@@ -380,7 +380,9 @@ def _technical_gate(path: Path, expected_seconds: float, scene_paths: list[Path]
                 f"Quality gate failed: scene {scene.name} is too static (motion_score={score:.2f})"
             )
 
-    return duration, scene_scores
+    video_codec = next((line.split("Video:", 1)[1].split(",", 1)[0].strip() for line in info.splitlines() if "Video:" in line), "")
+    audio_codec = next((line.split("Audio:", 1)[1].split(",", 1)[0].strip() for line in info.splitlines() if "Audio:" in line), "")
+    return duration, scene_scores, video_codec, audio_codec
 
 
 def main():
@@ -417,7 +419,7 @@ def main():
 
     final = OUT / "final_film.mp4"
     _concat_scene_clips(scene_clips, final)
-    duration, scene_scores = _technical_gate(final, expected_seconds, scene_clips)
+    duration, scene_scores, video_codec, audio_codec = _technical_gate(final, expected_seconds, scene_clips)
     thumbnail = _make_thumbnail(final, STORY["title"])
 
     report = {
@@ -429,6 +431,8 @@ def main():
         "scene_seconds": SCENE_SECONDS,
         "duration_seconds": round(duration, 2),
         "resolution": "1280x720",
+        "video_codec": video_codec,
+        "audio_codec": audio_codec,
         "motion_scores": scene_scores,
         "generation": {
             "video_model": providers_used,
