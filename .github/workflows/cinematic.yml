@@ -1,6 +1,8 @@
 name: NabzAI Cinematic Short
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       quality:
