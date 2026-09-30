@@ -12,7 +12,7 @@ WORK = ROOT / "output" / "cinematic-short" / "work"
 
 def _client(space: str):
     token = os.getenv("HF_TOKEN", "").strip() or None
-    return Client(space, token=token)
+    return Client(space, hf_token=token)
 
 def _resolve_media(result, space_url: str, suffix=".mp4"):
     values = result if isinstance(result, (list, tuple)) else [result]
@@ -93,9 +93,20 @@ def _generate_agnes(reference: str, scene: dict, seed: int):
         "frame_rate": 24,
         "seed": int(seed),
     }).encode("utf-8")
-    req = urllib.request.Request(base + "/v1/videos", data=payload, headers=headers, method="POST")
-    with urllib.request.urlopen(req, timeout=60) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
+    data = None
+    last_error = None
+    for attempt in range(3):
+        try:
+            req = urllib.request.Request(base + "/v1/videos", data=payload, headers=headers, method="POST")
+            with urllib.request.urlopen(req, timeout=90) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            break
+        except Exception as exc:
+            last_error = exc
+            if attempt < 2:
+                time.sleep(10 * (attempt + 1))
+    if data is None:
+        raise RuntimeError(f"Agnes create request failed after retries: {last_error}")
     video_id = data.get("video_id") or data.get("task_id")
     if not video_id:
         raise RuntimeError(f"Agnes did not return a video id: {data}")
@@ -104,8 +115,13 @@ def _generate_agnes(reference: str, scene: dict, seed: int):
     while time.time() < deadline:
         query = urllib.parse.urlencode({"video_id": video_id, "model_name": "agnes-video-v2.0"})
         poll = urllib.request.Request(base + "/agnesapi?" + query, headers={"Authorization": f"Bearer {key}"})
-        with urllib.request.urlopen(poll, timeout=60) as resp:
-            status = json.loads(resp.read().decode("utf-8"))
+        try:
+            with urllib.request.urlopen(poll, timeout=90) as resp:
+                status = json.loads(resp.read().decode("utf-8"))
+        except Exception as exc:
+            print(f"[video-router] Agnes poll transient error: {type(exc).__name__}: {exc}")
+            time.sleep(15)
+            continue
         state = str(status.get("status", "")).lower()
         result_url = status.get("url") or status.get("video_url")
         if state == "completed" and result_url:
