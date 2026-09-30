@@ -380,8 +380,11 @@ def _technical_gate(path: Path, expected_seconds: float, scene_paths: list[Path]
                 f"Quality gate failed: scene {scene.name} is too static (motion_score={score:.2f})"
             )
 
-    video_codec = next((line.split("Video:", 1)[1].split(",", 1)[0].strip() for line in info.splitlines() if "Video:" in line), "")
-    audio_codec = next((line.split("Audio:", 1)[1].split(",", 1)[0].strip() for line in info.splitlines() if "Audio:" in line), "")
+    import re
+    video_match = re.search(r"Video:\s*([^,\s]+)", info, re.IGNORECASE)
+    audio_match = re.search(r"Audio:\s*([^,\s]+)", info, re.IGNORECASE)
+    video_codec = video_match.group(1).lower() if video_match else ""
+    audio_codec = audio_match.group(1).lower() if audio_match else ""
     return duration, scene_scores, video_codec, audio_codec
 
 
