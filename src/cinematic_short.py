@@ -25,7 +25,7 @@ def _client(space: str):
     token = os.getenv("HF_TOKEN", "").strip() or None
     # Gradio 6 removes hf_token; token works on current clients and avoids
     # a deprecation warning without changing the free-only architecture.
-    return Client(space, token=token)
+    return Client(space, hf_token=token)
 
 
 def _local_file(value):
