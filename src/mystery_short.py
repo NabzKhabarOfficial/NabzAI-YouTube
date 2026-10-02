@@ -161,14 +161,40 @@ def _http(url: str, data: bytes | None = None, headers: dict | None = None, time
 
 
 def _pollinations(prompt: str, seed: int) -> Image.Image:
+    # Pollinations now requires a key (free account at enter.pollinations.ai).
+    token = os.getenv("POLLINATIONS_TOKEN", "").strip()
+    if not token:
+        raise RuntimeError("POLLINATIONS_TOKEN not configured")
     params = {"width": 1080, "height": 1920, "model": "flux", "nologo": "true", "private": "true",
               "enhance": "false", "seed": seed}
-    url = "https://image.pollinations.ai/prompt/" + urllib.parse.quote(prompt, safe="") + "?" + urllib.parse.urlencode(params)
-    headers = {}
-    token = os.getenv("POLLINATIONS_TOKEN", "").strip()
-    if token:
-        headers["Authorization"] = f"Bearer {token}"
-    return _valid_image(_http(url, headers=headers, timeout=240))
+    url = "https://gen.pollinations.ai/image/" + urllib.parse.quote(prompt, safe="") + "?" + urllib.parse.urlencode(params)
+    return _valid_image(_http(url, headers={"Authorization": f"Bearer {token}"}, timeout=240))
+
+
+_SPACE_CLIENTS: dict = {}
+
+
+def _hf_space(prompt: str, seed: int) -> Image.Image:
+    """FLUX.1-schnell Gradio Space (free ZeroGPU quota of the HF account)."""
+    from gradio_client import Client
+    token = os.getenv("HF_TOKEN", "").strip() or None
+    errors = []
+    spaces = [x.strip() for x in os.getenv("NABZ_FLUX_SPACES", "black-forest-labs/FLUX.1-schnell").split(",") if x.strip()]
+    for space in spaces:
+        try:
+            if space not in _SPACE_CLIENTS:
+                _SPACE_CLIENTS[space] = Client(space, hf_token=token, verbose=False)
+            result = _SPACE_CLIENTS[space].predict(prompt, int(seed) % 2147483647, False, 768, 1344, 4,
+                                                   api_name="/infer")
+            value = result[0] if isinstance(result, (list, tuple)) else result
+            if isinstance(value, dict):
+                value = value.get("path") or value.get("url")
+            if isinstance(value, str) and value.startswith("http"):
+                return _valid_image(_http(value, timeout=120))
+            return _valid_image(Path(str(value)).read_bytes())
+        except Exception as exc:
+            errors.append(f"{space}: {type(exc).__name__}: {str(exc)[:300]}")
+    raise RuntimeError(" | ".join(errors))
 
 
 def _huggingface(prompt: str, seed: int) -> Image.Image:
@@ -197,11 +223,15 @@ def generate_image(prompt: str, seed: int, target: Path) -> str:
     marker = target.with_suffix(".key")
     if target.exists() and marker.exists() and marker.read_text() == key:
         return "cache"
-    providers = [p.strip() for p in os.getenv("NABZ_IMAGE_PROVIDERS", "pollinations,huggingface").split(",") if p.strip()]
-    funcs = {"pollinations": _pollinations, "huggingface": _huggingface}
+    providers = [p.strip() for p in os.getenv("NABZ_IMAGE_PROVIDERS", "hfspace,pollinations,huggingface").split(",") if p.strip()]
+    funcs = {"hfspace": _hf_space, "pollinations": _pollinations, "huggingface": _huggingface}
     errors = []
     for name in providers:
-        attempts = 3 if name == "pollinations" else 1
+        if name not in funcs:
+            continue
+        if name == "pollinations" and not os.getenv("POLLINATIONS_TOKEN", "").strip():
+            continue
+        attempts = 2 if name in ("hfspace", "pollinations") else 1
         for attempt in range(attempts):
             try:
                 img = funcs[name](prompt, seed + attempt)
@@ -211,7 +241,7 @@ def generate_image(prompt: str, seed: int, target: Path) -> str:
             except Exception as exc:
                 errors.append(f"{name}#{attempt + 1}: {type(exc).__name__}: {str(exc)[:200]}")
                 log(errors[-1])
-                time.sleep(6 + 10 * attempt)
+                time.sleep(5 + 10 * attempt)
     raise RuntimeError("all image providers failed: " + " || ".join(errors))
 
 
@@ -651,7 +681,13 @@ def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     stories = load_bank()
     story = pick_story(stories, load_state(), os.getenv("NABZ_MYSTERY_ID", "").strip())
-    build(story)
+    try:
+        build(story)
+    except Exception as exc:
+        message = re.sub(r"[\r\n]+", " ", f"{type(exc).__name__}: {exc}")[:1800]
+        (OUT / "error.txt").write_text(message, encoding="utf-8")
+        print(f"::error title=NABZ Mysteries build failed::{message}", flush=True)
+        raise
     if os.getenv("NABZ_RECORD_STORY", "1") == "1":
         record_story(story["id"])
     return 0

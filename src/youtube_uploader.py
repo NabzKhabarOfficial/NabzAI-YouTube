@@ -126,7 +126,13 @@ def upload_from_metadata(root, privacy_status="private"):
 
 
 if __name__ == "__main__":
+    import re
     import sys
-    vid = upload_from_metadata(sys.argv[1], os.getenv("YOUTUBE_VISIBILITY", "private"))
+    try:
+        vid = upload_from_metadata(sys.argv[1], os.getenv("YOUTUBE_VISIBILITY", "private"))
+    except Exception as exc:
+        msg = re.sub(r"[\r\n]+", " ", f"{type(exc).__name__}: {exc}")[:1800]
+        print(f"::error title=YouTube upload failed::{msg}", flush=True)
+        raise
     print("YOUTUBE_VIDEO_ID:", vid)
     print("YOUTUBE_URL: https://youtu.be/" + vid)
