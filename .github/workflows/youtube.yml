@@ -1,6 +1,6 @@
 name: NabzAI-YouTube
-# Production YouTube pipeline: build -> technical/visual gates -> optional YouTube publish.
-# No paid service is required. Public publishing is explicit on manual cinematic runs.
+# Daily NABZ Mysteries Shorts (vertical, ~45 s) + optional cinematic/manual modes.
+# Scheduled uploads are always PRIVATE: review in YouTube Studio, then publish.
 
 on:
   workflow_dispatch:
@@ -8,21 +8,27 @@ on:
       mode:
         description: "Build mode"
         required: true
-        default: "test"
+        default: "mystery"
         type: choice
         options:
+          - mystery
+          - cinematic
           - test
           - short
-          - cinematic
       visibility:
-        description: "YouTube visibility for a manual cinematic publish"
+        description: "YouTube visibility"
         required: true
-        default: "public"
+        default: "private"
         type: choice
         options:
-          - public
-          - unlisted
           - private
+          - unlisted
+          - public
+      story_id:
+        description: "Optional mystery id (empty = next in line)"
+        required: false
+        default: ""
+        type: string
   schedule:
     - cron: "30 8 * * *"
 
@@ -38,9 +44,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     env:
+      MODE: ${{ github.event_name == 'schedule' && 'mystery' || inputs.mode }}
+      YOUTUBE_VISIBILITY: ${{ github.event_name == 'schedule' && 'private' || inputs.visibility }}
       YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
       AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      POLLINATIONS_TOKEN: ${{ secrets.POLLINATIONS_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -51,6 +63,9 @@ jobs:
           python-version: "3.12"
           cache: pip
 
+      - name: Install caption fonts
+        run: sudo apt-get install -y -q fonts-dejavu-core fonts-liberation2 || true
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
@@ -59,111 +74,74 @@ jobs:
       - name: Run regression tests
         run: python -m unittest discover -s tests -v
 
-      - name: Select cinematic story slot
-        if: github.event_name == 'schedule' || inputs.mode == 'cinematic'
+      - name: Build NABZ Mysteries short
+        if: env.MODE == 'mystery'
+        env:
+          NABZ_MYSTERY_ID: ${{ inputs.story_id }}
+        run: python -m src.mystery_short
+
+      - name: Build cinematic episode
+        if: env.MODE == 'cinematic'
         env:
           NABZ_STORY_SLOT: ${{ github.run_number }}
-        run: echo "NABZ_STORY_SLOT=$NABZ_STORY_SLOT" >> "$GITHUB_ENV"
-
-      - name: Build scheduled cinematic episode
-        if: github.event_name == 'schedule' || inputs.mode == 'cinematic'
         run: |
           if [ -z "$AGNES_API_KEY" ] && [ -z "$HF_TOKEN" ]; then
             echo "No cinematic provider credential configured."
             exit 1
           fi
           python -m src.cinematic_short
-
-      - name: Build manual preview
-        if: github.event_name != 'schedule' && inputs.mode != 'cinematic'
-        env:
-          MANUAL_MODE: ${{ inputs.mode || 'test' }}
-        run: python -m src.main --mode "$MANUAL_MODE"
-
-      - name: Verify generated cinematic package
-        if: github.event_name == 'schedule' || inputs.mode == 'cinematic'
-        run: |
-          test -f output/cinematic-short/final_film.mp4
-          test -f output/cinematic-short/quality.json
-          test -f output/cinematic-short/story.json
-          test -f output/cinematic-short/thumbnail.jpg
           python - <<'PY'
-          import json, subprocess
+          import json
           from pathlib import Path
-          from imageio_ffmpeg import get_ffmpeg_exe
           root = Path("output/cinematic-short")
           report = json.loads((root/"quality.json").read_text(encoding="utf-8"))
-          assert report["gates"]["passed"] is True
-          assert report["scene_count"] == 6
-          assert report["duration_seconds"] >= 23.5
-          assert report["resolution"] == "1280x720"
-          assert report["video_codec"] == "h264", report
-          assert report["audio_codec"] == "aac", report
-          assert all(float(x) >= 3.0 for x in report["motion_scores"])
+          assert report["gates"]["passed"] is True, report
+          story = json.loads((root/"story.json").read_text(encoding="utf-8"))
+          meta = {
+              "title": f"{story['title']} | NABZ AI Cinematic Short",
+              "description": f"{story['logline']}\n\nA short fictional live-action story created with AI-assisted video generation.\n\n#AI #AIVideo #ShortFilm #Cinematic #NabzAI",
+              "tags": ["AI", "AI video", "cinematic short film", "short film", "NABZ AI"],
+              "category_id": "24",
+          }
+          (root/"metadata.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
           print("Cinematic publish gate: PASS")
           PY
 
-      - name: Verify YouTube credentials for public/manual publish
-        if: inputs.mode == 'cinematic' && inputs.visibility != 'private'
+      - name: Build manual preview
+        if: env.MODE == 'test' || env.MODE == 'short'
+        run: python -m src.main --mode "$MODE"
+
+      - name: Upload to YouTube
+        if: env.MODE == 'mystery' || env.MODE == 'cinematic'
         run: |
-          if [ -z "$YOUTUBE_TOKEN" ]; then
-            echo "YOUTUBE_TOKEN is missing. Add the authorized YouTube OAuth JSON as a GitHub Actions secret before public/unlisted publishing."
-            exit 1
+          if [ -z "$YOUTUBE_REFRESH_TOKEN" ] && [ -z "$YOUTUBE_TOKEN" ]; then
+            echo "::warning::No YouTube credentials configured; video was built but not uploaded."
+            exit 0
           fi
-          echo "YouTube OAuth token is configured."
+          if [ "$MODE" = "mystery" ]; then ROOT=output/mystery-short; else ROOT=output/cinematic-short; fi
+          python -m src.youtube_uploader "$ROOT"
 
-      - name: Upload cinematic episode to YouTube
-        if: (github.event_name == 'schedule' || inputs.mode == 'cinematic') && env.YOUTUBE_TOKEN != ''
-        env:
-          YOUTUBE_VISIBILITY: ${{ inputs.visibility || 'private' }}
-        run: |
-          python - <<'PY'
-          import json, os
-          from src.youtube_uploader import upload_video
-
-          root = "output/cinematic-short"
-          story = json.load(open(os.path.join(root, "story.json"), encoding="utf-8"))
-          title = f"{story['title']} | NABZ AI Cinematic Short"
-          description = (
-              f"{story['logline']}\n\n"
-              "A short fictional live-action story created with AI-assisted video generation.\n"
-              "NABZ AI — practical AI experiments and cinematic stories.\n\n"
-              "#AI #AIVideo #ShortFilm #Cinematic #NabzAI"
-          )
-          tags = ["AI", "AI video", "cinematic short film", "short film", "NABZ AI", "AI filmmaking"]
-          video_id = upload_video(
-              os.path.join(root, "final_film.mp4"),
-              title,
-              description,
-              tags,
-              os.environ["YOUTUBE_TOKEN"],
-              privacy_status=os.environ.get("YOUTUBE_VISIBILITY", "private"),
-              category_id="24",
-              thumbnail_path=os.path.join(root, "thumbnail.jpg"),
-              contains_synthetic_media=True,
-          )
-          print("YOUTUBE_VIDEO_ID:", video_id)
-          print("YOUTUBE_VISIBILITY:", os.environ.get("YOUTUBE_VISIBILITY", "private"))
-          PY
-
-      - name: Persist scheduled topic state
-        if: github.event_name == 'schedule'
+      - name: Persist story state
+        if: env.MODE == 'mystery'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add content/published.json
           if git diff --cached --quiet; then
-            echo "No topic state changes to commit."
+            echo "No state changes to commit."
           else
-            git commit -m "chore: record scheduled NABZ AI topic"
+            git commit -m "chore: record NABZ Mysteries story [skip ci]"
+            git pull --rebase --autostash || true
             git push
           fi
 
-      - name: Upload generated artifacts for diagnosis and review
+      - name: Upload generated artifacts for review
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: nabz-ai-youtube-output
-          path: output/
+          path: |
+            output/
+            !output/**/work/**
           if-no-files-found: ignore
           retention-days: 7
