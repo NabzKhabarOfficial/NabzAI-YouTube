@@ -172,6 +172,7 @@ def _pollinations(prompt: str, seed: int) -> Image.Image:
 
 
 _SPACE_CLIENTS: dict = {}
+_SPACE_DEAD: set = set()
 
 
 def _hf_space(prompt: str, seed: int) -> Image.Image:
@@ -181,6 +182,9 @@ def _hf_space(prompt: str, seed: int) -> Image.Image:
     errors = []
     spaces = [x.strip() for x in os.getenv("NABZ_FLUX_SPACES", "black-forest-labs/FLUX.1-schnell").split(",") if x.strip()]
     for space in spaces:
+        if space in _SPACE_DEAD:
+            errors.append(f"{space}: quota exhausted earlier in this run")
+            continue
         try:
             if space not in _SPACE_CLIENTS:
                 _SPACE_CLIENTS[space] = Client(space, hf_token=token, verbose=False)
@@ -193,24 +197,29 @@ def _hf_space(prompt: str, seed: int) -> Image.Image:
                 return _valid_image(_http(value, timeout=120))
             return _valid_image(Path(str(value)).read_bytes())
         except Exception as exc:
+            if "quota" in str(exc).lower():
+                _SPACE_DEAD.add(space)
             errors.append(f"{space}: {type(exc).__name__}: {str(exc)[:300]}")
     raise RuntimeError(" | ".join(errors))
 
 
 def _huggingface(prompt: str, seed: int) -> Image.Image:
+    """HF Inference Providers (routed; uses the account's monthly free credit)."""
     token = os.getenv("HF_TOKEN", "").strip()
     if not token:
         raise RuntimeError("HF_TOKEN not configured")
+    from huggingface_hub import InferenceClient
     errors = []
-    for model in ("black-forest-labs/FLUX.1-schnell", "stabilityai/stable-diffusion-xl-base-1.0"):
-        body = json.dumps({"inputs": prompt, "parameters": {"width": 768, "height": 1344, "seed": seed}}).encode()
+    for provider in [x.strip() for x in os.getenv("NABZ_HF_PROVIDERS", "auto,nebius,together,fal-ai").split(",") if x.strip()]:
         try:
-            data = _http(f"https://router.huggingface.co/hf-inference/models/{model}", data=body,
-                         headers={"Authorization": f"Bearer {token}", "Content-Type": "application/json",
-                                  "Accept": "image/png"}, timeout=240)
-            return _valid_image(data)
-        except Exception as exc:  # try next model
-            errors.append(f"{model}: {exc}")
+            client = InferenceClient(provider=provider, api_key=token, timeout=240)
+            img = client.text_to_image(prompt, model="black-forest-labs/FLUX.1-schnell",
+                                       width=768, height=1344, seed=seed)
+            buf = io.BytesIO()
+            img.convert("RGB").save(buf, format="PNG")
+            return _valid_image(buf.getvalue())
+        except Exception as exc:
+            errors.append(f"{provider}: {type(exc).__name__}: {str(exc)[:160]}")
     raise RuntimeError(" | ".join(errors))
 
 
@@ -241,6 +250,8 @@ def generate_image(prompt: str, seed: int, target: Path) -> str:
             except Exception as exc:
                 errors.append(f"{name}#{attempt + 1}: {type(exc).__name__}: {str(exc)[:200]}")
                 log(errors[-1])
+                if "quota" in str(exc).lower() or "credit" in str(exc).lower():
+                    break
                 time.sleep(5 + 10 * attempt)
     raise RuntimeError("all image providers failed: " + " || ".join(errors))
 
@@ -677,11 +688,30 @@ def build(story: dict) -> dict:
     return report
 
 
+def precheck_youtube() -> None:
+    """Fail fast (before spending free GPU quota) if YouTube credentials cannot refresh."""
+    if os.getenv("NABZ_PRECHECK_YOUTUBE", "1") != "1":
+        return
+    if not (os.getenv("YOUTUBE_REFRESH_TOKEN", "").strip() or os.getenv("YOUTUBE_TOKEN", "").strip()):
+        return
+    from google.auth.transport.requests import Request
+    from google.oauth2.credentials import Credentials
+    from src.youtube_uploader import SCOPES, load_credential_info
+    info = load_credential_info()
+    creds = Credentials.from_authorized_user_info(info, SCOPES)
+    try:
+        creds.refresh(Request())
+    except Exception as exc:
+        raise RuntimeError(f"YouTube credentials rejected before build: {exc}") from None
+    log("YouTube credentials OK")
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
     stories = load_bank()
     story = pick_story(stories, load_state(), os.getenv("NABZ_MYSTERY_ID", "").strip())
     try:
+        precheck_youtube()
         build(story)
     except Exception as exc:
         message = re.sub(r"[\r\n]+", " ", f"{type(exc).__name__}: {exc}")[:1800]
