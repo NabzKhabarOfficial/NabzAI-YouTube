@@ -2,8 +2,10 @@
 
 Writes review/contact-sheet.jpg, review/transcript.txt, review/metrics.json and
 review/review.md. Uses the ffmpeg binary bundled with imageio-ffmpeg (no system
-ffprobe needed). It NEVER fails the workflow: any error is reported and the
-script exits 0, so the YouTube upload step always runs.
+ffprobe needed). It also reports how many mystery stories are left in the bank
+and raises a workflow warning when 15 or fewer remain.
+It NEVER fails the workflow: any error is reported and the script exits 0, so
+the YouTube upload step always runs.
 """
 from __future__ import annotations
 
@@ -16,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "output" / "mystery-short"
 REVIEW = ROOT / "review"
+BANK_ALERT_AT = 15
 
 
 def ffmpeg_exe() -> str:
@@ -89,7 +92,35 @@ def contact_sheet(paths: list[Path]) -> None:
         p.unlink(missing_ok=True)
 
 
+def bank_status() -> dict:
+    """How many unpublished mystery stories are left in the bank."""
+    bank = json.loads((ROOT / "content" / "mysteries.json").read_text(encoding="utf-8"))
+    ids = [s["id"] for s in bank.get("stories", [])]
+    pub_path = ROOT / "content" / "published.json"
+    done = set()
+    if pub_path.exists():
+        done = set(json.loads(pub_path.read_text(encoding="utf-8")).get("mysteries", []))
+    left = [i for i in ids if i not in done]
+    return {"total": len(ids), "remaining": len(left), "next": left[:3], "low": len(left) <= BANK_ALERT_AT}
+
+
+def report_bank() -> str:
+    try:
+        b = bank_status()
+    except Exception as exc:
+        print(f"::warning title=Story bank check skipped::{type(exc).__name__}: {exc}")
+        return ""
+    line = f"Story bank: {b['remaining']} of {b['total']} stories left (next: {', '.join(b['next'])})"
+    print("review: " + line)
+    if b["low"]:
+        print(f"::warning title=Story bank low::Only {b['remaining']} mystery stories left. "
+              "Add a new batch to content/mysteries.json.")
+        line = "LOW: " + line
+    return line
+
+
 def build() -> None:
+    bank_line = report_bank()
     video = OUT / "final_short.mp4"
     if not video.exists():
         print("review: no video to review")
@@ -105,6 +136,7 @@ def build() -> None:
     story_path = OUT / "story.json"
     story = json.loads(story_path.read_text(encoding="utf-8")) if story_path.exists() else {}
     info["story_id"] = story.get("id", "")
+    info["story_bank"] = bank_line
     (REVIEW / "transcript.txt").write_text(
         "\n".join(b.get("text", "") for b in story.get("beats", [])) + "\n", encoding="utf-8")
     contact_sheet(frames(video, info["duration_seconds"]))
@@ -118,7 +150,7 @@ def build() -> None:
     ]
     lines = [f"# Review: {story.get('title', 'latest')}", "", "| Check | Result |", "|---|---|"]
     lines += [f"| {n} | {'OK' if ok else 'CHECK'} ({v}) |" for n, ok, v in checks]
-    lines += ["", f"Images: {', '.join(info.get('image_sources', []))}"]
+    lines += ["", f"Images: {', '.join(info.get('image_sources', []))}", "", bank_line]
     (REVIEW / "review.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("review: " + "; ".join(f"{n}={'OK' if ok else 'CHECK'}" for n, ok, _ in checks))
 
