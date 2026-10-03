@@ -97,13 +97,10 @@ jobs:
           report = json.loads((root/"quality.json").read_text(encoding="utf-8"))
           assert report["gates"]["passed"] is True, report
           story = json.loads((root/"story.json").read_text(encoding="utf-8"))
+          nl2 = chr(10) * 2
           meta = {
               "title": f"{story['title']} | NABZ AI Cinematic Short",
-              "description": f"{story['logline']}
-
-A short fictional live-action story created with AI-assisted video generation.
-
-#AI #AIVideo #ShortFilm #Cinematic #NabzAI",
+              "description": story["logline"] + nl2 + "A short fictional live-action story created with AI-assisted video generation." + nl2 + "#AI #AIVideo #ShortFilm #Cinematic #NabzAI",
               "tags": ["AI", "AI video", "cinematic short film", "short film", "NABZ AI"],
               "category_id": "24",
           }
