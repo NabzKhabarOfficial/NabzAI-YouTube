@@ -516,6 +516,20 @@ def render_badge(text: str, path: Path) -> None:
     img.save(path)
 
 
+def render_watermark(path: Path) -> None:
+    """Small premium brand mark, deliberately subtle and safe for Shorts UI."""
+    f = font(34)
+    img = Image.new("RGBA", (300, 72), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([0, 0, 299, 71], radius=20, fill=(8, 8, 8, 150),
+                        outline=(205, 155, 58, 180), width=2)
+    d.ellipse([14, 14, 58, 58], fill=(190, 25, 35, 230), outline=(255, 215, 130, 220), width=2)
+    q = font(31)
+    d.text((27, 11), "?", font=q, fill=(255, 235, 180, 255), anchor="ma")
+    d.text((74, 17), "NABZ MYSTERIES", font=f, fill=(246, 220, 160, 235))
+    img.save(path)
+
+
 # ---------------------------------------------------------------- video
 MOTIONS = [
     ("1+0.13*on/{D}", "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"),
@@ -538,13 +552,14 @@ def render_segment(image: Path, seconds: float, motion: int, target: Path) -> No
 
 
 def assemble(segments: list[Path], durations: list[float], captions: Path, badge: Path,
-             audio: Path, target: Path) -> None:
+             watermark: Path, audio: Path, target: Path) -> None:
     total = sum(durations)
     args: list[str] = []
     for seg in segments:
         args += ["-i", str(seg)]
     n = len(segments)
-    args += ["-i", str(captions), "-loop", "1", "-i", str(badge), "-i", str(audio)]
+    args += ["-i", str(captions), "-loop", "1", "-i", str(badge),
+             "-loop", "1", "-i", str(watermark), "-i", str(audio)]
     parts, last, offset = [], "[0:v]", 0.0
     for i in range(1, n):
         offset += durations[i - 1]
@@ -553,8 +568,9 @@ def assemble(segments: list[Path], durations: list[float], captions: Path, badge
         last = out
     parts.append(f"{last}[{n}:v]overlay=0:{CAP_Y}:format=auto[vc]")
     parts.append(f"[vc][{n + 1}:v]overlay=(W-w)/2:250:enable='lt(t,3.0)':format=auto[vb]")
-    parts.append("[vb]format=yuv420p[vout]")
-    args += ["-filter_complex", ";".join(parts), "-map", "[vout]", "-map", f"{n + 2}:a",
+    parts.append(f"[vb][{n + 2}:v]overlay=W-w-42:82:format=auto[vwm]")
+    parts.append("[vwm]format=yuv420p[vout]")
+    args += ["-filter_complex", ";".join(parts), "-map", "[vout]", "-map", f"{n + 3}:a",
              "-t", f"{total:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "19",
              "-profile:v", "high", "-pix_fmt", "yuv420p", "-r", str(FPS),
              "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-movflags", "+faststart", str(target)]
@@ -661,9 +677,11 @@ def build(story: dict) -> dict:
     caption_frames = build_caption_track(words, total, captions)
     badge = WORK / "badge.png"
     render_badge(os.getenv("NABZ_MYSTERY_BADGE", "UNSOLVED"), badge)
+    watermark = WORK / "watermark.png"
+    render_watermark(watermark)
 
     final = OUT / "final_short.mp4"
-    assemble(segs, durations, captions, badge, audio, final)
+    assemble(segs, durations, captions, badge, watermark, audio, final)
     make_thumbnail(images[0], story["title"], OUT / "thumbnail.jpg")
 
     report = quality_gate(final, story, sources, caption_frames)
