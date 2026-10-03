@@ -11,9 +11,10 @@ SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 TOKEN_URI = "https://oauth2.googleapis.com/token"
 _QUOTES = {"\u201c": '"', "\u201d": '"', "\u201e": '"', "\u00ab": '"', "\u00bb": '"', "\u2018": "'", "\u2019": "'"}
 
-# Daily Shorts go live at 01:30 Tehran = 18:00 New York (EDT) / 17:00 (EST), US prime time.
+# Daily Shorts go live at 22:30 Tehran: 20:00 London / 21:00 Berlin (Europe evening)
+# and 15:00 New York / 12:00 Los Angeles (US afternoon), so both audiences are awake.
 TEHRAN = timezone(timedelta(hours=3, minutes=30))
-PUBLISH_HOUR, PUBLISH_MINUTE = 1, 30
+PUBLISH_HOUR, PUBLISH_MINUTE = 22, 30
 
 
 def _clean(value) -> str:
@@ -142,7 +143,7 @@ def upload_video(
     status = response.get("status") or {}
     if publish_at:
         if status.get("publishAt"):
-            print(f"YOUTUBE_SCHEDULED: goes public at {status['publishAt']} (01:30 Tehran)")
+            print(f"YOUTUBE_SCHEDULED: goes public at {status['publishAt']} (22:30 Tehran)")
         else:
             print("::warning title=Not scheduled::YouTube kept the video private without a publish time "
                   "(usually an unaudited API project). Publish it in YouTube Studio.")
