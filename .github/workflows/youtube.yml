@@ -99,7 +99,11 @@ jobs:
           story = json.loads((root/"story.json").read_text(encoding="utf-8"))
           meta = {
               "title": f"{story['title']} | NABZ AI Cinematic Short",
-              "description": f"{story['logline']}\n\nA short fictional live-action story created with AI-assisted video generation.\n\n#AI #AIVideo #ShortFilm #Cinematic #NabzAI",
+              "description": f"{story['logline']}
+
+A short fictional live-action story created with AI-assisted video generation.
+
+#AI #AIVideo #ShortFilm #Cinematic #NabzAI",
               "tags": ["AI", "AI video", "cinematic short film", "short film", "NABZ AI"],
               "category_id": "24",
           }
@@ -144,4 +148,4 @@ jobs:
             output/
             !output/**/work/**
           if-no-files-found: ignore
-          retention-days: 7
+          retention-days: 2
