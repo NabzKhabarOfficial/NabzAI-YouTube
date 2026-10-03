@@ -1,5 +1,7 @@
+import hashlib
 import json
 import os
+import re
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -163,12 +165,70 @@ def upload_video(
     return video_id
 
 
+# ---------------------------------------------------------------- Shorts SEO
+# YouTube shows the first three description hashtags above the title, but only when the
+# title itself has no hashtag. So the title stays clean and the story's own hashtags lead.
+GENERIC_TAGS = {"mystery", "unsolved mystery", "unsolved mysteries", "history", "true story", "shorts"}
+BASE_HASHTAGS = ["#UnsolvedMysteries", "#Shorts", "#Mystery", "#History", "#TrueStory"]
+CTAS = [
+    "What's your theory? Drop it in the comments.",
+    "Which explanation do you believe? Tell me below.",
+    "Could this ever be solved? Leave your best theory below.",
+]
+
+
+def hashtag(text) -> str:
+    words = re.findall(r"[A-Za-z0-9]+", re.sub(r"['\u2019]", "", str(text or "")))
+    if not words or all(w.isdigit() for w in words):
+        return ""
+    return "#" + "".join(w if w.isupper() else w[:1].upper() + w[1:] for w in words)
+
+
+def story_hashtags(story: dict, limit: int = 8) -> list:
+    out, seen = [], set()
+    specific = [t for t in story.get("tags", []) if str(t).strip().lower() not in GENERIC_TAGS]
+    for tag in [hashtag(t) for t in specific[:2]] + BASE_HASHTAGS:
+        if tag and len(tag) <= 30 and tag.lower() not in seen:
+            seen.add(tag.lower())
+            out.append(tag)
+    return out[:limit]
+
+
+def shorts_metadata(story: dict) -> dict:
+    title = re.sub(r"\s*#\w+", "", str(story["title"])).strip()
+    pick = int(hashlib.sha1(story["id"].encode()).hexdigest()[:4], 16) % len(CTAS)
+    description = (
+        f"{story['beats'][0]['text']}\n\n"
+        f"{CTAS[pick]}\n\n"
+        "NABZ Mysteries: one real unsolved mystery, explained in under a minute. Follow for a new one every day.\n"
+        "Visuals are AI-generated illustrations; narration uses an AI voice.\n\n"
+        + " ".join(story_hashtags(story))
+    )
+    tags, seen = [], set()
+    for t in list(story.get("tags", [])) + ["mystery", "unsolved mysteries", "shorts", "NABZ Mysteries"]:
+        if str(t).lower() not in seen:
+            seen.add(str(t).lower())
+            tags.append(str(t))
+    return {"story_id": story["id"], "title": title[:100], "description": description,
+            "tags": tags, "category_id": "27"}
+
+
 def upload_from_metadata(root, privacy_status="private", publish_at=None):
     root = Path(root)
     meta = json.loads((root / "metadata.json").read_text(encoding="utf-8"))
     video = next((root / n for n in ("final_short.mp4", "final_film.mp4") if (root / n).exists()), None)
     if video is None:
         raise RuntimeError(f"no final video in {root}")
+    story_file = root / "story.json"
+    if video.name == "final_short.mp4" and story_file.exists():
+        try:
+            story = json.loads(story_file.read_text(encoding="utf-8"))
+            if story.get("beats") and story.get("title"):
+                meta = shorts_metadata(story)
+                (root / "metadata.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
+                print("SHORTS_SEO:", meta["title"], "|", meta["description"].splitlines()[-1])
+        except Exception as exc:  # never block an upload over metadata polish
+            print(f"WARNING: kept original metadata ({type(exc).__name__}: {exc})")
     return upload_video(
         video, meta["title"], meta["description"], meta["tags"],
         privacy_status=privacy_status, category_id=meta.get("category_id", "24"),
