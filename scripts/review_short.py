@@ -1,81 +1,131 @@
-"""Create a small human-review bundle for the latest mystery Short."""
+"""Create a small private review bundle for the latest mystery Short.
+
+Writes review/contact-sheet.jpg, review/transcript.txt, review/metrics.json and
+review/review.md. Uses the ffmpeg binary bundled with imageio-ffmpeg (no system
+ffprobe needed). It NEVER fails the workflow: any error is reported and the
+script exits 0, so the YouTube upload step always runs.
+"""
 from __future__ import annotations
+
 import json
+import re
 import subprocess
+import sys
 from pathlib import Path
-from PIL import Image, ImageDraw
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "output" / "mystery-short"
 REVIEW = ROOT / "review"
 
+
+def ffmpeg_exe() -> str:
+    try:
+        from imageio_ffmpeg import get_ffmpeg_exe
+        return get_ffmpeg_exe()
+    except Exception:
+        return "ffmpeg"
+
+
+FF = ffmpeg_exe()
+
+
 def run(*args):
-    return subprocess.run(list(args), capture_output=True, text=True, check=False)
+    try:
+        return subprocess.run([FF, "-hide_banner", *args], capture_output=True, text=True, timeout=180)
+    except Exception as exc:  # binary missing, timeout, ...
+        return subprocess.CompletedProcess(args, 1, "", str(exc))
 
-def num(s):
-    try: return float(s)
-    except Exception: return None
 
-def video_metrics(video: Path) -> dict:
-    p = run("ffprobe", "-v", "quiet", "-print_format", "json", "-show_format", "-show_streams", str(video))
-    if p.returncode != 0: return {"error": p.stderr[-500:]}
-    data = json.loads(p.stdout or "{}")
-    streams = data.get("streams", [])
-    v = next((x for x in streams if x.get("codec_type") == "video"), {})
-    a = next((x for x in streams if x.get("codec_type") == "audio"), {})
-    duration = num((data.get("format") or {}).get("duration")) or num(v.get("duration")) or 0
-    return {"duration_seconds": round(duration, 2), "resolution": f"{v.get('width', 0)}x{v.get('height', 0)}", "video_codec": v.get("codec_name", ""), "audio_codec": a.get("codec_name", ""), "fps": v.get("r_frame_rate", ""), "audio_sample_rate": a.get("sample_rate", ""), "file_mb": round(video.stat().st_size / 1048576, 2)}
+def probe(video: Path) -> dict:
+    text = run("-i", str(video)).stderr or ""
+    info = {"duration_seconds": 0.0, "resolution": "", "video_codec": "", "audio_codec": "",
+            "file_mb": round(video.stat().st_size / 1048576, 2)}
+    m = re.search(r"Duration: (\d+):(\d+):([\d.]+)", text)
+    if m:
+        info["duration_seconds"] = round(int(m[1]) * 3600 + int(m[2]) * 60 + float(m[3]), 2)
+    m = re.search(r"Video: (\w+).*?(\d{3,4})x(\d{3,4})", text)
+    if m:
+        info["video_codec"], info["resolution"] = m[1], f"{m[2]}x{m[3]}"
+    m = re.search(r"Audio: (\w+)", text)
+    if m:
+        info["audio_codec"] = m[1]
+    return info
 
-def audio_metrics(video: Path) -> dict:
-    p = run("ffmpeg", "-hide_banner", "-i", str(video), "-af", "volumedetect", "-f", "null", "-")
+
+def audio_levels(video: Path) -> dict:
+    text = run("-i", str(video), "-af", "volumedetect", "-f", "null", "-").stderr or ""
     out = {}
     for key in ("mean_volume", "max_volume"):
-        line = next((x for x in (p.stderr or "").splitlines() if key in x), "")
-        if line: out[key] = line.split(":", 1)[-1].strip()
+        m = re.search(key + r":\s*(-?[\d.]+) dB", text)
+        if m:
+            out[key] = float(m[1])
     return out
 
-def extract_frames(video: Path, duration: float) -> list[Path]:
-    frames = []
-    for i, pct in enumerate((0, 25, 50, 75, 100)):
+
+def frames(video: Path, duration: float) -> list[Path]:
+    got = []
+    for i, pct in enumerate((0, 25, 50, 75, 97)):
         target = REVIEW / f"frame_{i}.jpg"
-        if pct == 0:
-            args = ("ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(video), "-frames:v", "1", str(target))
-        else:
-            at = max(0, duration * pct / 100 - 0.05)
-            args = ("ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-ss", f"{at:.2f}", "-i", str(video), "-frames:v", "1", str(target))
-        run(*args)
-        if target.exists() and target.stat().st_size: frames.append(target)
-    return frames
+        at = max(0.0, duration * pct / 100)
+        run("-loglevel", "error", "-y", "-ss", f"{at:.2f}", "-i", str(video), "-frames:v", "1",
+            "-vf", "scale=360:640", "-q:v", "4", str(target))
+        if target.exists() and target.stat().st_size:
+            got.append(target)
+    return got
 
-def contact_sheet(frames: list[Path]):
-    tw, th = 270, 480
-    canvas = Image.new("RGB", (tw * len(frames), th + 48), (18, 18, 24))
-    d = ImageDraw.Draw(canvas)
-    for i, path in enumerate(frames):
-        im = Image.open(path).convert("RGB")
-        im.thumbnail((tw, th - 12))
-        canvas.paste(im, (i * tw + (tw - im.width) // 2, 4))
-        d.text((i * tw + 8, th + 12), f"{i * 25}%", fill=(240, 220, 150))
-    canvas.save(REVIEW / "contact-sheet.jpg", quality=84, optimize=True)
 
-def main():
+def contact_sheet(paths: list[Path]) -> None:
+    from PIL import Image, ImageDraw
+    if not paths:
+        return
+    tw, th = 360, 640
+    sheet = Image.new("RGB", (tw * len(paths), th + 40), (18, 18, 24))
+    d = ImageDraw.Draw(sheet)
+    for i, p in enumerate(paths):
+        sheet.paste(Image.open(p).convert("RGB").resize((tw, th)), (i * tw, 0))
+        d.text((i * tw + 10, th + 12), ["start", "25%", "50%", "75%", "end"][i], fill=(240, 220, 150))
+    sheet.save(REVIEW / "contact-sheet.jpg", quality=82, optimize=True)
+    for p in paths:  # keep the repo light: only the sheet is committed
+        p.unlink(missing_ok=True)
+
+
+def build() -> None:
     video = OUT / "final_short.mp4"
-    if not video.exists(): raise SystemExit("latest mystery video not found")
+    if not video.exists():
+        print("review: no video to review")
+        return
     REVIEW.mkdir(exist_ok=True)
-    metrics = video_metrics(video)
-    metrics["audio"] = audio_metrics(video)
+    info = probe(video)
+    info["audio"] = audio_levels(video)
+    q = OUT / "quality.json"
+    if q.exists():
+        quality = json.loads(q.read_text(encoding="utf-8"))
+        info["image_sources"] = quality.get("image_sources", [])
+        info["quality_passed"] = quality.get("passed")
     story_path = OUT / "story.json"
     story = json.loads(story_path.read_text(encoding="utf-8")) if story_path.exists() else {}
-    transcript = "\n\n".join(b.get("text", "") for b in story.get("beats", []))
-    (REVIEW / "transcript.txt").write_text(transcript + "\n", encoding="utf-8")
-    duration = metrics.get("duration_seconds", 0)
-    frames = extract_frames(video, duration)
-    contact_sheet(frames)
-    (REVIEW / "metrics.json").write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    checks = [("duration", 18 <= duration <= 59.5, f"{duration:.1f}s"), ("vertical", metrics.get("resolution") == "1080x1920", metrics.get("resolution", "")), ("audio", bool(metrics.get("audio", {}).get("mean_volume")), metrics.get("audio", {}).get("mean_volume", "unknown")), ("frames", len(frames) == 5, f"{len(frames)}/5 frames")]
-    verdict = "PASS" if all(x[1] for x in checks) else "CHECK"
-    lines = [f"# NABZ Mysteries review: {story.get('title', 'latest')}", "", f"**Automatic verdict: {verdict}**", "", "Open `contact-sheet.jpg` for the visual check and `transcript.txt` for the narration.", "", "| Check | Result |", "|---|---|"]
-    lines += [f"| {name} | {'PASS' if ok else 'CHECK'}: {value} |" for name, ok, value in checks]
-    lines += ["", "## Audio", f"- Mean: `{metrics.get('audio', {}).get('mean_volume', 'unknown')}`", f"- Peak: `{metrics.get('audio', {}).get('max_volume', 'unknown')}`"]
+    info["story_id"] = story.get("id", "")
+    (REVIEW / "transcript.txt").write_text(
+        "\n".join(b.get("text", "") for b in story.get("beats", [])) + "\n", encoding="utf-8")
+    contact_sheet(frames(video, info["duration_seconds"]))
+    (REVIEW / "metrics.json").write_text(json.dumps(info, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    dur, mean = info["duration_seconds"], info["audio"].get("mean_volume")
+    checks = [
+        ("duration 20-40s", 20 <= dur <= 40, f"{dur:.1f}s"),
+        ("vertical 1080x1920", info["resolution"] == "1080x1920", info["resolution"]),
+        ("audio not too quiet", mean is not None and mean > -22, f"{mean} dB"),
+        ("no clipping", info["audio"].get("max_volume", 0) < 0, f"{info['audio'].get('max_volume')} dB"),
+    ]
+    lines = [f"# Review: {story.get('title', 'latest')}", "", "| Check | Result |", "|---|---|"]
+    lines += [f"| {n} | {'OK' if ok else 'CHECK'} ({v}) |" for n, ok, v in checks]
+    lines += ["", f"Images: {', '.join(info.get('image_sources', []))}"]
     (REVIEW / "review.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"review report: {verdict}, {len(frames)} frames, {duration:.1f}s")
-if __name__ == "__main__": main()
+    print("review: " + "; ".join(f"{n}={'OK' if ok else 'CHECK'}" for n, ok, _ in checks))
+
+
+if __name__ == "__main__":
+    try:
+        build()
+    except Exception as exc:
+        print(f"::warning title=Review report skipped::{type(exc).__name__}: {exc}")
+    sys.exit(0)
