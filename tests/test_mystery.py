@@ -14,7 +14,7 @@ class MysteryShortTests(unittest.TestCase):
         self.assertGreaterEqual(len(stories), 14)
         for s in stories:
             words = sum(len(b["text"].split()) for b in s["beats"])
-            self.assertLessEqual(words / 2.7, 59, s["id"])  # ~2.7 words/s narration
+            self.assertLessEqual(words / 2.7, 36, s["id"])  # tight ~30 s Shorts at ~2.7+ words/s
 
     def test_pick_cycles_without_repeats(self):
         stories = m.load_bank()
@@ -67,6 +67,17 @@ class UploaderCredentialTests(unittest.TestCase):
         info = load_credential_info(env={"YOUTUBE_TOKEN": curly})
         self.assertEqual(info["refresh_token"], "1//r")
         self.assertEqual(info["token_uri"], "https://oauth2.googleapis.com/token")
+
+    def test_publish_time_is_2230_tehran(self):
+        try:
+            from datetime import datetime, timezone
+            from src.youtube_uploader import next_publish_at
+        except ImportError:
+            self.skipTest("google client libraries not installed")
+        noon = datetime(2026, 10, 3, 8, 40, tzinfo=timezone.utc)  # 12:10 Tehran
+        self.assertEqual(next_publish_at(noon), "2026-10-03T19:00:00.000Z")
+        late = datetime(2026, 10, 3, 18, 30, tzinfo=timezone.utc)  # 22:00 Tehran, too close
+        self.assertEqual(next_publish_at(late), "2026-10-04T19:00:00.000Z")
 
 
 if __name__ == "__main__":

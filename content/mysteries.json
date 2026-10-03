@@ -6,13 +6,12 @@
    "title": "The Ghost Ship Found With No One On Board",
    "tags": ["Mary Celeste", "ghost ship", "unsolved mystery", "history"],
    "beats": [
-    {"text": "In December 1872, sailors spotted a ship drifting in the Atlantic. Nobody was at the wheel.", "visual": "a weathered 19th century sailing brigantine drifting alone on a grey stormy Atlantic ocean, torn sails, no crew"},
-    {"text": "It was the Mary Celeste. Her captain, his wife, their two-year-old daughter and seven crew had simply vanished.", "visual": "empty wooden deck of an old sailing ship, coiled ropes, abandoned, drifting fog"},
-    {"text": "There was no sign of a fight. Personal belongings were untouched. Six months of food and water were still on board.", "visual": "captain's cabin of an 1870s ship, untouched belongings, oil lamp, open logbook, dust in light beams"},
-    {"text": "The cargo, more than seventeen hundred barrels of alcohol, was almost completely intact.", "visual": "rows of old wooden barrels in the dark cargo hold of a ship, lantern light"},
-    {"text": "Only one thing was missing: the lifeboat. Whoever left, left in a hurry and never came back.", "visual": "empty wooden davits on the side of an old sailing ship where a lifeboat used to hang, rough sea below"},
-    {"text": "Theories range from fumes leaking from the cargo, to a sudden waterspout, to a false alarm that turned deadly.", "visual": "a towering waterspout forming over a dark ocean near a small sailing ship, lightning"},
-    {"text": "No one was ever found. So why would ten people abandon a perfectly good ship? What do you think happened?", "visual": "a tiny wooden lifeboat lost in a vast dark ocean at dusk, ominous clouds"}
+    {"text": "A ship was found drifting in the Atlantic, sails up, with not a single person on board.", "visual": "a weathered 19th century sailing brigantine drifting alone on a grey stormy Atlantic ocean, torn sails, no crew"},
+    {"text": "This is the Mary Celeste, 1872. Ten people, including a two-year-old girl, simply gone.", "visual": "empty wooden deck of an old sailing ship, coiled ropes, abandoned, drifting fog"},
+    {"text": "No fight. Their belongings untouched. Six months of food still on board.", "visual": "captain's cabin of an 1870s ship, untouched belongings, oil lamp, open logbook, dust in light beams"},
+    {"text": "Only one thing was missing: the lifeboat. They left in a hurry.", "visual": "empty wooden davits on the side of an old sailing ship where a lifeboat used to hang, rough sea below"},
+    {"text": "Toxic fumes? A waterspout? A panic that turned deadly? No one knows.", "visual": "a towering waterspout forming over a dark ocean near a small sailing ship, lightning"},
+    {"text": "Not one of them was ever seen again. Weeks later, their empty ship was still out there, because", "visual": "a tiny wooden lifeboat lost in a vast dark ocean at dusk, ominous clouds"}
    ]
   },
   {
@@ -20,13 +19,12 @@
    "title": "Nine Hikers Cut Their Tent Open From Inside",
    "tags": ["Dyatlov Pass", "unsolved mystery", "Russia", "true story"],
    "beats": [
-    {"text": "In February 1959, nine experienced hikers died in Russia's Ural Mountains. What rescuers found made no sense.", "visual": "snowy Ural mountain slope at night, harsh wind, a lone canvas tent half buried in snow"},
-    {"text": "Their tent had been cut open from the inside. Footprints showed they walked away into the freezing dark, some barely dressed.", "visual": "torn canvas tent slashed open from the inside on a snowy mountainside, footprints leading away into darkness"},
-    {"text": "Temperatures were close to minus twenty-five. Several were found without shoes, more than a kilometre from shelter.", "visual": "footprints in deep snow leading toward a dark forest edge, moonlight, blizzard"},
-    {"text": "Some had crushing injuries to the chest and skull, but almost no wounds on the outside. One was missing her tongue.", "visual": "Soviet era search party with lanterns in a snowy ravine, grim atmosphere, 1950s"},
-    {"text": "For decades, people blamed avalanches, secret military tests, even something unexplained.", "visual": "strange orange lights in the night sky above snowy mountains"},
-    {"text": "In 2021, scientists showed that a small slab avalanche could have hit the tent and caused these injuries.", "visual": "researchers studying a snowy mountain slope after a small slab avalanche, overcast light"},
-    {"text": "But why did nine experts run into the cold instead of digging out their gear? Would you have run?", "visual": "nine silhouettes walking into a dark frozen forest at night"}
+    {"text": "Nine hikers cut their own tent open from the inside, and ran barefoot into a frozen night.", "visual": "torn canvas tent slashed open from the inside on a snowy mountainside, footprints leading away into darkness"},
+    {"text": "Russia, 1959. Minus twenty-five degrees. Some were found a kilometre away, without shoes.", "visual": "footprints in deep snow leading toward a dark forest edge, moonlight, blizzard"},
+    {"text": "Some had crushed skulls and ribs, but almost no outside wounds.", "visual": "Soviet era search party with lanterns in a snowy ravine, grim atmosphere, 1950s"},
+    {"text": "People blamed avalanches, secret weapons, even something unexplained.", "visual": "strange orange lights in the night sky above snowy mountains"},
+    {"text": "In 2021, scientists said a small slab avalanche could explain the injuries.", "visual": "researchers studying a snowy mountain slope after a small slab avalanche, overcast light"},
+    {"text": "But nine experts, fleeing into certain death? What scared them so much that", "visual": "nine silhouettes walking into a dark frozen forest at night"}
    ]
   },
   {
@@ -34,13 +32,12 @@
    "title": "An Entire Colony Vanished, Leaving One Word",
    "tags": ["Roanoke", "lost colony", "unsolved mystery", "history"],
    "beats": [
-    {"text": "In 1587, more than one hundred English settlers arrived on Roanoke Island, in what is now North Carolina.", "visual": "16th century English settlers landing on a forested island shore, wooden ships, misty morning"},
-    {"text": "Their governor, John White, sailed home for supplies, leaving behind his newborn granddaughter, Virginia Dare.", "visual": "a 16th century sailing ship leaving a coastal settlement at sunset, a man looking back from the deck"},
-    {"text": "War with Spain trapped him in England. He could not return for three years.", "visual": "16th century naval battle at sea with galleons, dramatic smoke and fire"},
-    {"text": "When he finally came back in 1590, the settlement was empty. Houses taken down. No bodies. No graves.", "visual": "abandoned wooden palisade fort in a dark forest, overgrown, empty, eerie fog"},
-    {"text": "There was just one clue: a single word carved into a wooden post. Croatoan.", "visual": "close up of a weathered wooden post with mysterious carved letters, forest background, dramatic light"},
-    {"text": "Croatoan was a nearby island and the name of a friendly tribe. But a storm stopped White from ever searching there.", "visual": "stormy coastline with a distant island, crashing waves, 16th century ship struggling"},
-    {"text": "More than one hundred people, gone without a trace. Did they join the tribe, or did something worse happen?", "visual": "faint human figures disappearing into a misty primeval forest"}
+    {"text": "Over one hundred people vanished from an island, and left behind just one carved word.", "visual": "close up of a weathered wooden post with mysterious carved letters, forest background, dramatic light"},
+    {"text": "Roanoke, 1587. Their governor sailed to England for supplies, leaving his newborn granddaughter behind.", "visual": "a 16th century sailing ship leaving a coastal settlement at sunset, a man looking back from the deck"},
+    {"text": "War trapped him there for three years.", "visual": "16th century naval battle at sea with galleons, dramatic smoke and fire"},
+    {"text": "When he returned, the settlement was empty. No bodies. No graves.", "visual": "abandoned wooden palisade fort in a dark forest, overgrown, empty, eerie fog"},
+    {"text": "Just one word on a post: Croatoan, the name of a nearby island.", "visual": "stormy coastline with a distant island, crashing waves, 16th century ship struggling"},
+    {"text": "A storm stopped him from ever searching it. To this day, nobody knows why", "visual": "faint human figures disappearing into a misty primeval forest"}
    ]
   },
   {
@@ -48,13 +45,12 @@
    "title": "The Book Nobody on Earth Can Read",
    "tags": ["Voynich Manuscript", "unsolved mystery", "codes", "history"],
    "beats": [
-    {"text": "There is a six-hundred-year-old book that no one on Earth can read.", "visual": "an ancient handwritten manuscript with strange botanical drawings on a dark wooden desk, candlelight"},
-    {"text": "It is called the Voynich Manuscript. Around two hundred and forty pages, written in a script that matches no known language.", "visual": "close up of yellowed vellum pages covered in unknown flowing handwritten script, detailed ink"},
-    {"text": "It is full of drawings of plants that do not seem to exist, strange star charts, and tiny bathing figures.", "visual": "strange imaginary plants with tangled roots painted on old parchment, medieval herbal style"},
-    {"text": "Carbon dating places the pages in the early fifteenth century, so it is not a modern fake.", "visual": "a scientist in a laboratory examining an old manuscript under a magnifying lamp"},
-    {"text": "Top codebreakers from both world wars tried to solve it. Every single one of them failed.", "visual": "1940s codebreakers working at desks covered in papers and cipher machines, dim light"},
-    {"text": "Some say it hides a lost language. Others think it is a brilliant medieval hoax.", "visual": "a medieval scribe writing by candlelight in a stone room, long shadows"},
-    {"text": "Today it sits in a library at Yale, still unread. What do you think it says?", "visual": "an old manuscript in a glass case inside a grand dark library, single spotlight"}
+    {"text": "There is a book that no human alive can read, and it is six hundred years old.", "visual": "an ancient handwritten manuscript with strange botanical drawings on a dark wooden desk, candlelight"},
+    {"text": "The Voynich Manuscript. Two hundred and forty pages in a script that matches no known language.", "visual": "close up of yellowed vellum pages covered in unknown flowing handwritten script, detailed ink"},
+    {"text": "Plants that do not exist. Strange star maps. Tiny bathing figures.", "visual": "strange imaginary plants with tangled roots painted on old parchment, medieval herbal style"},
+    {"text": "Carbon dating proves it is from the early fourteen hundreds. Not a modern fake.", "visual": "a scientist in a laboratory examining an old manuscript under a magnifying lamp"},
+    {"text": "The best codebreakers of both world wars tried. Every one of them failed.", "visual": "1940s codebreakers working at desks covered in papers and cipher machines, dim light"},
+    {"text": "A lost language, or a brilliant hoax? It sits at Yale today, because", "visual": "an old manuscript in a glass case inside a grand dark library, single spotlight"}
    ]
   },
   {
@@ -62,13 +58,12 @@
    "title": "Three Lighthouse Keepers Vanished Overnight",
    "tags": ["Flannan Isles", "lighthouse", "unsolved mystery", "Scotland"],
    "beats": [
-    {"text": "In December 1900, a remote lighthouse off the coast of Scotland went dark.", "visual": "a lonely stone lighthouse on a rocky island cliff in the North Atlantic, dark stormy night, light off"},
-    {"text": "When the relief boat reached the Flannan Isles, no one came down to meet it. All three keepers were gone.", "visual": "a small steam boat approaching a rocky remote island with a lighthouse, grey sea, overcast"},
-    {"text": "Inside, the lamp was clean and ready. The beds were made. Everything looked normal.", "visual": "interior of an old lighthouse living room in 1900, empty chairs, wooden table, cold light from a window"},
-    {"text": "But one oilskin coat was still on its hook. One man had gone outside without it, in winter.", "visual": "a single old oilskin raincoat hanging on a hook by a wooden door, moody light"},
-    {"text": "At the west landing, railings were twisted and heavy equipment had been ripped away by the sea.", "visual": "damaged iron railings on a rocky cliff landing, huge waves crashing, storm"},
-    {"text": "The official verdict: a giant wave swept them away. But why would all three be out there at once?", "visual": "a massive wave crashing over a rocky cliff near a lighthouse, three tiny figures"},
-    {"text": "Their bodies were never found. What do you think really happened that night?", "visual": "an empty foggy cliff top at dawn with a lighthouse in the background, melancholic"}
+    {"text": "Three lighthouse keepers vanished from a tiny island, and one of them left his coat behind.", "visual": "a single old oilskin raincoat hanging on a hook by a wooden door, moody light"},
+    {"text": "Scotland, December 1900. The Flannan Isles light went dark.", "visual": "a lonely stone lighthouse on a rocky island cliff in the North Atlantic, dark stormy night, light off"},
+    {"text": "Inside, the lamp was clean. Beds made. Nothing out of place.", "visual": "interior of an old lighthouse living room in 1900, empty chairs, wooden table, cold light from a window"},
+    {"text": "Outside, iron railings were twisted, equipment ripped away by the sea.", "visual": "damaged iron railings on a rocky cliff landing, huge waves crashing, storm"},
+    {"text": "A giant wave, they said. But why were all three outside at once, in winter?", "visual": "a massive wave crashing over a rocky cliff near a lighthouse, three tiny figures"},
+    {"text": "No bodies were ever found. And the strangest clue of all is still this:", "visual": "an empty foggy cliff top at dawn with a lighthouse in the background, melancholic"}
    ]
   },
   {
@@ -76,13 +71,12 @@
    "title": "A Dead Man With a Secret Code in His Pocket",
    "tags": ["Somerton Man", "Tamam Shud", "unsolved mystery", "true crime"],
    "beats": [
-    {"text": "On December 1st, 1948, a well-dressed man was found dead on a beach in Adelaide, Australia.", "visual": "a 1940s Australian beach at dawn, a man in a suit lying against a sea wall, police in the distance"},
-    {"text": "Every label had been cut from his clothes. He carried no wallet, and no identification.", "visual": "a 1940s suit jacket on a table with cut out labels, forensic evidence lights"},
-    {"text": "Hidden in a tiny pocket was a scrap of paper with two words: Tamam Shud. It means, it is ended.", "visual": "a tiny torn scrap of old paper held with tweezers, dramatic macro shot"},
-    {"text": "It had been torn from a rare book of Persian poetry. When police found that book, inside was a secret code.", "visual": "an old poetry book open with faint handwritten pencil marks, desk lamp, film noir"},
-    {"text": "The code has never been cracked. His cause of death was never explained.", "visual": "a detective in a 1940s film noir office studying a coded message, cigarette smoke, venetian blinds"},
-    {"text": "In 2022, DNA research suggested his name was Carl Webb, an engineer from Melbourne.", "visual": "a modern DNA laboratory, scientist at a microscope, blue light"},
-    {"text": "But why did he die, and what does the code say? Do you think you could break it?", "visual": "a foggy Australian beach at night, empty sea wall, lone streetlight, noir"}
+    {"text": "A dead man was found on a beach with every label cut from his clothes, and a secret code.", "visual": "a 1940s Australian beach at dawn, a man in a suit lying against a sea wall, police in the distance"},
+    {"text": "Adelaide, 1948. No wallet. No name. No cause of death.", "visual": "a 1940s suit jacket on a table with cut out labels, forensic evidence lights"},
+    {"text": "In a hidden pocket, two words: Tamam Shud. It means, it is ended.", "visual": "a tiny torn scrap of old paper held with tweezers, dramatic macro shot"},
+    {"text": "They were torn from a book of Persian poetry. Inside that book, a code nobody has cracked.", "visual": "an old poetry book open with faint handwritten pencil marks, desk lamp, film noir"},
+    {"text": "In 2022, DNA suggested his name was Carl Webb.", "visual": "a modern DNA laboratory, scientist at a microscope, blue light"},
+    {"text": "But who killed him, and what does the code say? It all began when", "visual": "a foggy Australian beach at night, empty sea wall, lone streetlight, noir"}
    ]
   },
   {
@@ -90,13 +84,12 @@
    "title": "The 72-Second Signal From Deep Space",
    "tags": ["Wow signal", "aliens", "space mystery", "SETI"],
    "beats": [
-    {"text": "On August 15th, 1977, a radio telescope in Ohio caught something that should not have been there.", "visual": "a giant radio telescope field at night under the Milky Way, 1970s"},
-    {"text": "It was a powerful signal from deep space, and it lasted exactly seventy-two seconds.", "visual": "glowing radio waves traveling through deep space toward Earth, nebula"},
-    {"text": "Astronomer Jerry Ehman saw it on a printout, circled it, and wrote one word beside it: Wow.", "visual": "a 1970s computer printout on a desk with numbers circled in red pen, lamp light"},
-    {"text": "It came from the direction of Sagittarius, on a frequency linked to hydrogen, the most common element in the universe.", "visual": "the constellation Sagittarius in a starry night sky, deep space"},
-    {"text": "Scientists pointed telescopes at that spot again and again. It never came back.", "visual": "modern radio telescope dishes pointing at the night sky, faint glow"},
-    {"text": "A 2024 study suggests a cosmic flare may have briefly lit up a cold cloud of hydrogen.", "visual": "a bright cosmic flare illuminating a cloud of gas in deep space"},
-    {"text": "A natural event, or a message we only heard once? What do you think it was?", "visual": "a lonely astronomer silhouette looking at the stars, radio dish behind"}
+    {"text": "For seventy-two seconds in 1977, something in deep space talked to Earth.", "visual": "a giant radio telescope field at night under the Milky Way, 1970s"},
+    {"text": "An Ohio telescope caught a signal so strong, the astronomer circled it and wrote: Wow.", "visual": "a 1970s computer printout on a desk with numbers circled in red pen, lamp light"},
+    {"text": "It came from Sagittarius, on the exact frequency scientists expected aliens to use.", "visual": "the constellation Sagittarius in a starry night sky, deep space"},
+    {"text": "They searched that spot again and again. It never came back.", "visual": "modern radio telescope dishes pointing at the night sky, faint glow"},
+    {"text": "A 2024 study blames a cosmic flare hitting a hydrogen cloud.", "visual": "a bright cosmic flare illuminating a cloud of gas in deep space"},
+    {"text": "Nature, or a message we heard only once? Because", "visual": "a lonely astronomer silhouette looking at the stars, radio dish behind"}
    ]
   },
   {
@@ -104,13 +97,12 @@
    "title": "The Explosion That Flattened 80 Million Trees",
    "tags": ["Tunguska", "asteroid", "unsolved mystery", "Siberia"],
    "beats": [
-    {"text": "On June 30th, 1908, something exploded above the forests of Siberia, about a thousand times stronger than the Hiroshima bomb.", "visual": "a massive fireball explosion in the sky above a Siberian taiga forest, 1908, apocalyptic light"},
-    {"text": "The blast flattened around eighty million trees across more than two thousand square kilometres.", "visual": "aerial view of a vast forest with trees flattened in a radial pattern, smoke"},
-    {"text": "People sixty kilometres away were knocked off their feet. Windows shattered. The night sky glowed over Europe.", "visual": "a Siberian villager thrown back by a shockwave near wooden houses, blinding sky"},
-    {"text": "When scientists finally reached the site nineteen years later, they expected a giant crater.", "visual": "a 1920s scientific expedition walking through fallen trees in Siberia"},
-    {"text": "There was none. No crater. No large meteorite. Just millions of trees pointing away from one spot.", "visual": "burned standing tree trunks at the center of a devastated forest, eerie silence"},
-    {"text": "Most experts think a space rock exploded in the air, several kilometres above the ground.", "visual": "an asteroid entering Earth's atmosphere and bursting into flame"},
-    {"text": "If it had happened over a city, it would have wiped it out. Could it happen again?", "visual": "a fireball descending over a modern city skyline at night"}
+    {"text": "Something exploded over Siberia with a thousand times the power of Hiroshima, and left no crater.", "visual": "a massive fireball explosion in the sky above a Siberian taiga forest, 1908, apocalyptic light"},
+    {"text": "June 1908. Eighty million trees flattened in an instant.", "visual": "aerial view of a vast forest with trees flattened in a radial pattern, smoke"},
+    {"text": "People sixty kilometres away were thrown off their feet. The night sky glowed over Europe.", "visual": "a Siberian villager thrown back by a shockwave near wooden houses, blinding sky"},
+    {"text": "Scientists arrived years later expecting a giant meteorite. They found nothing.", "visual": "burned standing tree trunks at the center of a devastated forest, eerie silence"},
+    {"text": "Most think a space rock burst in the air, kilometres above the ground.", "visual": "an asteroid entering Earth's atmosphere and bursting into flame"},
+    {"text": "Over a city, it would have erased it. Could it happen again? Remember,", "visual": "a fireball descending over a modern city skyline at night"}
    ]
   },
   {
@@ -118,13 +110,12 @@
    "title": "A 2,000-Year-Old Computer Found in a Shipwreck",
    "tags": ["Antikythera mechanism", "ancient technology", "Greece", "mystery"],
    "beats": [
-    {"text": "In 1901, divers pulled a lump of corroded bronze from an ancient Greek shipwreck.", "visual": "early 1900s sponge divers pulling a corroded bronze artifact from the sea floor, blue underwater light"},
-    {"text": "Decades later, X-ray scans revealed what was hidden inside: more than thirty precise bronze gears.", "visual": "an x-ray scan of ancient interlocking bronze gears glowing on a dark screen"},
-    {"text": "It was more than two thousand years old, and it was a kind of analog computer.", "visual": "an ancient Greek bronze mechanism full of gears inside a wooden box, museum lighting"},
-    {"text": "Turning a handle could predict eclipses, track the moon's phases, and even count down to the Olympic Games.", "visual": "an ancient Greek scholar turning a handle on a geared astronomical device, starry sky in the window"},
-    {"text": "Nothing this complex appears again in history for over a thousand years.", "visual": "a medieval astronomical clock with brass gears in a dark cathedral"},
-    {"text": "Who built it? How did that knowledge simply disappear? We still do not know, and only fragments survive.", "visual": "ruins of an ancient Greek workshop at sunset, scattered bronze tools"},
-    {"text": "What else did the ancient world know that we lost? Tell me what you think.", "visual": "a corroded ancient bronze gear fragment in a museum glass case, spotlight"}
+    {"text": "Divers pulled a computer out of a shipwreck, and it was two thousand years old.", "visual": "early 1900s sponge divers pulling a corroded bronze artifact from the sea floor, blue underwater light"},
+    {"text": "X-rays revealed more than thirty precise bronze gears hidden inside the rock.", "visual": "an x-ray scan of ancient interlocking bronze gears glowing on a dark screen"},
+    {"text": "Turn its handle, and it predicted eclipses, moon phases, even the Olympic Games.", "visual": "an ancient Greek scholar turning a handle on a geared astronomical device, starry sky in the window"},
+    {"text": "Nothing this complex appears again for over a thousand years.", "visual": "a medieval astronomical clock with brass gears in a dark cathedral"},
+    {"text": "Who built it? And how was that knowledge simply lost?", "visual": "ruins of an ancient Greek workshop at sunset, scattered bronze tools"},
+    {"text": "We only know because, in 1901,", "visual": "a corroded ancient bronze gear fragment in a museum glass case, spotlight"}
    ]
   },
   {
@@ -132,13 +123,12 @@
    "title": "He Hijacked a Plane, Then Jumped Into the Night",
    "tags": ["DB Cooper", "hijacking", "unsolved mystery", "FBI"],
    "beats": [
-    {"text": "On November 24th, 1971, a quiet man in a suit handed a flight attendant a note. He had a bomb.", "visual": "a 1970s airplane cabin, a man in a dark suit and sunglasses handing a note to a flight attendant"},
-    {"text": "He called himself Dan Cooper. He demanded two hundred thousand dollars and four parachutes.", "visual": "1970s bags of cash and parachutes on an airport tarmac at night, floodlights"},
-    {"text": "In Seattle, he let the passengers go, took the money, and ordered the plane back into the sky.", "visual": "a 1970s jet airliner on a rainy runway at night, dramatic lights"},
-    {"text": "Somewhere over the forests of the Pacific Northwest, he opened the rear stairs and jumped, into rain and darkness.", "visual": "a man parachuting from the rear stairs of a jet airliner at night in heavy rain over a forest"},
-    {"text": "He was never seen again. In 1980, a boy found almost six thousand dollars of the ransom by a river.", "visual": "a boy digging rotted bundles of cash from a sandy riverbank, overcast day"},
-    {"text": "The FBI investigated for forty-five years, and then closed the case.", "visual": "a 1970s FBI office with case files and a sketch on the wall, noir lighting"},
-    {"text": "Did he die in the jump, or did he get away with it? What do you think?", "visual": "a dark misty Pacific Northwest forest at night, a parachute caught in the trees"}
+    {"text": "A man hijacked a plane, took the money, and jumped out into the night. He was never found.", "visual": "a man parachuting from the rear stairs of a jet airliner at night in heavy rain over a forest"},
+    {"text": "1971. He called himself Dan Cooper, and calmly handed a flight attendant a note: I have a bomb.", "visual": "a 1970s airplane cabin, a man in a dark suit and sunglasses handing a note to a flight attendant"},
+    {"text": "He demanded two hundred thousand dollars and four parachutes.", "visual": "1970s bags of cash and parachutes on an airport tarmac at night, floodlights"},
+    {"text": "Over the forests of Washington, he opened the rear stairs and leapt into the rain.", "visual": "a 1970s jet airliner on a rainy runway at night, dramatic lights"},
+    {"text": "Years later, a boy found some of the cash buried by a river.", "visual": "a boy digging rotted bundles of cash from a sandy riverbank, overcast day"},
+    {"text": "Did he die, or get away with it? The FBI still can't say, because", "visual": "a dark misty Pacific Northwest forest at night, a parachute caught in the trees"}
    ]
   },
   {
@@ -146,13 +136,12 @@
    "title": "Five Planes Vanished Over the Bermuda Triangle",
    "tags": ["Flight 19", "Bermuda Triangle", "unsolved mystery", "aviation"],
    "beats": [
-    {"text": "On December 5th, 1945, five US Navy bombers took off from Florida on a routine training flight.", "visual": "five 1940s navy torpedo bombers flying in formation over the ocean, golden afternoon light"},
-    {"text": "This was Flight 19. Fourteen men, clear skies, and a simple route over the sea.", "visual": "1940s navy pilots walking to their planes on a Florida airfield"},
-    {"text": "Then the radio crackled. The flight leader said his compasses had failed. He believed they were over the Florida Keys.", "visual": "a 1940s cockpit with spinning compass gauges, a worried pilot, ocean below"},
-    {"text": "For hours, they flew lost as fuel ran low and the weather turned. Then the radio went silent.", "visual": "old propeller planes flying into dark storm clouds over the ocean at dusk"},
-    {"text": "A rescue plane with thirteen crew was sent to find them. It disappeared too.", "visual": "a large 1940s flying boat seaplane over a dark stormy sea at night"},
-    {"text": "Not a single piece of wreckage from Flight 19 was ever found, despite one of the largest searches in history.", "visual": "an empty calm ocean surface at sunrise, vast and silent"},
-    {"text": "Human error, or something stranger in the Bermuda Triangle? What do you believe?", "visual": "a dark ocean under ominous clouds with faint glowing triangle shaped light on the water"}
+    {"text": "Five warplanes vanished over the Bermuda Triangle, and then the plane sent to find them vanished too.", "visual": "five 1940s navy torpedo bombers flying in formation over the ocean, golden afternoon light"},
+    {"text": "December 1945. Flight 19. Fourteen men on a routine training flight.", "visual": "1940s navy pilots walking to their planes on a Florida airfield"},
+    {"text": "Then the leader radioed: his compasses had failed.", "visual": "a 1940s cockpit with spinning compass gauges, a worried pilot, ocean below"},
+    {"text": "They flew lost for hours as fuel ran out. Then, silence.", "visual": "old propeller planes flying into dark storm clouds over the ocean at dusk"},
+    {"text": "Not one piece of wreckage was ever found.", "visual": "an empty calm ocean surface at sunrise, vast and silent"},
+    {"text": "Human error, or something stranger? All we know for sure is that", "visual": "a dark ocean under ominous clouds with faint glowing triangle shaped light on the water"}
    ]
   },
   {
@@ -160,13 +149,12 @@
    "title": "The Summer When Hundreds Couldn't Stop Dancing",
    "tags": ["dancing plague", "1518", "strange history", "mystery"],
    "beats": [
-    {"text": "In July 1518, a woman stepped into a street in Strasbourg and began to dance.", "visual": "a medieval street in 1518 Strasbourg, a woman dancing alone while people watch, renaissance clothing"},
-    {"text": "She did not stop. Not for hours. Not for days. Reports say she danced for nearly a week.", "visual": "an exhausted woman dancing in a medieval town square at night, torches"},
-    {"text": "Within weeks, dozens of people had joined her, dancing in the summer heat until they collapsed.", "visual": "a crowd of medieval townspeople dancing wildly in a sunlit square, some collapsing"},
-    {"text": "City leaders thought more dancing would cure it. They built a stage and hired musicians.", "visual": "medieval musicians with drums and pipes on a wooden stage, crowd dancing below"},
-    {"text": "It only got worse. Some accounts say up to four hundred people were affected.", "visual": "a chaotic medieval crowd dancing, dust in the air, dramatic sunset light"},
-    {"text": "Historians still argue. Was it poisoning from moldy bread, or mass hysteria brought on by famine and fear?", "visual": "moldy rye bread on a medieval wooden table, dark atmosphere, candle"},
-    {"text": "Could a whole town lose control at once? And could something like it happen again today? Tell me below.", "visual": "an empty medieval square at dawn after chaos, scattered shoes, mist"}
+    {"text": "In 1518, a woman started dancing in the street, and could not stop for days.", "visual": "a medieval street in 1518 Strasbourg, a woman dancing alone while people watch, renaissance clothing"},
+    {"text": "Within weeks, dozens joined her in Strasbourg, dancing until they collapsed.", "visual": "a crowd of medieval townspeople dancing wildly in a sunlit square, some collapsing"},
+    {"text": "The city's cure? More dancing. They hired musicians and built a stage.", "visual": "medieval musicians with drums and pipes on a wooden stage, crowd dancing below"},
+    {"text": "It only got worse. Some say up to four hundred people were affected.", "visual": "a chaotic medieval crowd dancing, dust in the air, dramatic sunset light"},
+    {"text": "Poisoned bread? Mass hysteria from famine and fear? Historians still argue.", "visual": "moldy rye bread on a medieval wooden table, dark atmosphere, candle"},
+    {"text": "Could it happen again today? It all started when, one summer morning,", "visual": "an empty medieval square at dawn after chaos, scattered shoes, mist"}
    ]
   },
   {
@@ -174,13 +162,12 @@
    "title": "Two Men Found Wearing Lead Masks on a Hill",
    "tags": ["lead masks case", "Brazil", "unsolved mystery", "UFO"],
    "beats": [
-    {"text": "In August 1966, two men were found dead on a hilltop near Rio de Janeiro, in Brazil.", "visual": "a grassy hilltop near Rio de Janeiro at dusk in the 1960s, two figures lying on the ground"},
-    {"text": "They wore neat suits and raincoats. Next to them lay two strange masks made of lead.", "visual": "two crude metal eye masks lying on grass, close up, dramatic light"},
-    {"text": "They were electronics technicians from a nearby city, and both seemed perfectly healthy. There were no wounds.", "visual": "a 1960s electronics workshop full of radios and tools, dim light"},
-    {"text": "In a notebook, police found a chilling set of instructions.", "visual": "an old notebook with handwritten notes lying in grass, macro shot, overcast"},
-    {"text": "Be at the agreed place at four thirty. Swallow the capsules at six thirty. Protect metals. Wait for the mask signal.", "visual": "a handwritten note on paper beside small capsules, eerie green light"},
-    {"text": "A woman said she saw a strange glowing object over the hill that night. The autopsy could not find a cause of death.", "visual": "a strange glowing orange object in the night sky over a hill, 1960s"},
-    {"text": "What signal were they waiting for? And who were they going to meet?", "visual": "two silhouettes on a hilltop at night looking up at the sky, cinematic"}
+    {"text": "Two men were found dead on a hill in Brazil, wearing masks made of lead.", "visual": "two crude metal eye masks lying on grass, close up, dramatic light"},
+    {"text": "1966. Neat suits, no wounds, and the autopsy found no cause of death.", "visual": "a grassy hilltop near Rio de Janeiro at dusk in the 1960s, two figures lying on the ground"},
+    {"text": "In a notebook, police found instructions.", "visual": "an old notebook with handwritten notes lying in grass, macro shot, overcast"},
+    {"text": "Swallow the capsules at six thirty. Protect metals. Wait for the mask signal.", "visual": "a handwritten note on paper beside small capsules, eerie green light"},
+    {"text": "That night, a woman saw a glowing object over the hill.", "visual": "a strange glowing orange object in the night sky over a hill, 1960s"},
+    {"text": "What signal were they waiting for? Nobody knows. Only that", "visual": "two silhouettes on a hilltop at night looking up at the sky, cinematic"}
    ]
   },
   {
@@ -188,13 +175,12 @@
    "title": "Footprints Led to the Farm, But Never Away",
    "tags": ["Hinterkaifeck", "true crime", "unsolved mystery", "Germany"],
    "beats": [
-    {"text": "In 1922, on a lonely farm in Germany, the farmer noticed footprints in the snow.", "visual": "an isolated old Bavarian farmhouse in winter, 1920s, footprints in snow leading toward it"},
-    {"text": "They led from the forest to the farmhouse. None led back out.", "visual": "close up of footprints in fresh snow going toward a dark barn door"},
-    {"text": "He heard footsteps in the attic. A set of keys went missing. He found a newspaper no one had bought.", "visual": "a dark wooden farmhouse attic, dust, faint light through cracks, shadows"},
-    {"text": "He mentioned it to his neighbors, but he never went to the police.", "visual": "a 1920s farmer talking with neighbors by a wooden fence, overcast winter day"},
-    {"text": "A few days later, all six people living there were killed, the family and their new maid.", "visual": "a dark farmhouse at night under a full moon, one window glowing, ominous"},
-    {"text": "Strangest of all, someone stayed on the farm for days afterward, feeding the animals and eating food from the kitchen.", "visual": "smoke rising from a farmhouse chimney on a grey winter morning, cows in a barn"},
-    {"text": "More than a hundred years later, the killer has never been found. Who was in the attic?", "visual": "a dark attic with a wooden ladder and a vague silhouette in the shadows"}
+    {"text": "Footprints in the snow led to a farmhouse, but none led away.", "visual": "close up of footprints in fresh snow going toward a dark barn door"},
+    {"text": "Germany, 1922. The farmer heard footsteps in his attic. His keys went missing.", "visual": "a dark wooden farmhouse attic, dust, faint light through cracks, shadows"},
+    {"text": "He told his neighbors, but never the police.", "visual": "a 1920s farmer talking with neighbors by a wooden fence, overcast winter day"},
+    {"text": "Days later, all six people on the farm were killed.", "visual": "a dark farmhouse at night under a full moon, one window glowing, ominous"},
+    {"text": "Then someone stayed for days, feeding the animals and eating from the kitchen.", "visual": "smoke rising from a farmhouse chimney on a grey winter morning, cows in a barn"},
+    {"text": "A century later, the killer is still unknown. Who was in the attic? It began when", "visual": "a dark attic with a wooden ladder and a vague silhouette in the shadows"}
    ]
   }
  ]
