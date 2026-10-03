@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from google.oauth2.credentials import Credentials
@@ -10,12 +11,37 @@ SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 TOKEN_URI = "https://oauth2.googleapis.com/token"
 _QUOTES = {"\u201c": '"', "\u201d": '"', "\u201e": '"', "\u00ab": '"', "\u00bb": '"', "\u2018": "'", "\u2019": "'"}
 
+# Daily Shorts go live at 01:30 Tehran = 18:00 New York (EDT) / 17:00 (EST), US prime time.
+TEHRAN = timezone(timedelta(hours=3, minutes=30))
+PUBLISH_HOUR, PUBLISH_MINUTE = 1, 30
+
 
 def _clean(value) -> str:
     text = str(value or "")
     for bad, good in _QUOTES.items():
         text = text.replace(bad, good)
     return text.strip().strip('"').strip()
+
+
+def next_publish_at(now=None, hour=PUBLISH_HOUR, minute=PUBLISH_MINUTE, min_lead_minutes=60):
+    """Next hour:minute Tehran time at least min_lead_minutes away, as YouTube's UTC ISO string."""
+    now = now or datetime.now(timezone.utc)
+    local = now.astimezone(TEHRAN)
+    target = local.replace(hour=hour, minute=minute, second=0, microsecond=0)
+    while target - local < timedelta(minutes=min_lead_minutes):
+        target += timedelta(days=1)
+    return target.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+
+
+def auto_publish_at(env=None):
+    """Only the daily scheduled run auto-schedules; manual runs keep the chosen visibility.
+    Set NABZ_AUTO_SCHEDULE=0 to turn it off."""
+    env = os.environ if env is None else env
+    if env.get("NABZ_AUTO_SCHEDULE", "1") == "0":
+        return None
+    if env.get("GITHUB_EVENT_NAME") != "schedule":
+        return None
+    return next_publish_at()
 
 
 def load_credential_info(token_json=None, env=None) -> dict:
@@ -54,6 +80,18 @@ def load_credential_info(token_json=None, env=None) -> dict:
     return info
 
 
+def _insert(youtube, body, video_path):
+    request = youtube.videos().insert(
+        part="snippet,status",
+        body=body,
+        media_body=MediaFileUpload(str(video_path), mimetype="video/mp4", resumable=True),
+    )
+    response = None
+    while response is None:
+        _, response = request.next_chunk()
+    return response
+
+
 def upload_video(
     video_path,
     title,
@@ -64,6 +102,7 @@ def upload_video(
     category_id="24",
     thumbnail_path=None,
     contains_synthetic_media=True,
+    publish_at=None,
 ):
     info = load_credential_info(token_json)
     creds = Credentials.from_authorized_user_info(info, SCOPES)
@@ -83,19 +122,30 @@ def upload_video(
     }
     if contains_synthetic_media:
         body["status"]["containsSyntheticMedia"] = True
+    if publish_at:
+        # YouTube only accepts publishAt on private videos; it flips them public at that time.
+        body["status"]["privacyStatus"] = "private"
+        body["status"]["publishAt"] = publish_at
 
-    request = youtube.videos().insert(
-        part="snippet,status",
-        body=body,
-        media_body=MediaFileUpload(str(video_path), mimetype="video/mp4", resumable=True),
-    )
-    response = None
-    while response is None:
-        _, response = request.next_chunk()
+    try:
+        response = _insert(youtube, body, video_path)
+    except Exception as exc:
+        if not publish_at:
+            raise
+        print(f"WARNING: scheduled upload rejected ({exc}); retrying as a plain private upload.")
+        body["status"].pop("publishAt", None)
+        response = _insert(youtube, body, video_path)
     if not response or not response.get("id"):
         raise RuntimeError("YouTube upload returned no video id.")
 
     video_id = response["id"]
+    status = response.get("status") or {}
+    if publish_at:
+        if status.get("publishAt"):
+            print(f"YOUTUBE_SCHEDULED: goes public at {status['publishAt']} (01:30 Tehran)")
+        else:
+            print("::warning title=Not scheduled::YouTube kept the video private without a publish time "
+                  "(usually an unaudited API project). Publish it in YouTube Studio.")
 
     if thumbnail_path:
         thumb = Path(thumbnail_path)
@@ -112,7 +162,7 @@ def upload_video(
     return video_id
 
 
-def upload_from_metadata(root, privacy_status="private"):
+def upload_from_metadata(root, privacy_status="private", publish_at=None):
     root = Path(root)
     meta = json.loads((root / "metadata.json").read_text(encoding="utf-8"))
     video = next((root / n for n in ("final_short.mp4", "final_film.mp4") if (root / n).exists()), None)
@@ -122,6 +172,7 @@ def upload_from_metadata(root, privacy_status="private"):
         video, meta["title"], meta["description"], meta["tags"],
         privacy_status=privacy_status, category_id=meta.get("category_id", "24"),
         thumbnail_path=root / "thumbnail.jpg", contains_synthetic_media=True,
+        publish_at=publish_at,
     )
 
 
@@ -129,7 +180,7 @@ if __name__ == "__main__":
     import re
     import sys
     try:
-        vid = upload_from_metadata(sys.argv[1], os.getenv("YOUTUBE_VISIBILITY", "private"))
+        vid = upload_from_metadata(sys.argv[1], os.getenv("YOUTUBE_VISIBILITY", "private"), auto_publish_at())
     except Exception as exc:
         msg = re.sub(r"[\r\n]+", " ", f"{type(exc).__name__}: {exc}")[:1800]
         print(f"::error title=YouTube upload failed::{msg}", flush=True)
