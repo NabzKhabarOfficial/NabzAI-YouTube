@@ -520,16 +520,18 @@ def render_badge(text: str, path: Path) -> None:
 
 
 def render_watermark(path: Path) -> None:
-    """Small premium brand mark, deliberately subtle and safe for Shorts UI."""
+    """Small premium brand mark; the box is sized to the text so it is never clipped."""
     f = font(34)
-    img = Image.new("RGBA", (300, 72), (0, 0, 0, 0))
+    text = "NABZ MYSTERIES"
+    tw = int(ImageDraw.Draw(Image.new("RGBA", (10, 10))).textlength(text, font=f))
+    w = 74 + tw + 22
+    img = Image.new("RGBA", (w, 72), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    d.rounded_rectangle([0, 0, 299, 71], radius=20, fill=(8, 8, 8, 150),
+    d.rounded_rectangle([0, 0, w - 1, 71], radius=20, fill=(8, 8, 8, 150),
                         outline=(205, 155, 58, 180), width=2)
     d.ellipse([14, 14, 58, 58], fill=(190, 25, 35, 230), outline=(255, 215, 130, 220), width=2)
-    q = font(31)
-    d.text((27, 11), "?", font=q, fill=(255, 235, 180, 255), anchor="ma")
-    d.text((74, 17), "NABZ MYSTERIES", font=f, fill=(246, 220, 160, 235))
+    d.text((36, 36), "?", font=font(31), fill=(255, 235, 180, 255), anchor="mm")
+    d.text((74, 36), text, font=f, fill=(246, 220, 160, 235), anchor="lm")
     img.save(path)
 
 
