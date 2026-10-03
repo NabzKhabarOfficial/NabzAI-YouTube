@@ -1,50 +1,43 @@
 # NabzAI-YouTube
 
-English-first, free-first YouTube production pipeline for realistic AI-assisted cinematic short films and practical AI content.
+English-first, free-first YouTube production pipeline. The main product is **NABZ Mysteries**: a daily vertical Short about a real unsolved mystery. A cinematic short-film mode is also available.
 
-## Current cinematic pipeline
+## NABZ Mysteries (default, daily)
 
-- Six-shot live-action cinematic structure (24 seconds nominal).
-- Photorealistic two-character reference image with identity anchoring.
-- Explicit continuity for face, hair, age, body proportions and wardrobe.
-- Real camera language: dolly, lateral movement, rack focus, push-in, arc and pull-back.
-- Four spoken dialogue beats plus two silent visual breathing beats.
-- English neural narration through Edge TTS.
-- H.264/AAC final delivery at true 1280x720.
-- Per-scene motion quality gate so static/slideshow-like shots fail before delivery.
-- Automatic publish-ready thumbnail.
-- YouTube metadata, thumbnail upload and synthetic-media disclosure support.
-- Agnes first, then free Hugging Face video fallbacks.
-- No paid service is required by the pipeline.
+`python -m src.mystery_short` builds one ~45 s vertical Short (1080x1920, 30 fps):
 
-## Quality policy
+- Curated scripts in `content/mysteries.json` (7 beats, ~110-125 words each). Stories are used oldest-first and recorded in `content/published.json`.
+- AI images per beat. Provider order: FLUX.1-schnell Hugging Face Space (free ZeroGPU quota), Pollinations (needs `POLLINATIONS_TOKEN`), Hugging Face Inference Providers.
+- Edge TTS narration (`en-US-ChristopherNeural`) with word timings.
+- Procedural dark ambient music with heartbeat, ducked under the voice.
+- Ken Burns motion, crossfades, word-by-word captions with highlighted current word, red `UNSOLVED` badge for the first 3 s, subtle `NABZ MYSTERIES` watermark.
+- Thumbnail, `metadata.json` (title + `#Shorts`), and a quality gate (resolution, duration, codecs, all images, captions).
+- YouTube credentials are checked **before** any image is generated, so a bad token never wastes GPU quota.
+- On failure, the reason is written to `output/mystery-short/error.txt` and shown as a GitHub Actions error annotation.
 
-A cinematic run is not considered ready merely because FFmpeg produced a file. The delivery gate requires:
+## Workflow
 
-1. six generated shots;
-2. a valid character reference;
-3. 24-second-class duration;
-4. real temporal motion in every shot;
-5. audio and video streams;
-6. true 1280x720 output;
-7. H.264/AAC delivery;
-8. a generated thumbnail.
+`.github/workflows/youtube.yml`
 
-The actual generated artifact should still be reviewed before public release.
+- Schedule: daily at 08:30 UTC (12:00 Tehran), mode `mystery`, always **private**.
+- Manual run: choose `mode` (`mystery`, `cinematic`, `test`, `short`), `visibility`, and an optional `story_id`.
+- Steps: fonts, dependencies, tests, build, upload, persist story state, upload artifacts for review.
 
-## YouTube publishing
+### Secrets
 
-Manual cinematic runs support three visibility choices:
+| Secret | Purpose |
+|---|---|
+| `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET`, `YOUTUBE_REFRESH_TOKEN` | YouTube upload (OAuth, scope `youtube.upload`). The refresh token must be issued for the same client ID (OAuth Playground → "Use your own OAuth credentials"). |
+| `HF_TOKEN` | Hugging Face Space / Inference images |
+| `POLLINATIONS_TOKEN` | Backup image provider (secret `sk_` key, image-only, small budget) |
+| `AGNES_API_KEY` | Cinematic mode video provider |
+| `YOUTUBE_TOKEN` | Legacy single-JSON credential (still accepted) |
 
-- `public`
-- `unlisted`
-- `private`
+Uploads from an unaudited Google API project stay private; review each video in YouTube Studio and publish it yourself.
 
-Public/unlisted publishing requires the `YOUTUBE_TOKEN` GitHub Actions secret containing an authorized YouTube OAuth token JSON. The uploader also sends the generated thumbnail and marks the upload as synthetic/altered media. YouTube currently documents an additional restriction: uploads made through unverified API projects created after July 28, 2020 are restricted to private until the API project completes Google's audit.
+## Cinematic mode
 
-YouTube may still force uploads from unverified API projects to `private`; Google documents an API-project audit requirement before such uploads can be made public through the API.
-
-Scheduled runs remain private when a YouTube token is configured, so an automatic schedule cannot unexpectedly publish a public video.
+`python -m src.cinematic_short`: six-shot 1280x720 live-action-style short with a character reference, four dialogue beats, per-scene motion gate, thumbnail, and synthetic-media disclosure. Agnes first, then free Hugging Face video fallbacks.
 
 ## Test locally
 
@@ -54,6 +47,10 @@ pip install -r requirements-cinematic.txt
 python -m unittest discover -s tests -v
 ```
 
+## Adding mysteries
+
+Append to `content/mysteries.json`: unique `id`, `title` (≤ 60 chars), `tags`, and 6-8 `beats` each with `text` and `visual`. Total narration must be 95-150 words; the tests enforce this.
+
 ## Cost policy
 
-No paid service is required by the current pipeline. Edge TTS is a network-based dependency and is not treated as a guaranteed unlimited commercial API. Any future paid service must be explicitly approved before integration.
+No paid service is required. Free quotas (Hugging Face ZeroGPU, Pollinations budget) limit how many videos can be built per day; one per day fits comfortably.
