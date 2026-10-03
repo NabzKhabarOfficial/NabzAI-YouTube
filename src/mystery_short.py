@@ -1,9 +1,12 @@
-"""NABZ Mysteries: vertical YouTube Shorts (1080x1920, ~45 s).
+"""NABZ Mysteries: vertical YouTube Shorts (1080x1920, ~30 s).
 
 Pipeline: curated script -> AI images (Pollinations FLUX, Hugging Face fallback)
 -> Edge TTS narration with word timings -> procedural dark ambient music with
 ducking -> Ken Burns motion + crossfades -> word-by-word burned captions ->
 quality gate -> metadata for upload. No paid service is required.
+
+Scripts open with the hook and end on a half sentence that flows back into the
+first line, so the Short loops seamlessly (higher average view percentage).
 """
 from __future__ import annotations
 
@@ -33,10 +36,10 @@ WORK = OUT / "work"
 W, H, FPS = 1080, 1920, 30
 SR = 44100
 XFADE = 0.45
-BEAT_GAP = 0.22
-TAIL = 1.3
+BEAT_GAP = 0.18
+TAIL = 0.5  # short tail so the last line runs straight back into the first (loop)
 VOICE = os.getenv("NABZ_MYSTERY_VOICE", "en-US-ChristopherNeural")
-RATE = os.getenv("NABZ_MYSTERY_RATE", "+6%")
+RATE = os.getenv("NABZ_MYSTERY_RATE", "+8%")
 PITCH = os.getenv("NABZ_MYSTERY_PITCH", "-3Hz")
 STYLE = (
     "cinematic photorealistic film still, dark moody atmosphere, dramatic chiaroscuro lighting, "
@@ -50,7 +53,7 @@ FONT_CANDIDATES = [
     "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
     "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
 ]
-MIN_WORDS, MAX_WORDS = 95, 150
+MIN_WORDS, MAX_WORDS = 60, 95
 
 
 # ---------------------------------------------------------------- utilities
@@ -635,7 +638,7 @@ def quality_gate(final: Path, story: dict, image_sources: list[str], caption_fra
     checks = {
         "file_ok": final.exists() and final.stat().st_size > 1_000_000,
         "vertical_1080x1920": info["resolution"] == f"{W}x{H}",
-        "shorts_duration": 25.0 <= info["duration"] <= 59.5,
+        "shorts_duration": 18.0 <= info["duration"] <= 59.5,
         "h264": info["video_codec"] == "h264",
         "aac": info["audio_codec"] == "aac",
         "all_images_generated": len(image_sources) == len(story["beats"]),
