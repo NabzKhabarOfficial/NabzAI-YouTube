@@ -1,5 +1,4 @@
 output/
-ig_queue/
 __pycache__/
 *.pyc
 .venv/
