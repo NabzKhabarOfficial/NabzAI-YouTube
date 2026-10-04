@@ -3,16 +3,6 @@ name: NabzAI-YouTube
 on:
   workflow_dispatch:
     inputs:
-      mode:
-        description: "Build mode"
-        required: true
-        default: "mystery"
-        type: choice
-        options:
-          - mystery
-          - cinematic
-          - test
-          - short
       visibility:
         description: "YouTube visibility"
         required: true
@@ -70,7 +60,7 @@ jobs:
     timeout-minutes: 45
 
     env:
-      MODE: ${{ github.event_name == 'schedule' && 'mystery' || inputs.mode }}
+      MODE: mystery
       YOUTUBE_VISIBILITY: ${{ github.event_name == 'schedule' && 'private' || inputs.visibility }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
 
@@ -108,97 +98,30 @@ jobs:
           python -m unittest discover -s tests -v
 
       - name: Build NABZ Mysteries short
-        if: env.MODE == 'mystery'
         env:
           NABZ_MYSTERY_ID: ${{ inputs.story_id }}
         run: |
           python -m src.mystery_short
 
-      - name: Build cinematic episode
-        if: env.MODE == 'cinematic'
-        env:
-          NABZ_STORY_SLOT: ${{ github.run_number }}
-        run: |
-          if [ -z "$AGNES_API_KEY" ] && [ -z "$HF_TOKEN" ]; then
-            echo "No cinematic provider credential configured."
-            exit 1
-          fi
-
-          python -m src.cinematic_short
-
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          root = Path("output/cinematic-short")
-          report = json.loads((root / "quality.json").read_text(encoding="utf-8"))
-
-          assert report["gates"]["passed"] is True, report
-
-          story = json.loads((root / "story.json").read_text(encoding="utf-8"))
-          nl2 = chr(10) * 2
-
-          meta = {
-              "title": f"{story['title']} | NABZ AI Cinematic Short",
-              "description": (
-                  story["logline"]
-                  + nl2
-                  + "A short fictional live-action story created with AI-assisted video generation."
-                  + nl2
-                  + "#AI #AIVideo #ShortFilm #Cinematic #NabzAI"
-              ),
-              "tags": [
-                  "AI",
-                  "AI video",
-                  "cinematic short film",
-                  "short film",
-                  "NABZ AI"
-              ],
-              "category_id": "24",
-          }
-
-          (root / "metadata.json").write_text(
-              json.dumps(meta, ensure_ascii=False, indent=2),
-              encoding="utf-8"
-          )
-
-          print("Cinematic publish gate: PASS")
-          PY
-
-      - name: Build manual preview
-        if: env.MODE == 'test' || env.MODE == 'short'
-        run: |
-          python -m src.main --mode "$MODE"
-
       - name: Generate private review report
-        if: env.MODE == 'mystery'
         run: |
           python scripts/review_short.py
 
       - name: Upload to YouTube
-        if: env.MODE == 'mystery' || env.MODE == 'cinematic'
         run: |
           if [ -z "$YOUTUBE_REFRESH_TOKEN" ] && [ -z "$YOUTUBE_TOKEN" ]; then
             echo "::warning::No YouTube credentials configured; video was built but not uploaded."
             exit 0
           fi
-
-          if [ "$MODE" = "mystery" ]; then
-            ROOT=output/mystery-short
-          else
-            ROOT=output/cinematic-short
-          fi
-
-          python -m src.youtube_uploader "$ROOT"
+          python -m src.youtube_uploader output/mystery-short
 
       - name: Build Persian Instagram reel
-        if: env.MODE == 'mystery'
         continue-on-error: true
         run: |
           python -m src.reel_fa
 
       - name: Queue Persian reel for Instagram
-        if: env.MODE == 'mystery' && hashFiles('output/reel-fa/meta.json') != ''
+        if: hashFiles('output/reel-fa/meta.json') != ''
         continue-on-error: true
         env:
           GH_TOKEN: ${{ github.token }}
@@ -215,7 +138,6 @@ jobs:
           git push -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" ig-queue
 
       - name: Persist story state and review report
-        if: env.MODE == 'mystery'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
