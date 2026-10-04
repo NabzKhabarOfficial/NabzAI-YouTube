@@ -3,8 +3,11 @@ name: NABZ Mysteries Instagram
 on:
   workflow_dispatch:
   schedule:
-    # Iranian evening peak. Four tries because GitHub sometimes drops scheduled runs;
-    # the publisher posts at most one reel a day, so extra runs do nothing.
+    # Midday carousel window (13:05 and 14:00 Tehran) and the evening reel peak.
+    # Several tries because GitHub sometimes drops scheduled runs; the publishers
+    # post at most one carousel and one reel a day, so extra runs do nothing.
+    - cron: "35 9 * * *"
+    - cron: "30 10 * * *"
     - cron: "35 16 * * *"
     - cron: "15 17 * * *"
     - cron: "0 18 * * *"
@@ -20,7 +23,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -38,6 +41,14 @@ jobs:
         run: |
           python -m pip install -r requirements-instagram.txt
 
+      - name: Post carousel (midday only)
+        continue-on-error: true
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
+        run: |
+          python -m src.ig_carousel
+
       - name: Fetch today's queued reel
         run: |
           mkdir -p ig_queue
@@ -48,7 +59,7 @@ jobs:
           fi
           ls -la ig_queue
 
-      - name: Post reel
+      - name: Post reel (evening only)
         env:
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
           IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
@@ -68,7 +79,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No Instagram state changes."
           else
-            git commit -m "chore(instagram): persist reel state [skip ci]"
+            git commit -m "chore(instagram): persist post state [skip ci]"
             git pull --rebase --autostash || true
             git push
           fi
