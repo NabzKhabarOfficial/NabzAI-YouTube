@@ -1,7 +1,9 @@
 output/
+ig_queue/
 __pycache__/
 *.pyc
 .venv/
 .env
 client_secret*.json
 token*.json
+.ig_session.json

@@ -1,56 +1,39 @@
 # NabzAI-YouTube
 
-English-first, free-first YouTube production pipeline. The main product is **NABZ Mysteries**: a daily vertical Short about a real unsolved mystery. A cinematic short-film mode is also available.
+Daily automated content for two channels, built from one fact-checked story bank.
 
-## NABZ Mysteries (default, daily)
+## What it makes
 
-`python -m src.mystery_short` builds one ~45 s vertical Short (1080x1920, 30 fps):
+- **NABZ Mysteries (YouTube Shorts, English)**: ~30 s hook-first vertical Shorts about real unsolved mysteries, uploaded and scheduled for 22:30 Tehran.
+- **نبض معما (Instagram Reels, Persian)**: the same story, hand-translated, rebuilt as a Persian Reel and posted 20:00-23:30 Tehran.
 
-- Curated scripts in `content/mysteries.json` (7 beats, ~110-125 words each). Stories are used oldest-first and recorded in `content/published.json`.
-- AI images per beat. Provider order: FLUX.1-schnell Hugging Face Space (free ZeroGPU quota), Pollinations (needs `POLLINATIONS_TOKEN`), Hugging Face Inference Providers.
-- Edge TTS narration (`en-US-ChristopherNeural`) with word timings.
-- Procedural dark ambient music with heartbeat, ducked under the voice.
-- Ken Burns motion, crossfades, word-by-word captions with highlighted current word, red `UNSOLVED` badge for the first 3 s, subtle `NABZ MYSTERIES` watermark.
-- Thumbnail, `metadata.json` (title + `#Shorts`), and a quality gate (resolution, duration, codecs, all images, captions).
-- YouTube credentials are checked **before** any image is generated, so a bad token never wastes GPU quota.
-- On failure, the reason is written to `output/mystery-short/error.txt` and shown as a GitHub Actions error annotation.
+## Files
 
-## Workflow
-
-`.github/workflows/youtube.yml`
-
-- Schedule: daily at 08:30 UTC (12:00 Tehran), mode `mystery`, always **private**.
-- Manual run: choose `mode` (`mystery`, `cinematic`, `test`, `short`), `visibility`, and an optional `story_id`.
-- Steps: fonts, dependencies, tests, build, upload, persist story state, upload artifacts for review.
-
-### Secrets
-
-| Secret | Purpose |
+| Path | Role |
 |---|---|
-| `YOUTUBE_CLIENT_ID`, `YOUTUBE_CLIENT_SECRET`, `YOUTUBE_REFRESH_TOKEN` | YouTube upload (OAuth, scope `youtube.upload`). The refresh token must be issued for the same client ID (OAuth Playground → "Use your own OAuth credentials"). |
-| `HF_TOKEN` | Hugging Face Space / Inference images |
-| `POLLINATIONS_TOKEN` | Backup image provider (secret `sk_` key, image-only, small budget) |
-| `AGNES_API_KEY` | Cinematic mode video provider |
-| `YOUTUBE_TOKEN` | Legacy single-JSON credential (still accepted) |
+| `src/mystery_short.py` | Builds the English Short (story pick, voice, images, captions, title hook). |
+| `src/youtube_uploader.py` | Uploads + schedules the Short with title, description, hashtags. |
+| `src/reel_fa.py` | Builds the Persian Reel, cover and caption from `content/mysteries_fa.json`. |
+| `src/ig_publish.py` | Posts one Reel per day (session only, 24 h safety pause on refusal). |
+| `scripts/guard_today.py` | Skips backup cron runs when today's Short is already built. |
+| `scripts/review_short.py` | Post-build review report (timing, captions, bank stock warning at <=15). |
+| `content/mysteries.json` | English story bank (fact-checked, never auto-generated). |
+| `content/mysteries_fa.json` | Persian translations (keep ahead of the English queue). |
+| `content/published.json` | Stories already used. |
+| `content/ig_state.json` | Instagram posting state. |
+| `tests/test_mystery.py` | Unit tests. |
 
-Uploads from an unaudited Google API project stay private; review each video in YouTube Studio and publish it yourself.
+## Workflows
 
-## Cinematic mode
+- `.github/workflows/youtube.yml`: daily build + upload (crons 08:30, 10:15, 12:00, 14:00 UTC with guard), then builds the Persian Reel and pushes it to the `ig-queue` branch.
+- `.github/workflows/instagram.yml`: evening crons, publishes the queued Reel.
 
-`python -m src.cinematic_short`: six-shot 1280x720 live-action-style short with a character reference, four dialogue beats, per-scene motion gate, thumbnail, and synthetic-media disclosure. Agnes first, then free Hugging Face video fallbacks.
+## Secrets
 
-## Test locally
+`YOUTUBE_CLIENT_SECRET`, `YOUTUBE_TOKEN` (or equivalents used by the uploader), `IG_USERNAME`, `IG_SESSION_B64`.
 
-```bash
-pip install -r requirements.txt
-pip install -r requirements-cinematic.txt
-python -m unittest discover -s tests -v
-```
+## Requirements
 
-## Adding mysteries
-
-Append to `content/mysteries.json`: unique `id`, `title` (≤ 60 chars), `tags`, and 6-8 `beats` each with `text` and `visual`. Total narration must be 95-150 words; the tests enforce this.
-
-## Cost policy
-
-No paid service is required. Free quotas (Hugging Face ZeroGPU, Pollinations budget) limit how many videos can be built per day; one per day fits comfortably.
+- `requirements.txt`: core build + YouTube upload.
+- `requirements-cinematic.txt`: image generation clients used by the Short builder.
+- `requirements-instagram.txt`: Instagram publishing.
