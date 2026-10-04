@@ -191,6 +191,29 @@ jobs:
 
           python -m src.youtube_uploader "$ROOT"
 
+      - name: Build Persian Instagram reel
+        if: env.MODE == 'mystery'
+        continue-on-error: true
+        run: |
+          python -m src.reel_fa
+
+      - name: Queue Persian reel for Instagram
+        if: env.MODE == 'mystery' && hashFiles('output/reel-fa/meta.json') != ''
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rm -rf /tmp/igq
+          mkdir -p /tmp/igq
+          cp output/reel-fa/reel.mp4 output/reel-fa/cover.jpg output/reel-fa/caption.txt output/reel-fa/meta.json /tmp/igq/
+          cd /tmp/igq
+          git init -q -b ig-queue
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -q -m "queue: Persian reel [skip ci]"
+          git push -f "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" ig-queue
+
       - name: Persist story state and review report
         if: env.MODE == 'mystery'
         run: |
