@@ -37,14 +37,18 @@ def next_publish_at(now=None, hour=PUBLISH_HOUR, minute=PUBLISH_MINUTE, min_lead
 
 
 def auto_publish_at(env=None):
-    """Only the daily scheduled run auto-schedules; manual runs keep the chosen visibility.
-    Set NABZ_AUTO_SCHEDULE=0 to turn it off."""
+    """Scheduled runs, and manual runs left on 'private' (rescue runs when GitHub drops
+    a cron), go live at the next 22:30 Tehran. Manual 'unlisted'/'public' runs keep the
+    chosen visibility. Set NABZ_AUTO_SCHEDULE=0 to turn it off."""
     env = os.environ if env is None else env
     if env.get("NABZ_AUTO_SCHEDULE", "1") == "0":
         return None
-    if env.get("GITHUB_EVENT_NAME") != "schedule":
-        return None
-    return next_publish_at()
+    event = env.get("GITHUB_EVENT_NAME")
+    if event == "schedule":
+        return next_publish_at()
+    if event == "workflow_dispatch" and env.get("YOUTUBE_VISIBILITY", "private") == "private":
+        return next_publish_at()
+    return None
 
 
 def load_credential_info(token_json=None, env=None) -> dict:
