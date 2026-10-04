@@ -28,11 +28,20 @@ WINDOW = os.getenv("IG_CAROUSEL_WINDOW", "12:00-16:00")
 MIN_GAP_DAYS = int(os.getenv("IG_CAROUSEL_MIN_GAP_DAYS", "3"))
 
 
-def load_posts(path: Path = BANK) -> list[dict]:
-    try:
-        return list(json.loads(path.read_text(encoding="utf-8")).get("posts", []))
-    except Exception:
-        return []
+def load_posts(folder: Path = BANK.parent) -> list[dict]:
+    """All content/ig_carousels*.json files, in name order. A later file can
+    override a post by id (e.g. {"id": "x", "skip": true} to drop it)."""
+    merged: dict = {}
+    for path in sorted(folder.glob("ig_carousels*.json")):
+        try:
+            posts = json.loads(path.read_text(encoding="utf-8")).get("posts", [])
+        except Exception as exc:
+            print(f"::warning title=Carousel file unreadable::{path.name}: {exc}")
+            continue
+        for p in posts:
+            if p.get("id"):
+                merged[p["id"]] = {**merged.get(p["id"], {}), **p}
+    return [p for p in merged.values() if not p.get("skip") and p.get("slides")]
 
 
 def pick(posts, state, now=None):
