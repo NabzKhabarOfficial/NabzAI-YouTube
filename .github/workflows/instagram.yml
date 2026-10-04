@@ -3,11 +3,14 @@ name: NABZ Mysteries Instagram
 on:
   workflow_dispatch:
   schedule:
-    # Midday carousel window (13:05 and 14:00 Tehran) and the evening reel peak.
-    # Several tries because GitHub sometimes drops scheduled runs; the publishers
-    # post at most one carousel and one reel a day, so extra runs do nothing.
+    # 13:05 / 14:00 Tehran: carousel. 17:05 / 18:00 Tehran: teaser story.
+    # 20:05 onwards: reel, then the reel-share story.
+    # Several tries because GitHub sometimes drops scheduled runs; every
+    # publisher posts at most once a day, so extra runs do nothing.
     - cron: "35 9 * * *"
     - cron: "30 10 * * *"
+    - cron: "35 13 * * *"
+    - cron: "30 14 * * *"
     - cron: "35 16 * * *"
     - cron: "15 17 * * *"
     - cron: "0 18 * * *"
@@ -41,14 +44,6 @@ jobs:
         run: |
           python -m pip install -r requirements-instagram.txt
 
-      - name: Post carousel (midday only)
-        continue-on-error: true
-        env:
-          IG_USERNAME: ${{ secrets.IG_USERNAME }}
-          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
-        run: |
-          python -m src.ig_carousel
-
       - name: Fetch today's queued reel
         run: |
           mkdir -p ig_queue
@@ -59,12 +54,36 @@ jobs:
           fi
           ls -la ig_queue
 
+      - name: Post carousel (midday only)
+        continue-on-error: true
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
+        run: |
+          python -m src.ig_carousel
+
+      - name: Post teaser story (afternoon only)
+        continue-on-error: true
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
+        run: |
+          python -m src.ig_story teaser ig_queue
+
       - name: Post reel (evening only)
         env:
           IG_USERNAME: ${{ secrets.IG_USERNAME }}
           IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
         run: |
           python -m src.ig_publish ig_queue
+
+      - name: Share reel to story (evening only)
+        continue-on-error: true
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
+        run: |
+          python -m src.ig_story share ig_queue
 
       - name: Persist Instagram state
         if: always()
