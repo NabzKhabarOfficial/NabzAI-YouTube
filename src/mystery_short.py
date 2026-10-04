@@ -24,6 +24,7 @@ import time
 import urllib.parse
 import urllib.request
 import wave
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import numpy as np
@@ -152,6 +153,9 @@ def record_story(story_id: str, path: Path = STATE) -> None:
     used = [x for x in state.get("mysteries", []) if x != story_id]
     used.append(story_id)
     state["mysteries"] = used
+    # lets the backup crons know today's Short is done (date in Tehran time)
+    tehran = datetime.now(timezone.utc) + timedelta(hours=3, minutes=30)
+    state["last_built_date"] = tehran.date().isoformat()
     path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
