@@ -1,0 +1,74 @@
+name: NABZ Mysteries Instagram
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Iranian evening peak. Four tries because GitHub sometimes drops scheduled runs;
+    # the publisher posts at most one reel a day, so extra runs do nothing.
+    - cron: "35 16 * * *"
+    - cron: "15 17 * * *"
+    - cron: "0 18 * * *"
+    - cron: "45 18 * * *"
+
+concurrency:
+  group: nabz-mysteries-instagram
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements-instagram.txt
+
+      - name: Install Instagram dependencies
+        run: |
+          python -m pip install -r requirements-instagram.txt
+
+      - name: Fetch today's queued reel
+        run: |
+          mkdir -p ig_queue
+          if git fetch --depth 1 origin ig-queue; then
+            git archive FETCH_HEAD | tar -x -C ig_queue
+          else
+            echo "No reel queued yet."
+          fi
+          ls -la ig_queue
+
+      - name: Post reel
+        env:
+          IG_USERNAME: ${{ secrets.IG_USERNAME }}
+          IG_SESSION_B64: ${{ secrets.IG_SESSION_B64 }}
+        run: |
+          python -m src.ig_publish ig_queue
+
+      - name: Persist Instagram state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ ! -f content/ig_state.json ]; then
+            echo "No Instagram state yet."
+            exit 0
+          fi
+          git add content/ig_state.json
+          if git diff --cached --quiet; then
+            echo "No Instagram state changes."
+          else
+            git commit -m "chore(instagram): persist reel state [skip ci]"
+            git pull --rebase --autostash || true
+            git push
+          fi
