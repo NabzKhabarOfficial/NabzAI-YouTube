@@ -56,7 +56,7 @@ def F(size: int, bold: bool = False):
     return _CACHE[key]
 
 
-def background(seed: int) -> Image.Image:
+def background(seed: int, W: int = W, H: int = H) -> Image.Image:
     rnd = random.Random(seed)
     im = Image.new("RGB", (W, H))
     d = ImageDraw.Draw(im)
