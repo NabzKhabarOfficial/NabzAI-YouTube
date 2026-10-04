@@ -7,6 +7,8 @@ quality gate -> metadata for upload. No paid service is required.
 
 Scripts open with the hook and end on a half sentence that flows back into the
 first line, so the Short loops seamlessly (higher average view percentage).
+Long beats get a second camera angle (a new picture every ~2-3 s) and the story
+title is shown big for the first seconds, to cut early swipes.
 """
 from __future__ import annotations
 
@@ -54,6 +56,15 @@ FONT_CANDIDATES = [
     "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
 ]
 MIN_WORDS, MAX_WORDS = 60, 95
+# Pacing: a beat longer than this gets two shots (new picture every ~2-3 s keeps viewers watching).
+SPLIT_MIN_SECONDS = float(os.getenv("NABZ_SPLIT_MIN_SECONDS", "2.6"))
+SECOND_SHOT = [
+    "extreme close-up detail shot of the key object",
+    "wide establishing shot from a different angle",
+    "low angle dramatic shot, different framing",
+    "over-the-shoulder view, shallow depth of field",
+]
+HOOK_SECONDS = 2.8  # story title shown big at the very start, before anyone swipes
 
 
 # ---------------------------------------------------------------- utilities
@@ -519,6 +530,38 @@ def render_badge(text: str, path: Path) -> None:
     img.save(path)
 
 
+def render_hook_title(title: str, path: Path) -> None:
+    """Big title card for the first seconds: the viewer knows the story before deciding to swipe."""
+    words = re.sub(r"\s*#\w+", "", title).upper().split()
+    size = 92
+    while True:
+        f = font(size)
+        probe_draw = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
+        lines, cur = [], ""
+        for w in words:
+            test = (cur + " " + w).strip()
+            if probe_draw.textlength(test, font=f) > W - 150 and cur:
+                lines.append(cur)
+                cur = w
+            else:
+                cur = test
+        lines.append(cur)
+        if len(lines) <= 3 or size <= 64:
+            break
+        size -= 6
+    line_h = int(size * 1.18)
+    img = Image.new("RGBA", (W, line_h * len(lines) + 40), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    y = 20
+    for line in lines:
+        tw = d.textlength(line, font=f)
+        d.text(((W - tw) / 2 + 4, y + 6), line, font=f, fill=(0, 0, 0, 160))
+        d.text(((W - tw) / 2, y), line, font=f, fill=(255, 255, 255, 255), stroke_width=9,
+               stroke_fill=(0, 0, 0, 255))
+        y += line_h
+    img.save(path)
+
+
 def render_watermark(path: Path) -> None:
     """Small premium brand mark; the box is sized to the text so it is never clipped."""
     f = font(34)
@@ -557,7 +600,7 @@ def render_segment(image: Path, seconds: float, motion: int, target: Path) -> No
 
 
 def assemble(segments: list[Path], durations: list[float], captions: Path, badge: Path,
-             watermark: Path, audio: Path, target: Path) -> None:
+             watermark: Path, audio: Path, target: Path, hook: Path | None = None) -> None:
     total = sum(durations)
     args: list[str] = []
     for seg in segments:
@@ -565,6 +608,8 @@ def assemble(segments: list[Path], durations: list[float], captions: Path, badge
     n = len(segments)
     args += ["-i", str(captions), "-loop", "1", "-i", str(badge),
              "-loop", "1", "-i", str(watermark), "-i", str(audio)]
+    if hook:
+        args += ["-loop", "1", "-i", str(hook)]
     parts, last, offset = [], "[0:v]", 0.0
     for i in range(1, n):
         offset += durations[i - 1]
@@ -573,13 +618,31 @@ def assemble(segments: list[Path], durations: list[float], captions: Path, badge
         last = out
     parts.append(f"{last}[{n}:v]overlay=0:{CAP_Y}:format=auto[vc]")
     parts.append(f"[vc][{n + 1}:v]overlay=(W-w)/2:250:enable='lt(t,3.0)':format=auto[vb]")
-    parts.append(f"[vb][{n + 2}:v]overlay=W-w-42:82:format=auto[vwm]")
+    if hook:
+        parts.append(f"[vb][{n + 4}:v]overlay=0:360:enable='lt(t,{HOOK_SECONDS})':format=auto[vh]")
+        parts.append(f"[vh][{n + 2}:v]overlay=W-w-42:82:format=auto[vwm]")
+    else:
+        parts.append(f"[vb][{n + 2}:v]overlay=W-w-42:82:format=auto[vwm]")
     parts.append("[vwm]format=yuv420p[vout]")
     args += ["-filter_complex", ";".join(parts), "-map", "[vout]", "-map", f"{n + 3}:a",
              "-t", f"{total:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "19",
              "-profile:v", "high", "-pix_fmt", "yuv420p", "-r", str(FPS),
              "-c:a", "aac", "-b:a", "192k", "-ar", str(SR), "-movflags", "+faststart", str(target)]
     run_ffmpeg(args)
+
+
+def split_shots(images: list[Path], extras: list[Path | None], durations: list[float]):
+    """Two shots for every long beat (second picture from another angle); sums stay identical."""
+    shot_imgs, shot_durs = [], []
+    for img, extra, d in zip(images, extras, durations):
+        if extra is not None and d >= SPLIT_MIN_SECONDS:
+            first = round(d * 0.5, 3)
+            shot_imgs += [img, extra]
+            shot_durs += [first, d - first]
+        else:
+            shot_imgs.append(img)
+            shot_durs.append(d)
+    return shot_imgs, shot_durs
 
 
 def segment_lengths(durations: list[float]) -> list[float]:
@@ -665,6 +728,19 @@ def build(story: dict) -> dict:
         images.append(target)
         sources.append(src)
 
+    # second angle per beat; any failure just keeps the single shot (never blocks the build)
+    extras: list[Path | None] = []
+    for i, beat in enumerate(story["beats"]):
+        target = WORK / f"img_{i}_b.jpg"
+        angle = SECOND_SHOT[(seed_base + i) % len(SECOND_SHOT)]
+        try:
+            src = generate_image(f"{beat['visual']}, {angle}, {STYLE}", seed_base + i * 7 + 3, target)
+            log(f"second shot {i + 1}/{len(story['beats'])} via {src}")
+            extras.append(target)
+        except Exception as exc:
+            log(f"second shot {i + 1} skipped: {type(exc).__name__}: {str(exc)[:160]}")
+            extras.append(None)
+
     voice, durations, words = narrate(story)
     total = sum(durations)
     log(f"narration {total:.1f}s, {len(words)} words")
@@ -672,8 +748,10 @@ def build(story: dict) -> dict:
     audio = WORK / "mix.wav"
     write_wav(audio, stereo)
 
+    shot_imgs, shot_durs = split_shots(images, extras, durations)
+    log(f"{len(shot_imgs)} shots, average {total / len(shot_imgs):.1f}s per picture")
     segs = []
-    for i, (img, length) in enumerate(zip(images, segment_lengths(durations))):
+    for i, (img, length) in enumerate(zip(shot_imgs, segment_lengths(shot_durs))):
         seg = WORK / f"seg_{i}.mp4"
         render_segment(img, length, (seed_base + i) % len(MOTIONS), seg)
         segs.append(seg)
@@ -684,9 +762,11 @@ def build(story: dict) -> dict:
     render_badge(os.getenv("NABZ_MYSTERY_BADGE", "UNSOLVED"), badge)
     watermark = WORK / "watermark.png"
     render_watermark(watermark)
+    hook = WORK / "hook_title.png"
+    render_hook_title(story["title"], hook)
 
     final = OUT / "final_short.mp4"
-    assemble(segs, durations, captions, badge, watermark, audio, final)
+    assemble(segs, shot_durs, captions, badge, watermark, audio, final, hook=hook)
     make_thumbnail(images[0], story["title"], OUT / "thumbnail.jpg")
 
     report = quality_gate(final, story, sources, caption_frames)
