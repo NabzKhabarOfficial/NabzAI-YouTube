@@ -326,6 +326,10 @@ PRONOUNCE = {
     "taos": "Touse",
     "valentich": "Valentitch",
     "hinterkaifeck": "Hinter Kyfeck",
+    "cambyses": "Cambyseez",
+    "baychimo": "Baycheemo",
+    "tamam": "Tamahm",
+    "shud": "Shood",
 }
 _EDGE = ".,?!:;\"'()"
 
