@@ -23,6 +23,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont, features
 
 from src import mystery_short as m
+from src import voice_check
 
 ROOT = m.ROOT
 FA_BANK = ROOT / "content" / "mysteries_fa.json"
@@ -158,6 +159,8 @@ FA_PRONOUNCE = {
 }
 FA_SUFFIXES = [("\u200cاند", "\u200cاَند")]  # «افتاده‌اند», «آب‌تنی‌اند»: verb ending, not the word «اند»
 _FA_EDGE = ".,!?:;\u060c\u061b\u061f\u00ab\u00bb\"'()"
+# respellings the listening check proved better in earlier runs (review/pron_learned.json)
+FA_PRONOUNCE.update(voice_check.learned("fa"))
 
 
 def spoken(text: str) -> str:
@@ -175,13 +178,23 @@ def spoken(text: str) -> str:
     return " ".join(out)
 
 
+def _synth(text: str, wav: Path) -> list[dict]:
+    mp3 = wav.with_suffix(".mp3")
+    words = asyncio.run(_tts(text, mp3))
+    m.to_wav(mp3, wav)
+    return words
+
+
 def narrate(beats: list[str]):
     pieces, durations, words = [], [], []
     clock = 0.0
     for i, text in enumerate(beats):
         mp3, wav = WORK / f"voice_{i}.mp3", WORK / f"voice_{i}.wav"
-        bwords = asyncio.run(_tts(spoken(text), mp3))
+        say = spoken(text)
+        bwords = asyncio.run(_tts(say, mp3))
         m.to_wav(mp3, wav)
+        if voice_check.ENABLED:
+            _, bwords = voice_check.review_beat(text, say.split(), bwords, wav, "fa", _synth)
         audio = m.read_wav(wav)
         dur = len(audio) / SR
         if dur < 1.0:
@@ -411,6 +424,7 @@ def build(story: dict, fa: dict) -> dict:
         images.append(a)
         extras.append(b if b.exists() else None)
     voice, durations, words = narrate(fa["beats"])
+    voice_check.write_report(story["id"], "fa")
     total = sum(durations)
     log(f"Persian narration {total:.1f}s, {len(words)} words")
     if not 15 <= total <= 59:
