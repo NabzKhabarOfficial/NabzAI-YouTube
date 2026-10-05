@@ -9,5 +9,13 @@
     "story_id": "voynich-manuscript",
     "media_pk": "4000625352983554134",
     "at": "2026-10-04T20:06:12.163726+03:30"
+  },
+  "carousels_posted": [
+    "salt-men-chehrabad"
+  ],
+  "last_carousel": {
+    "id": "salt-men-chehrabad",
+    "date": "2026-10-05",
+    "media_pk": "4001138834083795124"
   }
 }
