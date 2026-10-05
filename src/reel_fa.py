@@ -142,9 +142,27 @@ async def _tts(text: str, mp3: Path) -> list[dict]:
     return words
 
 
+# Voice-only respellings (diacritics for ambiguous words, foreign names); captions keep the script.
+FA_PRONOUNCE = {
+    "کت": "کُت",
+    "کت\u200cوشلوار": "کُت\u200cوشلوار",
+    "کشتی": "کَشتی",
+    "برده": "بُرده",
+    "مرده": "مُرده",
+    "وب": "وِب",
+    "واو": "وائو",
+}
+_FA_EDGE = ".,!?:;\u060c\u061b\u061f\u00ab\u00bb\"'()"
+
+
 def spoken(text: str) -> str:
-    """What the voice reads (whitespace tidied)."""
-    return re.sub(r"\s+", " ", text).strip()
+    """What the voice reads: whitespace tidied, ambiguous words respelled (same word count)."""
+    out = []
+    for tok in text.split():
+        core = tok.strip(_FA_EDGE)
+        say = FA_PRONOUNCE.get(core)
+        out.append(tok.replace(core, say, 1) if say and core else tok)
+    return " ".join(out)
 
 
 def narrate(beats: list[str]):
