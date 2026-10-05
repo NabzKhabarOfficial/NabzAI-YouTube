@@ -111,16 +111,21 @@ def block(d, text, font, y, fill, gap, maxw=900):
 
 
 def chrome(d, i, n):
+    # Instagram draws its own "1/6" counter at the top right, so the brand pill sits top left
+    # and there is no slide counter of our own.
     f = F(30, True)
     tw = tlen(d, BRAND, f)
-    d.rounded_rectangle([W - 90 - tw - 36, 70, W - 90, 124], radius=27, fill=RED)
-    d.text((W - 90 - tw - 18, 76), BRAND, font=f, fill=WHITE, direction="rtl", language="fa")
-    d.text((90, 82), f"{fa_digits(i)}/{fa_digits(n)}", font=F(28), fill=MUTED, direction="rtl", language="fa")
+    d.rounded_rectangle([90, 70, 90 + tw + 36, 124], radius=27, fill=RED)
+    d.text((108, 76), BRAND, font=f, fill=WHITE, direction="rtl", language="fa")
     if i < n:
-        d.text((140, H - 110), "ورق بزن", font=F(30, True), fill=GOLD, direction="rtl", language="fa")
-        d.polygon([(92, H - 90), (122, H - 108), (122, H - 72)], fill=GOLD)
+        # swipe hint bottom right, where the finger starts and the next slide comes in from
+        hint = F(30, True)
+        hw = tlen(d, "ورق بزن", hint)
+        d.text((W - 90 - hw, H - 110), "ورق بزن", font=hint, fill=GOLD, direction="rtl", language="fa")
+        ax = W - 90 - hw - 20
+        d.polygon([(ax - 30, H - 90), (ax, H - 108), (ax, H - 72)], fill=GOLD)
     hf = F(28)
-    d.text((W - 90 - d.textlength(HANDLE, font=hf), H - 108), HANDLE, font=hf, fill=MUTED)
+    d.text((90, H - 108), HANDLE, font=hf, fill=MUTED)
 
 
 def render_slide(s: dict, i: int, n: int, path: Path) -> Path:
