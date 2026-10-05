@@ -30,6 +30,8 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageStat
 
+from src import voice_check
+
 ROOT = Path(__file__).resolve().parents[1]
 BANK = ROOT / "content" / "mysteries.json"
 STATE = ROOT / "content" / "published.json"
@@ -331,6 +333,8 @@ PRONOUNCE = {
     "tamam": "Tamahm",
     "shud": "Shood",
 }
+# respellings the listening check proved better in earlier runs (review/pron_learned.json)
+PRONOUNCE.update({k.lower(): v for k, v in voice_check.learned("en").items()})
 _EDGE = ".,?!:;\"'()"
 
 
@@ -400,6 +404,13 @@ def estimate_words(text: str, duration: float) -> list[dict]:
     return out
 
 
+def _synth(text: str, wav: Path) -> list[dict]:
+    mp3 = wav.with_suffix(".mp3")
+    words = asyncio.run(_tts(text, mp3))
+    to_wav(mp3, wav)
+    return words
+
+
 def narrate(story: dict) -> tuple[np.ndarray, list[float], list[dict]]:
     """Returns mono narration, per-beat slot durations and global word timings."""
     pieces, durations, words = [], [], []
@@ -409,6 +420,10 @@ def narrate(story: dict) -> tuple[np.ndarray, list[float], list[dict]]:
         spoken, parts = pronounce(beat["text"])
         bwords = asyncio.run(_tts(spoken, mp3))
         to_wav(mp3, wav)
+        if voice_check.ENABLED:
+            parts, bwords = voice_check.review_beat(beat["text"], parts, bwords, wav, "en", _synth,
+                                                    key=str.lower)
+            spoken = " ".join(parts)
         audio = read_wav(wav)
         dur = len(audio) / SR
         if dur < 1.0:
@@ -800,6 +815,7 @@ def build(story: dict) -> dict:
             extras.append(None)
 
     voice, durations, words = narrate(story)
+    voice_check.write_report(story["id"], "en")
     total = sum(durations)
     log(f"narration {total:.1f}s, {len(words)} words")
     stereo = mix(voice, make_music(total + 0.5, seed_base))
