@@ -317,6 +317,53 @@ def _norm(tok: str) -> str:
     return re.sub(r"[^a-z0-9]", "", tok.lower())
 
 
+# Spoken-only respellings: the voice reads these, captions keep the real spelling.
+PRONOUNCE = {
+    "voynich": "Voynitch",
+    "codebreakers": "code breakers",
+    "ii": "Two",
+    "königsberg": "Kernigsberg",
+    "taos": "Touse",
+    "valentich": "Valentitch",
+    "hinterkaifeck": "Hinter Kyfeck",
+}
+_EDGE = ".,?!:;\"'()"
+
+
+def pronounce(text: str) -> tuple[str, list[str]]:
+    """Text for the voice, plus what each script word is spoken as."""
+    parts = []
+    for tok in text.split():
+        core = tok.strip(_EDGE)
+        say = PRONOUNCE.get(core.lower())
+        parts.append(tok.replace(core, say, 1) if say and core else tok)
+    return " ".join(parts), parts
+
+
+def restore_words(text: str, parts: list[str], bwords: list[dict], dur: float) -> list[dict]:
+    """Map word timings of the respelled narration back onto the script's own words."""
+    out, bi = [], 0
+    for orig, spoken in zip(text.split(), parts):
+        target = _norm(spoken)
+        if not target:
+            continue
+        got, first, last = "", None, None
+        while bi < len(bwords) and len(got) < len(target):
+            w = bwords[bi]
+            bi += 1
+            nw = _norm(w["text"])
+            if not nw:
+                continue
+            first = first or w
+            last = w
+            got += nw
+        if got != target or first is None:
+            log("pronunciation alignment failed; using estimated word timings")
+            return estimate_words(text, dur)
+        out.append({"text": orig.strip(_EDGE), "start": first["start"], "end": last["end"]})
+    return out
+
+
 def mark_punctuation(text: str, words: list[dict]) -> list[dict]:
     """Edge TTS word boundaries drop punctuation; copy sentence/clause ends from the script."""
     tokens = [t for t in text.split() if _norm(t)]
@@ -355,7 +402,8 @@ def narrate(story: dict) -> tuple[np.ndarray, list[float], list[dict]]:
     clock = 0.0
     for i, beat in enumerate(story["beats"]):
         mp3, wav = WORK / f"voice_{i}.mp3", WORK / f"voice_{i}.wav"
-        bwords = asyncio.run(_tts(beat["text"], mp3))
+        spoken, parts = pronounce(beat["text"])
+        bwords = asyncio.run(_tts(spoken, mp3))
         to_wav(mp3, wav)
         audio = read_wav(wav)
         dur = len(audio) / SR
@@ -364,6 +412,8 @@ def narrate(story: dict) -> tuple[np.ndarray, list[float], list[dict]]:
         if not bwords:
             bwords = estimate_words(beat["text"], dur)
         else:
+            if spoken != beat["text"]:
+                bwords = restore_words(beat["text"], parts, bwords, dur)
             mark_punctuation(beat["text"], bwords)
         gap = TAIL if i == len(story["beats"]) - 1 else BEAT_GAP
         slot = dur + gap
