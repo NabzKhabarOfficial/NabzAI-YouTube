@@ -151,7 +151,12 @@ FA_PRONOUNCE = {
     "مرده": "مُرده",
     "وب": "وِب",
     "واو": "وائو",
+    "جعل": "جَعل",
+    "سرب": "سُرب",
+    "قسر": "قِسر",
+    "اهله\u200cی": "اَهِلّه\u200cی",
 }
+FA_SUFFIXES = [("\u200cاند", "\u200cاَند")]  # «افتاده‌اند», «آب‌تنی‌اند»: verb ending, not the word «اند»
 _FA_EDGE = ".,!?:;\u060c\u061b\u061f\u00ab\u00bb\"'()"
 
 
@@ -161,6 +166,11 @@ def spoken(text: str) -> str:
     for tok in text.split():
         core = tok.strip(_FA_EDGE)
         say = FA_PRONOUNCE.get(core)
+        if not say:
+            for end, fix in FA_SUFFIXES:
+                if core.endswith(end) and len(core) > len(end):
+                    say = core[: -len(end)] + fix
+                    break
         out.append(tok.replace(core, say, 1) if say and core else tok)
     return " ".join(out)
 
