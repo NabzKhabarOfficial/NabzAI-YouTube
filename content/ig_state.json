@@ -1,14 +1,16 @@
 {
   "posted": [
-    "voynich-manuscript"
+    "voynich-manuscript",
+    "flannan-isles"
   ],
   "daily": {
-    "2026-10-04": 1
+    "2026-10-04": 1,
+    "2026-10-05": 1
   },
   "last_post": {
-    "story_id": "voynich-manuscript",
-    "media_pk": "4000625352983554134",
-    "at": "2026-10-04T20:06:12.163726+03:30"
+    "story_id": "flannan-isles",
+    "media_pk": "4001350126223464455",
+    "at": "2026-10-05T20:06:12.042863+03:30"
   },
   "carousels_posted": [
     "salt-men-chehrabad"
