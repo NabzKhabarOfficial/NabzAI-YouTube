@@ -19,5 +19,17 @@
     "id": "salt-men-chehrabad",
     "date": "2026-10-05",
     "media_pk": "4001138834083795124"
+  },
+  "stories": {
+    "teaser": [
+      "somerton-man"
+    ],
+    "share": []
+  },
+  "story_log": {
+    "teaser": {
+      "at": "2026-10-06T14:13:08+03:30",
+      "result": "published 4001897534485546786 -> somerton-man"
+    }
   }
 }
