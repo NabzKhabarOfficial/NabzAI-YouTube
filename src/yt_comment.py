@@ -1,8 +1,10 @@
 """First comment on each new NABZ Mysteries Short, posted automatically.
 
 Runs from .github/workflows/yt-comment.yml shortly after the 22:30 Tehran
-publish time (cron-job.org calls workflow_dispatch). It finds the newest
-public upload of the channel that has not been commented yet and posts one
+publish time (cron-job.org calls workflow_dispatch), and again as a catch-up
+right after the next day's upload (src.youtube_uploader), so a Short whose
+evening run was missed still gets its comment. It finds the newest public
+upload of the channel that has not been commented yet and posts one
 story-specific question, so viewers have something to answer. YouTube's API
 cannot pin comments: the owner pins it from the app.
 
@@ -10,7 +12,8 @@ Needs a refresh token that includes the youtube.force-ssl scope (the upload
 token alone is not enough). Rules: at most one comment per run, never twice
 on the same video, only public videos from the last 3 days. Never fails the
 workflow; problems become warnings.
-State: content/yt_comments.json.
+State: content/yt_comments.json, mirrored in review/yt_comments.json (the daily
+YouTube run only commits review/); both are merged when read.
 """
 from __future__ import annotations
 
@@ -23,6 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / "content" / "yt_comments.json"
+MIRROR = ROOT / "review" / "yt_comments.json"
 BANK = ROOT / "content" / "mysteries.json"
 SCOPES = ["https://www.googleapis.com/auth/youtube.force-ssl"]
 MAX_AGE = timedelta(days=3)
@@ -34,7 +38,7 @@ QUESTIONS = [
 ]
 
 
-def load_state(path: Path = STATE) -> dict:
+def _read(path: Path) -> dict:
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
         return data if isinstance(data, dict) else {}
@@ -42,9 +46,22 @@ def load_state(path: Path = STATE) -> dict:
         return {}
 
 
+def load_state(path: Path = STATE) -> dict:
+    state = _read(path)
+    if path == STATE:
+        other = _read(MIRROR)
+        done = list(dict.fromkeys(list(state.get("commented", [])) + list(other.get("commented", []))))
+        state["commented"] = done[-200:]
+        if str((other.get("last") or {}).get("at", "")) > str((state.get("last") or {}).get("at", "")):
+            state["last"] = other["last"]
+    return state
+
+
 def save_state(state: dict, path: Path = STATE) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    targets = [path, MIRROR] if path == STATE else [path]
+    for target in targets:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def _norm(text) -> str:
@@ -119,6 +136,8 @@ def main() -> int:
         text = f"{type(exc).__name__}: {exc}"
         hint = (" The token has no comment permission: make a new refresh token with the "
                 "youtube.force-ssl scope.") if re.search(r"scope|insufficient|403", text, re.I) else ""
+        state["last_check"] = {"at": datetime.now(timezone.utc).isoformat(), "result": text[:200]}
+        save_state(state)
         print(f"::warning title=YouTube comment skipped::{text[:300]}{hint}")
         return 0
     if not video:

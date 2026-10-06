@@ -252,3 +252,8 @@ if __name__ == "__main__":
         raise
     print("YOUTUBE_VIDEO_ID:", vid)
     print("YOUTUBE_URL: https://youtu.be/" + vid)
+    try:  # catch-up: yesterday's Short gets its first comment even if the evening run was missed
+        from src import yt_comment
+        yt_comment.main()
+    except Exception as exc:
+        print(f"YT COMMENT catch-up skipped: {type(exc).__name__}: {exc}")

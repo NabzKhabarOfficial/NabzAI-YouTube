@@ -1,6 +1,6 @@
 """Two automatic Instagram stories a day for «نبض معما».
 
-  teaser  (afternoon, default 16:30-19:30 Tehran): a branded card announcing
+  teaser  (midday/afternoon, default 13:00-19:30 Tehran): a branded card announcing
           tonight's mystery (title from the queued reel), built here.
   share   (evening, after the reel is up): a card with the reel itself attached
           as a tappable post sticker, so viewers jump straight to the reel.
@@ -9,7 +9,8 @@ Interactive stickers (poll / countdown / questions) are left to the human:
 they are what make the account look and feel alive.
 Same safety as the reels (src.ig_publish): saved session only, the shared
 24 h pause on any refusal, at most one teaser and one share per day, and a
-story is never retried.
+story is never retried. Every attempt is logged in state["story_log"] so a
+missing story can always be explained from the committed state.
 Usage: python -m src.ig_story teaser|share [queue_dir]
 """
 from __future__ import annotations
@@ -30,7 +31,9 @@ from src import ig_publish as ig
 ROOT = ig.ROOT
 OUT = ROOT / "output" / "stories"
 SW, SH = 1080, 1920
-TEASER_WINDOW = os.getenv("IG_TEASER_WINDOW", "16:30-19:30")
+# The reliable triggers are the 13:05 and 20:05 runs (cron-job.org), so the teaser goes out
+# with the midday run and the share story with the evening one.
+TEASER_WINDOW = os.getenv("IG_TEASER_WINDOW", "13:00-19:30")
 SHARE_WINDOW = os.getenv("IG_SHARE_WINDOW", "20:00-23:59")
 
 
@@ -46,6 +49,13 @@ def stories_state(state: dict) -> dict:
     st.setdefault("teaser", [])
     st.setdefault("share", [])
     return st
+
+
+def note(state: dict, kind: str, result: str, save: bool = True) -> None:
+    log = state.setdefault("story_log", {})
+    log[kind] = {"at": ig.now_tehran().isoformat(timespec="seconds"), "result": str(result)[:300]}
+    if save:
+        ig.save_state(state)
 
 
 def decide(kind: str, state: dict, meta: dict, now=None):
@@ -148,6 +158,8 @@ def main(kind: str, queue_dir: str = "ig_queue") -> int:
     ok, reason = decide(kind, state, meta)
     if not ok:
         print(f"IG STORY ({kind}): not posting: {reason}")
+        if not reason.startswith("outside") and "already done" not in reason:
+            note(state, kind, f"skipped: {reason}")
         return 0
     sid = meta["story_id"]
     try:
@@ -157,10 +169,12 @@ def main(kind: str, queue_dir: str = "ig_queue") -> int:
             cover = queue / "cover.jpg"
             if not cover.exists():
                 print("IG STORY (share): no cover in queue")
+                note(state, kind, "skipped: no cover in queue")
                 return 0
             image = render_share(cover, OUT / "share.jpg")
     except Exception as exc:
         print(f"::warning title=Story not rendered::{type(exc).__name__}: {exc}")
+        note(state, kind, f"render failed: {type(exc).__name__}: {exc}")
         return 0
     if kind == "share":
         try:
@@ -172,6 +186,7 @@ def main(kind: str, queue_dir: str = "ig_queue") -> int:
     try:
         client = ig.login_client()
     except Exception as exc:
+        note(state, kind, f"login refused: {type(exc).__name__}: {exc}", save=False)
         ig.pause(state, f"login refused: {type(exc).__name__}: {exc}")
         return 0
     stories_state(state)[kind] = (state["stories"][kind] + [sid])[-60:]
@@ -181,13 +196,14 @@ def main(kind: str, queue_dir: str = "ig_queue") -> int:
         else:
             story = client.photo_upload_to_story(image, medias=[media_sticker(state["last_post"]["media_pk"])])
     except Exception as exc:
+        note(state, kind, f"upload failed: {type(exc).__name__}: {exc}", save=False)
         if ig.is_block(exc):
             ig.pause(state, f"{kind} story refused: {type(exc).__name__}: {exc}")
         else:
             ig.save_state(state)
         print(f"IG STORY ({kind}): failed ({type(exc).__name__}: {exc}); not retrying")
         return 0
-    ig.save_state(state)
+    note(state, kind, f"published {getattr(story, 'pk', '?')} -> {sid}")
     print(f"IG STORY ({kind}): published {getattr(story, 'pk', '?')} -> {sid}")
     return 0
 
