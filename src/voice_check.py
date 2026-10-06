@@ -32,12 +32,16 @@ GOOD = 0.8       # a respelling is kept only if heard at least this well ...
 GAIN = 0.25      # ... and clearly better than the original
 MAX_FIXES = 6    # words per process
 MAX_CANDIDATES = 4
+# Re-synthesis attempts per process: keeps a paid/quota-limited voice (Gemini) from being
+# called dozens of times when the recognizer struggles with a name.
+MAX_TRIES = int(os.getenv("NABZ_VOICE_CHECK_TRIES", "12"))
 TEHRAN = timezone(timedelta(hours=3, minutes=30))
 
 _MODEL = None
 _FAILED = False
 _START: float | None = None
 _FIXES = 0
+_TRIES = 0
 _BEATS = 0
 _REASON = ""
 EVENTS: list[dict] = []
@@ -216,7 +220,7 @@ def review_beat(text: str, parts: list[str], bwords: list, wav: Path, lang: str,
     write the audio and return its word boundaries. Returns (parts, bwords); wav is updated
     in place when a respelling is kept. key(core) gives the learned-fix key for a word.
     """
-    global _FIXES, _BEATS
+    global _FIXES, _BEATS, _TRIES
     if _FIXES >= MAX_FIXES or not available():
         return parts, bwords
     try:
@@ -234,6 +238,9 @@ def review_beat(text: str, parts: list[str], bwords: list, wav: Path, lang: str,
             event = {"word": core, "heard": asr, "score": round(score, 2), "kept": None}
             best = None
             for cand in candidates(core, lang):
+                if _TRIES >= MAX_TRIES:
+                    break
+                _TRIES += 1
                 trial = list(parts)
                 trial[i] = tokens[i].replace(core, cand, 1)
                 tmp = wav.with_name(wav.stem + "_try.wav")
