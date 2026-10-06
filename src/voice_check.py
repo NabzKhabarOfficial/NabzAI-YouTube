@@ -38,6 +38,8 @@ _MODEL = None
 _FAILED = False
 _START: float | None = None
 _FIXES = 0
+_BEATS = 0
+_REASON = ""
 EVENTS: list[dict] = []
 
 EN_SKIP = {
@@ -56,7 +58,7 @@ def log(msg: str) -> None:
 
 # ---------------------------------------------------------------- model
 def _model():
-    global _MODEL, _FAILED, _START
+    global _MODEL, _FAILED, _START, _REASON
     if _MODEL is not None or _FAILED or not ENABLED:
         return _MODEL
     try:
@@ -71,6 +73,7 @@ def _model():
         log(f"listening model ready ({MODEL_NAME})")
     except Exception as exc:
         _FAILED = True
+        _REASON = f"{type(exc).__name__}: {str(exc)[:200]}"
         log(f"turned off for this run: {type(exc).__name__}: {str(exc)[:200]}")
     return _MODEL
 
@@ -180,17 +183,29 @@ def _save_learned(lang: str, word: str, say: str) -> None:
 
 
 def write_report(story_id: str, lang: str) -> None:
-    if not EVENTS:
-        return
+    """Log every run, even a clean one, so a health check can tell 'all heard fine' from 'off'."""
+    global _BEATS
+    if not ENABLED:
+        status = "disabled"
+    elif _FAILED:
+        status = "off"
+    elif _MODEL is None:
+        status = "not-run"
+    elif _START is not None and time.time() - _START > BUDGET:
+        status = "out-of-time"
+    else:
+        status = "ok"
     try:
         data = json.loads(REPORT.read_text(encoding="utf-8")) if REPORT.exists() else []
     except Exception:
         data = []
     data.append({"date": datetime.now(TEHRAN).date().isoformat(), "story": story_id, "lang": lang,
+                 "status": status, "beats_checked": _BEATS, "reason": _REASON,
                  "events": list(EVENTS)})
     REPORT.parent.mkdir(parents=True, exist_ok=True)
     REPORT.write_text(json.dumps(data[-60:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     EVENTS.clear()
+    _BEATS = 0
 
 
 # ---------------------------------------------------------------- main entry
@@ -201,7 +216,7 @@ def review_beat(text: str, parts: list[str], bwords: list, wav: Path, lang: str,
     write the audio and return its word boundaries. Returns (parts, bwords); wav is updated
     in place when a respelling is kept. key(core) gives the learned-fix key for a word.
     """
-    global _FIXES
+    global _FIXES, _BEATS
     if _FIXES >= MAX_FIXES or not available():
         return parts, bwords
     try:
@@ -209,6 +224,7 @@ def review_beat(text: str, parts: list[str], bwords: list, wav: Path, lang: str,
         if len(tokens) != len(parts):
             return parts, bwords
         asr = transcribe(wav, lang)
+        _BEATS += 1
         weak = [(heard(tok, asr, lang), i) for i, tok in enumerate(tokens) if checkable(tok, lang)]
         weak = sorted((s, i) for s, i in weak if s < BAD)[:2]
         for score, i in weak:
