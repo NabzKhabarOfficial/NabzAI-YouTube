@@ -71,6 +71,7 @@ jobs:
       AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       POLLINATIONS_TOKEN: ${{ secrets.POLLINATIONS_TOKEN }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
 
     steps:
       - name: Checkout
