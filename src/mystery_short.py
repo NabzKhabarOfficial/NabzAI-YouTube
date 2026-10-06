@@ -1,7 +1,7 @@
 """NABZ Mysteries: vertical YouTube Shorts (1080x1920, ~30 s).
 
 Pipeline: curated script -> AI images (Pollinations FLUX, Hugging Face fallback)
--> Edge TTS narration with word timings -> procedural dark ambient music with
+-> deep native-English narration (Gemini TTS, Edge TTS fallback) with word timings -> procedural dark ambient music with
 ducking -> Ken Burns motion + crossfades -> word-by-word burned captions ->
 quality gate -> metadata for upload. No paid service is required.
 
@@ -30,7 +30,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageStat
 
-from src import voice_check
+from src import gemini_tts, voice_check
 
 ROOT = Path(__file__).resolve().parents[1]
 BANK = ROOT / "content" / "mysteries.json"
@@ -411,24 +411,35 @@ def _synth(text: str, wav: Path) -> list[dict]:
     return words
 
 
-def narrate(story: dict) -> tuple[np.ndarray, list[float], list[dict]]:
+def _gemini_synth(text: str, wav: Path) -> list[dict]:
+    """Gemini narration for one beat; word timings are spread over the trimmed speech."""
+    return estimate_words(text, gemini_tts.synth(text, wav, SR))
+
+
+def narrate(story: dict, engine: str = "edge") -> tuple[np.ndarray, list[float], list[dict]]:
     """Returns mono narration, per-beat slot durations and global word timings."""
     pieces, durations, words = [], [], []
     clock = 0.0
+    synth = _gemini_synth if engine == "gemini" else _synth
     for i, beat in enumerate(story["beats"]):
         mp3, wav = WORK / f"voice_{i}.mp3", WORK / f"voice_{i}.wav"
         spoken, parts = pronounce(beat["text"])
-        bwords = asyncio.run(_tts(spoken, mp3))
-        to_wav(mp3, wav)
+        if engine == "gemini":
+            bwords = _gemini_synth(spoken, wav)
+        else:
+            bwords = asyncio.run(_tts(spoken, mp3))
+            to_wav(mp3, wav)
         if voice_check.ENABLED:
-            parts, bwords = voice_check.review_beat(beat["text"], parts, bwords, wav, "en", _synth,
+            parts, bwords = voice_check.review_beat(beat["text"], parts, bwords, wav, "en", synth,
                                                     key=str.lower)
             spoken = " ".join(parts)
         audio = read_wav(wav)
         dur = len(audio) / SR
         if dur < 1.0:
             raise RuntimeError(f"beat {i} narration too short")
-        if not bwords:
+        if engine == "gemini":
+            bwords = estimate_words(beat["text"], dur)  # no word boundaries: script words over the speech
+        elif not bwords:
             bwords = estimate_words(beat["text"], dur)
         else:
             if spoken != beat["text"]:
@@ -814,7 +825,21 @@ def build(story: dict) -> dict:
             log(f"second shot {i + 1} skipped: {type(exc).__name__}: {str(exc)[:160]}")
             extras.append(None)
 
-    voice, durations, words = narrate(story)
+    engine = "edge"
+    if gemini_tts.available():
+        try:
+            voice, durations, words = narrate(story, "gemini")
+            engine = f"gemini:{gemini_tts.MODEL}:{gemini_tts.VOICE}"
+        except Exception as exc:  # one voice for the whole Short: redo every beat with Edge
+            log(f"Gemini voice failed, using Edge for the whole Short: {type(exc).__name__}: {str(exc)[:300]}")
+            print(f"::warning title=English voice fallback::{type(exc).__name__}: {str(exc)[:300]}", flush=True)
+            voice_check.EVENTS.clear()
+    else:
+        log("Gemini voice off (no GEMINI_API_KEY or NABZ_EN_TTS=edge): using Edge")
+    if engine == "edge":
+        voice, durations, words = narrate(story, "edge")
+        engine = f"edge:{VOICE}"
+    log(f"voice: {engine}")
     voice_check.write_report(story["id"], "en")
     total = sum(durations)
     log(f"narration {total:.1f}s, {len(words)} words")
@@ -844,6 +869,7 @@ def build(story: dict) -> dict:
     make_thumbnail(images[0], story["title"], OUT / "thumbnail.jpg")
 
     report = quality_gate(final, story, sources, caption_frames)
+    report["voice"] = engine
     (OUT / "quality.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
     meta = {
         "story_id": story["id"],
