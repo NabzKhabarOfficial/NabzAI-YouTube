@@ -189,7 +189,8 @@ def main(kind: str, queue_dir: str = "ig_queue") -> int:
         note(state, kind, f"login refused: {type(exc).__name__}: {exc}", save=False)
         ig.pause(state, f"login refused: {type(exc).__name__}: {exc}")
         return 0
-    stories_state(state)[kind] = (state["stories"][kind] + [sid])[-60:]
+    st = stories_state(state)
+    st[kind] = (st[kind] + [sid])[-60:]  # marked before upload: a story is never retried
     try:
         if kind == "teaser":
             story = client.photo_upload_to_story(image)
@@ -208,9 +209,29 @@ def main(kind: str, queue_dir: str = "ig_queue") -> int:
     return 0
 
 
+def run(kind: str, queue_dir: str = "ig_queue") -> int:
+    """main() with a safety net: an unexpected bug is logged (and the story marked done, so it
+    can never be posted twice) instead of silently killing the step."""
+    try:
+        return main(kind, queue_dir)
+    except Exception as exc:
+        print(f"::warning title=Story crashed::{type(exc).__name__}: {exc}")
+        try:
+            state = ig.load_state()
+            sid = load_meta(Path(queue_dir)).get("story_id")
+            if sid and kind in ("teaser", "share"):
+                st = stories_state(state)
+                if sid not in st[kind]:
+                    st[kind] = (st[kind] + [sid])[-60:]
+            note(state, kind or "?", f"crashed: {type(exc).__name__}: {exc}")
+        except Exception:
+            pass
+        return 0
+
+
 if __name__ == "__main__":
     try:
-        sys.exit(main(sys.argv[1] if len(sys.argv) > 1 else "", sys.argv[2] if len(sys.argv) > 2 else "ig_queue"))
+        sys.exit(run(sys.argv[1] if len(sys.argv) > 1 else "", sys.argv[2] if len(sys.argv) > 2 else "ig_queue"))
     finally:
         try:
             ig.SESSION_FILE.unlink(missing_ok=True)
