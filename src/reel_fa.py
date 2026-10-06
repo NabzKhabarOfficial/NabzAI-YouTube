@@ -10,12 +10,16 @@ Never fails the workflow: any problem writes output/reel-fa/skip.txt and exits 0
 from __future__ import annotations
 
 import asyncio
+import base64
 import hashlib
 import json
 import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
+import wave
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -34,6 +38,20 @@ W, H, FPS, SR = m.W, m.H, m.FPS, m.SR
 VOICE = os.getenv("NABZ_FA_VOICE", "fa-IR-FaridNeural")
 RATE = os.getenv("NABZ_FA_RATE", "+6%")
 PITCH = os.getenv("NABZ_FA_PITCH", "-2Hz")
+# Main Persian voice: Gemini TTS. It is a language model that reads the whole sentence, so it
+# puts the unwritten short vowels and ezafe where a native speaker would (Edge's Farid often
+# guesses them wrong). Edge stays as the automatic fallback: no key, quota, or any error.
+FA_ENGINE = os.getenv("NABZ_FA_TTS", "gemini").strip().lower()
+GEMINI_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+GEMINI_MODEL = os.getenv("NABZ_FA_GEMINI_MODEL", "gemini-3.8-flash-tts")
+GEMINI_VOICE = os.getenv("NABZ_FA_GEMINI_VOICE", "Charon")
+GEMINI_STYLE = os.getenv(
+    "NABZ_FA_GEMINI_STYLE",
+    "Native Iranian Persian speaker with a standard Tehran accent, male documentary narrator. "
+    "Calm, low and gripping, like telling a true mystery at night. Clear articulation, natural "
+    "everyday Persian pronunciation, steady medium pace, no exaggeration.",
+)
+GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 BRAND = os.getenv("NABZ_IG_BRAND", "نبض معما")
 FONT_URLS = [
     "https://raw.githubusercontent.com/NabzKhabarOfficial/NabzKhabar/main/Vazirmatn-Bold.ttf",
@@ -185,16 +203,85 @@ def _synth(text: str, wav: Path) -> list[dict]:
     return words
 
 
-def narrate(beats: list[str]):
+def _gemini_request(text: str) -> tuple[bytes, str]:
+    body = {
+        "contents": [{"role": "user", "parts": [{"text": text, "speech_metadata": {"style": GEMINI_STYLE}}]}],
+        "generationConfig": {"responseModalities": ["AUDIO"],
+                             "speechConfig": {"voiceConfig": {"voice": GEMINI_VOICE}}},
+    }
+    req = urllib.request.Request(GEMINI_URL.format(model=GEMINI_MODEL), data=json.dumps(body).encode("utf-8"),
+                                 headers={"Content-Type": "application/json", "x-goog-api-key": GEMINI_KEY})
+    last = None
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            for part in data["candidates"][0]["content"]["parts"]:
+                inline = part.get("inlineData") or part.get("inline_data")
+                if inline and inline.get("data"):
+                    return base64.b64decode(inline["data"]), str(inline.get("mimeType") or inline.get("mime_type") or "")
+            raise RuntimeError("Gemini returned no audio")
+        except urllib.error.HTTPError as exc:
+            last = exc
+            if exc.code not in (429, 500, 502, 503, 504):
+                raise RuntimeError(f"Gemini TTS HTTP {exc.code}: {exc.read()[:200]!r}")
+        except (urllib.error.URLError, TimeoutError) as exc:
+            last = exc
+        time.sleep(15 * (attempt + 1))
+    raise RuntimeError(f"Gemini TTS kept failing: {type(last).__name__}: {last}")
+
+
+def _gemini_synth(text: str, wav: Path) -> list[dict]:
+    """Gemini voice for one beat -> wav (project format, edge silences trimmed) + word timings."""
+    audio, mime = _gemini_request(text)
+    raw = wav.with_name(wav.stem + "_gem.wav")
+    if audio[:4] == b"RIFF":
+        raw.write_bytes(audio)
+    else:  # raw 16-bit PCM, e.g. "audio/L16;codec=pcm;rate=24000"
+        found = re.search(r"rate=(\d+)", mime)
+        rate = int(found.group(1)) if found else 24000
+        with wave.open(str(raw), "wb") as wf:
+            wf.setnchannels(1)
+            wf.setsampwidth(2)
+            wf.setframerate(rate)
+            wf.writeframes(audio)
+    m.to_wav(raw, wav)
+    raw.unlink(missing_ok=True)
+    audio = m.read_wav(wav)
+    loud = np.flatnonzero(np.abs(audio) > 0.01 * (float(np.max(np.abs(audio))) if audio.size else 0.0))
+    if loud.size:  # trim leading/trailing silence so the word timings sit on the speech
+        pad = int(0.06 * SR)
+        audio = audio[max(0, int(loud[0]) - pad):int(loud[-1]) + pad]
+        with wave.open(str(wav), "wb") as wf:
+            wf.setnchannels(1)
+            wf.setsampwidth(2)
+            wf.setframerate(SR)
+            wf.writeframes((np.clip(audio, -1, 1) * 32767).astype(np.int16).tobytes())
+    dur = len(audio) / SR
+    words = len(text.split())
+    if dur < max(1.0, words * 0.17) or dur > words * 1.1 + 2.0:
+        raise RuntimeError(f"Gemini audio length {dur:.1f}s does not fit {words} words")
+    return m.estimate_words(text, dur)
+
+
+def use_gemini() -> bool:
+    return FA_ENGINE == "gemini" and bool(GEMINI_KEY)
+
+
+def narrate(beats: list[str], engine: str = "edge"):
     pieces, durations, words = [], [], []
     clock = 0.0
+    synth = _gemini_synth if engine == "gemini" else _synth
     for i, text in enumerate(beats):
         mp3, wav = WORK / f"voice_{i}.mp3", WORK / f"voice_{i}.wav"
         say = spoken(text)
-        bwords = asyncio.run(_tts(say, mp3))
-        m.to_wav(mp3, wav)
+        if engine == "gemini":
+            bwords = _gemini_synth(say, wav)
+        else:
+            bwords = asyncio.run(_tts(say, mp3))
+            m.to_wav(mp3, wav)
         if voice_check.ENABLED:
-            _, bwords = voice_check.review_beat(text, say.split(), bwords, wav, "fa", _synth)
+            _, bwords = voice_check.review_beat(text, say.split(), bwords, wav, "fa", synth)
         audio = m.read_wav(wav)
         dur = len(audio) / SR
         if dur < 1.0:
@@ -423,7 +510,21 @@ def build(story: dict, fa: dict) -> dict:
             raise RuntimeError(f"picture {i} from today's Short is missing")
         images.append(a)
         extras.append(b if b.exists() else None)
-    voice, durations, words = narrate(fa["beats"])
+    engine = "edge"
+    if use_gemini():
+        try:
+            voice, durations, words = narrate(fa["beats"], "gemini")
+            engine = f"gemini:{GEMINI_MODEL}:{GEMINI_VOICE}"
+        except Exception as exc:  # one voice for the whole reel: redo every beat with Edge
+            log(f"Gemini voice failed, using Edge for the whole reel: {type(exc).__name__}: {str(exc)[:300]}")
+            print(f"::warning title=Persian voice fallback::{type(exc).__name__}: {str(exc)[:300]}", flush=True)
+            voice_check.EVENTS.clear()
+    else:
+        log("Gemini voice off (no GEMINI_API_KEY or NABZ_FA_TTS=edge): using Edge")
+    if engine == "edge":
+        voice, durations, words = narrate(fa["beats"], "edge")
+        engine = f"edge:{VOICE}"
+    log(f"Persian voice: {engine}")
     voice_check.write_report(story["id"], "fa")
     total = sum(durations)
     log(f"Persian narration {total:.1f}s, {len(words)} words")
@@ -461,7 +562,8 @@ def build(story: dict, fa: dict) -> dict:
     caption = caption_text(fa)
     (OUT / "caption.txt").write_text(caption, encoding="utf-8")
     meta = {"story_id": story["id"], "title": fa["title"], "duration": round(info["duration"], 2),
-            "built_date": datetime.now(TEHRAN).date().isoformat(), "shots": len(shots), "checks": checks}
+            "built_date": datetime.now(TEHRAN).date().isoformat(), "shots": len(shots), "voice": engine,
+            "checks": checks}
     (OUT / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     log(f"Persian reel ready: {meta}")
     return meta
