@@ -37,20 +37,24 @@ SRC_WORK = m.WORK
 W, H, FPS, SR = m.W, m.H, m.FPS, m.SR
 VOICE = os.getenv("NABZ_FA_VOICE", "fa-IR-FaridNeural")
 RATE = os.getenv("NABZ_FA_RATE", "+6%")
-PITCH = os.getenv("NABZ_FA_PITCH", "-2Hz")
+PITCH = os.getenv("NABZ_FA_PITCH", "-8Hz")  # fallback voice kept low too
 # Main Persian voice: Gemini TTS. It is a language model that reads the whole sentence, so it
 # puts the unwritten short vowels and ezafe where a native speaker would (Edge's Farid often
 # guesses them wrong). Edge stays as the automatic fallback: no key, quota, or any error.
 FA_ENGINE = os.getenv("NABZ_FA_TTS", "gemini").strip().lower()
 GEMINI_KEY = os.getenv("GEMINI_API_KEY", "").strip()
 GEMINI_MODEL = os.getenv("NABZ_FA_GEMINI_MODEL", "gemini-3.8-flash-tts")
-GEMINI_VOICE = os.getenv("NABZ_FA_GEMINI_VOICE", "Charon")
+GEMINI_VOICE = os.getenv("NABZ_FA_GEMINI_VOICE", "Algenib")  # deep, gravelly male
 GEMINI_STYLE = os.getenv(
     "NABZ_FA_GEMINI_STYLE",
-    "Native Iranian Persian speaker with a standard Tehran accent, male documentary narrator. "
-    "Calm, low and gripping, like telling a true mystery at night. Clear articulation, natural "
-    "everyday Persian pronunciation, steady medium pace, no exaggeration.",
+    "A native Iranian Persian narrator, born and raised in Tehran, speaking flawless standard Persian "
+    "like a top Iranian radio and documentary voice actor. Very deep, low, resonant bass voice with a "
+    "warm chest tone. Calm, slow-burning and gripping, like telling a true mystery late at night. "
+    "Perfect native pronunciation of every vowel and ezafe, crisp articulation, natural Persian "
+    "rhythm and intonation, steady medium pace, no foreign accent, no exaggeration.",
 )
+# Extra depth after synthesis, in semitones (0 = off). One semitone sounds lower but still natural.
+DEEPEN = float(os.getenv("NABZ_FA_DEEPEN", "1.0"))
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 BRAND = os.getenv("NABZ_IG_BRAND", "نبض معما")
 FONT_URLS = [
@@ -247,6 +251,12 @@ def _gemini_synth(text: str, wav: Path) -> list[dict]:
             wf.writeframes(audio)
     m.to_wav(raw, wav)
     raw.unlink(missing_ok=True)
+    if DEEPEN > 0:
+        ratio = 2 ** (-DEEPEN / 12)
+        low = wav.with_name(wav.stem + "_low.wav")
+        m.run_ffmpeg(["-i", str(wav), "-af", f"asetrate={SR * ratio:.0f},aresample={SR},atempo={1 / ratio:.5f}",
+                      "-ac", "1", "-ar", str(SR), "-c:a", "pcm_s16le", str(low)])
+        low.replace(wav)
     audio = m.read_wav(wav)
     loud = np.flatnonzero(np.abs(audio) > 0.01 * (float(np.max(np.abs(audio))) if audio.size else 0.0))
     if loud.size:  # trim leading/trailing silence so the word timings sit on the speech
