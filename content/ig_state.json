@@ -1,16 +1,18 @@
 {
   "posted": [
     "voynich-manuscript",
-    "flannan-isles"
+    "flannan-isles",
+    "somerton-man"
   ],
   "daily": {
     "2026-10-04": 1,
-    "2026-10-05": 1
+    "2026-10-05": 1,
+    "2026-10-06": 1
   },
   "last_post": {
-    "story_id": "flannan-isles",
-    "media_pk": "4001350126223464455",
-    "at": "2026-10-05T20:06:12.042863+03:30"
+    "story_id": "somerton-man",
+    "media_pk": "4002074932933789689",
+    "at": "2026-10-06T20:06:17.492335+03:30"
   },
   "carousels_posted": [
     "salt-men-chehrabad"
@@ -24,12 +26,18 @@
     "teaser": [
       "somerton-man"
     ],
-    "share": []
+    "share": [
+      "somerton-man"
+    ]
   },
   "story_log": {
     "teaser": {
       "at": "2026-10-06T14:13:08+03:30",
       "result": "published 4001897534485546786 -> somerton-man"
+    },
+    "share": {
+      "at": "2026-10-06T20:08:46+03:30",
+      "result": "published 4002076535485173113 -> somerton-man"
     }
   }
 }
