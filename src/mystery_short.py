@@ -58,7 +58,7 @@ FONT_CANDIDATES = [
     "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf",
     "/usr/share/fonts/truetype/freefont/FreeSansBold.ttf",
 ]
-MIN_WORDS, MAX_WORDS = 60, 95
+MIN_WORDS, MAX_WORDS = 50, 95  # hook-first scripts are tight; 50 words is still ~20 s
 # Pacing: a beat longer than this gets two shots (new picture every ~2-3 s keeps viewers watching).
 SPLIT_MIN_SECONDS = float(os.getenv("NABZ_SPLIT_MIN_SECONDS", "2.6"))
 SECOND_SHOT = [
@@ -115,15 +115,26 @@ def validate_story(story: dict) -> None:
         raise RuntimeError(f"{story['id']}: title too long for '#Shorts' suffix")
 
 
-def load_bank(path: Path = BANK) -> list[dict]:
+def load_bank(path: Path = BANK, strict: bool = False) -> list[dict]:
+    """Valid stories of the bank. One broken story is skipped with a warning (strict=True
+    raises instead), so a single bad entry can never stop the daily Short."""
     data = json.loads(path.read_text(encoding="utf-8"))
     stories = data["stories"]
     ids = [s["id"] for s in stories]
     if len(ids) != len(set(ids)):
         raise RuntimeError("duplicate story ids in bank")
+    good = []
     for s in stories:
-        validate_story(s)
-    return stories
+        try:
+            validate_story(s)
+            good.append(s)
+        except RuntimeError as exc:
+            if strict:
+                raise
+            print(f"::warning title=Story skipped::{exc}", flush=True)
+    if not good:
+        raise RuntimeError("no valid stories in the bank")
+    return good
 
 
 def load_state(path: Path = STATE) -> dict:
