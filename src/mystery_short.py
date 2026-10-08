@@ -1,7 +1,7 @@
 """NABZ Mysteries: vertical YouTube Shorts (1080x1920, ~30 s).
 
 Pipeline: curated script -> AI images (Pollinations FLUX, Hugging Face fallback)
--> deep native-English narration (Gemini TTS, Edge TTS fallback) with word timings -> procedural dark ambient music with
+-> deep native-English narration (Gemini TTS, then free Kokoro, then Edge TTS) with word timings -> procedural dark ambient music with
 ducking -> Ken Burns motion + crossfades -> word-by-word burned captions ->
 quality gate -> metadata for upload. No paid service is required.
 
@@ -427,16 +427,22 @@ def _gemini_synth(text: str, wav: Path) -> list[dict]:
     return estimate_words(text, gemini_tts.synth(text, wav, SR))
 
 
+def _kokoro_synth(text: str, wav: Path) -> list[dict]:
+    """Free offline Kokoro narration for one beat (no key, no quota)."""
+    from src import kokoro_tts
+    return estimate_words(text, kokoro_tts.synth(text, wav, SR))
+
+
 def narrate(story: dict, engine: str = "edge") -> tuple[np.ndarray, list[float], list[dict]]:
     """Returns mono narration, per-beat slot durations and global word timings."""
     pieces, durations, words = [], [], []
     clock = 0.0
-    synth = _gemini_synth if engine == "gemini" else _synth
+    synth = {"gemini": _gemini_synth, "kokoro": _kokoro_synth}.get(engine, _synth)
     for i, beat in enumerate(story["beats"]):
         mp3, wav = WORK / f"voice_{i}.mp3", WORK / f"voice_{i}.wav"
         spoken, parts = pronounce(beat["text"])
-        if engine == "gemini":
-            bwords = _gemini_synth(spoken, wav)
+        if engine in ("gemini", "kokoro"):
+            bwords = synth(spoken, wav)
         else:
             bwords = asyncio.run(_tts(spoken, mp3))
             to_wav(mp3, wav)
@@ -448,7 +454,7 @@ def narrate(story: dict, engine: str = "edge") -> tuple[np.ndarray, list[float],
         dur = len(audio) / SR
         if dur < 1.0:
             raise RuntimeError(f"beat {i} narration too short")
-        if engine == "gemini":
+        if engine in ("gemini", "kokoro"):
             bwords = estimate_words(beat["text"], dur)  # no word boundaries: script words over the speech
         elif not bwords:
             bwords = estimate_words(beat["text"], dur)
@@ -841,12 +847,21 @@ def build(story: dict) -> dict:
         try:
             voice, durations, words = narrate(story, "gemini")
             engine = f"gemini:{gemini_tts.MODEL}:{gemini_tts.VOICE}"
-        except Exception as exc:  # one voice for the whole Short: redo every beat with Edge
-            log(f"Gemini voice failed, using Edge for the whole Short: {type(exc).__name__}: {str(exc)[:300]}")
+        except Exception as exc:  # one voice for the whole Short: redo every beat with the next layer
+            log(f"Gemini voice failed, trying the free Kokoro voice: {type(exc).__name__}: {str(exc)[:300]}")
             print(f"::warning title=English voice fallback::{type(exc).__name__}: {str(exc)[:300]}", flush=True)
             voice_check.EVENTS.clear()
     else:
-        log("Gemini voice off (no GEMINI_API_KEY or NABZ_EN_TTS=edge): using Edge")
+        log("Gemini voice off (no GEMINI_API_KEY or NABZ_EN_TTS=edge)")
+    if engine == "edge" and os.getenv("NABZ_KOKORO", "1") == "1":
+        try:
+            from src import kokoro_tts
+            voice, durations, words = narrate(story, "kokoro")
+            engine = f"kokoro:{kokoro_tts.VOICE}"
+        except Exception as exc:
+            log(f"Kokoro voice failed, using Edge for the whole Short: {type(exc).__name__}: {str(exc)[:300]}")
+            print(f"::warning title=Kokoro voice fallback::{type(exc).__name__}: {str(exc)[:300]}", flush=True)
+            voice_check.EVENTS.clear()
     if engine == "edge":
         voice, durations, words = narrate(story, "edge")
         engine = f"edge:{VOICE}"
