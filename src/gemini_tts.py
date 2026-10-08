@@ -4,10 +4,20 @@ synth(text, wav) writes one beat as a mono 16-bit wav (project sample rate) with
 and trailing silence trimmed, and returns its length in seconds. Any problem raises, and the
 caller (src.mystery_short) then builds the whole Short with the Edge voice instead, so the
 daily upload never depends on this service.
+
+Layers that keep the voice working (shared with the Persian reel, src.reel_fa):
+  1. Audio cache: every narrated line is stored in .tts_cache (kept between runs by the
+     workflow cache), so a rerun of the same story costs no quota at all.
+  2. Several API keys: GEMINI_API_KEY, GEMINI_API_KEY_2 ... _5 (or GEMINI_API_KEYS, comma
+     separated). A key that hits its daily quota is skipped at once, the next key takes over.
+     Same model and voice on every key, so the narrator always sounds the same.
+  3. Short waits only for per-minute limits and server hiccups; a dead key is never retried.
+  4. If every key fails, the caller switches the whole video to the Edge voice.
 """
 from __future__ import annotations
 
 import base64
+import hashlib
 import json
 import os
 import re
@@ -21,7 +31,21 @@ from pathlib import Path
 import numpy as np
 
 URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-KEY = os.getenv("GEMINI_API_KEY", "").strip()
+
+
+def _keys() -> list[str]:
+    names = ["GEMINI_API_KEY"] + [f"GEMINI_API_KEY_{i}" for i in range(2, 6)]
+    found = [os.getenv(n, "").strip() for n in names]
+    found += [k.strip() for k in os.getenv("GEMINI_API_KEYS", "").split(",")]
+    out = []
+    for k in found:
+        if k and k not in out:
+            out.append(k)
+    return out
+
+
+KEYS = _keys()
+KEY = KEYS[0] if KEYS else ""
 MODEL = os.getenv("NABZ_EN_GEMINI_MODEL", "gemini-3.8-flash-tts")
 VOICE = os.getenv("NABZ_EN_GEMINI_VOICE", "Algenib")  # deep, gravelly male
 STYLE = os.getenv(
@@ -37,11 +61,15 @@ DEEPEN = float(os.getenv("NABZ_EN_DEEPEN", "1.0"))  # extra depth in semitones, 
 # the Oct 8 Short to 43.5 s (target 20-40 s for a tight loop). 1.0 = off.
 TEMPO = float(os.getenv("NABZ_EN_TEMPO", "1.12"))
 ENABLED = os.getenv("NABZ_EN_TTS", "gemini").strip().lower() == "gemini"
+CACHE = Path(os.getenv("NABZ_TTS_CACHE", str(Path(__file__).resolve().parents[1] / ".tts_cache")))
+CACHE_DAYS = 21
 _LAST_CALL = 0.0
+_DEAD: set[int] = set()  # indexes of keys that ran out of quota in this run
+STATS = {"cache_hits": 0, "calls": 0, "keys_used": [], "keys_dead": []}
 
 
 def available() -> bool:
-    return ENABLED and bool(KEY)
+    return ENABLED and bool(KEYS)
 
 
 def _ffmpeg() -> str:
@@ -59,36 +87,124 @@ def _run(args: list[str]) -> None:
         raise RuntimeError("ffmpeg failed: " + proc.stderr.strip()[-600:])
 
 
-def request(text: str, style: str = STYLE, voice: str = VOICE) -> tuple[bytes, str]:
+# ---------------------------------------------------------------- cache
+def _prune_cache() -> None:
+    try:
+        limit = time.time() - CACHE_DAYS * 86400
+        for f in CACHE.glob("*"):
+            if f.is_file() and f.stat().st_mtime < limit:
+                f.unlink(missing_ok=True)
+    except Exception:
+        pass
+
+
+_prune_cache()
+
+
+def _cache_key(text: str, style: str, voice: str, model: str) -> str:
+    return hashlib.sha1(json.dumps([model, voice, style, text], ensure_ascii=False).encode("utf-8")).hexdigest()
+
+
+def _cache_get(key: str):
+    data, mime = CACHE / f"{key}.bin", CACHE / f"{key}.mime"
+    if data.exists() and mime.exists() and data.stat().st_size > 1000:
+        return data.read_bytes(), mime.read_text(encoding="utf-8")
+    return None
+
+
+def forget(text: str, style: str = STYLE, voice: str = VOICE, model: str = MODEL) -> None:
+    """Drop a cached line (its audio turned out unusable), so the next try asks Gemini again."""
+    key = _cache_key(text, style, voice, model)
+    for ext in ("bin", "mime"):
+        (CACHE / f"{key}.{ext}").unlink(missing_ok=True)
+
+
+def _cache_put(key: str, audio: bytes, mime: str) -> None:
+    try:
+        CACHE.mkdir(parents=True, exist_ok=True)
+        (CACHE / f"{key}.bin").write_bytes(audio)
+        (CACHE / f"{key}.mime").write_text(mime, encoding="utf-8")
+    except Exception:
+        pass
+
+
+# ---------------------------------------------------------------- request
+def _daily(body: str) -> bool:
+    low = body.lower()
+    return "perday" in low.replace(" ", "").replace("_", "") or "per day" in low or "daily" in low
+
+
+def _mark_dead(i: int, why: str) -> None:
+    _DEAD.add(i)
+    if i + 1 not in STATS["keys_dead"]:
+        STATS["keys_dead"].append(i + 1)
+    alive = len(KEYS) - len(_DEAD)
+    print(f"[gemini] key #{i + 1} out of quota ({why}); {alive} key(s) left", flush=True)
+
+
+def request(text: str, style: str = STYLE, voice: str = VOICE, model: str = MODEL) -> tuple[bytes, str]:
+    """Audio bytes + mime type for one line. Cache first, then every key in turn."""
     global _LAST_CALL
-    body = {
+    ckey = _cache_key(text, style, voice, model)
+    hit = _cache_get(ckey)
+    if hit:
+        STATS["cache_hits"] += 1
+        return hit
+    if not KEYS:
+        raise RuntimeError("no Gemini API key configured")
+    body = json.dumps({
         "contents": [{"role": "user", "parts": [{"text": text, "speech_metadata": {"style": style}}]}],
         "generationConfig": {"responseModalities": ["AUDIO"],
                              "speechConfig": {"voiceConfig": {"voice": voice}}},
-    }
-    req = urllib.request.Request(URL.format(model=MODEL), data=json.dumps(body).encode("utf-8"),
-                                 headers={"Content-Type": "application/json", "x-goog-api-key": KEY})
-    last = None
-    for attempt in range(4):
-        wait = 2.0 - (time.time() - _LAST_CALL)  # stay gentle with the free quota
+    }).encode("utf-8")
+    last, minute_hits = None, 0
+    for attempt in range(10):
+        alive = [i for i in range(len(KEYS)) if i not in _DEAD]
+        if not alive:
+            raise RuntimeError(f"every Gemini key is out of quota ({len(KEYS)} key(s))")
+        i = alive[(minute_hits) % len(alive)]
+        wait = 2.0 - (time.time() - _LAST_CALL)  # stay gentle with the quota
         if wait > 0:
             time.sleep(wait)
         _LAST_CALL = time.time()
+        req = urllib.request.Request(URL.format(model=model), data=body,
+                                     headers={"Content-Type": "application/json", "x-goog-api-key": KEYS[i]})
         try:
+            STATS["calls"] += 1
             with urllib.request.urlopen(req, timeout=120) as resp:
                 data = json.loads(resp.read().decode("utf-8"))
             for part in data["candidates"][0]["content"]["parts"]:
                 inline = part.get("inlineData") or part.get("inline_data")
                 if inline and inline.get("data"):
-                    return base64.b64decode(inline["data"]), str(inline.get("mimeType") or inline.get("mime_type") or "")
+                    audio = base64.b64decode(inline["data"])
+                    mime = str(inline.get("mimeType") or inline.get("mime_type") or "")
+                    if i + 1 not in STATS["keys_used"]:
+                        STATS["keys_used"].append(i + 1)
+                    _cache_put(ckey, audio, mime)
+                    return audio, mime
             raise RuntimeError("Gemini returned no audio")
         except urllib.error.HTTPError as exc:
             last = exc
-            if exc.code not in (429, 500, 502, 503, 504):
-                raise RuntimeError(f"Gemini TTS HTTP {exc.code}: {exc.read()[:200]!r}")
+            detail = ""
+            try:
+                detail = exc.read()[:600].decode("utf-8", "replace")
+            except Exception:
+                pass
+            if exc.code in (401, 403):
+                _mark_dead(i, f"HTTP {exc.code}: key rejected")
+                continue
+            if exc.code == 429:
+                if _daily(detail) or len(alive) > 1 and minute_hits >= 1:
+                    _mark_dead(i, "HTTP 429")
+                    continue
+                minute_hits += 1
+                time.sleep(20)
+                continue
+            if exc.code not in (500, 502, 503, 504):
+                raise RuntimeError(f"Gemini TTS HTTP {exc.code}: {detail[:200]!r}")
         except (urllib.error.URLError, TimeoutError) as exc:
             last = exc
-        time.sleep(15 * (attempt + 1))
+        time.sleep(8 * (attempt + 1))
     raise RuntimeError(f"Gemini TTS kept failing: {type(last).__name__}: {last}")
 
 
@@ -129,5 +245,6 @@ def synth(text: str, wav: Path, sr: int = 44100, style: str = STYLE, voice: str 
     dur = len(pcm) / sr
     words = len(text.split())
     if dur < max(1.0, words * 0.17) or dur > words * 1.0 + 2.0:
+        forget(text, style, voice)
         raise RuntimeError(f"Gemini audio length {dur:.1f}s does not fit {words} words")
     return dur

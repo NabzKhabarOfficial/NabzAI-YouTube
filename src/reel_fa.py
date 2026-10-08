@@ -28,6 +28,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont, features
 
+from src import gemini_tts
 from src import mystery_short as m
 from src import voice_check
 
@@ -45,7 +46,7 @@ PITCH = os.getenv("NABZ_FA_PITCH", "-8Hz")  # fallback voice kept low too
 # puts the unwritten short vowels and ezafe where a native speaker would (Edge's Farid often
 # guesses them wrong). Edge stays as the automatic fallback: no key, quota, or any error.
 FA_ENGINE = os.getenv("NABZ_FA_TTS", "gemini").strip().lower()
-GEMINI_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+GEMINI_KEY = gemini_tts.KEY  # first of the shared key pool (GEMINI_API_KEY, _2 ... _5)
 GEMINI_MODEL = os.getenv("NABZ_FA_GEMINI_MODEL", "gemini-3.8-flash-tts")
 GEMINI_VOICE = os.getenv("NABZ_FA_GEMINI_VOICE", "Algenib")  # deep, gravelly male
 GEMINI_STYLE = os.getenv(
@@ -216,31 +217,8 @@ def _synth(text: str, wav: Path) -> list[dict]:
 
 
 def _gemini_request(text: str) -> tuple[bytes, str]:
-    body = {
-        "contents": [{"role": "user", "parts": [{"text": text, "speech_metadata": {"style": GEMINI_STYLE}}]}],
-        "generationConfig": {"responseModalities": ["AUDIO"],
-                             "speechConfig": {"voiceConfig": {"voice": GEMINI_VOICE}}},
-    }
-    req = urllib.request.Request(GEMINI_URL.format(model=GEMINI_MODEL), data=json.dumps(body).encode("utf-8"),
-                                 headers={"Content-Type": "application/json", "x-goog-api-key": GEMINI_KEY})
-    last = None
-    for attempt in range(4):
-        try:
-            with urllib.request.urlopen(req, timeout=120) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
-            for part in data["candidates"][0]["content"]["parts"]:
-                inline = part.get("inlineData") or part.get("inline_data")
-                if inline and inline.get("data"):
-                    return base64.b64decode(inline["data"]), str(inline.get("mimeType") or inline.get("mime_type") or "")
-            raise RuntimeError("Gemini returned no audio")
-        except urllib.error.HTTPError as exc:
-            last = exc
-            if exc.code not in (429, 500, 502, 503, 504):
-                raise RuntimeError(f"Gemini TTS HTTP {exc.code}: {exc.read()[:200]!r}")
-        except (urllib.error.URLError, TimeoutError) as exc:
-            last = exc
-        time.sleep(15 * (attempt + 1))
-    raise RuntimeError(f"Gemini TTS kept failing: {type(last).__name__}: {last}")
+    """Shared Gemini engine: audio cache, then every API key in turn (see src.gemini_tts)."""
+    return gemini_tts.request(text, GEMINI_STYLE, GEMINI_VOICE, GEMINI_MODEL)
 
 
 def voice_filter() -> str:
@@ -288,12 +266,13 @@ def _gemini_synth(text: str, wav: Path) -> list[dict]:
     dur = len(audio) / SR
     words = len(text.split())
     if dur < max(1.0, words * 0.15) or dur > words * 1.1 + 2.0:
+        gemini_tts.forget(text, GEMINI_STYLE, GEMINI_VOICE, GEMINI_MODEL)
         raise RuntimeError(f"Gemini audio length {dur:.1f}s does not fit {words} words")
     return m.estimate_words(text, dur)
 
 
 def use_gemini() -> bool:
-    return FA_ENGINE == "gemini" and bool(GEMINI_KEY)
+    return FA_ENGINE == "gemini" and bool(gemini_tts.KEYS)
 
 
 def narrate(beats: list[str], engine: str = "edge"):
@@ -303,11 +282,23 @@ def narrate(beats: list[str], engine: str = "edge"):
     for i, text in enumerate(beats):
         mp3, wav = WORK / f"voice_{i}.mp3", WORK / f"voice_{i}.wav"
         say = spoken(text)
-        if engine == "gemini":
-            bwords = _gemini_synth(say, wav)
-        else:
-            bwords = asyncio.run(_tts(say, mp3))
-            m.to_wav(mp3, wav)
+        for attempt in range(3):  # a voice service sometimes returns a cut-off line: ask again
+            try:
+                if engine == "gemini":
+                    bwords = _gemini_synth(say, wav)
+                else:
+                    bwords = asyncio.run(_tts(say, mp3))
+                    m.to_wav(mp3, wav)
+                if len(m.read_wav(wav)) / SR >= max(1.0, len(text.split()) * 0.12):
+                    break
+                problem = "audio too short"
+            except Exception as exc:
+                if attempt == 2 or "out of quota" in str(exc):
+                    raise
+                problem = f"{type(exc).__name__}: {str(exc)[:120]}"
+            if attempt < 2:
+                log(f"beat {i}: {problem}; trying again ({attempt + 2}/3)")
+                time.sleep(5 * (attempt + 1))
         if voice_check.ENABLED:
             _, bwords = voice_check.review_beat(text, say.split(), bwords, wav, "fa", synth)
         audio = m.read_wav(wav)
