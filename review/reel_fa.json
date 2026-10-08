@@ -2,15 +2,19 @@
   "last": {
     "date": "2026-10-08",
     "story_id": "wow-signal",
-    "status": "skipped",
-    "reason": "RuntimeError: Persian beat 5 narration too short"
+    "status": "built",
+    "voice": "edge:fa-IR-FaridNeural",
+    "duration": 41.63,
+    "speedup": 1.0
   },
   "runs": [
     {
       "date": "2026-10-08",
       "story_id": "wow-signal",
-      "status": "skipped",
-      "reason": "RuntimeError: Persian beat 5 narration too short"
+      "status": "built",
+      "voice": "edge:fa-IR-FaridNeural",
+      "duration": 41.63,
+      "speedup": 1.0
     }
   ]
 }
