@@ -1,20 +1,20 @@
 {
-  "duration_seconds": 43.53,
+  "duration_seconds": 32.7,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 15.77,
+  "file_mb": 13.85,
   "audio": {
-    "mean_volume": -19.7,
-    "max_volume": -0.3
+    "mean_volume": -19.8,
+    "max_volume": -0.5
   },
   "image_sources": [
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace"
+    "pollinations",
+    "pollinations",
+    "pollinations",
+    "pollinations",
+    "pollinations",
+    "pollinations"
   ],
   "quality_passed": true,
   "story_id": "wow-signal",
