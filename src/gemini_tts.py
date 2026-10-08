@@ -13,6 +13,12 @@ Layers that keep the voice working (shared with the Persian reel, src.reel_fa):
      Same model and voice on every key, so the narrator always sounds the same.
   3. Short waits only for per-minute limits and server hiccups; a dead key is never retried.
   4. If every key fails, the caller switches the whole video to the Edge voice.
+
+Free-tier budget (Oct 2026, per Google project, not per key): 3 requests/minute and 10/day for
+the TTS model. One video is ~6-8 requests, so the daily quota goes to the Persian reel only:
+the English Short uses the free Kokoro voice unless NABZ_EN_TTS=gemini. Requests are spaced
+NABZ_GEMINI_GAP seconds apart (default 21) so the per-minute limit is never hit, and a
+per-minute 429 only waits; only a real daily-quota answer retires a key.
 """
 from __future__ import annotations
 
@@ -60,7 +66,9 @@ DEEPEN = float(os.getenv("NABZ_EN_DEEPEN", "1.0"))  # extra depth in semitones, 
 # Speed-up without pitch change: the deep narrator reads ~15% slower than Edge, which pushed
 # the Oct 8 Short to 43.5 s (target 20-40 s for a tight loop). 1.0 = off.
 TEMPO = float(os.getenv("NABZ_EN_TEMPO", "1.12"))
-ENABLED = os.getenv("NABZ_EN_TTS", "gemini").strip().lower() == "gemini"
+# English Shorts: Kokoro by default (the free Gemini TTS quota is kept for the Persian reel).
+ENABLED = os.getenv("NABZ_EN_TTS", "kokoro").strip().lower() == "gemini"
+GAP = float(os.getenv("NABZ_GEMINI_GAP", "21"))  # seconds between Gemini calls (free tier: 3/min)
 CACHE = Path(os.getenv("NABZ_TTS_CACHE", str(Path(__file__).resolve().parents[1] / ".tts_cache")))
 CACHE_DAYS = 21
 _LAST_CALL = 0.0
@@ -163,7 +171,7 @@ def request(text: str, style: str = STYLE, voice: str = VOICE, model: str = MODE
         if not alive:
             raise RuntimeError(f"every Gemini key is out of quota ({len(KEYS)} key(s))")
         i = alive[(minute_hits) % len(alive)]
-        wait = 2.0 - (time.time() - _LAST_CALL)  # stay gentle with the quota
+        wait = GAP - (time.time() - _LAST_CALL)  # stay under the per-minute limit
         if wait > 0:
             time.sleep(wait)
         _LAST_CALL = time.time()
@@ -194,11 +202,14 @@ def request(text: str, style: str = STYLE, voice: str = VOICE, model: str = MODE
                 _mark_dead(i, f"HTTP {exc.code}: key rejected")
                 continue
             if exc.code == 429:
-                if _daily(detail) or len(alive) > 1 and minute_hits >= 1:
-                    _mark_dead(i, "HTTP 429")
+                if _daily(detail):
+                    _mark_dead(i, "HTTP 429 daily quota")
                     continue
+                # per-minute limit: keys of one project share it, so wait instead of retiring keys
                 minute_hits += 1
-                time.sleep(20)
+                if minute_hits > 4:
+                    raise RuntimeError("Gemini TTS per-minute limit kept failing")
+                time.sleep(35)
                 continue
             if exc.code not in (500, 502, 503, 504):
                 raise RuntimeError(f"Gemini TTS HTTP {exc.code}: {detail[:200]!r}")
