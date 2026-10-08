@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 36.8,
+  "duration_seconds": 43.53,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 13.87,
+  "file_mb": 15.77,
   "audio": {
-    "mean_volume": -19.2,
-    "max_volume": -0.5
+    "mean_volume": -19.7,
+    "max_volume": -0.3
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "somerton-man",
-  "story_bank": "Story bank: 54 of 60 stories left (next: wow-signal, tunguska-event, antikythera-mechanism)"
+  "story_id": "wow-signal",
+  "story_bank": "Story bank: 53 of 60 stories left (next: tunguska-event, antikythera-mechanism, db-cooper)"
 }
