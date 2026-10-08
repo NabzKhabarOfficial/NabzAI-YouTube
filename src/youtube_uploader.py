@@ -244,6 +244,9 @@ def upload_from_metadata(root, privacy_status="private", publish_at=None):
 if __name__ == "__main__":
     import re
     import sys
+    if os.getenv("NABZ_REEL_ONLY") == "1":
+        print("REEL-ONLY RUN: YouTube upload skipped (this Short is already on YouTube).", flush=True)
+        sys.exit(0)
     try:
         vid = upload_from_metadata(sys.argv[1], os.getenv("YOUTUBE_VISIBILITY", "private"), auto_publish_at())
     except Exception as exc:
