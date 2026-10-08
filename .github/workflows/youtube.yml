@@ -19,9 +19,6 @@ on:
         type: string
 
   schedule:
-    # 12:00 Tehran is the main run. GitHub sometimes drops scheduled runs, so three
-    # backups follow (13:45, 15:30, 17:30 Tehran). Only the first one that fires builds;
-    # the guard job makes the others skip once today's Short is done.
     - cron: "30 8 * * *"
     - cron: "15 10 * * *"
     - cron: "0 12 * * *"
@@ -63,6 +60,7 @@ jobs:
       MODE: mystery
       YOUTUBE_VISIBILITY: ${{ github.event_name == 'schedule' && 'private' || inputs.visibility }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
+      NABZ_VOICE_CHECK_TRIES: "4"
 
       YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
       YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
@@ -72,6 +70,8 @@ jobs:
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       POLLINATIONS_TOKEN: ${{ secrets.POLLINATIONS_TOKEN }}
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
 
     steps:
       - name: Checkout
@@ -84,6 +84,14 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+
+      - name: Restore voice cache
+        uses: actions/cache@v4
+        with:
+          path: .tts_cache
+          key: tts-${{ github.run_id }}
+          restore-keys: |
+            tts-
 
       - name: Install caption fonts
         run: |
