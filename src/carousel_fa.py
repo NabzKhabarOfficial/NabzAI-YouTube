@@ -160,8 +160,8 @@ def render_post(post: dict, out_dir: Path) -> list[Path]:
 # ---------------------------------------------------------------- video slides with music
 # Every slide becomes a short video. One continuous piece of music is composed for the whole
 # post and cut at the slide boundaries, so swiping moves through it: each slide plays its own
-# part of the arc (hook -> rising tension -> peak on the reveal -> calm ending), a soft chime
-# marks each new slide, and each slide lasts about as long as its text takes to read.
+# part of the arc (hook -> rising tension -> peak on the reveal -> calm ending) on its own chord,
+# and each slide lasts about as long as its text takes to read.
 SR = 44100
 DARK_WORDS = ("مرگ", "جسد", "قتل", "قاتل", "کشته", "ناپدید", "گم شد", "خون", "زندان", "جنایت")
 WONDER_WORDS = ("باستان", "هزار سال", "تمدن", "معبد", "شهر", "کتیبه", "گنج", "ستاره", "آسمان", "تاریخ")
@@ -188,62 +188,155 @@ def intensity(i: int, n: int) -> float:
     return 0.55 + 0.45 * (i - 1) / max(1, n - 2)
 
 
+# ---------------------------------------------------------------- music (v2)
+# Cinematic ambient score, composed fresh for every post: warm analogue-style pads that change
+# chord on every slide, a soft sub bass, sparse felt-piano notes, a riser into the reveal and a
+# long hall reverb. No clicks: every sound has a smooth attack, and every slide's part fades in
+# and out (Instagram loops each video slide, so the loop point is silent and seamless).
+PROGRESSIONS = {
+    # (semitones from the key root, minor?) per slide; the last slide always returns home
+    "dark": [(0, True), (8, False), (5, True), (7, False), (3, False), (10, False), (8, False), (7, False)],
+    "mystery": [(0, True), (8, False), (3, False), (10, False), (5, True), (7, False), (8, False), (10, False)],
+    "wonder": [(0, False), (9, True), (5, False), (7, False), (4, True), (2, True), (5, False), (7, False)],
+}
+KEY_ROOT = {"dark": 45, "mystery": 47, "wonder": 50}  # MIDI note of the key (A2, B2, D3)
+
+
+def _hz(midi):
+    return 440.0 * 2 ** ((midi - 69) / 12)
+
+
+def _lowpass(x, cutoff):
+    """Gentle 4-pole-like low-pass in the frequency domain (no phase clicks)."""
+    import numpy as np
+    spec = np.fft.rfft(x, axis=0)
+    f = np.fft.rfftfreq(x.shape[0], 1 / SR)
+    spec *= (1 / (1 + (f / cutoff) ** 4))[:, None] if x.ndim == 2 else 1 / (1 + (f / cutoff) ** 4)
+    return np.fft.irfft(spec, n=x.shape[0], axis=0)
+
+
+def _reverb(stereo, rng, seconds=3.2, wet=0.38):
+    import numpy as np
+    n = int(seconds * SR)
+    k = np.arange(n) / SR
+    out = np.empty_like(stereo)
+    size = stereo.shape[0] + n
+    for ch in range(2):
+        ir = rng.standard_normal(n) * np.exp(-k * 2.1)
+        ir = _lowpass(ir, 5200.0)
+        ir[: int(0.012 * SR)] = 0.0  # pre-delay
+        ir /= np.sqrt(np.sum(ir ** 2)) or 1
+        y = np.fft.irfft(np.fft.rfft(stereo[:, ch], size) * np.fft.rfft(ir, size), size)[: stereo.shape[0]]
+        out[:, ch] = (1 - wet) * stereo[:, ch] + wet * y
+    return out
+
+
+def _env(n, attack, release):
+    import numpy as np
+    e = np.ones(n)
+    a, r = min(n // 2, int(attack * SR)), min(n // 2, int(release * SR))
+    if a:
+        e[:a] = 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, a))
+    if r:
+        e[-r:] = 0.5 + 0.5 * np.cos(np.linspace(0, np.pi, r))
+    return e
+
+
+def _pad_note(freq, n, rng):
+    """Three slightly detuned soft saws (band-limited), like a warm analogue string pad."""
+    import numpy as np
+    t = np.arange(n) / SR
+    out = np.zeros(n)
+    for det in (-0.07, 0.0, 0.06):
+        f = freq * 2 ** (det / 12)
+        ph = rng.uniform(0, 2 * np.pi)
+        for h in range(1, 9):
+            if f * h > 6000:
+                break
+            out += np.sin(2 * np.pi * f * h * t + ph * h) / h
+    return out / 6.0
+
+
+def _piano(freq, n):
+    import numpy as np
+    t = np.arange(n) / SR
+    tone = np.sin(2 * np.pi * freq * t) + 0.35 * np.sin(2 * np.pi * freq * 2 * t) + 0.12 * np.sin(2 * np.pi * freq * 3.01 * t)
+    return tone * np.exp(-t * 2.4) * _env(n, 0.006, 0.4)
+
+
 def compose(durations: list[float], mood: str, seed: int):
     import numpy as np
     rng = np.random.default_rng(seed)
-    total = sum(durations)
-    t = np.arange(int(total * SR)) / SR
-    n = len(durations)
-    starts = np.cumsum([0.0] + durations[:-1])
-    level = np.zeros_like(t)
-    for k, (s0, d) in enumerate(zip(starts, durations), 1):
-        level[int(s0 * SR):int((s0 + d) * SR)] = intensity(k, n)
-    win = int(1.2 * SR)
-    level = np.convolve(level, np.ones(win) / win, mode="same")  # smooth swells between slides
-    root = {"dark": 46.25, "wonder": 55.0, "mystery": 49.0}[mood]
-    voices = {"dark": ((1, .5), (1.189, .22), (1.5, .25), (2, .15)),         # minor colour
-              "wonder": ((1, .45), (1.5, .3), (2, .2), (3, .12), (4.5, .06)),  # open fifths
-              "mystery": ((1, .5), (1.5, .28), (2, .2), (2.378, .1))}[mood]
-    left, right = np.zeros_like(t), np.zeros_like(t)
-    for ratio, amp in voices:
-        f = root * ratio
-        ph = rng.uniform(0, 6.28, 2)
-        lfo = 0.7 + 0.3 * np.sin(2 * np.pi * rng.uniform(0.04, 0.09) * t + ph[0])
-        left += amp * lfo * np.sin(2 * np.pi * f * t + ph[0])
-        right += amp * lfo * np.sin(2 * np.pi * f * 1.003 * t + ph[1])
-    drone = 0.55 + 0.45 * level
-    left, right = left * drone, right * drone
-    if mood != "wonder":  # heartbeat that quickens as the story builds
-        beat = np.zeros_like(t)
-        k = np.arange(int(0.35 * SR)) / SR
-        thump = np.sin(2 * np.pi * 42 * k) * np.exp(-k * 14)
-        pos = 1.0
-        while pos < total - 1.0:
-            lv = float(level[int(pos * SR)])
-            if lv > 0.5:
-                for off, gain in ((0.0, 0.9), (0.28, 0.6)):
-                    s = int((pos + off) * SR)
-                    e = min(len(t), s + len(thump))
-                    beat[s:e] += thump[: e - s] * gain * lv
-            pos += 1.7 - 0.8 * lv
-        left += 0.4 * beat
-        right += 0.4 * beat
-    scale = (0, 3, 5, 7, 10, 12, 15) if mood != "wonder" else (0, 2, 4, 7, 9, 12, 14)
-    for k, s0 in enumerate(starts):  # a chime on every new slide, climbing towards the reveal
-        last = k == n - 1
-        f = root * 8 * 2 ** (scale[min(k, len(scale) - 1) if not last else 0] / 12)
-        kk = np.arange(int(2.5 * SR)) / SR
-        bell = (np.sin(2 * np.pi * f * kk) + 0.3 * np.sin(2 * np.pi * f * 2.01 * kk)) * np.exp(-kk * 2.2)
-        s = int((s0 + 0.12) * SR)
-        e = min(len(t), s + len(bell))
-        g = 0.22 if not last else 0.3
-        left[s:e] += bell[: e - s] * g
-        right[s:e] += bell[: e - s] * g * 0.85
-    fade = np.ones_like(t)
-    fo = int(min(3.0, durations[-1] * 0.6) * SR)
-    fade[-fo:] = np.linspace(1, 0, fo)
-    out = np.stack([left * fade, right * fade], axis=1)
-    return out / (np.max(np.abs(out)) or 1) * 0.8, starts
+    n_sl = len(durations)
+    starts = np.cumsum([0.0] + list(durations[:-1]))
+    total = float(sum(durations))
+    N = int(total * SR) + int(4 * SR)  # reverb tail room, cut later
+    L = np.zeros(N)
+    R = np.zeros(N)
+    prog = PROGRESSIONS.get(mood, PROGRESSIONS["mystery"])
+    key = KEY_ROOT.get(mood, 47)
+    xf = 1.2  # chords overlap across slide boundaries
+    for k, (s0, d) in enumerate(zip(starts, durations)):
+        last = k == n_sl - 1
+        off, minor = (0, mood != "wonder") if last else prog[k % len(prog)]
+        lv = intensity(k + 1, n_sl)
+        root = key + off
+        third = 3 if minor else 4
+        chord = [root, root + 7, root + 12, root + 12 + third, root + 19]
+        a = max(0, int((s0 - xf / 2) * SR))
+        b = min(N, int((s0 + d + xf / 2 + (2.5 if last else 0)) * SR))
+        n = b - a
+        pad = np.zeros(n)
+        for j, m in enumerate(chord):
+            pad += _pad_note(_hz(m), n, rng) * (0.9 if j < 2 else 0.6)
+        pad *= _env(n, xf, xf + (2.0 if last else 0)) * (0.5 + 0.5 * lv)
+        cut = 700 + 1500 * lv
+        pad = _lowpass(pad, cut)
+        pan = 0.15 * np.sin(2 * np.pi * 0.07 * np.arange(n) / SR)
+        L[a:b] += pad * (1 - pan)
+        R[a:b] += pad * (1 + pan)
+        # sub bass, felt more than heard
+        t = np.arange(n) / SR
+        sub = np.sin(2 * np.pi * _hz(root - 12) * t) * _env(n, xf, xf) * 0.35 * (0.6 + 0.4 * lv)
+        L[a:b] += sub
+        R[a:b] += sub
+        # sparse felt-piano notes from the chord, denser as the story builds; never on the cut
+        tones = [root + 12, root + 19, root + 24, root + 24 + third, root + 31]
+        pos = s0 + 0.9
+        while pos < s0 + d - 1.2:
+            m = int(rng.choice(tones))
+            nn = int(2.8 * SR)
+            s = int(pos * SR)
+            e = min(N, s + nn)
+            note = _piano(_hz(m), nn)[: e - s] * (0.16 + 0.1 * lv)
+            pl = rng.uniform(-0.4, 0.4)
+            L[s:e] += note * (1 - pl)
+            R[s:e] += note * (1 + pl)
+            pos += float(rng.uniform(1.1, 2.2) - 0.7 * lv)
+        # soft riser into the reveal (second-to-last slide), filtered noise swell
+        if n_sl >= 3 and k == n_sl - 3:
+            rs = int(max(s0, s0 + d - 3.0) * SR)
+            re_ = int((s0 + d) * SR)
+            noise = _lowpass(rng.standard_normal(re_ - rs), 2500.0)
+            swell = np.linspace(0, 1, re_ - rs) ** 2 * 0.25
+            L[rs:re_] += noise * swell
+            R[rs:re_] += noise * swell
+    st = np.stack([L, R], axis=1)
+    st = _reverb(st, rng)
+    st = st[: int(total * SR)]
+    st = np.tanh(1.4 * st / (np.max(np.abs(st)) or 1)) / np.tanh(1.4)  # soft limiter
+    return st * 0.85, starts
+
+
+def slide_part(music, s0, d, last):
+    """One slide's audio: smooth fade in/out so Instagram's loop is seamless (no click)."""
+    import numpy as np
+    seg = music[int(s0 * SR):int((s0 + d) * SR)].copy()
+    n = len(seg)
+    fi, fo = int(0.45 * SR), int((1.6 if last else 0.7) * SR)
+    seg[:fi] *= (0.5 - 0.5 * np.cos(np.linspace(0, np.pi, fi)))[:, None]
+    seg[-fo:] *= (0.5 + 0.5 * np.cos(np.linspace(0, np.pi, fo)))[:, None]
+    return seg
 
 
 def _ffmpeg() -> str:
@@ -265,11 +358,7 @@ def render_post_video(post: dict, slides: list[Path], out_dir: Path) -> list[dic
     music, starts = compose(durations, mood_of(post), seed)
     out = []
     for k, (img, s0, d) in enumerate(zip(slides, starts, durations), 1):
-        seg = music[int(s0 * SR):int((s0 + d) * SR)].copy()
-        fi, fo = int(0.15 * SR), int(0.35 * SR)
-        seg[:fi] *= np.linspace(0, 1, fi)[:, None]
-        if k < len(slides):
-            seg[-fo:] *= np.linspace(1, 0.4, fo)[:, None]
+        seg = slide_part(music, s0, d, k == len(slides))
         wav = out_dir / f"slide_{k}.wav"
         with wave.open(str(wav), "wb") as wf:
             wf.setnchannels(2)
