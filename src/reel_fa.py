@@ -6,6 +6,8 @@ Persian (content/mysteries_fa.json, written and fact-checked by hand, never
 generated). Output: output/reel-fa/{reel.mp4, cover.jpg, caption.txt, meta.json}.
 
 Never fails the workflow: any problem writes output/reel-fa/skip.txt and exits 0.
+Every run (built or skipped, with the reason) is also logged in review/reel_fa.json,
+which the workflow commits, so a missing reel is always visible in the repo.
 """
 from __future__ import annotations
 
@@ -33,6 +35,7 @@ ROOT = m.ROOT
 FA_BANK = ROOT / "content" / "mysteries_fa.json"
 OUT = ROOT / "output" / "reel-fa"
 WORK = OUT / "work"
+STATUS = ROOT / "review" / "reel_fa.json"
 SRC_WORK = m.WORK
 W, H, FPS, SR = m.W, m.H, m.FPS, m.SR
 VOICE = os.getenv("NABZ_FA_VOICE", "fa-IR-FaridNeural")
@@ -55,6 +58,11 @@ GEMINI_STYLE = os.getenv(
 )
 # Extra depth after synthesis, in semitones (0 = off). One semitone sounds lower but still natural.
 DEEPEN = float(os.getenv("NABZ_FA_DEEPEN", "1.0"))
+# The Gemini narrator is slow and dramatic; a little faster keeps the reel tight (pitch unchanged).
+TEMPO = float(os.getenv("NABZ_FA_TEMPO", "1.08"))
+# Instagram Reel limit we keep under. Longer narration is gently sped up to fit instead of failing.
+FA_MAX = float(os.getenv("NABZ_FA_MAX_SECONDS", "57.5"))
+FIT_LIMIT = 1.3  # never speed the voice up more than 30%
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
 BRAND = os.getenv("NABZ_IG_BRAND", "نبض معما")
 FONT_URLS = [
@@ -235,6 +243,17 @@ def _gemini_request(text: str) -> tuple[bytes, str]:
     raise RuntimeError(f"Gemini TTS kept failing: {type(last).__name__}: {last}")
 
 
+def voice_filter() -> str:
+    """ffmpeg filter for the Gemini voice: deepen (pitch down) and tempo, or '' when both are off."""
+    tempo = TEMPO if 0.5 <= TEMPO <= 2.0 else 1.0
+    if DEEPEN > 0:
+        ratio = 2 ** (-DEEPEN / 12)
+        return f"asetrate={SR * ratio:.0f},aresample={SR},atempo={tempo / ratio:.5f}"
+    if abs(tempo - 1.0) > 0.001:
+        return f"atempo={tempo:.5f}"
+    return ""
+
+
 def _gemini_synth(text: str, wav: Path) -> list[dict]:
     """Gemini voice for one beat -> wav (project format, edge silences trimmed) + word timings."""
     audio, mime = _gemini_request(text)
@@ -251,11 +270,10 @@ def _gemini_synth(text: str, wav: Path) -> list[dict]:
             wf.writeframes(audio)
     m.to_wav(raw, wav)
     raw.unlink(missing_ok=True)
-    if DEEPEN > 0:
-        ratio = 2 ** (-DEEPEN / 12)
+    chain = voice_filter()
+    if chain:
         low = wav.with_name(wav.stem + "_low.wav")
-        m.run_ffmpeg(["-i", str(wav), "-af", f"asetrate={SR * ratio:.0f},aresample={SR},atempo={1 / ratio:.5f}",
-                      "-ac", "1", "-ar", str(SR), "-c:a", "pcm_s16le", str(low)])
+        m.run_ffmpeg(["-i", str(wav), "-af", chain, "-ac", "1", "-ar", str(SR), "-c:a", "pcm_s16le", str(low)])
         low.replace(wav)
     audio = m.read_wav(wav)
     loud = np.flatnonzero(np.abs(audio) > 0.01 * (float(np.max(np.abs(audio))) if audio.size else 0.0))
@@ -269,7 +287,7 @@ def _gemini_synth(text: str, wav: Path) -> list[dict]:
             wf.writeframes((np.clip(audio, -1, 1) * 32767).astype(np.int16).tobytes())
     dur = len(audio) / SR
     words = len(text.split())
-    if dur < max(1.0, words * 0.17) or dur > words * 1.1 + 2.0:
+    if dur < max(1.0, words * 0.15) or dur > words * 1.1 + 2.0:
         raise RuntimeError(f"Gemini audio length {dur:.1f}s does not fit {words} words")
     return m.estimate_words(text, dur)
 
@@ -315,6 +333,32 @@ def narrate(beats: list[str], engine: str = "edge"):
     voice = np.concatenate(pieces)
     peak = float(np.max(np.abs(voice))) or 1.0
     return voice * (0.92 / peak), durations, words
+
+
+def fit_length(voice, durations, words, limit: float = FA_MAX):
+    """Too long for a Reel? Speed the whole narration up evenly (pitch kept) and rescale every
+    beat length and word time, instead of losing the day's reel. Returns (..., factor)."""
+    total = sum(durations)
+    if total <= limit:
+        return voice, durations, words, 1.0
+    factor = total / (limit - 0.3)
+    if factor > FIT_LIMIT:
+        raise RuntimeError(f"Persian narration {total:.1f}s is too long to fit {limit:.0f}s naturally")
+    src, dst = WORK / "fit_in.wav", WORK / "fit_out.wav"
+    dst.unlink(missing_ok=True)
+    m.write_wav(src, voice)
+    m.run_ffmpeg(["-i", str(src), "-af", f"atempo={factor:.5f}", "-ac", "1", "-ar", str(SR),
+                  "-c:a", "pcm_s16le", str(dst)])
+    fast = m.read_wav(dst).astype(np.float32)
+    durations = [d / factor for d in durations]
+    words = [dict(w, start=w["start"] / factor, end=w["end"] / factor) for w in words]
+    need = int(round(sum(durations) * SR))
+    if len(fast) < need:
+        fast = np.concatenate([fast, np.zeros(need - len(fast), dtype=np.float32)])
+    fast = fast[:need]
+    peak = float(np.max(np.abs(fast))) or 1.0
+    log(f"Persian narration {total:.1f}s sped up x{factor:.3f} to {sum(durations):.1f}s")
+    return fast * (0.92 / peak), durations, words, round(factor, 3)
 
 
 # ---------------------------------------------------------------- captions (RTL)
@@ -536,6 +580,8 @@ def build(story: dict, fa: dict) -> dict:
         engine = f"edge:{VOICE}"
     log(f"Persian voice: {engine}")
     voice_check.write_report(story["id"], "fa")
+    raw_total = sum(durations)
+    voice, durations, words, fit = fit_length(voice, durations, words)
     total = sum(durations)
     log(f"Persian narration {total:.1f}s, {len(words)} words")
     if not 15 <= total <= 59:
@@ -573,16 +619,32 @@ def build(story: dict, fa: dict) -> dict:
     (OUT / "caption.txt").write_text(caption, encoding="utf-8")
     meta = {"story_id": story["id"], "title": fa["title"], "duration": round(info["duration"], 2),
             "built_date": datetime.now(TEHRAN).date().isoformat(), "shots": len(shots), "voice": engine,
-            "checks": checks}
+            "narration_raw": round(raw_total, 1), "speedup": fit, "checks": checks}
     (OUT / "meta.json").write_text(json.dumps(meta, ensure_ascii=False, indent=2), encoding="utf-8")
     log(f"Persian reel ready: {meta}")
     return meta
 
 
+def write_status(entry: dict, path: Path = STATUS) -> None:
+    """Keep the last 14 runs in review/reel_fa.json (committed by the workflow)."""
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        old = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        runs = old.get("runs", []) if isinstance(old, dict) else []
+        runs = [r for r in runs if isinstance(r, dict) and r.get("date") != entry.get("date")] + [entry]
+        path.write_text(json.dumps({"last": entry, "runs": runs[-14:]}, ensure_ascii=False, indent=2) + "\n",
+                        encoding="utf-8")
+    except Exception as exc:
+        log(f"could not write {path.name}: {type(exc).__name__}: {exc}")
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
+    today = datetime.now(TEHRAN).date().isoformat()
+    story_id = ""
     try:
         story = json.loads((m.OUT / "story.json").read_text(encoding="utf-8"))
+        story_id = story.get("id", "")
         bank = load_fa()
         fa = bank.get(story["id"])
         if not fa:
@@ -590,11 +652,14 @@ def main() -> int:
         left = [k for k in bank if k not in set(m.load_state().get("mysteries", []))]
         if len(left) <= 5:
             print(f"::warning title=Persian bank low::only {len(left)} Persian stories left; translate the next batch.")
-        build(story, fa)
+        meta = build(story, fa)
+        write_status({"date": today, "story_id": story_id, "status": "built", "voice": meta.get("voice"),
+                      "duration": meta.get("duration"), "speedup": meta.get("speedup")})
     except Exception as exc:
         msg = re.sub(r"[\r\n]+", " ", f"{type(exc).__name__}: {exc}")[:600]
         (OUT / "skip.txt").write_text(msg, encoding="utf-8")
         print(f"::warning title=Persian reel skipped::{msg}", flush=True)
+        write_status({"date": today, "story_id": story_id, "status": "skipped", "reason": msg})
     return 0
 
 
