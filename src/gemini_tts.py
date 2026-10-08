@@ -33,6 +33,9 @@ STYLE = os.getenv(
     "no exaggeration, no cartoonish acting.",
 )
 DEEPEN = float(os.getenv("NABZ_EN_DEEPEN", "1.0"))  # extra depth in semitones, 0 = off
+# Speed-up without pitch change: the deep narrator reads ~15% slower than Edge, which pushed
+# the Oct 8 Short to 43.5 s (target 20-40 s for a tight loop). 1.0 = off.
+TEMPO = float(os.getenv("NABZ_EN_TEMPO", "1.12"))
 ENABLED = os.getenv("NABZ_EN_TTS", "gemini").strip().lower() == "gemini"
 _LAST_CALL = 0.0
 
@@ -103,9 +106,12 @@ def synth(text: str, wav: Path, sr: int = 44100, style: str = STYLE, voice: str 
             wf.setframerate(int(found.group(1)) if found else 24000)
             wf.writeframes(audio)
     af = []
+    tempo = TEMPO if 0.8 <= TEMPO <= 1.4 else 1.0
     if deepen > 0:
         ratio = 2 ** (-deepen / 12)
-        af = ["-af", f"aresample={sr},asetrate={sr * ratio:.0f},aresample={sr},atempo={1 / ratio:.5f}"]
+        af = ["-af", f"aresample={sr},asetrate={sr * ratio:.0f},aresample={sr},atempo={tempo / ratio:.5f}"]
+    elif abs(tempo - 1.0) > 0.001:
+        af = ["-af", f"atempo={tempo:.5f}"]
     _run(["-i", str(raw), *af, "-ac", "1", "-ar", str(sr), "-c:a", "pcm_s16le", str(wav)])
     raw.unlink(missing_ok=True)
     with wave.open(str(wav), "rb") as wf:

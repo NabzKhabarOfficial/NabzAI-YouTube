@@ -188,7 +188,7 @@ def _save_learned(lang: str, word: str, say: str) -> None:
 
 def write_report(story_id: str, lang: str) -> None:
     """Log every run, even a clean one, so a health check can tell 'all heard fine' from 'off'."""
-    global _BEATS
+    global _BEATS, _REASON
     if not ENABLED:
         status = "disabled"
     elif _FAILED:
@@ -197,6 +197,8 @@ def write_report(story_id: str, lang: str) -> None:
         status = "not-run"
     elif _START is not None and time.time() - _START > BUDGET:
         status = "out-of-time"
+    elif _BEATS == 0 and _REASON:
+        status = "error"  # the model loaded but no beat could be checked; reason says why
     else:
         status = "ok"
     try:
@@ -210,6 +212,8 @@ def write_report(story_id: str, lang: str) -> None:
     REPORT.write_text(json.dumps(data[-60:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     EVENTS.clear()
     _BEATS = 0
+    if not _FAILED:
+        _REASON = ""
 
 
 # ---------------------------------------------------------------- main entry
@@ -220,12 +224,13 @@ def review_beat(text: str, parts: list[str], bwords: list, wav: Path, lang: str,
     write the audio and return its word boundaries. Returns (parts, bwords); wav is updated
     in place when a respelling is kept. key(core) gives the learned-fix key for a word.
     """
-    global _FIXES, _BEATS, _TRIES
+    global _FIXES, _BEATS, _TRIES, _REASON
     if _FIXES >= MAX_FIXES or not available():
         return parts, bwords
     try:
         tokens = text.split()
         if len(tokens) != len(parts):
+            _REASON = _REASON or f"beat skipped: {len(tokens)} script words vs {len(parts)} spoken parts"
             return parts, bwords
         asr = transcribe(wav, lang)
         _BEATS += 1
@@ -263,6 +268,7 @@ def review_beat(text: str, parts: list[str], bwords: list, wav: Path, lang: str,
             EVENTS.append(event)
     except Exception as exc:
         log(f"beat check skipped: {type(exc).__name__}: {str(exc)[:200]}")
+        _REASON = _REASON or f"beat check failed: {type(exc).__name__}: {str(exc)[:200]}"
     finally:
         try:
             wav.with_name(wav.stem + "_try.wav").unlink(missing_ok=True)
