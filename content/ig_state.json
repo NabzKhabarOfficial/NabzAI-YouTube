@@ -15,12 +15,14 @@
     "at": "2026-10-06T20:06:17.492335+03:30"
   },
   "carousels_posted": [
-    "salt-men-chehrabad"
+    "salt-men-chehrabad",
+    "burnt-city"
   ],
   "last_carousel": {
-    "id": "salt-men-chehrabad",
-    "date": "2026-10-05",
-    "media_pk": "4001138834083795124"
+    "id": "burnt-city",
+    "date": "2026-10-08",
+    "media_pk": "4003313838044809464",
+    "video": true
   },
   "stories": {
     "teaser": [
