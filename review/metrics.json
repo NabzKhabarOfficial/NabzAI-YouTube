@@ -3,18 +3,18 @@
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 13.04,
+  "file_mb": 13.88,
   "audio": {
     "mean_volume": -22.2,
     "max_volume": -0.5
   },
   "image_sources": [
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace"
+    "pollinations",
+    "pollinations",
+    "pollinations",
+    "pollinations",
+    "pollinations",
+    "pollinations"
   ],
   "quality_passed": true,
   "story_id": "tunguska-event",

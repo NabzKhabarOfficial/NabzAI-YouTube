@@ -79,5 +79,37 @@
     "beats_checked": 0,
     "reason": "beat check failed: FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'",
     "events": []
+  },
+  {
+    "date": "2026-10-09",
+    "story": "tunguska-event",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
+  },
+  {
+    "date": "2026-10-09",
+    "story": "tunguska-event",
+    "lang": "fa",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "هزار",
+        "heard": "چیزی بالای سیبری منفجر شد.  حضار برا بر قویتر از بوم بهیروشی ما،  اما هیچ گودالی نمند.",
+        "score": 0.57,
+        "kept": "هَزار",
+        "new_score": 0.86
+      },
+      {
+        "word": "ژوئن",
+        "heard": "جوانه 1908. انفجاری به این بزورگی با ید یه گودال بزورگ میگوزاشت",
+        "score": 0.57,
+        "kept": null
+      }
+    ]
   }
 ]

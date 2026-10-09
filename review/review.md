@@ -7,6 +7,6 @@
 | audio not too quiet | CHECK (-22.2 dB) |
 | no clipping | OK (-0.5 dB) |
 
-Images: hfspace, hfspace, hfspace, hfspace, hfspace, hfspace
+Images: pollinations, pollinations, pollinations, pollinations, pollinations, pollinations
 
 Story bank: 52 of 60 stories left (next: antikythera-mechanism, db-cooper, flight-19)

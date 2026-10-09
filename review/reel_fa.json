@@ -4,7 +4,7 @@
     "story_id": "tunguska-event",
     "status": "built",
     "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-    "duration": 42.1,
+    "duration": 43.27,
     "speedup": 1.0
   },
   "runs": [
@@ -21,7 +21,7 @@
       "story_id": "tunguska-event",
       "status": "built",
       "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-      "duration": 42.1,
+      "duration": 43.27,
       "speedup": 1.0
     }
   ]
