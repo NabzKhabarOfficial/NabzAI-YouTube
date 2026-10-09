@@ -3,18 +3,20 @@
     "voynich-manuscript",
     "flannan-isles",
     "somerton-man",
-    "wow-signal"
+    "wow-signal",
+    "tunguska-event"
   ],
   "daily": {
     "2026-10-04": 1,
     "2026-10-05": 1,
     "2026-10-06": 1,
-    "2026-10-08": 1
+    "2026-10-08": 1,
+    "2026-10-09": 1
   },
   "last_post": {
-    "story_id": "wow-signal",
-    "media_pk": "4003524527395982824",
-    "at": "2026-10-08T20:06:22.882971+03:30"
+    "story_id": "tunguska-event",
+    "media_pk": "4004249241949088191",
+    "at": "2026-10-09T20:06:17.560920+03:30"
   },
   "carousels_posted": [
     "salt-men-chehrabad",
@@ -34,7 +36,8 @@
     ],
     "share": [
       "somerton-man",
-      "wow-signal"
+      "wow-signal",
+      "tunguska-event"
     ]
   },
   "story_log": {
@@ -43,8 +46,8 @@
       "result": "published 4004037923476717461 -> tunguska-event"
     },
     "share": {
-      "at": "2026-10-08T20:08:30+03:30",
-      "result": "published 4003525951303957959 -> wow-signal"
+      "at": "2026-10-09T20:07:48+03:30",
+      "result": "published 4004250376877759537 -> tunguska-event"
     }
   }
 }
