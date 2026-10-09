@@ -110,6 +110,68 @@ def transcribe(wav: Path, lang: str) -> str:
     return " ".join(s.text for s in segments).strip()
 
 
+def word_times(wav: Path, lang: str) -> list[dict]:
+    """Words the recognizer hears in a beat, with their real start/end times (seconds)."""
+    segments, _ = _model().transcribe(_pcm16k(wav), language=lang, beam_size=5, vad_filter=False,
+                                      condition_on_previous_text=False, word_timestamps=True)
+    out = []
+    for seg in segments:
+        for w in getattr(seg, "words", None) or []:
+            text = str(w.word or "").strip()
+            if text and w.end is not None and w.start is not None:
+                out.append({"text": text, "start": float(w.start), "end": float(w.end)})
+    return out
+
+
+def align(text: str, wav: Path, lang: str = "fa") -> list[dict] | None:
+    """Real caption timings for the script words of one beat, or None.
+
+    The Gemini voice returns no word timings, so captions used to be spread evenly over the
+    beat and drifted ahead of the voice (owner, Oct 9: "the voice is a few ms behind the
+    text"). Here the recognizer's own word times are mapped onto the script by position in
+    the spoken letters, so pauses and changes of pace land where the narrator makes them,
+    even when a word is heard with a slightly different spelling.
+    """
+    tokens = text.split()
+    if not tokens or not available():
+        return None
+    try:
+        heard_words = word_times(wav, lang)
+    except Exception as exc:
+        log(f"timing check skipped: {type(exc).__name__}: {str(exc)[:200]}")
+        return None
+    if len(heard_words) < max(2, len(tokens) // 3):
+        return None
+
+    def size(s: str) -> int:
+        return max(1, len(norm(s, lang)))
+
+    h_len = [size(w["text"]) for w in heard_words]
+    s_len = [size(t) for t in tokens]
+    total_h, total_s = float(sum(h_len)), float(sum(s_len))
+    if not 0.5 <= total_h / total_s <= 2.0:
+        return None  # heard something very different: keep the even spread
+    bounds, c = [], 0.0
+    for w, n in zip(heard_words, h_len):
+        bounds.append((c / total_h, (c + n) / total_h, w["start"], max(w["end"], w["start"] + 0.02)))
+        c += n
+
+    def at(f: float, start_side: bool) -> float:
+        for lo, hi, t0, t1 in bounds:
+            if (lo <= f < hi) if start_side else (lo < f <= hi):
+                return t0 + (f - lo) / (hi - lo) * (t1 - t0)
+        return bounds[0][2] if f <= 0 else bounds[-1][3]
+
+    out, c, last = [], 0.0, 0.0
+    for tok, n in zip(tokens, s_len):
+        start = max(at(c / total_s, True), last)
+        end = max(at((c + n) / total_s, False), start + 0.05)
+        out.append({"text": tok, "start": round(start, 3), "end": round(end, 3)})
+        last = start
+        c += n
+    return out
+
+
 # ---------------------------------------------------------------- scoring
 def norm(text: str, lang: str) -> str:
     text = str(text)

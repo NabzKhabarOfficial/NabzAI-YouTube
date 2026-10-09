@@ -60,7 +60,8 @@ GEMINI_STYLE = os.getenv(
 # Extra depth after synthesis, in semitones (0 = off). One semitone sounds lower but still natural.
 DEEPEN = float(os.getenv("NABZ_FA_DEEPEN", "1.0"))
 # The Gemini narrator is slow and dramatic; a little faster keeps the reel tight (pitch unchanged).
-TEMPO = float(os.getenv("NABZ_FA_TEMPO", "1.08"))
+# Owner, Oct 9: 1.08 still felt a little slow; 1.16 keeps the deep voice but moves faster.
+TEMPO = float(os.getenv("NABZ_FA_TEMPO", "1.16"))
 # Instagram Reel limit we keep under. Longer narration is gently sped up to fit instead of failing.
 FA_MAX = float(os.getenv("NABZ_FA_MAX_SECONDS", "57.5"))
 FIT_LIMIT = 1.3  # never speed the voice up more than 30%
@@ -301,6 +302,10 @@ def narrate(beats: list[str], engine: str = "edge"):
                 time.sleep(5 * (attempt + 1))
         if voice_check.ENABLED:
             _, bwords = voice_check.review_beat(text, say.split(), bwords, wav, "fa", synth)
+            if engine == "gemini":  # Gemini gives no word timings: take them from the listening model
+                real = voice_check.align(text, wav, "fa")
+                if real:
+                    bwords = real
         audio = m.read_wav(wav)
         dur = len(audio) / SR
         if dur < 1.0:
