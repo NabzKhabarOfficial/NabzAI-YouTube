@@ -29,7 +29,8 @@
   "stories": {
     "teaser": [
       "somerton-man",
-      "wow-signal"
+      "wow-signal",
+      "tunguska-event"
     ],
     "share": [
       "somerton-man",
@@ -38,8 +39,8 @@
   },
   "story_log": {
     "teaser": {
-      "at": "2026-10-08T16:42:02+03:30",
-      "result": "published 4003422017264355073 -> wow-signal"
+      "at": "2026-10-09T13:05:42+03:30",
+      "result": "published 4004037923476717461 -> tunguska-event"
     },
     "share": {
       "at": "2026-10-08T20:08:30+03:30",
