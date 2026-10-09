@@ -1,12 +1,12 @@
-# Review: The 72-Second Signal From Deep Space
+# Review: The Explosion That Flattened 80 Million Trees
 
 | Check | Result |
 |---|---|
-| duration 20-40s | OK (32.7s) |
+| duration 20-40s | OK (25.9s) |
 | vertical 1080x1920 | OK (1080x1920) |
-| audio not too quiet | OK (-19.8 dB) |
+| audio not too quiet | CHECK (-22.2 dB) |
 | no clipping | OK (-0.5 dB) |
 
 Images: pollinations, pollinations, pollinations, pollinations, pollinations, pollinations
 
-Story bank: 53 of 60 stories left (next: tunguska-event, antikythera-mechanism, db-cooper)
+Story bank: 52 of 60 stories left (next: antikythera-mechanism, db-cooper, flight-19)

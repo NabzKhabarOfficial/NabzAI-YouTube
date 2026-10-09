@@ -3,14 +3,15 @@
     "1qQuJj6PVAA",
     "76g9g87Yt9I",
     "lShTVxGJwM0",
-    "bTUpMg1yGRY"
+    "bTUpMg1yGRY",
+    "Z7Cf2N4YpFo"
   ],
   "last": {
-    "video": "bTUpMg1yGRY",
-    "at": "2026-10-07T19:16:01.724348+00:00"
+    "video": "Z7Cf2N4YpFo",
+    "at": "2026-10-08T19:15:25.185392+00:00"
   },
   "last_check": {
-    "at": "2026-10-08T08:37:04.644898+00:00",
-    "result": "no new public video: lShTVxGJwM0:public, bTUpMg1yGRY:public, 76g9g87Yt9I:public, 1qQuJj6PVAA:public"
+    "at": "2026-10-09T08:35:10.316870+00:00",
+    "result": "no new public video: Z7Cf2N4YpFo:public, lShTVxGJwM0:public, bTUpMg1yGRY:public, 76g9g87Yt9I:public"
   }
 }

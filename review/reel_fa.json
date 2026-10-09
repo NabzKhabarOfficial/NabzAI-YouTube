@@ -1,10 +1,10 @@
 {
   "last": {
-    "date": "2026-10-08",
-    "story_id": "wow-signal",
+    "date": "2026-10-09",
+    "story_id": "tunguska-event",
     "status": "built",
-    "voice": "edge:fa-IR-FaridNeural",
-    "duration": 41.63,
+    "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+    "duration": 45.07,
     "speedup": 1.0
   },
   "runs": [
@@ -14,6 +14,14 @@
       "status": "built",
       "voice": "edge:fa-IR-FaridNeural",
       "duration": 41.63,
+      "speedup": 1.0
+    },
+    {
+      "date": "2026-10-09",
+      "story_id": "tunguska-event",
+      "status": "built",
+      "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+      "duration": 45.07,
       "speedup": 1.0
     }
   ]

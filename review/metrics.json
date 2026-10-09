@@ -1,11 +1,11 @@
 {
-  "duration_seconds": 32.7,
+  "duration_seconds": 25.87,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 13.85,
+  "file_mb": 13.88,
   "audio": {
-    "mean_volume": -19.8,
+    "mean_volume": -22.2,
     "max_volume": -0.5
   },
   "image_sources": [
@@ -17,6 +17,6 @@
     "pollinations"
   ],
   "quality_passed": true,
-  "story_id": "wow-signal",
-  "story_bank": "Story bank: 53 of 60 stories left (next: tunguska-event, antikythera-mechanism, db-cooper)"
+  "story_id": "tunguska-event",
+  "story_bank": "Story bank: 52 of 60 stories left (next: antikythera-mechanism, db-cooper, flight-19)"
 }

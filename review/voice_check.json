@@ -43,5 +43,23 @@
     "beats_checked": 0,
     "reason": "beat check failed: TypeError: open() got an unexpected keyword argument 'metadata_errors'",
     "events": []
+  },
+  {
+    "date": "2026-10-09",
+    "story": "tunguska-event",
+    "lang": "en",
+    "status": "error",
+    "beats_checked": 0,
+    "reason": "beat check failed: TypeError: open() got an unexpected keyword argument 'metadata_errors'",
+    "events": []
+  },
+  {
+    "date": "2026-10-09",
+    "story": "tunguska-event",
+    "lang": "fa",
+    "status": "error",
+    "beats_checked": 0,
+    "reason": "beat check failed: TypeError: open() got an unexpected keyword argument 'metadata_errors'",
+    "events": []
   }
 ]
