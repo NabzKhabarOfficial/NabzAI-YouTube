@@ -202,6 +202,16 @@ def main() -> int:
         hint = (" Comments are turned off: YouTube Studio > Settings > Upload defaults > Advanced > Comments."
                 if "commentsDisabled" in msg or "disabled" in msg.lower() else "")
         state["last"] = {"video": vid, "error": msg[:200], "at": datetime.now(timezone.utc).isoformat()}
+        # The id is marked before the call so a timeout (the comment may have gone through)
+        # never posts twice. A clear refusal from YouTube (HTTP 4xx) means nothing was
+        # posted: unmark it so the next run can try again.
+        status = getattr(getattr(exc, "resp", None), "status", None)
+        try:
+            status = int(status)
+        except (TypeError, ValueError):
+            status = None
+        if status is not None and 400 <= status < 500:
+            state["commented"] = [v for v in state.get("commented", []) if v != vid]
         save_state(state)
         print(f"::warning title=YouTube comment failed::{msg[:300]}{hint}")
         return 0
