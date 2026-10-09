@@ -34,6 +34,8 @@ from src import gemini_tts, voice_check
 
 ROOT = Path(__file__).resolve().parents[1]
 BANK = ROOT / "content" / "mysteries.json"
+# Rewritten narration + comment challenge for queued stories (merged by id, visuals stay in BANK).
+OVERRIDE = ROOT / "content" / "mysteries_override.json"
 STATE = ROOT / "content" / "published.json"
 OUT = ROOT / "output" / "mystery-short"
 WORK = OUT / "work"
@@ -115,11 +117,29 @@ def validate_story(story: dict) -> None:
         raise RuntimeError(f"{story['id']}: title too long for '#Shorts' suffix")
 
 
+def apply_overrides(stories: list[dict], path: Path = OVERRIDE) -> list[dict]:
+    """Replace beat texts (same count, visuals kept) and add the comment challenge by story id."""
+    try:
+        extra = json.loads(path.read_text(encoding="utf-8")).get("stories", {})
+    except Exception:
+        return stories
+    for s in stories:
+        o = extra.get(s.get("id")) or {}
+        texts = o.get("beats") or []
+        if texts and len(texts) == len(s["beats"]) and all(str(t).strip() for t in texts):
+            s["beats"] = [dict(b, text=str(t).strip()) for b, t in zip(s["beats"], texts)]
+        if o.get("challenge"):
+            s["challenge"] = str(o["challenge"]).strip()
+    return stories
+
+
 def load_bank(path: Path = BANK, strict: bool = False) -> list[dict]:
     """Valid stories of the bank. One broken story is skipped with a warning (strict=True
     raises instead), so a single bad entry can never stop the daily Short."""
     data = json.loads(path.read_text(encoding="utf-8"))
     stories = data["stories"]
+    if path == BANK:
+        stories = apply_overrides(stories)
     ids = [s["id"] for s in stories]
     if len(ids) != len(set(ids)):
         raise RuntimeError("duplicate story ids in bank")
@@ -455,7 +475,14 @@ def narrate(story: dict, engine: str = "edge") -> tuple[np.ndarray, list[float],
         if dur < 1.0:
             raise RuntimeError(f"beat {i} narration too short")
         if engine in ("gemini", "kokoro"):
-            bwords = estimate_words(beat["text"], dur)  # no word boundaries: script words over the speech
+            # No word boundaries from these voices: take real word times from the listening model
+            # (owner, Oct 9: captions ran ahead of the voice), else spread the script over the speech.
+            real = voice_check.align(beat["text"], wav, "en") if voice_check.ENABLED else None
+            if real:
+                bwords = [{"text": w["text"].strip(_EDGE), "start": w["start"], "end": w["end"],
+                           "punct": bool(re.search(r"[.?!,:;]$", w["text"]))} for w in real]
+            else:
+                bwords = estimate_words(beat["text"], dur)
         elif not bwords:
             bwords = estimate_words(beat["text"], dur)
         else:
@@ -902,7 +929,8 @@ def build(story: dict) -> dict:
         "title": f"{story['title']} #Shorts",
         "description": (
             f"{story['beats'][0]['text']}\n\n"
-            "NABZ Mysteries: one real unsolved mystery, explained in under a minute.\n"
+            + (f"{story['challenge']}\n\n" if story.get("challenge") else "")
+            + "NABZ Mysteries: one real unsolved mystery, explained in under a minute.\n"
             "Visuals are AI-generated illustrations; narration uses an AI voice.\n\n"
             "#Shorts #Mystery #Unsolved #History #TrueStory"
         ),

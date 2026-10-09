@@ -79,6 +79,12 @@ def find_story(title: str, bank_path: Path = BANK) -> dict | None:
     want = _norm(re.sub(r"#\w+", "", title))
     for s in stories:
         if _norm(s.get("title")) == want:
+            try:  # the comment challenge lives with the rewritten narration
+                extra = json.loads((bank_path.parent / "mysteries_override.json").read_text(encoding="utf-8"))
+                s = dict(s, **{k: v for k, v in (extra.get("stories", {}).get(s.get("id")) or {}).items()
+                               if k == "challenge"})
+            except Exception:
+                pass
             return s
     return None
 
@@ -86,6 +92,9 @@ def find_story(title: str, bank_path: Path = BANK) -> dict | None:
 def comment_text(video_id: str, title: str, story: dict | None = None) -> str:
     key = (story or {}).get("id") or video_id
     question = QUESTIONS[int(hashlib.sha1(key.encode()).hexdigest()[:4], 16) % len(QUESTIONS)]
+    challenge = str((story or {}).get("challenge") or "").strip()
+    if challenge:  # story-specific mind challenge (A/B/C), written with the story
+        question = challenge
     clean = re.sub(r"\s*#\w+", "", str(title or "")).strip()
     return f"🕯 {clean}\n\n{question}" if clean else question
 
