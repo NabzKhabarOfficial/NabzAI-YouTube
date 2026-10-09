@@ -203,7 +203,7 @@ def shorts_metadata(story: dict) -> dict:
     pick = int(hashlib.sha1(story["id"].encode()).hexdigest()[:4], 16) % len(CTAS)
     description = (
         f"{story['beats'][0]['text']}\n\n"
-        f"{CTAS[pick]}\n\n"
+        f"{str(story.get('challenge') or '').strip() or CTAS[pick]}\n\n"
         "NABZ Mysteries: one real unsolved mystery, explained in under a minute. Follow for a new one every day.\n"
         "Visuals are AI-generated illustrations; narration uses an AI voice.\n\n"
         + " ".join(story_hashtags(story))
