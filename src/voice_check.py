@@ -98,7 +98,12 @@ def _pcm16k(wav: Path):
     directly skips PyAV entirely.
     """
     import numpy as np
-    raw = subprocess.run(["ffmpeg", "-nostdin", "-v", "error", "-i", str(wav), "-f", "s16le",
+    try:  # the runner has no system ffmpeg; the project uses the one bundled with imageio
+        from imageio_ffmpeg import get_ffmpeg_exe
+        exe = get_ffmpeg_exe()
+    except Exception:
+        exe = "ffmpeg"
+    raw = subprocess.run([exe, "-nostdin", "-v", "error", "-i", str(wav), "-f", "s16le",
                           "-ac", "1", "-ar", "16000", "-"], capture_output=True, check=True,
                          timeout=120).stdout
     return np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
