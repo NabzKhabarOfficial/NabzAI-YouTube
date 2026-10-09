@@ -52,8 +52,8 @@ EN_SKIP = {
     "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety", "hundred", "hundreds",
     "thousand", "thousands", "million", "millions",
 }
-_FA_DIACRITICS = re.compile("[\\u064b-\\u0652\\u0670]")
-_EDGE = ".,!?:;\"'()\\u060c\\u061b\\u061f\\u00ab\\u00bb"
+_FA_DIACRITICS = re.compile("[\u064b-\u0652\u0670]")
+_EDGE = ".,!?:;\"'()\u060c\u061b\u061f\u00ab\u00bb"
 
 
 def log(msg: str) -> None:
@@ -114,10 +114,10 @@ def transcribe(wav: Path, lang: str) -> str:
 def norm(text: str, lang: str) -> str:
     text = str(text)
     if lang == "fa":
-        text = _FA_DIACRITICS.sub("", text).replace("\\u200c", "")
-        text = text.translate(str.maketrans({"\\u064a": "\\u06cc", "\\u0643": "\\u06a9", "\\u0629": "\\u0647",
-                                             "\\u0623": "\\u0627", "\\u0625": "\\u0627", "\\u0624": "\\u0648"}))
-        return re.sub(r"[^\\u0600-\\u06ff]", "", text)
+        text = _FA_DIACRITICS.sub("", text).replace("\u200c", "")
+        text = text.translate(str.maketrans({"\u064a": "\u06cc", "\u0643": "\u06a9", "\u0629": "\u0647",
+                                             "\u0623": "\u0627", "\u0625": "\u0627", "\u0624": "\u0648"}))
+        return re.sub(r"[^\u0600-\u06ff]", "", text)
     return re.sub(r"[^a-z]", "", text.lower())
 
 
@@ -143,7 +143,7 @@ def heard(word: str, asr: str, lang: str) -> float:
 
 def checkable(token: str, lang: str) -> bool:
     core = token.strip(_EDGE)
-    if not core or re.search(r"[0-9\\u06f0-\\u06f9]", core):
+    if not core or re.search(r"[0-9\u06f0-\u06f9]", core):
         return False
     if lang == "en":
         return len(norm(core, "en")) >= 4 and core.lower() not in EN_SKIP
@@ -153,7 +153,7 @@ def checkable(token: str, lang: str) -> bool:
 # ---------------------------------------------------------------- respelling candidates
 _EN_RULES = [
     (r"(?<!t)ch", "tch"), (r"ch", "k"), (r"ai", "eye"), (r"ei", "eye"), (r"ie", "ee"), (r"oe", "er"),
-    (r"\\u00f6", "er"), (r"\\u00fc", "oo"), (r"\\u00e4", "eh"), (r"ou", "oo"), (r"ph", "f"), (r"th", "t"),
+    (r"\u00f6", "er"), (r"\u00fc", "oo"), (r"\u00e4", "eh"), (r"ou", "oo"), (r"ph", "f"), (r"th", "t"),
     (r"sz", "sh"), (r"cz", "ch"), (r"^j", "y"), (r"w", "v"), (r"x", "ks"), (r"ses$", "seez"),
     (r"es$", "eez"), (r"e$", "eh"), (r"y", "i"), (r"a", "ah"), (r"i", "ee"), (r"u", "oo"),
 ]
@@ -164,10 +164,10 @@ def candidates(core: str, lang: str) -> list[str]:
     if lang == "fa":
         base = _FA_DIACRITICS.sub("", core)
         first = base[:1]
-        for mark in ("\\u064e", "\\u0650", "\\u064f"):
+        for mark in ("\u064e", "\u0650", "\u064f"):
             out.append(first + mark + base[1:])
-        if "\\u200c" in base:
-            out.append(base.replace("\\u200c", ""))
+        if "\u200c" in base:
+            out.append(base.replace("\u200c", ""))
     else:
         low = core.lower()
         for pat, rep in _EN_RULES:
@@ -197,7 +197,7 @@ def _save_learned(lang: str, word: str, say: str) -> None:
         data = {}
     data.setdefault(lang, {})[word] = say
     LEARNED.parent.mkdir(parents=True, exist_ok=True)
-    LEARNED.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    LEARNED.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def write_report(story_id: str, lang: str) -> None:
@@ -223,7 +223,7 @@ def write_report(story_id: str, lang: str) -> None:
                  "status": status, "beats_checked": _BEATS, "reason": _REASON,
                  "events": list(EVENTS)})
     REPORT.parent.mkdir(parents=True, exist_ok=True)
-    REPORT.write_text(json.dumps(data[-60:], ensure_ascii=False, indent=2) + "\\n", encoding="utf-8")
+    REPORT.write_text(json.dumps(data[-60:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     EVENTS.clear()
     _BEATS = 0
     if not _FAILED:
