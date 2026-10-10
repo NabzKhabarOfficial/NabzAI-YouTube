@@ -111,5 +111,31 @@
         "kept": null
       }
     ]
+  },
+  {
+    "date": "2026-10-10",
+    "story": "antikythera-mechanism",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "two-thousand-year-old",
+        "heard": "Divers pulled a 2,000 year old computer from the bottom of the sea.",
+        "score": 0.51,
+        "kept": "two-thoosand-year-old",
+        "new_score": 1.0
+      }
+    ]
+  },
+  {
+    "date": "2026-10-10",
+    "story": "antikythera-mechanism",
+    "lang": "fa",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
   }
 ]

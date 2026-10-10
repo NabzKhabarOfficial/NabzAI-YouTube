@@ -1,9 +1,9 @@
 {
-  "duration_seconds": 25.87,
+  "duration_seconds": 28.03,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 13.88,
+  "file_mb": 15.74,
   "audio": {
     "mean_volume": -22.2,
     "max_volume": -0.5
@@ -17,6 +17,6 @@
     "pollinations"
   ],
   "quality_passed": true,
-  "story_id": "tunguska-event",
-  "story_bank": "Story bank: 52 of 60 stories left (next: antikythera-mechanism, db-cooper, flight-19)"
+  "story_id": "antikythera-mechanism",
+  "story_bank": "Story bank: 51 of 60 stories left (next: db-cooper, flight-19, dancing-plague-1518)"
 }

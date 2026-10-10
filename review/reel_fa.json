@@ -1,10 +1,10 @@
 {
   "last": {
-    "date": "2026-10-09",
-    "story_id": "tunguska-event",
+    "date": "2026-10-10",
+    "story_id": "antikythera-mechanism",
     "status": "built",
     "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-    "duration": 43.27,
+    "duration": 37.93,
     "speedup": 1.0
   },
   "runs": [
@@ -22,6 +22,14 @@
       "status": "built",
       "voice": "gemini:gemini-3.8-flash-tts:Algenib",
       "duration": 43.27,
+      "speedup": 1.0
+    },
+    {
+      "date": "2026-10-10",
+      "story_id": "antikythera-mechanism",
+      "status": "built",
+      "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+      "duration": 37.93,
       "speedup": 1.0
     }
   ]
