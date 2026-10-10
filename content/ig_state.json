@@ -32,7 +32,8 @@
     "teaser": [
       "somerton-man",
       "wow-signal",
-      "tunguska-event"
+      "tunguska-event",
+      "antikythera-mechanism"
     ],
     "share": [
       "somerton-man",
@@ -42,8 +43,8 @@
   },
   "story_log": {
     "teaser": {
-      "at": "2026-10-09T13:05:42+03:30",
-      "result": "published 4004037923476717461 -> tunguska-event"
+      "at": "2026-10-10T13:05:38+03:30",
+      "result": "published 4004762675375963652 -> antikythera-mechanism"
     },
     "share": {
       "at": "2026-10-09T20:07:48+03:30",
