@@ -11,16 +11,18 @@ One run (workflow ig-pack.yml) does:
      third reel), never the same minute two days running.
   2. Builds every planned reel that is not built yet: fresh AI pictures, the deep Gemini voice
      (ONE request per reel: the whole script is read in one go and cut back into beats with the
-     listening model), Persian captions, cover. 1080x1920, H.264 + AAC, 15-90 s, checked.
+     listening model, then checked word by word), Persian captions, cover. 1080x1920, H.264 + AAC, 15-90 s, checked.
      Every finished reel is uploaded at once to the GitHub release "week-YYYY-MM-DD", so a run
      that stops (daily voice quota, time limit) loses nothing and the next run continues.
   3. When all reels are there: a folder week-YYYY-MM-DD with the videos, covers, ready captions,
      schedule.csv (Persian columns), metricool.csv and a short Persian guide, zipped as
      week-YYYY-MM-DD.zip on the same release.
 
-Voice policy: Gemini only, until the deadline (the Sunday 18:00 Tehran before the week) or
-NABZ_PACK_ALLOW_EDGE=1; after that, missing reels use the free Edge voice so the pack is
-always ready in time. State: content/ig_pack_state.json (committed by the workflow).
+Voice policy (owner rule, Oct 10 2026): ONE voice on every reel, the deep Gemini narrator, and
+no wrong words. A reel never falls back to another voice: when the daily free quota is used
+up the run stops and the next run continues. Every beat is listened to (src.voice_check); a
+beat with a doubtful word is read again with respellings, and any word still doubtful is
+listed in the pack (schedule.csv, release notes). State: content/ig_pack_state.json.
 """
 from __future__ import annotations
 
@@ -82,8 +84,25 @@ def target_week(today: date | None = None, forced: str = "") -> date:
     return today + timedelta(days=(7 - today.weekday()) % 7 or 7)
 
 
+def pick_week(state: dict, forced: str = "", today: date | None = None) -> date:
+    """An unfinished week that is not over yet comes first (so a week the voice quota could not
+    finish before its Monday is completed, not skipped); otherwise the next Monday."""
+    if forced:
+        return target_week(forced=forced)
+    today = today or now_tehran().date()
+    for key in sorted((state.get("weeks") or {})):
+        info = state["weeks"][key]
+        try:
+            monday = date.fromisoformat(key)
+        except ValueError:
+            continue
+        if not info.get("done") and info.get("plan") and monday + timedelta(days=6) >= today:
+            return monday
+    return target_week(today)
+
+
 def deadline(week: date) -> datetime:
-    """Sunday 18:00 Tehran before the week: from then on the free Edge voice may fill gaps."""
+    """Sunday 18:00 Tehran before the week: from then on a short week may be planned."""
     return datetime.combine(week - timedelta(days=1), datetime.min.time(), TEHRAN) + timedelta(hours=18)
 
 
@@ -274,10 +293,83 @@ def gemini_left() -> bool:
     return bool(g.KEYS) and len(g._DEAD) < len(g.KEYS)
 
 
+LAST_FLAGS: list[str] = []  # words the listening model still doubts in the last reel
+MAX_REPAIR_BEATS = 2  # at most this many beats of one reel are re-read (each costs voice quota)
+
+
+def _write_mono(path: Path, audio, sr: int) -> None:
+    import wave
+    import numpy as np
+    with wave.open(str(path), "wb") as wf:
+        wf.setnchannels(1)
+        wf.setsampwidth(2)
+        wf.setframerate(sr)
+        wf.writeframes((np.clip(audio, -1, 1) * 32767).astype(np.int16).tobytes())
+
+
+def _weak_words(text: str, wav: Path) -> list[str]:
+    """Script words the listening model could not clearly hear in this beat."""
+    _, _, _, vc = _modules()
+    asr = vc.transcribe(wav, "fa")
+    return [t.strip(vc._EDGE) for t in text.split()
+            if vc.checkable(t, "fa") and vc.heard(t, asr, "fa") < vc.BAD]
+
+
+def repair_beats(beats: list[str], segs: list, seg_words: list) -> list[str]:
+    """Pronunciation check (owner rule: one voice, no wrong words). Every beat of the one-take
+    narration is listened to; a beat with a doubtful word is read again on its own by the SAME
+    Gemini voice, trying respellings (src.voice_check), and kept only if it is heard better.
+    Returns the words that are still doubtful (shown in the pack so they can be checked)."""
+    rf, m, _, vc = _modules()
+    if not vc.available():
+        return ["(voice check unavailable)"]
+    flagged, repaired = [], 0
+    for i, text in enumerate(beats):
+        wav = rf.WORK / f"check_{i}.wav"
+        _write_mono(wav, segs[i], rf.SR)
+        try:
+            weak = _weak_words(text, wav)
+        except Exception as exc:
+            log(f"beat {i}: listening failed ({type(exc).__name__}); not checked")
+            flagged.append(f"(beat {i + 1} not checked)")
+            continue
+        if not weak:
+            continue
+        log(f"beat {i}: doubtful {weak}; reading this beat again")
+        if repaired >= MAX_REPAIR_BEATS or not gemini_left():
+            flagged += weak
+            continue
+        repaired += 1
+        bw = rf.WORK / f"beat_{i}.wav"
+        say = rf.spoken(text)
+        try:
+            bwords = rf._gemini_synth(say, bw)
+            vc.review_beat(text, say.split(), bwords, bw, "fa", rf._gemini_synth)
+            weak2 = _weak_words(text, bw)
+        except Exception as exc:
+            if "out of quota" in str(exc):
+                flagged += weak
+                continue
+            log(f"beat {i}: re-read failed ({type(exc).__name__}: {str(exc)[:160]})")
+            flagged += weak
+            continue
+        if len(weak2) < len(weak):
+            new = m.read_wav(bw)
+            real = vc.align(text, bw, "fa") or m.estimate_words(text, len(new) / rf.SR)
+            segs[i] = new
+            seg_words[i] = [{"start": w["start"], "end": w["end"]} for w in real]
+            log(f"beat {i}: kept the re-read ({len(weak)} -> {len(weak2)} doubtful words)")
+            weak = weak2
+        flagged += weak
+    return flagged
+
+
 def narrate_whole(beats: list[str]):
     """The whole script in ONE Gemini request (the free tier allows ~10 a day), cut back into
-    beats at the pauses the listening model hears. Same return value as reel_fa.narrate."""
+    beats at the pauses the listening model hears, then every beat is pronunciation-checked.
+    Same return value as reel_fa.narrate."""
     import numpy as np
+    global LAST_FLAGS
     rf, m, _, vc = _modules()
     say = "\n".join(rf.spoken(b) for b in beats)
     wav = rf.WORK / "voice_all.wav"
@@ -298,7 +390,7 @@ def narrate_whole(beats: list[str]):
     for i in range(len(beats) - 1):
         a, b = real[ranges[i][1]], real[ranges[i + 1][0]]
         cuts.append((a["end"] + b["start"]) / 2)
-    pieces, durations, words, clock = [], [], [], 0.0
+    segs, seg_words = [], []
     total_len = len(audio) / sr
     for i, (first, last) in enumerate(ranges):
         lo = cuts[i - 1] if i > 0 else 0.0
@@ -307,12 +399,16 @@ def narrate_whole(beats: list[str]):
         end = min(hi, real[last]["end"] + (0.25 if i == len(ranges) - 1 else 0.12))
         if end - start < 0.4:
             raise RuntimeError(f"beat {i} came out too short in the one-take narration")
-        seg = audio[int(start * sr):int(end * sr)]
+        segs.append(audio[int(start * sr):int(end * sr)])
+        seg_words.append([{"start": max(0.0, w["start"] - start), "end": max(0.05, w["end"] - start)}
+                          for w in real[first:last + 1]])
+    LAST_FLAGS = repair_beats(beats, segs, seg_words)
+    pieces, durations, words, clock = [], [], [], 0.0
+    for i, seg in enumerate(segs):
         gap = m.TAIL if i == len(beats) - 1 else m.BEAT_GAP
         pieces.append(np.concatenate([seg, np.zeros(int(gap * sr), dtype=np.float32)]))
-        for tok, w in zip(beats[i].split(), real[first:last + 1]):
-            words.append({"text": tok, "start": clock + max(0.0, w["start"] - start),
-                          "end": clock + max(0.05, w["end"] - start), "beat": i,
+        for tok, w in zip(beats[i].split(), seg_words[i]):
+            words.append({"text": tok, "start": clock + w["start"], "end": clock + w["end"], "beat": i,
                           "punct": bool(re.search(r"[.?!,:;،؟]$", tok))})
         dur = len(seg) / sr
         durations.append(dur + gap)
@@ -340,9 +436,12 @@ def install_narrator(allow_edge: bool):
                 if "out of quota" in str(exc) or not gemini_left():
                     raise StopPack("Gemini voice quota is used up for today") from None
                 log(f"one-take narration not usable ({type(exc).__name__}: {str(exc)[:200]}); per beat")
+                LAST_FLAGS[:] = []  # the per-beat path runs the same voice check on every beat
                 return original(beats, "gemini")
         if not allow_edge:
-            raise StopPack("Gemini voice unavailable and the Edge voice is not allowed yet")
+            if gemini_left():  # quota is there, so this story itself failed: count it as a failure
+                raise RuntimeError("the Gemini voice could not read this story")
+            raise StopPack("Gemini voice unavailable; waiting for tomorrow's quota (one voice only)")
         return original(beats, engine)
 
     rf.narrate = narrate
@@ -367,7 +466,11 @@ def build_reel(item: dict, story: dict, fa: dict, folder: Path) -> dict:
     rf.WORK.mkdir(parents=True, exist_ok=True)
     if getattr(vc, "_MODEL", None) is not None:
         vc._START = time.time()  # a fresh listening budget for every reel
+    vc._TRIES = vc._FIXES = 0  # respelling tries are counted per reel, not per run
+    LAST_FLAGS[:] = []
     meta = rf.build(story, fa)
+    if not str(meta.get("voice", "")).startswith("gemini"):
+        raise StopPack("the reel did not get the Gemini voice")  # one voice on every reel
     if not 15 <= float(meta.get("duration", 0)) <= 90:
         raise RuntimeError(f"{item['id']}: reel is {meta.get('duration')} s, outside 15-90 s")
     stem = file_stem(item)
@@ -378,7 +481,8 @@ def build_reel(item: dict, story: dict, fa: dict, folder: Path) -> dict:
     tags = hashtags(fa, item["n"])
     info = {"n": item["n"], "id": item["id"], "date": item["date"], "time": item["time"],
             "title": fa["title"], "caption": caption(fa), "hashtags": tags, "cover_text": fa["title"],
-            "duration": meta.get("duration"), "voice": meta.get("voice"), "checks": meta.get("checks")}
+            "duration": meta.get("duration"), "voice": meta.get("voice"), "checks": meta.get("checks"),
+            "check_words": list(LAST_FLAGS)}
     (folder / f"{stem}_caption.txt").write_text(info["caption"] + "\n\n" + " ".join(tags) + "\n", encoding="utf-8")
     (folder / f"{stem}.json").write_text(json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
     shutil.rmtree(work, ignore_errors=True)
@@ -391,13 +495,13 @@ def write_tables(folder: Path, infos: list[dict]) -> None:
     with open(folder / "schedule.csv", "w", encoding="utf-8-sig", newline="") as fh:
         w = csv.writer(fh)
         w.writerow(["شماره", "اسم فایل ویدیو", "کپشن", "هشتگ‌ها", "تاریخ انتشار", "ساعت انتشار (تهران)",
-                    "روز هفته", "تاریخ شمسی", "متن کاور", "فایل کاور", "مدت (ثانیه)"])
+                    "روز هفته", "تاریخ شمسی", "متن کاور", "فایل کاور", "مدت (ثانیه)", "کلمه برای گوش دادن"])
         for r in rows:
             d = date.fromisoformat(r["date"])
             stem = f"{r['n']:02d}_{r['date']}_{r['time'].replace(':', '')}_{r['id']}"
             w.writerow([r["n"], f"{stem}.mp4", r["caption"], " ".join(r["hashtags"]), r["date"], r["time"],
                         WEEKDAYS_FA[d.weekday()], jalali(d), r["cover_text"], f"{stem}_cover.jpg",
-                        round(float(r.get("duration") or 0), 1)])
+                        round(float(r.get("duration") or 0), 1), "، ".join(r.get("check_words") or [])])
     # Metricool's import columns (Instagram only, Reel). Its template wants a PUBLIC link to each
     # video in "Picture Url 1"; fill that column after uploading the videos (see the guide).
     with open(folder / "metricool.csv", "w", encoding="utf-8", newline="") as fh:
@@ -463,6 +567,9 @@ def finish(tag: str, week: date, info: dict) -> Path:
     notes = (f"✅ بسته‌ی هفته‌ی {jalali(week)} تا {jalali(week + timedelta(days=6))}: {fa_digits(len(infos))} ریلز.\n\n"
              f"فایل {tag}.zip را دانلود کن؛ راهنما داخلش است (راهنما.txt).\n"
              f"صدای راوی: " + "، ".join(f"{k} {fa_digits(v)}" for k, v in voices.items()))
+    doubtful = [f"{fa_digits(x['n'])}: {'، '.join(x['check_words'])}" for x in infos if x.get("check_words")]
+    if doubtful:
+        notes += "\n\nکلمه‌هایی که بهتر است یک بار گوش داده شوند:\n" + "\n".join(doubtful)
     gh("release", "edit", tag, "--notes", notes, "--prerelease=false", check=False)
     return zpath
 
@@ -473,7 +580,7 @@ def main() -> int:
     state = load_json(STATE_FILE, {})
     per_day = int(os.getenv("NABZ_PACK_PER_DAY", "2") or 2)
     per_day = 3 if per_day >= 3 else 2
-    week = target_week(forced=os.getenv("NABZ_PACK_WEEK", "").strip())
+    week = pick_week(state, os.getenv("NABZ_PACK_WEEK", "").strip())
     tag = f"week-{week.isoformat()}"
     info = (state.get("weeks") or {}).get(week.isoformat())
     if info and info.get("done"):
@@ -488,7 +595,7 @@ def main() -> int:
     if info is None:
         log(f"{tag}: waiting for more Persian stories (a short week is planned only after the deadline)")
         return 0
-    allow_edge = os.getenv("NABZ_PACK_ALLOW_EDGE", "0") == "1" or late
+    allow_edge = os.getenv("NABZ_PACK_ALLOW_EDGE", "0") == "1"  # owner rule: one voice, so never by default
     install_narrator(allow_edge)
     ensure_release(tag, week)
     folder = OUT / tag
@@ -522,6 +629,7 @@ def main() -> int:
         upload(tag, folder / f"{stem}.mp4", folder / f"{stem}_cover.jpg", folder / f"{stem}_caption.txt",
                folder / f"{stem}.json")
         info["built"][item["id"]] = {"voice": built["voice"], "duration": built["duration"],
+                                     "check_words": built.get("check_words", []),
                                      "at": now_tehran().isoformat(timespec="minutes")}
         info.get("errors", {}).pop(item["id"], None)
         save_state(state)

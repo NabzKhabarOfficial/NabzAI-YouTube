@@ -13,8 +13,8 @@ spec = importlib.util.spec_from_file_location("ig_pack_light", ROOT / "src" / "i
 pack = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pack)
 
-week = pack.target_week(forced=os.getenv("NABZ_PACK_WEEK", "").strip())
 state = pack.load_json(pack.STATE_FILE, {})
+week = pack.pick_week(state, os.getenv("NABZ_PACK_WEEK", "").strip())
 info = (state.get("weeks") or {}).get(week.isoformat()) or {}
 skip = bool(info.get("done"))
 print(f"week-{week.isoformat()}: {'complete, skipping' if skip else 'to build'} "
