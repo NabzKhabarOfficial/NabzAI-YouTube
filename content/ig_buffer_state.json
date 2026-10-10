@@ -6,12 +6,20 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-12_1345_db-cooper.mp4",
       "at": "2026-10-10T22:49+03:30"
+    },
+    "02_2026-10-12_2049_flight-19": {
+      "post_id": "6aca9795f91f772d45a58660",
+      "due": "2026-10-12T20:49:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2049_flight-19.mp4",
+      "at": "2026-10-10T23:22+03:30"
     }
   },
   "org_id": "6aca87101f8562f188533a3e",
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "01_2026-10-12_1345_db-cooper"
+    "01_2026-10-12_1345_db-cooper",
+    "02_2026-10-12_2049_flight-19"
   ]
 }
