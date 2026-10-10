@@ -3,6 +3,21 @@
     "antikythera-mechanism"
   ],
   "weeks": {
+    "2026-10-05": {
+      "per_day": 2,
+      "plan": [
+        {
+          "n": 1,
+          "id": "carroll-deering",
+          "date": "2026-10-11",
+          "time": "21:37"
+        }
+      ],
+      "built": {},
+      "done": false,
+      "planned_at": "2026-10-10T23:05+03:30",
+      "note": "one extra reel for Sunday night before the first full week"
+    },
     "2026-10-12": {
       "per_day": 2,
       "plan": [
