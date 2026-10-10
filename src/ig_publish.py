@@ -1,5 +1,11 @@
 """Post the queued Persian mystery Reel to Instagram, once a day, gently.
 
+TURNED OFF (owner rule, Oct 10 2026): no posting through unofficial clients (instagrapi),
+bots or simulated clicks; they risk the account. Reels are now prepared weekly by
+src.ig_pack and scheduled by the owner in Meta Business Suite. The code is kept, but
+login_client() refuses to run unless IG_UNOFFICIAL_ENABLED=1 is set on purpose, so this
+script, src.ig_story and src.ig_carousel can never touch the account by accident.
+
 The daily YouTube run builds output/reel-fa and pushes it to the `ig-queue`
 branch. This script (instagram.yml, evening crons) posts it inside the Iranian
 evening window. Account-safety rules carried over from NabzKhabar:
@@ -30,6 +36,12 @@ MAX_QUEUE_AGE_DAYS = 2
 PAUSE_HOURS = int(os.getenv("IG_PAUSE_HOURS", "24"))
 BLOCK_WORDS = ("challenge", "feedback", "login_required", "loginrequired", "please wait",
                "rate", "spam", "checkpoint", "401", "403", "429")
+OFF_MESSAGE = ("unofficial Instagram posting is turned off by the owner (Oct 10 2026); "
+               "reels are scheduled in Meta Business Suite from the weekly pack")
+
+
+def unofficial_off() -> bool:
+    return os.getenv("IG_UNOFFICIAL_ENABLED", "0").strip() != "1"
 
 
 def now_tehran():
@@ -97,6 +109,8 @@ def decide(state, meta, now=None):
 
 
 def login_client():
+    if unofficial_off():
+        raise RuntimeError(OFF_MESSAGE)
     from instagrapi import Client
     username = os.getenv("IG_USERNAME", "").strip()
     session_b64 = os.getenv("IG_SESSION_B64", "").strip()
@@ -136,6 +150,9 @@ def patch_analyzer(duration, width=1080, height=1920):
 
 
 def main(queue_dir="ig_queue"):
+    if unofficial_off():
+        print(f"IG: not posting: {OFF_MESSAGE}")
+        return 0
     queue = Path(queue_dir)
     meta = {}
     try:
