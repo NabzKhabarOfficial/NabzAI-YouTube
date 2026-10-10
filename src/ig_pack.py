@@ -43,6 +43,22 @@ ROOT = Path(__file__).resolve().parents[1]
 STATE_FILE = ROOT / "content" / "ig_pack_state.json"
 IG_STATE = ROOT / "content" / "ig_state.json"
 FA_BANK = ROOT / "content" / "mysteries_fa.json"
+FILMS = ROOT / "content" / "ig_films_fa.json"
+# Owner's choice (Oct 11): noon = a true story that became a film, night = a mystery. Film reels
+# look like a movie, say the «فیلم» call at the end and show it on an end card.
+FILM_LOOK = "cinematic movie still, anamorphic widescreen film look, dramatic movie lighting, 35mm film grain, "
+FILM_SPOKEN = "اسم فیلمش رو می\u200cخوای؟ کامنت کن: فیلم."
+FILM_BADGE = "ماجرای واقعی"
+FILM_END = "اسم فیلمش رو می\u200cخوای؟\nکامنت کن «فیلم»"
+
+
+def film_ids() -> set:
+    try:
+        return set((json.loads(FILMS.read_text(encoding="utf-8")).get("films") or {}))
+    except (OSError, ValueError):
+        return set()
+
+
 OUT = ROOT / "output" / "ig-pack"
 TEHRAN = timezone(timedelta(hours=3, minutes=30))
 REPO = os.getenv("GITHUB_REPOSITORY", "NabzKhabarOfficial/NabzAI-YouTube")
@@ -209,13 +225,21 @@ def plan_week(state: dict, week: date, per_day: int, fa_bank: dict, en_ids: set,
         raise RuntimeError(f"only {len(fresh)} unused Persian stories: not enough for a week")
     per_day = per_day if len(fresh) >= want else max(2, min(per_day, len(fresh) // 7))
     times = schedule_times(week, per_day)
+    films = film_ids()
+    want_n = min(len(fresh), per_day * 7)
+    film_q = [x for x in fresh if x in films][:7]  # one film story a day at most
+    other_q = [x for x in fresh if x not in films][:want_n - len(film_q)]
+    if len(film_q) + len(other_q) < want_n:
+        film_q += [x for x in fresh if x in films and x not in film_q][:want_n - len(film_q) - len(other_q)]
     plan, n = [], 0
     for day in range(7):
         for slot in range(per_day):
-            if n >= len(fresh):
+            if not film_q and not other_q:
                 break
+            # the noon slot takes a film story, the evening ones a mystery, when there are enough
+            q = (film_q or other_q) if slot == 0 else (other_q or film_q)
             d = week + timedelta(days=day)
-            plan.append({"n": n + 1, "id": fresh[n], "date": d.isoformat(), "time": times[day][slot]})
+            plan.append({"n": n + 1, "id": q.pop(0), "date": d.isoformat(), "time": times[day][slot]})
             n += 1
     weeks[key] = {"per_day": per_day, "plan": plan, "built": {}, "done": False,
                   "planned_at": now_tehran().isoformat(timespec="minutes")}
@@ -487,9 +511,11 @@ def build_reel(item: dict, story: dict, fa: dict, folder: Path) -> dict:
     pics.mkdir(parents=True, exist_ok=True)
     seed_base = int.from_bytes(item["id"].encode()[:6].ljust(6, b"_"), "big") % 900_000 + 101
     _QUOTA["hit"] = False
+    film = item["id"] in film_ids()
+    look = FILM_LOOK if film else ""
     for i, beat in enumerate(story["beats"]):  # new seeds: these pictures differ from the YouTube Short's
         try:
-            src = m.generate_image(f"{beat['visual']}, {m.STYLE}", seed_base + i * 7, pics / f"img_{i}.jpg")
+            src = m.generate_image(f"{look}{beat['visual']}, {m.STYLE}", seed_base + i * 7, pics / f"img_{i}.jpg")
         except Exception as exc:
             if _is_quota(exc):  # the free picture services are used up for today: wait, not a failure
                 raise StopPack("free picture quota is used up for now") from None
@@ -499,7 +525,7 @@ def build_reel(item: dict, story: dict, fa: dict, folder: Path) -> dict:
             continue
         angle = m.SECOND_SHOT[(seed_base + i) % len(m.SECOND_SHOT)]
         try:
-            m.generate_image(f"{beat['visual']}, {angle}, {m.STYLE}", seed_base + i * 7 + 3, pics / f"img_{i}_b.jpg")
+            m.generate_image(f"{look}{beat['visual']}, {angle}, {m.STYLE}", seed_base + i * 7 + 3, pics / f"img_{i}_b.jpg")
         except Exception as exc:
             log(f"{item['id']}: second shot {i + 1} skipped ({type(exc).__name__})")
     rf.SRC_WORK, rf.WORK, rf.OUT = pics, work / "reel", work / "out"
@@ -508,7 +534,14 @@ def build_reel(item: dict, story: dict, fa: dict, folder: Path) -> dict:
         vc._START = time.time()  # a fresh listening budget for every reel
     vc._TRIES = vc._FIXES = 0  # respelling tries are counted per reel, not per run
     LAST_FLAGS[:] = []
-    meta = rf.build(story, fa)
+    told = fa
+    if film:  # the call to comment «فیلم» is also spoken (many viewers never open the caption)
+        told = dict(fa, beats=list(fa["beats"][:-1]) + [f"{str(fa['beats'][-1]).strip()} {FILM_SPOKEN}"])
+    rf.HOOK_BADGE, rf.END_CARD = (FILM_BADGE, FILM_END) if film else ("حل\u200cنشده", "")
+    try:
+        meta = rf.build(story, told)
+    finally:
+        rf.HOOK_BADGE, rf.END_CARD = "حل\u200cنشده", ""
     if not str(meta.get("voice", "")).startswith("gemini"):
         raise StopPack("the reel did not get the Gemini voice")  # one voice on every reel
     if not 15 <= float(meta.get("duration", 0)) <= 90:
