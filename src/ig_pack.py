@@ -101,6 +101,18 @@ def pick_week(state: dict, forced: str = "", today: date | None = None) -> date:
     return target_week(today)
 
 
+YT_STATE = ROOT / "content" / "published.json"
+YT_FIRST_UNTIL = 15  # Tehran hour: before this, the daily YouTube Short gets the free quotas first
+
+
+def youtube_first(now: datetime | None = None) -> bool:
+    """True while today's YouTube Short is not built yet (it runs ~12:00 Tehran). The free picture
+    and voice quotas are shared, so the pack never eats them before the Short has its share."""
+    now = now or now_tehran()
+    built = load_json(YT_STATE, {}).get("last_built_date", "")
+    return built != now.date().isoformat() and now.hour < YT_FIRST_UNTIL
+
+
 def deadline(week: date) -> datetime:
     """Sunday 18:00 Tehran before the week: from then on a short week may be planned."""
     return datetime.combine(week - timedelta(days=1), datetime.min.time(), TEHRAN) + timedelta(hours=18)
@@ -294,6 +306,19 @@ def gemini_left() -> bool:
 
 
 LAST_FLAGS: list[str] = []  # words the listening model still doubts in the last reel
+_QUOTA = {"hit": False}  # the voice quota (daily or per-minute) ran out during this reel
+# Free picture services give a limited number of pictures a day, so a reel uses one picture per
+# beat by default (NABZ_PACK_SECOND_SHOTS=1 adds a second angle per beat, twice the quota).
+SECOND_SHOTS = os.getenv("NABZ_PACK_SECOND_SHOTS", "0") == "1"
+_QUOTA_WORDS = ("quota", "402", "payment required", "credit", "429", "limit kept failing", "rate limit",
+                "resource_exhausted")
+
+
+def _is_quota(exc: BaseException) -> bool:
+    text = f"{type(exc).__name__} {exc}".lower()
+    return any(w in text for w in _QUOTA_WORDS)
+
+
 MAX_REPAIR_BEATS = 2  # at most this many beats of one reel are re-read (each costs voice quota)
 
 
@@ -433,15 +458,22 @@ def install_narrator(allow_edge: bool):
             try:
                 return narrate_whole(beats)
             except Exception as exc:
-                if "out of quota" in str(exc) or not gemini_left():
-                    raise StopPack("Gemini voice quota is used up for today") from None
+                if _is_quota(exc) or not gemini_left():
+                    _QUOTA["hit"] = True
+                    raise StopPack("Gemini voice quota is used up for now") from None
                 log(f"one-take narration not usable ({type(exc).__name__}: {str(exc)[:200]}); per beat")
                 LAST_FLAGS[:] = []  # the per-beat path runs the same voice check on every beat
-                return original(beats, "gemini")
+                try:
+                    return original(beats, "gemini")
+                except Exception as exc2:
+                    if _is_quota(exc2) or not gemini_left():
+                        _QUOTA["hit"] = True
+                        raise StopPack("Gemini voice quota is used up for now") from None
+                    raise
         if not allow_edge:
-            if gemini_left():  # quota is there, so this story itself failed: count it as a failure
-                raise RuntimeError("the Gemini voice could not read this story")
-            raise StopPack("Gemini voice unavailable; waiting for tomorrow's quota (one voice only)")
+            if _QUOTA["hit"] or not gemini_left():
+                raise StopPack("Gemini voice unavailable; waiting for the next quota (one voice only)")
+            raise RuntimeError("the Gemini voice could not read this story")  # a real failure
         return original(beats, engine)
 
     rf.narrate = narrate
@@ -454,9 +486,17 @@ def build_reel(item: dict, story: dict, fa: dict, folder: Path) -> dict:
     shutil.rmtree(work, ignore_errors=True)
     pics.mkdir(parents=True, exist_ok=True)
     seed_base = int.from_bytes(item["id"].encode()[:6].ljust(6, b"_"), "big") % 900_000 + 101
+    _QUOTA["hit"] = False
     for i, beat in enumerate(story["beats"]):  # new seeds: these pictures differ from the YouTube Short's
-        src = m.generate_image(f"{beat['visual']}, {m.STYLE}", seed_base + i * 7, pics / f"img_{i}.jpg")
+        try:
+            src = m.generate_image(f"{beat['visual']}, {m.STYLE}", seed_base + i * 7, pics / f"img_{i}.jpg")
+        except Exception as exc:
+            if _is_quota(exc):  # the free picture services are used up for today: wait, not a failure
+                raise StopPack("free picture quota is used up for now") from None
+            raise
         log(f"{item['id']}: picture {i + 1}/{len(story['beats'])} via {src}")
+        if not SECOND_SHOTS:
+            continue
         angle = m.SECOND_SHOT[(seed_base + i) % len(m.SECOND_SHOT)]
         try:
             m.generate_image(f"{beat['visual']}, {angle}, {m.STYLE}", seed_base + i * 7 + 3, pics / f"img_{i}_b.jpg")
@@ -585,6 +625,9 @@ def main() -> int:
     info = (state.get("weeks") or {}).get(week.isoformat())
     if info and info.get("done"):
         log(f"{tag} is already complete; nothing to do")
+        return 0
+    if youtube_first():
+        log("today's YouTube Short is not built yet; it gets the free quotas first. Later run continues.")
         return 0
     rf, m, _, vc = _modules()
     vc.REPORT = OUT / "voice_check.json"  # keep the daily Short's review report untouched

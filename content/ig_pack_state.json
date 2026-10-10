@@ -108,35 +108,7 @@
         }
       },
       "done": false,
-      "planned_at": "2026-10-10T18:46+03:30",
-      "errors": {
-        "dancing-plague-1518": "RuntimeError: the Gemini voice could not read this story",
-        "lead-masks": "RuntimeError: the Gemini voice could not read this story",
-        "hinterkaifeck": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "kaz-ii": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "amelia-earhart": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "zodiac-killer": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "paula-welden": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "nazca-lines": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "oak-island": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "max-headroom-hijack": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "princes-in-the-tower": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v",
-        "carroll-deering": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v"
-      },
-      "fails": {
-        "dancing-plague-1518": 2,
-        "lead-masks": 2,
-        "hinterkaifeck": 2,
-        "kaz-ii": 2,
-        "amelia-earhart": 2,
-        "zodiac-killer": 2,
-        "paula-welden": 2,
-        "nazca-lines": 2,
-        "oak-island": 2,
-        "max-headroom-hijack": 2,
-        "princes-in-the-tower": 2,
-        "carroll-deering": 2
-      }
+      "planned_at": "2026-10-10T18:46+03:30"
     }
   }
 }
