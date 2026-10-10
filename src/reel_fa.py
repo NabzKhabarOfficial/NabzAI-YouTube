@@ -434,6 +434,29 @@ def build_caption_track(words, total, target):
 
 
 # ---------------------------------------------------------------- overlays
+# Set by src/ig_pack.py per reel (Oct 11): true stories that became films get their own badge and
+# an end card asking for the «فیلم» comment; mysteries keep the default.
+HOOK_BADGE = "حل\u200cنشده"
+END_CARD = ""  # e.g. "اسم فیلمش رو می‌خوای؟\nکامنت کن «فیلم»"
+END_SECONDS = 4.5
+
+
+def render_end(text, path):
+    lines = [x for x in str(text).split("\n") if x.strip()]
+    f = font(66)
+    line_h = 100
+    img = Image.new("RGBA", (W, line_h * len(lines) + 70), (0, 0, 0, 0))
+    d = ImageDraw.Draw(img)
+    d.rounded_rectangle([SAFE_X - 20, 0, W - SAFE_X + 20, img.height - 1], radius=34,
+                        fill=(200, 16, 32, 230), outline=(255, 215, 130, 230), width=4)
+    y = 35 + line_h / 2
+    for line in lines:
+        d.text((W / 2, y), line, font=f, fill=(255, 255, 255, 255), anchor="mm", direction="rtl",
+               stroke_width=4, stroke_fill=(60, 0, 0, 255))
+        y += line_h
+    img.save(path)
+
+
 def render_hook(title, path):
     probe = ImageDraw.Draw(Image.new("RGBA", (10, 10)))
     size = 84
@@ -446,7 +469,7 @@ def render_hook(title, path):
     line_h = int(size * 1.5)
     img = Image.new("RGBA", (W, line_h * len(lines) + 150), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
-    badge = "حل\u200cنشده"
+    badge = HOOK_BADGE
     bf = font(40)
     bw = tlen(d, badge, bf)
     d.rounded_rectangle([(W - bw) / 2 - 30, 0, (W + bw) / 2 + 30, 76], radius=18, fill=(200, 16, 32, 235))
@@ -522,13 +545,15 @@ def caption_text(fa):
 
 
 # ---------------------------------------------------------------- build
-def assemble(segments, durations, captions, hook, brand, audio, target, hook_seconds=2.8):
+def assemble(segments, durations, captions, hook, brand, audio, target, hook_seconds=2.8, end_card=None):
     total = sum(durations)
     args = []
     for seg in segments:
         args += ["-i", str(seg)]
     n = len(segments)
     args += ["-i", str(captions), "-loop", "1", "-i", str(hook), "-loop", "1", "-i", str(brand), "-i", str(audio)]
+    if end_card:
+        args += ["-loop", "1", "-i", str(end_card)]
     parts, last, offset = [], "[0:v]", 0.0
     for i in range(1, n):
         offset += durations[i - 1]
@@ -538,7 +563,11 @@ def assemble(segments, durations, captions, hook, brand, audio, target, hook_sec
     parts.append(f"{last}[{n}:v]overlay=0:{CAP_Y}:format=auto[vc]")
     parts.append(f"[vc][{n + 1}:v]overlay=0:{HOOK_Y}:enable='lt(t,{hook_seconds})':format=auto[vh]")
     parts.append(f"[vh][{n + 2}:v]overlay={SAFE_X - 60}:150:format=auto[vb]")
-    parts.append("[vb]format=yuv420p[vout]")
+    if end_card:
+        parts.append(f"[vb][{n + 4}:v]overlay=0:{HOOK_Y}:enable='gte(t,{max(0.0, total - END_SECONDS):.2f})':format=auto[ve]")
+        parts.append("[ve]format=yuv420p[vout]")
+    else:
+        parts.append("[vb]format=yuv420p[vout]")
     args += ["-filter_complex", ";".join(parts), "-map", "[vout]", "-map", f"{n + 3}:a",
              "-t", f"{total:.3f}", "-c:v", "libx264", "-preset", "medium", "-crf", "20",
              "-profile:v", "high", "-pix_fmt", "yuv420p", "-r", str(FPS),
@@ -595,9 +624,13 @@ def build(story: dict, fa: dict) -> dict:
     hook, brand = WORK / "hook.png", WORK / "brand.png"
     render_hook(fa["title"], hook)
     render_brand(brand)
+    end = None
+    if END_CARD:
+        end = WORK / "end.png"
+        render_end(END_CARD, end)
     OUT.mkdir(parents=True, exist_ok=True)
     video, cover = OUT / "reel.mp4", OUT / "cover.jpg"
-    assemble(segs, shot_durs, captions, hook, brand, audio, video)
+    assemble(segs, shot_durs, captions, hook, brand, audio, video, end_card=end)
     render_cover(images[0], fa["title"], cover)
     info = m.probe(video)
     checks = {
