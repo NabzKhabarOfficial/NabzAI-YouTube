@@ -1,0 +1,19 @@
+{
+  "story_id": "antikythera-mechanism",
+  "title": "کامپیوتر دو هزار ساله‌ای که در یک کشتی غرق‌شده پیدا شد",
+  "duration": 37.93,
+  "built_date": "2026-10-10",
+  "shots": 12,
+  "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+  "narration_raw": 37.9,
+  "speedup": 1.0,
+  "checks": {
+    "file_ok": true,
+    "vertical_1080x1920": true,
+    "reel_duration": true,
+    "h264": true,
+    "aac": true,
+    "captions_rendered": true,
+    "cover_ok": true
+  }
+}
