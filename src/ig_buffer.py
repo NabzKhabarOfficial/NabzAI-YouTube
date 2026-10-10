@@ -20,6 +20,8 @@ Safety (Oct 10 2026):
    a Telegram message (TELEGRAM_BOT_TOKEN; the chat is found from the owner's /start).
 Captions are built fresh from the story bank (+ content/ig_captions_fa.json overrides) when a
 reel is sent; a waiting post whose caption changed is replaced in Buffer (same time, same video).
+True stories that became films (content/ig_films_fa.json) get a "comment «فیلم»" line; ManyChat
+DMs the films page (nabz-reels Pages /films/, rebuilt here; a reel's film shows up at its time).
 Stats: once a day the metrics of sent reels (views, reach, likes, comments, saves, shares,
 follows) are read from Buffer into content/ig_stats.json; every Monday a short report
 (review/ig_weekly.md) ranks last week's reels and is sent to the owner on Telegram.
@@ -59,6 +61,8 @@ SLOTS = [(13 * 60, 14 * 60 + 10), (20 * 60 + 30, 22 * 60 + 40)]
 GAP_MIN = 180
 STOP_FILE = ROOT / "STOP"
 CAPTIONS = ROOT / "content" / "ig_captions_fa.json"
+FILMS = ROOT / "content" / "ig_films_fa.json"
+FILM_CTA = "🎬 از این ماجرای واقعی فیلم ساختن! اسمش رو می‌خوای؟ کامنت بذار «فیلم» تا برات دایرکت بشه 👇"
 FA_BANK = ROOT / "content" / "mysteries_fa.json"
 STATS_FILE = ROOT / "content" / "ig_stats.json"
 REPORT_MD = ROOT / "review" / "ig_weekly.md"
@@ -239,7 +243,7 @@ def next_free_slot(taken: list[datetime], after: datetime, seed: str) -> datetim
 
 
 # ---------------------------------------------------------------- public video site
-def publish_site(files: list[Path]) -> None:
+def publish_site(files: list[Path], films_html: str = "") -> None:
     pat = os.getenv("REELS_PAT", "").strip()
     if not pat:
         raise RuntimeError("REELS_PAT secret is missing")
@@ -253,6 +257,9 @@ def publish_site(files: list[Path]) -> None:
                                     "Rebuilt automatically; old videos are removed after they are posted.\n",
                                     encoding="utf-8")
     (site / "index.html").write_text("<!doctype html><meta charset=utf-8><title>nabz-reels</title>ok\n")
+    if films_html:
+        (site / "films").mkdir()
+        (site / "films" / "index.html").write_text(films_html, encoding="utf-8")
     env = dict(os.environ, GIT_AUTHOR_NAME="github-actions[bot]", GIT_COMMITTER_NAME="github-actions[bot]",
                GIT_AUTHOR_EMAIL="41898282+github-actions[bot]@users.noreply.github.com",
                GIT_COMMITTER_EMAIL="41898282+github-actions[bot]@users.noreply.github.com")
@@ -299,7 +306,43 @@ def caption_for(reel: dict) -> str:
     q = (load_json(CAPTIONS, {}).get("questions") or {}).get(reel["id"])
     if q:
         fa["question"] = q
-    return pack.caption(fa) + "\n\n" + " ".join(pack.hashtags(fa, reel["n"]))
+    text = pack.caption(fa)
+    if reel["id"] in (load_json(FILMS, {}).get("films") or {}):
+        title, _, rest = text.partition("\n\n")
+        text = f"{title}\n\n{FILM_CTA}\n\n{rest}"
+    return text + "\n\n" + " ".join(pack.hashtags(fa, reel["n"]))
+
+
+def films_page(state: dict) -> str:
+    """The page ManyChat links in its DM: newest published reel first, with its film."""
+    films = load_json(FILMS, {}).get("films") or {}
+    bank = load_json(FA_BANK, {}).get("stories") or {}
+    rows = []
+    for key, rec in state.get("sent", {}).items():
+        sid = key.split("_", 3)[-1]
+        due = datetime.fromisoformat(rec["due"])
+        if sid in films and rec.get("status") in ("scheduled", "sent"):
+            rows.append((due, sid))  # future ones are hidden in the browser until their time
+    rows.sort(reverse=True)
+    import html
+    items = []
+    for due, sid in rows:
+        f = films[sid]
+        how = f"<p class=h>{html.escape(f['how'])}</p>" if f.get("how") else ""
+        items.append(f"<li data-due='{int(due.timestamp() * 1000)}'><p class=s>ریلز: {html.escape((bank.get(sid) or {}).get('title', sid))}</p>"
+                     f"<p class=f>🎬 {html.escape(f['fa'])} <span>({html.escape(f['en'])}، {f['year']})</span></p>"
+                     f"<p class=b>کارگردان: {html.escape(f.get('by', ''))}</p>{how}</li>")
+    body = "".join(items) or "<li><p class=s>به‌زودی...</p></li>"
+    return ("<!doctype html><html lang=fa dir=rtl><meta charset=utf-8>"
+            "<meta name=viewport content='width=device-width,initial-scale=1'><title>فیلم‌های نبض معما</title>"
+            "<style>body{font-family:Tahoma,sans-serif;background:#0b0b10;color:#eee;margin:0;padding:18px}"
+            "h1{font-size:20px}ul{list-style:none;padding:0}li{background:#17171f;border-radius:12px;padding:12px 14px;margin:10px 0}"
+            ".s{color:#aaa;margin:0 0 6px}.f{font-size:18px;margin:0}.f span{color:#bbb;font-size:14px}"
+            ".b,.h{color:#ccc;margin:6px 0 0;font-size:14px}</style>"
+            "<h1>🎬 فیلم‌هایی که از ماجراهای نبض معما ساخته شدن</h1><p>جدیدترین ریلز بالای صفحه است.</p>"
+            f"<ul>{body}</ul><p>📌 @nabz.moamma</p>"
+            "<script>var n=Date.now();document.querySelectorAll('li[data-due]').forEach(function(e){"
+            "if(+e.dataset.due>n)e.remove()});</script></html>")
 
 
 def text_hash(text: str) -> str:
@@ -532,10 +575,11 @@ def run(state: dict, org: str, channel: str) -> None:
     if not batch:
         log("nothing new to send")
         hosted = sorted(r["stem"] for r in keep)
-        if hosted != sorted(state.get("hosted", [])) and hosted:
+        page = films_page(state)
+        if hosted != sorted(state.get("hosted", [])) or text_hash(page) != state.get("films_page"):
             files = [fetch(r, ".mp4") for r in keep]
-            publish_site(files)
-            state["hosted"] = hosted
+            publish_site(files, page)
+            state["hosted"], state["films_page"] = hosted, text_hash(page)
         note_run(state, True)
         return
     files, urls = [], {}
@@ -543,8 +587,9 @@ def run(state: dict, org: str, channel: str) -> None:
         f = fetch(reel, ".mp4")
         files.append(f)
         urls[f"{SITE_URL}/v/{f.name}"] = f.stat().st_size
-    publish_site(files)
-    state["hosted"] = sorted(r["stem"] for r in keep)
+    page = films_page(state)
+    publish_site(files, page)
+    state["hosted"], state["films_page"] = sorted(r["stem"] for r in keep), text_hash(page)
     save_state(state)
     if not wait_public({u: s for u, s in urls.items() if any(u.endswith(f"{r['stem']}.mp4") for r, _ in batch)}):
         warn("Videos not public yet", "GitHub Pages of nabz-reels did not serve the videos in 12 minutes "

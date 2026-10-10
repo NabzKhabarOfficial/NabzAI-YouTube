@@ -1,0 +1,11 @@
+{
+  "note": "Reels of «نبض معما» whose true story became a film (fact-checked). For these the caption invites viewers to comment «فیلم»; ManyChat answers every such comment with a DM linking the films page (nabz-reels Pages /films/), rebuilt by src/ig_buffer.py from this file.",
+  "films": {
+    "zodiac-killer": {"fa": "زودیاک", "en": "Zodiac", "year": 2007, "by": "دیوید فینچر"},
+    "db-cooper": {"fa": "تعقیب دی‌بی کوپر", "en": "The Pursuit of D.B. Cooper", "year": 1981, "by": "راجر اسپاتیس‌وود"},
+    "flight-19": {"fa": "برخورد نزدیک از نوع سوم", "en": "Close Encounters of the Third Kind", "year": 1977, "by": "استیون اسپیلبرگ", "how": "هواپیماهای گم‌شده‌ی پرواز ۱۹ در صحنه‌ی اول فیلم پیدا می‌شوند"},
+    "amelia-earhart": {"fa": "آملیا", "en": "Amelia", "year": 2009, "by": "میرا نایر"},
+    "jack-the-ripper": {"fa": "از جهنم", "en": "From Hell", "year": 2001, "by": "برادران هیوز"},
+    "hinterkaifeck": {"fa": "تانود", "en": "Tannöd", "year": 2009, "by": "بتینا اوبرلی", "how": "بر اساس رمانی که از این پرونده الهام گرفته"}
+  }
+}
