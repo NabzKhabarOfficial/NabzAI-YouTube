@@ -146,6 +146,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
       REELS_PAT: ${{ secrets.REELS_PAT }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       NABZ_BUFFER_MAX_NEW: ${{ inputs.buffer_max || '10' }}
 
     steps:
@@ -177,6 +178,8 @@ jobs:
             exit 0
           fi
           git add content/ig_buffer_state.json
+          if [ -f content/ig_stats.json ]; then git add content/ig_stats.json; fi
+          if [ -f review/ig_weekly.md ]; then git add review/ig_weekly.md; fi
           if git diff --cached --quiet; then
             echo "No Buffer state changes."
           else
