@@ -135,8 +135,10 @@ jobs:
           fi
 
   buffer:
-    # Runs beside the pack (not after it), so new reels reach Buffer within minutes; reels the
-    # pack finishes in this run are sent by the next run.
+    # Runs after the pack (also when the pack was skipped), so a reel built in this run reaches
+    # Buffer in the same run.
+    needs: [guard, pack]
+    if: always()
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
