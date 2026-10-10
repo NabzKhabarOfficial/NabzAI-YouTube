@@ -13,6 +13,17 @@ A reel whose time already passed before it could be sent gets the next free slot
 20:30-22:40 Tehran, never closer than 3 hours to another reel). The free plan's limits: 10 posts
 waiting at a time (refilled as they go out) and 3,000 API calls a month (a run uses ~5).
 
+Safety (Oct 10 2026):
+ * STOP switch: while a file named STOP exists in the repo root, nothing new is sent to Buffer
+   (reels already waiting there go out unless the owner presses "Pause queue" in Buffer).
+ * Three failed runs in a row (Buffer refused / unreachable / videos not public) send the owner
+   a Telegram message (TELEGRAM_BOT_TOKEN; the chat is found from the owner's /start).
+Captions are built fresh from the story bank (+ content/ig_captions_fa.json overrides) when a
+reel is sent; a waiting post whose caption changed is replaced in Buffer (same time, same video).
+Stats: once a day the metrics of sent reels (views, reach, likes, comments, saves, shares,
+follows) are read from Buffer into content/ig_stats.json; every Monday a short report
+(review/ig_weekly.md) ranks last week's reels and is sent to the owner on Telegram.
+
 Secrets: BUFFER_API_KEY (Buffer, Settings > API) and REELS_PAT (fine-grained token, repo
 nabz-reels, Contents read/write). GH_TOKEN reads the private pack release.
 """
@@ -25,7 +36,9 @@ import shutil
 import subprocess
 import sys
 import time
+import hashlib
 import urllib.error
+import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
@@ -44,6 +57,12 @@ LEAD_MIN = 30  # a post is created at least this long before its time
 MAX_NEW = int(os.getenv("NABZ_BUFFER_MAX_NEW", "10"))  # NABZ_BUFFER_MAX_NEW=1 for a first test
 SLOTS = [(13 * 60, 14 * 60 + 10), (20 * 60 + 30, 22 * 60 + 40)]
 GAP_MIN = 180
+STOP_FILE = ROOT / "STOP"
+CAPTIONS = ROOT / "content" / "ig_captions_fa.json"
+FA_BANK = ROOT / "content" / "mysteries_fa.json"
+STATS_FILE = ROOT / "content" / "ig_stats.json"
+REPORT_MD = ROOT / "review" / "ig_weekly.md"
+FAIL_ALERT = 3
 
 
 def log(msg: str) -> None:
@@ -266,6 +285,146 @@ def wait_public(urls: dict[str, int], minutes: int = 12) -> bool:
     return False
 
 
+
+# ---------------------------------------------------------------- captions
+def caption_for(reel: dict) -> str:
+    """Caption + hashtags from the bank, with the owner's question overrides."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("ig_pack_light", ROOT / "src" / "ig_pack.py")
+    pack = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(pack)
+    fa = dict((load_json(FA_BANK, {}).get("stories") or {}).get(reel["id"]) or {})
+    if not fa.get("title"):
+        raise RuntimeError(f"{reel['id']} is not in the Persian bank")
+    q = (load_json(CAPTIONS, {}).get("questions") or {}).get(reel["id"])
+    if q:
+        fa["question"] = q
+    return pack.caption(fa) + "\n\n" + " ".join(pack.hashtags(fa, reel["n"]))
+
+
+def text_hash(text: str) -> str:
+    return hashlib.sha1(text.encode("utf-8")).hexdigest()[:12]
+
+
+DELETE = """mutation($input: DeletePostInput!) { deletePost(input: $input) { __typename
+  ... on MutationError { message } } }"""
+
+
+def delete_post(post_id: str) -> None:
+    res = gql(DELETE, {"input": {"id": post_id}})["deletePost"]
+    if res.get("message"):
+        raise BufferError(res["message"])
+
+
+# ---------------------------------------------------------------- telegram
+def telegram(state: dict, text: str) -> bool:
+    token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+    if not token:
+        log("no TELEGRAM_BOT_TOKEN: owner message not sent")
+        return False
+    base = f"https://api.telegram.org/bot{token}"
+    chat = os.getenv("TELEGRAM_OWNER_CHAT", "").strip() or str(state.get("owner_chat") or "")
+    if not chat:  # the owner sent /start to the bot once: take his private chat from the updates
+        try:
+            with urllib.request.urlopen(f"{base}/getUpdates?limit=100", timeout=30) as resp:
+                ups = json.loads(resp.read().decode()).get("result", [])
+            for u in reversed(ups):
+                c = ((u.get("message") or {}).get("chat") or {})
+                if c.get("type") == "private":
+                    chat = str(c["id"])
+                    state["owner_chat"] = chat
+                    break
+        except Exception as exc:
+            log(f"telegram getUpdates failed ({type(exc).__name__})")
+    if not chat:
+        log("owner chat unknown: send /start to the bot once")
+        return False
+    data = urllib.parse.urlencode({"chat_id": chat, "text": text[:4000]}).encode()
+    try:
+        with urllib.request.urlopen(urllib.request.Request(f"{base}/sendMessage", data=data), timeout=30):
+            return True
+    except Exception as exc:
+        log(f"telegram send failed ({type(exc).__name__})")
+        return False
+
+
+def note_run(state: dict, ok: bool, why: str = "") -> None:
+    """Count failed runs in a row; on the third one, tell the owner (once per streak)."""
+    if ok:
+        state["fail_streak"], state["fail_alerted"] = 0, False
+        return
+    state["fail_streak"] = int(state.get("fail_streak", 0)) + 1
+    state["last_fail"] = why[:300]
+    if state["fail_streak"] >= FAIL_ALERT and not state.get("fail_alerted"):
+        msg = (f"⚠️ نبض معما: ارسال ریلز به Buffer {state['fail_streak']} بار پشت هم خطا داد.\n"
+               f"آخرین خطا: {why[:300]}\nتا وقتی درست نشه ریلز جدید به صف نمی‌ره (ریلزهای داخل صف سر جاشونن).")
+        state["fail_alerted"] = telegram(state, msg)
+
+
+# ---------------------------------------------------------------- stats + weekly report
+METRICS_Q = """query { post(input: {id: %s}) { id metrics { type value } metricsUpdatedAt } }"""
+KEYS = ("views", "reach", "impressions", "reactions", "comments", "saves", "shares", "follows")
+
+
+def collect_stats(state: dict) -> None:
+    """Once a day: metrics of reels sent at least 24 h ago (kept for 14 days)."""
+    stats = load_json(STATS_FILE, {"posts": {}})
+    today = datetime.now(TEHRAN).date().isoformat()
+    if stats.get("collected") == today:
+        return
+    now = now_utc()
+    for key, rec in state.get("sent", {}).items():
+        due = datetime.fromisoformat(rec["due"])
+        if rec.get("status") != "sent" or not now - timedelta(days=14) < due < now - timedelta(hours=24):
+            continue
+        try:
+            post = gql(METRICS_Q % json.dumps(rec["post_id"]))["post"]
+        except BufferError as exc:
+            log(f"metrics for {key} not read ({str(exc)[:120]})")
+            continue
+        vals = {m["type"]: m["value"] for m in post.get("metrics") or []}
+        if vals:
+            stats["posts"][key] = {"due": rec["due"], **{k: vals[k] for k in vals if k in KEYS},
+                                   "updated": post.get("metricsUpdatedAt")}
+    stats["collected"] = today
+    STATS_FILE.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def weekly_report(state: dict) -> None:
+    """Mondays (Tehran): rank last week's reels and send the owner a short summary."""
+    now = datetime.now(TEHRAN)
+    week = (now.date() - timedelta(days=now.weekday())).isoformat()
+    if now.weekday() != 0 or state.get("report_week") == week:
+        return
+    stats = load_json(STATS_FILE, {"posts": {}}).get("posts", {})
+    start = datetime.fromisoformat(week + "T00:00:00+03:30") - timedelta(days=7)
+    rows = [(k, v) for k, v in stats.items() if start <= datetime.fromisoformat(v["due"]) < start + timedelta(days=7)]
+    if not rows:
+        state["report_week"] = week
+        return
+    bank = load_json(FA_BANK, {}).get("stories") or {}
+
+    def score(v):  # shares and saves weigh most: they are what spreads a page
+        return v.get("views", v.get("reach", 0)) + 30 * v.get("shares", 0) + 20 * v.get("saves", 0) + 10 * v.get("comments", 0)
+
+    rows.sort(key=lambda kv: score(kv[1]), reverse=True)
+    lines = [f"# گزارش هفتگی نبض معما ({start.date()} تا {(start + timedelta(days=6)).date()})", "",
+             "| ریلز | بازدید | لایک | کامنت | ذخیره | اشتراک | فالو |", "|---|---|---|---|---|---|---|"]
+    for k, v in rows:
+        sid = k.split("_", 3)[-1]
+        title = (bank.get(sid) or {}).get("title", sid)
+        lines.append(f"| {title} | {int(v.get('views', v.get('reach', 0)))} | {int(v.get('reactions', 0))} | "
+                     f"{int(v.get('comments', 0))} | {int(v.get('saves', 0))} | {int(v.get('shares', 0))} | {int(v.get('follows', 0))} |")
+    REPORT_MD.parent.mkdir(parents=True, exist_ok=True)
+    REPORT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    best = [(bank.get(k.split("_", 3)[-1]) or {}).get("title", k) for k, _ in rows[:3]]
+    worst = (bank.get(rows[-1][0].split("_", 3)[-1]) or {}).get("title", rows[-1][0])
+    total = sum(int(v.get("views", v.get("reach", 0))) for _, v in rows)
+    msg = (f"📊 گزارش هفتگی نبض معما: {len(rows)} ریلز، {total} بازدید\n\n🥇 بهترین‌ها:\n" +
+           "\n".join(f"{i}. {t}" for i, t in enumerate(best, 1)) + f"\n\n🔻 ضعیف‌ترین: {worst}")
+    telegram(state, msg)
+    state["report_week"] = week
+
 # ---------------------------------------------------------------- main
 def main() -> int:
     if not os.getenv("BUFFER_API_KEY", "").strip():
@@ -277,8 +436,58 @@ def main() -> int:
         org, channel = find_channel(state)
     except BufferError as exc:
         warn("Buffer not reachable", str(exc)[:300])
+        note_run(state, False, f"Buffer not reachable: {exc}")
         save_state(state)
         return 0
+    try:
+        run(state, org, channel)
+    except Exception as exc:
+        warn("Buffer run failed", f"{type(exc).__name__}: {str(exc)[:300]}")
+        note_run(state, False, f"{type(exc).__name__}: {str(exc)[:200]}")
+    finally:
+        for step in (collect_stats, weekly_report):
+            try:
+                step(state)
+            except Exception as exc:
+                log(f"{step.__name__} skipped ({type(exc).__name__}: {str(exc)[:120]})")
+        save_state(state)
+    return 0
+
+
+def refresh_captions(state: dict, channel: str, now: datetime) -> int:
+    """A waiting post whose caption changed in the bank is replaced (same time and video)."""
+    changed = 0
+    by_stem = {r["stem"]: r for r in built_reels()}
+    for key, rec in list(state["sent"].items()):
+        reel = by_stem.get(key)
+        due = datetime.fromisoformat(rec["due"])
+        if rec.get("status") != "scheduled" or not reel or due < now + timedelta(minutes=LEAD_MIN):
+            continue
+        try:
+            new = caption_for(reel)
+            if not rec.get("cap"):
+                rec["cap"] = text_hash(fetch(reel, "_caption.txt").read_text(encoding="utf-8").strip())
+            if rec["cap"] == text_hash(new):
+                continue
+            post = create_post(channel, new, rec["url"], due)
+            try:
+                delete_post(rec["post_id"])
+            except BufferError as exc:  # never leave two copies: undo the new one
+                delete_post(post["id"])
+                raise exc
+            rec.update(post_id=post["id"], cap=text_hash(new))
+            changed += 1
+            log(f"caption updated in Buffer: {key}")
+        except Exception as exc:
+            log(f"caption of {key} not updated ({type(exc).__name__}: {str(exc)[:160]})")
+    return changed
+
+
+def run(state: dict, org: str, channel: str) -> None:
+    sent = state["sent"]
+    if STOP_FILE.exists():
+        print("::notice title=STOP::the STOP file is in the repo: nothing new goes to Buffer", flush=True)
+        return
     try:
         waiting = scheduled_posts(org, channel)
         known = True
@@ -302,6 +511,8 @@ def main() -> int:
             warn("Reel failed in Buffer", f"{key}: Buffer could not publish it (see Buffer > Sent/Errors)")
         elif datetime.fromisoformat(rec["due"]) < now:
             rec["status"] = "sent"
+    failed = ""
+    refresh_captions(state, channel, now)
     pending = [r for r in built_reels() if r["stem"] not in sent]
     room = max(0, QUEUE_MAX - len(waiting))
     log(f"{len(waiting)} reel(s) waiting in Buffer, room for {room}; {len(pending)} built reel(s) not sent yet")
@@ -325,8 +536,8 @@ def main() -> int:
             files = [fetch(r, ".mp4") for r in keep]
             publish_site(files)
             state["hosted"] = hosted
-        save_state(state)
-        return 0
+        note_run(state, True)
+        return
     files, urls = [], {}
     for reel in keep:
         f = fetch(reel, ".mp4")
@@ -338,26 +549,33 @@ def main() -> int:
     if not wait_public({u: s for u, s in urls.items() if any(u.endswith(f"{r['stem']}.mp4") for r, _ in batch)}):
         warn("Videos not public yet", "GitHub Pages of nabz-reels did not serve the videos in 12 minutes "
              "(is Pages on: Settings > Pages > main / root?). The next run tries again.")
-        return 0
+        note_run(state, False, "videos not public on nabz-reels Pages")
+        return
     made = 0
     for reel, due in batch:
-        cap = fetch(reel, "_caption.txt").read_text(encoding="utf-8").strip()
         url = f"{SITE_URL}/v/{reel['stem']}.mp4"
         try:
+            cap = caption_for(reel)
             post = create_post(channel, cap, url, due)
         except BufferError as exc:
             if str(exc).startswith("LIMIT"):
                 log(f"Buffer queue is full: {exc}")
                 break
             warn("Buffer refused a reel", f"{reel['stem']}: {str(exc)[:300]}")
+            failed = f"Buffer refused {reel['stem']}: {str(exc)[:200]}"
+            continue
+        except Exception as exc:
+            warn("Reel not sent", f"{reel['stem']}: {type(exc).__name__}: {str(exc)[:300]}")
+            failed = f"{reel['stem']}: {type(exc).__name__}: {str(exc)[:200]}"
             continue
         sent[reel["stem"]] = {"post_id": post["id"], "due": due.isoformat(), "status": "scheduled",
-                              "url": url, "at": now.astimezone(TEHRAN).isoformat(timespec="minutes")}
+                              "url": url, "cap": text_hash(cap),
+                              "at": now.astimezone(TEHRAN).isoformat(timespec="minutes")}
         save_state(state)
         made += 1
         log(f"scheduled in Buffer: {reel['stem']} at {due.astimezone(TEHRAN):%a %Y-%m-%d %H:%M} Tehran")
     print(f"::notice title=Buffer::{made} new reel(s) scheduled; {len(waiting) + made} waiting in Buffer", flush=True)
-    return 0
+    note_run(state, not failed, failed)
 
 
 if __name__ == "__main__":
