@@ -1,0 +1,125 @@
+name: NABZ Instagram weekly pack
+
+# Builds next week's Persian Reels (2 or 3 a day) for «نبض معما» and puts them, with captions,
+# hashtags, covers and a schedule table, in the GitHub release "week-YYYY-MM-DD" (ZIP inside).
+# Nothing is posted to Instagram: the owner schedules the pack in Meta Business Suite.
+# One voice on every reel (the deep Gemini narrator), checked word by word. The free voice quota
+# is daily, so it runs three times a day; each run continues where the last one stopped.
+
+on:
+  workflow_dispatch:
+    inputs:
+      week:
+        description: "Monday of the week (YYYY-MM-DD). Empty = next Monday"
+        required: false
+        default: ""
+        type: string
+      per_day:
+        description: "Reels per day"
+        required: true
+        default: "2"
+        type: choice
+        options:
+          - "2"
+          - "3"
+  schedule:
+    # Tehran 08:00, 13:00 and 19:00 every day. A finished week is skipped in seconds, and a
+    # week that is still missing reels (voice quota) keeps going until it is complete.
+    - cron: "30 4 * * *"
+    - cron: "30 9 * * *"
+    - cron: "30 15 * * *"
+
+concurrency:
+  group: nabz-ig-pack
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Is next week's pack already complete?
+        id: check
+        env:
+          NABZ_PACK_WEEK: ${{ inputs.week }}
+        run: |
+          python3 scripts/ig_pack_guard.py
+
+  pack:
+    needs: guard
+    if: needs.guard.outputs.skip != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      NABZ_PACK_WEEK: ${{ inputs.week }}
+      NABZ_PACK_PER_DAY: ${{ inputs.per_day || '2' }}
+      NABZ_VOICE_CHECK_TRIES: "4"
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      POLLINATIONS_TOKEN: ${{ secrets.POLLINATIONS_TOKEN }}
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
+      GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Restore voice cache
+        uses: actions/cache@v4
+        with:
+          path: .tts_cache
+          key: tts-${{ github.run_id }}
+          restore-keys: |
+            tts-
+
+      - name: Install caption fonts
+        run: |
+          sudo apt-get install -y -q fonts-dejavu-core fonts-liberation2 || true
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-cinematic.txt
+
+      - name: Build the weekly pack
+        run: |
+          python -m src.ig_pack
+
+      - name: Persist pack state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ ! -f content/ig_pack_state.json ]; then
+            echo "No pack state yet."
+            exit 0
+          fi
+          git add content/ig_pack_state.json
+          if [ -f review/pron_learned.json ]; then git add review/pron_learned.json; fi
+          if git diff --cached --quiet; then
+            echo "No pack state changes."
+          else
+            git commit -m "chore(ig-pack): record weekly pack progress [skip ci]"
+            git pull --rebase --autostash || true
+            git push
+          fi
