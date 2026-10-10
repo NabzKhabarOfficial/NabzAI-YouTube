@@ -2,7 +2,9 @@ name: NABZ Instagram weekly pack
 
 # Builds next week's Persian Reels (2 or 3 a day) for «نبض معما» and puts them, with captions,
 # hashtags, covers and a schedule table, in the GitHub release "week-YYYY-MM-DD" (ZIP inside).
-# Nothing is posted to Instagram: the owner schedules the pack in Meta Business Suite.
+# Then the "buffer" job hands every finished reel to Buffer (official Meta partner, free plan),
+# which publishes it on Instagram at its time. The videos are served from the public repo
+# nabz-reels (GitHub Pages). Nothing logs in to Instagram and the owner uploads nothing.
 # One voice on every reel (the deep Gemini narrator), checked word by word. The free voice quota
 # is daily, so it runs three times a day; each run continues where the last one stopped.
 
@@ -22,6 +24,14 @@ on:
         options:
           - "2"
           - "3"
+      buffer_max:
+        description: "Most reels to send to Buffer in this run (1 = test)"
+        required: true
+        default: "10"
+        type: choice
+        options:
+          - "10"
+          - "1"
   schedule:
     # Tehran 08:00, 13:00 and 19:00 every day. A finished week is skipped in seconds, and a
     # week that is still missing reels (voice quota) keeps going until it is complete.
@@ -120,6 +130,55 @@ jobs:
             echo "No pack state changes."
           else
             git commit -m "chore(ig-pack): record weekly pack progress [skip ci]"
+            git pull --rebase --autostash || true
+            git push
+          fi
+
+  buffer:
+    # Runs beside the pack (not after it), so new reels reach Buffer within minutes; reels the
+    # pack finishes in this run are sent by the next run.
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+      REELS_PAT: ${{ secrets.REELS_PAT }}
+      NABZ_BUFFER_MAX_NEW: ${{ inputs.buffer_max || '10' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Get the latest pack state
+        run: |
+          git pull --rebase --autostash || true
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Send finished reels to Buffer
+        run: |
+          python -m src.ig_buffer
+
+      - name: Persist Buffer state
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [ ! -f content/ig_buffer_state.json ]; then
+            echo "No Buffer state yet."
+            exit 0
+          fi
+          git add content/ig_buffer_state.json
+          if git diff --cached --quiet; then
+            echo "No Buffer state changes."
+          else
+            git commit -m "chore(ig-buffer): record reels sent to Buffer [skip ci]"
             git pull --rebase --autostash || true
             git push
           fi
