@@ -20,7 +20,7 @@ Safety (Oct 10 2026):
    a Telegram message (TELEGRAM_BOT_TOKEN; the chat is found from the owner's /start).
 Captions are built fresh from the story bank (+ content/ig_captions_fa.json overrides) when a
 reel is sent; a waiting post whose caption changed is replaced in Buffer (same time, same video).
-True stories that became films (content/ig_films_fa.json) get a "comment «فیلم»" line; ManyChat
+True stories that became films (content/ig_films_fa.json) get a "comment «فیلم»" line; Zaprep
 DMs the films page (nabz-reels Pages /films/, rebuilt here; a reel's film shows up at its time).
 Stats: once a day the metrics of sent reels (views, reach, likes, comments, saves, shares,
 follows) are read from Buffer into content/ig_stats.json; every Monday a short report
@@ -243,7 +243,7 @@ def next_free_slot(taken: list[datetime], after: datetime, seed: str) -> datetim
 
 
 # ---------------------------------------------------------------- public video site
-def publish_site(files: list[Path], films_html: str = "") -> None:
+def publish_site(files: list[Path], films_html: str = "", covers: dict | None = None) -> None:
     pat = os.getenv("REELS_PAT", "").strip()
     if not pat:
         raise RuntimeError("REELS_PAT secret is missing")
@@ -260,6 +260,10 @@ def publish_site(files: list[Path], films_html: str = "") -> None:
     if films_html:
         (site / "films").mkdir()
         (site / "films" / "index.html").write_text(films_html, encoding="utf-8")
+        if covers:
+            (site / "films" / "c").mkdir()
+            for sid, path in covers.items():
+                shutil.copy2(path, site / "films" / "c" / f"{sid}.jpg")
     env = dict(os.environ, GIT_AUTHOR_NAME="github-actions[bot]", GIT_COMMITTER_NAME="github-actions[bot]",
                GIT_AUTHOR_EMAIL="41898282+github-actions[bot]@users.noreply.github.com",
                GIT_COMMITTER_EMAIL="41898282+github-actions[bot]@users.noreply.github.com")
@@ -313,36 +317,123 @@ def caption_for(reel: dict) -> str:
     return text + "\n\n" + " ".join(pack.hashtags(fa, reel["n"]))
 
 
+FILMS_SHOWN = 15  # newest film reels on the page (keeps it light on slow connections)
+FILMS_CSS = """
+@font-face{font-family:V;src:url(https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/fonts/webfonts/Vazirmatn[wght].woff2) format('woff2');font-weight:100 900;font-display:swap}
+*{box-sizing:border-box}
+body{margin:0;font-family:V,Tahoma,sans-serif;color:#f3eee6;background:#07070b;min-height:100vh;
+ background-image:radial-gradient(circle at 15% -10%,rgba(200,16,32,.35),transparent 45%),radial-gradient(circle at 110% 30%,rgba(205,155,58,.18),transparent 40%)}
+.top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:12px 16px;
+ background:rgba(7,7,11,.72);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
+.logo{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:22px;color:#ffe9b8;
+ background:radial-gradient(circle at 35% 30%,#e3283a,#7a0b14);box-shadow:0 0 18px rgba(227,40,58,.6)}
+.top b{font-size:17px}.top a{margin-right:auto;text-decoration:none;color:#111;background:linear-gradient(90deg,#ffd27a,#f0a93a);
+ padding:8px 14px;border-radius:999px;font-weight:800;font-size:13px}
+.hero{padding:30px 18px 8px;text-align:center}
+.strip{height:14px;margin:0 auto 18px;max-width:340px;border-radius:3px;
+ background:repeating-linear-gradient(90deg,#222 0 14px,#07070b 14px 22px);opacity:.9}
+h1{margin:0;font-size:27px;line-height:1.5;font-weight:900;color:#ffe1a0;text-shadow:0 0 24px rgba(255,90,106,.35)}
+@supports ((-webkit-background-clip:text) or (background-clip:text)){h1{background:linear-gradient(90deg,#fff,#ffd27a,#ff5a6a,#fff);
+ background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:sh 7s linear infinite}}
+@keyframes sh{to{background-position:300%}}
+.sub{color:#b9b2a7;font-size:14px;margin:10px 0 0}
+.grid{display:grid;gap:18px;padding:22px 16px 10px;max-width:980px;margin:auto;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.card{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(160deg,#2a0a10,#0d0d14 60%);
+ box-shadow:0 18px 40px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.08);opacity:0;transform:translateY(24px);animation:in .7s ease forwards}
+@keyframes in{to{opacity:1;transform:none}}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 6s ease}
+.card:hover img{transform:scale(1.14)}
+.card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.25) 35%,rgba(5,5,9,.96) 78%)}
+.in{position:absolute;inset:auto 0 0 0;z-index:2;padding:18px}
+.tag{position:absolute;z-index:3;top:14px;right:14px;font-size:12px;font-weight:800;padding:6px 11px;border-radius:999px;
+ background:rgba(200,16,32,.92);box-shadow:0 0 14px rgba(200,16,32,.6)}
+.new{position:absolute;z-index:3;top:14px;left:14px;font-size:12px;font-weight:900;padding:6px 11px;border-radius:999px;color:#111;
+ background:#ffd27a;animation:pu 1.6s ease-in-out infinite;display:none}
+.card.first .new{display:block}
+@keyframes pu{50%{box-shadow:0 0 0 8px rgba(255,210,122,0)}0%{box-shadow:0 0 0 0 rgba(255,210,122,.7)}}
+.s{margin:0 0 8px;color:#d8cfc2;font-size:13px}
+.f{margin:0;font-size:25px;font-weight:900;line-height:1.35;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.e{margin:6px 0 0;color:#ffd27a;font-size:14px;direction:ltr;text-align:right;font-weight:600}
+.b{margin:8px 0 0;color:#cfc8bd;font-size:13px}
+.h{margin:10px 0 0;font-size:13px;color:#f3eee6;background:rgba(255,255,255,.08);border-right:3px solid #e3283a;padding:8px 10px;border-radius:8px}
+.empty{grid-column:1/-1;text-align:center;color:#b9b2a7;padding:60px 0}
+.foot{text-align:center;padding:26px 16px 40px;color:#b9b2a7;font-size:13px}
+.foot a{display:inline-block;margin-top:12px;text-decoration:none;color:#fff;font-weight:800;padding:12px 22px;border-radius:999px;
+ background:linear-gradient(90deg,#c8102e,#e3283a);box-shadow:0 8px 24px rgba(200,16,46,.45)}
+"""
+
+
 def films_page(state: dict) -> str:
-    """The page ManyChat links in its DM: newest published reel first, with its film."""
+    """The page the comment-to-DM tool links: newest published film reel first, as cinematic cards
+    with the reel's own cover (our AI picture, no film posters). Covers live in films/c/<id>.jpg."""
+    import html
     films = load_json(FILMS, {}).get("films") or {}
     bank = load_json(FA_BANK, {}).get("stories") or {}
     rows = []
     for key, rec in state.get("sent", {}).items():
         sid = key.split("_", 3)[-1]
-        due = datetime.fromisoformat(rec["due"])
         if sid in films and rec.get("status") in ("scheduled", "sent"):
-            rows.append((due, sid))  # future ones are hidden in the browser until their time
+            rows.append((datetime.fromisoformat(rec["due"]), sid))  # future ones are hidden until their time
     rows.sort(reverse=True)
-    import html
-    items = []
-    for due, sid in rows:
+    cards = []
+    for k, (due, sid) in enumerate(rows[:FILMS_SHOWN + 3]):
         f = films[sid]
-        how = f"<p class=h>{html.escape(f['how'])}</p>" if f.get("how") else ""
-        items.append(f"<li data-due='{int(due.timestamp() * 1000)}'><p class=s>ریلز: {html.escape((bank.get(sid) or {}).get('title', sid))}</p>"
-                     f"<p class=f>🎬 {html.escape(f['fa'])} <span>({html.escape(f['en'])}، {f['year']})</span></p>"
-                     f"<p class=b>کارگردان: {html.escape(f.get('by', ''))}</p>{how}</li>")
-    body = "".join(items) or "<li><p class=s>به‌زودی...</p></li>"
-    return ("<!doctype html><html lang=fa dir=rtl><meta charset=utf-8>"
-            "<meta name=viewport content='width=device-width,initial-scale=1'><title>فیلم‌های نبض معما</title>"
-            "<style>body{font-family:Tahoma,sans-serif;background:#0b0b10;color:#eee;margin:0;padding:18px}"
-            "h1{font-size:20px}ul{list-style:none;padding:0}li{background:#17171f;border-radius:12px;padding:12px 14px;margin:10px 0}"
-            ".s{color:#aaa;margin:0 0 6px}.f{font-size:18px;margin:0}.f span{color:#bbb;font-size:14px}"
-            ".b,.h{color:#ccc;margin:6px 0 0;font-size:14px}</style>"
-            "<h1>🎬 فیلم‌هایی که از ماجراهای نبض معما ساخته شدن</h1><p>جدیدترین ریلز بالای صفحه است.</p>"
-            f"<ul>{body}</ul><p>📌 @nabz.moamma</p>"
-            "<script>var n=Date.now();document.querySelectorAll('li[data-due]').forEach(function(e){"
-            "if(+e.dataset.due>n)e.remove()});</script></html>")
+        how = f"<p class=h>💡 {html.escape(f['how'])}</p>" if f.get("how") else ""
+        by = f"<p class=b>🎥 کارگردان: {html.escape(f['by'])}</p>" if f.get("by") else ""
+        cards.append(
+            f"<article class=card data-due='{int(due.timestamp() * 1000)}' style='animation-delay:{0.08 * k:.2f}s'>"
+            f"<img src='c/{html.escape(sid)}.jpg' alt='' loading=lazy onerror=\"this.remove()\">"
+            "<span class=tag>ماجرای واقعی</span><span class=new>جدید</span>"
+            f"<div class=in><p class=s>📍 ریلز: {html.escape((bank.get(sid) or {}).get('title', sid))}</p>"
+            f"<p class=f>🎬 {html.escape(f['fa'])}</p>"
+            f"<p class=e>{html.escape(f['en'])} · {f['year']}</p>{by}{how}</div></article>")
+    body = "".join(cards) + "<p class=empty>🎞 به‌زودی اولین فیلم اینجاست...</p>"
+    return ("<!doctype html><html lang=fa dir=rtl><head><meta charset=utf-8>"
+            "<meta name=viewport content='width=device-width,initial-scale=1,viewport-fit=cover'>"
+            "<meta name=theme-color content='#07070b'><title>🎬 فیلم‌های نبض معما</title>"
+            "<meta property=og:title content='فیلم‌هایی که از ماجراهای واقعی ساخته شدن'>"
+            f"<style>{FILMS_CSS}</style></head><body>"
+            "<header class=top><span class=logo>؟</span><b>نبض معما</b>"
+            "<a href='https://www.instagram.com/nabz.moamma/'>+ فالو</a></header>"
+            "<section class=hero><div class=strip></div><h1>فیلم‌هایی که از ماجراهای واقعی ساخته شدن</h1>"
+            "<p class=sub>جدیدترین ریلز همیشه اول صفحه‌ست 👇</p></section>"
+            f"<main class=grid>{body}</main>"
+            "<footer class=foot>هر روز ظهر یه ماجرای واقعی که فیلم شده، هر شب یه معمای حل‌نشده.<br>"
+            "<a href='https://www.instagram.com/nabz.moamma/'>📲 فالو کن @nabz.moamma</a></footer>"
+            "<script>var n=Date.now(),c=document.querySelectorAll('.card'),k=0;c.forEach(function(e){"
+            f"if(+e.dataset.due>n||k>={FILMS_SHOWN})e.remove();else{{if(!k)e.classList.add('first');k++}}}});"
+            "if(k)document.querySelector('.empty').remove();</script></body></html>")
+
+
+def small_cover(path: Path) -> Path:
+    """A light copy of a reel cover for the films page (540 px wide); the original if no tool works."""
+    out = path.with_name(path.stem + "_web.jpg")
+    if out.exists():
+        return out
+    for cmd in (["convert", str(path), "-resize", "540x", "-quality", "78", str(out)],
+                ["ffmpeg", "-y", "-loglevel", "error", "-i", str(path), "-vf", "scale=540:-2", "-q:v", "5", str(out)]):
+        try:
+            subprocess.run(cmd, check=True, capture_output=True, timeout=60)
+            if out.exists() and out.stat().st_size > 1000:
+                return out
+        except (OSError, subprocess.SubprocessError):
+            continue
+    return path
+
+
+def film_covers(state: dict) -> dict[str, Path]:
+    """Cover pictures of the film reels on the page, from the weekly releases."""
+    films = load_json(FILMS, {}).get("films") or {}
+    by_stem = {r["stem"]: r for r in built_reels()}
+    out = {}
+    for key, rec in state.get("sent", {}).items():
+        sid = key.split("_", 3)[-1]
+        if sid in films and rec.get("status") in ("scheduled", "sent") and key in by_stem:
+            try:
+                out[sid] = small_cover(fetch(by_stem[key], "_cover.jpg"))
+            except Exception as exc:  # the page still works, the card just has no picture
+                log(f"cover of {sid} not available: {type(exc).__name__}: {str(exc)[:160]}")
+    return out
 
 
 def text_hash(text: str) -> str:
@@ -578,7 +669,7 @@ def run(state: dict, org: str, channel: str) -> None:
         page = films_page(state)
         if hosted != sorted(state.get("hosted", [])) or text_hash(page) != state.get("films_page"):
             files = [fetch(r, ".mp4") for r in keep]
-            publish_site(files, page)
+            publish_site(files, page, film_covers(state))
             state["hosted"], state["films_page"] = hosted, text_hash(page)
         note_run(state, True)
         return
@@ -588,7 +679,7 @@ def run(state: dict, org: str, channel: str) -> None:
         files.append(f)
         urls[f"{SITE_URL}/v/{f.name}"] = f.stat().st_size
     page = films_page(state)
-    publish_site(files, page)
+    publish_site(files, page, film_covers(state))
     state["hosted"], state["films_page"] = sorted(r["stem"] for r in keep), text_hash(page)
     save_state(state)
     if not wait_public({u: s for u, s in urls.items() if any(u.endswith(f"{r['stem']}.mp4") for r, _ in batch)}):
