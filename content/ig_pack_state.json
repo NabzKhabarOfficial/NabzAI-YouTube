@@ -20,73 +20,73 @@
         },
         {
           "n": 3,
-          "id": "dancing-plague-1518",
+          "id": "mh370",
           "date": "2026-10-13",
           "time": "13:53"
         },
         {
           "n": 4,
-          "id": "lead-masks",
+          "id": "dancing-plague-1518",
           "date": "2026-10-13",
           "time": "20:31"
         },
         {
           "n": 5,
-          "id": "hinterkaifeck",
+          "id": "lead-masks",
           "date": "2026-10-14",
           "time": "13:17"
         },
         {
           "n": 6,
-          "id": "kaz-ii",
+          "id": "hinterkaifeck",
           "date": "2026-10-14",
           "time": "21:34"
         },
         {
           "n": 7,
-          "id": "amelia-earhart",
+          "id": "kaz-ii",
           "date": "2026-10-15",
           "time": "13:59"
         },
         {
           "n": 8,
-          "id": "zodiac-killer",
+          "id": "amelia-earhart",
           "date": "2026-10-15",
           "time": "22:33"
         },
         {
           "n": 9,
-          "id": "paula-welden",
+          "id": "zodiac-killer",
           "date": "2026-10-16",
           "time": "13:25"
         },
         {
           "n": 10,
-          "id": "nazca-lines",
+          "id": "paula-welden",
           "date": "2026-10-16",
           "time": "22:02"
         },
         {
           "n": 11,
-          "id": "oak-island",
+          "id": "nazca-lines",
           "date": "2026-10-17",
           "time": "14:03"
         },
         {
           "n": 12,
-          "id": "max-headroom-hijack",
+          "id": "oak-island",
           "date": "2026-10-17",
           "time": "21:34"
         },
         {
           "n": 13,
-          "id": "princes-in-the-tower",
+          "id": "max-headroom-hijack",
           "date": "2026-10-18",
           "time": "13:23"
         },
         {
           "n": 14,
-          "id": "carroll-deering",
+          "id": "princes-in-the-tower",
           "date": "2026-10-18",
           "time": "21:21"
         }
@@ -124,18 +124,18 @@
         "carroll-deering": "RuntimeError: all image providers failed: hfspace#1: RuntimeError: black-forest-labs/FLUX.1-schnell: quota exhausted earlier in this run || pollinations#1: HTTPError: HTTP Error 402: Payment Required || pollinations#2: HTTPError: HTTP Error 402: Payment Required || huggingface#1: RuntimeError: auto: HfHubHTTPError: Client error '402 Payment Required' for url 'https://router.huggingface.co/nscale/v"
       },
       "fails": {
-        "dancing-plague-1518": 1,
-        "lead-masks": 1,
-        "hinterkaifeck": 1,
-        "kaz-ii": 1,
-        "amelia-earhart": 1,
-        "zodiac-killer": 1,
-        "paula-welden": 1,
-        "nazca-lines": 1,
-        "oak-island": 1,
-        "max-headroom-hijack": 1,
-        "princes-in-the-tower": 1,
-        "carroll-deering": 1
+        "dancing-plague-1518": 2,
+        "lead-masks": 2,
+        "hinterkaifeck": 2,
+        "kaz-ii": 2,
+        "amelia-earhart": 2,
+        "zodiac-killer": 2,
+        "paula-welden": 2,
+        "nazca-lines": 2,
+        "oak-island": 2,
+        "max-headroom-hijack": 2,
+        "princes-in-the-tower": 2,
+        "carroll-deering": 2
       }
     }
   }
