@@ -137,5 +137,27 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-10-11",
+    "story": "db-cooper",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "dollars",
+        "heard": "He got $200,000 and four parachutes,  then jumped into the rainy night.",
+        "score": 0.53,
+        "kept": null
+      },
+      {
+        "word": "forty-five",
+        "heard": "The FBI searched for 45 years, then put the case aside.",
+        "score": 0.59,
+        "kept": null
+      }
+    ]
   }
 ]
