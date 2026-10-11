@@ -232,7 +232,8 @@ def _cloudflare(prompt: str, seed: int) -> Image.Image:
         raise RuntimeError("CF_ACCOUNT_ID / CF_API_TOKEN not configured")
     model = os.getenv("NABZ_CF_MODEL", "@cf/black-forest-labs/flux-1-schnell")
     url = f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{model}"
-    body = json.dumps({"prompt": prompt[:2000], "steps": 8, "seed": int(seed) % 2147483647}).encode()
+    # this model takes only "prompt" and "steps" (a "seed" field is refused with HTTP 400)
+    body = json.dumps({"prompt": prompt[:2000], "steps": 8}).encode()
     try:
         raw = _http(url, data=body, timeout=180, headers={"Authorization": f"Bearer {token}",
                                                           "Content-Type": "application/json"})
