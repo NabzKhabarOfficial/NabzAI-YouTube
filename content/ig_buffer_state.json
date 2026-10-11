@@ -23,6 +23,69 @@
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-11_2137_carroll-deering.mp4",
       "cap": "a4bdd0eec399",
       "at": "2026-10-11T14:52+03:30"
+    },
+    "03_2026-10-13_1353_mh370": {
+      "post_id": "6acbaeb5b07d37ac97afe105",
+      "due": "2026-10-13T13:53:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370.mp4",
+      "cap": "ddd6c58cbf6a",
+      "kind": "reel",
+      "at": "2026-10-11T19:12+03:30"
+    },
+    "car_peter-bergmann": {
+      "post_id": "6acbaeb6d9cab260a701842e",
+      "due": "2026-10-13T17:13:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_peter-bergmann_1.jpg",
+      "cap": "e154ef038ce9",
+      "kind": "carousel",
+      "at": "2026-10-11T19:12+03:30"
+    },
+    "04_2026-10-13_2031_dancing-plague-1518": {
+      "post_id": "6acbaeb6bba9419ccb3edd5e",
+      "due": "2026-10-13T20:31:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518.mp4",
+      "cap": "554f04d4262c",
+      "kind": "reel",
+      "at": "2026-10-11T19:12+03:30"
+    },
+    "car_jiroft": {
+      "post_id": "6acbaeb7b07d37ac97afe17c",
+      "due": "2026-10-15T17:32:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_jiroft_1.jpg",
+      "cap": "36a4805dc895",
+      "kind": "carousel",
+      "at": "2026-10-11T19:12+03:30"
+    },
+    "car_alamut": {
+      "post_id": "6acbaeb7d9cab260a701847e",
+      "due": "2026-10-17T17:37:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_alamut_1.jpg",
+      "cap": "58cd2aa8c6a4",
+      "kind": "carousel",
+      "at": "2026-10-11T19:12+03:30"
+    },
+    "car_persepolis-fire": {
+      "post_id": "6acbaeb8bba9419ccb3edd88",
+      "due": "2026-10-20T17:40:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_persepolis-fire_1.jpg",
+      "cap": "a42f8e30fbd6",
+      "kind": "carousel",
+      "at": "2026-10-11T19:12+03:30"
+    },
+    "car_gorgan-wall": {
+      "post_id": "6acbaeb8d9cab260a70184af",
+      "due": "2026-10-22T17:31:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gorgan-wall_1.jpg",
+      "cap": "2396564f1a7a",
+      "kind": "carousel",
+      "at": "2026-10-11T19:12+03:30"
     }
   },
   "org_id": "6aca87101f8562f188533a3e",
@@ -31,7 +94,14 @@
   "hosted": [
     "01_2026-10-11_2137_carroll-deering",
     "01_2026-10-12_1345_db-cooper",
-    "02_2026-10-12_2049_flight-19"
+    "02_2026-10-12_2049_flight-19",
+    "03_2026-10-13_1353_mh370",
+    "04_2026-10-13_2031_dancing-plague-1518",
+    "car_alamut",
+    "car_gorgan-wall",
+    "car_jiroft",
+    "car_persepolis-fire",
+    "car_peter-bergmann"
   ],
   "films_page": "e5d67c074f32",
   "fail_streak": 0,
