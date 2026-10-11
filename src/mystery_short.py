@@ -13,6 +13,7 @@ title is shown big for the first seconds, to cut early swipes.
 from __future__ import annotations
 
 import asyncio
+import base64
 import hashlib
 import io
 import json
@@ -21,6 +22,7 @@ import re
 import subprocess
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 import wave
@@ -222,6 +224,28 @@ def _pollinations(prompt: str, seed: int) -> Image.Image:
     return _valid_image(_http(url, headers={"Authorization": f"Bearer {token}"}, timeout=240))
 
 
+def _cloudflare(prompt: str, seed: int) -> Image.Image:
+    """FLUX.1-schnell on Cloudflare Workers AI (free plan: 10,000 neurons a day, about 150 pictures)."""
+    account = os.getenv("CF_ACCOUNT_ID", "").strip()
+    token = os.getenv("CF_API_TOKEN", "").strip()
+    if not account or not token:
+        raise RuntimeError("CF_ACCOUNT_ID / CF_API_TOKEN not configured")
+    model = os.getenv("NABZ_CF_MODEL", "@cf/black-forest-labs/flux-1-schnell")
+    url = f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{model}"
+    body = json.dumps({"prompt": prompt[:2000], "steps": 8, "seed": int(seed) % 2147483647}).encode()
+    try:
+        raw = _http(url, data=body, timeout=180, headers={"Authorization": f"Bearer {token}",
+                                                          "Content-Type": "application/json"})
+    except urllib.error.HTTPError as exc:
+        detail = exc.read()[:300].decode("utf-8", "ignore")
+        raise RuntimeError(f"HTTP {exc.code}: {detail}") from None
+    data = json.loads(raw)
+    image = (data.get("result") or {}).get("image") if isinstance(data, dict) else None
+    if not image:
+        raise RuntimeError(f"no image in reply: {str(data)[:200]}")
+    return _valid_image(base64.b64decode(image))
+
+
 _SPACE_CLIENTS: dict = {}
 _SPACE_DEAD: set = set()
 
@@ -278,18 +302,27 @@ def cover(img: Image.Image, size=(W, H)) -> Image.Image:
     return ImageOps.fit(img, size, method=Image.LANCZOS, centering=(0.5, 0.45))
 
 
+_PROVIDER_DEAD: set = set()
+
+
 def generate_image(prompt: str, seed: int, target: Path) -> str:
     key = hashlib.sha1(f"{prompt}|{seed}".encode()).hexdigest()[:12]
     marker = target.with_suffix(".key")
     if target.exists() and marker.exists() and marker.read_text() == key:
         return "cache"
-    providers = [p.strip() for p in os.getenv("NABZ_IMAGE_PROVIDERS", "hfspace,pollinations,huggingface").split(",") if p.strip()]
-    funcs = {"hfspace": _hf_space, "pollinations": _pollinations, "huggingface": _huggingface}
+    providers = [p.strip() for p in os.getenv("NABZ_IMAGE_PROVIDERS", "hfspace,cloudflare,pollinations,huggingface").split(",") if p.strip()]
+    funcs = {"hfspace": _hf_space, "cloudflare": _cloudflare, "pollinations": _pollinations,
+             "huggingface": _huggingface}
     errors = []
     for name in providers:
         if name not in funcs:
             continue
         if name == "pollinations" and not os.getenv("POLLINATIONS_TOKEN", "").strip():
+            continue
+        if name == "cloudflare" and not os.getenv("CF_API_TOKEN", "").strip():
+            continue
+        if name in _PROVIDER_DEAD:
+            errors.append(f"{name}: free quota used up earlier in this run")
             continue
         attempts = 2 if name in ("hfspace", "pollinations") else 1
         for attempt in range(attempts):
@@ -301,7 +334,9 @@ def generate_image(prompt: str, seed: int, target: Path) -> str:
             except Exception as exc:
                 errors.append(f"{name}#{attempt + 1}: {type(exc).__name__}: {str(exc)[:200]}")
                 log(errors[-1])
-                if "quota" in str(exc).lower() or "credit" in str(exc).lower():
+                low = str(exc).lower()
+                if any(w in low for w in ("quota", "credit", "402", "payment required", "neurons", "429")):
+                    _PROVIDER_DEAD.add(name)  # used up for today: don't ask again for every picture
                     break
                 time.sleep(5 + 10 * attempt)
     raise RuntimeError("all image providers failed: " + " || ".join(errors))
