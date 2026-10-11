@@ -13,10 +13,22 @@
           "time": "21:37"
         }
       ],
-      "built": {},
-      "done": false,
+      "built": {
+        "carroll-deering": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 43.1,
+          "check_words": [
+            "غذا",
+            "عرشه",
+            "غذا"
+          ],
+          "at": "2026-10-11T14:52+03:30"
+        }
+      },
+      "done": true,
       "planned_at": "2026-10-10T23:05+03:30",
-      "note": "one extra reel for Sunday night before the first full week"
+      "note": "one extra reel for Sunday night before the first full week",
+      "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-10-05"
     },
     "2026-10-12": {
       "per_day": 2,
