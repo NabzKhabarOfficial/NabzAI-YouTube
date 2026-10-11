@@ -413,10 +413,50 @@ def repair_beats(beats: list[str], segs: list, seg_words: list) -> list[str]:
     return flagged
 
 
+AUDIO_V = 2  # Oct 11 2026: the one-take narration is no longer chopped (owner: the voice cut in and out)
+REDO_LEAD = 120  # minutes: a queued reel built the old way is rebuilt only if it airs later than this
+
+
+def _quiet_point(audio, sr: int, lo: float, hi: float) -> float:
+    """Time (s) of the quietest 20 ms between lo and hi, so a cut never lands inside a sound
+    (the listening model's word times are often 0.1-0.3 s off)."""
+    import numpy as np
+    a, b = max(0, int(lo * sr)), min(len(audio), int(hi * sr))
+    win = max(1, int(0.02 * sr))
+    if b - a <= win:
+        return (lo + hi) / 2
+    energy = np.convolve(np.abs(audio[a:b]), np.ones(win) / win, mode="valid")
+    return (a + int(np.argmin(energy)) + win // 2) / sr
+
+
+def _soft_edges(seg, sr: int, ms: float = 10.0):
+    """Tiny fade in/out so joined pieces never click."""
+    import numpy as np
+    seg = np.array(seg, dtype=np.float32, copy=True)
+    n = min(len(seg) // 4, int(ms * sr / 1000))
+    if n > 1:
+        seg[:n] *= np.linspace(0.0, 1.0, n, dtype=np.float32)
+        seg[-n:] *= np.linspace(1.0, 0.0, n, dtype=np.float32)
+    return seg
+
+
+def _rms(x) -> float:
+    import numpy as np
+    loud = x[np.abs(x) > 0.02 * (float(np.max(np.abs(x))) if len(x) else 0.0)]
+    return float(np.sqrt(np.mean(loud ** 2))) if len(loud) else 0.0
+
+
 def narrate_whole(beats: list[str]):
-    """The whole script in ONE Gemini request (the free tier allows ~10 a day), cut back into
-    beats at the pauses the listening model hears, then every beat is pronunciation-checked.
-    Same return value as reel_fa.narrate."""
+    """The whole script in ONE Gemini request (the free tier allows ~10 a day), split into beats
+    only for timing, then every beat is pronunciation-checked. Same return value as
+    reel_fa.narrate.
+
+    Oct 11 fix (owner: "the voice cuts in and out in the middle"): the take used to be cut at the
+    listening model's word times, trimmed around each beat and glued back with added silence,
+    which clipped the start and end of words. Now the take is cut only at the quietest moment
+    between two beats and the pieces join back seamlessly, so the voice is exactly the one
+    continuous reading. A beat that had to be read again is matched in loudness, faded in and out
+    and given a short natural pause on both sides."""
     import numpy as np
     global LAST_FLAGS
     rf, m, _, vc = _modules()
@@ -428,40 +468,55 @@ def narrate_whole(beats: list[str]):
     tokens = script.split()
     if not real or len(real) != len(tokens):
         raise RuntimeError("could not find the beat boundaries in the one-take narration")
-    audio = m.read_wav(wav)
+    audio = m.read_wav(wav).astype(np.float32)
     sr = rf.SR
     counts = [len(b.split()) for b in beats]
     ranges, c = [], 0
     for k in counts:
         ranges.append((c, c + k - 1))
         c += k
-    cuts = []
+    total_len = len(audio) / sr
+    cuts = [0.0]
     for i in range(len(beats) - 1):
         a, b = real[ranges[i][1]], real[ranges[i + 1][0]]
-        cuts.append((a["end"] + b["start"]) / 2)
+        lo = max(a["start"] + 0.05, min(a["end"], b["start"]) - 0.2, cuts[-1] + 0.3)
+        hi = min(b["end"] - 0.05, max(a["end"], b["start"]) + 0.2, total_len - 0.3)
+        cuts.append(_quiet_point(audio, sr, lo, hi) if hi > lo else (a["end"] + b["start"]) / 2)
+    cuts.append(total_len)
     segs, seg_words = [], []
-    total_len = len(audio) / sr
     for i, (first, last) in enumerate(ranges):
-        lo = cuts[i - 1] if i > 0 else 0.0
-        hi = cuts[i] if i < len(cuts) else total_len
-        start = max(lo, real[first]["start"] - 0.08)
-        end = min(hi, real[last]["end"] + (0.25 if i == len(ranges) - 1 else 0.12))
+        start, end = cuts[i], cuts[i + 1]
         if end - start < 0.4:
             raise RuntimeError(f"beat {i} came out too short in the one-take narration")
-        segs.append(audio[int(start * sr):int(end * sr)])
-        seg_words.append([{"start": max(0.0, w["start"] - start), "end": max(0.05, w["end"] - start)}
+        segs.append(audio[int(round(start * sr)):int(round(end * sr))])
+        seg_words.append([{"start": min(max(0.0, w["start"] - start), end - start - 0.05),
+                           "end": min(max(0.05, w["end"] - start), end - start)}
                           for w in real[first:last + 1]])
+    original = list(segs)
     LAST_FLAGS = repair_beats(beats, segs, seg_words)
+    pause = np.zeros(int(0.12 * sr), dtype=np.float32)
     pieces, durations, words, clock = [], [], [], 0.0
     for i, seg in enumerate(segs):
-        gap = m.TAIL if i == len(beats) - 1 else m.BEAT_GAP
-        pieces.append(np.concatenate([seg, np.zeros(int(gap * sr), dtype=np.float32)]))
+        lead = 0.0
+        if seg is not original[i]:  # a re-read beat: same loudness as the take, soft edges, real pauses
+            want, have = _rms(original[i]), _rms(seg)
+            if want and have:
+                seg = seg * min(4.0, want / have)
+            seg = np.concatenate([pause, _soft_edges(seg, sr), pause])
+            lead = len(pause) / sr
+            if i > 0:
+                pieces[-1] = _soft_edges(pieces[-1], sr)
+        elif i > 0 and segs[i - 1] is not original[i - 1]:
+            seg = _soft_edges(seg, sr)
+        if i == len(segs) - 1:
+            seg = np.concatenate([seg, np.zeros(int(m.TAIL * sr), dtype=np.float32)])
+        pieces.append(seg)
         for tok, w in zip(beats[i].split(), seg_words[i]):
-            words.append({"text": tok, "start": clock + w["start"], "end": clock + w["end"], "beat": i,
+            words.append({"text": tok, "start": clock + lead + w["start"], "end": clock + lead + w["end"], "beat": i,
                           "punct": bool(re.search(r"[.?!,:;،؟]$", tok))})
         dur = len(seg) / sr
-        durations.append(dur + gap)
-        clock += dur + gap
+        durations.append(dur)
+        clock += dur
     voice = np.concatenate(pieces)
     peak = float(np.max(np.abs(voice))) or 1.0
     return voice * (0.92 / peak), durations, words
@@ -680,6 +735,15 @@ def prepare_slides() -> None:
         save_state(state)
 
 
+def needs_redo(item: dict, info: dict) -> bool:
+    """A reel built before the voice fix that has not aired yet (and has time to be rebuilt)."""
+    b = (info.get("built") or {}).get(item["id"])
+    if not b or int(b.get("audio_v", 1)) >= AUDIO_V or b.get("redo_failed"):
+        return False
+    due = datetime.fromisoformat(f"{item['date']}T{item['time']}:00").replace(tzinfo=TEHRAN)
+    return due > now_tehran() + timedelta(minutes=REDO_LEAD)
+
+
 def run_week(started: float) -> bool:
     """Builds the current week as far as possible. True only when it completed a week just now."""
     state = load_json(STATE_FILE, {})
@@ -709,8 +773,11 @@ def run_week(started: float) -> bool:
     folder = OUT / tag
     stopped = ""
     for item in info["plan"]:
-        if item["id"] in info["built"]:
+        redo = needs_redo(item, info)
+        if item["id"] in info["built"] and not redo:
             continue
+        if redo:
+            log(f"{item['id']}: built with the old voice cutting; rebuilding it before it airs")
         if time.time() - started > TIME_BUDGET - REEL_SECONDS:
             stopped = "time limit of this run"
             break
@@ -723,6 +790,10 @@ def run_week(started: float) -> bool:
             msg = re.sub(r"[\r\n]+", " ", f"{type(exc).__name__}: {exc}")[:400]
             print(f"::warning title=Reel not built::{item['id']}: {msg}", flush=True)
             info.setdefault("errors", {})[item["id"]] = msg
+            if redo:  # the old video stays in Buffer; never give a queued reel's slot away
+                info["built"][item["id"]]["redo_failed"] = True
+                save_state(state)
+                continue
             fails = info.setdefault("fails", {})
             fails[item["id"]] = int(fails.get(item["id"], 0)) + 1
             if fails[item["id"]] >= 2:  # failed twice: give this slot to the next unused story
@@ -738,6 +809,7 @@ def run_week(started: float) -> bool:
                folder / f"{stem}.json")
         info["built"][item["id"]] = {"voice": built["voice"], "duration": built["duration"],
                                      "check_words": built.get("check_words", []),
+                                     "audio_v": AUDIO_V,
                                      "at": now_tehran().isoformat(timespec="minutes")}
         info.get("errors", {}).pop(item["id"], None)
         save_state(state)
