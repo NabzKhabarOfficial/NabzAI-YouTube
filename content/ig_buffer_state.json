@@ -15,12 +15,21 @@
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2049_flight-19.mp4",
       "at": "2026-10-10T23:22+03:30",
       "cap": "58d64045b536"
+    },
+    "01_2026-10-11_2137_carroll-deering": {
+      "post_id": "6acb71b5bba9419ccb336285",
+      "due": "2026-10-11T21:37:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-11_2137_carroll-deering.mp4",
+      "cap": "a4bdd0eec399",
+      "at": "2026-10-11T14:52+03:30"
     }
   },
   "org_id": "6aca87101f8562f188533a3e",
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
+    "01_2026-10-11_2137_carroll-deering",
     "01_2026-10-12_1345_db-cooper",
     "02_2026-10-12_2049_flight-19"
   ],
