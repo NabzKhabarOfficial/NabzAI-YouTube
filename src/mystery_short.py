@@ -538,7 +538,7 @@ def narrate(story: dict, engine: str = "edge") -> tuple[np.ndarray, list[float],
     return voice * (0.92 / peak), durations, words
 
 
-def make_music(seconds: float, seed: int) -> np.ndarray:
+def _drone_music(seconds: float, seed: int) -> np.ndarray:
     """Dark ambient drone with a slow heartbeat pulse; returns stereo float (n, 2)."""
     rng = np.random.default_rng(seed)
     n = int(seconds * SR)
@@ -577,13 +577,120 @@ def make_music(seconds: float, seed: int) -> np.ndarray:
     return out / (np.max(np.abs(out)) or 1)
 
 
-def mix(voice: np.ndarray, music: np.ndarray, music_level: float = 0.2) -> np.ndarray:
+# Background score (owner, Oct 11: "the Short has no music"). The old drone sat at 40-160 Hz,
+# which phone speakers cannot play, so it was silent for most viewers. This score lives in the
+# range phones do play (warm pads 110-2000 Hz, soft felt piano, hall reverb), changes chord every
+# ~5 s and builds slowly; the old drone is only the fallback.
+_PROG = [(0, True), (8, False), (3, False), (10, False), (5, True), (7, False), (8, False), (10, False)]
+
+
+def _lp(x: np.ndarray, cutoff: float) -> np.ndarray:
+    spec = np.fft.rfft(x)
+    f = np.fft.rfftfreq(len(x), 1 / SR)
+    return np.fft.irfft(spec / (1 + (f / cutoff) ** 4), n=len(x))
+
+
+def _fade(n: int, a: float, r: float) -> np.ndarray:
+    e = np.ones(n)
+    ai, ri = min(n // 2, int(a * SR)), min(n // 2, int(r * SR))
+    if ai:
+        e[:ai] = 0.5 - 0.5 * np.cos(np.linspace(0, np.pi, ai))
+    if ri:
+        e[-ri:] = 0.5 + 0.5 * np.cos(np.linspace(0, np.pi, ri))
+    return e
+
+
+def _pad(freq: float, n: int, rng) -> np.ndarray:
+    t = np.arange(n) / SR
+    out = np.zeros(n)
+    for det in (-0.07, 0.0, 0.06):
+        f = freq * 2 ** (det / 12)
+        ph = rng.uniform(0, 2 * np.pi)
+        for h in range(1, 9):
+            if f * h > 6000:
+                break
+            out += np.sin(2 * np.pi * f * h * t + ph * h) / h
+    return out / 6.0
+
+
+def _score(seconds: float, seed: int) -> np.ndarray:
+    rng = np.random.default_rng(seed)
+    n_total = int(seconds * SR)
+    parts = max(1, int(round(seconds / 5.0)))
+    dur = seconds / parts
+    hz = lambda midi: 440.0 * 2 ** ((midi - 69) / 12)
+    key = int(rng.choice([45, 47, 48]))  # A2, B2, C3
+    L = np.zeros(n_total + int(3 * SR))
+    R = np.zeros_like(L)
+    xf = min(1.2, dur / 2)
+    for k in range(parts):
+        lv = 0.55 + 0.45 * k / max(1, parts - 1)
+        off, minor = _PROG[k % len(_PROG)]
+        root = key + off
+        third = 3 if minor else 4
+        s0 = k * dur
+        a = max(0, int((s0 - xf / 2) * SR))
+        b = min(len(L), int((s0 + dur + xf / 2) * SR))
+        n = b - a
+        pad = np.zeros(n)
+        for j, mm in enumerate([root, root + 7, root + 12, root + 12 + third, root + 19]):
+            pad += _pad(hz(mm), n, rng) * (0.9 if j < 2 else 0.6)
+        pad = _lp(pad * _fade(n, xf, xf) * (0.5 + 0.5 * lv), 900 + 1400 * lv)
+        pan = 0.15 * np.sin(2 * np.pi * 0.07 * np.arange(n) / SR)
+        L[a:b] += pad * (1 - pan)
+        R[a:b] += pad * (1 + pan)
+        tones = [root + 12, root + 19, root + 24, root + 24 + third, root + 31]
+        pos = s0 + 0.7
+        while pos < s0 + dur - 0.8:
+            nn = int(2.8 * SR)
+            st = int(pos * SR)
+            en = min(len(L), st + nn)
+            t = np.arange(nn) / SR
+            f = hz(int(rng.choice(tones)))
+            note = (np.sin(2 * np.pi * f * t) + 0.35 * np.sin(4 * np.pi * f * t)) * np.exp(-t * 2.4)
+            note = (note * _fade(nn, 0.006, 0.4))[: en - st] * (0.16 + 0.1 * lv)
+            pl = rng.uniform(-0.4, 0.4)
+            L[st:en] += note * (1 - pl)
+            R[st:en] += note * (1 + pl)
+            pos += float(rng.uniform(1.1, 2.2) - 0.6 * lv)
+    st = np.stack([L, R], axis=1)
+    m = int(2.6 * SR)  # hall reverb
+    kk = np.arange(m) / SR
+    size = len(L) + m
+    out = np.empty_like(st)
+    for ch in range(2):
+        ir = _lp(rng.standard_normal(m) * np.exp(-kk * 2.1), 5200.0)
+        ir[: int(0.012 * SR)] = 0.0
+        ir /= np.sqrt(np.sum(ir ** 2)) or 1
+        wet = np.fft.irfft(np.fft.rfft(st[:, ch], size) * np.fft.rfft(ir, size), size)[: len(L)]
+        out[:, ch] = 0.64 * st[:, ch] + 0.36 * wet
+    out = out[:n_total]
+    out = np.tanh(1.4 * out / (np.max(np.abs(out)) or 1)) / np.tanh(1.4)
+    env = _fade(n_total, min(1.0, seconds / 4), min(1.5, seconds / 4))
+    return out * env[:, None]
+
+
+def make_music(seconds: float, seed: int) -> np.ndarray:
+    """Background music, stereo float (n, 2), peak 1.0."""
+    n = int(seconds * SR)
+    try:
+        out = _score(seconds, seed)
+    except Exception as exc:  # never lose a Short over the music
+        log(f"score failed ({type(exc).__name__}: {exc}); using the drone")
+        out = _drone_music(seconds, seed)
+    if len(out) < n:
+        out = np.pad(out, ((0, n - len(out)), (0, 0)))
+    out = out[:n]
+    return out / (np.max(np.abs(out)) or 1)
+
+
+def mix(voice: np.ndarray, music: np.ndarray, music_level: float = 0.35) -> np.ndarray:
     n = len(voice)
     music = music[:n] if len(music) >= n else np.pad(music, ((0, n - len(music)), (0, 0)))
     win = int(0.25 * SR)
     envelope = np.convolve(np.abs(voice), np.ones(win) / win, mode="same")
     envelope /= (np.max(envelope) or 1)
-    duck = 1.0 - 0.55 * np.clip(envelope * 3, 0, 1)
+    duck = 1.0 - 0.5 * np.clip(envelope * 3, 0, 1)
     stereo = np.stack([voice, voice], axis=1) + music * (music_level * duck)[:, None]
     peak = float(np.max(np.abs(stereo))) or 1.0
     return stereo * (0.95 / peak)
