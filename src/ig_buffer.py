@@ -60,6 +60,7 @@ SITE_URL = os.getenv("NABZ_REELS_URL", "https://nabzkhabarofficial.github.io/nab
 API = "https://api.buffer.com"
 QUEUE_MAX = int(os.getenv("NABZ_BUFFER_QUEUE_MAX", "10"))  # Buffer Free: 10 waiting posts
 LEAD_MIN = 30  # a post is created at least this long before its time
+STUCK_MIN = 20  # a post still in the Buffer queue this long after its time did not publish
 MAX_NEW = int(os.getenv("NABZ_BUFFER_MAX_NEW", "10"))  # NABZ_BUFFER_MAX_NEW=1 for a first test
 SLOTS = [(13 * 60, 14 * 60 + 10), (20 * 60 + 30, 22 * 60 + 40)]
 GAP_MIN = 180
@@ -686,6 +687,36 @@ def refresh_captions(state: dict, channel: str, now: datetime) -> int:
     return changed
 
 
+def check_queue(state: dict, waiting: list[dict], now: datetime) -> None:
+    """Tell the owner when Buffer holds a post past its time (it did not publish by itself)
+    or when a queued post's time no longer matches ours (e.g. the Buffer time zone was changed)."""
+    by_id = {v["post_id"]: (k, v) for k, v in state["sent"].items() if v.get("status") == "scheduled"}
+    stuck, moved = [], []
+    for p in waiting:
+        if p.get("id") not in by_id or not p.get("dueAt"):
+            continue
+        key, rec = by_id[p["id"]]
+        ours = datetime.fromisoformat(rec["due"])
+        theirs = datetime.fromisoformat(str(p["dueAt"]).replace("Z", "+00:00"))
+        if theirs < now - timedelta(minutes=STUCK_MIN) and not rec.get("stuck_alerted"):
+            stuck.append((key, rec))
+        elif abs((theirs - ours).total_seconds()) > 120 and rec.get("moved_alerted") != p["dueAt"]:
+            moved.append((key, rec, theirs, p["dueAt"]))
+    for key, rec in stuck:
+        warn("Post stuck in Buffer", f"{key}: still waiting in Buffer after its time")
+        when = datetime.fromisoformat(rec["due"]).astimezone(TEHRAN)
+        rec["stuck_alerted"] = telegram(state, (
+            f"⚠️ نبض معما: پستی که برای {when:%m-%d ساعت %H:%M} تهران بود هنوز در صف بافر مانده و خودکار منتشر نشده.\n"
+            "در برنامه‌ی بافر دستی بزن «انتشار»، و بررسی کن حساب اینستاگرام حرفه‌ای و با انتشار خودکار وصل باشد.")) or True
+    for key, rec, theirs, raw in moved:
+        warn("Buffer time changed", f"{key}: ours {rec['due']}, Buffer {raw}")
+        a = datetime.fromisoformat(rec["due"]).astimezone(TEHRAN)
+        b = theirs.astimezone(TEHRAN)
+        telegram(state, (f"⚠️ نبض معما: زمان یک پست در بافر عوض شده: قرار بود {a:%m-%d %H:%M} تهران باشد، "
+                         f"الان {b:%m-%d %H:%M} تهران است. منطقه‌ی زمانی بافر را روی تهران بگذار."))
+        rec["moved_alerted"] = raw
+
+
 def run(state: dict, org: str, channel: str) -> None:
     sent = state["sent"]
     if STOP_FILE.exists():
@@ -702,6 +733,8 @@ def run(state: dict, org: str, channel: str) -> None:
     waiting_ids = {p["id"] for p in waiting}
     errored = post_status(org, channel, "error")
     now = now_utc()
+    if known:
+        check_queue(state, waiting, now)
     for key, rec in sent.items():
         if rec.get("status") != "scheduled":
             continue
