@@ -16,6 +16,16 @@
     "lost-dutchmans-mine": {"fa": "عطش طلا", "en": "Lust for Gold", "year": 1949, "by": "اس. سیلوان سایمون"},
     "ninth-legion": {"fa": "عقاب", "en": "The Eagle", "year": 2011, "by": "کوین مک‌دونالد", "how": "بر اساس رمانی درباره‌ی همین لشکر گمشده"},
     "toynbee-tiles": {"fa": "زنده کردن مردگان", "en": "Resurrect Dead: The Mystery of the Toynbee Tiles", "year": 2011, "by": "جان فوی", "how": "مستندی درباره‌ی همین کاشی‌ها"},
-    "villisca-axe-murders": {"fa": "قتل‌های تبری ویلیسکا", "en": "The Axe Murders of Villisca", "year": 2016, "by": "تونی والنزوئلا", "how": "الهام‌گرفته از همین خانه و همین قتل‌ها"}
+    "villisca-axe-murders": {"fa": "قتل‌های تبری ویلیسکا", "en": "The Axe Murders of Villisca", "year": 2016, "by": "تونی والنزوئلا", "how": "الهام‌گرفته از همین خانه و همین قتل‌ها"},
+    "walter-collins": {"fa": "بچه‌ی عوضی", "en": "Changeling", "year": 2008, "by": "کلینت ایستوود"},
+    "percy-fawcett": {"fa": "شهر گمشده‌ی زد", "en": "The Lost City of Z", "year": 2016, "by": "جیمز گری"},
+    "mallory-irvine": {"fa": "جسورانه‌ترین رؤیا", "en": "The Wildest Dream", "year": 2010, "by": "آنتونی گفن", "how": "مستندی درباره‌ی همین دو کوهنورد"},
+    "anastasia": {"fa": "آناستازیا", "en": "Anastasia", "year": 1956, "by": "آناتول لیتواک"},
+    "hindenburg": {"fa": "هیندنبورگ", "en": "The Hindenburg", "year": 1975, "by": "رابرت وایز"},
+    "mothman": {"fa": "پیشگویی‌های مرد شب‌پره‌ای", "en": "The Mothman Prophecies", "year": 2002, "by": "مارک پلینگتون", "how": "الهام‌گرفته از همین ماجرا"},
+    "travis-walton": {"fa": "آتش در آسمان", "en": "Fire in the Sky", "year": 1993, "by": "رابرت لیبرمن"},
+    "fletcher-christian": {"fa": "شورش در کشتی باونتی", "en": "Mutiny on the Bounty", "year": 1935, "by": "فرانک لوید"},
+    "black-dahlia": {"fa": "کوکب سیاه", "en": "The Black Dahlia", "year": 2006, "by": "برایان دی‌پالما", "how": "بر اساس رمانی که از همین پرونده الهام گرفته"},
+    "lizzie-borden": {"fa": "لیزی", "en": "Lizzie", "year": 2018, "by": "کریگ ویلیام مک‌نیل"}
   }
 }
