@@ -26,6 +26,10 @@ Stats: once a day the metrics of sent reels (views, reach, likes, comments, save
 follows) are read from Buffer into content/ig_stats.json; every Monday a short report
 (review/ig_weekly.md) ranks last week's reels and is sent to the owner on Telegram.
 
+Slide posts (Oct 11 2026, src.ig_slides): three photo carousels a week (Tue/Thu/Sat ~17:00
+Tehran) go the same way: their slides are put on the public site (v/c_<id>_<n>.jpg) and one Buffer
+post per carousel is created. Reels and slide posts share Buffer's queue, nearest time first.
+
 Secrets: BUFFER_API_KEY (Buffer, Settings > API) and REELS_PAT (fine-grained token, repo
 nabz-reels, Contents read/write). GH_TOKEN reads the private pack release.
 """
@@ -193,6 +197,21 @@ def create_post(channel: str, text: str, video_url: str, due: datetime) -> dict:
     raise BufferError(last)
 
 
+def create_carousel(channel: str, text: str, image_urls: list[str], due: datetime) -> dict:
+    """An Instagram photo carousel (2-10 slides, 4:5). The slides are drawn text, not AI pictures."""
+    payload = {"text": text, "channelId": channel, "schedulingType": "automatic", "mode": "customScheduled",
+               "dueAt": due.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+               "assets": [{"image": {"url": u}} for u in image_urls],
+               "metadata": {"instagram": {"type": "post", "shouldShareToFeed": True}}}
+    res = gql(CREATE, {"input": payload})["createPost"]
+    if res.get("post"):
+        return res["post"]
+    last = res.get("message") or "unknown error"
+    if "limit" in last.lower():
+        raise BufferError(f"LIMIT: {last}")
+    raise BufferError(last)
+
+
 # ---------------------------------------------------------------- the pack
 def gh(*args, check=True) -> subprocess.CompletedProcess:
     return subprocess.run(["gh", *args, "--repo", REPO], capture_output=True, text=True, check=check)
@@ -211,6 +230,41 @@ def built_reels() -> list[dict]:
             if item["id"] in built:
                 out.append(dict(item, week=week, stem=stem(item), tag=f"week-{week}"))
     return out
+
+
+def built_carousels() -> list[dict]:
+    """Planned slide posts whose slides are drawn (src.ig_slides), as queue items like the reels."""
+    from src import ig_slides
+    items = ((load_json(PACK_STATE, {}).get("carousels") or {}).get("plan")) or []
+    return [dict(p, kind="carousel", stem=f"car_{p['id']}", tag=ig_slides.RELEASE)
+            for p in items if p.get("slides")]
+
+
+def slide_files(item: dict) -> list[Path]:
+    from src import ig_slides
+    folder = WORK / item["tag"]
+    folder.mkdir(parents=True, exist_ok=True)
+    out = []
+    for k in range(1, int(item["slides"]) + 1):
+        path = folder / ig_slides.file_name(item["id"], k)
+        if not path.exists():
+            gh("release", "download", item["tag"], "--dir", str(folder), "--pattern", path.name, "--skip-existing")
+        if not path.exists() or path.stat().st_size == 0:
+            raise RuntimeError(f"{path.name} is not in release {item['tag']}")
+        out.append(path)
+    return out
+
+
+def item_files(item: dict) -> list[Path]:
+    return slide_files(item) if item.get("kind") == "carousel" else [fetch(item, ".mp4")]
+
+
+def carousel_caption(item: dict) -> str:
+    from src import ig_slides
+    post = ig_slides.posts_by_id().get(item["id"])
+    if not post:
+        raise RuntimeError(f"slide post {item['id']} is not in content/ig_carousels*.json")
+    return str(post["caption"]).strip()
 
 
 def fetch(reel: dict, kind: str) -> Path:
@@ -240,6 +294,16 @@ def next_free_slot(taken: list[datetime], after: datetime, seed: str) -> datetim
                 return t
         day += timedelta(days=1)
     raise RuntimeError("no free slot in the next 30 days")
+
+
+def next_carousel_slot(taken: list[datetime], due: datetime, after: datetime) -> datetime:
+    """Same time on a following day, at least 2 hours from any other post."""
+    t = due
+    for _ in range(30):
+        if t >= after and all(abs((t - x).total_seconds()) >= 120 * 60 for x in taken):
+            return t
+        t += timedelta(days=1)
+    raise RuntimeError("no free slot for a slide post in the next 30 days")
 
 
 # ---------------------------------------------------------------- public video site
@@ -544,15 +608,20 @@ def weekly_report(state: dict) -> None:
     rows.sort(key=lambda kv: score(kv[1]), reverse=True)
     lines = [f"# گزارش هفتگی نبض معما ({start.date()} تا {(start + timedelta(days=6)).date()})", "",
              "| ریلز | بازدید | لایک | کامنت | ذخیره | اشتراک | فالو |", "|---|---|---|---|---|---|---|"]
-    for k, v in rows:
+    def title_of(k):
+        if k.startswith("car_"):
+            return "🖼 " + k[4:]
         sid = k.split("_", 3)[-1]
-        title = (bank.get(sid) or {}).get("title", sid)
+        return (bank.get(sid) or {}).get("title", sid)
+
+    for k, v in rows:
+        title = title_of(k)
         lines.append(f"| {title} | {int(v.get('views', v.get('reach', 0)))} | {int(v.get('reactions', 0))} | "
                      f"{int(v.get('comments', 0))} | {int(v.get('saves', 0))} | {int(v.get('shares', 0))} | {int(v.get('follows', 0))} |")
     REPORT_MD.parent.mkdir(parents=True, exist_ok=True)
     REPORT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    best = [(bank.get(k.split("_", 3)[-1]) or {}).get("title", k) for k, _ in rows[:3]]
-    worst = (bank.get(rows[-1][0].split("_", 3)[-1]) or {}).get("title", rows[-1][0])
+    best = [title_of(k) for k, _ in rows[:3]]
+    worst = title_of(rows[-1][0])
     total = sum(int(v.get("views", v.get("reach", 0))) for _, v in rows)
     msg = (f"📊 گزارش هفتگی نبض معما: {len(rows)} ریلز، {total} بازدید\n\n🥇 بهترین‌ها:\n" +
            "\n".join(f"{i}. {t}" for i, t in enumerate(best, 1)) + f"\n\n🔻 ضعیف‌ترین: {worst}")
@@ -647,42 +716,59 @@ def run(state: dict, org: str, channel: str) -> None:
             rec["status"] = "sent"
     failed = ""
     refresh_captions(state, channel, now)
-    pending = [r for r in built_reels() if r["stem"] not in sent]
+    items = built_reels() + built_carousels()
+    pending = sorted((r for r in items if r["stem"] not in sent), key=due_of)
     room = max(0, QUEUE_MAX - len(waiting))
-    log(f"{len(waiting)} reel(s) waiting in Buffer, room for {room}; {len(pending)} built reel(s) not sent yet")
-    taken = [datetime.fromisoformat(v["due"]) for v in sent.values() if v.get("status") in ("scheduled", "sent")]
-    taken += [datetime.fromisoformat(str(p["dueAt"]).replace("Z", "+00:00")) for p in waiting if p.get("dueAt")]
+    log(f"{len(waiting)} post(s) waiting in Buffer, room for {room}; {len(pending)} ready post(s) not sent yet")
+    # reels keep 3 hours from other reels; a slide post keeps 2 hours from everything
+    car_posts = {v["post_id"] for v in sent.values() if v.get("kind") == "carousel"}
+    taken = [datetime.fromisoformat(v["due"]) for v in sent.values()
+             if v.get("status") in ("scheduled", "sent") and v.get("kind") != "carousel"]
+    taken += [datetime.fromisoformat(str(p["dueAt"]).replace("Z", "+00:00")) for p in waiting
+              if p.get("dueAt") and p.get("id") not in car_posts]
+    taken_all = taken + [datetime.fromisoformat(v["due"]) for v in sent.values()
+                         if v.get("status") in ("scheduled", "sent") and v.get("kind") == "carousel"]
     batch = []
     for reel in pending[: min(room, MAX_NEW)]:
         due = due_of(reel)
-        if due < now + timedelta(minutes=LEAD_MIN) or any(abs((due - x).total_seconds()) < GAP_MIN * 60 for x in taken):
-            due = next_free_slot(taken, now + timedelta(minutes=LEAD_MIN + 15), reel["stem"])
-            log(f"{reel['stem']}: its time passed or is taken; new time {due.astimezone(TEHRAN):%Y-%m-%d %H:%M} Tehran")
-        taken.append(due)
+        if reel.get("kind") == "carousel":
+            moved = next_carousel_slot(taken_all, due, now + timedelta(minutes=LEAD_MIN + 15))
+            if moved != due:
+                log(f"{reel['stem']}: its time passed or is taken; new time {moved.astimezone(TEHRAN):%Y-%m-%d %H:%M} Tehran")
+            due = moved
+        else:
+            if due < now + timedelta(minutes=LEAD_MIN) or any(abs((due - x).total_seconds()) < GAP_MIN * 60 for x in taken):
+                due = next_free_slot(taken, now + timedelta(minutes=LEAD_MIN + 15), reel["stem"])
+                log(f"{reel['stem']}: its time passed or is taken; new time {due.astimezone(TEHRAN):%Y-%m-%d %H:%M} Tehran")
+            taken.append(due)
+        taken_all.append(due)
         batch.append((reel, due))
     # Videos that must stay public: every reel still waiting in Buffer, plus the new ones.
-    keep = [r for r in built_reels() if sent.get(r["stem"], {}).get("status") == "scheduled"]
+    keep = [r for r in items if sent.get(r["stem"], {}).get("status") == "scheduled"]
     keep += [r for r, _ in batch]
     if not batch:
         log("nothing new to send")
         hosted = sorted(r["stem"] for r in keep)
         page = films_page(state)
         if hosted != sorted(state.get("hosted", [])) or text_hash(page) != state.get("films_page"):
-            files = [fetch(r, ".mp4") for r in keep]
+            files = [f for r in keep for f in item_files(r)]
             publish_site(files, page, film_covers(state))
             state["hosted"], state["films_page"] = hosted, text_hash(page)
         note_run(state, True)
         return
-    files, urls = [], {}
+    files, urls, new_urls = [], {}, {}
+    fresh = {r["stem"] for r, _ in batch}
     for reel in keep:
-        f = fetch(reel, ".mp4")
-        files.append(f)
-        urls[f"{SITE_URL}/v/{f.name}"] = f.stat().st_size
+        for f in item_files(reel):
+            files.append(f)
+            urls[f"{SITE_URL}/v/{f.name}"] = f.stat().st_size
+            if reel["stem"] in fresh:
+                new_urls[f"{SITE_URL}/v/{f.name}"] = f.stat().st_size
     page = films_page(state)
     publish_site(files, page, film_covers(state))
     state["hosted"], state["films_page"] = sorted(r["stem"] for r in keep), text_hash(page)
     save_state(state)
-    if not wait_public({u: s for u, s in urls.items() if any(u.endswith(f"{r['stem']}.mp4") for r, _ in batch)}):
+    if not wait_public(new_urls):
         warn("Videos not public yet", "GitHub Pages of nabz-reels did not serve the videos in 12 minutes "
              "(is Pages on: Settings > Pages > main / root?). The next run tries again.")
         note_run(state, False, "videos not public on nabz-reels Pages")
@@ -691,8 +777,15 @@ def run(state: dict, org: str, channel: str) -> None:
     for reel, due in batch:
         url = f"{SITE_URL}/v/{reel['stem']}.mp4"
         try:
-            cap = caption_for(reel)
-            post = create_post(channel, cap, url, due)
+            if reel.get("kind") == "carousel":
+                from src import ig_slides
+                pics = [f"{SITE_URL}/v/{ig_slides.file_name(reel['id'], k)}" for k in range(1, int(reel["slides"]) + 1)]
+                url = pics[0]
+                cap = carousel_caption(reel)
+                post = create_carousel(channel, cap, pics, due)
+            else:
+                cap = caption_for(reel)
+                post = create_post(channel, cap, url, due)
         except BufferError as exc:
             if str(exc).startswith("LIMIT"):
                 log(f"Buffer queue is full: {exc}")
@@ -705,12 +798,12 @@ def run(state: dict, org: str, channel: str) -> None:
             failed = f"{reel['stem']}: {type(exc).__name__}: {str(exc)[:200]}"
             continue
         sent[reel["stem"]] = {"post_id": post["id"], "due": due.isoformat(), "status": "scheduled",
-                              "url": url, "cap": text_hash(cap),
+                              "url": url, "cap": text_hash(cap), "kind": reel.get("kind", "reel"),
                               "at": now.astimezone(TEHRAN).isoformat(timespec="minutes")}
         save_state(state)
         made += 1
         log(f"scheduled in Buffer: {reel['stem']} at {due.astimezone(TEHRAN):%a %Y-%m-%d %H:%M} Tehran")
-    print(f"::notice title=Buffer::{made} new reel(s) scheduled; {len(waiting) + made} waiting in Buffer", flush=True)
+    print(f"::notice title=Buffer::{made} new post(s) scheduled; {len(waiting) + made} waiting in Buffer", flush=True)
     note_run(state, not failed, failed)
 
 

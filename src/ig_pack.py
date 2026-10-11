@@ -652,6 +652,7 @@ def main() -> int:
     """Owner rule (Oct 11): use the whole free daily quota. When a week is finished and quota and
     time are left, the same run goes straight on to the next week instead of stopping."""
     started = time.time()
+    prepare_slides()
     forced = os.getenv("NABZ_PACK_WEEK", "").strip()
     for _ in range(3):
         if not run_week(started) or forced:
@@ -660,6 +661,23 @@ def main() -> int:
             break
         log("week complete and quota left: going on with the next week")
     return 0
+
+
+def prepare_slides() -> None:
+    """Slide posts (src.ig_slides): plan the coming Tuesdays/Thursdays/Saturdays and draw the slides.
+    No voice or picture quota is used. A problem here never stops the reels."""
+    state = load_json(STATE_FILE, {})
+    try:
+        from src import ig_slides
+        ig_slides.plan(state)
+        made = ig_slides.render(state)
+        if made:
+            log(f"slide posts: {made} drawn and stored")
+    except Exception as exc:
+        msg = re.sub(r"[\r\n]+", " ", f"{type(exc).__name__}: {exc}")[:300]
+        print(f"::warning title=Slide posts not ready::{msg}", flush=True)
+    finally:
+        save_state(state)
 
 
 def run_week(started: float) -> bool:
