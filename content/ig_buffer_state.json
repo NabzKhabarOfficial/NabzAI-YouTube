@@ -1,18 +1,20 @@
 {
   "sent": {
     "01_2026-10-12_1345_db-cooper": {
-      "post_id": "6aca8ff6ed92ed8fa5dd13df",
+      "post_id": "6acb13bced92ed8fa5ef9d76",
       "due": "2026-10-12T13:45:00+03:30",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-12_1345_db-cooper.mp4",
-      "at": "2026-10-10T22:49+03:30"
+      "at": "2026-10-10T22:49+03:30",
+      "cap": "492dfffdfbb7"
     },
     "02_2026-10-12_2049_flight-19": {
-      "post_id": "6aca9795f91f772d45a58660",
+      "post_id": "6acb13beed92ed8fa5ef9da1",
       "due": "2026-10-12T20:49:00+03:30",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2049_flight-19.mp4",
-      "at": "2026-10-10T23:22+03:30"
+      "at": "2026-10-10T23:22+03:30",
+      "cap": "58d64045b536"
     }
   },
   "org_id": "6aca87101f8562f188533a3e",
@@ -21,5 +23,8 @@
   "hosted": [
     "01_2026-10-12_1345_db-cooper",
     "02_2026-10-12_2049_flight-19"
-  ]
+  ],
+  "films_page": "e5d67c074f32",
+  "fail_streak": 0,
+  "fail_alerted": false
 }
