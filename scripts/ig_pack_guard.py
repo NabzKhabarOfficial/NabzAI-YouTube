@@ -16,9 +16,11 @@ spec.loader.exec_module(pack)
 state = pack.load_json(pack.STATE_FILE, {})
 week = pack.pick_week(state, os.getenv("NABZ_PACK_WEEK", "").strip())
 info = (state.get("weeks") or {}).get(week.isoformat()) or {}
-skip = bool(info.get("done")) or pack.youtube_first()
+urgent = pack.urgent_redo(state) if pack.youtube_first() else []
+skip = bool(info.get("done")) or (pack.youtube_first() and not urgent)
 if pack.youtube_first():
-    print("today's YouTube Short is not built yet: it gets the free quotas first")
+    print("today's YouTube Short is not built yet: it gets the free quotas first"
+          + (f" (except the old-voice reel(s) {urgent}, which air soon)" if urgent else ""))
 print(f"week-{week.isoformat()}: {'complete, skipping' if skip else 'to build'} "
       f"({len(info.get('built', {}))}/{len(info.get('plan', []))} reels ready)")
 out = os.getenv("GITHUB_OUTPUT")

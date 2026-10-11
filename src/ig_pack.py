@@ -744,6 +744,24 @@ def needs_redo(item: dict, info: dict) -> bool:
     return due > now_tehran() + timedelta(minutes=REDO_LEAD)
 
 
+URGENT_HOURS = 8  # a queued old-voice reel airing within this many hours is rebuilt even before the Short
+
+
+def urgent_redo(state: dict, now: datetime | None = None) -> list[str]:
+    """Owner's choice (Oct 11): a queued reel built with the old voice cutting that airs soon is
+    rebuilt in the morning run, before the daily YouTube Short (it costs ~6 pictures, the voice
+    usually comes from the cache). Returns those reel ids."""
+    now = now or now_tehran()
+    week = pick_week(state, os.getenv("NABZ_PACK_WEEK", "").strip(), now.date())
+    info = (state.get("weeks") or {}).get(week.isoformat()) or {}
+    out = []
+    for item in info.get("plan") or []:
+        due = datetime.fromisoformat(f"{item['date']}T{item['time']}:00").replace(tzinfo=TEHRAN)
+        if needs_redo(item, info) and due <= now + timedelta(hours=URGENT_HOURS):
+            out.append(item["id"])
+    return out
+
+
 def run_week(started: float) -> bool:
     """Builds the current week as far as possible. True only when it completed a week just now."""
     state = load_json(STATE_FILE, {})
@@ -755,9 +773,13 @@ def run_week(started: float) -> bool:
     if info and info.get("done"):
         log(f"{tag} is already complete; nothing to do")
         return False
+    urgent = []
     if youtube_first():
-        log("today's YouTube Short is not built yet; it gets the free quotas first. Later run continues.")
-        return False
+        urgent = urgent_redo(state)
+        if not urgent:
+            log("today's YouTube Short is not built yet; it gets the free quotas first. Later run continues.")
+            return False
+        log(f"before the Short: only rebuilding {urgent} (old voice, airs soon)")
     rf, m, _, vc = _modules()
     vc.REPORT = OUT / "voice_check.json"  # keep the daily Short's review report untouched
     fa_bank = rf.load_fa()
@@ -776,6 +798,8 @@ def run_week(started: float) -> bool:
         redo = needs_redo(item, info)
         if item["id"] in info["built"] and not redo:
             continue
+        if urgent and item["id"] not in urgent:
+            continue  # the rest waits until the Short has its share of the quotas
         if redo:
             log(f"{item['id']}: built with the old voice cutting; rebuilding it before it airs")
         if time.time() - started > TIME_BUDGET - REEL_SECONDS:
