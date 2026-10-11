@@ -132,11 +132,63 @@
             "مثلث"
           ],
           "at": "2026-10-10T18:58+03:30"
+        },
+        "mh370": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 39.57,
+          "check_words": [],
+          "at": "2026-10-11T19:05+03:30"
+        },
+        "dancing-plague-1518": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 41.97,
+          "check_words": [],
+          "at": "2026-10-11T19:09+03:30"
         }
       },
       "done": false,
       "planned_at": "2026-10-10T18:46+03:30",
       "note": "Oct 11: noon = film story, night = mystery (swapped hinterkaifeck/lead-masks and amelia/kaz-ii)"
     }
+  },
+  "carousels": {
+    "plan": [
+      {
+        "id": "peter-bergmann",
+        "date": "2026-10-13",
+        "time": "17:13",
+        "slides": 6
+      },
+      {
+        "id": "jiroft",
+        "date": "2026-10-15",
+        "time": "17:32",
+        "slides": 6
+      },
+      {
+        "id": "alamut",
+        "date": "2026-10-17",
+        "time": "17:37",
+        "slides": 6
+      },
+      {
+        "id": "persepolis-fire",
+        "date": "2026-10-20",
+        "time": "17:40",
+        "slides": 6
+      },
+      {
+        "id": "gorgan-wall",
+        "date": "2026-10-22",
+        "time": "17:31",
+        "slides": 6
+      },
+      {
+        "id": "tarim-mummies",
+        "date": "2026-10-24",
+        "time": "17:04",
+        "slides": 6
+      }
+    ]
   }
 }
