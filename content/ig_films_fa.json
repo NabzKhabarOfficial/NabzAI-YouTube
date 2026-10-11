@@ -6,6 +6,12 @@
     "flight-19": {"fa": "برخورد نزدیک از نوع سوم", "en": "Close Encounters of the Third Kind", "year": 1977, "by": "استیون اسپیلبرگ", "how": "هواپیماهای گم‌شده‌ی پرواز ۱۹ در صحنه‌ی اول فیلم پیدا می‌شوند"},
     "amelia-earhart": {"fa": "آملیا", "en": "Amelia", "year": 2009, "by": "میرا نایر"},
     "jack-the-ripper": {"fa": "از جهنم", "en": "From Hell", "year": 2001, "by": "برادران هیوز"},
-    "hinterkaifeck": {"fa": "تانود", "en": "Tannöd", "year": 2009, "by": "بتینا اوبرلی", "how": "بر اساس رمانی که از این پرونده الهام گرفته"}
+    "hinterkaifeck": {"fa": "تانود", "en": "Tannöd", "year": 2009, "by": "بتینا اوبرلی", "how": "بر اساس رمانی که از این پرونده الهام گرفته"},
+    "alcatraz-escape": {"fa": "فرار از آلکاتراز", "en": "Escape from Alcatraz", "year": 1979, "by": "دان سیگل"},
+    "jimmy-hoffa": {"fa": "مرد ایرلندی", "en": "The Irishman", "year": 2019, "by": "مارتین اسکورسیزی"},
+    "kaspar-hauser": {"fa": "معمای کاسپار هاوزر", "en": "The Enigma of Kaspar Hauser", "year": 1974, "by": "ورنر هرتزوگ"},
+    "glenn-miller": {"fa": "داستان گلن میلر", "en": "The Glenn Miller Story", "year": 1954, "by": "آنتونی مان"},
+    "lake-bodom": {"fa": "دریاچه‌ی بودوم", "en": "Lake Bodom", "year": 2016, "by": "تانلی موستونن", "how": "الهام‌گرفته از همین قتل‌ها"},
+    "dyatlov-pass": {"fa": "گذرگاه شیطان", "en": "Devil's Pass", "year": 2013, "by": "رنی هارلین", "how": "الهام‌گرفته از همین ماجرا"}
   }
 }
