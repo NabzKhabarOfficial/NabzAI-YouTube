@@ -721,7 +721,24 @@ def replace_videos(state: dict, channel: str, upgrades: list[tuple]) -> None:
             continue
         try:
             cap = caption_for(reel)
-            post = create_post(channel, cap, url, due)
+            try:
+                post = create_post(channel, cap, url, due)
+            except BufferError as exc:
+                if not str(exc).startswith("LIMIT"):
+                    raise
+                # Buffer's free queue is full: free the old post's place first, then add the new one
+                # (twice; the old video link now serves the new file too, so nothing is lost).
+                delete_post(rec["post_id"])
+                rec["post_id"] = ""
+                try:
+                    post = create_post(channel, cap, url, due)
+                except BufferError:
+                    time.sleep(20)
+                    post = create_post(channel, cap, url, due)
+                rec.update(post_id=post["id"], url=url, cap=text_hash(cap), audio_v=v)
+                save_state(state)
+                log(f"new video swapped in Buffer (queue was full): {key}")
+                continue
             try:
                 delete_post(rec["post_id"])
             except BufferError as exc:  # never leave two copies: undo the new one
@@ -732,6 +749,12 @@ def replace_videos(state: dict, channel: str, upgrades: list[tuple]) -> None:
             log(f"new video swapped in Buffer: {key}")
         except Exception as exc:
             log(f"video of {key} not swapped ({type(exc).__name__}: {str(exc)[:160]})")
+            if not rec.get("post_id"):  # the old post is gone and the new one failed: send it again next run
+                state["sent"].pop(key, None)
+                save_state(state)
+                when = due.astimezone(TEHRAN)
+                telegram(state, f"⚠️ نبض معما: ریل {when:%m-%d ساعت %H:%M} در بافر جایگزین نشد؛ "
+                                "اجرای بعدی دوباره آن را به صف بافر می‌فرستد.")
 
 
 def check_queue(state: dict, waiting: list[dict], now: datetime) -> None:
