@@ -684,13 +684,13 @@ def make_music(seconds: float, seed: int) -> np.ndarray:
     return out / (np.max(np.abs(out)) or 1)
 
 
-def mix(voice: np.ndarray, music: np.ndarray, music_level: float = 0.35) -> np.ndarray:
+def mix(voice: np.ndarray, music: np.ndarray, music_level: float = 0.18) -> np.ndarray:
     n = len(voice)
     music = music[:n] if len(music) >= n else np.pad(music, ((0, n - len(music)), (0, 0)))
     win = int(0.25 * SR)
     envelope = np.convolve(np.abs(voice), np.ones(win) / win, mode="same")
     envelope /= (np.max(envelope) or 1)
-    duck = 1.0 - 0.5 * np.clip(envelope * 3, 0, 1)
+    duck = 1.0 - 0.65 * np.clip(envelope * 3, 0, 1)  # music ~20 dB under the voice, fuller in pauses
     stereo = np.stack([voice, voice], axis=1) + music * (music_level * duck)[:, None]
     peak = float(np.max(np.abs(stereo))) or 1.0
     return stereo * (0.95 / peak)
