@@ -144,6 +144,14 @@
           "duration": 41.97,
           "check_words": [],
           "at": "2026-10-11T19:09+03:30"
+        },
+        "hinterkaifeck": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 42.3,
+          "check_words": [
+            "متهم"
+          ],
+          "at": "2026-10-11T19:21+03:30"
         }
       },
       "done": false,
