@@ -229,7 +229,8 @@ def built_reels() -> list[dict]:
         built = info.get("built") or {}
         for item in info.get("plan") or []:
             if item["id"] in built:
-                out.append(dict(item, week=week, stem=stem(item), tag=f"week-{week}"))
+                out.append(dict(item, week=week, stem=stem(item), tag=f"week-{week}",
+                                audio_v=int((built[item["id"]] or {}).get("audio_v", 1))))
     return out
 
 
@@ -687,6 +688,52 @@ def refresh_captions(state: dict, channel: str, now: datetime) -> int:
     return changed
 
 
+def rebuilt_reels(sent: dict, items: list[dict], now: datetime) -> list[tuple]:
+    """Queued reels whose video was rebuilt after they went to Buffer (e.g. the Oct 11 voice fix)."""
+    by_stem = {r["stem"]: r for r in items if r.get("kind") != "carousel"}
+    out = []
+    for key, rec in sent.items():
+        reel = by_stem.get(key)
+        if (reel and rec.get("status") == "scheduled" and rec.get("kind", "reel") != "carousel"
+                and int(reel.get("audio_v", 1)) > int(rec.get("audio_v", 1))
+                and datetime.fromisoformat(rec["due"]) > now + timedelta(minutes=LEAD_MIN)):
+            out.append((key, rec, reel))
+    return out
+
+
+def replace_videos(state: dict, channel: str, upgrades: list[tuple]) -> None:
+    """Swap a rebuilt reel into Buffer: same time and caption, the new video under a fresh link
+    (so Buffer never reuses the old file). The old post is removed only once the new one exists."""
+    if not upgrades:
+        return
+    want = {}
+    for key, rec, reel in upgrades:
+        f = fetch(reel, ".mp4")
+        v = int(reel.get("audio_v", 1))
+        want[key] = (f"{SITE_URL}/v/{f.name}?v={v}", f.stat().st_size, v)
+    if not wait_public({u: size for u, size, _ in want.values()}):
+        log("rebuilt videos are not public yet; the next run swaps them in")
+        return
+    for key, rec, reel in upgrades:
+        url, _, v = want[key]
+        due = datetime.fromisoformat(rec["due"])
+        if due < now_utc() + timedelta(minutes=LEAD_MIN):
+            continue
+        try:
+            cap = caption_for(reel)
+            post = create_post(channel, cap, url, due)
+            try:
+                delete_post(rec["post_id"])
+            except BufferError as exc:  # never leave two copies: undo the new one
+                delete_post(post["id"])
+                raise exc
+            rec.update(post_id=post["id"], url=url, cap=text_hash(cap), audio_v=v)
+            save_state(state)
+            log(f"new video swapped in Buffer: {key}")
+        except Exception as exc:
+            log(f"video of {key} not swapped ({type(exc).__name__}: {str(exc)[:160]})")
+
+
 def check_queue(state: dict, waiting: list[dict], now: datetime) -> None:
     """Tell the owner when Buffer holds a post past its time (it did not publish by itself)
     or when a queued post's time no longer matches ours (e.g. the Buffer time zone was changed)."""
@@ -751,6 +798,7 @@ def run(state: dict, org: str, channel: str) -> None:
     refresh_captions(state, channel, now)
     items = built_reels() + built_carousels()
     pending = sorted((r for r in items if r["stem"] not in sent), key=due_of)
+    upgrades = rebuilt_reels(sent, items, now)
     room = max(0, QUEUE_MAX - len(waiting))
     log(f"{len(waiting)} post(s) waiting in Buffer, room for {room}; {len(pending)} ready post(s) not sent yet")
     # reels keep 3 hours from other reels; a slide post keeps 2 hours from everything
@@ -783,10 +831,11 @@ def run(state: dict, org: str, channel: str) -> None:
         log("nothing new to send")
         hosted = sorted(r["stem"] for r in keep)
         page = films_page(state)
-        if hosted != sorted(state.get("hosted", [])) or text_hash(page) != state.get("films_page"):
+        if upgrades or hosted != sorted(state.get("hosted", [])) or text_hash(page) != state.get("films_page"):
             files = [f for r in keep for f in item_files(r)]
             publish_site(files, page, film_covers(state))
             state["hosted"], state["films_page"] = hosted, text_hash(page)
+        replace_videos(state, channel, upgrades)
         note_run(state, True)
         return
     files, urls, new_urls = [], {}, {}
@@ -806,6 +855,7 @@ def run(state: dict, org: str, channel: str) -> None:
              "(is Pages on: Settings > Pages > main / root?). The next run tries again.")
         note_run(state, False, "videos not public on nabz-reels Pages")
         return
+    replace_videos(state, channel, upgrades)
     made = 0
     for reel, due in batch:
         url = f"{SITE_URL}/v/{reel['stem']}.mp4"
@@ -832,6 +882,7 @@ def run(state: dict, org: str, channel: str) -> None:
             continue
         sent[reel["stem"]] = {"post_id": post["id"], "due": due.isoformat(), "status": "scheduled",
                               "url": url, "cap": text_hash(cap), "kind": reel.get("kind", "reel"),
+                              "audio_v": int(reel.get("audio_v", 1)),
                               "at": now.astimezone(TEHRAN).isoformat(timespec="minutes")}
         save_state(state)
         made += 1
