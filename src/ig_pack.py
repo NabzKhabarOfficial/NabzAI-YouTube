@@ -649,7 +649,21 @@ def finish(tag: str, week: date, info: dict) -> Path:
 
 # ---------------------------------------------------------------- main
 def main() -> int:
+    """Owner rule (Oct 11): use the whole free daily quota. When a week is finished and quota and
+    time are left, the same run goes straight on to the next week instead of stopping."""
     started = time.time()
+    forced = os.getenv("NABZ_PACK_WEEK", "").strip()
+    for _ in range(3):
+        if not run_week(started) or forced:
+            break
+        if time.time() - started > TIME_BUDGET - REEL_SECONDS:
+            break
+        log("week complete and quota left: going on with the next week")
+    return 0
+
+
+def run_week(started: float) -> bool:
+    """Builds the current week as far as possible. True only when it completed a week just now."""
     state = load_json(STATE_FILE, {})
     per_day = int(os.getenv("NABZ_PACK_PER_DAY", "2") or 2)
     per_day = 3 if per_day >= 3 else 2
@@ -658,10 +672,10 @@ def main() -> int:
     info = (state.get("weeks") or {}).get(week.isoformat())
     if info and info.get("done"):
         log(f"{tag} is already complete; nothing to do")
-        return 0
+        return False
     if youtube_first():
         log("today's YouTube Short is not built yet; it gets the free quotas first. Later run continues.")
-        return 0
+        return False
     rf, m, _, vc = _modules()
     vc.REPORT = OUT / "voice_check.json"  # keep the daily Short's review report untouched
     fa_bank = rf.load_fa()
@@ -670,7 +684,7 @@ def main() -> int:
     info = plan_week(state, week, per_day, fa_bank, set(en), allow_partial=late)
     if info is None:
         log(f"{tag}: waiting for more Persian stories (a short week is planned only after the deadline)")
-        return 0
+        return False
     allow_edge = os.getenv("NABZ_PACK_ALLOW_EDGE", "0") == "1"  # owner rule: one voice, so never by default
     install_narrator(allow_edge)
     ensure_release(tag, week)
@@ -715,13 +729,13 @@ def main() -> int:
         why = stopped or "some reels failed (see warnings)"
         print(f"::notice title=Pack not finished yet::{len(info['built'])}/{len(info['plan'])} reels ready; "
               f"{why}. The next run continues.", flush=True)
-        return 0
+        return False
     zpath = finish(tag, week, info)
     info["done"] = True
     info["zip"] = f"https://github.com/{REPO}/releases/tag/{tag}"
     save_state(state)
     log(f"{tag} complete: {zpath.name} ({zpath.stat().st_size / 1e6:.0f} MB)")
-    return 0
+    return True
 
 
 if __name__ == "__main__":
