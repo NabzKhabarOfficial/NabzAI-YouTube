@@ -1,7 +1,4 @@
 {
-  "note": "Caption overrides for «نبض معما» reels, applied by src/ig_buffer.py when a reel is sent to Buffer (and to reels already waiting there). Owner data (Oct 10 2026): open questions bring almost no comments, so every question is a 3-choice (الف/ب/ج) one.",
-  "questions": {
-    "flight-19": "🧩 به نظرت سر پرواز ۱۹ چی اومد؟\nالف) قطب‌نماها خراب شد و راه رو گم کردن\nب) سوختشون تموم شد و تو دریای طوفانی افتادن\nج) یه چیز دیگه\nجوابت رو با حرف بنویس 👇",
-    "lead-masks": "🧩 یادداشت می‌گفت «کپسول‌ها رو بخور و منتظر علامت باش». به نظرت منتظر چی بودن؟\nالف) یه تماس با موجودات فضایی\nب) یه آزمایش خطرناک که بد تموم شد\nج) نظر خودت\nجوابت رو با حرف بنویس 👇"
-  }
+  "note": "Caption overrides for «نبض معما» reels, applied by src/ig_buffer.py when a reel is sent to Buffer (and to reels already waiting there). Owner data (Oct 10 2026): open questions bring almost no comments, so every question is a 3-choice (الف/ب/ج) one. Oct 12 2026: owner's template caption («کدام بخش برداشتت را عوض کرد؟») now lives in the bank for rewritten stories; per-id overrides here win over it.",
+  "questions": {}
 }
