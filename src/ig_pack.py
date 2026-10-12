@@ -7,8 +7,9 @@ them himself in Meta Business Suite (or the Instagram app's Schedule option).
 One run (workflow ig-pack.yml) does:
   1. Plans the target week (next Monday .. Sunday): 2 or 3 reels a day, each one a different,
      fact-checked story from content/mysteries_fa.json that was never posted or packed before.
-     Posting times: from the week of Oct 19 2026 the owner's golden hours per weekday (GOLDEN);
-     before that (and for 3 reels a day) 13:00-14:10 and 20:30-22:40 Tehran, plus 21:40-22:55.
+     Posting times: from the week of Oct 19 2026 the owner's golden hours per weekday (GOLDEN:
+     2 reels a day, Friday 3, so 15 a week); before that (and for 3 reels a day) 13:00-14:10 and
+     20:30-22:40 Tehran, plus 21:40-22:55.
   2. Builds every planned reel that is not built yet: fresh AI pictures, the deep Gemini voice
      (ONE request per reel: the whole script is read in one go and cut back into beats with the
      listening model, then checked word by word), Persian captions, cover. 1080x1920, H.264 + AAC, 15-90 s, checked.
@@ -88,9 +89,10 @@ SLOTS = {
 }
 MIN_DAY_SHIFT = 4  # minutes: the same slot never repeats yesterday's time this closely
 
-# Owner's golden hours (Oct 12 2026), Tehran, per weekday (Monday = 0): [day slot, night slot].
+# Owner's golden hours (Oct 12 2026), Tehran, per weekday (Monday = 0): [day slot, (extra,) night slot].
 # A range is used as given; a single time gets +-5 minutes so posts do not look automated.
-# Friday's day time is 10:00 (the owner's second Friday time, 18:00, is not used with 2 reels a day).
+# Friday has three reels (owner, Oct 12): 10:00, 18:00 and 22:10. The first slot of a day is the
+# film story, the others mysteries. In a short week the extra Friday slot is dropped first.
 GOLDEN = {
     5: [(10 * 60 + 30, 14 * 60 + 30), (21 * 60 + 25, 21 * 60 + 35)],  # Saturday
     6: [(14 * 60, 15 * 60 + 30), (20 * 60 + 55, 21 * 60 + 5)],         # Sunday
@@ -98,7 +100,7 @@ GOLDEN = {
     1: [(13 * 60 + 10, 14 * 60), (20 * 60 + 55, 21 * 60 + 5)],         # Tuesday
     2: [(13 * 60 + 30, 16 * 60), (18 * 60 + 55, 19 * 60 + 5)],         # Wednesday
     3: [(13 * 60 + 45, 15 * 60), (22 * 60 + 45, 22 * 60 + 55)],        # Thursday
-    4: [(9 * 60 + 55, 10 * 60 + 5), (22 * 60 + 5, 22 * 60 + 15)],      # Friday
+    4: [(9 * 60 + 55, 10 * 60 + 5), (17 * 60 + 55, 18 * 60 + 5), (22 * 60 + 5, 22 * 60 + 15)],  # Friday
 }
 GOLDEN_FROM = date(2026, 10, 19)  # weeks already planned and queued in Buffer keep their times
 
@@ -189,7 +191,7 @@ def fa_digits(text: str) -> str:
 
 
 def golden_times(week: date) -> list[list[str]]:
-    """Seven days of the owner's golden posting times (2 a day), reproducible for a week."""
+    """Seven days of the owner's golden posting times (2 a day, Friday 3), reproducible for a week."""
     rng = random.Random(f"nabz-ig-golden-{week.isoformat()}")
     days = []
     for day in range(7):
@@ -199,7 +201,8 @@ def golden_times(week: date) -> list[list[str]]:
 
 
 def schedule_times(week: date, per_day: int) -> list[list[str]]:
-    """Seven days of posting times ("HH:MM"), shifted every day, reproducible for a week."""
+    """Seven days of posting times ("HH:MM"), shifted every day, reproducible for a week.
+    The number of times can differ per day (golden hours: Friday has 3)."""
     if per_day == 2 and week >= GOLDEN_FROM:
         return golden_times(week)
     rng = random.Random(f"nabz-ig-{week.isoformat()}-{per_day}")
@@ -323,7 +326,8 @@ def plan_week(state: dict, week: date, per_day: int, fa_bank: dict, en_ids: set,
     used = used_ids(state, key)
     ready = approved_ids()
     fresh = [sid for sid in fa_bank if sid not in used and sid in en_ids and sid in ready]
-    want = per_day * 7
+    times = schedule_times(week, per_day)
+    want = sum(len(t) for t in times)
     if len(fresh) < want:
         print(f"::warning title=Persian bank low::only {len(fresh)} unused Persian stories written to the "
               f"six-step template for week {key} (needed {want}); the next batch must be written.", flush=True)
@@ -333,20 +337,21 @@ def plan_week(state: dict, week: date, per_day: int, fa_bank: dict, en_ids: set,
         print(f"::warning title=Persian bank empty::only {len(fresh)} ready Persian stories: "
               f"week {key} waits for the next batch.", flush=True)
         return None
-    per_day = per_day if len(fresh) >= want else max(2, min(per_day, len(fresh) // 7))
-    times = schedule_times(week, per_day)
+    if len(fresh) < want:  # a short week: fewer reels a day (Friday's extra golden slot goes first)
+        per_day = max(2, min(per_day, len(fresh) // 7))
+        times = [t[:per_day] for t in schedule_times(week, per_day)]
     films = film_ids()
-    want_n = min(len(fresh), per_day * 7)
+    want_n = min(len(fresh), sum(len(t) for t in times))
     film_q = [x for x in fresh if x in films][:7]  # one film story a day at most
     other_q = [x for x in fresh if x not in films][:want_n - len(film_q)]
     if len(film_q) + len(other_q) < want_n:
         film_q += [x for x in fresh if x in films and x not in film_q][:want_n - len(film_q) - len(other_q)]
     plan, n = [], 0
     for day in range(7):
-        for slot in range(per_day):
+        for slot in range(len(times[day])):
             if not film_q and not other_q:
                 break
-            # the noon slot takes a film story, the evening ones a mystery, when there are enough
+            # the first slot of a day takes a film story, the later ones a mystery, when there are enough
             q = (film_q or other_q) if slot == 0 else (other_q or film_q)
             d = week + timedelta(days=day)
             plan.append({"n": n + 1, "id": q.pop(0), "date": d.isoformat(), "time": times[day][slot]})
