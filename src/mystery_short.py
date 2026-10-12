@@ -677,13 +677,25 @@ def _score(seconds: float, seed: int) -> np.ndarray:
 
 
 def make_music(seconds: float, seed: int) -> np.ndarray:
-    """Background music, stereo float (n, 2), peak 1.0."""
+    """Background music, stereo float (n, 2), peak 1.0.
+    Oct 12 2026 (owner): a score that fits the story's mood (src.music_mood: sea, crime, sky,
+    ancient, vanish), found from the story seed; the general score, then the drone, are fallbacks."""
     n = int(seconds * SR)
+    out = None
     try:
-        out = _score(seconds, seed)
+        from src import music_mood
+        out = music_mood.score(seconds, seed)
+        if out is not None:
+            log(f"music mood: {music_mood.mood_for_seed(seed)}")
     except Exception as exc:  # never lose a Short over the music
-        log(f"score failed ({type(exc).__name__}: {exc}); using the drone")
-        out = _drone_music(seconds, seed)
+        log(f"mood score failed ({type(exc).__name__}: {exc}); using the general score")
+        out = None
+    if out is None:
+        try:
+            out = _score(seconds, seed)
+        except Exception as exc:
+            log(f"score failed ({type(exc).__name__}: {exc}); using the drone")
+            out = _drone_music(seconds, seed)
     if len(out) < n:
         out = np.pad(out, ((0, n - len(out)), (0, 0)))
     out = out[:n]
