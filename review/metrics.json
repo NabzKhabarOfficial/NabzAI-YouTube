@@ -1,22 +1,22 @@
 {
-  "duration_seconds": 29.83,
+  "duration_seconds": 35.8,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 14.11,
+  "file_mb": 16.76,
   "audio": {
-    "mean_volume": -21.6,
-    "max_volume": -0.4
+    "mean_volume": -22.2,
+    "max_volume": -0.5
   },
   "image_sources": [
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare"
+    "horde",
+    "horde",
+    "horde",
+    "horde",
+    "horde",
+    "horde"
   ],
   "quality_passed": true,
-  "story_id": "db-cooper",
-  "story_bank": "Story bank: 50 of 60 stories left (next: flight-19, dancing-plague-1518, lead-masks)"
+  "story_id": "flight-19",
+  "story_bank": "Story bank: 49 of 60 stories left (next: dancing-plague-1518, lead-masks, hinterkaifeck)"
 }
