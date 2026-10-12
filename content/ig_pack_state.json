@@ -152,11 +152,14 @@
         },
         "hinterkaifeck": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-          "duration": 42.3,
+          "duration": 47.67,
           "check_words": [
-            "متهم"
+            "فقط",
+            "غذا",
+            "قصد"
           ],
-          "at": "2026-10-11T19:21+03:30"
+          "audio_v": 3,
+          "at": "2026-10-12T16:06+03:30"
         }
       },
       "done": false,
