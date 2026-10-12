@@ -20,6 +20,7 @@ the unofficial way, which is switched off for good. Now every EVENING reel also 
 Instagram Story 15 minutes after it airs, through the same official Buffer API: the first
 STORY_SECONDS of the reel itself (hook, picture and captions; it stops mid-story, so viewers go
 to the page for the rest). Stories only use queue room the reels leave; NABZ_STORIES=0 turns them off.
+When Buffer refuses a story, its answer is kept in the state file (story_errors) for the review.
 
 Queue room (Oct 12 2026): six slide posts sat in the 10-place queue up to two weeks ahead, so
 there was no room for the first story. Slide posts now go to Buffer at most CAR_AHEAD_DAYS before
@@ -219,27 +220,39 @@ def create_post(channel: str, text: str, video_url: str, due: datetime) -> dict:
 
 def create_story(channel: str, video_url: str, due: datetime) -> dict:
     """An Instagram Story (video, 9:16) published automatically. Instagram's API takes no text or
-    stickers on a story, so everything the viewer sees is in the video itself."""
-    base = {"channelId": channel, "schedulingType": "automatic", "mode": "customScheduled",
-            "dueAt": due.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
-            "assets": [{"video": {"url": video_url}}]}
-    last = ""
-    for meta in ({"type": "story", "shouldShareToFeed": False}, {"type": "story"}):
-        for text in ("", None):
-            payload = dict(base, metadata={"instagram": meta})
-            if text is not None:
-                payload["text"] = text
-            try:
-                res = gql(CREATE, {"input": payload})["createPost"]
-            except BufferError as exc:
-                last = str(exc)
-                continue
-            if res.get("post"):
-                return res["post"]
-            last = res.get("message") or "unknown error"
-            if "limit" in last.lower():
-                raise BufferError(f"LIMIT: {last}")
-    raise BufferError(last)
+    stickers on a story, so everything the viewer sees is in the video itself. A few accepted
+    shapes are tried; every refusal is collected so the reason can be read in the state file."""
+    due_s = due.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+    metas = [{"type": "story", "shouldShareToFeed": False},
+             {"type": "story", "shouldShareToFeed": False, "isAiGenerated": True},
+             {"type": "story", "shouldShareToFeed": True}]
+    assets = [{"url": video_url}, {"url": video_url, "metadata": {"thumbnailOffset": 0}}]
+    errors = []
+    for mi, meta in enumerate(metas):
+        for ai, asset in enumerate(assets):
+            for text in (None, "", "🔎"):
+                payload = {"channelId": channel, "schedulingType": "automatic", "mode": "customScheduled",
+                           "dueAt": due_s, "assets": [{"video": asset}], "metadata": {"instagram": meta}}
+                if text is not None:
+                    payload["text"] = text
+                tag = f"m{mi}a{ai}t{'-' if text is None else len(text)}"
+                try:
+                    res = gql(CREATE, {"input": payload})["createPost"]
+                except BufferError as exc:
+                    errors.append(f"{tag}: {str(exc)[:160]}")
+                    continue
+                if res.get("post"):
+                    if errors:
+                        log(f"story accepted as {tag} after: {' | '.join(errors)[:400]}")
+                    return res["post"]
+                msg = res.get("message") or "unknown error"
+                if "limit" in msg.lower():
+                    raise BufferError(f"LIMIT: {msg}")
+                errors.append(f"{tag}: {msg[:160]}")
+                if len(errors) >= 2 and all(e.split(": ", 1)[1] == errors[0].split(": ", 1)[1] for e in errors):
+                    if len(errors) >= 4:  # the same answer every time: the shape is not the problem
+                        raise BufferError(" | ".join(errors)[:900])
+    raise BufferError(" | ".join(errors)[:900])
 
 
 def create_carousel(channel: str, text: str, image_urls: list[str], due: datetime) -> dict:
@@ -1012,6 +1025,7 @@ def run(state: dict, org: str, channel: str) -> None:
             if item.get("kind") != "story":
                 raise
             log(f"story clip {item['stem']} not made ({type(exc).__name__}: {str(exc)[:160]})")
+            state.setdefault("story_errors", {})[item["stem"]] = f"clip: {type(exc).__name__}: {str(exc)[:400]}"
             return []
 
     if not batch:
@@ -1070,7 +1084,9 @@ def run(state: dict, org: str, channel: str) -> None:
                 log(f"Buffer queue is full: {exc}")
                 break
             if reel.get("kind") == "story":  # a refused story never counts as a failed run
-                log(f"Buffer refused the story {reel['stem']}: {str(exc)[:300]}")
+                log(f"Buffer refused the story {reel['stem']}: {str(exc)[:600]}")
+                state.setdefault("story_errors", {})[reel["stem"]] = str(exc)[:900]
+                save_state(state)
                 continue
             warn("Buffer refused a reel", f"{reel['stem']}: {str(exc)[:300]}")
             failed = f"Buffer refused {reel['stem']}: {str(exc)[:200]}"
@@ -1078,6 +1094,8 @@ def run(state: dict, org: str, channel: str) -> None:
         except Exception as exc:
             if reel.get("kind") == "story":
                 log(f"story {reel['stem']} not sent ({type(exc).__name__}: {str(exc)[:200]})")
+                state.setdefault("story_errors", {})[reel["stem"]] = f"{type(exc).__name__}: {str(exc)[:600]}"
+                save_state(state)
                 continue
             warn("Reel not sent", f"{reel['stem']}: {type(exc).__name__}: {str(exc)[:300]}")
             failed = f"{reel['stem']}: {type(exc).__name__}: {str(exc)[:200]}"
@@ -1086,6 +1104,7 @@ def run(state: dict, org: str, channel: str) -> None:
                               "url": url, "cap": text_hash(cap), "kind": reel.get("kind", "reel"),
                               "audio_v": int(reel.get("audio_v", 1)),
                               "at": now.astimezone(TEHRAN).isoformat(timespec="minutes")}
+        (state.get("story_errors") or {}).pop(reel["stem"], None)
         save_state(state)
         made += 1
         log(f"scheduled in Buffer: {reel['stem']} at {due.astimezone(TEHRAN):%a %Y-%m-%d %H:%M} Tehran")
