@@ -121,15 +121,20 @@
       "built": {
         "mh370": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-          "duration": 39.57,
+          "duration": 42.2,
           "check_words": [],
-          "at": "2026-10-11T19:05+03:30"
+          "audio_v": 2,
+          "at": "2026-10-12T13:53+03:30"
         },
         "dancing-plague-1518": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-          "duration": 41.97,
-          "check_words": [],
-          "at": "2026-10-11T19:09+03:30"
+          "duration": 40.9,
+          "check_words": [
+            "بعد",
+            "پزشک‌ها"
+          ],
+          "audio_v": 2,
+          "at": "2026-10-12T14:10+03:30"
         },
         "hinterkaifeck": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
@@ -138,6 +143,16 @@
             "متهم"
           ],
           "at": "2026-10-11T19:21+03:30"
+        },
+        "flight-19": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 49.13,
+          "check_words": [
+            "بودند",
+            "قطب‌نماها"
+          ],
+          "audio_v": 2,
+          "at": "2026-10-12T13:42+03:30"
         }
       },
       "done": false,
