@@ -7,8 +7,8 @@ them himself in Meta Business Suite (or the Instagram app's Schedule option).
 One run (workflow ig-pack.yml) does:
   1. Plans the target week (next Monday .. Sunday): 2 or 3 reels a day, each one a different,
      fact-checked story from content/mysteries_fa.json that was never posted or packed before.
-     Posting times move every day (13:00-14:10 and 20:30-22:40 Tehran, plus 21:40-22:55 for a
-     third reel), never the same minute two days running.
+     Posting times: from the week of Oct 19 2026 the owner's golden hours per weekday (GOLDEN);
+     before that (and for 3 reels a day) 13:00-14:10 and 20:30-22:40 Tehran, plus 21:40-22:55.
   2. Builds every planned reel that is not built yet: fresh AI pictures, the deep Gemini voice
      (ONE request per reel: the whole script is read in one go and cut back into beats with the
      listening model, then checked word by word), Persian captions, cover. 1080x1920, H.264 + AAC, 15-90 s, checked.
@@ -87,6 +87,20 @@ SLOTS = {
     3: [(12 * 60 + 50, 14 * 60 + 10), (19 * 60 + 50, 21 * 60), (21 * 60 + 40, 22 * 60 + 55)],
 }
 MIN_DAY_SHIFT = 4  # minutes: the same slot never repeats yesterday's time this closely
+
+# Owner's golden hours (Oct 12 2026), Tehran, per weekday (Monday = 0): [day slot, night slot].
+# A range is used as given; a single time gets +-5 minutes so posts do not look automated.
+# Friday's day time is 10:00 (the owner's second Friday time, 18:00, is not used with 2 reels a day).
+GOLDEN = {
+    5: [(10 * 60 + 30, 14 * 60 + 30), (21 * 60 + 25, 21 * 60 + 35)],  # Saturday
+    6: [(14 * 60, 15 * 60 + 30), (20 * 60 + 55, 21 * 60 + 5)],         # Sunday
+    0: [(13 * 60 + 25, 13 * 60 + 35), (17 * 60 + 55, 18 * 60 + 5)],    # Monday
+    1: [(13 * 60 + 10, 14 * 60), (20 * 60 + 55, 21 * 60 + 5)],         # Tuesday
+    2: [(13 * 60 + 30, 16 * 60), (18 * 60 + 55, 19 * 60 + 5)],         # Wednesday
+    3: [(13 * 60 + 45, 15 * 60), (22 * 60 + 45, 22 * 60 + 55)],        # Thursday
+    4: [(9 * 60 + 55, 10 * 60 + 5), (22 * 60 + 5, 22 * 60 + 15)],      # Friday
+}
+GOLDEN_FROM = date(2026, 10, 19)  # weeks already planned and queued in Buffer keep their times
 
 WEEKDAYS_FA = ["دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه", "یکشنبه"]
 BRAND_TAGS = ["#نبض_معما", "#معما"]
@@ -174,8 +188,20 @@ def fa_digits(text: str) -> str:
     return str(text).translate(str.maketrans("0123456789", "۰۱۲۳۴۵۶۷۸۹"))
 
 
+def golden_times(week: date) -> list[list[str]]:
+    """Seven days of the owner's golden posting times (2 a day), reproducible for a week."""
+    rng = random.Random(f"nabz-ig-golden-{week.isoformat()}")
+    days = []
+    for day in range(7):
+        wins = GOLDEN[(week + timedelta(days=day)).weekday()]
+        days.append([f"{t // 60:02d}:{t % 60:02d}" for t in (rng.randint(lo, hi) for lo, hi in wins)])
+    return days
+
+
 def schedule_times(week: date, per_day: int) -> list[list[str]]:
     """Seven days of posting times ("HH:MM"), shifted every day, reproducible for a week."""
+    if per_day == 2 and week >= GOLDEN_FROM:
+        return golden_times(week)
     rng = random.Random(f"nabz-ig-{week.isoformat()}-{per_day}")
     slots = SLOTS[per_day]
     days, prev = [], [None] * len(slots)
