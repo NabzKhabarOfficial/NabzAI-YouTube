@@ -299,6 +299,12 @@ def _huggingface(prompt: str, seed: int) -> Image.Image:
     raise RuntimeError(" | ".join(errors))
 
 
+def _horde(prompt: str, seed: int) -> Image.Image:
+    """AI Horde (free volunteer GPUs, src.horde): last resort when every free quota is used up."""
+    from src import horde
+    return _valid_image(horde.generate(prompt, seed))
+
+
 def cover(img: Image.Image, size=(W, H)) -> Image.Image:
     return ImageOps.fit(img, size, method=Image.LANCZOS, centering=(0.5, 0.45))
 
@@ -311,9 +317,9 @@ def generate_image(prompt: str, seed: int, target: Path) -> str:
     marker = target.with_suffix(".key")
     if target.exists() and marker.exists() and marker.read_text() == key:
         return "cache"
-    providers = [p.strip() for p in os.getenv("NABZ_IMAGE_PROVIDERS", "hfspace,cloudflare,pollinations,huggingface").split(",") if p.strip()]
+    providers = [p.strip() for p in os.getenv("NABZ_IMAGE_PROVIDERS", "hfspace,cloudflare,pollinations,huggingface,horde").split(",") if p.strip()]
     funcs = {"hfspace": _hf_space, "cloudflare": _cloudflare, "pollinations": _pollinations,
-             "huggingface": _huggingface}
+             "huggingface": _huggingface, "horde": _horde}
     errors = []
     for name in providers:
         if name not in funcs:
