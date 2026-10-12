@@ -72,6 +72,7 @@ FA_BANK = ROOT / "content" / "mysteries_fa.json"
 STATS_FILE = ROOT / "content" / "ig_stats.json"
 REPORT_MD = ROOT / "review" / "ig_weekly.md"
 FAIL_ALERT = 3
+PUSH_TRIES = 4  # GitHub now and then refuses a push for a moment ("fatal error in commit_refs", Oct 12 2026)
 
 
 def log(msg: str) -> None:
@@ -342,10 +343,19 @@ def publish_site(files: list[Path], films_html: str = "", covers: dict | None = 
     run("git", "add", "-A")
     run("git", "commit", "-q", "-m", f"reels on {now_utc():%Y-%m-%d %H:%M} UTC")
     url = f"https://x-access-token:{pat}@github.com/{SITE_REPO}.git"
-    proc = subprocess.run(["git", "push", "-q", "--force", url, "main:main"], cwd=site, env=env,
-                          capture_output=True, text=True)
-    if proc.returncode != 0:
-        raise RuntimeError("push to nabz-reels failed: " + proc.stderr.replace(pat, "***")[:300])
+    err = ""
+    for attempt in range(PUSH_TRIES):
+        proc = subprocess.run(["git", "push", "-q", "--force", url, "main:main"], cwd=site, env=env,
+                              capture_output=True, text=True)
+        if proc.returncode == 0:
+            if attempt:
+                log(f"push to nabz-reels worked on try {attempt + 1}")
+            return
+        err = proc.stderr.replace(pat, "***")[:300]
+        log(f"push to nabz-reels failed (try {attempt + 1}/{PUSH_TRIES}): {err[:200]}")
+        if attempt < PUSH_TRIES - 1:
+            time.sleep(30 * (attempt + 1))
+    raise RuntimeError("push to nabz-reels failed: " + err)
 
 
 def url_ready(url: str, size: int) -> bool:
