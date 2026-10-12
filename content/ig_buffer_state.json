@@ -12,7 +12,8 @@
     "02_2026-10-12_2049_flight-19": {
       "post_id": "6acb13beed92ed8fa5ef9da1",
       "due": "2026-10-12T20:49:00+03:30",
-      "status": "scheduled",
+      "status": "deleted",
+      "note": "Oct 12: removed from Buffer by the owner (old voice); rebuilt as 02_2026-10-16_1745_flight-19",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2049_flight-19.mp4",
       "at": "2026-10-10T23:22+03:30",
       "cap": "58d64045b536"
