@@ -124,9 +124,13 @@
     "car_jiroft",
     "car_peter-bergmann"
   ],
-  "films_page": "e23a22660aa8",
+  "films_page": "61046d3ed8bb",
   "fail_streak": 0,
   "fail_alerted": false,
   "report_week": "2026-10-12",
-  "last_fail": "RuntimeError: push to nabz-reels failed: remote: fatal error in commit_refs        \nTo https://github.com/NabzKhabarOfficial/nabz-reels.git\n ! [remote rejected] main -> main (failure)\nerror: failed to push some ref"
+  "last_fail": "RuntimeError: push to nabz-reels failed: remote: fatal error in commit_refs        \nTo https://github.com/NabzKhabarOfficial/nabz-reels.git\n ! [remote rejected] main -> main (failure)\nerror: failed to push some ref",
+  "story_errors": {
+    "03_2026-10-13_1353_mh370_story": "clip: FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'",
+    "04_2026-10-13_2031_dancing-plague-1518_story": "clip: FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'"
+  }
 }
