@@ -219,6 +219,10 @@ def gh(*args, check=True) -> subprocess.CompletedProcess:
 
 
 def stem(item: dict) -> str:
+    """File name of a reel in the release. A plan item may name an already finished video
+    ("file"), e.g. a reel moved to a new time without building it again (Oct 12 2026)."""
+    if item.get("file"):
+        return str(item["file"])
     return f"{item['n']:02d}_{item['date']}_{item['time'].replace(':', '')}_{item['id']}"
 
 
