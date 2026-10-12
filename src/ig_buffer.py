@@ -21,6 +21,11 @@ Instagram Story 15 minutes after it airs, through the same official Buffer API: 
 STORY_SECONDS of the reel itself (hook, picture and captions; it stops mid-story, so viewers go
 to the page for the rest). Stories only use queue room the reels leave; NABZ_STORIES=0 turns them off.
 
+Queue room (Oct 12 2026): six slide posts sat in the 10-place queue up to two weeks ahead, so
+there was no room for the first story. Slide posts now go to Buffer at most CAR_AHEAD_DAYS before
+their time, and a slide post further away than that gives its place back (it is taken out of
+Buffer and sent again later) when a sooner reel or story needs it.
+
 Safety (Oct 10 2026):
  * STOP switch: while a file named STOP exists in the repo root, nothing new is sent to Buffer
    (reels already waiting there go out unless the owner presses "Pause queue" in Buffer).
@@ -85,6 +90,7 @@ STORIES = os.getenv("NABZ_STORIES", "1") != "0"
 STORY_SECONDS = float(os.getenv("NABZ_STORY_SECONDS", "15"))
 STORY_AFTER_MIN = 15  # the story goes up this long after its reel
 STORY_FROM_HOUR = 17  # only reels at or after this Tehran hour (the evening reel) get a story
+CAR_AHEAD_DAYS = int(os.getenv("NABZ_CAROUSEL_AHEAD_DAYS", "4"))
 
 
 def log(msg: str) -> None:
@@ -395,6 +401,29 @@ def next_carousel_slot(taken: list[datetime], due: datetime, after: datetime) ->
             return t
         t += timedelta(days=1)
     raise RuntimeError("no free slot for a slide post in the next 30 days")
+
+
+def free_far_carousels(sent: dict, waiting: list[dict], wanted: list[dict], ahead: datetime) -> list[dict]:
+    """Give queue places held by slide posts that air after `ahead` to sooner reels and stories:
+    such a slide post is removed from Buffer and forgotten here, so it is sent again later."""
+    soon = [r for r in wanted if r.get("kind") != "carousel" and due_of(r) < ahead]
+    need = len(soon) + 1 - (QUEUE_MAX - len(waiting))  # +1: keep one place free for a reel
+    if need <= 0:
+        return waiting
+    far = sorted(((datetime.fromisoformat(v["due"]), k) for k, v in sent.items()
+                  if v.get("kind") == "carousel" and v.get("status") == "scheduled"
+                  and datetime.fromisoformat(v["due"]) > ahead), reverse=True)
+    for _, key in far[:need]:
+        pid = sent[key]["post_id"]
+        try:
+            delete_post(pid)
+        except BufferError as exc:
+            log(f"slide post {key} could not be taken out of Buffer ({str(exc)[:160]})")
+            break
+        sent.pop(key, None)
+        waiting = [p for p in waiting if p.get("id") != pid]
+        log(f"slide post {key} taken out of Buffer for now (airs in more than {CAR_AHEAD_DAYS} days); it goes back later")
+    return waiting
 
 
 # ---------------------------------------------------------------- public video site
@@ -926,10 +955,23 @@ def run(state: dict, org: str, channel: str) -> None:
     except Exception as exc:  # stories never stop the reels
         log(f"stories skipped this run ({type(exc).__name__}: {str(exc)[:160]})")
     lead = now + timedelta(minutes=LEAD_MIN)
-    pending = sorted((r for r in items if r["stem"] not in sent
-                      and not (r.get("kind") == "story" and due_of(r) < lead)), key=due_of)
-    if len(waiting) >= QUEUE_MAX - 1:  # the last free place is kept for a reel, never a story
-        pending = [r for r in pending if r.get("kind") != "story"]
+    ahead = now + timedelta(days=CAR_AHEAD_DAYS)
+
+    def waiting_list(drop_stories=True):
+        out = sorted((r for r in items if r["stem"] not in sent
+                      and not (r.get("kind") == "story" and due_of(r) < lead)
+                      and not (r.get("kind") == "carousel" and due_of(r) > ahead)), key=due_of)
+        if drop_stories and len(waiting) >= QUEUE_MAX - 1:  # the last free place is kept for a reel
+            out = [r for r in out if r.get("kind") != "story"]
+        return out
+
+    if known:
+        try:
+            waiting = free_far_carousels(sent, waiting, waiting_list(False), ahead)
+            save_state(state)
+        except Exception as exc:
+            log(f"queue room not freed ({type(exc).__name__}: {str(exc)[:160]})")
+    pending = waiting_list()
     upgrades = rebuilt_reels(sent, items, now)
     room = max(0, QUEUE_MAX - len(waiting))
     log(f"{len(waiting)} post(s) waiting in Buffer, room for {room}; {len(pending)} ready post(s) not sent yet")
