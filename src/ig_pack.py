@@ -414,7 +414,9 @@ def repair_beats(beats: list[str], segs: list, seg_words: list) -> list[str]:
 
 
 AUDIO_V = 2  # Oct 11 2026: the one-take narration is no longer chopped (owner: the voice cut in and out)
-REDO_LEAD = 120  # minutes: a queued reel built the old way is rebuilt only if it airs later than this
+# Oct 12 2026: 120 -> 60 min. The 13:45 reel of Oct 12 fell inside the old 2 h window and would have
+# aired with the old voice cutting; a rebuild takes ~10 min and Buffer needs 30 min before airtime.
+REDO_LEAD = int(os.getenv("NABZ_REDO_LEAD", "60"))  # minutes: an old-way reel is rebuilt only if it airs later than this
 
 
 def _quiet_point(audio, sr: int, lo: float, hi: float) -> float:
