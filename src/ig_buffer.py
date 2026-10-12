@@ -885,7 +885,9 @@ def run(state: dict, org: str, channel: str) -> None:
     replace_videos(state, channel, upgrades)
     made = 0
     for reel, due in batch:
-        url = f"{SITE_URL}/v/{reel['stem']}.mp4"
+        v = int(reel.get("audio_v", 1))
+        # a fresh link per voice version: Buffer keeps the file it first fetched under a link
+        url = f"{SITE_URL}/v/{reel['stem']}.mp4" + (f"?v={v}" if v > 1 else "")
         try:
             if reel.get("kind") == "carousel":
                 from src import ig_slides
