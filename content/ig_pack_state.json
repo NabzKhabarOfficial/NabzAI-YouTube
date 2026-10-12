@@ -37,13 +37,15 @@
           "n": 3,
           "id": "mh370",
           "date": "2026-10-12",
-          "time": "21:40"
+          "time": "21:40",
+          "file": "03_2026-10-13_1353_mh370"
         },
         {
           "n": 2,
           "id": "flight-19",
           "date": "2026-10-13",
-          "time": "13:53"
+          "time": "13:53",
+          "file": "02_2026-10-12_2140_flight-19"
         },
         {
           "n": 4,
@@ -119,6 +121,25 @@
         }
       ],
       "built": {
+        "mh370": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 42.2,
+          "check_words": [],
+          "audio_v": 3,
+          "at": "2026-10-12T13:53+03:30"
+        },
+        "flight-19": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.53,
+          "check_words": [
+            "لاشه‌ای",
+            "برنگشتند",
+            "بودند",
+            "قطب‌نماها"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-12T14:55+03:30"
+        },
         "dancing-plague-1518": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
           "duration": 40.77,
@@ -140,7 +161,7 @@
       },
       "done": false,
       "planned_at": "2026-10-10T18:46+03:30",
-      "note": "Oct 11: noon = film story, night = mystery (swapped hinterkaifeck/lead-masks and amelia/kaz-ii). Oct 12: db-cooper and flight-19 (old voice + old script) removed from Buffer by the owner; db-cooper for Wed 10-14 17:20. Oct 12 14:30: AUDIO_V 3 (no beat ever spliced into the take). Oct 12 15:30 (owner: noon = film, night = mystery): mh370 moved to tonight 21:40 and flight-19 (film) to Tue 13:53; both rebuilt under the new times, the owner removed their old Buffer posts. hinterkaifeck still v1 (rebuilt next)."
+      "note": "Oct 11: noon = film story, night = mystery (swapped hinterkaifeck/lead-masks and amelia/kaz-ii). Oct 12: db-cooper and flight-19 (old voice + old script) removed from Buffer by the owner; db-cooper for Wed 10-14 17:20. Oct 12 14:30: AUDIO_V 3 (no beat ever spliced into the take). Oct 12 15:45 (owner: noon = film, night = mystery): mh370 tonight 21:40, flight-19 Tue 13:53. The Gemini voice quota was out, so both air their finished v3 videos (\"file\" points at them; one continuous take, the general music). hinterkaifeck still v1 (rebuilt after the quota resets)."
     }
   },
   "carousels": {
