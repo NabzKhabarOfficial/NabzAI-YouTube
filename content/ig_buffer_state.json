@@ -120,7 +120,8 @@
     "car_tarim-mummies"
   ],
   "films_page": "bf76e13fa49f",
-  "fail_streak": 0,
+  "fail_streak": 1,
   "fail_alerted": false,
-  "report_week": "2026-10-12"
+  "report_week": "2026-10-12",
+  "last_fail": "RuntimeError: push to nabz-reels failed: remote: fatal error in commit_refs        \nTo https://github.com/NabzKhabarOfficial/nabz-reels.git\n ! [remote rejected] main -> main (failure)\nerror: failed to push some ref"
 }
