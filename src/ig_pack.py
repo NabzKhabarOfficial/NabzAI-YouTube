@@ -23,6 +23,10 @@ no wrong words. A reel never falls back to another voice: when the daily free qu
 up the run stops and the next run continues. Every beat is listened to (src.voice_check); a
 beat with a doubtful word is read again with respellings, and any word still doubtful is
 listed in the pack (schedule.csv, release notes). State: content/ig_pack_state.json.
+
+Picture budget (Oct 12 2026): at most MAX_PER_DAY reels are built per Tehran day. On Oct 11 the
+pack used 11.1k of Cloudflare's 10k free neurons, and the next morning every picture service
+refused, so neither the queued reel nor the YouTube Short could be built.
 """
 from __future__ import annotations
 
@@ -64,6 +68,8 @@ TEHRAN = timezone(timedelta(hours=3, minutes=30))
 REPO = os.getenv("GITHUB_REPOSITORY", "NabzKhabarOfficial/NabzAI-YouTube")
 TIME_BUDGET = float(os.getenv("NABZ_PACK_SECONDS", str(4.4 * 3600)))  # stop starting new reels after this
 REEL_SECONDS = 420  # a reel needs up to ~7 minutes; do not start one we cannot finish
+# ~6 pictures per reel: 6 reels (36 pictures) + the daily Short (12) stay well under the free quotas
+MAX_PER_DAY = int(os.getenv("NABZ_PACK_MAX_PER_DAY", "6"))
 
 # Posting slots (Tehran): (earliest, latest) in minutes after midnight.
 SLOTS = {
@@ -195,6 +201,14 @@ def load_json(path: Path, default):
 def save_state(state: dict) -> None:
     STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
     STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def built_today(state: dict, now: datetime | None = None) -> int:
+    """Reels built (or rebuilt) today, Tehran date, across every week of the pack."""
+    today = (now or now_tehran()).date().isoformat()
+    return sum(1 for info in (state.get("weeks") or {}).values()
+               for b in (info.get("built") or {}).values()
+               if str((b or {}).get("at", "")).startswith(today))
 
 
 def used_ids(state: dict, except_week: str = "") -> set:
@@ -707,7 +721,8 @@ def finish(tag: str, week: date, info: dict) -> Path:
 # ---------------------------------------------------------------- main
 def main() -> int:
     """Owner rule (Oct 11): use the whole free daily quota. When a week is finished and quota and
-    time are left, the same run goes straight on to the next week instead of stopping."""
+    time are left, the same run goes straight on to the next week instead of stopping.
+    Oct 12: within MAX_PER_DAY reels a day (see the module notes)."""
     started = time.time()
     prepare_slides()
     forced = os.getenv("NABZ_PACK_WEEK", "").strip()
@@ -802,6 +817,9 @@ def run_week(started: float) -> bool:
             continue
         if urgent and item["id"] not in urgent:
             continue  # the rest waits until the Short has its share of the quotas
+        if built_today(state) >= MAX_PER_DAY:
+            stopped = f"{MAX_PER_DAY} reels built today (daily cap that keeps the free picture quota from running out)"
+            break
         if redo:
             log(f"{item['id']}: built with the old voice cutting; rebuilding it before it airs")
         if time.time() - started > TIME_BUDGET - REEL_SECONDS:
