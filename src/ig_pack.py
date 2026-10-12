@@ -27,6 +27,10 @@ listed in the pack (schedule.csv, release notes). State: content/ig_pack_state.j
 Picture budget (Oct 12 2026): at most MAX_PER_DAY reels are built per Tehran day. On Oct 11 the
 pack used 11.1k of Cloudflare's 10k free neurons, and the next morning every picture service
 refused, so neither the queued reel nor the YouTube Short could be built.
+
+Story lock (Oct 12 2026): only stories rewritten to the owner's six-step template, i.e. listed in
+content/story_notes_fa.json, are planned. New batches go in content/mysteries_fa_add.json and are
+merged into the bank by the next run (merge_fa_bank).
 """
 from __future__ import annotations
 
@@ -47,6 +51,10 @@ ROOT = Path(__file__).resolve().parents[1]
 STATE_FILE = ROOT / "content" / "ig_pack_state.json"
 IG_STATE = ROOT / "content" / "ig_state.json"
 FA_BANK = ROOT / "content" / "mysteries_fa.json"
+FA_ADD = ROOT / "content" / "mysteries_fa_add.json"
+NOTES = ROOT / "content" / "story_notes_fa.json"
+# Oct 12 2026: an edit on Oct 11 kept only 22 of the 63 Persian stories. Last full version:
+FA_RESTORE_REF = "9eea3697a9cfc8d7f11c7a707066eb4eb3ed9182"
 FILMS = ROOT / "content" / "ig_films_fa.json"
 # Owner's choice (Oct 11): noon = a true story that became a film, night = a mystery. Film reels
 # look like a movie, say the «فیلم» call at the end and show it on an end card.
@@ -211,6 +219,63 @@ def built_today(state: dict, now: datetime | None = None) -> int:
                if str((b or {}).get("at", "")).startswith(today))
 
 
+def approved_ids() -> set:
+    """Stories rewritten to the owner's six-step template (they have fact notes)."""
+    return set(load_json(NOTES, {}).get("stories") or {})
+
+
+def _fa_text(stories: dict) -> str:
+    rows = [f"{json.dumps(k, ensure_ascii=False)}: {json.dumps(v, ensure_ascii=False)}" for k, v in stories.items()]
+    return '{"version": 1, "stories": {\n' + ",\n".join(rows) + "\n}}\n"
+
+
+def merge_fa_bank() -> None:
+    """Before planning: put back the Persian stories lost on Oct 11 (copy at FA_RESTORE_REF) and
+    merge a new batch from content/mysteries_fa_add.json. The new batch wins over the bank, the
+    bank wins over the old copy. The result is committed so every later job sees it."""
+    if os.getenv("GITHUB_ACTIONS") != "true":
+        return
+    try:
+        cur = load_json(FA_BANK, {}).get("stories") or {}
+        add = load_json(FA_ADD, {}).get("stories") or {}
+        old = {}
+        if len(cur) < 40:
+            proc = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw",
+                                   f"repos/{REPO}/contents/content/mysteries_fa.json?ref={FA_RESTORE_REF}"],
+                                  capture_output=True, text=True, timeout=120)
+            if proc.returncode == 0:
+                old = json.loads(proc.stdout).get("stories") or {}
+            else:
+                log(f"old Persian bank not readable: {proc.stderr.strip()[:200]}")
+        if not add and not old:
+            return
+        merged = {}
+        for src in (old, cur, add):
+            for sid in src:
+                merged.setdefault(sid, None)
+        for sid in list(merged):
+            s = add.get(sid) or cur.get(sid) or old.get(sid)
+            if not isinstance(s, dict) or str(s.get("title", "")).strip() in ("", "placeholder"):
+                merged.pop(sid)
+            else:
+                merged[sid] = s
+        FA_BANK.write_text(_fa_text(merged), encoding="utf-8")
+        log(f"Persian bank: {len(cur)} -> {len(merged)} stories ({len(add)} new, {len(old)} in the old copy)")
+        git = ["git", "-c", "user.name=github-actions[bot]",
+               "-c", "user.email=41898282+github-actions[bot]@users.noreply.github.com"]
+        if FA_ADD.exists():
+            subprocess.run(git + ["rm", "-q", "--cached", "content/mysteries_fa_add.json"], cwd=ROOT, check=False)
+            FA_ADD.unlink(missing_ok=True)
+        subprocess.run(git + ["add", "content/mysteries_fa.json"], cwd=ROOT, check=True)
+        subprocess.run(git + ["commit", "-q", "-m",
+                              "content: Persian bank merged (lost stories back, new batch in) [skip ci]"],
+                       cwd=ROOT, check=True)
+        subprocess.run(git + ["pull", "-q", "--rebase", "--autostash"], cwd=ROOT, check=False)
+        subprocess.run(git + ["push", "-q"], cwd=ROOT, check=True)
+    except Exception as exc:
+        print(f"::warning title=Persian bank merge::{type(exc).__name__}: {str(exc)[:300]}", flush=True)
+
+
 def used_ids(state: dict, except_week: str = "") -> set:
     """Every story already on Instagram or reserved by another week's pack: never reused."""
     used = set(load_json(IG_STATE, {}).get("posted", []))
@@ -228,15 +293,18 @@ def plan_week(state: dict, week: date, per_day: int, fa_bank: dict, en_ids: set,
     if key in weeks and weeks[key].get("plan"):
         return weeks[key]
     used = used_ids(state, key)
-    fresh = [sid for sid in fa_bank if sid not in used and sid in en_ids]
+    ready = approved_ids()
+    fresh = [sid for sid in fa_bank if sid not in used and sid in en_ids and sid in ready]
     want = per_day * 7
     if len(fresh) < want:
-        print(f"::warning title=Persian bank low::only {len(fresh)} unused Persian stories for "
-              f"week {key} (needed {want}); the next fact-checked batch must be written.", flush=True)
+        print(f"::warning title=Persian bank low::only {len(fresh)} unused Persian stories written to the "
+              f"six-step template for week {key} (needed {want}); the next batch must be written.", flush=True)
         if not allow_partial:  # wait for the new batch instead of locking in a short week
             return None
     if len(fresh) < 7:
-        raise RuntimeError(f"only {len(fresh)} unused Persian stories: not enough for a week")
+        print(f"::warning title=Persian bank empty::only {len(fresh)} ready Persian stories: "
+              f"week {key} waits for the next batch.", flush=True)
+        return None
     per_day = per_day if len(fresh) >= want else max(2, min(per_day, len(fresh) // 7))
     times = schedule_times(week, per_day)
     films = film_ids()
@@ -724,6 +792,7 @@ def main() -> int:
     time are left, the same run goes straight on to the next week instead of stopping.
     Oct 12: within MAX_PER_DAY reels a day (see the module notes)."""
     started = time.time()
+    merge_fa_bank()
     prepare_slides()
     forced = os.getenv("NABZ_PACK_WEEK", "").strip()
     for _ in range(3):
@@ -842,7 +911,8 @@ def run_week(started: float) -> bool:
             fails[item["id"]] = int(fails.get(item["id"], 0)) + 1
             if fails[item["id"]] >= 2:  # failed twice: give this slot to the next unused story
                 taken = used_ids(state, week.isoformat()) | {p["id"] for p in info["plan"]}
-                spare = [sid for sid in fa_bank if sid not in taken and sid in en]
+                ready = approved_ids()
+                spare = [sid for sid in fa_bank if sid not in taken and sid in en and sid in ready]
                 if spare:
                     log(f"{item['id']} failed twice; slot {item['n']} goes to {spare[0]}")
                     item["id"] = spare[0]
