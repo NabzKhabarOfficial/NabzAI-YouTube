@@ -20,9 +20,11 @@ One run (workflow ig-pack.yml) does:
 
 Voice policy (owner rule, Oct 10 2026): ONE voice on every reel, the deep Gemini narrator, and
 no wrong words. A reel never falls back to another voice: when the daily free quota is used
-up the run stops and the next run continues. Every beat is listened to (src.voice_check); a
-beat with a doubtful word is read again with respellings, and any word still doubtful is
-listed in the pack (schedule.csv, release notes). State: content/ig_pack_state.json.
+up the run stops and the next run continues. Every beat is listened to (src.voice_check).
+Oct 12 2026: the voice is ALWAYS one continuous take, never pieces glued together (a re-read
+beat spliced into the take was what still made the voice cut in and out). A take with doubtful
+words is read again whole and the better full take is kept; words still doubtful are listed in
+the pack (schedule.csv, release notes). State: content/ig_pack_state.json.
 
 Picture budget (Oct 12 2026): at most MAX_PER_DAY reels are built per Tehran day. On Oct 11 the
 pack used 11.1k of Cloudflare's 10k free neurons, and the next morning every picture service
@@ -425,9 +427,6 @@ def _is_quota(exc: BaseException) -> bool:
     return any(w in text for w in _QUOTA_WORDS)
 
 
-MAX_REPAIR_BEATS = 2  # at most this many beats of one reel are re-read (each costs voice quota)
-
-
 def _write_mono(path: Path, audio, sr: int) -> None:
     import wave
     import numpy as np
@@ -446,15 +445,12 @@ def _weak_words(text: str, wav: Path) -> list[str]:
             if vc.checkable(t, "fa") and vc.heard(t, asr, "fa") < vc.BAD]
 
 
-def repair_beats(beats: list[str], segs: list, seg_words: list) -> list[str]:
-    """Pronunciation check (owner rule: one voice, no wrong words). Every beat of the one-take
-    narration is listened to; a beat with a doubtful word is read again on its own by the SAME
-    Gemini voice, trying respellings (src.voice_check), and kept only if it is heard better.
-    Returns the words that are still doubtful (shown in the pack so they can be checked)."""
-    rf, m, _, vc = _modules()
+def check_take(beats: list[str], segs: list) -> list[str]:
+    """Listen to every beat of a take; nothing is changed, only the doubtful words are returned."""
+    rf, _, _, vc = _modules()
     if not vc.available():
         return ["(voice check unavailable)"]
-    flagged, repaired = [], 0
+    flagged = []
     for i, text in enumerate(beats):
         wav = rf.WORK / f"check_{i}.wav"
         _write_mono(wav, segs[i], rf.SR)
@@ -464,38 +460,16 @@ def repair_beats(beats: list[str], segs: list, seg_words: list) -> list[str]:
             log(f"beat {i}: listening failed ({type(exc).__name__}); not checked")
             flagged.append(f"(beat {i + 1} not checked)")
             continue
-        if not weak:
-            continue
-        log(f"beat {i}: doubtful {weak}; reading this beat again")
-        if repaired >= MAX_REPAIR_BEATS or not gemini_left():
-            flagged += weak
-            continue
-        repaired += 1
-        bw = rf.WORK / f"beat_{i}.wav"
-        say = rf.spoken(text)
-        try:
-            bwords = rf._gemini_synth(say, bw)
-            vc.review_beat(text, say.split(), bwords, bw, "fa", rf._gemini_synth)
-            weak2 = _weak_words(text, bw)
-        except Exception as exc:
-            if "out of quota" in str(exc):
-                flagged += weak
-                continue
-            log(f"beat {i}: re-read failed ({type(exc).__name__}: {str(exc)[:160]})")
-            flagged += weak
-            continue
-        if len(weak2) < len(weak):
-            new = m.read_wav(bw)
-            real = vc.align(text, bw, "fa") or m.estimate_words(text, len(new) / rf.SR)
-            segs[i] = new
-            seg_words[i] = [{"start": w["start"], "end": w["end"]} for w in real]
-            log(f"beat {i}: kept the re-read ({len(weak)} -> {len(weak2)} doubtful words)")
-            weak = weak2
+        if weak:
+            log(f"beat {i}: doubtful {weak}")
         flagged += weak
     return flagged
 
 
-AUDIO_V = 2  # Oct 11 2026: the one-take narration is no longer chopped (owner: the voice cut in and out)
+# Oct 11 2026 (v2): the one-take narration is no longer chopped and padded.
+# Oct 12 2026 (v3): a re-read beat is never spliced into the take any more; that splice (a second,
+# separate reading glued in the middle) was the cut the owner still heard in flight-19.
+AUDIO_V = 3
 # Oct 12 2026: 120 -> 60 min. The 13:45 reel of Oct 12 fell inside the old 2 h window and would have
 # aired with the old voice cutting; a rebuild takes ~10 min and Buffer needs 30 min before airtime.
 REDO_LEAD = int(os.getenv("NABZ_REDO_LEAD", "60"))  # minutes: an old-way reel is rebuilt only if it airs later than this
@@ -513,38 +487,13 @@ def _quiet_point(audio, sr: int, lo: float, hi: float) -> float:
     return (a + int(np.argmin(energy)) + win // 2) / sr
 
 
-def _soft_edges(seg, sr: int, ms: float = 10.0):
-    """Tiny fade in/out so joined pieces never click."""
+def one_take(beats: list[str], sep: str):
+    """The whole script read in ONE Gemini request, split at the quietest moment between beats
+    (for picture timing only: the pieces are consecutive slices of the same take, so put back
+    together they are exactly the original reading). Returns (segs, seg_words, flags)."""
     import numpy as np
-    seg = np.array(seg, dtype=np.float32, copy=True)
-    n = min(len(seg) // 4, int(ms * sr / 1000))
-    if n > 1:
-        seg[:n] *= np.linspace(0.0, 1.0, n, dtype=np.float32)
-        seg[-n:] *= np.linspace(1.0, 0.0, n, dtype=np.float32)
-    return seg
-
-
-def _rms(x) -> float:
-    import numpy as np
-    loud = x[np.abs(x) > 0.02 * (float(np.max(np.abs(x))) if len(x) else 0.0)]
-    return float(np.sqrt(np.mean(loud ** 2))) if len(loud) else 0.0
-
-
-def narrate_whole(beats: list[str]):
-    """The whole script in ONE Gemini request (the free tier allows ~10 a day), split into beats
-    only for timing, then every beat is pronunciation-checked. Same return value as
-    reel_fa.narrate.
-
-    Oct 11 fix (owner: "the voice cuts in and out in the middle"): the take used to be cut at the
-    listening model's word times, trimmed around each beat and glued back with added silence,
-    which clipped the start and end of words. Now the take is cut only at the quietest moment
-    between two beats and the pieces join back seamlessly, so the voice is exactly the one
-    continuous reading. A beat that had to be read again is matched in loudness, faded in and out
-    and given a short natural pause on both sides."""
-    import numpy as np
-    global LAST_FLAGS
     rf, m, _, vc = _modules()
-    say = "\n".join(rf.spoken(b) for b in beats)
+    say = sep.join(rf.spoken(b) for b in beats)
     wav = rf.WORK / "voice_all.wav"
     rf._gemini_synth(say, wav)  # voice filter + silence trim + length sanity check
     script = " ".join(beats)
@@ -576,27 +525,49 @@ def narrate_whole(beats: list[str]):
         seg_words.append([{"start": min(max(0.0, w["start"] - start), end - start - 0.05),
                            "end": min(max(0.05, w["end"] - start), end - start)}
                           for w in real[first:last + 1]])
-    original = list(segs)
-    LAST_FLAGS = repair_beats(beats, segs, seg_words)
-    pause = np.zeros(int(0.12 * sr), dtype=np.float32)
+    return segs, seg_words, check_take(beats, segs)
+
+
+def narrate_whole(beats: list[str]):
+    """Same return value as reel_fa.narrate. The voice is ALWAYS one continuous take.
+
+    Oct 11 fix: the take is cut only at quiet points and never padded or trimmed.
+    Oct 12 fix (owner: "again it cuts in one place"): a beat with a doubtful word used to be read
+    again on its own and glued into the take: a different reading with its own pace, loudness and
+    breath, so the voice jumped there. Now nothing is ever glued in: when the take has doubtful
+    words the WHOLE script is read once more and the full take with fewer doubtful words is kept."""
+    import numpy as np
+    global LAST_FLAGS
+    rf, m, _, _ = _modules()
+    take, last_exc = None, None
+    for sep in ("\n", "\n\n"):  # a different separator = a fresh reading, not the cached one
+        if take is not None and (not take[2] or not gemini_left()):
+            break
+        try:
+            other = one_take(beats, sep)
+        except Exception as exc:
+            if _is_quota(exc) or not gemini_left():
+                if take is None:
+                    raise
+                break
+            log(f"one-take reading not usable ({type(exc).__name__}: {str(exc)[:200]})")
+            last_exc = exc
+            continue
+        if take is None or len(other[2]) < len(take[2]):
+            if take is not None:
+                log(f"second full take kept ({len(take[2])} -> {len(other[2])} doubtful words)")
+            take = other
+    if take is None:
+        raise RuntimeError(f"no clean one-take narration: {last_exc}")
+    segs, seg_words, LAST_FLAGS = take
+    sr = rf.SR
     pieces, durations, words, clock = [], [], [], 0.0
     for i, seg in enumerate(segs):
-        lead = 0.0
-        if seg is not original[i]:  # a re-read beat: same loudness as the take, soft edges, real pauses
-            want, have = _rms(original[i]), _rms(seg)
-            if want and have:
-                seg = seg * min(4.0, want / have)
-            seg = np.concatenate([pause, _soft_edges(seg, sr), pause])
-            lead = len(pause) / sr
-            if i > 0:
-                pieces[-1] = _soft_edges(pieces[-1], sr)
-        elif i > 0 and segs[i - 1] is not original[i - 1]:
-            seg = _soft_edges(seg, sr)
         if i == len(segs) - 1:
             seg = np.concatenate([seg, np.zeros(int(m.TAIL * sr), dtype=np.float32)])
         pieces.append(seg)
         for tok, w in zip(beats[i].split(), seg_words[i]):
-            words.append({"text": tok, "start": clock + lead + w["start"], "end": clock + lead + w["end"], "beat": i,
+            words.append({"text": tok, "start": clock + w["start"], "end": clock + w["end"], "beat": i,
                           "punct": bool(re.search(r"[.?!,:;،؟]$", tok))})
         dur = len(seg) / sr
         durations.append(dur)
@@ -608,8 +579,8 @@ def narrate_whole(beats: list[str]):
 
 def install_narrator(allow_edge: bool):
     """reel_fa.build asks narrate(beats, "gemini") and falls back to narrate(beats, "edge").
-    Here: Gemini one-take first, the per-beat Gemini path if the cut fails, and Edge only when
-    allowed; otherwise StopPack ends the run so the next one (new quota) continues."""
+    Here: only the Gemini one-take (never beats read separately and glued, never Edge unless
+    allowed); StopPack ends the run when the quota is out so the next one (new quota) continues."""
     rf, _, _, _ = _modules()
     original = getattr(rf, "_pack_original_narrate", None) or rf.narrate
     rf._pack_original_narrate = original
@@ -624,19 +595,11 @@ def install_narrator(allow_edge: bool):
                 if _is_quota(exc) or not gemini_left():
                     _QUOTA["hit"] = True
                     raise StopPack("Gemini voice quota is used up for now") from None
-                log(f"one-take narration not usable ({type(exc).__name__}: {str(exc)[:200]}); per beat")
-                LAST_FLAGS[:] = []  # the per-beat path runs the same voice check on every beat
-                try:
-                    return original(beats, "gemini")
-                except Exception as exc2:
-                    if _is_quota(exc2) or not gemini_left():
-                        _QUOTA["hit"] = True
-                        raise StopPack("Gemini voice quota is used up for now") from None
-                    raise
+                raise
         if not allow_edge:
             if _QUOTA["hit"] or not gemini_left():
                 raise StopPack("Gemini voice unavailable; waiting for the next quota (one voice only)")
-            raise RuntimeError("the Gemini voice could not read this story")  # a real failure
+            raise RuntimeError("the Gemini voice could not read this story in one take")  # a real failure
         return original(beats, engine)
 
     rf.narrate = narrate
@@ -822,7 +785,7 @@ def prepare_slides() -> None:
 
 
 def needs_redo(item: dict, info: dict) -> bool:
-    """A reel built before the voice fix that has not aired yet (and has time to be rebuilt)."""
+    """A reel built before the latest voice fix that has not aired yet (and has time to be rebuilt)."""
     b = (info.get("built") or {}).get(item["id"])
     if not b or int(b.get("audio_v", 1)) >= AUDIO_V or b.get("redo_failed"):
         return False
@@ -890,7 +853,7 @@ def run_week(started: float) -> bool:
             stopped = f"{MAX_PER_DAY} reels built today (daily cap that keeps the free picture quota from running out)"
             break
         if redo:
-            log(f"{item['id']}: built with the old voice cutting; rebuilding it before it airs")
+            log(f"{item['id']}: built before the latest voice fix; rebuilding it before it airs")
         if time.time() - started > TIME_BUDGET - REEL_SECONDS:
             stopped = "time limit of this run"
             break
