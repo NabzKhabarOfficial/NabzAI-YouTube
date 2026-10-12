@@ -103,6 +103,26 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-12T19:59+03:30"
+    },
+    "03_2026-10-13_1353_mh370_story": {
+      "post_id": "6acd10b3506e9770f8811178",
+      "due": "2026-10-12T21:55:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370_story.mp4",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-12T20:22+03:30"
+    },
+    "04_2026-10-13_2031_dancing-plague-1518_story": {
+      "post_id": "6acd10b48e6385bb129fff9f",
+      "due": "2026-10-13T20:46:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518_story.mp4",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-12T20:22+03:30"
     }
   },
   "deleted_by_owner": {
@@ -129,8 +149,5 @@
   "fail_alerted": false,
   "report_week": "2026-10-12",
   "last_fail": "RuntimeError: push to nabz-reels failed: remote: fatal error in commit_refs        \nTo https://github.com/NabzKhabarOfficial/nabz-reels.git\n ! [remote rejected] main -> main (failure)\nerror: failed to push some ref",
-  "story_errors": {
-    "03_2026-10-13_1353_mh370_story": "clip: FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'",
-    "04_2026-10-13_2031_dancing-plague-1518_story": "clip: FileNotFoundError: [Errno 2] No such file or directory: 'ffmpeg'"
-  }
+  "story_errors": {}
 }
