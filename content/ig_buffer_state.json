@@ -13,7 +13,7 @@
       "post_id": "6acb13beed92ed8fa5ef9da1",
       "due": "2026-10-12T20:49:00+03:30",
       "status": "deleted",
-      "note": "Oct 12: removed from Buffer by the owner (old voice); rebuilt as 02_2026-10-16_1745_flight-19",
+      "note": "Oct 12: removed from Buffer by the owner (old voice)",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2049_flight-19.mp4",
       "at": "2026-10-10T23:22+03:30",
       "cap": "58d64045b536"
@@ -29,7 +29,8 @@
     "03_2026-10-13_1353_mh370": {
       "post_id": "6accc7ddfcd88e54a9450ca0",
       "due": "2026-10-13T13:53:00+03:30",
-      "status": "scheduled",
+      "status": "deleted",
+      "note": "Oct 12 15:30: removed from Buffer by the owner; mh370 moved to tonight 21:40 (03_2026-10-12_2140_mh370), noon is for film stories",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370.mp4?v=3",
       "cap": "d3af17fe0ca4",
       "kind": "reel",
@@ -114,7 +115,8 @@
     "02_2026-10-12_2140_flight-19": {
       "post_id": "6accc7df5e5ffb1101e55175",
       "due": "2026-10-12T21:40:00+03:30",
-      "status": "scheduled",
+      "status": "deleted",
+      "note": "Oct 12 15:30: removed from Buffer by the owner; flight-19 (film story) moved to Tue 13:53 (02_2026-10-13_1353_flight-19), night is for mysteries",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2140_flight-19.mp4?v=3",
       "cap": "2b12188b1876",
       "kind": "reel",
