@@ -27,14 +27,14 @@
       "at": "2026-10-11T14:52+03:30"
     },
     "03_2026-10-13_1353_mh370": {
-      "post_id": "6accba5c345876bd4e79b2a5",
+      "post_id": "6accc7ddfcd88e54a9450ca0",
       "due": "2026-10-13T13:53:00+03:30",
       "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370.mp4?v=2",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370.mp4?v=3",
       "cap": "d3af17fe0ca4",
       "kind": "reel",
       "at": "2026-10-11T19:12+03:30",
-      "audio_v": 2
+      "audio_v": 3
     },
     "car_peter-bergmann": {
       "post_id": "6acbaeb6d9cab260a701842e",
@@ -46,14 +46,14 @@
       "at": "2026-10-11T19:12+03:30"
     },
     "04_2026-10-13_2031_dancing-plague-1518": {
-      "post_id": "6accba5def5f249c062a8159",
+      "post_id": "6accc7de0543a6114d42a26d",
       "due": "2026-10-13T20:31:00+03:30",
       "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518.mp4?v=2",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518.mp4?v=3",
       "cap": "e57ae173ea12",
       "kind": "reel",
       "at": "2026-10-11T19:12+03:30",
-      "audio_v": 2
+      "audio_v": 3
     },
     "car_jiroft": {
       "post_id": "6acbaeb7b07d37ac97afe17c",
@@ -112,13 +112,13 @@
       "at": "2026-10-12T13:00+03:30"
     },
     "02_2026-10-12_2140_flight-19": {
-      "post_id": "6accba5e345876bd4e79b351",
+      "post_id": "6accc7df5e5ffb1101e55175",
       "due": "2026-10-12T21:40:00+03:30",
       "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2140_flight-19.mp4",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2140_flight-19.mp4?v=3",
       "cap": "2b12188b1876",
       "kind": "reel",
-      "audio_v": 2,
+      "audio_v": 3,
       "at": "2026-10-12T14:14+03:30"
     }
   },
@@ -137,7 +137,7 @@
     "car_peter-bergmann",
     "car_tarim-mummies"
   ],
-  "films_page": "bf76e13fa49f",
+  "films_page": "f9e4f37c0ae2",
   "fail_streak": 0,
   "fail_alerted": false,
   "report_week": "2026-10-12"
