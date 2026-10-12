@@ -128,13 +128,13 @@
         },
         "dancing-plague-1518": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-          "duration": 40.9,
+          "duration": 40.77,
           "check_words": [
-            "بعد",
+            "می‌رقصاند",
             "پزشک‌ها"
           ],
-          "audio_v": 2,
-          "at": "2026-10-12T14:10+03:30"
+          "audio_v": 3,
+          "at": "2026-10-12T15:04+03:30"
         },
         "hinterkaifeck": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
@@ -146,13 +146,15 @@
         },
         "flight-19": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-          "duration": 49.13,
+          "duration": 45.53,
           "check_words": [
+            "لاشه‌ای",
+            "برنگشتند",
             "بودند",
             "قطب‌نماها"
           ],
-          "audio_v": 2,
-          "at": "2026-10-12T13:42+03:30"
+          "audio_v": 3,
+          "at": "2026-10-12T14:55+03:30"
         }
       },
       "done": false,
