@@ -21,6 +21,8 @@ Instagram Story 15 minutes after it airs, through the same official Buffer API: 
 STORY_SECONDS of the reel itself (hook, picture and captions; it stops mid-story, so viewers go
 to the page for the rest). Stories only use queue room the reels leave; NABZ_STORIES=0 turns them off.
 When Buffer refuses a story, its answer is kept in the state file (story_errors) for the review.
+The buffer job has no system ffmpeg (Oct 12 2026): the clip is cut with imageio-ffmpeg, which is
+installed on the fly when it is missing.
 
 Queue room (Oct 12 2026): six slide posts sat in the 10-place queue up to two weeks ahead, so
 there was no room for the first story. Slide posts now go to Buffer at most CAR_AHEAD_DAYS before
@@ -321,12 +323,34 @@ def story_items(sent: dict, now: datetime) -> list[dict]:
     return out
 
 
+_FFMPEG = ""
+
+
 def _ffmpeg() -> str:
+    """An ffmpeg that really runs. The buffer job installs nothing, so imageio-ffmpeg (a pip wheel
+    with its own ffmpeg) is installed on the fly when neither it nor a system ffmpeg is there."""
+    global _FFMPEG
+    if _FFMPEG:
+        return _FFMPEG
     try:
         from imageio_ffmpeg import get_ffmpeg_exe
-        return get_ffmpeg_exe()
+        _FFMPEG = get_ffmpeg_exe()
+        return _FFMPEG
     except Exception:
-        return "ffmpeg"
+        pass
+    if shutil.which("ffmpeg"):
+        _FFMPEG = shutil.which("ffmpeg")
+        return _FFMPEG
+    log("no ffmpeg here: installing imageio-ffmpeg for the story clips")
+    proc = subprocess.run([sys.executable, "-m", "pip", "install", "-q", "imageio-ffmpeg"],
+                          capture_output=True, text=True, timeout=300)
+    if proc.returncode != 0:
+        raise RuntimeError("imageio-ffmpeg could not be installed: " + proc.stderr.strip()[-300:])
+    import importlib
+    importlib.invalidate_caches()
+    from imageio_ffmpeg import get_ffmpeg_exe
+    _FFMPEG = get_ffmpeg_exe()
+    return _FFMPEG
 
 
 def story_clip(item: dict) -> Path:
