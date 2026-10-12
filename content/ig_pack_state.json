@@ -36,8 +36,8 @@
         {
           "n": 1,
           "id": "db-cooper",
-          "date": "2026-10-12",
-          "time": "13:45"
+          "date": "2026-10-14",
+          "time": "17:20"
         },
         {
           "n": 2,
@@ -119,12 +119,6 @@
         }
       ],
       "built": {
-        "db-cooper": {
-          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
-          "duration": 39.43,
-          "check_words": [],
-          "at": "2026-10-10T18:51+03:30"
-        },
         "flight-19": {
           "voice": "gemini:gemini-3.8-flash-tts:Algenib",
           "duration": 43.1,
@@ -156,7 +150,7 @@
       },
       "done": false,
       "planned_at": "2026-10-10T18:46+03:30",
-      "note": "Oct 11: noon = film story, night = mystery (swapped hinterkaifeck/lead-masks and amelia/kaz-ii)"
+      "note": "Oct 11: noon = film story, night = mystery (swapped hinterkaifeck/lead-masks and amelia/kaz-ii). Oct 12: db-cooper (old voice + old script, no picture quota left to rebuild) removed from Buffer by the owner; built fresh and moved to Wed 10-14 17:20."
     }
   },
   "carousels": {

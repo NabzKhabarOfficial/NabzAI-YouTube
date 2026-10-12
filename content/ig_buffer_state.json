@@ -3,7 +3,8 @@
     "01_2026-10-12_1345_db-cooper": {
       "post_id": "6acb13bced92ed8fa5ef9d76",
       "due": "2026-10-12T13:45:00+03:30",
-      "status": "scheduled",
+      "status": "deleted",
+      "note": "Oct 12: removed from Buffer by the owner (old voice); rebuilt as 01_2026-10-14_1720_db-cooper",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-12_1345_db-cooper.mp4",
       "at": "2026-10-10T22:49+03:30",
       "cap": "492dfffdfbb7"
