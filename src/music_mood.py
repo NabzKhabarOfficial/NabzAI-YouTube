@@ -14,6 +14,7 @@ its title, tags and pictures. Everything is made with numpy (free, offline, no q
 range phone speakers can play. src.mystery_short.make_music asks score(seconds, seed); the
 story is found from the seed (the Short uses sha1(id), the Persian reel sha1(id) + 11), so no
 caller has to change. Any problem returns None and the old score is used.
+The seed map covers content/mysteries.json AND content/mysteries_add.json (extra stories).
 """
 from __future__ import annotations
 
@@ -26,6 +27,7 @@ import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
 BANK = ROOT / "content" / "mysteries.json"
+BANK_ADD = ROOT / "content" / "mysteries_add.json"
 SR = 44100
 
 MOODS = {
@@ -76,15 +78,19 @@ def mood_of(story: dict) -> str:
     return "vanish"
 
 
+def _stories_of(path: Path) -> list:
+    try:
+        stories = json.loads(path.read_text(encoding="utf-8")).get("stories") or []
+    except Exception:
+        return []
+    return [s for s in stories if isinstance(s, dict) and s.get("id")]
+
+
 def _seed_map() -> dict:
     global _SEEDS
     if _SEEDS is None:
         _SEEDS = {}
-        try:
-            stories = json.loads(BANK.read_text(encoding="utf-8"))["stories"]
-        except Exception:
-            stories = []
-        for s in stories:
+        for s in _stories_of(BANK) + _stories_of(BANK_ADD):
             base = int(hashlib.sha1(s["id"].encode()).hexdigest()[:6], 16)
             mood = mood_of(s)
             for k in (0, 11):  # the Short, the Persian reel
