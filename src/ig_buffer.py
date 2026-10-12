@@ -10,8 +10,16 @@ Every run:
  4. records everything in content/ig_buffer_state.json.
 
 A reel whose time already passed before it could be sent gets the next free slot (13:00-14:10 or
-20:30-22:40 Tehran, never closer than 3 hours to another reel). The free plan's limits: 10 posts
+20:30-22:40 Tehran, never closer than GAP_MIN to another reel). The free plan's limits: 10 posts
 waiting at a time (refilled as they go out) and 3,000 API calls a month (a run uses ~5).
+Oct 12 2026: GAP_MIN 180 -> 150 min, so the owner's golden hours (e.g. Wednesday 16:00 and 19:00)
+are never moved.
+
+Stories (Oct 12 2026, owner: "the page has no stories any more"): the old stories were posted
+the unofficial way, which is switched off for good. Now every EVENING reel also gets an
+Instagram Story 15 minutes after it airs, through the same official Buffer API: the first
+STORY_SECONDS of the reel itself (hook, picture and captions; it stops mid-story, so viewers go
+to the page for the rest). Stories only use queue room the reels leave; NABZ_STORIES=0 turns them off.
 
 Safety (Oct 10 2026):
  * STOP switch: while a file named STOP exists in the repo root, nothing new is sent to Buffer
@@ -63,7 +71,7 @@ LEAD_MIN = 30  # a post is created at least this long before its time
 STUCK_MIN = 20  # a post still in the Buffer queue this long after its time did not publish
 MAX_NEW = int(os.getenv("NABZ_BUFFER_MAX_NEW", "10"))  # NABZ_BUFFER_MAX_NEW=1 for a first test
 SLOTS = [(13 * 60, 14 * 60 + 10), (20 * 60 + 30, 22 * 60 + 40)]
-GAP_MIN = 180
+GAP_MIN = 150
 STOP_FILE = ROOT / "STOP"
 CAPTIONS = ROOT / "content" / "ig_captions_fa.json"
 FILMS = ROOT / "content" / "ig_films_fa.json"
@@ -73,6 +81,10 @@ STATS_FILE = ROOT / "content" / "ig_stats.json"
 REPORT_MD = ROOT / "review" / "ig_weekly.md"
 FAIL_ALERT = 3
 PUSH_TRIES = 4  # GitHub now and then refuses a push for a moment ("fatal error in commit_refs", Oct 12 2026)
+STORIES = os.getenv("NABZ_STORIES", "1") != "0"
+STORY_SECONDS = float(os.getenv("NABZ_STORY_SECONDS", "15"))
+STORY_AFTER_MIN = 15  # the story goes up this long after its reel
+STORY_FROM_HOUR = 17  # only reels at or after this Tehran hour (the evening reel) get a story
 
 
 def log(msg: str) -> None:
@@ -199,6 +211,31 @@ def create_post(channel: str, text: str, video_url: str, due: datetime) -> dict:
     raise BufferError(last)
 
 
+def create_story(channel: str, video_url: str, due: datetime) -> dict:
+    """An Instagram Story (video, 9:16) published automatically. Instagram's API takes no text or
+    stickers on a story, so everything the viewer sees is in the video itself."""
+    base = {"channelId": channel, "schedulingType": "automatic", "mode": "customScheduled",
+            "dueAt": due.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z"),
+            "assets": [{"video": {"url": video_url}}]}
+    last = ""
+    for meta in ({"type": "story", "shouldShareToFeed": False}, {"type": "story"}):
+        for text in ("", None):
+            payload = dict(base, metadata={"instagram": meta})
+            if text is not None:
+                payload["text"] = text
+            try:
+                res = gql(CREATE, {"input": payload})["createPost"]
+            except BufferError as exc:
+                last = str(exc)
+                continue
+            if res.get("post"):
+                return res["post"]
+            last = res.get("message") or "unknown error"
+            if "limit" in last.lower():
+                raise BufferError(f"LIMIT: {last}")
+    raise BufferError(last)
+
+
 def create_carousel(channel: str, text: str, image_urls: list[str], due: datetime) -> dict:
     """An Instagram photo carousel (2-10 slides, 4:5). The slides are drawn text, not AI pictures."""
     payload = {"text": text, "channelId": channel, "schedulingType": "automatic", "mode": "customScheduled",
@@ -247,6 +284,49 @@ def built_carousels() -> list[dict]:
             for p in items if p.get("slides")]
 
 
+def story_items(sent: dict, now: datetime) -> list[dict]:
+    """One story per evening reel that is in Buffer (scheduled or just sent), at reel time + 15 min."""
+    if not STORIES:
+        return []
+    by_stem = {r["stem"]: r for r in built_reels()}
+    out = []
+    for key, rec in sent.items():
+        if rec.get("kind", "reel") != "reel" or rec.get("status") not in ("scheduled", "sent") or key not in by_stem:
+            continue
+        due = datetime.fromisoformat(rec["due"]) + timedelta(minutes=STORY_AFTER_MIN)
+        local = due.astimezone(TEHRAN)
+        if local.hour < STORY_FROM_HOUR or due < now - timedelta(hours=2):
+            continue
+        out.append({"kind": "story", "stem": f"{key}_story", "reel": by_stem[key], "tag": by_stem[key]["tag"],
+                    "date": local.date().isoformat(), "time": local.strftime("%H:%M"), "id": by_stem[key]["id"]})
+    return out
+
+
+def _ffmpeg() -> str:
+    try:
+        from imageio_ffmpeg import get_ffmpeg_exe
+        return get_ffmpeg_exe()
+    except Exception:
+        return "ffmpeg"
+
+
+def story_clip(item: dict) -> Path:
+    """The first STORY_SECONDS of the reel (sound fades out in the last half second)."""
+    src = fetch(item["reel"], ".mp4")
+    out = src.with_name(f"{item['stem']}.mp4")
+    if out.exists() and out.stat().st_size > 100_000:
+        return out
+    end = max(1.0, STORY_SECONDS - 0.5)
+    cmd = [_ffmpeg(), "-y", "-loglevel", "error", "-i", str(src), "-t", f"{STORY_SECONDS:.2f}",
+           "-vf", f"fade=t=out:st={end:.2f}:d=0.5,format=yuv420p", "-af", f"afade=t=out:st={end:.2f}:d=0.5",
+           "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-r", "30",
+           "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", str(out)]
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+    if proc.returncode != 0 or not out.exists() or out.stat().st_size < 100_000:
+        raise RuntimeError("story clip failed: " + proc.stderr.strip()[-300:])
+    return out
+
+
 def slide_files(item: dict) -> list[Path]:
     from src import ig_slides
     folder = WORK / item["tag"]
@@ -263,7 +343,11 @@ def slide_files(item: dict) -> list[Path]:
 
 
 def item_files(item: dict) -> list[Path]:
-    return slide_files(item) if item.get("kind") == "carousel" else [fetch(item, ".mp4")]
+    if item.get("kind") == "carousel":
+        return slide_files(item)
+    if item.get("kind") == "story":
+        return [story_clip(item)]
+    return [fetch(item, ".mp4")]
 
 
 def carousel_caption(item: dict) -> str:
@@ -451,6 +535,8 @@ def films_page(state: dict) -> str:
     bank = load_json(FA_BANK, {}).get("stories") or {}
     rows = []
     for key, rec in state.get("sent", {}).items():
+        if rec.get("kind") == "story":
+            continue
         sid = key.split("_", 3)[-1]
         if sid in films and rec.get("status") in ("scheduled", "sent"):
             rows.append((datetime.fromisoformat(rec["due"]), sid))  # future ones are hidden until their time
@@ -612,7 +698,8 @@ def weekly_report(state: dict) -> None:
         return
     stats = load_json(STATS_FILE, {"posts": {}}).get("posts", {})
     start = datetime.fromisoformat(week + "T00:00:00+03:30") - timedelta(days=7)
-    rows = [(k, v) for k, v in stats.items() if start <= datetime.fromisoformat(v["due"]) < start + timedelta(days=7)]
+    rows = [(k, v) for k, v in stats.items() if not k.endswith("_story")
+            and start <= datetime.fromisoformat(v["due"]) < start + timedelta(days=7)]
     if not rows:
         state["report_week"] = week
         return
@@ -704,11 +791,11 @@ def refresh_captions(state: dict, channel: str, now: datetime) -> int:
 
 def rebuilt_reels(sent: dict, items: list[dict], now: datetime) -> list[tuple]:
     """Queued reels whose video was rebuilt after they went to Buffer (e.g. the Oct 11 voice fix)."""
-    by_stem = {r["stem"]: r for r in items if r.get("kind") != "carousel"}
+    by_stem = {r["stem"]: r for r in items if r.get("kind") not in ("carousel", "story")}
     out = []
     for key, rec in sent.items():
         reel = by_stem.get(key)
-        if (reel and rec.get("status") == "scheduled" and rec.get("kind", "reel") != "carousel"
+        if (reel and rec.get("status") == "scheduled" and rec.get("kind", "reel") == "reel"
                 and int(reel.get("audio_v", 1)) > int(rec.get("audio_v", 1))
                 and datetime.fromisoformat(rec["due"]) > now + timedelta(minutes=LEAD_MIN)):
             out.append((key, rec, reel))
@@ -834,42 +921,63 @@ def run(state: dict, org: str, channel: str) -> None:
     failed = ""
     refresh_captions(state, channel, now)
     items = built_reels() + built_carousels()
-    pending = sorted((r for r in items if r["stem"] not in sent), key=due_of)
+    try:
+        items += story_items(sent, now)
+    except Exception as exc:  # stories never stop the reels
+        log(f"stories skipped this run ({type(exc).__name__}: {str(exc)[:160]})")
+    lead = now + timedelta(minutes=LEAD_MIN)
+    pending = sorted((r for r in items if r["stem"] not in sent
+                      and not (r.get("kind") == "story" and due_of(r) < lead)), key=due_of)
+    if len(waiting) >= QUEUE_MAX - 1:  # the last free place is kept for a reel, never a story
+        pending = [r for r in pending if r.get("kind") != "story"]
     upgrades = rebuilt_reels(sent, items, now)
     room = max(0, QUEUE_MAX - len(waiting))
     log(f"{len(waiting)} post(s) waiting in Buffer, room for {room}; {len(pending)} ready post(s) not sent yet")
-    # reels keep 3 hours from other reels; a slide post keeps 2 hours from everything
-    car_posts = {v["post_id"] for v in sent.values() if v.get("kind") == "carousel"}
+    # reels keep GAP_MIN from other reels; a slide post keeps 2 hours from everything; stories keep their time
+    other_posts = {v["post_id"] for v in sent.values() if v.get("kind") in ("carousel", "story")}
     taken = [datetime.fromisoformat(v["due"]) for v in sent.values()
-             if v.get("status") in ("scheduled", "sent") and v.get("kind") != "carousel"]
+             if v.get("status") in ("scheduled", "sent") and v.get("kind", "reel") == "reel"]
     taken += [datetime.fromisoformat(str(p["dueAt"]).replace("Z", "+00:00")) for p in waiting
-              if p.get("dueAt") and p.get("id") not in car_posts]
+              if p.get("dueAt") and p.get("id") not in other_posts]
     taken_all = taken + [datetime.fromisoformat(v["due"]) for v in sent.values()
                          if v.get("status") in ("scheduled", "sent") and v.get("kind") == "carousel"]
     batch = []
     for reel in pending[: min(room, MAX_NEW)]:
         due = due_of(reel)
-        if reel.get("kind") == "carousel":
+        if reel.get("kind") == "story":
+            pass  # a story keeps its time (15 minutes after its reel)
+        elif reel.get("kind") == "carousel":
             moved = next_carousel_slot(taken_all, due, now + timedelta(minutes=LEAD_MIN + 15))
             if moved != due:
                 log(f"{reel['stem']}: its time passed or is taken; new time {moved.astimezone(TEHRAN):%Y-%m-%d %H:%M} Tehran")
             due = moved
+            taken_all.append(due)
         else:
             if due < now + timedelta(minutes=LEAD_MIN) or any(abs((due - x).total_seconds()) < GAP_MIN * 60 for x in taken):
                 due = next_free_slot(taken, now + timedelta(minutes=LEAD_MIN + 15), reel["stem"])
                 log(f"{reel['stem']}: its time passed or is taken; new time {due.astimezone(TEHRAN):%Y-%m-%d %H:%M} Tehran")
             taken.append(due)
-        taken_all.append(due)
+            taken_all.append(due)
         batch.append((reel, due))
-    # Videos that must stay public: every reel still waiting in Buffer, plus the new ones.
+    # Videos that must stay public: every post still waiting in Buffer, plus the new ones.
     keep = [r for r in items if sent.get(r["stem"], {}).get("status") == "scheduled"]
     keep += [r for r, _ in batch]
+
+    def files_of(item):
+        try:
+            return item_files(item)
+        except Exception as exc:
+            if item.get("kind") != "story":
+                raise
+            log(f"story clip {item['stem']} not made ({type(exc).__name__}: {str(exc)[:160]})")
+            return []
+
     if not batch:
         log("nothing new to send")
         hosted = sorted(r["stem"] for r in keep)
         page = films_page(state)
         if upgrades or hosted != sorted(state.get("hosted", [])) or text_hash(page) != state.get("films_page"):
-            files = [f for r in keep for f in item_files(r)]
+            files = [f for r in keep for f in files_of(r)]
             publish_site(files, page, film_covers(state))
             state["hosted"], state["films_page"] = hosted, text_hash(page)
         replace_videos(state, channel, upgrades)
@@ -877,12 +985,15 @@ def run(state: dict, org: str, channel: str) -> None:
         return
     files, urls, new_urls = [], {}, {}
     fresh = {r["stem"] for r, _ in batch}
+    made_files = set()
     for reel in keep:
-        for f in item_files(reel):
+        for f in files_of(reel):
             files.append(f)
+            made_files.add(reel["stem"])
             urls[f"{SITE_URL}/v/{f.name}"] = f.stat().st_size
             if reel["stem"] in fresh:
                 new_urls[f"{SITE_URL}/v/{f.name}"] = f.stat().st_size
+    batch = [(r, d) for r, d in batch if r.get("kind") != "story" or r["stem"] in made_files]
     page = films_page(state)
     publish_site(files, page, film_covers(state))
     state["hosted"], state["films_page"] = sorted(r["stem"] for r in keep), text_hash(page)
@@ -898,8 +1009,12 @@ def run(state: dict, org: str, channel: str) -> None:
         v = int(reel.get("audio_v", 1))
         # a fresh link per voice version: Buffer keeps the file it first fetched under a link
         url = f"{SITE_URL}/v/{reel['stem']}.mp4" + (f"?v={v}" if v > 1 else "")
+        cap = ""
         try:
-            if reel.get("kind") == "carousel":
+            if reel.get("kind") == "story":
+                url = f"{SITE_URL}/v/{reel['stem']}.mp4"
+                post = create_story(channel, url, due)
+            elif reel.get("kind") == "carousel":
                 from src import ig_slides
                 pics = [f"{SITE_URL}/v/{ig_slides.file_name(reel['id'], k)}" for k in range(1, int(reel["slides"]) + 1)]
                 url = pics[0]
@@ -912,10 +1027,16 @@ def run(state: dict, org: str, channel: str) -> None:
             if str(exc).startswith("LIMIT"):
                 log(f"Buffer queue is full: {exc}")
                 break
+            if reel.get("kind") == "story":  # a refused story never counts as a failed run
+                log(f"Buffer refused the story {reel['stem']}: {str(exc)[:300]}")
+                continue
             warn("Buffer refused a reel", f"{reel['stem']}: {str(exc)[:300]}")
             failed = f"Buffer refused {reel['stem']}: {str(exc)[:200]}"
             continue
         except Exception as exc:
+            if reel.get("kind") == "story":
+                log(f"story {reel['stem']} not sent ({type(exc).__name__}: {str(exc)[:200]})")
+                continue
             warn("Reel not sent", f"{reel['stem']}: {type(exc).__name__}: {str(exc)[:300]}")
             failed = f"{reel['stem']}: {type(exc).__name__}: {str(exc)[:200]}"
             continue
