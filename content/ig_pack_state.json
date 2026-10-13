@@ -178,6 +178,25 @@
           ],
           "audio_v": 3,
           "at": "2026-10-12T19:23+03:30"
+        },
+        "amelia-earhart": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 49.1,
+          "check_words": [
+            "هدف"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-13T13:07+03:30"
+        },
+        "kaz-ii": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 40.43,
+          "check_words": [
+            "غذای",
+            "لپ‌تاپ"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-13T13:13+03:30"
         }
       },
       "done": false,
