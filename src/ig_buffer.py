@@ -17,12 +17,14 @@ are never moved.
 
 Stories (Oct 12 2026, owner: "the page has no stories any more"): the old stories were posted
 the unofficial way, which is switched off for good. Now every EVENING reel also gets an
-Instagram Story 15 minutes after it airs, through the same official Buffer API: the first
-STORY_SECONDS of the reel itself (hook, picture and captions; it stops mid-story, so viewers go
-to the page for the rest). Stories only use queue room the reels leave; NABZ_STORIES=0 turns them off.
-When Buffer refuses a story, its answer is kept in the state file (story_errors) for the review.
-The buffer job has no system ffmpeg (Oct 12 2026): the clip is cut with imageio-ffmpeg, which is
-installed on the fly when it is missing.
+Instagram Story 15 minutes after it airs, through the same official Buffer API. Stories only use
+queue room the reels leave; NABZ_STORIES=0 turns them off. When Buffer refuses a story, its answer
+is kept in the state file (story_errors) for the review. The buffer job has no system ffmpeg: the
+clip is cut with imageio-ffmpeg, which is installed on the fly when it is missing.
+Oct 13 2026 (owner: "make the stories more professional"), src/ig_buffer_story.py: the reel's opening
+up to the end of a sentence with a «ریلز جدید» badge, then a closing card (logo, title, «ادامه‌ی ماجرا
+رو توی پیج ببین»). Stories already queued in the old style (story_v < STORY_V) are taken out of
+Buffer and sent again in the new design; if the new design fails, the plain 15-second clip is used.
 
 Queue room (Oct 12 2026): six slide posts sat in the 10-place queue up to two weeks ahead, so
 there was no room for the first story. Slide posts now go to Buffer at most CAR_AHEAD_DAYS before
@@ -93,6 +95,7 @@ STORIES = os.getenv("NABZ_STORIES", "1") != "0"
 STORY_SECONDS = float(os.getenv("NABZ_STORY_SECONDS", "15"))
 STORY_AFTER_MIN = 15  # the story goes up this long after its reel
 STORY_FROM_HOUR = 17  # only reels at or after this Tehran hour (the evening reel) get a story
+STORY_V = 2  # story design version (2 = professional, Oct 13); older queued stories are remade
 CAR_AHEAD_DAYS = int(os.getenv("NABZ_CAROUSEL_AHEAD_DAYS", "4"))
 
 
@@ -354,11 +357,23 @@ def _ffmpeg() -> str:
 
 
 def story_clip(item: dict) -> Path:
-    """The first STORY_SECONDS of the reel (sound fades out in the last half second)."""
+    """The story video: the professional design (src.ig_buffer_story), else the first
+    STORY_SECONDS of the reel (sound fades out in the last half second)."""
     src = fetch(item["reel"], ".mp4")
     out = src.with_name(f"{item['stem']}.mp4")
     if out.exists() and out.stat().st_size > 100_000:
         return out
+    try:
+        from src import ig_buffer_story
+        cover = fetch(item["reel"], "_cover.jpg")
+        fa = (load_json(FA_BANK, {}).get("stories") or {}).get(item["id"]) or {}
+        kind = "film" if item["id"] in (load_json(FILMS, {}).get("films") or {}) else "mystery"
+        secs = ig_buffer_story.story_pro(_ffmpeg(), src, cover, str(fa.get("title") or "نبض معما"), kind, out)
+        log(f"story {item['stem']}: professional design, {secs:.1f}s")
+        return out
+    except Exception as exc:
+        log(f"story {item['stem']}: plain clip instead ({type(exc).__name__}: {str(exc)[:200]})")
+        out.unlink(missing_ok=True)
     end = max(1.0, STORY_SECONDS - 0.5)
     cmd = [_ffmpeg(), "-y", "-loglevel", "error", "-i", str(src), "-t", f"{STORY_SECONDS:.2f}",
            "-vf", f"fade=t=out:st={end:.2f}:d=0.5,format=yuv420p", "-af", f"afade=t=out:st={end:.2f}:d=0.5",
@@ -460,6 +475,25 @@ def free_far_carousels(sent: dict, waiting: list[dict], wanted: list[dict], ahea
         sent.pop(key, None)
         waiting = [p for p in waiting if p.get("id") != pid]
         log(f"slide post {key} taken out of Buffer for now (airs in more than {CAR_AHEAD_DAYS} days); it goes back later")
+    return waiting
+
+
+def remake_old_stories(sent: dict, waiting: list[dict], now: datetime) -> list[dict]:
+    """Stories queued in an older design are taken out of Buffer, so this run sends them again
+    in the current one (same time). Only when there is time left before they air."""
+    for key, rec in list(sent.items()):
+        if (rec.get("kind") != "story" or rec.get("status") != "scheduled"
+                or int(rec.get("story_v", 1)) >= STORY_V
+                or datetime.fromisoformat(rec["due"]) <= now + timedelta(minutes=LEAD_MIN + 10)):
+            continue
+        try:
+            delete_post(rec["post_id"])
+        except BufferError as exc:
+            log(f"old story {key} not taken out of Buffer ({str(exc)[:160]})")
+            continue
+        waiting = [p for p in waiting if p.get("id") != rec["post_id"]]
+        sent.pop(key, None)
+        log(f"story {key}: old design taken out of Buffer; the new design goes in now")
     return waiting
 
 
@@ -986,6 +1020,12 @@ def run(state: dict, org: str, channel: str) -> None:
             rec["status"] = "sent"
     failed = ""
     refresh_captions(state, channel, now)
+    if known and STORIES:
+        try:
+            waiting = remake_old_stories(sent, waiting, now)
+            save_state(state)
+        except Exception as exc:
+            log(f"old stories not remade ({type(exc).__name__}: {str(exc)[:160]})")
     items = built_reels() + built_carousels()
     try:
         items += story_items(sent, now)
@@ -1092,7 +1132,7 @@ def run(state: dict, org: str, channel: str) -> None:
         cap = ""
         try:
             if reel.get("kind") == "story":
-                url = f"{SITE_URL}/v/{reel['stem']}.mp4"
+                url = f"{SITE_URL}/v/{reel['stem']}.mp4?v={STORY_V}"
                 post = create_story(channel, url, due)
             elif reel.get("kind") == "carousel":
                 from src import ig_slides
@@ -1128,6 +1168,8 @@ def run(state: dict, org: str, channel: str) -> None:
                               "url": url, "cap": text_hash(cap), "kind": reel.get("kind", "reel"),
                               "audio_v": int(reel.get("audio_v", 1)),
                               "at": now.astimezone(TEHRAN).isoformat(timespec="minutes")}
+        if reel.get("kind") == "story":
+            sent[reel["stem"]]["story_v"] = STORY_V
         (state.get("story_errors") or {}).pop(reel["stem"], None)
         save_state(state)
         made += 1
