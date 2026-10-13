@@ -197,6 +197,34 @@
           ],
           "audio_v": 3,
           "at": "2026-10-13T13:13+03:30"
+        },
+        "zodiac-killer": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 37.67,
+          "check_words": [
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-13T19:05+03:30"
+        },
+        "paula-welden": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 38.1,
+          "check_words": [
+            "آمد",
+            "مثلث"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-13T19:08+03:30"
+        },
+        "nazca-lines": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.03,
+          "check_words": [
+            "هزار"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-13T19:12+03:30"
         }
       },
       "done": false,
