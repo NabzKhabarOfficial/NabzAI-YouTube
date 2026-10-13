@@ -26,6 +26,11 @@
     "travis-walton": {"fa": "آتش در آسمان", "en": "Fire in the Sky", "year": 1993, "by": "رابرت لیبرمن"},
     "fletcher-christian": {"fa": "شورش در کشتی باونتی", "en": "Mutiny on the Bounty", "year": 1935, "by": "فرانک لوید"},
     "black-dahlia": {"fa": "کوکب سیاه", "en": "The Black Dahlia", "year": 2006, "by": "برایان دی‌پالما", "how": "بر اساس رمانی که از همین پرونده الهام گرفته"},
-    "lizzie-borden": {"fa": "لیزی", "en": "Lizzie", "year": 2018, "by": "کریگ ویلیام مک‌نیل"}
+    "lizzie-borden": {"fa": "لیزی", "en": "Lizzie", "year": 2018, "by": "کریگ ویلیام مک‌نیل"},
+    "andes-flight-571": {"fa": "جامعه‌ی برف", "en": "Society of the Snow", "year": 2023, "by": "خوان آنتونیو بایونا"},
+    "essex-whaleship": {"fa": "در قلب دریا", "en": "In the Heart of the Sea", "year": 2015, "by": "ران هاوارد"},
+    "andrea-gail": {"fa": "طوفان کامل", "en": "The Perfect Storm", "year": 2000, "by": "ولفگانگ پترسن"},
+    "hugh-glass": {"fa": "از گور برخاسته", "en": "The Revenant", "year": 2015, "by": "الخاندرو گونزالس ایناریتو"},
+    "chris-mccandless": {"fa": "به سوی طبیعت وحشی", "en": "Into the Wild", "year": 2007, "by": "شان پن"}
   }
 }
