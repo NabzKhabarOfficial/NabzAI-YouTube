@@ -67,7 +67,7 @@
     "03_2026-10-13_1353_mh370": {
       "post_id": "6accd8838130a0adb8ed1350",
       "due": "2026-10-12T21:40:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370.mp4?v=3",
       "cap": "d3af17fe0ca4",
       "kind": "reel",
@@ -107,7 +107,7 @@
     "03_2026-10-13_1353_mh370_story": {
       "post_id": "6acd10b3506e9770f8811178",
       "due": "2026-10-12T21:55:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370_story.mp4",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -123,6 +123,26 @@
       "kind": "story",
       "audio_v": 1,
       "at": "2026-10-12T20:22+03:30"
+    },
+    "01_2026-10-14_1720_db-cooper_story": {
+      "post_id": "6acdb8079f22b96ae7f53926",
+      "due": "2026-10-14T17:35:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper_story.mp4",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-13T08:16+03:30"
+    },
+    "06_2026-10-14_2134_lead-masks_story": {
+      "post_id": "6acdb8083d6121df4040a928",
+      "due": "2026-10-14T21:49:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks_story.mp4",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-13T08:16+03:30"
     }
   },
   "deleted_by_owner": {
@@ -134,13 +154,13 @@
   "channel_name": "nabz.moamma",
   "hosted": [
     "01_2026-10-14_1720_db-cooper",
+    "01_2026-10-14_1720_db-cooper_story",
     "02_2026-10-12_2140_flight-19",
-    "03_2026-10-13_1353_mh370",
-    "03_2026-10-13_1353_mh370_story",
     "04_2026-10-13_2031_dancing-plague-1518",
     "04_2026-10-13_2031_dancing-plague-1518_story",
     "05_2026-10-14_1317_hinterkaifeck",
     "06_2026-10-14_2134_lead-masks",
+    "06_2026-10-14_2134_lead-masks_story",
     "car_jiroft",
     "car_peter-bergmann"
   ],
