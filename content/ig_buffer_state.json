@@ -115,34 +115,37 @@
       "at": "2026-10-12T20:22+03:30"
     },
     "04_2026-10-13_2031_dancing-plague-1518_story": {
-      "post_id": "6acd10b48e6385bb129fff9f",
+      "post_id": "6ace03c4aa6f147b955c97b7",
       "due": "2026-10-13T20:46:00+03:30",
       "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518_story.mp4",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
       "audio_v": 1,
-      "at": "2026-10-12T20:22+03:30"
+      "at": "2026-10-13T13:39+03:30",
+      "story_v": 2
     },
     "01_2026-10-14_1720_db-cooper_story": {
-      "post_id": "6acdb8079f22b96ae7f53926",
+      "post_id": "6ace03c4b8e63d8727dec088",
       "due": "2026-10-14T17:35:00+03:30",
       "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper_story.mp4",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
       "audio_v": 1,
-      "at": "2026-10-13T08:16+03:30"
+      "at": "2026-10-13T13:39+03:30",
+      "story_v": 2
     },
     "06_2026-10-14_2134_lead-masks_story": {
-      "post_id": "6acdb8083d6121df4040a928",
+      "post_id": "6ace03c504adf1ce5982aa17",
       "due": "2026-10-14T21:49:00+03:30",
       "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks_story.mp4",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
       "audio_v": 1,
-      "at": "2026-10-13T08:16+03:30"
+      "at": "2026-10-13T13:39+03:30",
+      "story_v": 2
     }
   },
   "deleted_by_owner": {
