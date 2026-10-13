@@ -29,7 +29,7 @@
     "car_peter-bergmann": {
       "post_id": "6acbaeb6d9cab260a701842e",
       "due": "2026-10-13T17:13:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_peter-bergmann_1.jpg",
       "cap": "e154ef038ce9",
       "kind": "carousel",
@@ -156,6 +156,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-13T13:54+03:30"
+    },
+    "08_2026-10-15_2233_kaz-ii": {
+      "post_id": "6ace566805447a55936eaafc",
+      "due": "2026-10-15T22:33:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-15_2233_kaz-ii.mp4?v=3",
+      "cap": "22d023037b15",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-13T19:31+03:30"
     }
   },
   "deleted_by_owner": {
@@ -174,10 +184,10 @@
     "06_2026-10-14_2134_lead-masks",
     "06_2026-10-14_2134_lead-masks_story",
     "07_2026-10-15_1359_amelia-earhart",
-    "car_jiroft",
-    "car_peter-bergmann"
+    "08_2026-10-15_2233_kaz-ii",
+    "car_jiroft"
   ],
-  "films_page": "61046d3ed8bb",
+  "films_page": "e7a1d6de4dbb",
   "fail_streak": 0,
   "fail_alerted": false,
   "report_week": "2026-10-12",
