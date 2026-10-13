@@ -1,12 +1,12 @@
-# Review: Five Planes Vanished Over the Bermuda Triangle
+# Review: The Dancing Plague of 1518
 
 | Check | Result |
 |---|---|
-| duration 20-40s | OK (35.8s) |
+| duration 20-40s | OK (38.9s) |
 | vertical 1080x1920 | OK (1080x1920) |
-| audio not too quiet | CHECK (-22.2 dB) |
-| no clipping | OK (-0.5 dB) |
+| audio not too quiet | CHECK (-22.8 dB) |
+| no clipping | OK (-0.4 dB) |
 
-Images: horde, horde, horde, horde, horde, horde
+Images: hfspace, hfspace, hfspace, hfspace, hfspace, hfspace
 
-Story bank: 49 of 60 stories left (next: dancing-plague-1518, lead-masks, hinterkaifeck)
+Story bank: 48 of 60 stories left (next: lead-masks, hinterkaifeck, amelia-earhart)
