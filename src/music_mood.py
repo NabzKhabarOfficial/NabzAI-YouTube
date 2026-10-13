@@ -8,6 +8,7 @@ Now each story has a mood, and the score is built for that mood:
   sky      wide shimmering pads, floating and open (planes, signals, lights, space)
   ancient  a frame drum and plucked strings over a drone (old kingdoms, manuscripts, treasure)
   vanish   near silence: soft wind, single piano notes (people who disappeared)
+  cold     icy wind with a thin whistle and glassy bell tones (snow, ice, high mountains, polar)
 
 The mood comes from MOODS (set by hand per story id) or, for a story not listed, from words in
 its title, tags and pictures. Everything is made with numpy (free, offline, no quota), in the
@@ -15,6 +16,7 @@ range phone speakers can play. src.mystery_short.make_music asks score(seconds, 
 story is found from the seed (the Short uses sha1(id), the Persian reel sha1(id) + 11), so no
 caller has to change. Any problem returns None and the old score is used.
 The seed map covers content/mysteries.json AND content/mysteries_add.json (extra stories).
+Oct 14 2026: new mood "cold" for snow/ice/mountain stories (Andes, Dyatlov, Everest, Alaska, Arctic).
 """
 from __future__ import annotations
 
@@ -34,7 +36,7 @@ MOODS = {
     # sea
     "flannan-isles": "sea", "carroll-deering": "sea", "kaz-ii": "sea", "mv-joyita": "sea",
     "ss-baychimo": "sea", "alcatraz-escape": "sea", "ss-waratah": "sea", "fletcher-christian": "sea",
-    "franklin-expedition": "sea", "solway-firth-spaceman": "sky",
+    "franklin-expedition": "cold", "solway-firth-spaceman": "sky",
     # crime
     "somerton-man": "crime", "zodiac-killer": "crime", "hinterkaifeck": "crime", "lead-masks": "crime",
     "db-cooper": "crime", "jack-the-ripper": "crime", "jimmy-hoffa": "crime", "lake-bodom": "crime",
@@ -51,13 +53,18 @@ MOODS = {
     "beale-ciphers": "ancient", "amber-room": "ancient", "oak-island": "ancient", "rongorongo": "ancient",
     "linear-a": "ancient", "phaistos-disc": "ancient", "gobekli-tepe": "ancient", "ninth-legion": "ancient",
     "lost-army-of-cambyses": "ancient", "cambyses-army": "ancient", "lost-dutchmans-mine": "ancient",
-    "toynbee-tiles": "vanish", "anastasia": "ancient",
+    "toynbee-tiles": "vanish", "anastasia": "ancient", "baghdad-battery": "ancient",
     # vanish
     "paula-welden": "vanish", "kaspar-hauser": "vanish", "dorothy-arnold": "vanish", "ambrose-small": "vanish",
-    "percy-fawcett": "vanish", "mallory-irvine": "vanish", "walter-collins": "vanish", "brian-shaffer": "vanish",
-    "yuba-county-five": "vanish", "lars-mittank": "vanish",
+    "percy-fawcett": "vanish", "mallory-irvine": "cold", "walter-collins": "vanish", "brian-shaffer": "vanish",
+    "lars-mittank": "vanish", "hugh-glass": "vanish",
+    # cold (Oct 14 2026)
+    "andes-flight-571": "cold", "chris-mccandless": "cold", "yuba-county-five": "cold", "dyatlov-pass": "cold",
+    # sea additions (Oct 14 2026)
+    "essex-whaleship": "sea", "andrea-gail": "sea", "the-bloop": "sea",
 }
 _WORDS = [  # first match wins (checked in this order)
+    ("cold", r"\bsnow|\bice\b|\bicy\b|glacier|frozen|avalanche|everest|antarctic|arctic|blizzard|andes"),
     ("crime", r"murder|killer|killed|axe|ripper|crime|police|detective|mafia|poison|stab|suspect|victim"),
     ("sea", r"\bship|\bboat|\bsea\b|ocean|sailor|lighthouse|\bisland|\bcrew\b|voyage|harbou?r|\bwaves?\b"),
     ("sky", r"plane|aircraft|pilot|\bsky\b|signal|\bspace\b|\bstars?\b|\blights?\b|meteor|radio|ufo|alien|telescope"),
@@ -181,6 +188,15 @@ def _pluck(f, rng):  # santur-like: two slightly detuned bright strings, fast de
     return out * _fade(len(t), 0.002, 0.2) * 0.6
 
 
+def _bell(f, seconds=4.5):  # glassy, slightly inharmonic bell (ice)
+    t = np.arange(int(seconds * SR)) / SR
+    out = np.zeros_like(t)
+    for ratio, amp, dec in ((1.0, 1.0, 0.9), (2.76, 0.45, 1.6), (5.40, 0.22, 2.6), (8.93, 0.10, 3.8)):
+        if f * ratio < 9000:
+            out += amp * np.sin(2 * np.pi * f * ratio * t) * np.exp(-t * dec)
+    return out * _fade(len(t), 0.003, 0.6) * 0.5
+
+
 def _drum(low=True):  # frame drum: pitched body + skin noise, audible on phones (90-400 Hz + slap)
     t = np.arange(int(0.45 * SR)) / SR
     f = (95 if low else 170) * (1 + 0.6 * np.exp(-t * 30))
@@ -209,6 +225,7 @@ SETTINGS = {
     "sky":     ([(0, False), (5, False), (7, False), (3, False)],   6.0,     1500,    (1.3, 2.4, 0.12)),
     "ancient": ([(0, True), (1, False), (0, True), (10, False)],    5.0,     900,     (0.45, 0.9, 0.16)),
     "vanish":  ([(0, True), (8, False), (5, True), (3, False)],     7.0,     600,     (2.6, 4.2, 0.12)),
+    "cold":    ([(0, True), (3, False), (8, False), (5, True)],     7.5,     700,     (2.0, 3.6, 0.10)),
 }
 
 
@@ -222,7 +239,7 @@ def _build(seconds, seed, mood):
     dur = seconds / parts
     key = int(rng.choice([45, 47, 48, 50]))
     xf = min(1.5, dur / 2)
-    pad_level = {"vanish": 0.6, "crime": 0.8, "sky": 0.9}.get(mood, 1.0)
+    pad_level = {"vanish": 0.6, "crime": 0.8, "sky": 0.9, "cold": 0.55}.get(mood, 1.0)
     for k in range(parts):
         lv = 0.55 + 0.45 * k / max(1, parts - 1)
         off, minor = prog[k % len(prog)]
@@ -234,11 +251,11 @@ def _build(seconds, seed, mood):
         notes = [root, root + 7, root + 12, root + 12 + third]
         if mood == "sky":
             notes += [root + 14, root + 19]  # open, suspended colour
-        elif mood != "vanish":
+        elif mood not in ("vanish", "cold"):
             notes += [root + 19]
         pad = np.zeros(n)
         for j, mm in enumerate(notes):
-            pad += _pad(_hz(mm), n, rng, 5 if mood == "vanish" else 8) * (0.9 if j < 2 else 0.6)
+            pad += _pad(_hz(mm), n, rng, 5 if mood in ("vanish", "cold") else 8) * (0.9 if j < 2 else 0.6)
         pad = _lp(pad * _fade(n, xf, xf) * (0.5 + 0.5 * lv) * pad_level, cut + 900 * lv)
         pan = (0.35 if mood == "sky" else 0.15) * np.sin(2 * np.pi * 0.07 * np.arange(n) / SR)
         L[a:b] += pad * (1 - pan)
@@ -251,6 +268,8 @@ def _build(seconds, seed, mood):
             f = _hz(int(rng.choice(tones)))
             if mood == "ancient":
                 sig = _pluck(f, rng) * (nlev + 0.06 * lv)
+            elif mood == "cold":
+                sig = _bell(f * 2) * (nlev + 0.05 * lv)
             else:
                 sig = _piano(f, 3.6 if mood == "vanish" else 2.8, 1.6 if mood == "vanish" else 2.4) * (nlev + 0.08 * lv)
             _add(L, R, sig, pos, float(rng.uniform(-0.4, 0.4)))
@@ -287,9 +306,15 @@ def _build(seconds, seed, mood):
         for ch, shift in ((L, 0.0), (R, 2.1)):
             gust = 0.6 + 0.4 * np.sin(2 * np.pi * (t + shift) / 9.0)
             ch += 0.18 * _noise_bed(n, rng, 1800, 400) * gust
+    elif mood == "cold":  # icy wind gusts and a thin whistle that comes and goes
+        for ch, shift in ((L, 0.0), (R, 3.4)):
+            gust = 0.55 + 0.45 * np.sin(2 * np.pi * (t + shift) / 11.0)
+            ch += 0.20 * _noise_bed(n, rng, 2600, 500) * gust
+            whistle = _hp(_lp(rng.standard_normal(n), 1900.0), 1500.0)
+            ch += 0.10 * whistle * np.clip(np.sin(2 * np.pi * (t + shift) / 17.0), 0, 1) ** 2
     st = np.stack([L, R], axis=1)
-    st = _reverb(st, rng, {"sky": 3.6, "vanish": 3.2, "sea": 3.0}.get(mood, 2.4),
-                 {"sky": 0.45, "vanish": 0.42}.get(mood, 0.34))
+    st = _reverb(st, rng, {"sky": 3.6, "vanish": 3.2, "sea": 3.0, "cold": 3.8}.get(mood, 2.4),
+                 {"sky": 0.45, "vanish": 0.42, "cold": 0.46}.get(mood, 0.34))
     out = st[:n_total]
     out = np.tanh(1.4 * out / (np.max(np.abs(out)) or 1)) / np.tanh(1.4)
     env = _fade(n_total, min(1.0, seconds / 4), min(1.5, seconds / 4))
