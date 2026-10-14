@@ -260,3 +260,8 @@ if __name__ == "__main__":
         yt_comment.main()
     except Exception as exc:
         print(f"YT COMMENT catch-up skipped: {type(exc).__name__}: {exc}")
+    try:  # daily performance report (review/yt_stats.md), committed with review/ by this run
+        from src import yt_stats
+        yt_stats.main()
+    except Exception as exc:
+        print(f"YT STATS skipped: {type(exc).__name__}: {exc}")
