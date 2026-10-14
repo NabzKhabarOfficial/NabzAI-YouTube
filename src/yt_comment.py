@@ -13,7 +13,8 @@ token alone is not enough). Rules: at most one comment per run, never twice
 on the same video, only public videos from the last 3 days. Never fails the
 workflow; problems become warnings.
 State: content/yt_comments.json, mirrored in review/yt_comments.json (the daily
-YouTube run only commits review/); both are merged when read.
+YouTube run only commits review/); both are merged when read. Each run also
+saves the channel's public numbers there ("stats", "stats_history").
 """
 from __future__ import annotations
 
@@ -164,10 +165,78 @@ def recent_uploads(youtube, limit: int = 8) -> list[dict]:
     return youtube.videos().list(part="snippet,status", id=",".join(ids)).execute().get("items") or []
 
 
+def _iso_seconds(text: str) -> int:
+    m = re.fullmatch(r"P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", str(text or ""))
+    if not m:
+        return 0
+    d, h, mi, s = (int(x or 0) for x in m.groups())
+    return ((d * 24 + h) * 60 + mi) * 60 + s
+
+
+def record_stats(youtube, state: dict) -> None:
+    """Public numbers of the channel and every upload, saved in the comment state.
+
+    Read-only calls (channels/videos.list) with the same token. Kept in this
+    job so the stats are committed with content/yt_comments.json every evening
+    without any workflow change. Never raises.
+    """
+    try:
+        ch = youtube.channels().list(part="snippet,statistics,contentDetails", mine=True).execute()
+        item = (ch.get("items") or [{}])[0]
+        st = item.get("statistics") or {}
+        uploads = item["contentDetails"]["relatedPlaylists"]["uploads"]
+        ids, token = [], None
+        while len(ids) < 200:
+            kw = {"part": "contentDetails", "playlistId": uploads, "maxResults": 50}
+            if token:
+                kw["pageToken"] = token
+            pl = youtube.playlistItems().list(**kw).execute()
+            ids += [i["contentDetails"]["videoId"] for i in pl.get("items") or []]
+            token = pl.get("nextPageToken")
+            if not token:
+                break
+        videos = []
+        for start in range(0, len(ids), 50):
+            res = youtube.videos().list(part="snippet,statistics,contentDetails,status",
+                                        id=",".join(ids[start:start + 50])).execute()
+            for v in res.get("items") or []:
+                vs = v.get("statistics") or {}
+                videos.append({
+                    "id": v.get("id"),
+                    "title": (v.get("snippet") or {}).get("title", "")[:90],
+                    "published": (v.get("snippet") or {}).get("publishedAt", ""),
+                    "privacy": (v.get("status") or {}).get("privacyStatus", ""),
+                    "seconds": _iso_seconds((v.get("contentDetails") or {}).get("duration")),
+                    "views": int(vs.get("viewCount", 0) or 0),
+                    "likes": int(vs.get("likeCount", 0) or 0),
+                    "comments": int(vs.get("commentCount", 0) or 0),
+                })
+        videos.sort(key=lambda x: x["published"], reverse=True)
+        now = datetime.now(timezone.utc).isoformat()
+        snap = {
+            "at": now,
+            "channel": (item.get("snippet") or {}).get("title", ""),
+            "subscribers": int(st.get("subscriberCount", 0) or 0),
+            "hidden_subscribers": bool(st.get("hiddenSubscriberCount")),
+            "views": int(st.get("viewCount", 0) or 0),
+            "videos": int(st.get("videoCount", 0) or 0),
+        }
+        state["stats"] = dict(snap, uploads=videos)
+        hist = [h for h in state.get("stats_history", []) if str(h.get("at", ""))[:10] != now[:10]]
+        hist.append({k: snap[k] for k in ("at", "subscribers", "views", "videos")})
+        state["stats_history"] = hist[-60:]
+        print(f"YT STATS: {snap['subscribers']} subscribers, {snap['views']} views, {len(videos)} uploads")
+    except Exception as exc:
+        state["stats_error"] = {"at": datetime.now(timezone.utc).isoformat(),
+                                "error": f"{type(exc).__name__}: {exc}"[:200]}
+        print(f"::warning title=YouTube stats skipped::{type(exc).__name__}: {str(exc)[:200]}")
+
+
 def main() -> int:
     state = load_state()
     try:
         youtube = client()
+        record_stats(youtube, state)
         videos = recent_uploads(youtube)
         video = pick_video(videos, state)
         tries = 0
