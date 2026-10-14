@@ -15,6 +15,15 @@ moment viewers decide to stay or swipe) is first asked from Nano Banana (Gemini 
 the same free GEMINI_API_KEY keys). Any failure (no free quota, refusal, bad picture) silently
 falls back to the normal free chain; after a quota/permission error it is not asked again in
 that run. NABZ_NANO_BANANA=0 switches it off.
+
+Sharp reel pictures (Oct 14 2026, owner: "the reels use low-quality pictures"): the Cloudflare
+model of the normal chain (FLUX.1-schnell) only makes 1024x1024 squares; cut to 9:16 that is
+576x1024, blown up ~1.9x to 1080x1920, which is the blur. Instagram pack pictures (the "pics"
+folder of src.ig_pack) are now first asked from FLUX.2 [klein] 4B on the same Cloudflare account
+and free daily neurons, drawn natively in portrait (768x1344, NABZ_KLEIN_W/H): newer model, no
+crop, only a 1.4x scale. About 100-160 neurons a picture: 6 reels x 6 pictures a day plus the
+daily Short stay under the free 10k. Any quota error or refusal switches it off for the run and
+the normal chain takes over (never a lost reel). NABZ_KLEIN=0 switches it off.
 """
 import base64
 import importlib.abc
@@ -94,6 +103,8 @@ def _patch_bank(m) -> None:
 _NANO = {"dead": False}
 _NANO_DEAD_WORDS = ("429", "quota", "resource_exhausted", "403", "permission", "billing", "limit: 0",
                     "not found", "404", "free tier")
+_KLEIN = {"off": ""}
+_KLEIN_OFF_WORDS = ("http 4", "429", "neuron", "quota", "no image", "not configured", "too small", "blank")
 
 
 def _nano_keys() -> list:
@@ -138,32 +149,93 @@ def _nano_image(m, prompt: str):
     raise RuntimeError(" | ".join(errors) or "no GEMINI_API_KEY")
 
 
+def _klein_image(m, prompt: str, seed: int):
+    """One native portrait picture from FLUX.2 [klein] on Cloudflare Workers AI, or raises."""
+    import hashlib
+    import urllib.error
+    account = os.getenv("CF_ACCOUNT_ID", "").strip()
+    token = os.getenv("CF_API_TOKEN", "").strip()
+    if not account or not token:
+        raise RuntimeError("CF_ACCOUNT_ID / CF_API_TOKEN not configured")
+    model = os.getenv("NABZ_CF_KLEIN_MODEL", "@cf/black-forest-labs/flux-2-klein-4b")
+    url = f"https://api.cloudflare.com/client/v4/accounts/{account}/ai/run/{model}"
+    width = int(os.getenv("NABZ_KLEIN_W", "768"))
+    height = int(os.getenv("NABZ_KLEIN_H", "1344"))
+    last = ""
+    for with_seed in (True, False):  # a refused seed field gets one more try without it
+        fields = {"prompt": prompt[:2000], "width": str(width), "height": str(height)}
+        if with_seed:
+            fields["seed"] = str(int(seed) % 2147483647)
+        boundary = "nabz" + hashlib.sha1(repr(fields).encode()).hexdigest()[:24]
+        body = b""
+        for name, value in fields.items():
+            head = f'--{boundary}\r\nContent-Disposition: form-data; name="{name}"\r\n\r\n'
+            body += head.encode() + value.encode("utf-8") + b"\r\n"
+        body += f"--{boundary}--\r\n".encode()
+        try:
+            raw = m._http(url, data=body, timeout=180, headers={
+                "Authorization": f"Bearer {token}",
+                "Content-Type": f"multipart/form-data; boundary={boundary}"})
+        except urllib.error.HTTPError as exc:
+            last = f"HTTP {exc.code}: {exc.read()[:300].decode('utf-8', 'ignore')}"
+            if exc.code == 400 and with_seed:
+                continue
+            raise RuntimeError(last) from None
+        if raw[:3] == b"\xff\xd8\xff" or raw[:4] == b"\x89PNG" or raw[:4] == b"RIFF":
+            return m._valid_image(raw)
+        data = json.loads(raw)
+        result = data.get("result") if isinstance(data, dict) else None
+        image = result.get("image") if isinstance(result, dict) else None
+        if image:
+            return m._valid_image(base64.b64decode(image))
+        last = f"no image in reply: {str(data)[:160]}"
+        break
+    raise RuntimeError(last or "FLUX.2 klein gave no picture")
+
+
 def _patch_images(m) -> None:
-    """Hook picture (img_0.jpg) of the Instagram reel from Nano Banana first (see module notes)."""
+    """Instagram reel pictures: hook picture (img_0.jpg) from Nano Banana first, every pack picture
+    from FLUX.2 klein (native portrait) next, then the normal free chain (see module notes)."""
     import hashlib
     plain = m.generate_image
 
     def generate_image(prompt, seed, target):
         target = Path(target)
-        if (target.name != "img_0.jpg" or _NANO["dead"] or os.getenv("NABZ_NANO_BANANA", "1") == "0"
-                or not _nano_keys()):
+        nano = (target.name == "img_0.jpg" and not _NANO["dead"] and os.getenv("NABZ_NANO_BANANA", "1") != "0"
+                and bool(_nano_keys()))
+        klein = (target.parent.name == "pics" and not _KLEIN["off"] and os.getenv("NABZ_KLEIN", "1") != "0"
+                 and bool(os.getenv("CF_API_TOKEN", "").strip()))
+        if not nano and not klein:
             return plain(prompt, seed, target)
         key = hashlib.sha1(f"{prompt}|{seed}".encode()).hexdigest()[:12]
         marker = target.with_suffix(".key")
         if target.exists() and marker.exists() and marker.read_text() == key:
             return "cache"
-        try:
-            img = _nano_image(m, prompt)
-            m.cover(img).save(target, quality=93)
-            marker.write_text(key)
-            print("[nano-banana] hook picture made", flush=True)
-            return "nanobanana"
-        except Exception as exc:
-            low = str(exc).lower()
-            if any(w in low for w in _NANO_DEAD_WORDS):
-                _NANO["dead"] = True
-            print(f"[nano-banana] not used ({type(exc).__name__}: {str(exc)[:220]}); normal pictures", flush=True)
-            return plain(prompt, seed, target)
+        if nano:
+            try:
+                img = _nano_image(m, prompt)
+                m.cover(img).save(target, quality=93)
+                marker.write_text(key)
+                print("[nano-banana] hook picture made", flush=True)
+                return "nanobanana"
+            except Exception as exc:
+                low = str(exc).lower()
+                if any(w in low for w in _NANO_DEAD_WORDS):
+                    _NANO["dead"] = True
+                print(f"[nano-banana] not used ({type(exc).__name__}: {str(exc)[:220]})", flush=True)
+        if klein:
+            try:
+                img = _klein_image(m, prompt, seed)
+                m.cover(img).save(target, quality=95)
+                marker.write_text(key)
+                return f"cf-klein {img.size[0]}x{img.size[1]}"
+            except Exception as exc:
+                text = f"{type(exc).__name__}: {str(exc)[:220]}"
+                if any(w in text.lower() for w in _KLEIN_OFF_WORDS):
+                    _KLEIN["off"] = text  # quota or refusal: the normal chain for the rest of this run
+                print(f"::warning title=Sharp reel pictures off::FLUX.2 klein not used ({text}); normal pictures",
+                      flush=True)
+        return plain(prompt, seed, target)
 
     m.generate_image = generate_image
 
