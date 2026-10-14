@@ -1,6 +1,6 @@
 # Brain handoff (NabzKhabarOfficial projects)
 
-Read this whole file first, then continue the work. Updated: 2026-10-15 (00:45 Tehran).
+Read this whole file first, then continue the work. Updated: 2026-10-15 (01:00 Tehran).
 
 ## How to work with the owner (Younes)
 - ALWAYS answer in Persian (English angers him), short and clear. When he must do something by hand, give numbered step-by-step instructions (one action per step, exact button names), never a dense summary; he asked "never confuse me".
@@ -9,6 +9,7 @@ Read this whole file first, then continue the work. Updated: 2026-10-15 (00:45 T
 - Every check reads EVERYTHING (code, logs, state AND the real recent posts/videos). Health checks: read reports yourself, only tell him what is broken and what you fixed. The GitHub tools cannot open YouTube/Instagram pages: say so instead of claiming you watched them.
 - Never invent facts; fact-check every story. Verify a helper's "bug" claim in the real code before fixing (Oct 14: two claimed bugs were false, see below).
 - OWNER EXPECTATION (Oct 15): the free AI quotas must last the whole 24 hours, the bot must never go silent at night for "no AI".
+- When the owner asks for something "for all" (e.g. an English version), cover EVERY item, not a subset (Oct 15: first English pass had 23 of 33 tools; he noticed).
 
 ## Repos (GitHub account NabzKhabarOfficial)
 1. NabzKhabar: Telegram news bot «نبض خبر». bot.yml runs `python v13_ai_extra.py` (imports run_bot, installs patches, runs its main). Self-chains every 10 min + cron-job.org job "NabzKhabar" every 30 min (workflow_dispatch, fine-grained PAT). Python 3.11 (no backslash inside f-string expressions).
@@ -29,7 +30,9 @@ Read this whole file first, then continue the work. Updated: 2026-10-15 (00:45 T
    - Films page (nabz-reels /films/, from content/ig_films_fa.json): use the title people can find (international English title, original in brackets), e.g. hinterkaifeck = "مزرعه‌ی قتل" / The Murder Farm (Tannöd). Each card appears only when its reel's time has passed. Verified Oct 14 night: page shows «مزرعه‌ی قتل» + search hint.
    - Story banks: content/mysteries.json (EN base, 51; 13 used by Oct 14), mysteries_add.json (extra EN, IG only), mysteries_fa.json (mysteries_fa_add.json is auto-merged into it and then deleted; recreate it for a new batch), only ids in story_notes_fa.json get planned, mysteries_override.json, ig_carousels*.json (later file overrides by id; a post needs caption + slides), ig_films_fa.json.
 3. nabz-film: film site, updates every 6 h (data/status.json; scripts/build_catalog.py translates overviews with Groq, cache data/fa_ai.json). Missing Persian overviews 21 -> 11 -> 7 (Oct 14 15:26), no errors.
-4. nabz-tools: https://nabzkhabarofficial.github.io/nabz-tools/ . rates.yml every 2 h (commits data/rates.json only when it changed) + cron-job.org backup job "nabz-tools" every 2 h at :17 (owner, Oct 14, verified: updates 14:47, 16:47, 18:47 UTC). A karaoke tool + AI models were added on Oct 14 14:03-14:21 UTC (not by Brain); site validation still passes.
+4. nabz-tools: https://nabzkhabarofficial.github.io/nabz-tools/ (Persian) + https://nabzkhabarofficial.github.io/nabz-tools/en/ (English, Oct 15). rates.yml every 2 h (commits data/rates.json only when it changed) + cron-job.org backup job "nabz-tools" every 2 h at :17 (owner, Oct 14, verified: updates 14:47, 16:47, 18:47 UTC). A karaoke tool + AI models were added on Oct 14 14:03-14:21 UTC (not by Brain).
+   - ENGLISH SECTION (Oct 15, commits 70a1af6 ... f2ba056): en/index.html (33 tiles, 5 categories: finance 9, "Iran & Persian" 4, text 8, "Images, audio & files" 7, calc 5), en/about.html, en/privacy.html, en/tools/<slug>.html for ALL 33 tools. Shared assets/nabz-en.js (English UI, TOOLS switcher list, recent key nz-recent-en) + assets/en.css (LTR overrides; style.css/home.css are RTL). Each English page has hreflang en/fa/x-default + a «فارسی» lang-link; the Persian assets/nabz.js has var EN=[...] and injects an "English" button on the Persian home and on every Persian tool page in that list.
+   - RULE: tests/validate_site.py runs before every Pages deploy (EN_TOOLS = list(TOOLS)); a failing commit is simply not deployed. A NEW TOOL needs, in ONE commit: tools/<slug>.html + Persian index card + nabz.js TOOLS + en/tools/<slug>.html + en/index.html tile + nabz-en.js TOOLS + nabz.js EN list + both sitemap URLs + TOOLS list in the validator. Persian pages have no hreflang tags yet (optional later).
 
 ## Done on Oct 14-15
 - NabzKhabar v13_final_guard.py: outlet spelling variants («اسکای نوز»), DETAIL lines naming an outlet dropped (lead kept), «صهیونی» -> «اسرائیلی», AI sense check: a name form is never a contradiction.
@@ -38,11 +41,13 @@ Read this whole file first, then continue the work. Updated: 2026-10-15 (00:45 T
 - NabzKhabar night (20:08 UTC, commit 4566f9e) v13_final_guard.py: ROOT CAUSE of loaded words slipping through: word edges excluded the whole U+0600-06FF block (incl. «، ؛ ؟»), so «رژیم صهیونیستی،» / «رویترز،» were neither rewritten nor refused. Fixed with letter edges. New neutral: قدس اشغالی -> بیت‌المقدس, سرزمین‌های اشغالی / فلسطین اشغالی / رژیم اسرائیل -> اسرائیل. Arabic ي/ى/ك -> ی/ک first. Verified: 3 runs after the push were green, no new refusals, no false duplicates.
 - NabzKhabar night (20:09 UTC, commit 2c23435) v13_story_dedup.py: anchored_same (repeated distinctive number or same speaker prefix within 2 h + shared uncommon words = same story). Published entries store "n" and "s".
 - NabzKhabar Oct 15 00:43 Tehran (commits 5269937, 96751e5, 80e0d7a): AI pacer v13_ai_pace.py + hook in v13_ai_extra (see AI PACER above). Cause: on Oct 14 every free quota was gone by ~23:00 Tehran (Gemini 3.5 560 calls, Groq TPD full, OpenRouter 50/day gone) and new stories (Zelensky "Trump betrayed me", Kyiv strike, Wang Yi) were held for no AI. Sandbox-tested (share at +6 h = 151 of 450, held response is a 429 that the daily-quota regex does not match).
+- nabz-tools Oct 15 (~01:00 Tehran): English version of all 33 tools (see repo 4). All pushed blobs verified against local shas; sandbox run of the validator's English checks + a DOM mock of every page's script passed.
 - Checked and NOT bugs (do not "fix"): post_design footer pulse (text_polish moves it); nabz-tools USDT converter (rialPer uses market.usdt first).
 - NabzAI-YouTube: content/ig_carousels_4.json, 6 fact-checked slide posts (Oct 27 - Nov 7). review/pron_learned.json: respellings for week 2026-10-19 names. ig_films_fa.json: hinterkaifeck title fixed.
 - Plan checked: week Oct 15-18 and week 2026-10-19 have exactly one film reel per day at noon.
 
-## Open work (as of Oct 15 2026, 00:45 Tehran)
+## Open work (as of Oct 15 2026, 01:00 Tehran)
+- nabz-tools: confirm the Pages deploy of commit f2ba056 passed (English home shows 33 tools, Persian pages show the "English" button). If the deploy failed, read the validator output in the Actions log and fix.
 - Check the first runs with the pacer (after 21:13 UTC Oct 14): green run, _ai_pace present in ai_model_health.json, "AI PACE: ... held" lines in _ai_extra_log, posts resume once Groq 20b / Gemini 3.1 have share. During Oct 15 daytime check the posts still flow (pacing must not starve the day) and that quotas last to the night; tune BUDGETS if a model 429s before its budget or never reaches it.
 - Reduce AI use per post (so the paced budget publishes more): translation strict retry doubles calls, coherence check, event judge. Measure from _ai_usage before cutting.
 - Still open from the Oct 14 post review: weak leads «به دنبال این اقدام...» / «وی افزود...» as the first sentence; «این رژیم» in the newsroom's voice; Nord Stream trial covered twice (borderline follow-up).
