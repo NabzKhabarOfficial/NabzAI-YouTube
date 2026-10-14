@@ -1,9 +1,9 @@
 # Brain handoff (NabzKhabarOfficial projects)
 
-Read this whole file first, then continue the work. Updated: 2026-10-14 (13:55 Tehran).
+Read this whole file first, then continue the work. Updated: 2026-10-14 (14:55 Tehran).
 
 ## How to work with the owner (Younes)
-- ALWAYS answer in Persian (English angers him), short and clear.
+- ALWAYS answer in Persian (English angers him), short and clear. When he must do something by hand, give numbered step-by-step instructions (one action per step, exact button names), never a dense summary; he asked "never confuse me".
 - Free tools only, never break any terms of service: no extra keys/projects/accounts to dodge quotas, nothing that needs a card (Cerebras = out, GitHub Models retired).
 - Push code yourself with the GitHub tools (full file + blob sha). Files in .github/workflows the owner edits by hand: give him the COMPLETE file, every text he must paste in its own code block.
 - Every check reads EVERYTHING (code, logs, state AND the real recent posts/videos). Health checks: read reports yourself, only tell him what is broken and what you fixed.
@@ -24,19 +24,20 @@ Read this whole file first, then continue the work. Updated: 2026-10-14 (13:55 T
    - Instagram: NEVER unofficial posting. src/ig_pack.py builds a weekly pack (release week-YYYY-MM-DD, 15 reels/week from Oct 19, owner's golden hours in GOLDEN); src/ig_buffer.py schedules via Buffer free API (<= 10 queued) + story teasers. Noon = true story that became a film («فیلم» comment CTA -> Zaprep DM -> nabz-reels /films/), night = mystery. Slide posts src/ig_slides.py Tue/Thu/Sat ~17:00, no music.
    - Story banks: content/mysteries.json (EN base, 51; 13 used by Oct 14), mysteries_add.json (extra EN, IG only), mysteries_fa.json (mysteries_fa_add.json is auto-merged into it and then deleted; recreate it for a new batch), only ids in story_notes_fa.json get planned, mysteries_override.json, ig_carousels*.json (later file overrides by id; a post needs caption + slides), ig_films_fa.json.
 3. nabz-film: film site, updates every 6 h (data/status.json; scripts/build_catalog.py translates overviews with Groq, cache data/fa_ai.json).
-4. nabz-tools: tools site, rates.yml every 2 h (commits data/rates.json only when it changed).
+4. nabz-tools: tools site, rates.yml every 2 h (commits data/rates.json only when it changed). Backup trigger (Oct 14, owner): cron-job.org job "nabz-tools" every 2 h at :17, workflow_dispatch on rates.yml with the same fine-grained PAT (now also has nabz-tools, Actions read/write). Test run 14:52 Tehran worked (commit 322aed9, market_ts 14:48 the same day; before it the market rate was stuck at Oct 13 00:00).
 
 ## Done on Oct 14 (deep review, session 2)
 - NabzKhabar v13_final_guard.py: outlet names accept spelling variants («اسکای نوز» leaked in the Gaza post of 10:51), a DETAIL line naming an outlet is dropped before the caption is built (lead kept, story still published), «صهیونی» -> «اسرائیلی» added to the NEUTRAL table at install («آمریکایی-صهیونی» leaked) and refused if left, AI sense check told that a different name form (Donald vs Trump) is never a contradiction (it had blocked a Trump post). First run after the change (10:23 UTC): healthy, no errors.
 - Checked and NOT bugs (do not "fix"): post_design footer pulse (text_polish moves it to the top); nabz-tools USDT converter (rialPer already uses market.usdt first).
 - NabzAI-YouTube: content/ig_carousels_4.json, 6 fact-checked Iranian history slide posts in the six-step arc: kaaba-zartosht (Oct 27), oxus-treasure (Oct 29), behistun (Oct 31), chogha-zanbil (Nov 3), marlik (Nov 5), shapur-cave (Nov 7). Slide bank now runs to Nov 7.
 - review/pron_learned.json: FA respellings for names narrated in week 2026-10-19 (گلن, کونیگسبرگ, وایت‌چپل, اینویت, نورنبرگ).
+- nabz-tools: cron-job.org backup job added by the owner and verified (see repo 4).
 - State seen: Shorts built/published Oct 8-14 (lead-masks today); week 2026-10-12 pack done 14/14; week 2026-10-19 planned (15 reels, first build today), Buffer queue full (10/10) and healthy; nabz-film missing Persian overviews 21 -> 11, last run no 429.
 
 ## Open work (as of Oct 14 2026)
-- nabz-tools: GitHub skipped several 2-hourly runs (gaps 12:47-20:16 Oct 13, 04:59-10:20+ Oct 14). Owner should add a cron-job.org backup job (same as the other repos: POST https://api.github.com/repos/NabzKhabarOfficial/nabz-tools/actions/workflows/rates.yml/dispatches, body {"ref":"main"}, every 2 h at :17; the fine-grained PAT needs nabz-tools with Actions read/write).
+- nabz-tools: confirm the next runs (~16:47, 18:47 Tehran) commit fresh rates; the only change is from the cron-job.org trigger.
 - nabz-film: let the 6-hourly runs finish the 11 missing Persian overviews; if 429 comes back, add a per-run cap + Retry-After backoff + failure cooldown in translate_overviews (build_catalog.py, 61 KB, edit carefully). 2 titles (s334351, s336036) have no overview at all in any language (frontend shows the Persian placeholder; fine).
-- Retention data: owner must re-authorize the YouTube refresh token with yt-analytics.readonly (yt_stats.md says invalid_scope). Weakest Shorts by views: dyatlov 6, somerton 8, dancing-plague 12; best: flight-19 112, roanoke 106, tunguska 96.
+- Retention data: the YouTube refresh token lacks yt-analytics.readonly (yt_stats.md says invalid_scope). No token script in the repo; prepare simple step-by-step re-authorization instructions for the owner (free, same Google project) before asking him. Weakest Shorts by views: dyatlov 6, somerton 8, dancing-plague 12; best: flight-19 112, roanoke 106, tunguska 96.
 - Check the first FLUX.2 klein reel pictures (oak-island Sat Oct 17 21:34, max-headroom Sun Oct 18).
 - Persian bank: 53 FA stories not yet aired, lasts to mid-November at 15/week; film share ~51% (target ~40%), so the next batch should be mostly non-film mysteries. Add respellings + music mood for every new story.
 - Mehrestan (Oct 14): the later report «شهادت یک مامور پلیس» was skipped as a duplicate of «شکست حمله تروریست ها به خودروی پلیس». If this pattern repeats (first post says no casualties, later report has a death), let incident_dedup pass a casualty update when the earlier post had no casualties.
