@@ -225,6 +225,24 @@
           ],
           "audio_v": 3,
           "at": "2026-10-13T19:12+03:30"
+        },
+        "oak-island": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 41.64,
+          "check_words": [
+            "صاحب"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-14T13:08+03:30"
+        },
+        "max-headroom-hijack": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 41.3,
+          "check_words": [
+            "صفحه"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-14T13:20+03:30"
         }
       },
       "done": false,
