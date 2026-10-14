@@ -87,7 +87,7 @@
     "01_2026-10-14_1720_db-cooper": {
       "post_id": "6acd0b1c61aba56bcace3a80",
       "due": "2026-10-14T17:20:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper.mp4?v=3",
       "cap": "966b2c4e46c4",
       "kind": "reel",
@@ -128,7 +128,7 @@
     "01_2026-10-14_1720_db-cooper_story": {
       "post_id": "6ace03c4b8e63d8727dec088",
       "due": "2026-10-14T17:35:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -197,6 +197,27 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-14T13:24+03:30"
+    },
+    "10_2026-10-16_2202_paula-welden_story": {
+      "post_id": "6acfa51661a1b9da73649bf2",
+      "due": "2026-10-16T22:17:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-16_2202_paula-welden_story.mp4?v=2",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-14T19:17+03:30",
+      "story_v": 2
+    },
+    "11_2026-10-17_1403_nazca-lines": {
+      "post_id": "6acfa51781eb78c8f8b03745",
+      "due": "2026-10-17T14:03:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-17_1403_nazca-lines.mp4?v=3",
+      "cap": "aa800cd1a6bb",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-14T19:17+03:30"
     }
   },
   "deleted_by_owner": {
@@ -207,8 +228,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "01_2026-10-14_1720_db-cooper",
-    "01_2026-10-14_1720_db-cooper_story",
     "06_2026-10-14_2134_lead-masks",
     "06_2026-10-14_2134_lead-masks_story",
     "07_2026-10-15_1359_amelia-earhart",
@@ -216,9 +235,11 @@
     "08_2026-10-15_2233_kaz-ii_story",
     "09_2026-10-16_1325_zodiac-killer",
     "10_2026-10-16_2202_paula-welden",
+    "10_2026-10-16_2202_paula-welden_story",
+    "11_2026-10-17_1403_nazca-lines",
     "car_jiroft"
   ],
-  "films_page": "c3af3d39375a",
+  "films_page": "f103a075802e",
   "fail_streak": 0,
   "fail_alerted": false,
   "report_week": "2026-10-12",
