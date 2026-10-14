@@ -363,6 +363,32 @@
           ],
           "audio_v": 3,
           "at": "2026-10-14T19:11+03:30"
+        },
+        "dorothy-arnold": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 40.9,
+          "check_words": [
+            "نگفتند",
+            "جعبه",
+            "وقتی",
+            "آمد",
+            "ثابت",
+            "ثابت",
+            "نیست"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-14T23:13+03:30"
+        },
+        "alcatraz-escape": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 51.77,
+          "check_words": [
+            "ثابت",
+            "توضیح",
+            "غرق"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-14T23:26+03:30"
         }
       },
       "done": false,
