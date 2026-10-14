@@ -12,9 +12,9 @@ bank wins). The daily Short, run as `python -m src.mystery_short`, keeps the pla
 
 Hook picture (Oct 12 2026, owner): the FIRST picture of every Instagram reel (img_0.jpg, the
 moment viewers decide to stay or swipe) is first asked from Nano Banana (Gemini image model,
-the same free GEMINI_API_KEY keys). Any failure (no free quota, refusal, bad picture) silently
-falls back to the normal free chain; after a quota/permission error it is not asked again in
-that run. NABZ_NANO_BANANA=0 switches it off.
+the same free GEMINI_API_KEY; ONE key only, owner rule Oct 14). Any failure (no free quota,
+refusal, bad picture) silently falls back to the normal free chain; after a quota/permission
+error it is not asked again in that run. NABZ_NANO_BANANA=0 switches it off.
 
 Sharp reel pictures (Oct 14 2026, owner: "the reels use low-quality pictures"): the Cloudflare
 model of the normal chain (FLUX.1-schnell) only makes 1024x1024 squares; cut to 9:16 that is
@@ -108,16 +108,13 @@ _KLEIN_OFF_WORDS = ("http 4", "429", "neuron", "quota", "no image", "not configu
 
 
 def _nano_keys() -> list:
-    keys = []
-    for name in ("GEMINI_API_KEY", "GEMINI_API_KEY_2", "GEMINI_API_KEY_3"):
-        k = os.getenv(name, "").strip()
-        if k and k not in keys:
-            keys.append(k)
-    return keys
+    """Only GEMINI_API_KEY (owner rule: one key, never extra keys to dodge the free quota)."""
+    k = os.getenv("GEMINI_API_KEY", "").strip()
+    return [k] if k else []
 
 
 def _nano_image(m, prompt: str):
-    """One picture from Nano Banana, or raises. Tries every free key."""
+    """One picture from Nano Banana, or raises."""
     import urllib.error
     model = os.getenv("NABZ_NANO_MODEL", "gemini-2.5-flash-image")
     errors = []

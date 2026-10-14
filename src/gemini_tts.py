@@ -8,11 +8,11 @@ daily upload never depends on this service.
 Layers that keep the voice working (shared with the Persian reel, src.reel_fa):
   1. Audio cache: every narrated line is stored in .tts_cache (kept between runs by the
      workflow cache), so a rerun of the same story costs no quota at all.
-  2. Several API keys: GEMINI_API_KEY, GEMINI_API_KEY_2 ... _5 (or GEMINI_API_KEYS, comma
-     separated). A key that hits its daily quota is skipped at once, the next key takes over.
-     Same model and voice on every key, so the narrator always sounds the same.
+  2. ONE API key only: GEMINI_API_KEY (owner rule, Oct 14 2026: no extra keys or projects to
+     get around the free quota). GEMINI_API_KEY_2..5 / GEMINI_API_KEYS are ignored on purpose.
+     When the daily quota is used up the voice waits for the next day (the pack rests).
   3. Short waits only for per-minute limits and server hiccups; a dead key is never retried.
-  4. If every key fails, the caller switches the whole video to the Edge voice.
+  4. If the key fails, the caller switches the whole video to the Edge voice.
 
 Free-tier budget (Oct 2026, per Google project, not per key): 3 requests/minute and 10/day for
 the TTS model. One video is ~6-8 requests, so the daily quota goes to the Persian reel only:
@@ -40,14 +40,9 @@ URL = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateC
 
 
 def _keys() -> list[str]:
-    names = ["GEMINI_API_KEY"] + [f"GEMINI_API_KEY_{i}" for i in range(2, 6)]
-    found = [os.getenv(n, "").strip() for n in names]
-    found += [k.strip() for k in os.getenv("GEMINI_API_KEYS", "").split(",")]
-    out = []
-    for k in found:
-        if k and k not in out:
-            out.append(k)
-    return out
+    """Only GEMINI_API_KEY (owner rule: one key, never extra keys to dodge the free quota)."""
+    key = os.getenv("GEMINI_API_KEY", "").strip()
+    return [key] if key else []
 
 
 KEYS = _keys()
