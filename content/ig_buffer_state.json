@@ -97,7 +97,7 @@
     "06_2026-10-14_2134_lead-masks": {
       "post_id": "6acd0b1d7562cfd84bc3373e",
       "due": "2026-10-14T21:34:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks.mp4?v=3",
       "cap": "158027d186c7",
       "kind": "reel",
@@ -139,7 +139,7 @@
     "06_2026-10-14_2134_lead-masks_story": {
       "post_id": "6ace03c504adf1ce5982aa17",
       "due": "2026-10-14T21:49:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -218,6 +218,26 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-14T19:17+03:30"
+    },
+    "car_alamut": {
+      "post_id": "6acfdf10a0a1bd470f497efd",
+      "due": "2026-10-17T17:37:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_alamut_1.jpg",
+      "cap": "58cd2aa8c6a4",
+      "kind": "carousel",
+      "audio_v": 1,
+      "at": "2026-10-14T23:26+03:30"
+    },
+    "12_2026-10-17_2134_oak-island": {
+      "post_id": "6acfdf113166073688d382f3",
+      "due": "2026-10-17T21:34:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-17_2134_oak-island.mp4?v=3",
+      "cap": "842a1480d77c",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-14T23:26+03:30"
     }
   },
   "deleted_by_owner": {
@@ -228,8 +248,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "06_2026-10-14_2134_lead-masks",
-    "06_2026-10-14_2134_lead-masks_story",
     "07_2026-10-15_1359_amelia-earhart",
     "08_2026-10-15_2233_kaz-ii",
     "08_2026-10-15_2233_kaz-ii_story",
@@ -237,6 +255,8 @@
     "10_2026-10-16_2202_paula-welden",
     "10_2026-10-16_2202_paula-welden_story",
     "11_2026-10-17_1403_nazca-lines",
+    "12_2026-10-17_2134_oak-island",
+    "car_alamut",
     "car_jiroft"
   ],
   "films_page": "f103a075802e",
