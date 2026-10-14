@@ -1,12 +1,12 @@
-# Review: The Dancing Plague of 1518
+# Review: The Lead Masks Case
 
 | Check | Result |
 |---|---|
-| duration 20-40s | OK (38.9s) |
+| duration 20-40s | OK (35.6s) |
 | vertical 1080x1920 | OK (1080x1920) |
-| audio not too quiet | CHECK (-22.8 dB) |
+| audio not too quiet | OK (-21.8 dB) |
 | no clipping | OK (-0.4 dB) |
 
-Images: hfspace, hfspace, hfspace, hfspace, hfspace, hfspace
+Images: horde, horde, horde, horde, horde, horde
 
-Story bank: 48 of 60 stories left (next: lead-masks, hinterkaifeck, amelia-earhart)
+Story bank: 47 of 60 stories left (next: hinterkaifeck, amelia-earhart, zodiac-killer)

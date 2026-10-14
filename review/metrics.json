@@ -1,22 +1,22 @@
 {
-  "duration_seconds": 38.87,
+  "duration_seconds": 35.6,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 17.58,
+  "file_mb": 17.36,
   "audio": {
-    "mean_volume": -22.8,
+    "mean_volume": -21.8,
     "max_volume": -0.4
   },
   "image_sources": [
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace"
+    "horde",
+    "horde",
+    "horde",
+    "horde",
+    "horde",
+    "horde"
   ],
   "quality_passed": true,
-  "story_id": "dancing-plague-1518",
-  "story_bank": "Story bank: 48 of 60 stories left (next: lead-masks, hinterkaifeck, amelia-earhart)"
+  "story_id": "lead-masks",
+  "story_bank": "Story bank: 47 of 60 stories left (next: hinterkaifeck, amelia-earhart, zodiac-killer)"
 }

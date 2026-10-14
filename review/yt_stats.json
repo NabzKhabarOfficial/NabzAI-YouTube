@@ -1,0 +1,151 @@
+{
+  "at": "2026-10-14T08:37:26.656194+00:00",
+  "channel": {
+    "subscriberCount": "2",
+    "viewCount": "420",
+    "videoCount": "12"
+  },
+  "videos": [
+    {
+      "id": "TuJuo59t9Ws",
+      "title": "The Dancing Plague of 1518",
+      "published": "2026-10-13T19:00:23Z",
+      "story_id": "dancing-plague-1518",
+      "mood": "ancient",
+      "hook_words": 12,
+      "views": 12,
+      "likes": 2,
+      "comments": 1
+    },
+    {
+      "id": "C_Tc50j_Pos",
+      "title": "Five Planes Vanished Over the Bermuda Triangle",
+      "published": "2026-10-12T19:00:07Z",
+      "story_id": "flight-19",
+      "mood": "sky",
+      "hook_words": 17,
+      "views": 112,
+      "likes": 6,
+      "comments": 1
+    },
+    {
+      "id": "wkoHlQLPWYw",
+      "title": "He Hijacked a Plane, Then Jumped Into the Night",
+      "published": "2026-10-11T19:00:26Z",
+      "story_id": "db-cooper",
+      "mood": "crime",
+      "hook_words": 18,
+      "views": 29,
+      "likes": 1,
+      "comments": 1
+    },
+    {
+      "id": "WO-8M8TM_7A",
+      "title": "A 2,000-Year-Old Computer Found in a Shipwreck",
+      "published": "2026-10-10T19:00:04Z",
+      "story_id": "antikythera-mechanism",
+      "mood": "ancient",
+      "hook_words": 15,
+      "views": 74,
+      "likes": 2,
+      "comments": 1
+    },
+    {
+      "id": "pOvBfSpZe_8",
+      "title": "The Explosion That Flattened 80 Million Trees",
+      "published": "2026-10-09T19:00:29Z",
+      "story_id": "tunguska-event",
+      "mood": "sky",
+      "hook_words": 16,
+      "views": 96,
+      "likes": 4,
+      "comments": 1
+    },
+    {
+      "id": "Z7Cf2N4YpFo",
+      "title": "The 72-Second Signal From Deep Space",
+      "published": "2026-10-08T19:00:05Z",
+      "story_id": "wow-signal",
+      "mood": "sky",
+      "hook_words": 12,
+      "views": 20,
+      "likes": 0,
+      "comments": 1
+    },
+    {
+      "id": "lShTVxGJwM0",
+      "title": "A Dead Man With a Secret Code in His Pocket",
+      "published": "2026-10-06T19:00:35Z",
+      "story_id": "somerton-man",
+      "mood": "crime",
+      "hook_words": 19,
+      "views": 8,
+      "likes": 0,
+      "comments": 1
+    },
+    {
+      "id": "bTUpMg1yGRY",
+      "title": "Three Lighthouse Keepers Vanished Overnight",
+      "published": "2026-10-05T19:00:24Z",
+      "story_id": "flannan-isles",
+      "mood": "sea",
+      "hook_words": 16,
+      "views": 49,
+      "likes": 0,
+      "comments": 1
+    },
+    {
+      "id": "76g9g87Yt9I",
+      "title": "The Book Nobody on Earth Can Read",
+      "published": "2026-10-04T19:00:03Z",
+      "story_id": "voynich-manuscript",
+      "mood": "ancient",
+      "hook_words": 17,
+      "views": 15,
+      "likes": 1,
+      "comments": 2
+    },
+    {
+      "id": "1qQuJj6PVAA",
+      "title": "An Entire Colony Vanished, Leaving One Word",
+      "published": "2026-10-03T19:00:15Z",
+      "story_id": "roanoke-colony",
+      "mood": null,
+      "hook_words": 15,
+      "views": 106,
+      "likes": 1,
+      "comments": 1
+    },
+    {
+      "id": "feWGK1nAl1g",
+      "title": "Nine Hikers Cut Their Tent Open From Inside",
+      "published": "2026-10-03T16:00:20Z",
+      "story_id": "dyatlov-pass",
+      "mood": "cold",
+      "hook_words": 17,
+      "views": 6,
+      "likes": 0,
+      "comments": 0
+    },
+    {
+      "id": "hin_a_2fHSM",
+      "title": "The Ghost Ship Found With No One On Board",
+      "published": "2026-10-03T00:02:18Z",
+      "story_id": "mary-celeste",
+      "mood": null,
+      "hook_words": 17,
+      "views": 23,
+      "likes": 0,
+      "comments": 1
+    }
+  ],
+  "daily": [],
+  "traffic": [],
+  "analytics": false,
+  "warning": "Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
+  "findings": [
+    "12 Shorts, 550 views in total, 46 per Short on average.",
+    "Most views: Five Planes Vanished Over the Bermuda Triangle (112); fewest: Nine Hikers Cut Their Tent Open From Inside (6).",
+    "Likes per 100 views: 3.1; comments in total: 12."
+  ]
+}
