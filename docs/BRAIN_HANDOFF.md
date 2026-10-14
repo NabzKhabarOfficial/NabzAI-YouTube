@@ -1,6 +1,6 @@
 # Brain handoff (NabzKhabarOfficial projects)
 
-Read this whole file first, then continue the work. Updated: 2026-10-14 (23:45 Tehran).
+Read this whole file first, then continue the work. Updated: 2026-10-15 (00:45 Tehran).
 
 ## How to work with the owner (Younes)
 - ALWAYS answer in Persian (English angers him), short and clear. When he must do something by hand, give numbered step-by-step instructions (one action per step, exact button names), never a dense summary; he asked "never confuse me".
@@ -8,10 +8,12 @@ Read this whole file first, then continue the work. Updated: 2026-10-14 (23:45 T
 - Push code yourself with the GitHub tools (full file + blob sha). Files in .github/workflows the owner edits by hand: give him the COMPLETE file, every text he must paste in its own code block.
 - Every check reads EVERYTHING (code, logs, state AND the real recent posts/videos). Health checks: read reports yourself, only tell him what is broken and what you fixed. The GitHub tools cannot open YouTube/Instagram pages: say so instead of claiming you watched them.
 - Never invent facts; fact-check every story. Verify a helper's "bug" claim in the real code before fixing (Oct 14: two claimed bugs were false, see below).
+- OWNER EXPECTATION (Oct 15): the free AI quotas must last the whole 24 hours, the bot must never go silent at night for "no AI".
 
 ## Repos (GitHub account NabzKhabarOfficial)
 1. NabzKhabar: Telegram news bot «نبض خبر». bot.yml runs `python v13_ai_extra.py` (imports run_bot, installs patches, runs its main). Self-chains every 10 min + cron-job.org job "NabzKhabar" every 30 min (workflow_dispatch, fine-grained PAT). Python 3.11 (no backslash inside f-string expressions).
-   - AI: Groq -> Gemini (AI_API_KEY) -> OpenRouter, cooldown-aware ask_pool, batched editor verdicts (8 per call, each verdict must echo its story's first title words "h", mismatches dropped), daily-quota 429 rests the model until reset (Gemini resets ~10:35 Tehran), meter _ai_usage/_ai_extra_log. No-AI holds 20 min.
+   - AI: Groq -> Gemini (AI_API_KEY) -> OpenRouter, cooldown-aware ask_pool, batched editor verdicts (8 per call, each verdict must echo its story's first title words "h", mismatches dropped), daily-quota 429 rests the model until reset (Gemini resets midnight Pacific = ~10:30 Tehran), meter _ai_usage/_ai_extra_log. No-AI holds 20 min.
+   - AI PACER (v13_ai_pace.py, Oct 15, called from the meter's Session.request wrapper in v13_ai_extra): every AI POST is counted per quota day (Gemini: Pacific day; Groq/OpenRouter: UTC day) in ai_model_health.json _ai_pace; a model may only use budget x (hours since reset + 2) / 24. Over its share the request is NOT sent: a local 429 "pace" response, the pool moves to the next model (5 min router cooldown). Budgets: gemini-3.5-flash-lite 450, gemini-3.1-flash-lite 250, groq gpt-oss-120b 170, gpt-oss-20b 170, OpenRouter (whole account, 50 free/day) 45. Env NABZ_PACE_<KEY> overrides. First run of a UTC day seeds Groq/OpenRouter counts from _ai_usage (ok+other). Real limits seen Oct 14: Groq 200k tokens/day per model, OpenRouter 50 requests/day, Gemini 3.5 flash-lite ~500 requests; Gemini 3.1 flash-lite often 503 (busy).
    - Rules: no outlet/source name in posts (v13_final_guard + v13_chrome_scrub, log docs/guard_log.json); posts open «💓 نبض خبر ▰▰▰▱▱» (v13_text_polish moves the pulse line from the post_design footer to the top); no region/topic labels; neutral wording (اسرائیل, not رژیم صهیونیستی/هلاکت/صهیونی/قدس اشغالی/سرزمین‌های اشغالی) via v13_byline_cleaner NEUTRAL table + v13_final_guard EXTRA_NEUTRAL; WAR_ZONE rule in editor gate; dedup chain story_dedup (fingerprint + number/speaker anchors) -> text_polish -> incident_dedup -> event judge + importance rescue. «نبض آموزش» card 19:00, 30-bank, no repeats. Daily boards: weather 07, cars 11, education 19.
    - Regex word edges: never write "not followed by [\u0600-\u06FF]" (that block holds «، ؛ ؟», so a word before a Persian comma is missed). Use a letter class like v13_final_guard._P; the guard converts the byline cleaner's patterns at install (_letter_edges). Other modules (text_polish, chrome_scrub, incident_dedup) may still have the old edge: check when touching them.
    - Prefer cutting junk out of the text over refusing the whole post (refusals of the same story repeat every run: final-guard refusals are NOT remembered, only policy_scope / ai_unavailable blocks are).
@@ -29,25 +31,26 @@ Read this whole file first, then continue the work. Updated: 2026-10-14 (23:45 T
 3. nabz-film: film site, updates every 6 h (data/status.json; scripts/build_catalog.py translates overviews with Groq, cache data/fa_ai.json). Missing Persian overviews 21 -> 11 -> 7 (Oct 14 15:26), no errors.
 4. nabz-tools: https://nabzkhabarofficial.github.io/nabz-tools/ . rates.yml every 2 h (commits data/rates.json only when it changed) + cron-job.org backup job "nabz-tools" every 2 h at :17 (owner, Oct 14, verified: updates 14:47, 16:47, 18:47 UTC). A karaoke tool + AI models were added on Oct 14 14:03-14:21 UTC (not by Brain); site validation still passes.
 
-## Done on Oct 14
+## Done on Oct 14-15
 - NabzKhabar v13_final_guard.py: outlet spelling variants («اسکای نوز»), DETAIL lines naming an outlet dropped (lead kept), «صهیونی» -> «اسرائیلی», AI sense check: a name form is never a contradiction.
 - NabzKhabar v13_chrome_scrub.py (evening): fararu's related-headline strip («از ماجرای ... تا ماجرای ...») is cut out by strip_teasers() instead of refusing the post.
 - NabzKhabar v13_ai_extra.py (evening): batch verdict echo check "h" (the FT Starlink story had been given a car-import story's verdict).
-- NabzKhabar night (20:08 UTC, commit 4566f9e) v13_final_guard.py: ROOT CAUSE of loaded words slipping through: word edges excluded the whole U+0600-06FF block (incl. «، ؛ ؟»), so «رژیم صهیونیستی،» / «رویترز،» were neither rewritten nor refused. Fixed with letter edges (_letter_edges on all byline-cleaner patterns + NEUTRAL table, guard's own patterns). New neutral: قدس اشغالی -> بیت‌المقدس, سرزمین‌های اشغالی / فلسطین اشغالی / رژیم اسرائیل -> اسرائیل. Arabic ي/ى/ك -> ی/ک first.
-- NabzKhabar night (20:09 UTC, commit 2c23435) v13_story_dedup.py: anchored_same: a repeated distinctive number (3+ digits, not a year/round) + 2 shared uncommon words, or the same speaker prefix («قالیباف:») within 2 h + 3 shared uncommon words = same story. Published entries now store "n" (numbers) and "s" (speaker). Seen Oct 14: China trade surplus posted twice (09:07/13:38 UTC), two «قالیباف:» posts 8 min apart. Sandbox-tested: different Trump/Ghalibaf topics are not merged.
+- NabzKhabar night (20:08 UTC, commit 4566f9e) v13_final_guard.py: ROOT CAUSE of loaded words slipping through: word edges excluded the whole U+0600-06FF block (incl. «، ؛ ؟»), so «رژیم صهیونیستی،» / «رویترز،» were neither rewritten nor refused. Fixed with letter edges. New neutral: قدس اشغالی -> بیت‌المقدس, سرزمین‌های اشغالی / فلسطین اشغالی / رژیم اسرائیل -> اسرائیل. Arabic ي/ى/ك -> ی/ک first. Verified: 3 runs after the push were green, no new refusals, no false duplicates.
+- NabzKhabar night (20:09 UTC, commit 2c23435) v13_story_dedup.py: anchored_same (repeated distinctive number or same speaker prefix within 2 h + shared uncommon words = same story). Published entries store "n" and "s".
+- NabzKhabar Oct 15 00:43 Tehran (commits 5269937, 96751e5, 80e0d7a): AI pacer v13_ai_pace.py + hook in v13_ai_extra (see AI PACER above). Cause: on Oct 14 every free quota was gone by ~23:00 Tehran (Gemini 3.5 560 calls, Groq TPD full, OpenRouter 50/day gone) and new stories (Zelensky "Trump betrayed me", Kyiv strike, Wang Yi) were held for no AI. Sandbox-tested (share at +6 h = 151 of 450, held response is a 429 that the daily-quota regex does not match).
 - Checked and NOT bugs (do not "fix"): post_design footer pulse (text_polish moves it); nabz-tools USDT converter (rialPer uses market.usdt first).
-- NabzAI-YouTube: content/ig_carousels_4.json, 6 fact-checked slide posts: kaaba-zartosht (Oct 27), oxus-treasure (Oct 29), behistun (Oct 31), chogha-zanbil (Nov 3), marlik (Nov 5), shapur-cave (Nov 7). review/pron_learned.json: respellings for week 2026-10-19 names. ig_films_fa.json: hinterkaifeck title fixed.
+- NabzAI-YouTube: content/ig_carousels_4.json, 6 fact-checked slide posts (Oct 27 - Nov 7). review/pron_learned.json: respellings for week 2026-10-19 names. ig_films_fa.json: hinterkaifeck title fixed.
 - Plan checked: week Oct 15-18 and week 2026-10-19 have exactly one film reel per day at noon.
-- Health Oct 14 night: bot runs every ~10 min since 15:35 UTC, monitor healthy; Short + first comment done; ig-pack/buffer ran 15:47-19:59 UTC.
 
-## Open work (as of Oct 14 2026, night)
-- Check the first bot runs after the 20:08/20:09 UTC pushes (look for "letter word edges on N cleaner patterns" in the log, no new red runs, posts still going out) and docs/guard_log.json for a jump in refusals (the guard now also sees loaded words/outlets before «،»).
-- Still open from the Oct 14 post review: weak leads «به دنبال این اقدام...» / «وی افزود...» as the first sentence (fix_pronoun does not catch them); «این رژیم» in the newsroom's voice; Nord Stream trial covered twice (borderline follow-up).
+## Open work (as of Oct 15 2026, 00:45 Tehran)
+- Check the first runs with the pacer (after 21:13 UTC Oct 14): green run, _ai_pace present in ai_model_health.json, "AI PACE: ... held" lines in _ai_extra_log, posts resume once Groq 20b / Gemini 3.1 have share. During Oct 15 daytime check the posts still flow (pacing must not starve the day) and that quotas last to the night; tune BUDGETS if a model 429s before its budget or never reaches it.
+- Reduce AI use per post (so the paced budget publishes more): translation strict retry doubles calls, coherence check, event judge. Measure from _ai_usage before cutting.
+- Still open from the Oct 14 post review: weak leads «به دنبال این اقدام...» / «وی افزود...» as the first sentence; «این رژیم» in the newsroom's voice; Nord Stream trial covered twice (borderline follow-up).
 - Retention data: the YouTube refresh token lacks yt-analytics.readonly. No token script in the repo; prepare simple step-by-step re-authorization for the owner before asking him.
 - Check the first FLUX.2 klein reel pictures (oak-island Sat Oct 17 21:34, max-headroom Sun Oct 18).
 - Persian bank: 53 FA stories not yet aired (to mid-November at 15/week); film share ~51% (target ~40%): next batch mostly non-film mysteries, with respellings + music mood.
 - nabz-film: if 429 returns, cap per run + Retry-After backoff + failure cooldown in translate_overviews (build_catalog.py, 61 KB).
-- Watch: AI pool runs low in the evening; final-guard refusals repeat every run for the same story (consider remembering them like editorial blocks); Mehrestan-style casualty updates skipped as duplicates; monitor counts retired models (cosmetic).
+- Watch: final-guard refusals repeat every run for the same story (consider remembering them like editorial blocks); Mehrestan-style casualty updates skipped as duplicates; monitor counts retired models (cosmetic).
 
 ## Keep this file updated
 After every important change, update this file (and the date at the top).
