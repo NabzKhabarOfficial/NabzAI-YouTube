@@ -263,7 +263,7 @@
       },
       "done": true,
       "planned_at": "2026-10-10T18:46+03:30",
-      "note": "Oct 11: noon = film story, night = mystery (swapped hinterkaifeck/lead-masks and amelia/kaz-ii). Oct 12: db-cooper and flight-19 (old voice + old script) removed from Buffer by the owner; db-cooper for Wed 10-14 17:20. Oct 12 14:30: AUDIO_V 3 (no beat ever spliced into the take). Oct 12 15:45 (owner: noon = film, night = mystery): mh370 tonight 21:40, flight-19 Tue 13:53. The Gemini voice quota was out, so both air their finished v3 videos (\"file\" points at them; one continuous take, the general music). hinterkaifeck still v1 (rebuilt after the quota resets). Oct 15 03:40 (Brain check): Sat 10-17 and Sun 10-18 had no film reel at noon (nazca-lines, max-headroom-hijack are not films): n11 -> andes-flight-571 (Society of the Snow), n13 -> chris-mccandless (Into the Wild), built by the next pack runs; nazca-lines and max-headroom-hijack go back to the pool; the scheduled nazca Buffer post is deleted by the owner.",
+      "note": "Oct 11: noon = film story, night = mystery (swapped hinterkaifeck/lead-masks and amelia/kaz-ii). Oct 12: db-cooper and flight-19 (old voice + old script) removed from Buffer by the owner; db-cooper for Wed 10-14 17:20. Oct 12 14:30: AUDIO_V 3 (no beat ever spliced into the take). Oct 12 15:45 (owner: noon = film, night = mystery): mh370 tonight 21:40, flight-19 Tue 13:53. The Gemini voice quota was out, so both air their finished v3 videos (\"file\" points at them; one continuous take, the general music). hinterkaifeck still v1 (rebuilt after the quota resets). Oct 15 03:40 (Brain check): Sat 10-17 and Sun 10-18 had no film reel at noon (nazca-lines, max-headroom-hijack are not films): n11 -> andes-flight-571 (Society of the Snow), n13 -> chris-mccandless (Into the Wild), built by the next pack runs; nazca-lines and max-headroom-hijack go back to the pool (planned in week 2026-10-26 nights); the scheduled nazca Buffer post was deleted by the owner.",
       "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-10-12"
     },
     "2026-10-19": {
@@ -443,6 +443,105 @@
       },
       "done": false,
       "planned_at": "2026-10-14T13:37+03:30"
+    },
+    "2026-10-26": {
+      "per_day": 2,
+      "plan": [
+        {
+          "n": 1,
+          "id": "dyatlov-pass",
+          "date": "2026-10-26",
+          "time": "13:28"
+        },
+        {
+          "n": 2,
+          "id": "nazca-lines",
+          "date": "2026-10-26",
+          "time": "18:05"
+        },
+        {
+          "n": 3,
+          "id": "lost-dutchmans-mine",
+          "date": "2026-10-27",
+          "time": "13:24"
+        },
+        {
+          "n": 4,
+          "id": "taos-hum",
+          "date": "2026-10-27",
+          "time": "20:59"
+        },
+        {
+          "n": 5,
+          "id": "ninth-legion",
+          "date": "2026-10-28",
+          "time": "14:50"
+        },
+        {
+          "n": 6,
+          "id": "max-headroom-hijack",
+          "date": "2026-10-28",
+          "time": "19:00"
+        },
+        {
+          "n": 7,
+          "id": "toynbee-tiles",
+          "date": "2026-10-29",
+          "time": "13:59"
+        },
+        {
+          "n": 8,
+          "id": "lost-army-of-cambyses",
+          "date": "2026-10-29",
+          "time": "22:54"
+        },
+        {
+          "n": 9,
+          "id": "walter-collins",
+          "date": "2026-10-30",
+          "time": "09:57"
+        },
+        {
+          "n": 10,
+          "id": "gobekli-tepe",
+          "date": "2026-10-30",
+          "time": "18:00"
+        },
+        {
+          "n": 11,
+          "id": "mary-celeste",
+          "date": "2026-10-30",
+          "time": "22:13"
+        },
+        {
+          "n": 12,
+          "id": "percy-fawcett",
+          "date": "2026-10-31",
+          "time": "12:18"
+        },
+        {
+          "n": 13,
+          "id": "baghdad-battery",
+          "date": "2026-10-31",
+          "time": "21:34"
+        },
+        {
+          "n": 14,
+          "id": "mallory-irvine",
+          "date": "2026-11-01",
+          "time": "14:46"
+        },
+        {
+          "n": 15,
+          "id": "ss-waratah",
+          "date": "2026-11-01",
+          "time": "20:59"
+        }
+      ],
+      "built": {},
+      "done": false,
+      "planned_at": "2026-10-15T16:20+03:30",
+      "note": "Oct 15 (Brain, owner asked): planned by hand with the same golden times plan_week gives this week and one film reel at noon every day; nazca-lines (Mon night) and max-headroom-hijack (Wed night) come back from week 2026-10-12."
     }
   },
   "carousels": {
