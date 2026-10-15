@@ -150,7 +150,7 @@
     "07_2026-10-15_1359_amelia-earhart": {
       "post_id": "6ace074b2e1ced41dd5e7dac",
       "due": "2026-10-15T13:59:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-15_1359_amelia-earhart.mp4?v=3",
       "cap": "8f49a0d5d800",
       "kind": "reel",
@@ -238,6 +238,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-14T23:26+03:30"
+    },
+    "11_2026-10-17_1403_andes-flight-571": {
+      "post_id": "6ad0ac33230b9109a48c5cca",
+      "due": "2026-10-18T13:30:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-17_1403_andes-flight-571.mp4?v=3",
+      "cap": "bd97ba35459d",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-15T14:02+03:30"
     }
   },
   "deleted_by_owner": {
@@ -248,12 +258,12 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "07_2026-10-15_1359_amelia-earhart",
     "08_2026-10-15_2233_kaz-ii",
     "08_2026-10-15_2233_kaz-ii_story",
     "09_2026-10-16_1325_zodiac-killer",
     "10_2026-10-16_2202_paula-welden",
     "10_2026-10-16_2202_paula-welden_story",
+    "11_2026-10-17_1403_andes-flight-571",
     "12_2026-10-17_2134_oak-island",
     "car_alamut",
     "car_jiroft"
