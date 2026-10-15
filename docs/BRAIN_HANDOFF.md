@@ -1,33 +1,50 @@
 # Brain handoff (NabzKhabarOfficial projects)
 
-Read this whole file first, then continue the work. Updated: 2026-10-15 (18:20 Tehran).
-
-## Important current change: Persian story bank
-- `content/mysteries_fa.json` now contains all 77 Persian stories, preserved without ID loss.
-- All 77 stories have entries in `content/story_notes_fa.json`, so the planner can use the complete bank.
-- The 20 previously unrewritten Persian stories now use the owner's upgraded six-step retention arc: contrast hook, one question, concrete clue, twist, proven/probable/unknown boundary, and ending reinterpretation.
-- The other unbuilt stories had their dry Beat 5 wording smoothed into natural spoken Persian while preserving the facts. Raw digits in the unbuilt spoken beats were replaced with Persian words for TTS.
-- `review/pron_learned.json` now has 60 Persian pronunciation entries, including new names from the added rewrites: وینیچ, فلانان, تائوس, هرودوت, کرواتوان, سلست, ایسدال, گوبکلی‌تپه, دیاتلوف, تورنتو, والتز, ورنا, جویتا, والنتیچ and واراتا.
-- Validation passed: all 77 FA entries match an English story ID, each has 6 beats, the rewritten/unbuilt beats have no Arabic digits, hooks are 14 words or fewer, and no joined verb-ending form `‌اند` or `‌است` remains in the changed beats.
-- Existing queued/built reels were not rebuilt or rescheduled. Only future builds will use the improved scripts. Do not rebuild already queued reels unless the owner explicitly asks, because that would spend image and Gemini quota again.
+Read this whole file first, then continue the work. Updated: 2026-10-15 (22:05 Tehran).
 
 ## How to work with the owner (Younes)
-- ALWAYS answer in Persian, short and clear. When he must do something by hand, give numbered step-by-step instructions (one action per step), never a dense summary; he asked "never confuse me".
-- Free tools only, never break terms of service: no extra keys/projects/accounts to dodge quotas, nothing that needs a card.
-- Push code yourself with GitHub tools; `.github/workflows` files are edited by the owner.
-- Every check reads everything: code, logs, state and real recent posts/videos. Never claim to watch YouTube/Instagram when unavailable.
-- Never invent facts. Fact-check stories and distinguish proven, probable and unknown.
+- ALWAYS answer in Persian (English angers him), short and clear. When he must do something by hand, give numbered step-by-step instructions (one action per step, exact button names), never a dense summary; he asked "never confuse me".
+- Free tools only, never break any terms of service: no extra keys/projects/accounts to dodge quotas, nothing that needs a card (Cerebras = out, GitHub Models retired).
+- Push code yourself with the GitHub tools (full file + blob sha). Files in .github/workflows the owner edits by hand: give him the COMPLETE file, every text he must paste in its own code block.
+- Every check reads EVERYTHING (code, logs, state AND the real recent posts/videos). Health checks: read reports yourself, only tell him what is broken and what you fixed. The GitHub tools cannot open YouTube/Instagram pages: say so instead of claiming you watched them.
+- Never invent facts; fact-check every story. Verify a helper's "bug" claim (or "done" claim) in the real code and real commits before trusting it (Oct 14: two claimed bugs were false; Oct 15: another AI helper claimed in this file that 20 Persian stories were rewritten, but never committed them, see below).
+- Dates for the owner in the Persian calendar: Oct 15 2026 = 23 Mehr 1405 (Oct 17 = 25 Mehr, Oct 19 = 27 Mehr, Oct 26 = 4 Aban). Count, never guess.
+- OWNER EXPECTATION (Oct 15): the free AI quotas must last the whole 24 hours, the bot must never go silent at night for "no AI".
+- When the owner asks for something "for all" (e.g. an English version), cover EVERY item, not a subset.
+- nabz-tools stays PUBLIC on GitHub Pages (private would need a paid plan for Pages and Actions minutes; moving to Cloudflare Pages changes the address; dropped for now).
+- The owner sometimes uses other AI helpers on the repos. After that, review their commits one by one before building on them.
 
-## Repos
-- `NabzKhabar`: Telegram news bot, Groq/Gemini/Mistral/OpenRouter pool, pace-aware quota handling, guard repair and no-source-name rules.
-- `NabzAI-YouTube`: private YouTube Shorts + Instagram pack. Daily Shorts remain no-repeat; Instagram uses manual Meta scheduling only.
-- `nabz-film`: catalog and public-domain film site.
-- `nabz-tools`: public GitHub Pages utility site.
+## Repos (GitHub account NabzKhabarOfficial)
+1. NabzKhabar: Telegram news bot «نبض خبر». bot.yml runs `python v13_ai_extra.py` (imports run_bot, installs patches, runs its main). Self-chains every 10 min + cron-job.org job "NabzKhabar" every 30 min (workflow_dispatch, fine-grained PAT). Python 3.11 (no backslash inside f-string expressions). bot.yml (owner commit c97e212) compiles/imports v13_ai_pace, v13_guard_repair, v13_mistral and passes MISTRAL_API_KEY.
+   - AI pool: Groq -> Gemini (AI_API_KEY) -> Mistral (MISTRAL_API_KEY) -> OpenRouter, cooldown-aware ask_pool, batched editor verdicts (8 per call, each verdict must echo its story's first title words "h", mismatches dropped), daily-quota 429 rests the model until reset (Gemini resets midnight Pacific = ~10:30 Tehran), meter _ai_usage/_ai_extra_log. No-AI holds 20 min.
+   - Oct 15 evening (commit ab4fd8e): bigger free pools: 4 Gemini text models (~890 calls/day together), 3 Groq models (incl. qwen/qwen3-32b), 3 Mistral models (incl. ministral-8b-latest), all paced.
+   - MISTRAL (v13_mistral.py): mistral-large-latest removed (HTTP 403 tier_not_allowed on free tier); min gap between Mistral calls + one retry on HTTP 429; JSON mode; also wired into v13_event_judge.ask and the editor pool (commits a1fc8e5, 6e068c3, e094f21).
+   - AI PACER (v13_ai_pace.py, called from the meter's Session.request wrapper in v13_ai_extra): every AI POST is counted per quota day (Gemini: Pacific day; Groq/OpenRouter: UTC day) in ai_model_health.json _ai_pace; a model may only use budget x (hours since reset + HEADROOM_H) / 24 (HEADROOM_H = 1). Over its share the request is NOT sent: a local 429 "pace", the pool moves on. A local hold NEVER starts a router cooldown (_install_no_cooldown). Gemini also has a 4.2 s minimum gap between calls (stays under 15 RPM) and models are load-balanced by remaining daily share (order_gemini_models, used by router, editor and event judge). Groq = 200k TOKENS/day per model (~2k tokens a call) so its budget is ~90 calls. OpenRouter (whole account, 50 free/day) ~42. Env NABZ_PACE_<KEY> overrides.
+   - Editor gate: if the batch verdict fails in a run, single-story judging is capped at SINGLE_FALLBACK_MAX = 2 calls per run (protects quota; the other stories wait for the next run).
+   - GUARD REPAIR (v13_guard_repair.py, installed after rb._install_v13_stack()): wraps v13_final_guard.problems; repairs media-source / cut-quote sentences in place and accepts a repair only if problems() then returns nothing; every final-guard refusal goes into run_bot._editorial_blocks_this_run so the same story is not retried for 6 h. Commit 58ace67.
+   - Oct 15 Putin/refinery post (glued sidebar headlines + gold-price ticker inside the article text): fixed at the root (commit fbde2b1: strips glued sidebar/ticker headline strips in article text; v13_chrome_scrub also drops sidebar DOM nodes; a raw untranslated fallback can no longer be posted, commit ab4fd8e).
+   - Rules: no outlet/source name in posts (v13_final_guard + v13_chrome_scrub + v13_guard_repair, log docs/guard_log.json); posts open «💓 نبض خبر ▰▰▰▱▱» (v13_text_polish); no region/topic labels; neutral wording (اسرائیل, not رژیم صهیونیستی/هلاکت/صهیونی/قدس اشغالی/سرزمین‌های اشغالی) via v13_byline_cleaner NEUTRAL + v13_final_guard EXTRA_NEUTRAL; WAR_ZONE rule in editor gate; dedup chain story_dedup -> text_polish -> incident_dedup -> event judge + importance rescue. «نبض آموزش» card 19:00, 30-bank, no repeats. Daily boards: weather 07, cars 11, education 19.
+   - TEXT POLISH (commit 6e068c3): fixes «بازگرداننده شد», «۳۰ کشته نفر», «زخمی نفر», and strips a dangling opening connector («بنابراین،», «همچنین،», ...).
+2. NabzAI-YouTube (PRIVATE): channel "NABZ Mysteries" (@NabzMysteries) + Instagram «نبض معما».
+   - Daily Short: cron-job.org 12:00 Tehran -> workflow_dispatch; src/mystery_short.py; published 22:30 Tehran; guard_today; a story never repeats. First comment: src/yt_comment.py via yt-comment.yml + cron-job.org 22:45 (owner pins it). Daily stats: src/yt_stats.py -> review/yt_stats.md (retention needs a refresh token with yt-analytics.readonly).
+   - Shorts ~30 s hook-first loops. Hook beat <= 14 words, strangest fact first, dramatic first picture. Owner's 6-step template: contrast hook -> one question -> clue -> twist -> proven/probable/unknown -> ending reinterprets hook. Validate every story: 6 beats (must equal the English story), 50-95 words. Persian narration: simple spoken words, numbers as words, no joined «‌اند / ‌است» endings, no homographs (e.g. «مبلغ»).
+   - Voice: Gemini 3.8 Flash TTS, voice Algenib, +1 semitone deeper, ONE take never spliced (audio_v 3), whisper-checked (src/voice_check.py). Only ONE key GEMINI_API_KEY (never add more). Since commit d6e4a3a the same key/voice falls back through 4 Gemini TTS models in turn (gemini-3.8-flash-tts, gemini-3.8-flash-lite-tts, gemini-2.5-flash-preview-tts, gemini-3.1-flash-tts-preview); still one voice per reel. ig-pack.yml / youtube.yml still pass GEMINI_API_KEY_2/_3 (ignored; owner may delete those secrets + lines).
+   - Pictures: reel pictures FLUX.2 klein portrait on Cloudflare (CF_ACCOUNT_ID/CF_API_TOKEN); since d6e4a3a also FLUX.2 klein 9B, free SDXL-Lightning ($0 neurons) and a second HF ZeroGPU Space before the older fallbacks. ig-pack max 6 reels/day (CF 10k neurons).
+   - Instagram: ig-pack.yml (cron 08:00/13:00/19:00 Tehran) = pack job + buffer job (Buffer free API, ≤10 queued; never unofficial posting). OWNER RULE: exactly ONE film reel a day, at noon; night = mystery. Golden hours from week 2026-10-19.
+   - Weeks planned:
+     * `2026-10-12`: 14/14 built, done. `andes-flight-571` (Sat Oct 17 14:03) and `chris-mccandless` (Sun Oct 18 13:23) scheduled in Buffer.
+     * `2026-10-19`: 15 planned, partly built; continues from state.
+     * `2026-10-26`: pre-planned in commit 88262d1 (15 reels, golden hours, 1 film each noon, `nazca-lines` Mon Oct 26, `max-headroom-hijack` Wed Oct 28), not built yet.
+   - PERSIAN BANK (Oct 15 night, real commit): content/mysteries_fa.json has 77 stories and ALL 77 now have fact notes in content/story_notes_fa.json, so all are plannable. The last 20 (voynich-manuscript, flannan-isles, somerton-man, wow-signal, tunguska-event, antikythera-mechanism, carroll-deering, taos-hum, lost-army-of-cambyses, roanoke-colony, mary-celeste, isdal-woman, gobekli-tepe, dyatlov-pass, ambrose-small, solway-firth-spaceman, rongorongo, lost-dutchmans-mine, ninth-legion, toynbee-tiles) were rewritten by Brain to the six-step template and validated (6 beats, hook ≤14 words, 50-95 words, no digits, no joined endings). The other 57 are unchanged (an AI helper's unpushed draft that made beat 5 formulaic and dropped the "unknown" part was rejected). Runway: ~33 unplanned eligible stories after the three planned weeks (about two more weeks); write a new FA batch before that.
+   - review/pron_learned.json: Persian voice respellings (no-op entries removed; added آدلاید, اسمال, سوپرستیشن, کداک). Every new batch: add respellings for narrated hard names.
+   - Carousels: bank (ig_carousels*.json, 3/week Tue/Thu/Sat ~17:00 via Buffer, no music) runs out Nov 7: write a new batch before then.
+3. nabz-film: film site, updates every 6 h. Oct 15 (commit eefede6): empty genre strings dropped from list.json and Movie JSON-LD, `<lastmod>` in sitemap.xml, status.json counts untranslated synopses.
+4. nabz-tools: https://nabzkhabarofficial.github.io/nabz-tools/ (Persian) + `/en/` (English, all 33 tools). Custom free domain: options given to the owner (DigitalPlat free domains such as dpdns.org / qzz.io with Cloudflare DNS, is-a.dev / thedev.id subdomains, or Cloudflare Pages). Waiting for the owner to register one and send the name.
 
-## Instagram schedule
-- One film reel at the first daily slot, mystery reels later. Golden hours begin week `2026-10-19`; already planned weeks keep their times.
-- Week `2026-10-19` is partially built and continues from state. Week `2026-10-26` is preplanned, not built yet.
-- Never use unofficial Instagram posting or click bots.
+## Open work (as of Oct 15 2026, 22:05 Tehran)
+- NabzKhabar: check the next runs: Mistral calls succeed with 0 HTTP 403/429, pacer keeps every pool alive through the night, no story stuck because of the 2-call single-judging cap.
+- NabzAI-YouTube: new FA story batch + new carousel batch before ~Nov 7; check the 20 newly rewritten stories when they get planned (pictures/visual of beat 1 must be dramatic).
+- nabz-tools & nabz-film: once the owner registers the domain, configure CNAME, canonicals, sitemaps, and hreflang across all pages.
 
 ## Keep this file updated
-After every important change, update this file and the date at the top.
+After every important change, update this file (and the date at the top).
