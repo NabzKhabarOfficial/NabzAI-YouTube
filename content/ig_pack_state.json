@@ -395,6 +395,50 @@
           ],
           "audio_v": 3,
           "at": "2026-10-14T23:26+03:30"
+        },
+        "phaistos-disc": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.1,
+          "check_words": [
+            "صفحه",
+            "چهل",
+            "ولی",
+            "ثابت",
+            "صفحه"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-15T13:31+03:30"
+        },
+        "jimmy-hoffa": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 48.7,
+          "check_words": [
+            "بلایی",
+            "سرش",
+            "آمد",
+            "زنگ",
+            "جسدش",
+            "ثابت",
+            "صحنه‌ی"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-15T13:37+03:30"
+        },
+        "beale-ciphers": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.17,
+          "check_words": [
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-15T13:51+03:30"
+        },
+        "kaspar-hauser": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 48.6,
+          "check_words": [],
+          "audio_v": 3,
+          "at": "2026-10-15T14:02+03:30"
         }
       },
       "done": false,
