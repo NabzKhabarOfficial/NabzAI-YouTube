@@ -160,7 +160,7 @@
     "08_2026-10-15_2233_kaz-ii": {
       "post_id": "6ace566805447a55936eaafc",
       "due": "2026-10-15T22:33:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-15_2233_kaz-ii.mp4?v=3",
       "cap": "22d023037b15",
       "kind": "reel",
@@ -170,7 +170,7 @@
     "08_2026-10-15_2233_kaz-ii_story": {
       "post_id": "6acf0c54f847f2ad9ec27f93",
       "due": "2026-10-15T22:48:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-15_2233_kaz-ii_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -271,6 +271,26 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-15T17:48+03:30"
+    },
+    "14_2026-10-18_2121_princes-in-the-tower": {
+      "post_id": "6ad1277529e9cdc489e10aef",
+      "due": "2026-10-18T21:21:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-18_2121_princes-in-the-tower.mp4?v=3",
+      "cap": "3e3bbb02915d",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-15T22:48+03:30"
+    },
+    "01_2026-10-19_1331_jack-the-ripper": {
+      "post_id": "6ad12775cc37abfeb9e5dc8a",
+      "due": "2026-10-19T13:31:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-19_1331_jack-the-ripper.mp4?v=3",
+      "cap": "a9629c1435ad",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-15T22:48+03:30"
     }
   },
   "deleted_by_owner": {
@@ -282,8 +302,7 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "08_2026-10-15_2233_kaz-ii",
-    "08_2026-10-15_2233_kaz-ii_story",
+    "01_2026-10-19_1331_jack-the-ripper",
     "09_2026-10-16_1325_zodiac-killer",
     "10_2026-10-16_2202_paula-welden",
     "10_2026-10-16_2202_paula-welden_story",
@@ -291,6 +310,7 @@
     "12_2026-10-17_2134_oak-island",
     "12_2026-10-17_2134_oak-island_story",
     "13_2026-10-18_1323_chris-mccandless",
+    "14_2026-10-18_2121_princes-in-the-tower",
     "car_alamut"
   ],
   "films_page": "286c1b399cac",
