@@ -1,11 +1,22 @@
 {
-  "at": "2026-10-14T08:37:26.656194+00:00",
+  "at": "2026-10-15T08:35:57.325339+00:00",
   "channel": {
     "subscriberCount": "2",
-    "viewCount": "420",
-    "videoCount": "12"
+    "viewCount": "571",
+    "videoCount": "13"
   },
   "videos": [
+    {
+      "id": "VZOc8jFc-hU",
+      "title": "The Lead Masks Case",
+      "published": "2026-10-14T19:00:37Z",
+      "story_id": "lead-masks",
+      "mood": "crime",
+      "hook_words": 13,
+      "views": 114,
+      "likes": 5,
+      "comments": 1
+    },
     {
       "id": "TuJuo59t9Ws",
       "title": "The Dancing Plague of 1518",
@@ -13,8 +24,8 @@
       "story_id": "dancing-plague-1518",
       "mood": "ancient",
       "hook_words": 12,
-      "views": 12,
-      "likes": 2,
+      "views": 19,
+      "likes": 1,
       "comments": 1
     },
     {
@@ -24,7 +35,7 @@
       "story_id": "flight-19",
       "mood": "sky",
       "hook_words": 17,
-      "views": 112,
+      "views": 128,
       "likes": 6,
       "comments": 1
     },
@@ -144,8 +155,8 @@
   "analytics": false,
   "warning": "Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
   "findings": [
-    "12 Shorts, 550 views in total, 46 per Short on average.",
-    "Most views: Five Planes Vanished Over the Bermuda Triangle (112); fewest: Nine Hikers Cut Their Tent Open From Inside (6).",
-    "Likes per 100 views: 3.1; comments in total: 12."
+    "13 Shorts, 687 views in total, 53 per Short on average.",
+    "Most views: Five Planes Vanished Over the Bermuda Triangle (128); fewest: Nine Hikers Cut Their Tent Open From Inside (6).",
+    "Likes per 100 views: 3.1; comments in total: 13."
   ]
 }

@@ -1,22 +1,22 @@
 {
-  "duration_seconds": 35.6,
+  "duration_seconds": 35.9,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 17.36,
+  "file_mb": 15.08,
   "audio": {
     "mean_volume": -21.8,
-    "max_volume": -0.4
+    "max_volume": -0.5
   },
   "image_sources": [
-    "horde",
-    "horde",
-    "horde",
-    "horde",
-    "horde",
-    "horde"
+    "cloudflare",
+    "cloudflare",
+    "cloudflare",
+    "cloudflare",
+    "cloudflare",
+    "cloudflare"
   ],
   "quality_passed": true,
-  "story_id": "lead-masks",
-  "story_bank": "Story bank: 47 of 60 stories left (next: hinterkaifeck, amelia-earhart, zodiac-killer)"
+  "story_id": "hinterkaifeck",
+  "story_bank": "Story bank: 46 of 60 stories left (next: amelia-earhart, zodiac-killer, jack-the-ripper)"
 }

@@ -1,19 +1,20 @@
-# YouTube stats (2026-10-14T08:37 UTC)
+# YouTube stats (2026-10-15T08:35 UTC)
 
 > Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})
 
 ## Findings
 
-- 12 Shorts, 550 views in total, 46 per Short on average.
-- Most views: Five Planes Vanished Over the Bermuda Triangle (112); fewest: Nine Hikers Cut Their Tent Open From Inside (6).
-- Likes per 100 views: 3.1; comments in total: 12.
+- 13 Shorts, 687 views in total, 53 per Short on average.
+- Most views: Five Planes Vanished Over the Bermuda Triangle (128); fewest: Nine Hikers Cut Their Tent Open From Inside (6).
+- Likes per 100 views: 3.1; comments in total: 13.
 
 ## Per Short
 
 | published | title | views | avg % viewed | avg s | engaged | likes | comments | subs+ | mood | hook words |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-13 | [The Dancing Plague of 1518](https://youtu.be/TuJuo59t9Ws) | 12 |  |  |  | 2 | 1 |  | ancient | 12 |
-| 2026-10-12 | [Five Planes Vanished Over the Bermuda Triangle](https://youtu.be/C_Tc50j_Pos) | 112 |  |  |  | 6 | 1 |  | sky | 17 |
+| 2026-10-14 | [The Lead Masks Case](https://youtu.be/VZOc8jFc-hU) | 114 |  |  |  | 5 | 1 |  | crime | 13 |
+| 2026-10-13 | [The Dancing Plague of 1518](https://youtu.be/TuJuo59t9Ws) | 19 |  |  |  | 1 | 1 |  | ancient | 12 |
+| 2026-10-12 | [Five Planes Vanished Over the Bermuda Triangle](https://youtu.be/C_Tc50j_Pos) | 128 |  |  |  | 6 | 1 |  | sky | 17 |
 | 2026-10-11 | [He Hijacked a Plane, Then Jumped Into the Night](https://youtu.be/wkoHlQLPWYw) | 29 |  |  |  | 1 | 1 |  | crime | 18 |
 | 2026-10-10 | [A 2,000-Year-Old Computer Found in a Shipwreck](https://youtu.be/WO-8M8TM_7A) | 74 |  |  |  | 2 | 1 |  | ancient | 15 |
 | 2026-10-09 | [The Explosion That Flattened 80 Million Trees](https://youtu.be/pOvBfSpZe_8) | 96 |  |  |  | 4 | 1 |  | sky | 16 |
