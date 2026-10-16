@@ -181,7 +181,7 @@
     "09_2026-10-16_1325_zodiac-killer": {
       "post_id": "6acf0c55f847f2ad9ec28465",
       "due": "2026-10-16T13:25:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-16_1325_zodiac-killer.mp4?v=3",
       "cap": "a26124e58fa3",
       "kind": "reel",
@@ -291,6 +291,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-15T22:48+03:30"
+    },
+    "02_2026-10-19_1802_dorothy-arnold": {
+      "post_id": "6ad1f658aa117851c0f05228",
+      "due": "2026-10-19T18:02:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-19_1802_dorothy-arnold.mp4?v=3",
+      "cap": "40176fe83505",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-16T13:30+03:30"
     }
   },
   "deleted_by_owner": {
@@ -303,7 +313,7 @@
   "channel_name": "nabz.moamma",
   "hosted": [
     "01_2026-10-19_1331_jack-the-ripper",
-    "09_2026-10-16_1325_zodiac-killer",
+    "02_2026-10-19_1802_dorothy-arnold",
     "10_2026-10-16_2202_paula-welden",
     "10_2026-10-16_2202_paula-welden_story",
     "11_2026-10-17_1403_andes-flight-571",
@@ -313,7 +323,7 @@
     "14_2026-10-18_2121_princes-in-the-tower",
     "car_alamut"
   ],
-  "films_page": "286c1b399cac",
+  "films_page": "eb92bab5ee8a",
   "fail_streak": 0,
   "fail_alerted": false,
   "report_week": "2026-10-12",
