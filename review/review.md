@@ -1,12 +1,12 @@
-# Review: The Hinterkaifeck Murders
+# Review: Amelia Earhart’s Last Flight
 
 | Check | Result |
 |---|---|
-| duration 20-40s | OK (35.9s) |
+| duration 20-40s | OK (33.8s) |
 | vertical 1080x1920 | OK (1080x1920) |
-| audio not too quiet | OK (-21.8 dB) |
+| audio not too quiet | OK (-21.5 dB) |
 | no clipping | OK (-0.5 dB) |
 
-Images: cloudflare, cloudflare, cloudflare, cloudflare, cloudflare, cloudflare
+Images: hfspace, hfspace, hfspace, hfspace, hfspace, hfspace
 
-Story bank: 46 of 60 stories left (next: amelia-earhart, zodiac-killer, jack-the-ripper)
+Story bank: 45 of 60 stories left (next: zodiac-killer, jack-the-ripper, max-headroom-hijack)

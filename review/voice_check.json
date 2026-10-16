@@ -195,5 +195,14 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-10-16",
+    "story": "amelia-earhart",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
   }
 ]
