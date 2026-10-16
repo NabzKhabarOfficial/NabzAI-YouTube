@@ -439,6 +439,81 @@
           "check_words": [],
           "audio_v": 3,
           "at": "2026-10-15T14:02+03:30"
+        },
+        "sodder-children": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.0,
+          "check_words": [
+            "کجا",
+            "رفتند",
+            "قطع",
+            "پیدا",
+            "نیست"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-16T12:48+03:30"
+        },
+        "glenn-miller": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 48.4,
+          "check_words": [
+            "آورد",
+            "محتمل",
+            "باعث",
+            "سقوط",
+            "صحنه"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-16T12:57+03:30"
+        },
+        "amber-room": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 46.6,
+          "check_words": [
+            "وسط",
+            "بعد",
+            "ثابت",
+            "است",
+            "نیست"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-16T13:05+03:30"
+        },
+        "franklin-expedition": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 50.17,
+          "check_words": [
+            "بیست",
+            "یادداشتی",
+            "پیدا",
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-16T13:13+03:30"
+        },
+        "lake-bodom": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.57,
+          "check_words": [
+            "حمله",
+            "کرد",
+            "بیرون",
+            "آمده",
+            "شناخت",
+            "ثابت",
+            "نیست"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-16T13:21+03:30"
+        },
+        "hessdalen-lights": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 46.67,
+          "check_words": [
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-16T13:30+03:30"
         }
       },
       "done": false,
