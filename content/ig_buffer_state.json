@@ -223,7 +223,7 @@
     "car_alamut": {
       "post_id": "6acfdf10a0a1bd470f497efd",
       "due": "2026-10-17T17:37:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_alamut_1.jpg",
       "cap": "58cd2aa8c6a4",
       "kind": "carousel",
@@ -333,6 +333,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-17T16:36+03:30"
+    },
+    "car_persepolis-fire": {
+      "post_id": "6ad3956bae173d6e00c255ee",
+      "due": "2026-10-20T17:40:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_persepolis-fire_1.jpg",
+      "cap": "a42f8e30fbd6",
+      "kind": "carousel",
+      "audio_v": 1,
+      "at": "2026-10-17T19:01+03:30"
     }
   },
   "deleted_by_owner": {
@@ -353,9 +363,9 @@
     "13_2026-10-18_1323_chris-mccandless",
     "14_2026-10-18_2121_princes-in-the-tower",
     "14_2026-10-18_2121_princes-in-the-tower_story",
-    "car_alamut"
+    "car_persepolis-fire"
   ],
-  "films_page": "eb92bab5ee8a",
+  "films_page": "b781c839b331",
   "fail_streak": 0,
   "fail_alerted": false,
   "report_week": "2026-10-12",
