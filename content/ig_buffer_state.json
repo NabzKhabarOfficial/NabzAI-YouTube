@@ -243,7 +243,7 @@
     "11_2026-10-17_1403_andes-flight-571": {
       "post_id": "6ad0ac33230b9109a48c5cca",
       "due": "2026-10-17T14:03:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "note": "Oct 15: sent with due Sun 10-18 13:30 because the stale nazca record still held Sat 14:03; set back to its plan time Sat 10-17 14:03 (the owner moves the Buffer post to that time)",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-17_1403_andes-flight-571.mp4?v=3",
       "cap": "bd97ba35459d",
@@ -323,6 +323,16 @@
       "audio_v": 1,
       "at": "2026-10-16T22:24+03:30",
       "story_v": 2
+    },
+    "03_2026-10-20_1319_alcatraz-escape": {
+      "post_id": "6ad3734c769b4579347aad10",
+      "due": "2026-10-20T13:19:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-20_1319_alcatraz-escape.mp4?v=3",
+      "cap": "3b97dd7ea873",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-17T16:36+03:30"
     }
   },
   "deleted_by_owner": {
@@ -337,7 +347,7 @@
     "01_2026-10-19_1331_jack-the-ripper",
     "02_2026-10-19_1802_dorothy-arnold",
     "02_2026-10-19_1802_dorothy-arnold_story",
-    "11_2026-10-17_1403_andes-flight-571",
+    "03_2026-10-20_1319_alcatraz-escape",
     "12_2026-10-17_2134_oak-island",
     "12_2026-10-17_2134_oak-island_story",
     "13_2026-10-18_1323_chris-mccandless",
