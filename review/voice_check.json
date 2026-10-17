@@ -204,5 +204,21 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-10-17",
+    "story": "zodiac-killer",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "fifty-one",
+        "heard": "A killer mailed coded letters to newspapers.  One took 51 years to crack.",
+        "score": 0.53,
+        "kept": null
+      }
+    ]
   }
 ]
