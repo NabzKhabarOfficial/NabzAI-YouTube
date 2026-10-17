@@ -514,10 +514,33 @@
           ],
           "audio_v": 3,
           "at": "2026-10-16T13:30+03:30"
+        },
+        "villisca-axe-murders": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.7,
+          "check_words": [
+            "کوچکشان",
+            "کشت",
+            "آمدند",
+            "نیست"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-17T12:20+03:30"
+        },
+        "green-children-of-woolpit": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.4,
+          "check_words": [
+            "هشتصد",
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-17T12:27+03:30"
         }
       },
-      "done": false,
-      "planned_at": "2026-10-14T13:37+03:30"
+      "done": true,
+      "planned_at": "2026-10-14T13:37+03:30",
+      "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-10-19"
     },
     "2026-10-26": {
       "per_day": 2,
@@ -613,7 +636,53 @@
           "time": "20:59"
         }
       ],
-      "built": {},
+      "built": {
+        "dyatlov-pass": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 49.6,
+          "check_words": [
+            "بعضی",
+            "بیست"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-17T12:35+03:30"
+        },
+        "nazca-lines": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.03,
+          "check_words": [
+            "هزار"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-17T12:42+03:30"
+        },
+        "lost-dutchmans-mine": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 52.0,
+          "check_words": [
+            "هزار",
+            "هشتصد",
+            "بود",
+            "رفتند",
+            "نیست"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-17T12:49+03:30"
+        },
+        "taos-hum": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 43.8,
+          "check_words": [
+            "بعضی",
+            "قطع",
+            "تائوس",
+            "دهه‌ی",
+            "می‌آمد"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-17T12:56+03:30"
+        }
+      },
       "done": false,
       "planned_at": "2026-10-15T16:20+03:30",
       "note": "Oct 15 (Brain, owner asked): planned by hand with the same golden times plan_week gives this week and one film reel at noon every day; nazca-lines (Mon night) and max-headroom-hijack (Wed night) come back from week 2026-10-12."
