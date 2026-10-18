@@ -275,7 +275,7 @@
     "14_2026-10-18_2121_princes-in-the-tower": {
       "post_id": "6ad1277529e9cdc489e10aef",
       "due": "2026-10-18T21:21:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-18_2121_princes-in-the-tower.mp4?v=3",
       "cap": "3e3bbb02915d",
       "kind": "reel",
@@ -305,7 +305,7 @@
     "14_2026-10-18_2121_princes-in-the-tower_story": {
       "post_id": "6ad273447460b00587c6fc91",
       "due": "2026-10-18T21:36:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-18_2121_princes-in-the-tower_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -373,6 +373,28 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-18T16:56+03:30"
+    },
+    "04_2026-10-20_2104_phaistos-disc_story": {
+      "post_id": "6ad50d170a208cb323784c04",
+      "due": "2026-10-20T21:19:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-20_2104_phaistos-disc_story.mp4?v=2",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-18T21:44+03:30",
+      "story_v": 2
+    },
+    "06_2026-10-21_1857_beale-ciphers_story": {
+      "post_id": "6ad50d18ae173d6e0012a5a0",
+      "due": "2026-10-21T19:12:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-21_1857_beale-ciphers_story.mp4?v=2",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-18T21:44+03:30",
+      "story_v": 2
     }
   },
   "deleted_by_owner": {
@@ -389,10 +411,10 @@
     "02_2026-10-19_1802_dorothy-arnold_story",
     "03_2026-10-20_1319_alcatraz-escape",
     "04_2026-10-20_2104_phaistos-disc",
+    "04_2026-10-20_2104_phaistos-disc_story",
     "05_2026-10-21_1541_jimmy-hoffa",
     "06_2026-10-21_1857_beale-ciphers",
-    "14_2026-10-18_2121_princes-in-the-tower",
-    "14_2026-10-18_2121_princes-in-the-tower_story",
+    "06_2026-10-21_1857_beale-ciphers_story",
     "car_persepolis-fire"
   ],
   "films_page": "4809f12b293f",
