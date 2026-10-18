@@ -681,6 +681,69 @@
           ],
           "audio_v": 3,
           "at": "2026-10-17T12:56+03:30"
+        },
+        "ninth-legion": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.2,
+          "check_words": [
+            "پنج",
+            "بود"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-18T12:35+03:30"
+        },
+        "max-headroom-hijack": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 41.3,
+          "check_words": [
+            "صفحه"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-18T12:40+03:30"
+        },
+        "toynbee-tiles": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 46.47,
+          "check_words": [
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-18T12:46+03:30"
+        },
+        "lost-army-of-cambyses": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.9,
+          "check_words": [
+            "هزار",
+            "پانصد",
+            "صحرا"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-18T12:52+03:30"
+        },
+        "walter-collins": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 41.77,
+          "check_words": [
+            "بعد",
+            "غصه",
+            "است"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-18T12:58+03:30"
+        },
+        "gobekli-tepe": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.2,
+          "check_words": [
+            "یازده",
+            "هزار",
+            "همیشه",
+            "ثابت",
+            "نیست"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-18T13:03+03:30"
         }
       },
       "done": false,
