@@ -220,5 +220,14 @@
         "kept": null
       }
     ]
+  },
+  {
+    "date": "2026-10-18",
+    "story": "jack-the-ripper",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
   }
 ]

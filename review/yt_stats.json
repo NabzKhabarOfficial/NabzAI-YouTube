@@ -1,11 +1,22 @@
 {
-  "at": "2026-10-17T08:36:48.750138+00:00",
+  "at": "2026-10-18T08:36:09.696213+00:00",
   "channel": {
     "subscriberCount": "3",
-    "viewCount": "811",
-    "videoCount": "15"
+    "viewCount": "820",
+    "videoCount": "16"
   },
   "videos": [
+    {
+      "id": "F3MxrOn3t-s",
+      "title": "The Zodiac Killer’s Unnamed Cipher",
+      "published": "2026-10-17T19:00:39Z",
+      "story_id": "zodiac-killer",
+      "mood": "crime",
+      "hook_words": 12,
+      "views": 1,
+      "likes": 0,
+      "comments": 1
+    },
     {
       "id": "n5c0QtvrGGg",
       "title": "Amelia Earhart’s Last Flight",
@@ -13,7 +24,7 @@
       "story_id": "amelia-earhart",
       "mood": "sky",
       "hook_words": 11,
-      "views": 29,
+      "views": 48,
       "likes": 1,
       "comments": 1
     },
@@ -24,7 +35,7 @@
       "story_id": "hinterkaifeck",
       "mood": "crime",
       "hook_words": 14,
-      "views": 105,
+      "views": 107,
       "likes": 3,
       "comments": 1
     },
@@ -35,7 +46,7 @@
       "story_id": "lead-masks",
       "mood": "crime",
       "hook_words": 13,
-      "views": 138,
+      "views": 136,
       "likes": 5,
       "comments": 1
     },
@@ -177,8 +188,8 @@
   "analytics": false,
   "warning": "Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
   "findings": [
-    "15 Shorts, 849 views in total, 57 per Short on average.",
-    "Most views: The Lead Masks Case (138); fewest: Nine Hikers Cut Their Tent Open From Inside (6).",
-    "Likes per 100 views: 2.9; comments in total: 15."
+    "16 Shorts, 869 views in total, 54 per Short on average.",
+    "Most views: The Lead Masks Case (136); fewest: The Zodiac Killer’s Unnamed Cipher (1).",
+    "Likes per 100 views: 2.9; comments in total: 16."
   ]
 }

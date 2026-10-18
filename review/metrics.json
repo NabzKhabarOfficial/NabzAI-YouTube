@@ -1,11 +1,11 @@
 {
-  "duration_seconds": 35.3,
+  "duration_seconds": 35.8,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 12.96,
+  "file_mb": 14.39,
   "audio": {
-    "mean_volume": -23.1,
+    "mean_volume": -22.6,
     "max_volume": -0.5
   },
   "image_sources": [
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "zodiac-killer",
-  "story_bank": "Story bank: 44 of 60 stories left (next: jack-the-ripper, max-headroom-hijack, mh370)"
+  "story_id": "jack-the-ripper",
+  "story_bank": "Story bank: 43 of 60 stories left (next: max-headroom-hijack, mh370, oak-island)"
 }
