@@ -233,7 +233,7 @@
     "12_2026-10-17_2134_oak-island": {
       "post_id": "6acfdf113166073688d382f3",
       "due": "2026-10-17T21:34:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-17_2134_oak-island.mp4?v=3",
       "cap": "842a1480d77c",
       "kind": "reel",
@@ -254,7 +254,7 @@
     "12_2026-10-17_2134_oak-island_story": {
       "post_id": "6ad0e14d10fd2689b3e59cf6",
       "due": "2026-10-17T21:49:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-17_2134_oak-island_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -343,6 +343,26 @@
       "kind": "carousel",
       "audio_v": 1,
       "at": "2026-10-17T19:01+03:30"
+    },
+    "04_2026-10-20_2104_phaistos-disc": {
+      "post_id": "6ad492e46d56c60a7303e89d",
+      "due": "2026-10-20T21:04:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-20_2104_phaistos-disc.mp4?v=3",
+      "cap": "afc319e539f1",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-18T13:03+03:30"
+    },
+    "05_2026-10-21_1541_jimmy-hoffa": {
+      "post_id": "6ad492e4ae173d6e00f52a68",
+      "due": "2026-10-21T15:41:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-21_1541_jimmy-hoffa.mp4?v=3",
+      "cap": "c10ad23e87bc",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-18T13:03+03:30"
     }
   },
   "deleted_by_owner": {
@@ -358,8 +378,8 @@
     "02_2026-10-19_1802_dorothy-arnold",
     "02_2026-10-19_1802_dorothy-arnold_story",
     "03_2026-10-20_1319_alcatraz-escape",
-    "12_2026-10-17_2134_oak-island",
-    "12_2026-10-17_2134_oak-island_story",
+    "04_2026-10-20_2104_phaistos-disc",
+    "05_2026-10-21_1541_jimmy-hoffa",
     "13_2026-10-18_1323_chris-mccandless",
     "14_2026-10-18_2121_princes-in-the-tower",
     "14_2026-10-18_2121_princes-in-the-tower_story",
