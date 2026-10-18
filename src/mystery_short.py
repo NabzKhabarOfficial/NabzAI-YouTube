@@ -711,7 +711,25 @@ def mix(voice: np.ndarray, music: np.ndarray, music_level: float = 0.18) -> np.n
     duck = 1.0 - 0.65 * np.clip(envelope * 3, 0, 1)  # music ~20 dB under the voice, fuller in pauses
     stereo = np.stack([voice, voice], axis=1) + music * (music_level * duck)[:, None]
     peak = float(np.max(np.abs(stereo))) or 1.0
-    return stereo * (0.95 / peak)
+    return loudness(stereo * (0.95 / peak))
+
+
+# Oct 18 2026: peak-only normalising left the Shorts at -22.6 / -23.1 dB mean volume (review CHECK, about 6 dB
+# under typical Shorts, so the voice sounded far away on phones). The mix is now brought to ~-18 dB mean with a
+# soft limiter on the few loud peaks (well under 1% of samples); the peak stays at -0.45 dB (no clipping).
+LOUD_TARGET_DB = float(os.getenv("NABZ_LOUD_TARGET_DB", "-18"))
+
+
+def loudness(x: np.ndarray, target_db: float = LOUD_TARGET_DB, ceiling: float = 0.95, knee: float = 0.72,
+             max_gain: float = 4.0) -> np.ndarray:
+    rms = float(np.sqrt(np.mean(x ** 2)))
+    if rms <= 0:
+        return x
+    y = x * min(10 ** (target_db / 20) / rms, max_gain)
+    a = np.abs(y)
+    over = a > knee
+    y[over] = np.sign(y[over]) * (knee + (ceiling - knee) * np.tanh((a[over] - knee) / (ceiling - knee)))
+    return y
 
 
 # ---------------------------------------------------------------- captions
