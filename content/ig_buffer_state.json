@@ -265,7 +265,7 @@
     "13_2026-10-18_1323_chris-mccandless": {
       "post_id": "6ad0e14e91a4bd77397236d9",
       "due": "2026-10-18T13:23:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-18_1323_chris-mccandless.mp4?v=3",
       "cap": "57f7abd4a1da",
       "kind": "reel",
@@ -363,6 +363,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-18T13:03+03:30"
+    },
+    "06_2026-10-21_1857_beale-ciphers": {
+      "post_id": "6ad4c94a769b457934c412f9",
+      "due": "2026-10-21T18:57:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-21_1857_beale-ciphers.mp4?v=3",
+      "cap": "2930b7e02813",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-18T16:56+03:30"
     }
   },
   "deleted_by_owner": {
@@ -380,7 +390,7 @@
     "03_2026-10-20_1319_alcatraz-escape",
     "04_2026-10-20_2104_phaistos-disc",
     "05_2026-10-21_1541_jimmy-hoffa",
-    "13_2026-10-18_1323_chris-mccandless",
+    "06_2026-10-21_1857_beale-ciphers",
     "14_2026-10-18_2121_princes-in-the-tower",
     "14_2026-10-18_2121_princes-in-the-tower_story",
     "car_persepolis-fire"
