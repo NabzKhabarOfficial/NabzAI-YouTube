@@ -295,7 +295,7 @@
     "02_2026-10-19_1802_dorothy-arnold": {
       "post_id": "6ad1f658aa117851c0f05228",
       "due": "2026-10-19T18:02:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-19_1802_dorothy-arnold.mp4?v=3",
       "cap": "40176fe83505",
       "kind": "reel",
@@ -316,7 +316,7 @@
     "02_2026-10-19_1802_dorothy-arnold_story": {
       "post_id": "6ad273447460b00587c6fcdd",
       "due": "2026-10-19T18:17:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-19_1802_dorothy-arnold_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -416,8 +416,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "02_2026-10-19_1802_dorothy-arnold",
-    "02_2026-10-19_1802_dorothy-arnold_story",
     "03_2026-10-20_1319_alcatraz-escape",
     "04_2026-10-20_2104_phaistos-disc",
     "04_2026-10-20_2104_phaistos-disc_story",
@@ -425,12 +423,14 @@
     "06_2026-10-21_1857_beale-ciphers",
     "06_2026-10-21_1857_beale-ciphers_story",
     "07_2026-10-22_1356_kaspar-hauser",
+    "08_2026-10-22_2245_sodder-children",
+    "car_gorgan-wall",
     "car_persepolis-fire"
   ],
   "films_page": "ad96b45b4caa",
-  "fail_streak": 0,
+  "fail_streak": 1,
   "fail_alerted": false,
   "report_week": "2026-10-19",
-  "last_fail": "RuntimeError: push to nabz-reels failed: remote: fatal error in commit_refs        \nTo https://github.com/NabzKhabarOfficial/nabz-reels.git\n ! [remote rejected] main -> main (failure)\nerror: failed to push some ref",
+  "last_fail": "videos not public on nabz-reels Pages",
   "story_errors": {}
 }
