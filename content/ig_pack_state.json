@@ -744,11 +744,73 @@
           ],
           "audio_v": 3,
           "at": "2026-10-18T13:03+03:30"
+        },
+        "mary-celeste": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.2,
+          "check_words": [
+            "وسط",
+            "غذای",
+            "هشتصد",
+            "هفتصد",
+            "قایق",
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-19T13:08+03:30"
+        },
+        "percy-fawcett": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 46.4,
+          "check_words": [
+            "فاوست",
+            "مطمئن"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-19T13:16+03:30"
+        },
+        "baghdad-battery": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.73,
+          "check_words": [
+            "کند",
+            "خواسته"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-19T13:24+03:30"
+        },
+        "mallory-irvine": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.8,
+          "check_words": [
+            "صعود",
+            "ژوئن",
+            "مالوری",
+            "بگذارد",
+            "آن‌قدر",
+            "نهصد",
+            "موقع",
+            "عوض"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-19T13:31+03:30"
+        },
+        "ss-waratah": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 41.47,
+          "check_words": [
+            "هزار",
+            "نهصد",
+            "صبح"
+          ],
+          "audio_v": 3,
+          "at": "2026-10-19T13:38+03:30"
         }
       },
-      "done": false,
+      "done": true,
       "planned_at": "2026-10-15T16:20+03:30",
-      "note": "Oct 15 (Brain, owner asked): planned by hand with the same golden times plan_week gives this week and one film reel at noon every day; nazca-lines (Mon night) and max-headroom-hijack (Wed night) come back from week 2026-10-12."
+      "note": "Oct 15 (Brain, owner asked): planned by hand with the same golden times plan_week gives this week and one film reel at noon every day; nazca-lines (Mon night) and max-headroom-hijack (Wed night) come back from week 2026-10-12.",
+      "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-10-26"
     }
   },
   "carousels": {
