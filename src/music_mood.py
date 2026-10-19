@@ -62,6 +62,12 @@ MOODS = {
     "andes-flight-571": "cold", "chris-mccandless": "cold", "yuba-county-five": "cold", "dyatlov-pass": "cold",
     # sea additions (Oct 14 2026)
     "essex-whaleship": "sea", "andrea-gail": "sea", "the-bloop": "sea",
+    # Oct 19 2026 batch
+    "kon-tiki": "sea", "sully-hudson": "sky", "great-escape": "vanish", "frank-abagnale": "crime",
+    "apollo-13": "sky", "saroo-brierley": "vanish", "overtoun-bridge": "vanish", "ourang-medan": "sea",
+    "shugborough-inscription": "ancient", "dorabella-cipher": "ancient", "patomskiy-crater": "cold",
+    "kentucky-meat-shower": "sky", "stonehenge-altar-stone": "ancient", "greenland-norse": "cold",
+    "lake-nyos": "vanish", "mary-celeste": "sea",
 }
 _WORDS = [  # first match wins (checked in this order)
     ("cold", r"\bsnow|\bice\b|\bicy\b|glacier|frozen|avalanche|everest|antarctic|arctic|blizzard|andes"),
