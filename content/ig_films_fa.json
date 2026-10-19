@@ -31,6 +31,12 @@
     "essex-whaleship": {"fa": "در قلب دریا", "en": "In the Heart of the Sea", "year": 2015, "by": "ران هاوارد"},
     "andrea-gail": {"fa": "طوفان کامل", "en": "The Perfect Storm", "year": 2000, "by": "ولفگانگ پترسن"},
     "hugh-glass": {"fa": "از گور برخاسته", "en": "The Revenant", "year": 2015, "by": "الخاندرو گونزالس ایناریتو"},
-    "chris-mccandless": {"fa": "به سوی طبیعت وحشی", "en": "Into the Wild", "year": 2007, "by": "شان پن"}
+    "chris-mccandless": {"fa": "به سوی طبیعت وحشی", "en": "Into the Wild", "year": 2007, "by": "شان پن"},
+    "kon-tiki": {"fa": "کن‌تیکی", "en": "Kon-Tiki", "year": 2012, "by": "یواخیم رونینگ و اسپن ساندبرگ"},
+    "sully-hudson": {"fa": "سالی", "en": "Sully", "year": 2016, "by": "کلینت ایستوود"},
+    "great-escape": {"fa": "فرار بزرگ", "en": "The Great Escape", "year": 1963, "by": "جان استرجس"},
+    "frank-abagnale": {"fa": "اگه می‌تونی منو بگیر", "en": "Catch Me If You Can", "year": 2002, "by": "استیون اسپیلبرگ"},
+    "apollo-13": {"fa": "آپولو ۱۳", "en": "Apollo 13", "year": 1995, "by": "ران هاوارد"},
+    "saroo-brierley": {"fa": "شیر", "en": "Lion", "year": 2016, "by": "گارث دیویس"}
   }
 }
