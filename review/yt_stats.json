@@ -1,11 +1,22 @@
 {
-  "at": "2026-10-18T08:36:09.696213+00:00",
+  "at": "2026-10-19T08:34:49.417558+00:00",
   "channel": {
     "subscriberCount": "3",
-    "viewCount": "820",
-    "videoCount": "16"
+    "viewCount": "871",
+    "videoCount": "17"
   },
   "videos": [
+    {
+      "id": "vNbn2YnEcqQ",
+      "title": "Jack the Ripper: The Name That Never Became a Person",
+      "published": "2026-10-18T19:00:19Z",
+      "story_id": "jack-the-ripper",
+      "mood": "crime",
+      "hook_words": 11,
+      "views": 2,
+      "likes": 0,
+      "comments": 1
+    },
     {
       "id": "F3MxrOn3t-s",
       "title": "The Zodiac Killer’s Unnamed Cipher",
@@ -24,7 +35,7 @@
       "story_id": "amelia-earhart",
       "mood": "sky",
       "hook_words": 11,
-      "views": 48,
+      "views": 51,
       "likes": 1,
       "comments": 1
     },
@@ -188,8 +199,8 @@
   "analytics": false,
   "warning": "Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
   "findings": [
-    "16 Shorts, 869 views in total, 54 per Short on average.",
+    "17 Shorts, 874 views in total, 51 per Short on average.",
     "Most views: The Lead Masks Case (136); fewest: The Zodiac Killer’s Unnamed Cipher (1).",
-    "Likes per 100 views: 2.9; comments in total: 16."
+    "Likes per 100 views: 2.9; comments in total: 17."
   ]
 }

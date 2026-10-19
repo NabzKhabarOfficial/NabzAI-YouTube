@@ -1,19 +1,20 @@
-# YouTube stats (2026-10-18T08:36 UTC)
+# YouTube stats (2026-10-19T08:34 UTC)
 
 > Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})
 
 ## Findings
 
-- 16 Shorts, 869 views in total, 54 per Short on average.
+- 17 Shorts, 874 views in total, 51 per Short on average.
 - Most views: The Lead Masks Case (136); fewest: The Zodiac Killer’s Unnamed Cipher (1).
-- Likes per 100 views: 2.9; comments in total: 16.
+- Likes per 100 views: 2.9; comments in total: 17.
 
 ## Per Short
 
 | published | title | views | avg % viewed | avg s | engaged | likes | comments | subs+ | mood | hook words |
 |---|---|---|---|---|---|---|---|---|---|---|
+| 2026-10-18 | [Jack the Ripper: The Name That Never Became a Person](https://youtu.be/vNbn2YnEcqQ) | 2 |  |  |  | 0 | 1 |  | crime | 11 |
 | 2026-10-17 | [The Zodiac Killer’s Unnamed Cipher](https://youtu.be/F3MxrOn3t-s) | 1 |  |  |  | 0 | 1 |  | crime | 12 |
-| 2026-10-16 | [Amelia Earhart’s Last Flight](https://youtu.be/n5c0QtvrGGg) | 48 |  |  |  | 1 | 1 |  | sky | 11 |
+| 2026-10-16 | [Amelia Earhart’s Last Flight](https://youtu.be/n5c0QtvrGGg) | 51 |  |  |  | 1 | 1 |  | sky | 11 |
 | 2026-10-15 | [The Hinterkaifeck Murders](https://youtu.be/cu3JmKL7XHE) | 107 |  |  |  | 3 | 1 |  | crime | 14 |
 | 2026-10-14 | [The Lead Masks Case](https://youtu.be/VZOc8jFc-hU) | 136 |  |  |  | 5 | 1 |  | crime | 13 |
 | 2026-10-13 | [The Dancing Plague of 1518](https://youtu.be/TuJuo59t9Ws) | 23 |  |  |  | 1 | 1 |  | ancient | 12 |

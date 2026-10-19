@@ -229,5 +229,14 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-10-19",
+    "story": "max-headroom-hijack",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
   }
 ]

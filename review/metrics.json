@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 35.8,
+  "duration_seconds": 35.0,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 14.39,
+  "file_mb": 12.84,
   "audio": {
-    "mean_volume": -22.6,
-    "max_volume": -0.5
+    "mean_volume": -18.1,
+    "max_volume": -0.4
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "jack-the-ripper",
-  "story_bank": "Story bank: 43 of 60 stories left (next: max-headroom-hijack, mh370, oak-island)"
+  "story_id": "max-headroom-hijack",
+  "story_bank": "Story bank: 42 of 60 stories left (next: mh370, oak-island, paula-welden)"
 }
