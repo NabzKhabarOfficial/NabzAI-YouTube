@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 35.0,
+  "duration_seconds": 41.87,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 12.84,
+  "file_mb": 15.97,
   "audio": {
     "mean_volume": -18.1,
-    "max_volume": -0.4
+    "max_volume": -0.3
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "max-headroom-hijack",
-  "story_bank": "Story bank: 42 of 60 stories left (next: mh370, oak-island, paula-welden)"
+  "story_id": "mh370",
+  "story_bank": "Story bank: 41 of 60 stories left (next: oak-island, paula-welden, kaz-ii)"
 }
