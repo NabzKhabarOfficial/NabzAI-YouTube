@@ -347,7 +347,7 @@
     "04_2026-10-20_2104_phaistos-disc": {
       "post_id": "6ad492e46d56c60a7303e89d",
       "due": "2026-10-20T21:04:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-20_2104_phaistos-disc.mp4?v=3",
       "cap": "afc319e539f1",
       "kind": "reel",
@@ -377,7 +377,7 @@
     "04_2026-10-20_2104_phaistos-disc_story": {
       "post_id": "6ad50d170a208cb323784c04",
       "due": "2026-10-20T21:19:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-20_2104_phaistos-disc_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -446,6 +446,26 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-20T17:55+03:30"
+    },
+    "10_2026-10-23_1759_amber-room": {
+      "post_id": "6ad7c14864a2e76528e15b3f",
+      "due": "2026-10-23T17:59:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-23_1759_amber-room.mp4?v=3",
+      "cap": "89d2a051a048",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-20T22:57+03:30"
+    },
+    "11_2026-10-23_2206_franklin-expedition": {
+      "post_id": "6ad7c1499f8712d7ad7d3f60",
+      "due": "2026-10-23T22:06:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-23_2206_franklin-expedition.mp4?v=3",
+      "cap": "acc55037e21f",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-20T22:57+03:30"
     }
   },
   "deleted_by_owner": {
@@ -457,8 +477,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "04_2026-10-20_2104_phaistos-disc",
-    "04_2026-10-20_2104_phaistos-disc_story",
     "05_2026-10-21_1541_jimmy-hoffa",
     "06_2026-10-21_1857_beale-ciphers",
     "06_2026-10-21_1857_beale-ciphers_story",
@@ -466,6 +484,8 @@
     "08_2026-10-22_2245_sodder-children",
     "08_2026-10-22_2245_sodder-children_story",
     "09_2026-10-23_0956_glenn-miller",
+    "10_2026-10-23_1759_amber-room",
+    "11_2026-10-23_2206_franklin-expedition",
     "car_gorgan-wall"
   ],
   "films_page": "2f57e7b5646e",
