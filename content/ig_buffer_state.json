@@ -327,7 +327,7 @@
     "03_2026-10-20_1319_alcatraz-escape": {
       "post_id": "6ad3734c769b4579347aad10",
       "due": "2026-10-20T13:19:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-20_1319_alcatraz-escape.mp4?v=3",
       "cap": "3b97dd7ea873",
       "kind": "reel",
@@ -337,7 +337,7 @@
     "car_persepolis-fire": {
       "post_id": "6ad3956bae173d6e00c255ee",
       "due": "2026-10-20T17:40:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_persepolis-fire_1.jpg",
       "cap": "a42f8e30fbd6",
       "kind": "carousel",
@@ -425,6 +425,27 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-19T20:04+03:30"
+    },
+    "08_2026-10-22_2245_sodder-children_story": {
+      "post_id": "6ad77a7aca72dcf891808238",
+      "due": "2026-10-22T23:00:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-22_2245_sodder-children_story.mp4?v=2",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-20T17:55+03:30",
+      "story_v": 2
+    },
+    "09_2026-10-23_0956_glenn-miller": {
+      "post_id": "6ad77a7bdcfa786848cb3522",
+      "due": "2026-10-23T09:56:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-23_0956_glenn-miller.mp4?v=3",
+      "cap": "90b61499e76d",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-20T17:55+03:30"
     }
   },
   "deleted_by_owner": {
@@ -436,7 +457,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "03_2026-10-20_1319_alcatraz-escape",
     "04_2026-10-20_2104_phaistos-disc",
     "04_2026-10-20_2104_phaistos-disc_story",
     "05_2026-10-21_1541_jimmy-hoffa",
@@ -444,8 +464,9 @@
     "06_2026-10-21_1857_beale-ciphers_story",
     "07_2026-10-22_1356_kaspar-hauser",
     "08_2026-10-22_2245_sodder-children",
-    "car_gorgan-wall",
-    "car_persepolis-fire"
+    "08_2026-10-22_2245_sodder-children_story",
+    "09_2026-10-23_0956_glenn-miller",
+    "car_gorgan-wall"
   ],
   "films_page": "ad96b45b4caa",
   "fail_streak": 0,
