@@ -367,7 +367,7 @@
     "06_2026-10-21_1857_beale-ciphers": {
       "post_id": "6ad4c94a769b457934c412f9",
       "due": "2026-10-21T18:57:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-21_1857_beale-ciphers.mp4?v=3",
       "cap": "2930b7e02813",
       "kind": "reel",
@@ -476,6 +476,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-21T18:04+03:30"
+    },
+    "car_tarim-mummies": {
+      "post_id": "6ad8db207159dc2c40c0f1e4",
+      "due": "2026-10-24T17:04:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_tarim-mummies_1.jpg",
+      "cap": "172e702fbc80",
+      "kind": "carousel",
+      "audio_v": 1,
+      "at": "2026-10-21T19:00+03:30"
     }
   },
   "deleted_by_owner": {
@@ -487,7 +497,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "06_2026-10-21_1857_beale-ciphers",
     "06_2026-10-21_1857_beale-ciphers_story",
     "07_2026-10-22_1356_kaspar-hauser",
     "08_2026-10-22_2245_sodder-children",
@@ -496,9 +505,10 @@
     "10_2026-10-23_1759_amber-room",
     "11_2026-10-23_2206_franklin-expedition",
     "12_2026-10-24_1255_lake-bodom",
-    "car_gorgan-wall"
+    "car_gorgan-wall",
+    "car_tarim-mummies"
   ],
-  "films_page": "2f57e7b5646e",
+  "films_page": "97146beb0a5a",
   "fail_streak": 0,
   "fail_alerted": false,
   "report_week": "2026-10-19",
