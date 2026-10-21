@@ -1,19 +1,20 @@
-# YouTube stats (2026-10-20T08:37 UTC)
+# YouTube stats (2026-10-21T08:36 UTC)
 
 > Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})
 
 ## Findings
 
-- 18 Shorts, 1091 views in total, 61 per Short on average.
-- Most views: The Max Headroom Signal Hijacking (214); fewest: The Zodiac Killer’s Unnamed Cipher (1).
-- Likes per 100 views: 2.6; comments in total: 18.
+- 19 Shorts, 1163 views in total, 61 per Short on average.
+- Most views: The Max Headroom Signal Hijacking (219); fewest: The Zodiac Killer’s Unnamed Cipher (1).
+- Likes per 100 views: 2.6; comments in total: 19.
 
 ## Per Short
 
 | published | title | views | avg % viewed | avg s | engaged | likes | comments | subs+ | mood | hook words |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-19 | [The Max Headroom Signal Hijacking](https://youtu.be/0g_WTKKEN1s) | 214 |  |  |  | 2 | 1 |  | crime | 11 |
-| 2026-10-18 | [Jack the Ripper: The Name That Never Became a Person](https://youtu.be/vNbn2YnEcqQ) | 5 |  |  |  | 1 | 1 |  | crime | 11 |
+| 2026-10-20 | [MH370: The Flight That Left the Map](https://youtu.be/04C9iZr-bwA) | 66 |  |  |  | 2 | 1 |  | sky | 12 |
+| 2026-10-19 | [The Max Headroom Signal Hijacking](https://youtu.be/0g_WTKKEN1s) | 219 |  |  |  | 2 | 1 |  | crime | 11 |
+| 2026-10-18 | [Jack the Ripper: The Name That Never Became a Person](https://youtu.be/vNbn2YnEcqQ) | 6 |  |  |  | 1 | 1 |  | crime | 11 |
 | 2026-10-17 | [The Zodiac Killer’s Unnamed Cipher](https://youtu.be/F3MxrOn3t-s) | 1 |  |  |  | 0 | 1 |  | crime | 12 |
 | 2026-10-16 | [Amelia Earhart’s Last Flight](https://youtu.be/n5c0QtvrGGg) | 51 |  |  |  | 1 | 1 |  | sky | 11 |
 | 2026-10-15 | [The Hinterkaifeck Murders](https://youtu.be/cu3JmKL7XHE) | 107 |  |  |  | 3 | 1 |  | crime | 14 |

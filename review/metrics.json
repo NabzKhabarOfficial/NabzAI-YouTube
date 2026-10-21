@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 41.87,
+  "duration_seconds": 35.07,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 15.97,
+  "file_mb": 16.73,
   "audio": {
     "mean_volume": -18.1,
-    "max_volume": -0.3
+    "max_volume": -0.2
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "mh370",
-  "story_bank": "Story bank: 41 of 60 stories left (next: oak-island, paula-welden, kaz-ii)"
+  "story_id": "oak-island",
+  "story_bank": "Story bank: 40 of 60 stories left (next: paula-welden, kaz-ii, beale-ciphers)"
 }
