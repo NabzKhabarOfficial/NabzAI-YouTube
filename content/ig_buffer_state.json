@@ -419,7 +419,7 @@
     "08_2026-10-22_2245_sodder-children": {
       "post_id": "6ad646f0d7a5a2882da9dd4b",
       "due": "2026-10-22T22:45:00+03:30",
-      "status": "scheduled",
+      "status": "error",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-22_2245_sodder-children.mp4?v=3",
       "cap": "a61b883039c9",
       "kind": "reel",
@@ -518,6 +518,16 @@
       "audio_v": 1,
       "at": "2026-10-22T18:06+03:30",
       "story_v": 2
+    },
+    "14_2026-10-25_1411_villisca-axe-murders": {
+      "post_id": "6ada62742f4faf5f7963359f",
+      "due": "2026-10-25T14:11:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-25_1411_villisca-axe-murders.mp4?v=3",
+      "cap": "304170c47b58",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-22T22:50+03:30"
     }
   },
   "deleted_by_owner": {
@@ -529,8 +539,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "08_2026-10-22_2245_sodder-children",
-    "08_2026-10-22_2245_sodder-children_story",
     "09_2026-10-23_0956_glenn-miller",
     "10_2026-10-23_1759_amber-room",
     "10_2026-10-23_1759_amber-room_story",
@@ -538,6 +546,7 @@
     "11_2026-10-23_2206_franklin-expedition_story",
     "12_2026-10-24_1255_lake-bodom",
     "13_2026-10-24_2131_hessdalen-lights",
+    "14_2026-10-25_1411_villisca-axe-murders",
     "car_tarim-mummies"
   ],
   "films_page": "97146beb0a5a",
