@@ -1,11 +1,22 @@
 {
-  "at": "2026-10-21T08:36:23.870468+00:00",
+  "at": "2026-10-22T08:37:00.314424+00:00",
   "channel": {
     "subscriberCount": "4",
-    "viewCount": "876",
-    "videoCount": "19"
+    "viewCount": "877",
+    "videoCount": "20"
   },
   "videos": [
+    {
+      "id": "eJrGjuzSS4E",
+      "title": "Oak Island’s Money Pit",
+      "published": "2026-10-21T19:00:16Z",
+      "story_id": "oak-island",
+      "mood": "ancient",
+      "hook_words": 10,
+      "views": 33,
+      "likes": 4,
+      "comments": 1
+    },
     {
       "id": "04C9iZr-bwA",
       "title": "MH370: The Flight That Left the Map",
@@ -13,7 +24,7 @@
       "story_id": "mh370",
       "mood": "sky",
       "hook_words": 12,
-      "views": 66,
+      "views": 77,
       "likes": 2,
       "comments": 1
     },
@@ -24,7 +35,7 @@
       "story_id": "max-headroom-hijack",
       "mood": "crime",
       "hook_words": 11,
-      "views": 219,
+      "views": 220,
       "likes": 2,
       "comments": 1
     },
@@ -158,7 +169,7 @@
       "hook_words": 19,
       "views": 8,
       "likes": 0,
-      "comments": 1
+      "comments": 0
     },
     {
       "id": "bTUpMg1yGRY",
@@ -221,8 +232,8 @@
   "analytics": false,
   "warning": "Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
   "findings": [
-    "19 Shorts, 1163 views in total, 61 per Short on average.",
-    "Most views: The Max Headroom Signal Hijacking (219); fewest: The Zodiac Killer’s Unnamed Cipher (1).",
-    "Likes per 100 views: 2.6; comments in total: 19."
+    "20 Shorts, 1208 views in total, 60 per Short on average.",
+    "Most views: The Max Headroom Signal Hijacking (220); fewest: The Zodiac Killer’s Unnamed Cipher (1).",
+    "Likes per 100 views: 2.8; comments in total: 19."
   ]
 }
