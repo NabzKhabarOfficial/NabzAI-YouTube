@@ -34,7 +34,15 @@
 4. Keep Tehran timezone handling explicit.
 5. Keep Telegram code in `NabzKhabar`; do not copy its modules here.
 6. Treat Buffer/Meta/YouTube state transitions as idempotency-sensitive.
-7. After edits, verify exact changed files and separate static verification from live API verification.
+7. After every code, workflow, dependency, state, or documentation change, update this handoff with the latest commit, changed files, current status, blockers, and next action.
+8. Verify exact changed files and separate static verification from live API verification.
+
+## Handoff update format
+- Last change: `<commit URL>`
+- Changed files: `<paths>`
+- Verification: `<CI/test/static status>`
+- Blockers: `<none or exact blocker>`
+- Next action: `<concrete continuation step>`
 
 ## Secrets
 - YouTube and media/provider secrets are GitHub Actions secrets in this repository.
