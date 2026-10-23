@@ -36,6 +36,9 @@ Safety (Oct 10 2026):
    (reels already waiting there go out unless the owner presses "Pause queue" in Buffer).
  * Three failed runs in a row (Buffer refused / unreachable / videos not public) send the owner
    a Telegram message (TELEGRAM_BOT_TOKEN; the chat is found from the owner's /start).
+ * Oct 22 2026 (audit): when Buffer's queue cannot be read, a post is never marked "sent" just
+   because its time passed; it stays "scheduled" until a run that can see Buffer confirms it
+   (sent, stuck or error). A good run also clears the old last_fail text.
 Captions are built fresh from the story bank (+ content/ig_captions_fa.json overrides) when a
 reel is sent; a waiting post whose caption changed is replaced in Buffer (same time, same video).
 True stories that became films (content/ig_films_fa.json) get a "comment «فیلم»" line; Zaprep
@@ -752,6 +755,7 @@ def note_run(state: dict, ok: bool, why: str = "") -> None:
     """Count failed runs in a row; on the third one, tell the owner (once per streak)."""
     if ok:
         state["fail_streak"], state["fail_alerted"] = 0, False
+        state.pop("last_fail", None)
         return
     state["fail_streak"] = int(state.get("fail_streak", 0)) + 1
     state["last_fail"] = why[:300]
@@ -1010,8 +1014,8 @@ def run(state: dict, org: str, channel: str) -> None:
         if rec.get("status") != "scheduled":
             continue
         if rec["post_id"] in waiting_ids or not known:
-            if not known and datetime.fromisoformat(rec["due"]) < now:
-                rec["status"] = "sent"
+            # Queue unreadable: keep the post "scheduled" until a run that can see Buffer confirms
+            # it (sent, stuck or error). Marking it "sent" here hid failed posts (audit, Oct 22 2026).
             continue
         if rec["post_id"] in errored:
             rec["status"] = "error"
