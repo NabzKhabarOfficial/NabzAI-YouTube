@@ -1,6 +1,6 @@
 # Brain handoff (NabzKhabarOfficial projects)
 
-Read this whole file first, then continue the work. Updated: 2026-10-19 (15:50 Tehran).
+Read this whole file first, then continue the work. Updated: 2026-10-23 (04:00 Tehran).
 
 ## How to work with the owner (Younes)
 - ALWAYS answer in Persian (English angers him), short and clear. When he must do something by hand, give numbered step-by-step instructions (one action per step, exact button names), never a dense summary; he asked "never confuse me".
@@ -45,6 +45,15 @@ Read this whole file first, then continue the work. Updated: 2026-10-19 (15:50 T
 - NabzKhabar: after the next runs confirm docs/review/*.json keep updating and v13_quality_fix v5 is active (log line "provincial speakers, blast notices"); read every send for new defects; consider a stronger fallback for the AI sense check / event judge when Gemini is at quota.
 - NabzAI-YouTube: new FA story batch (before ~Oct 30) and new carousel batch (before Nov 7); owner to regenerate the YouTube token with yt-analytics.readonly.
 - nabz-tools & nabz-film: once the owner registers the domain, configure CNAME, canonicals, sitemaps, and hreflang.
+
+## Oct 23 2026 (04:00 Tehran) Brain check
+- FIXED NabzAI-YouTube scripts/guard_today.py (blob df04ce8, hash verified): bank_ids() now reads content/mysteries.json AND content/mysteries_add.json. Before, the guard could stop a run as "every story used" while mysteries_add.json still had unused stories.
+- FOUND (was not logged in this file): v13_quality_fix.py was extended on Oct 21 14:30 Tehran (v6 labels: رژیم جولانی, مستعمره‌نشین, تجاوزات, مزدوران, پهپاد انتحاری, جروزالم پست, کشته بارتر, headline-body gaps, opinion pieces, small quakes, local crashes, local denials). The Oct 20-21 sends with these words predate that fix.
+- CHECKED, NOT A BUG: education.caption() over 1000 chars drops only the body and keeps the steps (parts[:6] + parts[8:]).
+- OPEN, Instagram: reel 08_2026-10-22_2245_sodder-children has status "error" in content/ig_buffer_state.json (its story post was scheduled for 23:00). The owner reschedules it in Buffer by hand; then update or remove its record so the buffer job does not skip it forever (ig_buffer.py never requeues "error").
+- OPEN, latent: v13_mistral.install() returns before v13_quality_fix.install() when MISTRAL_API_KEY is missing (the key is set now, so not active). quality_fix.install() is idempotent (_DONE), so it can also be called before the key check.
+- OPEN, workflows (owner edits): youtube.yml commits content/published.json review/ and yt-comment.yml commits only content/yt_comments.json; content/yt_comments.json and review/yt_comments.json drift (20 vs 19 ids). Both should stage both files.
+- OPEN: ig_pack.write_tables() ignores a plan item's "file" override in schedule.csv (week 2026-10-12 mh370/flight-19); ig_buffer.note_run() does not clear last_fail on success. New FA story batch and carousel batch NOT started yet.
 
 ## Keep this file updated
 After every important change, update this file (and the date at the top).
