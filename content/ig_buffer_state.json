@@ -439,7 +439,7 @@
     "11_2026-10-23_2206_franklin-expedition": {
       "post_id": "6ad7c1499f8712d7ad7d3f60",
       "due": "2026-10-23T22:06:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-23_2206_franklin-expedition.mp4?v=3",
       "cap": "acc55037e21f",
       "kind": "reel",
@@ -490,7 +490,7 @@
     "11_2026-10-23_2206_franklin-expedition_story": {
       "post_id": "6ada2176a6a09108d26fd400",
       "due": "2026-10-23T22:21:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-23_2206_franklin-expedition_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -549,6 +549,26 @@
       "audio_v": 1,
       "at": "2026-10-23T19:00+03:30",
       "story_v": 2
+    },
+    "01_2026-10-26_1328_dyatlov-pass": {
+      "post_id": "6adbb5329acae620d81545ff",
+      "due": "2026-10-26T21:23:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-26_1328_dyatlov-pass.mp4?v=3",
+      "cap": "c813a72be77a",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-23T22:55+03:30"
+    },
+    "02_2026-10-26_1805_nazca-lines": {
+      "post_id": "6adbb532e4be8a4d8621b2bb",
+      "due": "2026-10-26T18:05:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-26_1805_nazca-lines.mp4?v=3",
+      "cap": "5842eb8a1375",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-23T22:55+03:30"
     }
   },
   "deleted_by_owner": {
@@ -562,10 +582,10 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
+    "01_2026-10-26_1328_dyatlov-pass",
+    "02_2026-10-26_1805_nazca-lines",
     "08_2026-10-22_2245_sodder-children",
     "08_2026-10-22_2245_sodder-children_story",
-    "11_2026-10-23_2206_franklin-expedition",
-    "11_2026-10-23_2206_franklin-expedition_story",
     "12_2026-10-24_1255_lake-bodom",
     "13_2026-10-24_2131_hessdalen-lights",
     "13_2026-10-24_2131_hessdalen-lights_story",
