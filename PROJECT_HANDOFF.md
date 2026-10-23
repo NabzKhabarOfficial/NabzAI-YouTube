@@ -1,0 +1,45 @@
+# NabzAI-YouTube Project Handoff
+
+## Scope
+- This private repository owns Instagram and YouTube work.
+- Telegram news-channel code belongs in the public `NabzKhabar` repository.
+
+## Current branch
+- `main`
+
+## Repository layout
+- `src/`: production Reels, Stories/Buffer, YouTube, voice, and media code.
+- `instagram/`: isolated Story validation/publisher package and 60-day calendar.
+- `.github/workflows/ig-pack.yml`: production-like Instagram Reel pack and Buffer path.
+- `.github/workflows/instagram-v1.yml`: isolated Story package validation/dry-run workflow; it does not publish by itself.
+- `.github/workflows/youtube.yml`: YouTube build/test/upload workflow.
+- `tests/`: offline unit/regression tests.
+
+## Completed fixes
+- Added and validated the 60-day Tehran-time Story calendar and calendar-rule checks.
+- Restored functional `src/voice_check.py` ASR behavior, candidate generation, repair loop, learned pronunciation persistence, bundled-FFmpeg lookup, and monotonic caption timing.
+- Added `faster-whisper` to `requirements-cinematic.txt`.
+- Added `requests` to `requirements.txt` for the Instagram publisher.
+- Added the isolated `instagram/` package and dry-run validation path.
+
+## Critical architecture note
+- The actual current production Instagram Reel path is `ig-pack.yml` -> `src.ig_pack` -> release assets/Buffer.
+- The isolated `instagram/runner.py` path validates and selects Stories but does not publish or persist production publish state.
+- Do not claim Instagram Story publishing is live unless a workflow explicitly calls `instagram.publisher.publish_story` with a public media URL and persistent idempotency state.
+
+## Required continuation procedure
+1. Inspect `main`, latest commits, current workflow files, and state schemas first.
+2. Run offline CI before changing behavior; never repeat completed work.
+3. Preserve the one-continuous-take voice policy and fail closed when the required voice check cannot run.
+4. Keep Tehran timezone handling explicit.
+5. Keep Telegram code in `NabzKhabar`; do not copy its modules here.
+6. Treat Buffer/Meta/YouTube state transitions as idempotency-sensitive.
+7. After edits, verify exact changed files and separate static verification from live API verification.
+
+## Secrets
+- YouTube and media/provider secrets are GitHub Actions secrets in this repository.
+- The isolated Meta Story publisher expects `INSTAGRAM_USER_ID`, `INSTAGRAM_ACCESS_TOKEN`, and optional `INSTAGRAM_API_VERSION`, but its workflow remains dry-run until explicitly wired and enabled.
+
+## Known verification boundary
+- Static code and workflow wiring have been reviewed.
+- Live GitHub Actions, Buffer, Meta, YouTube, public hosting, and provider quota behavior still require actual workflow runs.
