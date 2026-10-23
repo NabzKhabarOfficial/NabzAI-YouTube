@@ -429,7 +429,7 @@
     "10_2026-10-23_1759_amber-room": {
       "post_id": "6ad7c14864a2e76528e15b3f",
       "due": "2026-10-23T17:59:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-23_1759_amber-room.mp4?v=3",
       "cap": "89d2a051a048",
       "kind": "reel",
@@ -479,7 +479,7 @@
     "10_2026-10-23_1759_amber-room_story": {
       "post_id": "6ada21751cc831fdc3c29b96",
       "due": "2026-10-23T18:14:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-23_1759_amber-room_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -528,6 +528,27 @@
       "audio_v": 1,
       "at": "2026-10-23T12:58+03:30",
       "story_v": 2
+    },
+    "15_2026-10-25_2056_green-children-of-woolpit": {
+      "post_id": "6adb7e5f7af932dee4ea08c6",
+      "due": "2026-10-26T14:03:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-10-25_2056_green-children-of-woolpit.mp4?v=3",
+      "cap": "9acbb71d30cd",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-23T19:00+03:30"
+    },
+    "08_2026-10-22_2245_sodder-children_story": {
+      "post_id": "6adb7e5f6fe59a6ed280834e",
+      "due": "2026-10-25T22:46:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-22_2245_sodder-children_story.mp4?v=2",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-23T19:00+03:30",
+      "story_v": 2
     }
   },
   "deleted_by_owner": {
@@ -542,14 +563,14 @@
   "channel_name": "nabz.moamma",
   "hosted": [
     "08_2026-10-22_2245_sodder-children",
-    "10_2026-10-23_1759_amber-room",
-    "10_2026-10-23_1759_amber-room_story",
+    "08_2026-10-22_2245_sodder-children_story",
     "11_2026-10-23_2206_franklin-expedition",
     "11_2026-10-23_2206_franklin-expedition_story",
     "12_2026-10-24_1255_lake-bodom",
     "13_2026-10-24_2131_hessdalen-lights",
     "13_2026-10-24_2131_hessdalen-lights_story",
     "14_2026-10-25_1411_villisca-axe-murders",
+    "15_2026-10-25_2056_green-children-of-woolpit",
     "car_tarim-mummies"
   ],
   "films_page": "7052bdcd8b3f",
