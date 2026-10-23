@@ -47,6 +47,9 @@ jobs:
           if [ -f content/yt_comments.json ]; then
             git add content/yt_comments.json
           fi
+          if [ -f review/yt_comments.json ]; then
+            git add review/yt_comments.json
+          fi
           if git diff --cached --quiet; then
             echo "No comment state changes."
           else
