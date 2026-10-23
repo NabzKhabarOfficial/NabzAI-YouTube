@@ -50,11 +50,16 @@ def forced_story():
 
 
 def bank_ids():
-    try:
-        data = json.loads(Path("content/mysteries.json").read_text(encoding="utf-8"))
-        return [s.get("id") for s in data.get("stories", []) if s.get("id")]
-    except Exception:
-        return []
+    # Both English banks: the guard must see stories in mysteries_add.json too,
+    # otherwise it stops the run while unused stories are still available.
+    ids = []
+    for name in ("content/mysteries.json", "content/mysteries_add.json"):
+        try:
+            data = json.loads(Path(name).read_text(encoding="utf-8"))
+            ids.extend(s.get("id") for s in data.get("stories", []) if s.get("id"))
+        except Exception:
+            continue
+    return list(dict.fromkeys(ids))
 
 
 def main():
