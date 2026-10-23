@@ -1,23 +1,24 @@
-# YouTube stats (2026-10-22T08:37 UTC)
+# YouTube stats (2026-10-23T08:35 UTC)
 
 > Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})
 
 ## Findings
 
-- 20 Shorts, 1208 views in total, 60 per Short on average.
+- 21 Shorts, 1233 views in total, 59 per Short on average.
 - Most views: The Max Headroom Signal Hijacking (220); fewest: The Zodiac Killer’s Unnamed Cipher (1).
-- Likes per 100 views: 2.8; comments in total: 19.
+- Likes per 100 views: 2.7; comments in total: 21.
 
 ## Per Short
 
 | published | title | views | avg % viewed | avg s | engaged | likes | comments | subs+ | mood | hook words |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-21 | [Oak Island’s Money Pit](https://youtu.be/eJrGjuzSS4E) | 33 |  |  |  | 4 | 1 |  | ancient | 10 |
-| 2026-10-20 | [MH370: The Flight That Left the Map](https://youtu.be/04C9iZr-bwA) | 77 |  |  |  | 2 | 1 |  | sky | 12 |
+| 2026-10-22 | [The Disappearance of Paula Welden](https://youtu.be/cEDrcPa2UxU) | 12 |  |  |  | 0 | 1 |  | vanish | 14 |
+| 2026-10-21 | [Oak Island’s Money Pit](https://youtu.be/eJrGjuzSS4E) | 42 |  |  |  | 4 | 1 |  | ancient | 10 |
+| 2026-10-20 | [MH370: The Flight That Left the Map](https://youtu.be/04C9iZr-bwA) | 81 |  |  |  | 2 | 1 |  | sky | 12 |
 | 2026-10-19 | [The Max Headroom Signal Hijacking](https://youtu.be/0g_WTKKEN1s) | 220 |  |  |  | 2 | 1 |  | crime | 11 |
 | 2026-10-18 | [Jack the Ripper: The Name That Never Became a Person](https://youtu.be/vNbn2YnEcqQ) | 6 |  |  |  | 1 | 1 |  | crime | 11 |
 | 2026-10-17 | [The Zodiac Killer’s Unnamed Cipher](https://youtu.be/F3MxrOn3t-s) | 1 |  |  |  | 0 | 1 |  | crime | 12 |
-| 2026-10-16 | [Amelia Earhart’s Last Flight](https://youtu.be/n5c0QtvrGGg) | 51 |  |  |  | 1 | 1 |  | sky | 11 |
+| 2026-10-16 | [Amelia Earhart’s Last Flight](https://youtu.be/n5c0QtvrGGg) | 51 |  |  |  | 0 | 1 |  | sky | 11 |
 | 2026-10-15 | [The Hinterkaifeck Murders](https://youtu.be/cu3JmKL7XHE) | 107 |  |  |  | 3 | 1 |  | crime | 14 |
 | 2026-10-14 | [The Lead Masks Case](https://youtu.be/VZOc8jFc-hU) | 136 |  |  |  | 5 | 1 |  | crime | 13 |
 | 2026-10-13 | [The Dancing Plague of 1518](https://youtu.be/TuJuo59t9Ws) | 23 |  |  |  | 1 | 1 |  | ancient | 12 |
@@ -26,7 +27,7 @@
 | 2026-10-10 | [A 2,000-Year-Old Computer Found in a Shipwreck](https://youtu.be/WO-8M8TM_7A) | 74 |  |  |  | 2 | 1 |  | ancient | 15 |
 | 2026-10-09 | [The Explosion That Flattened 80 Million Trees](https://youtu.be/pOvBfSpZe_8) | 96 |  |  |  | 4 | 1 |  | sky | 16 |
 | 2026-10-08 | [The 72-Second Signal From Deep Space](https://youtu.be/Z7Cf2N4YpFo) | 20 |  |  |  | 0 | 1 |  | sky | 12 |
-| 2026-10-06 | [A Dead Man With a Secret Code in His Pocket](https://youtu.be/lShTVxGJwM0) | 8 |  |  |  | 0 | 0 |  | crime | 19 |
+| 2026-10-06 | [A Dead Man With a Secret Code in His Pocket](https://youtu.be/lShTVxGJwM0) | 8 |  |  |  | 0 | 1 |  | crime | 19 |
 | 2026-10-05 | [Three Lighthouse Keepers Vanished Overnight](https://youtu.be/bTUpMg1yGRY) | 49 |  |  |  | 0 | 1 |  | sea | 16 |
 | 2026-10-04 | [The Book Nobody on Earth Can Read](https://youtu.be/76g9g87Yt9I) | 15 |  |  |  | 1 | 2 |  | ancient | 17 |
 | 2026-10-03 | [An Entire Colony Vanished, Leaving One Word](https://youtu.be/1qQuJj6PVAA) | 106 |  |  |  | 1 | 1 |  |  | 15 |

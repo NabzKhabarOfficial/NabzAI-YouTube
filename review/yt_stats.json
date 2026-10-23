@@ -1,11 +1,22 @@
 {
-  "at": "2026-10-22T08:37:00.314424+00:00",
+  "at": "2026-10-23T08:35:05.228576+00:00",
   "channel": {
     "subscriberCount": "4",
-    "viewCount": "877",
-    "videoCount": "20"
+    "viewCount": "1216",
+    "videoCount": "21"
   },
   "videos": [
+    {
+      "id": "cEDrcPa2UxU",
+      "title": "The Disappearance of Paula Welden",
+      "published": "2026-10-22T19:00:39Z",
+      "story_id": "paula-welden",
+      "mood": "vanish",
+      "hook_words": 14,
+      "views": 12,
+      "likes": 0,
+      "comments": 1
+    },
     {
       "id": "eJrGjuzSS4E",
       "title": "Oak Island’s Money Pit",
@@ -13,7 +24,7 @@
       "story_id": "oak-island",
       "mood": "ancient",
       "hook_words": 10,
-      "views": 33,
+      "views": 42,
       "likes": 4,
       "comments": 1
     },
@@ -24,7 +35,7 @@
       "story_id": "mh370",
       "mood": "sky",
       "hook_words": 12,
-      "views": 77,
+      "views": 81,
       "likes": 2,
       "comments": 1
     },
@@ -69,7 +80,7 @@
       "mood": "sky",
       "hook_words": 11,
       "views": 51,
-      "likes": 1,
+      "likes": 0,
       "comments": 1
     },
     {
@@ -169,7 +180,7 @@
       "hook_words": 19,
       "views": 8,
       "likes": 0,
-      "comments": 0
+      "comments": 1
     },
     {
       "id": "bTUpMg1yGRY",
@@ -232,8 +243,8 @@
   "analytics": false,
   "warning": "Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
   "findings": [
-    "20 Shorts, 1208 views in total, 60 per Short on average.",
+    "21 Shorts, 1233 views in total, 59 per Short on average.",
     "Most views: The Max Headroom Signal Hijacking (220); fewest: The Zodiac Killer’s Unnamed Cipher (1).",
-    "Likes per 100 views: 2.8; comments in total: 19."
+    "Likes per 100 views: 2.7; comments in total: 21."
   ]
 }
