@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 30.83,
+  "duration_seconds": 35.07,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 13.16,
+  "file_mb": 14.09,
   "audio": {
-    "mean_volume": -18.1,
-    "max_volume": -0.2
+    "mean_volume": -18.0,
+    "max_volume": -0.3
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "kaz-ii",
-  "story_bank": "Story bank: 38 of 60 stories left (next: beale-ciphers, carroll-deering, ss-baychimo)"
+  "story_id": "beale-ciphers",
+  "story_bank": "Story bank: 37 of 60 stories left (next: carroll-deering, ss-baychimo, taos-hum)"
 }

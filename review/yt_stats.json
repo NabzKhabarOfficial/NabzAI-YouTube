@@ -1,11 +1,22 @@
 {
-  "at": "2026-10-23T08:35:05.228576+00:00",
+  "at": "2026-10-24T08:36:16.482545+00:00",
   "channel": {
-    "subscriberCount": "4",
-    "viewCount": "1216",
-    "videoCount": "21"
+    "subscriberCount": "5",
+    "viewCount": "1236",
+    "videoCount": "22"
   },
   "videos": [
+    {
+      "id": "4TgVLMsAioQ",
+      "title": "Kaz II: The Ghost Yacht",
+      "published": "2026-10-23T19:00:18Z",
+      "story_id": "kaz-ii",
+      "mood": "sea",
+      "hook_words": 10,
+      "views": 100,
+      "likes": 2,
+      "comments": 1
+    },
     {
       "id": "cEDrcPa2UxU",
       "title": "The Disappearance of Paula Welden",
@@ -24,7 +35,7 @@
       "story_id": "oak-island",
       "mood": "ancient",
       "hook_words": 10,
-      "views": 42,
+      "views": 45,
       "likes": 4,
       "comments": 1
     },
@@ -46,7 +57,7 @@
       "story_id": "max-headroom-hijack",
       "mood": "crime",
       "hook_words": 11,
-      "views": 220,
+      "views": 219,
       "likes": 2,
       "comments": 1
     },
@@ -243,8 +254,8 @@
   "analytics": false,
   "warning": "Retention/subscriber numbers missing: the refresh token needs the yt-analytics.readonly scope. RefreshError: ('invalid_scope: Bad Request', {'error': 'invalid_scope', 'error_description': 'Bad Request'})",
   "findings": [
-    "21 Shorts, 1233 views in total, 59 per Short on average.",
-    "Most views: The Max Headroom Signal Hijacking (220); fewest: The Zodiac Killer’s Unnamed Cipher (1).",
-    "Likes per 100 views: 2.7; comments in total: 21."
+    "22 Shorts, 1335 views in total, 61 per Short on average.",
+    "Most views: The Max Headroom Signal Hijacking (219); fewest: The Zodiac Killer’s Unnamed Cipher (1).",
+    "Likes per 100 views: 2.6; comments in total: 22."
   ]
 }
