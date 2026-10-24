@@ -459,7 +459,7 @@
     "car_tarim-mummies": {
       "post_id": "6ad8db207159dc2c40c0f1e4",
       "due": "2026-10-24T17:04:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_tarim-mummies_1.jpg",
       "cap": "172e702fbc80",
       "kind": "carousel",
@@ -579,6 +579,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-24T13:00+03:30"
+    },
+    "car_kaaba-zartosht": {
+      "post_id": "6adccf993d5b27036b8f5743",
+      "due": "2026-10-27T17:24:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_kaaba-zartosht_1.jpg",
+      "cap": "b86641712099",
+      "kind": "carousel",
+      "audio_v": 1,
+      "at": "2026-10-24T19:00+03:30"
     }
   },
   "deleted_by_owner": {
@@ -601,7 +611,7 @@
     "13_2026-10-24_2131_hessdalen-lights_story",
     "14_2026-10-25_1411_villisca-axe-murders",
     "15_2026-10-25_2056_green-children-of-woolpit",
-    "car_tarim-mummies"
+    "car_kaaba-zartosht"
   ],
   "films_page": "8246c9eab1ac",
   "fail_streak": 0,
