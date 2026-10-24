@@ -449,7 +449,7 @@
     "12_2026-10-24_1255_lake-bodom": {
       "post_id": "6ad8ce70df27e4a2784ed782",
       "due": "2026-10-24T12:55:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-24_1255_lake-bodom.mp4?v=3",
       "cap": "5c6632769622",
       "kind": "reel",
@@ -569,6 +569,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-23T22:55+03:30"
+    },
+    "03_2026-10-27_1324_lost-dutchmans-mine": {
+      "post_id": "6adc7b3bbd33ce99c315d307",
+      "due": "2026-10-27T13:24:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-27_1324_lost-dutchmans-mine.mp4?v=3",
+      "cap": "3f542db19b7d",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-24T13:00+03:30"
     }
   },
   "deleted_by_owner": {
@@ -584,9 +594,9 @@
   "hosted": [
     "01_2026-10-26_1328_dyatlov-pass",
     "02_2026-10-26_1805_nazca-lines",
+    "03_2026-10-27_1324_lost-dutchmans-mine",
     "08_2026-10-22_2245_sodder-children",
     "08_2026-10-22_2245_sodder-children_story",
-    "12_2026-10-24_1255_lake-bodom",
     "13_2026-10-24_2131_hessdalen-lights",
     "13_2026-10-24_2131_hessdalen-lights_story",
     "14_2026-10-25_1411_villisca-axe-murders",
