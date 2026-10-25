@@ -65,3 +65,6 @@
 
 - Verification update: the full offline workflow passed on commit `c45b48e55b7d9e67270eebb59df520446c4dcc8f`: compile source/Instagram packages, validate the Story calendar, run due-slot check, and `python -m unittest discover -s tests -v` all succeeded. Workflow-YAML syntax validation has now been added to the offline workflow and must pass on the latest commit before this batch is considered green.
 - Additional changed file: `.github/workflows/offline-tests.yml`.
+- Latest uploader hardening: resumable upload errors are no longer retried as a plain upload unless a structured HTTP 400 explicitly identifies a `publishAt` validation error. Combined YouTube tags are bounded by a 500-character budget. Added offline tests for ambiguous timeout no-retry, known schedule-validation fallback, and tag budget.
+- Latest code commit: https://github.com/NabzKhabarOfficial/NabzAI-YouTube/commit/77bb35afc52e769906f0309c2f9e49e3ad58c495; test commit: https://github.com/NabzKhabarOfficial/NabzAI-YouTube/commit/543c5e854e777cc6a40853f5b5d37ca233564fa0.
+- Verification: the prior full offline workflow passed; the latest run including workflow-YAML validation and uploader retry tests is pending. No live YouTube/Buffer/Meta API calls were made.
