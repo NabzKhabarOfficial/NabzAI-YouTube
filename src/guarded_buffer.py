@@ -59,7 +59,7 @@ def _wrap_mutations():
         if cached: return cached
         try: post = original_story(channel, video_url, due)
         except Exception as exc:
-            status = "ambiguous"; finish(CLAIMS, key, "", status=status)
+            finish(CLAIMS, key, "", status="ambiguous")
             raise RuntimeError(f"Buffer story outcome ambiguous for claim {key}: {exc}") from exc
         pid = str((post or {}).get("id") or "")
         if not pid: finish(CLAIMS, key, "", status="ambiguous"); raise RuntimeError(f"Buffer story returned no post id for claim {key}")
@@ -78,8 +78,12 @@ def _wrap_mutations():
         try: original_delete(post_id)
         except Exception as exc: finish(CLAIMS, key, "", status="ambiguous"); raise RuntimeError(f"Buffer delete outcome ambiguous for claim {key}: {exc}") from exc
         finish(CLAIMS, key, str(post_id), status="succeeded"); return None
-    ig_buffer.gql, ig_buffer.create_post, ig_buffer.create_story = strict_gql, guarded_post, guarded_story
-    ig_buffer.create_carousel, ig_buffer.delete_post, ig_buffer._NABZ_GUARDED = guarded_carousel, guarded_delete, True
+    ig_buffer.gql = strict_gql
+    ig_buffer.create_post = guarded_post
+    ig_buffer.create_story = guarded_story
+    ig_buffer.create_carousel = guarded_carousel
+    ig_buffer.delete_post = guarded_delete
+    ig_buffer._NABZ_GUARDED = True
 
 def run():
     if not os.getenv("BUFFER_API_KEY", "").strip(): raise RuntimeError("BUFFER_API_KEY is missing; refusing to report a successful Buffer run")
