@@ -49,6 +49,7 @@ import time
 import zipfile
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from src.atomic_state import load_json as _atomic_load_json, save_json as _atomic_save_json
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE_FILE = ROOT / "content" / "ig_pack_state.json"
@@ -230,16 +231,12 @@ def _minutes(hhmm: str) -> int:
 
 # ---------------------------------------------------------------- state
 def load_json(path: Path, default):
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        return data if isinstance(data, type(default)) else default
-    except Exception:
-        return default
+    data = _atomic_load_json(path, default)
+    return data if isinstance(data, type(default)) else default
 
 
 def save_state(state: dict) -> None:
-    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    _atomic_save_json(STATE_FILE, state)
 
 
 def built_today(state: dict, now: datetime | None = None) -> int:
