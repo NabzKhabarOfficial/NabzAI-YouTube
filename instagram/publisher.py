@@ -20,21 +20,32 @@ def _version() -> str:
 
 def _request(method: str, url: str, **kwargs: Any) -> requests.Response:
     last = None
+    is_mutation = method.upper() in {"POST", "PUT", "PATCH", "DELETE"}
     for attempt in range(3):
         try:
             response = requests.request(method, url, timeout=30, **kwargs)
+            if is_mutation and response.status_code in (500, 502, 503, 504):
+                raise InstagramPublishError(
+                    f"Ambiguous {method.upper()} response (HTTP {response.status_code}); automatic retry blocked"
+                )
             if response.status_code not in (429, 500, 502, 503, 504):
                 return response
             last = response
-            time.sleep(min(2 ** attempt, 8))
-        except requests.RequestException as exc:
-            last = exc
+            if attempt < 2:
+                time.sleep(min(2 ** attempt, 8))
+        except requests.RequestException:
+            # The server may have accepted a mutation before its response was lost.
+            # Never retry a create/publish/delete operation on a transport exception.
+            if is_mutation:
+                raise InstagramPublishError(
+                    f"Ambiguous {method.upper()} transport outcome; automatic retry blocked"
+                ) from None
             if attempt == 2:
-                raise InstagramPublishError(str(exc)) from exc
+                raise InstagramPublishError("Request transport failed after bounded retries") from None
             time.sleep(min(2 ** attempt, 8))
     if isinstance(last, requests.Response):
         return last
-    raise InstagramPublishError(str(last))
+    raise InstagramPublishError("Request failed after bounded retries")
 
 def create_story(image_url: str = "", video_url: str = "", api_version: str | None = None) -> str:
     if bool(image_url) == bool(video_url):
