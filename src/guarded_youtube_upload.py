@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 from src import youtube_uploader
-from src.production_state import begin_claim, mark_ambiguous, mark_failed, mark_succeeded
+from src.production_state import begin_claim, load_json, mark_ambiguous, mark_failed, mark_succeeded
 
 ROOT = Path(__file__).resolve().parents[1]
 CLAIMS = ROOT / "content" / "publication_claims.json"
@@ -48,7 +48,6 @@ def _quality_gate(root: Path) -> None:
 
     voice = str(data.get("voice") or "")
     required = os.getenv("NABZ_REQUIRE_VOICE", "kokoro").strip().lower()
-
     allowed = {
         "kokoro": voice.startswith("kokoro:"),
         "gemini": voice.startswith("gemini:"),
@@ -62,6 +61,17 @@ def _quality_gate(root: Path) -> None:
         )
 
 
+def _existing_story_claim(story_id: str) -> dict | None:
+    state = load_json(CLAIMS, {})
+    for claim in (state.get("claims") or {}).values():
+        if not isinstance(claim, dict):
+            continue
+        metadata = claim.get("metadata") or {}
+        if metadata.get("provider") == "youtube" and metadata.get("story_id") == story_id:
+            return claim
+    return None
+
+
 def run(root: str, privacy: str = "private", publish_at: str | None = None) -> str:
     path = Path(root)
     if not path.is_absolute():
@@ -69,6 +79,15 @@ def run(root: str, privacy: str = "private", publish_at: str | None = None) -> s
 
     _quality_gate(path)
     story_id, digest = _identity(path)
+
+    existing = _existing_story_claim(story_id)
+    if existing:
+        status = str(existing.get("status") or "pending")
+        external_id = str(existing.get("external_id") or "")
+        raise RuntimeError(
+            f"YouTube story already has a publication claim: status={status}, "
+            f"external_id={external_id or 'none'}. Reconcile or remove the existing scheduled video before rerun."
+        )
 
     key, fresh = begin_claim(
         CLAIMS,
@@ -83,9 +102,7 @@ def run(root: str, privacy: str = "private", publish_at: str | None = None) -> s
     )
 
     if not fresh:
-        raise RuntimeError(
-            "YouTube publication claim already exists; reconcile before rerun"
-        )
+        raise RuntimeError("YouTube publication claim already exists; reconcile before rerun")
 
     try:
         video_id = youtube_uploader.upload_from_metadata(path, privacy, publish_at)
