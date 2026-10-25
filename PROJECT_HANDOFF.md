@@ -9,25 +9,22 @@
 - PR #5 remains open and unmerged. PR #4 remains open.
 
 ## Latest change
-- Commit: https://github.com/NabzKhabarOfficial/NabzAI-YouTube/commit/852a558a21ebaf5afaf7b87413dd6dccf5f5c9f5
-- Added `src/guarded_youtube_upload.py` and `src/guarded_buffer.py`.
-- Added `tests/test_guarded_publication_entrypoints.py`.
-- The guarded YouTube entrypoint creates a durable claim before upload, confirms only after a video ID, and blocks reruns for pending/ambiguous claims.
-- The guarded Buffer entrypoint adds a run-level claim for an identical pack-state snapshot and blocks uncertain reruns.
+- Commit: https://github.com/NabzKhabarOfficial/NabzAI-YouTube/commit/34aeea5275996fd3f076efdf0a4d6b6b68d23aa0
+- Added `src/guarded_meta.py` for claim-guarded Meta Story publication.
+- Hardened `src/guarded_buffer.py`: completed snapshots are idempotent no-ops; pending/ambiguous snapshots remain hard stops.
+- Hardened `src/guarded_youtube_upload.py`: publication now requires a valid passed media report and Gemini voice by default.
+- Expanded offline tests for Meta claims, Buffer success reuse, ambiguous outcomes, duplicate claims, and non-Gemini voice rejection.
 
 ## Verification
-- Actual PR-head CI completed successfully:
-  - offline: https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40159574161/job/121068116438
-  - Instagram and YouTube offline tests: https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40159570883/job/121068107133
-- Earlier run `40159191248` failed before this claim-guard commit and is not evidence against the current head.
+- The previous head checks passed, but this new code head requires fresh CI. No check for `34aeea5275996fd3f076efdf0a4d6b6b68d23aa0` is being inferred from an older run.
 - Live YouTube, Buffer, Meta, public-hosting, or provider-quota verification has not been performed.
 
 ## Important limitations
-- The connected GitHub writer rejected workflow-file writes because the required `workflow` permission is unavailable. `.github/workflows/youtube.yml` and `.github/workflows/ig-pack.yml` therefore still call the original modules. The new adapters are real, tested production entry points, but they are not wired into CI until that permission is granted or an authorized maintainer changes the workflow commands.
-- Per-post Buffer claims inside `src/ig_buffer.py` are not yet migrated. The current adapter is run-level only and must not be described as exactly-once Buffer publication.
-- `ig_buffer.py` still directly writes `content/ig_stats.json` and `review/ig_weekly.md`; `ig_pack.py` still directly writes the Persian bank during merge. These remain open migration items because the available GitHub editor cannot safely patch those large files without whole-file replacement.
+- Workflow-file writes remain blocked by the connected GitHub writer's missing `workflow` permission. `.github/workflows/youtube.yml` and `.github/workflows/ig-pack.yml` still call the original modules, so these adapters are not yet active in CI.
+- Per-post Buffer claims inside `src/ig_buffer.py` are not yet migrated. The Buffer adapter is run-level only and is not an exactly-once guarantee.
+- `ig_buffer.py` still directly writes `content/ig_stats.json` and `review/ig_weekly.md`; `ig_pack.py` still directly writes the Persian bank during merge. Safe migration needs patch-capable editing of those large files.
 - Provider-side lookup after accepted-but-lost responses remains unavailable in the current configured paths. Ambiguous claims require manual review, not automatic retry.
-- Voice fail-closed policy is not yet one shared gate across English Shorts, Persian Reels, and one-take packs.
+- Voice fail-closed behavior is now enforced at the guarded YouTube entrypoint, but the original unguarded YouTube workflow and other Reel generation paths still need the workflow/entrypoint migration.
 - Buffer queue/public-site replacement still needs remote-state reconciliation before destructive replacement.
 - Runtime dependency/model/font integrity hardening is incomplete.
 - Live platform verification is `NOT VERIFIED`.
@@ -37,7 +34,8 @@
 - The isolated `instagram/runner.py` path validates Stories but does not publish production Stories.
 
 ## Next action
-1. Obtain the minimum workflow-write permission or have an authorized maintainer change the workflow commands to `python -m src.guarded_youtube_upload` and `python -m src.guarded_buffer`.
-2. Then add per-operation Buffer/Meta claims, provider lookup where supported, and manual-review states.
-3. Migrate the remaining large-file writers with a patch-capable checkout, then run the complete offline suite and clean-checkout test.
-4. Keep PRs open and do not merge automatically.
+1. Verify fresh CI for commit `34aeea5275996fd3f076efdf0a4d6b6b68d23aa0` and fix any failures.
+2. Obtain the minimum workflow-write permission or have an authorized maintainer switch active workflows to the guarded entrypoints.
+3. Add per-operation Buffer claims and provider lookup where supported.
+4. Migrate remaining large-file writers with a patch-capable checkout, then run the complete offline suite and clean-checkout test.
+5. Keep PRs open and do not merge automatically.
