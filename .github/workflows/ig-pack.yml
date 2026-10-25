@@ -1,12 +1,10 @@
 name: NABZ Instagram weekly pack
 
-# Builds next week's Persian Reels (2 or 3 a day) for «نبض معما» and puts them, with captions,
-# hashtags, covers and a schedule table, in the GitHub release "week-YYYY-MM-DD" (ZIP inside).
-# Then the "buffer" job hands every finished reel to Buffer (official Meta partner, free plan),
-# which publishes it on Instagram at its time. The videos are served from the public repo
-# nabz-reels (GitHub Pages). Nothing logs in to Instagram and the owner uploads nothing.
-# One voice on every reel (the deep Gemini narrator), checked word by word. The free voice quota
-# is daily, so it runs three times a day; each run continues where the last one stopped.
+# Builds Persian Reels for «نبض معما», publishes them through Buffer,
+# and persists durable publication claims.
+#
+# The workflow never logs in directly to Instagram.
+# Buffer remains the official publishing path.
 
 on:
   workflow_dispatch:
@@ -16,6 +14,7 @@ on:
         required: false
         default: ""
         type: string
+
       per_day:
         description: "Reels per day"
         required: true
@@ -24,17 +23,18 @@ on:
         options:
           - "2"
           - "3"
+
       buffer_max:
-        description: "Most reels to send to Buffer in this run (1 = test)"
+        description: "Most reels to send to Buffer in this run"
         required: true
         default: "10"
         type: choice
         options:
           - "10"
           - "1"
+
   schedule:
-    # Tehran 08:00, 13:00 and 19:00 every day. A finished week is skipped in seconds, and a
-    # week that is still missing reels (voice quota) keeps going until it is complete.
+    # Tehran 08:00, 13:00 and 19:00
     - cron: "30 4 * * *"
     - cron: "30 9 * * *"
     - cron: "30 15 * * *"
@@ -50,13 +50,16 @@ jobs:
   guard:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+
     outputs:
       skip: ${{ steps.check.outputs.skip }}
+
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
       - name: Is next week's pack already complete?
         id: check
@@ -68,27 +71,32 @@ jobs:
   pack:
     needs: guard
     if: needs.guard.outputs.skip != 'true'
+
     runs-on: ubuntu-latest
     timeout-minutes: 300
 
     env:
       GH_TOKEN: ${{ github.token }}
+
       NABZ_PACK_WEEK: ${{ inputs.week }}
       NABZ_PACK_PER_DAY: ${{ inputs.per_day || '2' }}
       NABZ_VOICE_CHECK_TRIES: "4"
+
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       POLLINATIONS_TOKEN: ${{ secrets.POLLINATIONS_TOKEN }}
       CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
       CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
       GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
 
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -106,12 +114,16 @@ jobs:
 
       - name: Install caption fonts
         run: |
-          sudo apt-get install -y -q fonts-dejavu-core fonts-liberation2 || true
+          sudo apt-get update -qq
+          sudo apt-get install -y -q \
+            fonts-dejavu-core \
+            fonts-liberation2
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install -r requirements-cinematic.txt
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements-cinematic.txt
 
       - name: Build the weekly pack
         run: |
@@ -122,70 +134,113 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           if [ ! -f content/ig_pack_state.json ]; then
             echo "No pack state yet."
             exit 0
           fi
+
           git add content/ig_pack_state.json
-          if [ -f review/pron_learned.json ]; then git add review/pron_learned.json; fi
-          if git diff --cached --quiet; then
-            echo "No pack state changes."
-          else
-            git commit -m "chore(ig-pack): record weekly pack progress [skip ci]"
-            git pull --rebase --autostash || true
-            git push
+
+          if [ -f review/pron_learned.json ]; then
+            git add review/pron_learned.json
           fi
 
+          if git diff --cached --quiet; then
+            echo "No pack state changes."
+            exit 0
+          fi
+
+          git commit -m "chore(ig-pack): record weekly pack progress [skip ci]"
+
+          git pull --rebase --autostash
+
+          git push origin main
+
   buffer:
-    # Runs after the pack (also when the pack was skipped), so a reel built in this run reaches
-    # Buffer in the same run.
-    needs: [guard, pack]
+    # Runs after the pack, including when the pack is skipped.
+    # The guarded adapter blocks blind retries when the previous Buffer
+    # mutation has an unknown outcome.
+    needs:
+      - guard
+      - pack
+
     if: always()
+
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
     env:
       GH_TOKEN: ${{ github.token }}
+
       BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
       REELS_PAT: ${{ secrets.REELS_PAT }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+
       NABZ_BUFFER_MAX_NEW: ${{ inputs.buffer_max || '10' }}
 
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
-      - name: Get the latest pack state
+      - name: Get latest pack state
         run: |
-          git pull --rebase --autostash || true
+          git pull --rebase --autostash
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Send finished reels to Buffer
+      - name: Install Buffer dependencies
         run: |
-          python -m src.ig_buffer
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
 
-      - name: Persist Buffer state
+      - name: Validate guarded Buffer modules
+        run: |
+          python -m py_compile \
+            src/atomic_state.py \
+            src/idempotency.py \
+            src/production_state.py \
+            src/guarded_buffer.py
+
+      - name: Send finished reels to Buffer through guarded adapter
+        run: |
+          python -m src.guarded_buffer
+
+      - name: Persist Buffer state and publication claims
         if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [ ! -f content/ig_buffer_state.json ]; then
-            echo "No Buffer state yet."
-            exit 0
+
+          if [ -f content/ig_buffer_state.json ]; then
+            git add content/ig_buffer_state.json
           fi
-          git add content/ig_buffer_state.json
-          if [ -f content/ig_stats.json ]; then git add content/ig_stats.json; fi
-          if [ -f review/ig_weekly.md ]; then git add review/ig_weekly.md; fi
+
+          if [ -f content/ig_stats.json ]; then
+            git add content/ig_stats.json
+          fi
+
+          if [ -f review/ig_weekly.md ]; then
+            git add review/ig_weekly.md
+          fi
+
+          if [ -f content/publication_claims.json ]; then
+            git add content/publication_claims.json
+          fi
+
           if git diff --cached --quiet; then
             echo "No Buffer state changes."
-          else
-            git commit -m "chore(ig-buffer): record reels sent to Buffer [skip ci]"
-            git pull --rebase --autostash || true
-            git push
+            exit 0
           fi
+
+          git commit -m "chore(ig-buffer): record guarded Buffer publication state [skip ci]"
+
+          git pull --rebase --autostash
+
+          git push origin main
