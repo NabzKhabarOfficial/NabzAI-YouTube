@@ -11,6 +11,12 @@ CLAIMS = ROOT / "content" / "publication_claims.json"
 
 
 def publish_story(image_url: str = "", video_url: str = "", *, dry_run: bool = True) -> dict:
+    # A dry run performs no external mutation, so it must not consume a durable
+    # production claim. Otherwise a later real publish with the same media would
+    # be blocked by a test-only record.
+    if dry_run:
+        return publisher.publish_story(image_url=image_url, video_url=video_url, dry_run=True)
+
     media_url = image_url or video_url
     media_kind = "image" if image_url else "video"
     key, fresh = begin_claim(CLAIMS, "meta_story", media_kind, media_url,
@@ -18,7 +24,7 @@ def publish_story(image_url: str = "", video_url: str = "", *, dry_run: bool = T
     if not fresh:
         raise RuntimeError("Meta Story claim already exists; reconcile content/publication_claims.json before rerun")
     try:
-        result = publisher.publish_story(image_url=image_url, video_url=video_url, dry_run=dry_run)
+        result = publisher.publish_story(image_url=image_url, video_url=video_url, dry_run=False)
     except publisher.InstagramPublishError as exc:
         text = str(exc).lower()
         if "missing required" in text or "exactly one" in text:
@@ -31,9 +37,6 @@ def publish_story(image_url: str = "", video_url: str = "", *, dry_run: bool = T
         raise
     if result.get("published") and result.get("media_id"):
         mark_succeeded(CLAIMS, key, str(result["media_id"]))
-    elif result.get("dry_run"):
-        mark_succeeded(CLAIMS, key, "dry-run")
-    else:
-        mark_ambiguous(CLAIMS, key, "Meta returned no definitive publication id")
-        raise RuntimeError("Meta Story publication was not confirmed")
-    return result
+        return result
+    mark_ambiguous(CLAIMS, key, "Meta returned no definitive publication id")
+    raise RuntimeError("Meta Story publication was not confirmed")

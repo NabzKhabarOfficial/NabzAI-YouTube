@@ -66,15 +66,14 @@ class GuardedPublicationEntryPointTests(unittest.TestCase):
             finally:
                 guarded_buffer.CLAIMS, guarded_buffer.PACK = old_claims, old_pack
 
-    def test_meta_story_dry_run_claims_once_without_network(self):
+    def test_meta_dry_run_does_not_consume_production_claim(self):
         with tempfile.TemporaryDirectory() as td:
             old = guarded_meta.CLAIMS
             guarded_meta.CLAIMS = Path(td) / "claims.json"
             try:
                 result = guarded_meta.publish_story(video_url="https://example.test/story.mp4", dry_run=True)
                 self.assertTrue(result["dry_run"])
-                with self.assertRaisesRegex(RuntimeError, "claim already exists"):
-                    guarded_meta.publish_story(video_url="https://example.test/story.mp4", dry_run=True)
+                self.assertFalse(guarded_meta.CLAIMS.exists())
             finally:
                 guarded_meta.CLAIMS = old
 
