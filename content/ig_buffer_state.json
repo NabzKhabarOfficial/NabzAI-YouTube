@@ -501,7 +501,7 @@
     "14_2026-10-25_1411_villisca-axe-murders": {
       "post_id": "6ada62742f4faf5f7963359f",
       "due": "2026-10-25T14:11:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-25_1411_villisca-axe-murders.mp4?v=3",
       "cap": "304170c47b58",
       "kind": "reel",
@@ -611,6 +611,16 @@
       "audio_v": 1,
       "at": "2026-10-24T21:46+03:30",
       "story_v": 2
+    },
+    "04_2026-10-27_2059_taos-hum": {
+      "post_id": "6addf2d40b5343d070cf0c3b",
+      "due": "2026-10-27T20:59:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum.mp4?v=3",
+      "cap": "4f33b5cd423a",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-25T15:42+03:30"
     }
   },
   "deleted_by_owner": {
@@ -629,9 +639,9 @@
     "02_2026-10-26_1805_nazca-lines",
     "02_2026-10-26_1805_nazca-lines_story",
     "03_2026-10-27_1324_lost-dutchmans-mine",
+    "04_2026-10-27_2059_taos-hum",
     "08_2026-10-22_2245_sodder-children",
     "08_2026-10-22_2245_sodder-children_story",
-    "14_2026-10-25_1411_villisca-axe-murders",
     "15_2026-10-25_2056_green-children-of-woolpit",
     "car_kaaba-zartosht"
   ],

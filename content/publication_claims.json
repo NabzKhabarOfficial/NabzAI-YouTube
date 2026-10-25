@@ -8,6 +8,17 @@
         "video_sha256_24": "a57a2e450ce97503eba52d16"
       },
       "status": "succeeded"
+    },
+    "494e276e2f58ce600f32cbb8880b57629d2cad13144b3ddba9f56e5c169b0d33": {
+      "external_id": "6addf2d40b5343d070cf0c3b",
+      "metadata": {
+        "due": "2026-10-27T20:59:00+03:30",
+        "identity": "2df79e1ed4a6195902c0334d7bd9e596",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum.mp4?v=3"
+      },
+      "status": "succeeded"
     }
   }
 }
