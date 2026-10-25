@@ -1,8 +1,8 @@
 """Claim-guarded Buffer workflow entry point.
 
-Buffer has no reliable idempotency key in the current GraphQL mutation path. This
-run-level guard prevents an identical pack state from being submitted twice after a
-successful run, and leaves an uncertain run blocked for manual reconciliation.
+Buffer has no reliable idempotency key in the current GraphQL mutation path.
+A completed sync is an idempotent no-op; pending or ambiguous syncs are hard
+stops and require manual reconciliation before another mutation attempt.
 """
 from __future__ import annotations
 
@@ -10,7 +10,7 @@ import hashlib
 from pathlib import Path
 
 from src import ig_buffer
-from src.production_state import begin_claim, mark_ambiguous, mark_succeeded
+from src.production_state import begin_claim, get, mark_ambiguous, mark_succeeded
 
 ROOT = Path(__file__).resolve().parents[1]
 CLAIMS = ROOT / "content" / "publication_claims.json"
@@ -27,6 +27,10 @@ def run() -> int:
     key, fresh = begin_claim(CLAIMS, "buffer_sync", digest,
                               metadata={"provider": "buffer", "pack_state_sha256_24": digest})
     if not fresh:
+        current = get(CLAIMS, key)
+        if current and current.status == "succeeded":
+            print(f"BUFFER_CLAIM_ALREADY_CONFIRMED: {key}")
+            return 0
         raise RuntimeError("Buffer sync claim already exists; reconcile content/publication_claims.json before rerun")
     try:
         result = ig_buffer.main()
