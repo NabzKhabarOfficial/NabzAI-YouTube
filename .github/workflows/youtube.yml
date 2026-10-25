@@ -12,6 +12,7 @@ on:
           - private
           - unlisted
           - public
+
       story_id:
         description: "Optional mystery id"
         required: false
@@ -35,8 +36,10 @@ jobs:
   guard:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+
     outputs:
       skip: ${{ steps.check.outputs.skip }}
+
     steps:
       - name: Checkout latest state
         uses: actions/checkout@v4
@@ -53,33 +56,43 @@ jobs:
   build:
     needs: guard
     if: needs.guard.outputs.skip != 'true'
+
     runs-on: ubuntu-latest
     timeout-minutes: 45
 
     env:
       MODE: mystery
+
       YOUTUBE_VISIBILITY: ${{ github.event_name == 'schedule' && 'private' || inputs.visibility }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
+
       NABZ_VOICE_CHECK_TRIES: "4"
+
+      # Story state must not be written during build.
+      # It is written only after the guarded YouTube upload succeeds.
+      NABZ_RECORD_STORY: "0"
 
       YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
       YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
       YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
       YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+
       AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       POLLINATIONS_TOKEN: ${{ secrets.POLLINATIONS_TOKEN }}
       CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
       CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
       GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
 
     steps:
-      - name: Checkout
+      - name: Checkout main
         uses: actions/checkout@v4
         with:
           ref: main
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -97,14 +110,18 @@ jobs:
 
       - name: Install caption fonts
         run: |
-          sudo apt-get install -y -q fonts-dejavu-core fonts-liberation2 || true
+          sudo apt-get update -qq
+          sudo apt-get install -y -q \
+            fonts-dejavu-core \
+            fonts-liberation2
 
       - name: Install dependencies
         run: |
-          pip install -r requirements.txt
-          pip install -r requirements-cinematic.txt
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+          python -m pip install -r requirements-cinematic.txt
 
-      - name: Run regression tests
+      - name: Run offline regression tests
         run: |
           python -m unittest discover -s tests -v
 
@@ -118,31 +135,43 @@ jobs:
         run: |
           python scripts/review_short.py
 
-      - name: Upload to YouTube
+      - name: Validate YouTube credentials
         run: |
           if [ -z "$YOUTUBE_REFRESH_TOKEN" ] && [ -z "$YOUTUBE_TOKEN" ]; then
-            echo "::warning::No YouTube credentials configured; video was built but not uploaded."
-            exit 0
+            echo "::error::No YouTube credentials configured."
+            echo "::error::Publication is blocked. The workflow will not report a false success."
+            exit 1
           fi
-          python -m src.youtube_uploader output/mystery-short
 
-      # The Persian Instagram reel is no longer built here (Oct 10 2026): Instagram Reels come
-      # from the weekly pack (ig-pack.yml), so the daily Gemini voice quota is kept for it.
+      - name: Upload to YouTube through guarded adapter
+        run: |
+          python -m src.guarded_youtube_upload output/mystery-short
 
-      - name: Persist story state and review report
+      - name: Record story only after confirmed upload
+        run: |
+          python scripts/record_story_after_upload.py output/mystery-short
+
+      - name: Persist confirmed publication state
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add content/published.json content/yt_comments.json review/
+          git add \
+            content/published.json \
+            content/publication_claims.json \
+            content/yt_comments.json \
+            review/
 
           if git diff --cached --quiet; then
             echo "No state or review changes to commit."
-          else
-            git commit -m "chore: record story and private review report [skip ci]"
-            git pull --rebase --autostash || true
-            git push
+            exit 0
           fi
+
+          git commit -m "chore: record confirmed YouTube publication [skip ci]"
+
+          git pull --rebase --autostash
+
+          git push origin main
 
       - name: Upload generated artifacts for review
         if: always()
