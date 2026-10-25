@@ -60,6 +60,10 @@ jobs:
         run: |
           python -m instagram.runner --due
 
+      - name: Validate workflow YAML
+        run: |
+          ruby -e 'require "yaml"; Dir.glob(".github/workflows/*.yml").each { |file| YAML.parse_file(file); puts "YAML syntax OK: #{file}" }'
+
       - name: Run offline regression tests
         run: |
           python -m unittest discover -s tests -v

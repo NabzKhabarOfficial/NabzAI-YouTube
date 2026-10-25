@@ -87,6 +87,45 @@ def load_credential_info(token_json=None, env=None) -> dict:
     return info
 
 
+def _bounded_tags(tags, limit=500):
+    """Keep the combined YouTube tag text within the documented character budget."""
+    result = []
+    used = 0
+    for value in tags or []:
+        tag = str(value or "").strip()
+        if not tag:
+            continue
+        cost = len(tag) + (1 if result else 0)
+        if used + cost > limit:
+            continue
+        result.append(tag)
+        used += cost
+    return result
+
+
+def _is_schedule_validation_error(exc):
+    """Only a structured 400 specifically rejecting publishAt permits a safe fallback."""
+    status = getattr(getattr(exc, "resp", None), "status", None)
+    if status != 400:
+        return False
+    raw = getattr(exc, "content", b"")
+    if isinstance(raw, bytes):
+        raw = raw.decode("utf-8", errors="replace")
+    try:
+        error = (json.loads(str(raw or "{}")).get("error") or {})
+    except (ValueError, TypeError):
+        return False
+    reasons = [
+        str(item.get("reason", ""))
+        for item in (error.get("errors") or [])
+        if isinstance(item, dict)
+    ]
+    message = str(error.get("message", ""))
+    return any(reason.startswith("invalidPublishAt") for reason in reasons) or (
+        "publishAt" in message and any(word in message.lower() for word in ("invalid", "past", "future", "must"))
+    )
+
+
 def _insert(youtube, body, video_path):
     request = youtube.videos().insert(
         part="snippet,status",
@@ -119,7 +158,7 @@ def upload_video(
         "snippet": {
             "title": title[:100],
             "description": description[:5000],
-            "tags": tags[:500],
+            "tags": _bounded_tags(tags),
             "categoryId": category_id,
         },
         "status": {
@@ -137,9 +176,12 @@ def upload_video(
     try:
         response = _insert(youtube, body, video_path)
     except Exception as exc:
-        if not publish_at:
+        # Never retry a resumable upload after a timeout/transport error: the
+        # remote video may already exist. Only a structured publishAt validation
+        # rejection is known to have failed before creating a video.
+        if not publish_at or not _is_schedule_validation_error(exc):
             raise
-        print(f"WARNING: scheduled upload rejected ({exc}); retrying as a plain private upload.")
+        print("WARNING: YouTube rejected publishAt validation; retrying once as a private upload.")
         body["status"].pop("publishAt", None)
         response = _insert(youtube, body, video_path)
     if not response or not response.get("id"):
@@ -233,12 +275,24 @@ def upload_from_metadata(root, privacy_status="private", publish_at=None):
                 print("SHORTS_SEO:", meta["title"], "|", meta["description"].splitlines()[-1])
         except Exception as exc:  # never block an upload over metadata polish
             print(f"WARNING: kept original metadata ({type(exc).__name__}: {exc})")
-    return upload_video(
+    video_id = upload_video(
         video, meta["title"], meta["description"], meta["tags"],
         privacy_status=privacy_status, category_id=meta.get("category_id", "24"),
         thumbnail_path=root / "thumbnail.jpg", contains_synthetic_media=True,
         publish_at=publish_at,
     )
+    # A built video is not a published story. Rotate the story only after the
+    # uploader has returned a confirmed external video ID.
+    if video.name == "final_short.mp4" and story_file.exists():
+        story = json.loads(story_file.read_text(encoding="utf-8"))
+        story_id = str(story.get("id") or story.get("story_id") or "").strip()
+        if story_id and video_id:
+            from src.mystery_short import record_story
+            record_story(story_id)
+            print("STORY_RECORDED_AFTER_UPLOAD:", story_id)
+        else:
+            print("::warning title=Story state not recorded::Missing story ID or confirmed video ID.")
+    return video_id
 
 
 if __name__ == "__main__":

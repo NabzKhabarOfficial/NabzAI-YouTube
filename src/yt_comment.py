@@ -24,6 +24,7 @@ import sys
 import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from src.atomic_state import load_json as _atomic_load_json, save_json as _atomic_save_json
 
 ROOT = Path(__file__).resolve().parents[1]
 STATE = ROOT / "content" / "yt_comments.json"
@@ -42,11 +43,8 @@ QUESTIONS = [
 
 
 def _read(path: Path) -> dict:
-    try:
-        data = json.loads(path.read_text(encoding="utf-8"))
-        return data if isinstance(data, dict) else {}
-    except Exception:
-        return {}
+    data = _atomic_load_json(path, {})
+    return data if isinstance(data, dict) else {}
 
 
 def load_state(path: Path = STATE) -> dict:
@@ -63,8 +61,7 @@ def load_state(path: Path = STATE) -> dict:
 def save_state(state: dict, path: Path = STATE) -> None:
     targets = [path, MIRROR] if path == STATE else [path]
     for target in targets:
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        _atomic_save_json(target, state)
 
 
 def _norm(text) -> str:

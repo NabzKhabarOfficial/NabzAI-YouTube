@@ -53,6 +53,7 @@ nabz-reels, Contents read/write). GH_TOKEN reads the private pack release.
 """
 from __future__ import annotations
 
+import base64
 import json
 import os
 import random
@@ -66,6 +67,7 @@ import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
+from src.atomic_state import load_json as _atomic_load_json, save_json as _atomic_save_json
 
 ROOT = Path(__file__).resolve().parents[1]
 PACK_STATE = ROOT / "content" / "ig_pack_state.json"
@@ -112,19 +114,21 @@ def now_utc() -> datetime:
 
 
 def load_json(path: Path, default):
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, ValueError):
-        return default
+    data = _atomic_load_json(path, default)
+    return data if isinstance(data, type(default)) else default
 
 
 def save_state(state: dict) -> None:
-    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
-    STATE_FILE.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    _atomic_save_json(STATE_FILE, state)
 
 
 # ---------------------------------------------------------------- Buffer API
 class BufferError(RuntimeError):
+    pass
+
+
+class AmbiguousBufferError(BufferError):
+    """A mutation may have succeeded remotely; it must not be blindly retried."""
     pass
 
 
@@ -133,6 +137,7 @@ def gql(query: str, variables: dict | None = None) -> dict:
     if not key:
         raise BufferError("BUFFER_API_KEY secret is missing")
     body = json.dumps({"query": query, "variables": variables or {}}).encode()
+    is_mutation = query.lstrip().lower().startswith("mutation")
     for attempt in range(3):
         req = urllib.request.Request(API, data=body, method="POST", headers={
             "Content-Type": "application/json", "Authorization": f"Bearer {key}",
@@ -141,18 +146,28 @@ def gql(query: str, variables: dict | None = None) -> dict:
             with urllib.request.urlopen(req, timeout=60) as resp:
                 data = json.loads(resp.read().decode())
         except urllib.error.HTTPError as exc:
-            text = exc.read().decode(errors="replace")[:400]
-            if exc.code in (429, 500, 502, 503, 504) and attempt < 2:
+            if exc.code == 429 and attempt < 2:
                 time.sleep(20 * (attempt + 1))
                 continue
-            raise BufferError(f"HTTP {exc.code}: {text}") from None
-        except (urllib.error.URLError, TimeoutError) as exc:
+            if is_mutation and exc.code in (500, 502, 503, 504):
+                raise AmbiguousBufferError(
+                    f"ambiguous Buffer mutation response after HTTP {exc.code}; reconcile before retry"
+                ) from None
+            if not is_mutation and exc.code in (500, 502, 503, 504) and attempt < 2:
+                time.sleep(20 * (attempt + 1))
+                continue
+            raise BufferError(f"HTTP {exc.code}") from None
+        except (urllib.error.URLError, TimeoutError):
+            if is_mutation:
+                raise AmbiguousBufferError(
+                    "ambiguous Buffer mutation transport result; reconcile before retry"
+                ) from None
             if attempt < 2:
                 time.sleep(15)
                 continue
-            raise BufferError(f"network: {exc}") from None
+            raise BufferError("network error") from None
         if data.get("errors"):
-            raise BufferError("; ".join(str(e.get("message", e)) for e in data["errors"])[:500])
+            raise BufferError("; ".join(str(e.get("message", "GraphQL error")) for e in data["errors"])[:500])
         return data.get("data") or {}
     raise BufferError("no answer")
 
@@ -207,6 +222,8 @@ def create_post(channel: str, text: str, video_url: str, due: datetime) -> dict:
         payload = dict(base, assets=[{"video": asset}], metadata={"instagram": meta})
         try:
             res = gql(CREATE, {"input": payload})["createPost"]
+        except AmbiguousBufferError:
+            raise
         except BufferError as exc:
             last = str(exc)
             if any(w in last for w in ("isAiGenerated", "thumbnailOffset", "metadata", "not defined", "Unknown")):
@@ -243,6 +260,8 @@ def create_story(channel: str, video_url: str, due: datetime) -> dict:
                 tag = f"m{mi}a{ai}t{'-' if text is None else len(text)}"
                 try:
                     res = gql(CREATE, {"input": payload})["createPost"]
+                except AmbiguousBufferError:
+                    raise
                 except BufferError as exc:
                     errors.append(f"{tag}: {str(exc)[:160]}")
                     continue
@@ -526,7 +545,13 @@ def publish_site(files: list[Path], films_html: str = "", covers: dict | None = 
     run("git", "init", "-q", "-b", "main")
     run("git", "add", "-A")
     run("git", "commit", "-q", "-m", f"reels on {now_utc():%Y-%m-%d %H:%M} UTC")
-    url = f"https://x-access-token:{pat}@github.com/{SITE_REPO}.git"
+    # Keep the PAT out of the remote URL and process arguments. Git receives
+    # an HTTP authorization header through its child environment instead.
+    auth = base64.b64encode(f"x-access-token:{pat}".encode("utf-8")).decode("ascii")
+    env["GIT_CONFIG_COUNT"] = "1"
+    env["GIT_CONFIG_KEY_0"] = "http.https://github.com/.extraheader"
+    env["GIT_CONFIG_VALUE_0"] = f"AUTHORIZATION: basic {auth}"
+    url = f"https://github.com/{SITE_REPO}.git"
     err = ""
     for attempt in range(PUSH_TRIES):
         proc = subprocess.run(["git", "push", "-q", "--force", url, "main:main"], cwd=site, env=env,

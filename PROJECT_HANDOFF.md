@@ -1,53 +1,39 @@
 # NabzAI-YouTube Project Handoff
 
 ## Scope
-- This private repository owns Instagram and YouTube work.
-- Telegram news-channel code belongs in the public `NabzKhabar` repository.
+- This private repository owns Instagram and YouTube work. Telegram belongs in `NabzKhabar`.
 
 ## Current branch
-- `main`
+- `brain/production-hardening`
+- Backup: `brain/production-hardening-backup`
+- PR #5 remains open and unmerged. PR #4 remains open.
 
-## Repository layout
-- `src/`: production Reels, Stories/Buffer, YouTube, voice, and media code.
-- `instagram/`: isolated Story validation/publisher package and 60-day calendar.
-- `.github/workflows/ig-pack.yml`: production-like Instagram Reel pack and Buffer path.
-- `.github/workflows/instagram-v1.yml`: isolated Story package validation/dry-run workflow; it does not publish by itself.
-- `.github/workflows/youtube.yml`: YouTube build/test/upload workflow.
-- `tests/`: offline unit/regression tests.
+## Latest code changes
+- Current code head before this documentation commit: `e95fbbf8e518b829feb6d57fdaff51b232da6786`.
+- Fixed the deterministic CI import defect: `src.production_state` imported `save_text`, but `src.atomic_state` did not define it.
+- Added crash-safe atomic UTF-8 `save_text()` using flush, fsync, same-directory replacement, and directory fsync.
+- Added import/atomic-text regression coverage for all guarded modules.
+- Hardened `guarded_buffer`: because `ig_buffer.main()` can swallow failures and return 0, a recorded Buffer failure streak now leaves the aggregate claim ambiguous instead of falsely succeeding.
+- Added regression coverage for the swallowed-failure case.
 
-## Completed fixes
-- Added and validated the 60-day Tehran-time Story calendar and calendar-rule checks.
-- Restored functional `src/voice_check.py` ASR behavior, candidate generation, repair loop, learned pronunciation persistence, bundled-FFmpeg lookup, and monotonic caption timing.
-- Added `faster-whisper` to `requirements-cinematic.txt`.
-- Added `requests` to `requirements.txt` for the Instagram publisher.
-- Added the isolated `instagram/` package and dry-run validation path.
+## CI evidence
+- Fresh checks are required for `e95fbbf8e518b829feb6d57fdaff51b232da6786` and are not yet inferred from older heads.
+- Prior failure root cause is now high-confidence from source inspection: the full offline suite imports `production_state`, which failed on missing `atomic_state.save_text`; the narrower hardening workflow did not import that module.
+- Prior failed job: https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40160638821/job/121071255099
+- Live YouTube, Buffer, Meta, public-hosting, or provider-quota verification: `NOT VERIFIED`.
 
-## Critical architecture note
-- The actual current production Instagram Reel path is `ig-pack.yml` -> `src.ig_pack` -> release assets/Buffer.
-- The isolated `instagram/runner.py` path validates and selects Stories but does not publish or persist production publish state.
-- Do not claim Instagram Story publishing is live unless a workflow explicitly calls `instagram.publisher.publish_story` with a public media URL and persistent idempotency state.
+## Active integration gaps
+- `.github/workflows/youtube.yml` still invokes `src.youtube_uploader`.
+- `.github/workflows/ig-pack.yml` still invokes `src.ig_buffer`.
+- Workflow-file editing was rejected with `Insufficient scope: required workflow`.
+- Per-operation Buffer claims are not yet inside real `ig_buffer.py` mutation call sites; the current adapter remains aggregate/run-level.
+- Remaining direct writers in `ig_buffer.py` and `ig_pack.py` are not migrated.
+- Voice fail-closed enforcement is not uniform across every active Reel path.
+- Buffer queue/public-hosting replacement reconciliation and clean-checkout verification remain open.
 
-## Required continuation procedure
-1. Inspect `main`, latest commits, current workflow files, and state schemas first.
-2. Run offline CI before changing behavior; never repeat completed work.
-3. Preserve the one-continuous-take voice policy and fail closed when the required voice check cannot run.
-4. Keep Tehran timezone handling explicit.
-5. Keep Telegram code in `NabzKhabar`; do not copy its modules here.
-6. Treat Buffer/Meta/YouTube state transitions as idempotency-sensitive.
-7. After every code, workflow, dependency, state, or documentation change, update this handoff with the latest commit, changed files, current status, blockers, and next action.
-8. Verify exact changed files and separate static verification from live API verification.
-
-## Handoff update format
-- Last change: `<commit URL>`
-- Changed files: `<paths>`
-- Verification: `<CI/test/static status>`
-- Blockers: `<none or exact blocker>`
-- Next action: `<concrete continuation step>`
-
-## Secrets
-- YouTube and media/provider secrets are GitHub Actions secrets in this repository.
-- The isolated Meta Story publisher expects `INSTAGRAM_USER_ID`, `INSTAGRAM_ACCESS_TOKEN`, and optional `INSTAGRAM_API_VERSION`, but its workflow remains dry-run until explicitly wired and enabled.
-
-## Known verification boundary
-- Static code and workflow wiring have been reviewed.
-- Live GitHub Actions, Buffer, Meta, YouTube, public hosting, and provider quota behavior still require actual workflow runs.
+## Next action
+1. Verify all fresh checks for the exact current head and inspect any new failures.
+2. Obtain the minimum GitHub `workflow` permission or have an authorized maintainer switch active workflows to guarded entrypoints and persist `content/publication_claims.json`.
+3. Use a patch-capable writable checkout to migrate per-operation Buffer claims and remaining state writers.
+4. Run the complete offline suite and verify every check against the exact resulting head.
+5. Keep PRs open and do not merge automatically.
