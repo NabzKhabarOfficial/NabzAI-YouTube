@@ -66,11 +66,12 @@ jobs:
       YOUTUBE_VISIBILITY: ${{ github.event_name == 'schedule' && 'private' || inputs.visibility }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
 
-      NABZ_VOICE_CHECK_TRIES: "4"
-
-      # Story state must not be written during build.
-      # It is written only after the guarded YouTube upload succeeds.
+      # Required: do not silently fall back to Kokoro or Edge.
+      NABZ_EN_TTS: "gemini"
+      NABZ_REQUIRE_GEMINI_VOICE: "1"
       NABZ_RECORD_STORY: "0"
+
+      NABZ_VOICE_CHECK_TRIES: "4"
 
       YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
       YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
@@ -121,6 +122,20 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install -r requirements-cinematic.txt
 
+      - name: Confirm required voice configuration
+        run: |
+          if [ "$NABZ_EN_TTS" != "gemini" ]; then
+            echo "::error::NABZ_EN_TTS must be gemini."
+            exit 1
+          fi
+
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "::error::GEMINI_API_KEY is missing."
+            exit 1
+          fi
+
+          echo "Gemini TTS is required and configured."
+
       - name: Run offline regression tests
         run: |
           python -m unittest discover -s tests -v
@@ -131,6 +146,35 @@ jobs:
         run: |
           python -m src.mystery_short
 
+      - name: Verify Gemini voice in quality report
+        run: |
+          python - <<'PY'
+          import json
+          import sys
+          from pathlib import Path
+
+          path = Path("output/mystery-short/quality.json")
+
+          if not path.exists():
+              print("ERROR: quality.json was not generated.")
+              sys.exit(1)
+
+          data = json.loads(path.read_text(encoding="utf-8"))
+          voice = str(data.get("voice") or "")
+
+          print("Generated voice:", voice)
+
+          if not voice.startswith("gemini:"):
+              print("ERROR: the video was not generated with Gemini TTS.")
+              sys.exit(1)
+
+          if data.get("passed") is not True:
+              print("ERROR: quality gate did not pass.")
+              sys.exit(1)
+
+          print("Gemini voice and quality gate verified.")
+          PY
+
       - name: Generate private review report
         run: |
           python scripts/review_short.py
@@ -139,7 +183,7 @@ jobs:
         run: |
           if [ -z "$YOUTUBE_REFRESH_TOKEN" ] && [ -z "$YOUTUBE_TOKEN" ]; then
             echo "::error::No YouTube credentials configured."
-            echo "::error::Publication is blocked. The workflow will not report a false success."
+            echo "::error::Publication is blocked."
             exit 1
           fi
 
