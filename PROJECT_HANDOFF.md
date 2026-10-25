@@ -9,13 +9,12 @@
 - PR #5 remains open and unmerged. PR #4 remains open.
 
 ## Current head and evidence
-- Current PR head before this documentation commit: `7d72bff7d67557548e8c215c0ab23ff929cdfbd6`.
-- The preceding code head was `7680a4f46723e9a549bcd33606b3c31ec15a9c75`.
+- Current PR head before this documentation commit: `88f679075c534de7120de7739687e282d64d2382`.
 - Current-head CI:
-  - offline: **success**, https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40160261647/job/121070149301
-  - hardening/offline: **success**, https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40160258030/job/121070140260
-  - Instagram and YouTube offline tests: **failure**, https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40160261509/job/121070278097
-- The failed check is on the current PR head. The available GitHub connection exposes the job URL but not step logs, so no root cause is being guessed.
+  - offline: **success**, https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40160638817/job/121071254766
+  - hardening/offline: **success**, https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40160634055/job/121071240434
+  - Instagram and YouTube offline tests: **failure**, https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40160638821/job/121071255099
+- The failing check is attached to the current PR head. The available connection exposes the failed job URL but not step logs, so no root cause is being guessed.
 - Live YouTube, Buffer, Meta, public-hosting, or provider-quota verification: `NOT VERIFIED`.
 
 ## Verified code additions
