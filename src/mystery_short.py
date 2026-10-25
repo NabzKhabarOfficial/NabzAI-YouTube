@@ -33,6 +33,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageStat
 
 from src import gemini_tts, voice_check
+from src.atomic_state import load_json as _load_atomic_json, save_json as _save_atomic_json
 
 ROOT = Path(__file__).resolve().parents[1]
 BANK = ROOT / "content" / "mysteries.json"
@@ -160,10 +161,8 @@ def load_bank(path: Path = BANK, strict: bool = False) -> list[dict]:
 
 
 def load_state(path: Path = STATE) -> dict:
-    try:
-        return json.loads(path.read_text(encoding="utf-8"))
-    except Exception:
-        return {}
+    state = _load_atomic_json(path, {})
+    return state if isinstance(state, dict) else {}
 
 
 def pick_story(stories: list[dict], state: dict, forced: str = "") -> dict:
@@ -191,7 +190,7 @@ def record_story(story_id: str, path: Path = STATE) -> None:
     # lets the backup crons know today's Short is done (date in Tehran time)
     tehran = datetime.now(timezone.utc) + timedelta(hours=3, minutes=30)
     state["last_built_date"] = tehran.date().isoformat()
-    path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    _save_atomic_json(path, state)
 
 
 # ---------------------------------------------------------------- images
@@ -1154,7 +1153,7 @@ def main() -> int:
         (OUT / "error.txt").write_text(message, encoding="utf-8")
         print(f"::error title=NABZ Mysteries build failed::{message}", flush=True)
         raise
-    if os.getenv("NABZ_RECORD_STORY", "1") == "1":
+    if os.getenv("NABZ_RECORD_STORY", "0") == "1":
         record_story(story["id"])
     return 0
 
