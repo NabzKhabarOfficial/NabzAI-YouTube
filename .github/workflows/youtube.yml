@@ -66,10 +66,18 @@ jobs:
       YOUTUBE_VISIBILITY: ${{ github.event_name == 'schedule' && 'private' || inputs.visibility }}
       GITHUB_EVENT_NAME: ${{ github.event_name }}
 
-      # Required: do not silently fall back to Kokoro or Edge.
-      NABZ_EN_TTS: "gemini"
-      NABZ_REQUIRE_GEMINI_VOICE: "1"
+      # صدای اصلی قدیمی و تأییدشده پروژه
+      NABZ_EN_TTS: "kokoro"
+      NABZ_KOKORO: "1"
+      NABZ_KOKORO_VOICE: "am_michael"
+      NABZ_KOKORO_DEEPEN: "1.5"
+      NABZ_KOKORO_SPEED: "1.0"
+
+      # جلوگیری از ثبت story قبل از upload موفق
       NABZ_RECORD_STORY: "0"
+
+      # صدای مورد قبول برای انتشار
+      NABZ_REQUIRE_VOICE: "kokoro"
 
       NABZ_VOICE_CHECK_TRIES: "4"
 
@@ -85,8 +93,6 @@ jobs:
       CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
 
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-      GEMINI_API_KEY_2: ${{ secrets.GEMINI_API_KEY_2 }}
-      GEMINI_API_KEY_3: ${{ secrets.GEMINI_API_KEY_3 }}
 
     steps:
       - name: Checkout main
@@ -101,13 +107,13 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Restore voice cache
+      - name: Restore voice and model cache
         uses: actions/cache@v4
         with:
           path: .tts_cache
-          key: tts-${{ github.run_id }}
+          key: tts-${{ runner.os }}-${{ hashFiles('requirements*.txt') }}
           restore-keys: |
-            tts-
+            tts-${{ runner.os }}-
 
       - name: Install caption fonts
         run: |
@@ -122,20 +128,6 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install -r requirements-cinematic.txt
 
-      - name: Confirm required voice configuration
-        run: |
-          if [ "$NABZ_EN_TTS" != "gemini" ]; then
-            echo "::error::NABZ_EN_TTS must be gemini."
-            exit 1
-          fi
-
-          if [ -z "$GEMINI_API_KEY" ]; then
-            echo "::error::GEMINI_API_KEY is missing."
-            exit 1
-          fi
-
-          echo "Gemini TTS is required and configured."
-
       - name: Run offline regression tests
         run: |
           python -m unittest discover -s tests -v
@@ -146,7 +138,7 @@ jobs:
         run: |
           python -m src.mystery_short
 
-      - name: Verify Gemini voice in quality report
+      - name: Verify production voice and quality gate
         run: |
           python - <<'PY'
           import json
@@ -163,16 +155,24 @@ jobs:
           voice = str(data.get("voice") or "")
 
           print("Generated voice:", voice)
+          print("Quality passed:", data.get("passed"))
 
-          if not voice.startswith("gemini:"):
-              print("ERROR: the video was not generated with Gemini TTS.")
+          if not voice.startswith("kokoro:"):
+              print("ERROR: the video was not generated with the required Kokoro voice.")
               sys.exit(1)
 
           if data.get("passed") is not True:
-              print("ERROR: quality gate did not pass.")
+              print("ERROR: media quality gate failed.")
               sys.exit(1)
 
-          print("Gemini voice and quality gate verified.")
+          checks = data.get("checks") or {}
+          failed = [name for name, value in checks.items() if not value]
+
+          if failed:
+              print("ERROR: failed quality checks:", ", ".join(failed))
+              sys.exit(1)
+
+          print("Kokoro production voice and quality gate verified.")
           PY
 
       - name: Generate private review report
