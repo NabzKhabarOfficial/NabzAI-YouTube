@@ -121,8 +121,8 @@ jobs:
       - name: Upload to YouTube
         run: |
           if [ -z "$YOUTUBE_REFRESH_TOKEN" ] && [ -z "$YOUTUBE_TOKEN" ]; then
-            echo "::warning::No YouTube credentials configured; video was built but not uploaded."
-            exit 0
+            echo "::error::No YouTube credentials configured; refusing to report the production upload as successful."
+            exit 1
           fi
           python -m src.youtube_uploader output/mystery-short
 
