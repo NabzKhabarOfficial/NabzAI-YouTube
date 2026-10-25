@@ -1,5 +1,6 @@
 import unittest
 from pathlib import Path
+from src.guarded_buffer import BufferTransportAmbiguous
 
 
 class PublicationSafetyTests(unittest.TestCase):
@@ -11,11 +12,12 @@ class PublicationSafetyTests(unittest.TestCase):
         self.assertIn("_single_insert_only", text)
         self.assertIn("mark_ambiguous", text)
 
-    def test_buffer_mutations_are_single_attempt_and_deletes_are_claimed(self):
+    def test_buffer_transport_ambiguity_is_distinct_and_fail_closed(self):
+        self.assertTrue(issubclass(BufferTransportAmbiguous, RuntimeError))
         text = (self.ROOT / "src" / "guarded_buffer.py").read_text(encoding="utf-8")
-        self.assertIn("_mutation_once", text)
+        self.assertIn("BufferTransportAmbiguous", text)
+        self.assertIn("mutation transport outcome ambiguous", text)
         self.assertIn("ig_buffer.delete_post = guarded_delete", text)
-        self.assertIn('status="ambiguous"', text)
 
     def test_workflow_runs_this_suite(self):
         text = (self.ROOT / ".github" / "workflows" / "offline-tests.yml").read_text(encoding="utf-8")
