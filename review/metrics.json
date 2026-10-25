@@ -1,11 +1,11 @@
 {
-  "duration_seconds": 35.07,
+  "duration_seconds": 35.57,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 14.09,
+  "file_mb": 15.11,
   "audio": {
-    "mean_volume": -18.0,
+    "mean_volume": -18.1,
     "max_volume": -0.3
   },
   "image_sources": [
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "beale-ciphers",
+  "story_id": "carroll-deering",
   "story_bank": "Story bank: 37 of 60 stories left (next: carroll-deering, ss-baychimo, taos-hum)"
 }

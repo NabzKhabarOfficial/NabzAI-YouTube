@@ -1,0 +1,13 @@
+{
+  "claims": {
+    "0b1c4c4dcc617671da984687a6c0be2e07fe7526c881f673dbe46453dbacaacf": {
+      "external_id": "7spAuv-5Lic",
+      "metadata": {
+        "provider": "youtube",
+        "story_id": "carroll-deering",
+        "video_sha256_24": "a57a2e450ce97503eba52d16"
+      },
+      "status": "succeeded"
+    }
+  }
+}
