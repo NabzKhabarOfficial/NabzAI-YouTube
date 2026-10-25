@@ -8,11 +8,16 @@ from src import guarded_buffer, guarded_meta, guarded_youtube_upload
 
 
 class GuardedPublicationEntryPointTests(unittest.TestCase):
+    def _youtube_root(self, root, voice="gemini:test"):
+        (root / "story.json").write_text(json.dumps({"id": "story-1"}), encoding="utf-8")
+        (root / "final_short.mp4").write_bytes(b"offline-video")
+        (root / "quality.json").write_text(json.dumps({"passed": True, "voice": voice,
+            "checks": {"file_ok": True, "audio": True}}), encoding="utf-8")
+
     def test_youtube_claim_blocks_second_attempt(self):
         with tempfile.TemporaryDirectory() as td:
             root = Path(td)
-            (root / "story.json").write_text(json.dumps({"id": "story-1"}), encoding="utf-8")
-            (root / "final_short.mp4").write_bytes(b"offline-video")
+            self._youtube_root(root)
             old = guarded_youtube_upload.CLAIMS
             guarded_youtube_upload.CLAIMS = root / "claims.json"
             try:
@@ -22,6 +27,13 @@ class GuardedPublicationEntryPointTests(unittest.TestCase):
                         guarded_youtube_upload.run(str(root))
             finally:
                 guarded_youtube_upload.CLAIMS = old
+
+    def test_youtube_quality_gate_blocks_non_gemini_voice(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            self._youtube_root(root, "edge:voice")
+            with self.assertRaisesRegex(RuntimeError, "Gemini voice gate"):
+                guarded_youtube_upload.run(str(root))
 
     def test_buffer_uncertain_run_is_not_retried_but_success_is_noop(self):
         with tempfile.TemporaryDirectory() as td:

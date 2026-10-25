@@ -34,8 +34,24 @@ def _identity(root: Path) -> tuple[str, str]:
     return story_id or root.name, digest
 
 
+def _quality_gate(root: Path) -> None:
+    report = root / "quality.json"
+    if not report.exists():
+        raise RuntimeError("required quality report is missing; refusing publication")
+    try:
+        data = json.loads(report.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        raise RuntimeError("quality report is invalid; refusing publication") from None
+    if data.get("passed") is not True or not all((data.get("checks") or {}).values()):
+        raise RuntimeError("media quality gate failed; refusing publication")
+    voice = str(data.get("voice") or "")
+    if os.getenv("NABZ_REQUIRE_GEMINI_VOICE", "1") == "1" and not voice.startswith("gemini"):
+        raise RuntimeError("required Gemini voice gate failed; refusing publication")
+
+
 def run(root: str, privacy: str = "private", publish_at: str | None = None) -> str:
     path = Path(root)
+    _quality_gate(path)
     story_id, digest = _identity(path)
     key, fresh = begin_claim(CLAIMS, "youtube_upload", story_id, digest,
                               metadata={"provider": "youtube", "story_id": story_id, "video_sha256_24": digest})
