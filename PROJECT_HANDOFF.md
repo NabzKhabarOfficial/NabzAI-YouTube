@@ -2,52 +2,33 @@
 
 ## Scope
 - This private repository owns Instagram and YouTube work.
-- Telegram news-channel code belongs in the public `NabzKhabar` repository.
+- Telegram news-channel code belongs in `NabzKhabar`.
 
 ## Current branch
 - `main`
 
-## Repository layout
-- `src/`: production Reels, Stories/Buffer, YouTube, voice, and media code.
-- `instagram/`: isolated Story validation/publisher package and 60-day calendar.
-- `.github/workflows/ig-pack.yml`: production-like Instagram Reel pack and Buffer path.
-- `.github/workflows/instagram-v1.yml`: isolated Story package validation/dry-run workflow; it does not publish by itself.
-- `.github/workflows/youtube.yml`: YouTube build/test/upload workflow.
-- `tests/`: offline unit/regression tests.
+## Production hardening applied
+- `src/atomic_state.py`: crash-safe JSON and UTF-8 text persistence with fsync and corrupt-state quarantine.
+- `src/idempotency.py`: durable publication claims with explicit reconciliation.
+- `src/production_state.py`: pending, succeeded, failed, and ambiguous contracts.
+- `src/guarded_youtube_upload.py`: quality gate and durable claim before YouTube mutation.
+- `src/guarded_buffer.py`: Buffer aggregate claim and fail-closed handling when the legacy runner swallows failures.
+- `scripts/record_story_after_upload.py`: post-upload story recording hook.
+- The deterministic broken newline syntax in `src/atomic_state.py` was repaired.
 
-## Completed fixes
-- Added and validated the 60-day Tehran-time Story calendar and calendar-rule checks.
-- Restored functional `src/voice_check.py` ASR behavior, candidate generation, repair loop, learned pronunciation persistence, bundled-FFmpeg lookup, and monotonic caption timing.
-- Added `faster-whisper` to `requirements-cinematic.txt`.
-- Added `requests` to `requirements.txt` for the Instagram publisher.
-- Added the isolated `instagram/` package and dry-run validation path.
+## Active integration boundary
+- The active workflow files still invoke the legacy entrypoints `src.youtube_uploader` and `src.ig_buffer`.
+- Updating `.github/workflows/*.yml` is blocked by the connected GitHub credential lacking the repository `workflow` permission.
+- Therefore the guarded adapters exist on `main`, but scheduled production will not use them until an authorized maintainer updates the workflow commands or grants the minimum workflow scope.
+- Instagram Stories remain intentionally dry-run in `instagram-v1.yml`.
 
-## Critical architecture note
-- The actual current production Instagram Reel path is `ig-pack.yml` -> `src.ig_pack` -> release assets/Buffer.
-- The isolated `instagram/runner.py` path validates and selects Stories but does not publish or persist production publish state.
-- Do not claim Instagram Story publishing is live unless a workflow explicitly calls `instagram.publisher.publish_story` with a public media URL and persistent idempotency state.
+## Required next action
+1. An authorized maintainer must change `youtube.yml` to run `python -m src.guarded_youtube_upload output/mystery-short`, set `NABZ_RECORD_STORY=0` during build, then run `scripts/record_story_after_upload.py` after confirmed upload.
+2. Change `ig-pack.yml` to run `python -m src.guarded_buffer` and persist `content/publication_claims.json`.
+3. Run the exact main-branch offline suite and inspect fresh GitHub Actions results.
+4. Perform live provider verification separately. Do not infer it from offline green checks.
 
-## Required continuation procedure
-1. Inspect `main`, latest commits, current workflow files, and state schemas first.
-2. Run offline CI before changing behavior; never repeat completed work.
-3. Preserve the one-continuous-take voice policy and fail closed when the required voice check cannot run.
-4. Keep Tehran timezone handling explicit.
-5. Keep Telegram code in `NabzKhabar`; do not copy its modules here.
-6. Treat Buffer/Meta/YouTube state transitions as idempotency-sensitive.
-7. After every code, workflow, dependency, state, or documentation change, update this handoff with the latest commit, changed files, current status, blockers, and next action.
-8. Verify exact changed files and separate static verification from live API verification.
-
-## Handoff update format
-- Last change: `<commit URL>`
-- Changed files: `<paths>`
-- Verification: `<CI/test/static status>`
-- Blockers: `<none or exact blocker>`
-- Next action: `<concrete continuation step>`
-
-## Secrets
-- YouTube and media/provider secrets are GitHub Actions secrets in this repository.
-- The isolated Meta Story publisher expects `INSTAGRAM_USER_ID`, `INSTAGRAM_ACCESS_TOKEN`, and optional `INSTAGRAM_API_VERSION`, but its workflow remains dry-run until explicitly wired and enabled.
-
-## Known verification boundary
-- Static code and workflow wiring have been reviewed.
-- Live GitHub Actions, Buffer, Meta, YouTube, public hosting, and provider quota behavior still require actual workflow runs.
+## Verification boundary
+- Static source review completed for the files above.
+- Offline and live workflow results for the final main-branch integration are not yet independently verified.
+- No automatic retry is allowed for pending or ambiguous external publication claims.
