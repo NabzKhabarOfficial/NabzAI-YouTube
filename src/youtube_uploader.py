@@ -233,12 +233,24 @@ def upload_from_metadata(root, privacy_status="private", publish_at=None):
                 print("SHORTS_SEO:", meta["title"], "|", meta["description"].splitlines()[-1])
         except Exception as exc:  # never block an upload over metadata polish
             print(f"WARNING: kept original metadata ({type(exc).__name__}: {exc})")
-    return upload_video(
+    video_id = upload_video(
         video, meta["title"], meta["description"], meta["tags"],
         privacy_status=privacy_status, category_id=meta.get("category_id", "24"),
         thumbnail_path=root / "thumbnail.jpg", contains_synthetic_media=True,
         publish_at=publish_at,
     )
+    # A built video is not a published story. Rotate the story only after the
+    # uploader has returned a confirmed external video ID.
+    if video.name == "final_short.mp4" and story_file.exists():
+        story = json.loads(story_file.read_text(encoding="utf-8"))
+        story_id = str(story.get("id") or story.get("story_id") or "").strip()
+        if story_id and video_id:
+            from src.mystery_short import record_story
+            record_story(story_id)
+            print("STORY_RECORDED_AFTER_UPLOAD:", story_id)
+        else:
+            print("::warning title=Story state not recorded::Missing story ID or confirmed video ID.")
+    return video_id
 
 
 if __name__ == "__main__":
