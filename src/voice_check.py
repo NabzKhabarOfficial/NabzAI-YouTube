@@ -4,6 +4,7 @@ import json, os, re, subprocess, sys, time
 from datetime import datetime, timedelta, timezone
 from difflib import SequenceMatcher
 from pathlib import Path
+from src.atomic_state import load_json as _atomic_load_json, save_json as _atomic_save_json
 
 ROOT = Path(__file__).resolve().parents[1]
 LEARNED = ROOT / "review" / "pron_learned.json"
@@ -127,28 +128,32 @@ def candidates(core, lang):
     return list(dict.fromkeys(out))[:MAX_CANDIDATES]
 
 def learned(lang):
-    try: return dict(json.loads(LEARNED.read_text(encoding="utf-8")).get(lang, {}))
-    except Exception: return {}
+    data = _atomic_load_json(LEARNED, {})
+    return dict(data.get(lang, {})) if isinstance(data, dict) else {}
 
 def _save_learned(lang, word, say):
-    try: data = json.loads(LEARNED.read_text(encoding="utf-8")) if LEARNED.exists() else {}
-    except Exception: data = {}
+    data = _atomic_load_json(LEARNED, {})
+    if not isinstance(data, dict):
+        data = {}
     data.setdefault(lang, {})[word] = say
-    LEARNED.parent.mkdir(parents=True, exist_ok=True)
-    LEARNED.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    _atomic_save_json(LEARNED, data)
 
 def write_report(story_id, lang):
+    global _BEATS, _REASON
     if not ENABLED: status = "disabled"
     elif _FAILED: status = "off"
     elif _MODEL is None: status = "not-run"
     elif _START is not None and time.time() - _START > BUDGET: status = "out-of-time"
     elif _BEATS == 0 and _REASON: status = "error"
     else: status = "ok"
-    try: data = json.loads(REPORT.read_text(encoding="utf-8")) if REPORT.exists() else []
-    except Exception: data = []
+    data = _atomic_load_json(REPORT, [])
+    if not isinstance(data, list):
+        data = []
     data.append({"date": datetime.now(TEHRAN).date().isoformat(), "story": story_id, "lang": lang, "status": status, "beats_checked": _BEATS, "reason": _REASON, "events": list(EVENTS)})
-    REPORT.parent.mkdir(parents=True, exist_ok=True); REPORT.write_text(json.dumps(data[-60:], ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    _atomic_save_json(REPORT, data[-60:])
     EVENTS.clear()
+    _BEATS = 0
+    _REASON = ""
 
 def review_beat(text, parts, bwords, wav, lang, synth, key=None):
     global _FIXES, _TRIES, _BEATS, _REASON
