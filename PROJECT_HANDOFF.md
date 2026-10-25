@@ -5,7 +5,7 @@
 - Telegram news-channel code belongs in the public `NabzKhabar` repository.
 
 ## Current branch
-- `main`
+- `brain/production-hardening`
 
 ## Repository layout
 - `src/`: production Reels, Stories/Buffer, YouTube, voice, and media code.
@@ -51,3 +51,13 @@
 ## Known verification boundary
 - Static code and workflow wiring have been reviewed.
 - Live GitHub Actions, Buffer, Meta, YouTube, public hosting, and provider quota behavior still require actual workflow runs.
+
+
+## Production hardening — 2026-10-25
+- Current branch: `brain/production-hardening`; safety snapshot: `brain/production-hardening-backup` (both branched from `main`).
+- Last change: https://github.com/NabzKhabarOfficial/NabzAI-YouTube/commit/3cad61e715b009096c35c07b125a0df8b04f356c
+- Changed files: `src/mystery_short.py`, `src/youtube_uploader.py`, `.github/workflows/youtube.yml`, `tests/test_youtube_story_transaction.py`.
+- Verified by static inspection: story rotation is no longer recorded by default during video build; `src.mystery_short` uses atomic state read/write; the uploader records the story only after `upload_video` returns a confirmed video ID; missing YouTube credentials now fail the workflow instead of silently exiting zero.
+- Verification: GitHub file reads/writes succeeded. Offline unit tests and compile checks have **not yet been run** against this branch; do not treat this batch as green until branch CI completes.
+- Blockers/remaining: durable YouTube/Buffer/Meta claim and reconciliation still need full production integration; ambiguous resumable upload recovery, Buffer/Meta retries, voice fail-closed policy, dependency pinning/removal of runtime installs, and complete state-writer migration remain open. No live external APIs were called during this pass.
+- Next action: run the full offline unit suite and compile checks on this branch, fix failures, then integrate durable upload idempotency and the Buffer/Meta state transitions in small batches. Do not merge PRs automatically.
