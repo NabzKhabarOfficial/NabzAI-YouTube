@@ -75,7 +75,6 @@ class PublicationOutcomeFixtures(unittest.TestCase):
             return {"id": "private-only", "status": {}}
         guarded_youtube_upload.youtube_uploader._insert = fake_insert
         try:
-            guarded_youtube_upload.youtube_uploader._insert = real_insert
             wrapped_original, state = guarded_youtube_upload._single_insert_only()
             with self.assertRaises(FakeHttpError):
                 guarded_youtube_upload.youtube_uploader._insert("yt", {"status": {"publishAt": "scheduled"}}, "video")
