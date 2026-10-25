@@ -1,0 +1,30 @@
+{
+  "youtube": {
+    "unknown_timeout_after_acceptance": {
+      "first_insert": "TimeoutError",
+      "server_side_effect": "video-created",
+      "allowed_followup_inserts": 0,
+      "expected_claim_status": "ambiguous"
+    },
+    "deterministic_publish_at_rejection": {
+      "first_insert": "HttpError:400 publishAt rejected",
+      "server_side_effect": "none",
+      "allowed_followup_inserts": 1,
+      "expected_claim_status": "succeeded"
+    }
+  },
+  "buffer": {
+    "unknown_timeout_after_acceptance": {
+      "first_mutation": "TimeoutError",
+      "server_side_effect": "post-created",
+      "allowed_followup_mutations": 0,
+      "expected_claim_status": "ambiguous"
+    },
+    "delete_timeout": {
+      "first_mutation": "TimeoutError",
+      "server_side_effect": "post-may-still-exist",
+      "allowed_followup_mutations": 0,
+      "expected_claim_status": "ambiguous"
+    }
+  }
+}
