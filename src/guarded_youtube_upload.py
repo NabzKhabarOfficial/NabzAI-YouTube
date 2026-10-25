@@ -32,34 +32,33 @@ def _existing_story_claim(story_id: str) -> dict | None:
     return None
 
 def _safe_scheduling_rejection(exc: Exception) -> bool:
-    resp = getattr(exc, "resp", None); status = getattr(resp, "status", None)
-    text = str(exc).lower()
+    resp = getattr(exc, "resp", None); status = getattr(resp, "status", None); text = str(exc).lower()
     return status in (400, 422) and any(x in text for x in ("publishat", "publish at", "scheduled", "schedule"))
 
 def _single_insert_only():
-    original = youtube_uploader._insert; state = {"count": 0, "safe_fallback": False}
+    original = youtube_uploader._insert; state = {"count": 0, "safe_fallback": False, "expected_schedule": False}
     def guarded(youtube, body, video_path):
         state["count"] += 1
-        if state["count"] > 1 and not state["safe_fallback"]:
-            raise RuntimeError("second YouTube videos.insert blocked; reconcile the first outcome")
-        try:
-            return original(youtube, body, video_path)
+        state["expected_schedule"] = state["expected_schedule"] or bool((body.get("status") or {}).get("publishAt"))
+        if state["count"] > 1 and not state["safe_fallback"]: raise RuntimeError("second YouTube videos.insert blocked; reconcile the first outcome")
+        try: response = original(youtube, body, video_path)
         except Exception as exc:
             if state["count"] == 1 and _safe_scheduling_rejection(exc): state["safe_fallback"] = True
             raise
+        if state["expected_schedule"] and state["count"] > 1 and not (response or {}).get("status", {}).get("publishAt"):
+            raise RuntimeError("YouTube fallback upload returned no publishAt; claim is not a confirmed schedule")
+        return response
     youtube_uploader._insert = guarded
     return original, state
 
 def run(root: str, privacy: str = "private", publish_at: str | None = None) -> str:
     path = Path(root); path = path if path.is_absolute() else ROOT / path
     _quality_gate(path); story_id, digest = _identity(path)
-    existing = _existing_story_claim(story_id)
-    if existing: raise RuntimeError(f"YouTube story already has a publication claim: status={existing.get('status') or 'pending'}, external_id={existing.get('external_id') or 'none'}. Reconcile before rerun.")
+    if _existing_story_claim(story_id): raise RuntimeError("YouTube story already has a publication claim; reconcile before rerun")
     key, fresh = begin_claim(CLAIMS, "youtube_upload", story_id, digest, metadata={"provider":"youtube","story_id":story_id,"video_sha256_24":digest,"publish_at":publish_at or ""})
     if not fresh: raise RuntimeError("YouTube publication claim already exists; reconcile before rerun")
     original_insert, state = _single_insert_only()
-    try:
-        video_id = youtube_uploader.upload_from_metadata(path, privacy, publish_at)
+    try: video_id = youtube_uploader.upload_from_metadata(path, privacy, publish_at)
     except Exception as exc:
         text = str(exc).lower()
         if any(word in text for word in ("credentials", "no youtube credentials", "invalid json", "client_id")): mark_failed(CLAIMS, key, str(exc))
