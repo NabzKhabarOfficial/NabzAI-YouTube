@@ -62,3 +62,6 @@
 - CI follow-up: first PR CI caught an unterminated string in the existing `src/atomic_state.py`; corrected the newline literal in commit https://github.com/NabzKhabarOfficial/NabzAI-YouTube/commit/47274c232ce2c108b87e09b75134ebc839b64502. CI rerun pending.
 - Blockers/remaining: durable YouTube/Buffer/Meta claim and reconciliation still need full production integration; ambiguous resumable upload recovery, Buffer/Meta retries, voice fail-closed policy, dependency pinning/removal of runtime installs, and complete state-writer migration remain open. No live external APIs were called during this pass.
 - Next action: run the full offline unit suite and compile checks on this branch, fix failures, then integrate durable upload idempotency and the Buffer/Meta state transitions in small batches. Do not merge PRs automatically.
+
+- Verification update: the full offline workflow passed on commit `c45b48e55b7d9e67270eebb59df520446c4dcc8f`: compile source/Instagram packages, validate the Story calendar, run due-slot check, and `python -m unittest discover -s tests -v` all succeeded. Workflow-YAML syntax validation has now been added to the offline workflow and must pass on the latest commit before this batch is considered green.
+- Additional changed file: `.github/workflows/offline-tests.yml`.
