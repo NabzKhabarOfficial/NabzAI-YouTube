@@ -1,12 +1,17 @@
-"""Claim-guarded Buffer entry point with per-operation idempotency.
+"""Fail-closed, claim-guarded Buffer entry point.
 
-Every real Buffer mutation gets its own durable claim before the external
-request. Confirmed claims are reused; pending or ambiguous claims hard-stop.
+Buffer mutations are never retried after an unknown transport outcome. Deletes
+are claims too, because replacement flows otherwise create both old and new
+posts or lose track of which one exists remotely.
 """
 from __future__ import annotations
 
 import hashlib
+import json
 import os
+import time
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 from src import ig_buffer
@@ -39,13 +44,40 @@ def _confirmed(key: str, post_id: str) -> dict:
     return {"id": post_id}
 
 
+def _mutation_once(query: str, variables: dict | None = None) -> dict:
+    """One Buffer mutation request, with no retry on any transport failure."""
+    key = os.getenv("BUFFER_API_KEY", "").strip()
+    if not key:
+        raise ig_buffer.BufferError("BUFFER_API_KEY secret is missing")
+    body = json.dumps({"query": query, "variables": variables or {}}).encode()
+    req = urllib.request.Request(ig_buffer.API, data=body, method="POST", headers={
+        "Content-Type": "application/json", "Authorization": f"Bearer {key}", "User-Agent": "nabz-reels/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            data = json.loads(resp.read().decode())
+    except urllib.error.HTTPError as exc:
+        text = exc.read().decode(errors="replace")[:400]
+        raise ig_buffer.BufferError(f"HTTP {exc.code}: {text}") from None
+    except (urllib.error.URLError, TimeoutError) as exc:
+        raise ig_buffer.BufferError(f"mutation transport outcome ambiguous: {exc}") from None
+    if data.get("errors"):
+        raise ig_buffer.BufferError("; ".join(str(e.get("message", e)) for e in data["errors"])[:500])
+    return data.get("data") or {}
+
+
 def _wrap_mutations() -> None:
     if getattr(ig_buffer, "_NABZ_GUARDED", False):
         return
-
+    original_gql = ig_buffer.gql
     original_post = ig_buffer.create_post
     original_story = ig_buffer.create_story
     original_carousel = ig_buffer.create_carousel
+    original_delete = ig_buffer.delete_post
+
+    def strict_gql(query, variables=None):
+        if str(query).lstrip().startswith("mutation"):
+            return _mutation_once(query, variables)
+        return original_gql(query, variables)
 
     def guarded_post(channel, text, video_url, due):
         identity = _identity("reel", video_url, due.isoformat(), text)
@@ -95,9 +127,24 @@ def _wrap_mutations() -> None:
             raise RuntimeError(f"Buffer carousel returned no post id for claim {key}")
         return _confirmed(key, post_id)
 
+    def guarded_delete(post_id):
+        identity = _identity("delete", post_id)
+        key, cached = _reserve("delete", identity, {"provider": "buffer", "kind": "delete", "post_id": str(post_id)})
+        if cached:
+            return None
+        try:
+            original_delete(post_id)
+        except Exception as exc:
+            finish(CLAIMS, key, "", status="ambiguous")
+            raise RuntimeError(f"Buffer delete outcome ambiguous for claim {key}: {exc}") from exc
+        finish(CLAIMS, key, str(post_id), status="succeeded")
+        return None
+
+    ig_buffer.gql = strict_gql
     ig_buffer.create_post = guarded_post
     ig_buffer.create_story = guarded_story
     ig_buffer.create_carousel = guarded_carousel
+    ig_buffer.delete_post = guarded_delete
     ig_buffer._NABZ_GUARDED = True
 
 
@@ -106,7 +153,6 @@ def run() -> int:
         raise RuntimeError("BUFFER_API_KEY is missing; refusing to report a successful Buffer run")
     if not os.getenv("REELS_PAT", "").strip():
         raise RuntimeError("REELS_PAT is missing; refusing to publish without public video hosting")
-
     _wrap_mutations()
     result = ig_buffer.main()
     state = ig_buffer.load_json(BUFFER_STATE, {})
