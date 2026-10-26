@@ -553,7 +553,7 @@
     "01_2026-10-26_1328_dyatlov-pass": {
       "post_id": "6adbb5329acae620d81545ff",
       "due": "2026-10-26T21:23:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-26_1328_dyatlov-pass.mp4?v=3",
       "cap": "c813a72be77a",
       "kind": "reel",
@@ -604,7 +604,7 @@
     "01_2026-10-26_1328_dyatlov-pass_story": {
       "post_id": "6adcf68b8b3d437ddcd1f2ef",
       "due": "2026-10-26T21:38:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-26_1328_dyatlov-pass_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -672,6 +672,27 @@
       "kind": "carousel",
       "audio_v": 1,
       "at": "2026-10-26T19:02+03:30"
+    },
+    "06_2026-10-28_1900_max-headroom-hijack_story": {
+      "post_id": "6adfbb433ffda7dd058f8546",
+      "due": "2026-10-28T19:15:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack_story.mp4?v=2",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-27T00:09+03:30",
+      "story_v": 2
+    },
+    "08_2026-10-29_2254_lost-army-of-cambyses": {
+      "post_id": "6adfbb44a72c078abdb7e3b2",
+      "due": "2026-10-29T22:54:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses.mp4?v=3",
+      "cap": "fc6de3dae39c",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-27T00:09+03:30"
     }
   },
   "deleted_by_owner": {
@@ -685,14 +706,14 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "01_2026-10-26_1328_dyatlov-pass",
-    "01_2026-10-26_1328_dyatlov-pass_story",
     "03_2026-10-27_1324_lost-dutchmans-mine",
     "04_2026-10-27_2059_taos-hum",
     "04_2026-10-27_2059_taos-hum_story",
     "05_2026-10-28_1450_ninth-legion",
     "06_2026-10-28_1900_max-headroom-hijack",
+    "06_2026-10-28_1900_max-headroom-hijack_story",
     "07_2026-10-29_1359_toynbee-tiles",
+    "08_2026-10-29_2254_lost-army-of-cambyses",
     "car_kaaba-zartosht",
     "car_oxus-treasure"
   ],

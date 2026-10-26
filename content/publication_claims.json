@@ -20,6 +20,16 @@
       },
       "status": "succeeded"
     },
+    "63ffd2862f8446192b4b21f7fdc60aebea1e5f456953e08ce1682d3fba375250": {
+      "external_id": "6adfbb433ffda7dd058f8546",
+      "metadata": {
+        "due": "2026-10-28T19:15:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "897e92a8a0d58ceab2ac6e9aa94b90a236d4202b2aa615905ea705b7a71b190d": {
       "external_id": "6adf7304fc9719069070ffa0",
       "metadata": {
@@ -47,6 +57,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-29_1359_toynbee-tiles.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "baa6bfd99a7834ea3216a105799d226f74fb4e6eaaa502c5b8e41ca36fc0bb48": {
+      "external_id": "6adfbb44a72c078abdb7e3b2",
+      "metadata": {
+        "due": "2026-10-29T22:54:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses.mp4?v=3"
       },
       "status": "succeeded"
     },
