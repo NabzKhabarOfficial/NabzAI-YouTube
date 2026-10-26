@@ -20,6 +20,16 @@
       },
       "status": "succeeded"
     },
+    "897e92a8a0d58ceab2ac6e9aa94b90a236d4202b2aa615905ea705b7a71b190d": {
+      "external_id": "6adf7304fc9719069070ffa0",
+      "metadata": {
+        "due": "2026-10-28T19:00:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "8ceec218899b1f10c9755173d7dd4a206b6cc84183cc8e795c7392f1eb1d6bc7": {
       "external_id": "YWsnMtRKZOk",
       "metadata": {
@@ -30,6 +40,16 @@
       },
       "status": "succeeded"
     },
+    "b71016bc3905b92a1d8b407e1538e3109fd9258454a91b041569f05fe21bb93e": {
+      "external_id": "6adf7305be236a10f9e0c2cb",
+      "metadata": {
+        "due": "2026-10-29T13:59:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-29_1359_toynbee-tiles.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "cdecf29c005803a16fe50d28e81cede2ac80f3d9452735e762b30f8bf0e7660b": {
       "external_id": "6adf1eab865e1471ed5a0135",
       "metadata": {
@@ -37,6 +57,23 @@
         "kind": "story",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
+    "e04104ef311e3f5eca4a663f4a846d82fd89024fb44e8ccb6338b2906a70ced3": {
+      "external_id": "6adf7306be236a10f9e0c2fe",
+      "metadata": {
+        "due": "2026-10-29T17:04:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
       },
       "status": "succeeded"
     },

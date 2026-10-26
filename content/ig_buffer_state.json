@@ -532,7 +532,7 @@
     "15_2026-10-25_2056_green-children-of-woolpit": {
       "post_id": "6adb7e5f7af932dee4ea08c6",
       "due": "2026-10-26T14:03:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-10-25_2056_green-children-of-woolpit.mp4?v=3",
       "cap": "9acbb71d30cd",
       "kind": "reel",
@@ -563,7 +563,7 @@
     "02_2026-10-26_1805_nazca-lines": {
       "post_id": "6adbb532e4be8a4d8621b2bb",
       "due": "2026-10-26T18:05:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-26_1805_nazca-lines.mp4?v=3",
       "cap": "5842eb8a1375",
       "kind": "reel",
@@ -593,7 +593,7 @@
     "02_2026-10-26_1805_nazca-lines_story": {
       "post_id": "6adcf68a8b3d437ddcd1f2c3",
       "due": "2026-10-26T18:20:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-26_1805_nazca-lines_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -642,6 +642,36 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-26T13:02+03:30"
+    },
+    "06_2026-10-28_1900_max-headroom-hijack": {
+      "post_id": "6adf7304fc9719069070ffa0",
+      "due": "2026-10-28T19:00:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack.mp4?v=3",
+      "cap": "44171b612593",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-26T19:02+03:30"
+    },
+    "07_2026-10-29_1359_toynbee-tiles": {
+      "post_id": "6adf7305be236a10f9e0c2cb",
+      "due": "2026-10-29T13:59:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-29_1359_toynbee-tiles.mp4?v=3",
+      "cap": "d9e904db8a70",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-26T19:02+03:30"
+    },
+    "car_oxus-treasure": {
+      "post_id": "6adf7306be236a10f9e0c2fe",
+      "due": "2026-10-29T17:04:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_1.jpg",
+      "cap": "5aa28078786a",
+      "kind": "carousel",
+      "audio_v": 1,
+      "at": "2026-10-26T19:02+03:30"
     }
   },
   "deleted_by_owner": {
@@ -657,14 +687,14 @@
   "hosted": [
     "01_2026-10-26_1328_dyatlov-pass",
     "01_2026-10-26_1328_dyatlov-pass_story",
-    "02_2026-10-26_1805_nazca-lines",
-    "02_2026-10-26_1805_nazca-lines_story",
     "03_2026-10-27_1324_lost-dutchmans-mine",
     "04_2026-10-27_2059_taos-hum",
     "04_2026-10-27_2059_taos-hum_story",
     "05_2026-10-28_1450_ninth-legion",
-    "15_2026-10-25_2056_green-children-of-woolpit",
-    "car_kaaba-zartosht"
+    "06_2026-10-28_1900_max-headroom-hijack",
+    "07_2026-10-29_1359_toynbee-tiles",
+    "car_kaaba-zartosht",
+    "car_oxus-treasure"
   ],
   "films_page": "b57547c113b0",
   "fail_streak": 0,
