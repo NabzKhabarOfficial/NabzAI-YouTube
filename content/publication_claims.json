@@ -29,6 +29,26 @@
         "video_sha256_24": "e81cda3a70e8d30d92083995"
       },
       "status": "succeeded"
+    },
+    "cdecf29c005803a16fe50d28e81cede2ac80f3d9452735e762b30f8bf0e7660b": {
+      "external_id": "6adf1eab865e1471ed5a0135",
+      "metadata": {
+        "due": "2026-10-27T21:14:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
+    "e7e6bbbc62bd2bf89d078fac54996b6023701fa9316b809ca96768180ce9b37b": {
+      "external_id": "6adf1eac865e1471ed5a0197",
+      "metadata": {
+        "due": "2026-10-28T14:50:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-28_1450_ninth-legion.mp4?v=3"
+      },
+      "status": "succeeded"
     }
   }
 }
