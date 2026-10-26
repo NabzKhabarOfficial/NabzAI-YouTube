@@ -19,6 +19,16 @@
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum.mp4?v=3"
       },
       "status": "succeeded"
+    },
+    "8ceec218899b1f10c9755173d7dd4a206b6cc84183cc8e795c7392f1eb1d6bc7": {
+      "external_id": "YWsnMtRKZOk",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-10-26T19:00:00.000Z",
+        "story_id": "ss-baychimo",
+        "video_sha256_24": "e81cda3a70e8d30d92083995"
+      },
+      "status": "succeeded"
     }
   }
 }
