@@ -886,6 +886,60 @@
         "date": "2026-11-07",
         "time": "17:33",
         "slides": 6
+      },
+      {
+        "id": "ganj-nameh",
+        "date": "2026-11-10",
+        "time": "17:26",
+        "slides": 6
+      },
+      {
+        "id": "hasanlu-lovers",
+        "date": "2026-11-12",
+        "time": "17:12",
+        "slides": 6
+      },
+      {
+        "id": "cyrus-cylinder",
+        "date": "2026-11-14",
+        "time": "17:24",
+        "slides": 6
+      },
+      {
+        "id": "pasargadae-tomb",
+        "date": "2026-11-17",
+        "time": "17:28",
+        "slides": 6
+      },
+      {
+        "id": "takht-e-soleyman",
+        "date": "2026-11-19",
+        "time": "17:39",
+        "slides": 6
+      },
+      {
+        "id": "gonabad-qanat",
+        "date": "2026-11-21",
+        "time": "17:05",
+        "slides": 6
+      },
+      {
+        "id": "yakhchal",
+        "date": "2026-11-24",
+        "time": "17:37",
+        "slides": 6
+      },
+      {
+        "id": "meymand",
+        "date": "2026-11-26",
+        "time": "17:27",
+        "slides": 6
+      },
+      {
+        "id": "band-e-kaisar",
+        "date": "2026-11-28",
+        "time": "17:33",
+        "slides": 6
       }
     ]
   }
