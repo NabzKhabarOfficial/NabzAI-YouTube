@@ -573,7 +573,7 @@
     "03_2026-10-27_1324_lost-dutchmans-mine": {
       "post_id": "6adc7b3bbd33ce99c315d307",
       "due": "2026-10-27T13:24:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-27_1324_lost-dutchmans-mine.mp4?v=3",
       "cap": "3f542db19b7d",
       "kind": "reel",
@@ -693,6 +693,16 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-27T00:09+03:30"
+    },
+    "09_2026-10-30_0957_walter-collins": {
+      "post_id": "6ae075fdcedf2995f649c21d",
+      "due": "2026-10-30T09:57:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-30_0957_walter-collins.mp4?v=3",
+      "cap": "9a9021bd0881",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-27T13:27+03:30"
     }
   },
   "deleted_by_owner": {
@@ -706,7 +716,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "03_2026-10-27_1324_lost-dutchmans-mine",
     "04_2026-10-27_2059_taos-hum",
     "04_2026-10-27_2059_taos-hum_story",
     "05_2026-10-28_1450_ninth-legion",
@@ -714,6 +723,7 @@
     "06_2026-10-28_1900_max-headroom-hijack_story",
     "07_2026-10-29_1359_toynbee-tiles",
     "08_2026-10-29_2254_lost-army-of-cambyses",
+    "09_2026-10-30_0957_walter-collins",
     "car_kaaba-zartosht",
     "car_oxus-treasure"
   ],
