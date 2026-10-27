@@ -80,6 +80,16 @@
       },
       "status": "succeeded"
     },
+    "d42a4625b137f17da278d7f66f47fff795d136fc271362f994992cef264cc947": {
+      "external_id": "BhvqadIxKZE",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-10-27T19:00:00.000Z",
+        "story_id": "taos-hum",
+        "video_sha256_24": "9a49d1f5522bd0dc16bb1f54"
+      },
+      "status": "succeeded"
+    },
     "e04104ef311e3f5eca4a663f4a846d82fd89024fb44e8ccb6338b2906a70ced3": {
       "external_id": "6adf7306be236a10f9e0c2fe",
       "metadata": {

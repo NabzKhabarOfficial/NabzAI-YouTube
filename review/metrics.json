@@ -1,22 +1,22 @@
 {
-  "duration_seconds": 35.4,
+  "duration_seconds": 38.8,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 16.48,
+  "file_mb": 13.72,
   "audio": {
-    "mean_volume": -18.0,
+    "mean_volume": -18.1,
     "max_volume": -0.3
   },
   "image_sources": [
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare"
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "ss-baychimo",
-  "story_bank": "Story bank: 36 of 60 stories left (next: ss-baychimo, taos-hum, solway-firth-spaceman)"
+  "story_id": "taos-hum",
+  "story_bank": "Story bank: 35 of 60 stories left (next: taos-hum, solway-firth-spaceman, toynbee-tiles)"
 }
