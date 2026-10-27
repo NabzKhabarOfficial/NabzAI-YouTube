@@ -615,7 +615,7 @@
     "04_2026-10-27_2059_taos-hum": {
       "post_id": "6addf2d40b5343d070cf0c3b",
       "due": "2026-10-27T20:59:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum.mp4?v=3",
       "cap": "4f33b5cd423a",
       "kind": "reel",
@@ -625,7 +625,7 @@
     "04_2026-10-27_2059_taos-hum_story": {
       "post_id": "6adf1eab865e1471ed5a0135",
       "due": "2026-10-27T21:14:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum_story.mp4?v=2",
       "cap": "da39a3ee5e6b",
       "kind": "story",
@@ -713,6 +713,28 @@
       "kind": "reel",
       "audio_v": 3,
       "at": "2026-10-27T19:00+03:30"
+    },
+    "08_2026-10-29_2254_lost-army-of-cambyses_story": {
+      "post_id": "6ae1063c0add83c2778fc85a",
+      "due": "2026-10-29T23:09:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses_story.mp4?v=2",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-27T23:41+03:30",
+      "story_v": 2
+    },
+    "10_2026-10-30_1800_gobekli-tepe_story": {
+      "post_id": "6ae1063d944977ae025535d9",
+      "due": "2026-10-30T18:15:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe_story.mp4?v=2",
+      "cap": "da39a3ee5e6b",
+      "kind": "story",
+      "audio_v": 1,
+      "at": "2026-10-27T23:41+03:30",
+      "story_v": 2
     }
   },
   "deleted_by_owner": {
@@ -726,15 +748,15 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "04_2026-10-27_2059_taos-hum",
-    "04_2026-10-27_2059_taos-hum_story",
     "05_2026-10-28_1450_ninth-legion",
     "06_2026-10-28_1900_max-headroom-hijack",
     "06_2026-10-28_1900_max-headroom-hijack_story",
     "07_2026-10-29_1359_toynbee-tiles",
     "08_2026-10-29_2254_lost-army-of-cambyses",
+    "08_2026-10-29_2254_lost-army-of-cambyses_story",
     "09_2026-10-30_0957_walter-collins",
     "10_2026-10-30_1800_gobekli-tepe",
+    "10_2026-10-30_1800_gobekli-tepe_story",
     "car_oxus-treasure"
   ],
   "films_page": "d805d18d5b87",

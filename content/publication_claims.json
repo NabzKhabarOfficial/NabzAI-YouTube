@@ -9,6 +9,16 @@
       },
       "status": "succeeded"
     },
+    "0fed2fa0133dfd0de45d4086254720c3b730657ce97394933da09a779f0690e9": {
+      "external_id": "6ae1063d944977ae025535d9",
+      "metadata": {
+        "due": "2026-10-30T18:15:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "494e276e2f58ce600f32cbb8880b57629d2cad13144b3ddba9f56e5c169b0d33": {
       "external_id": "6addf2d40b5343d070cf0c3b",
       "metadata": {
@@ -124,6 +134,16 @@
         ],
         "kind": "carousel",
         "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
+    "e5e1e89797f7f417c3f06669444d9b999d3a04caafa2c9b4f18deac224392e3d": {
+      "external_id": "6ae1063c0add83c2778fc85a",
+      "metadata": {
+        "due": "2026-10-29T23:09:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses_story.mp4?v=2"
       },
       "status": "succeeded"
     },
