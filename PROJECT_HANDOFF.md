@@ -16,16 +16,15 @@
 - Instagram Reels/Buffer uses per-operation durable claims for reels, stories, and carousels.
 - Missing Buffer hosting/provider secrets fail closed.
 - Succeeded claims reuse external IDs; pending/ambiguous claims stop blind retries.
+- PR #8 was recreated from current `main`, passed offline CI, and merged. It preserves locally scheduled Buffer records, including overdue records, when the Buffer queue cannot be read, and routes Buffer state writes through atomic JSON persistence.
 - Live provider verification is not proven by the current repository checks.
 
 ## PR audit: 2026-10-28
-- [PR #3](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/3), Buffer safety: open, stale against current `main`; no current-main CI result proves it safe to merge.
-- [PR #5](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/5), production hardening: open and diverged from current `main`; historical offline and hardening checks passed on the old head only.
-- Neither PR was merged. No production code was changed from those PRs. Rebase or recreate the fixes on current `main`, then run current CI before merging.
+- [PR #3](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/3), Buffer safety: remains open and stale. Its highest-confidence queue-safety fix was recreated as [PR #8](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/8) and merged on current `main`.
+- [PR #5](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/5), production hardening: remains open and diverged. Do not merge wholesale; current `main` already contains newer guarded paths.
 
 ## Instagram smoke-test boundary
-- The supplied report says no Buffer smoke test was executed and `buffer_max` was not changed.
-- Treat that report as an audit result, not proof of a live provider success.
+- No live Buffer smoke test has been executed or independently verified.
 - Keep `buffer_max=10` disabled for broad rollout. The first real test remains `per_day=2`, `buffer_max=1`, empty-week input, after current-main safety checks are green.
 - Do not claim a successful Instagram publication until Buffer state and the resulting external item are independently verified.
 
@@ -36,8 +35,7 @@
 
 ## Required continuation
 1. Protect the backup branch in GitHub.
-2. Rebase or recreate PR #3 and PR #5 on current `main`.
-3. Run fresh offline/hardening checks on the rebased heads.
-4. Run only the one-item `buffer_max=1` smoke test and verify provider state.
-5. Keep `buffer_max=10` blocked until that evidence is clean.
-6. Never rerun a pending or ambiguous claim without provider reconciliation.
+2. Recreate only selected PR #5 fixes on current `main`, with fresh tests.
+3. Run only the one-item `buffer_max=1` smoke test and verify provider state.
+4. Keep `buffer_max=10` blocked until that evidence is clean.
+5. Never rerun a pending or ambiguous claim without provider reconciliation.
