@@ -636,7 +636,7 @@
     "05_2026-10-28_1450_ninth-legion": {
       "post_id": "6adf1eac865e1471ed5a0197",
       "due": "2026-10-28T14:50:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-28_1450_ninth-legion.mp4?v=3",
       "cap": "24fdc65a830c",
       "kind": "reel",
@@ -646,7 +646,7 @@
     "06_2026-10-28_1900_max-headroom-hijack": {
       "post_id": "6adf7304fc9719069070ffa0",
       "due": "2026-10-28T19:00:00+03:30",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack.mp4?v=3",
       "cap": "44171b612593",
       "kind": "reel",
@@ -735,6 +735,26 @@
       "audio_v": 1,
       "at": "2026-10-27T23:41+03:30",
       "story_v": 2
+    },
+    "11_2026-10-30_2213_mary-celeste": {
+      "post_id": "6ae216411e48dc602a3d9c9f",
+      "due": "2026-10-30T22:13:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste.mp4?v=3",
+      "cap": "68a342ceb69e",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-28T19:01+03:30"
+    },
+    "12_2026-10-31_1218_percy-fawcett": {
+      "post_id": "6ae21642ef3865d804f8cdd4",
+      "due": "2026-10-31T12:18:00+03:30",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-31_1218_percy-fawcett.mp4?v=3",
+      "cap": "df1485ce3c38",
+      "kind": "reel",
+      "audio_v": 3,
+      "at": "2026-10-28T19:01+03:30"
     }
   },
   "deleted_by_owner": {
@@ -748,8 +768,6 @@
   "channel_id": "6aca88406a5c39ccb6753843",
   "channel_name": "nabz.moamma",
   "hosted": [
-    "05_2026-10-28_1450_ninth-legion",
-    "06_2026-10-28_1900_max-headroom-hijack",
     "06_2026-10-28_1900_max-headroom-hijack_story",
     "07_2026-10-29_1359_toynbee-tiles",
     "08_2026-10-29_2254_lost-army-of-cambyses",
@@ -757,6 +775,8 @@
     "09_2026-10-30_0957_walter-collins",
     "10_2026-10-30_1800_gobekli-tepe",
     "10_2026-10-30_1800_gobekli-tepe_story",
+    "11_2026-10-30_2213_mary-celeste",
+    "12_2026-10-31_1218_percy-fawcett",
     "car_oxus-treasure"
   ],
   "films_page": "d805d18d5b87",

@@ -110,6 +110,16 @@
       },
       "status": "succeeded"
     },
+    "c9285dbed633d2b7389fba04e1cd76c611737651c15b532d531f8acf10bf8ae1": {
+      "external_id": "6ae21642ef3865d804f8cdd4",
+      "metadata": {
+        "due": "2026-10-31T12:18:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-31_1218_percy-fawcett.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "cdecf29c005803a16fe50d28e81cede2ac80f3d9452735e762b30f8bf0e7660b": {
       "external_id": "6adf1eab865e1471ed5a0135",
       "metadata": {
@@ -144,6 +154,16 @@
         ],
         "kind": "carousel",
         "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
+    "e15731e1b6e85060d529ff53319f92a52feb704646563a3b8a2352ad3b1c1755": {
+      "external_id": "6ae216411e48dc602a3d9c9f",
+      "metadata": {
+        "due": "2026-10-30T22:13:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste.mp4?v=3"
       },
       "status": "succeeded"
     },
