@@ -19,6 +19,16 @@
       },
       "status": "succeeded"
     },
+    "403c552aed8b56b1785ce04ca134c5ba6e6130d775d704ee52d36382162e9bee": {
+      "external_id": "qA94PiDNJRU",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-10-28T19:00:00.000Z",
+        "story_id": "solway-firth-spaceman",
+        "video_sha256_24": "07a1e345b6a61b6d48aceb35"
+      },
+      "status": "succeeded"
+    },
     "494e276e2f58ce600f32cbb8880b57629d2cad13144b3ddba9f56e5c169b0d33": {
       "external_id": "6addf2d40b5343d070cf0c3b",
       "metadata": {

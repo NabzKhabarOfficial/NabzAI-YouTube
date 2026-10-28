@@ -1,9 +1,9 @@
 {
-  "duration_seconds": 38.8,
+  "duration_seconds": 41.87,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 13.72,
+  "file_mb": 16.75,
   "audio": {
     "mean_volume": -18.1,
     "max_volume": -0.3
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "taos-hum",
-  "story_bank": "Story bank: 35 of 60 stories left (next: taos-hum, solway-firth-spaceman, toynbee-tiles)"
+  "story_id": "solway-firth-spaceman",
+  "story_bank": "Story bank: 34 of 60 stories left (next: solway-firth-spaceman, toynbee-tiles, isdal-woman)"
 }
