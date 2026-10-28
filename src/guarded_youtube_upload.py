@@ -28,7 +28,14 @@ def _quality_gate(root: Path) -> None:
 
 def _existing_story_claim(story_id: str) -> dict | None:
     for claim in (load_json(CLAIMS, {}).get("claims") or {}).values():
-        if isinstance(claim, dict) and (claim.get("metadata") or {}).get("provider") == "youtube" and (claim.get("metadata") or {}).get("story_id") == story_id: return claim
+        if not isinstance(claim, dict):
+            continue
+        metadata = claim.get("metadata") or {}
+        if metadata.get("provider") == "youtube" and metadata.get("story_id") == story_id:
+            # Failed credentials/API validation are deterministic and safe to retry.
+            # Pending, succeeded, and ambiguous claims still require reconciliation.
+            if claim.get("status") != "failed":
+                return claim
     return None
 
 def _safe_scheduling_rejection(exc: Exception) -> bool:
