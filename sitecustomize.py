@@ -14,7 +14,7 @@ _merge_story_notes()
 # producer must not see those stories before their Persian package is ready.
 # Merge only for the ig-pack process, then restore the checked-in bank when it
 # exits. This keeps the existing YouTube path and its source bank untouched.
-if "src.ig_pack" in sys.argv:
+if sys.argv and sys.argv[0].endswith("ig_pack.py"):
     from scripts.prepare_ig_english_bank import ADD as _IG_ADD
     from scripts.prepare_ig_english_bank import BANK as _IG_BANK
     from scripts.prepare_ig_english_bank import main as _prepare_ig_bank
