@@ -1,0 +1,857 @@
+[
+  {
+    "id": "viking-labeled-release",
+    "title": "The Viking Labeled Release Experiment",
+    "tags": [
+      "space-science",
+      "biology",
+      "mystery"
+    ],
+    "beats": [
+      {
+        "text": "A 1976 Mars experiment produced a chemical response some interpreted as metabolism.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A 1976 Mars experiment produced a chemical response some interpreted as metabolism.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Viking landers mixed nutrient solution with Martian soil and monitored radioactive gas.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Viking landers mixed nutrient solution with Martian soil and monitored radioactive gas.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "One chamber showed a positive response that heating largely removed.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: One chamber showed a positive response that heating largely removed.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Other instruments found no unambiguous organics or independent biological confirmation.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Other instruments found no unambiguous organics or independent biological confirmation.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Perchlorate chemistry and unusual soil reactions offered nonbiological explanations.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Perchlorate chemistry and unusual soil reactions offered nonbiological explanations.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The result remains contested, not proof of Martian life.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The result remains contested, not proof of Martian life.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "آزمایش رهاسازی نشان‌دار وایکینگ",
+      "beats": [
+        "آزمایش مریخ در ۱۹۷۶ واکنشی تولید کرد که برخی سوخت‌وساز دانستند.",
+        "فرودگرهای وایکینگ محلول غذایی را با خاک مخلوط و گاز رادیواکتیو را پاییدند.",
+        "یک محفظه پاسخ مثبت داد که با گرم‌کردن از بین رفت.",
+        "ابزارهای دیگر آلیات قطعی یا تأیید زیستی مستقل نیافتند.",
+        "شیمی پرکلرات و واکنش خاک توضیح غیرزیستی ارائه کردند.",
+        "نتیجه هنوز مورد اختلاف است، نه مدرک حیات مریخی."
+      ],
+      "question": "آیا آزمایش وایکینگ نشانه زیست مریخی بود یا واکنش شیمیایی خاک؟",
+      "tags": [
+        "#وایکینگ",
+        "#حیات_مریخ",
+        "#زیست‌شناسی_فضایی"
+      ]
+    },
+    "notes": {
+      "proven": "Viking produced a disputed positive response in 1976",
+      "probable": "abiotic soil chemistry",
+      "unknown": "whether biological metabolism occurred"
+    }
+  },
+  {
+    "id": "blc1-signal",
+    "title": "BLC1: A Candidate Signal from Proxima Centauri",
+    "tags": [
+      "astronomy",
+      "seti",
+      "science"
+    ],
+    "beats": [
+      {
+        "text": "A narrow radio signal seemed to come from a nearby star, then stopped repeating.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A narrow radio signal seemed to come from a nearby star, then stopped repeating.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Breakthrough Listen detected BLC1 in 2019 observations of Proxima Centauri.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Breakthrough Listen detected BLC1 in 2019 observations of Proxima Centauri.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Its frequency drift resembled expectations for a technological transmitter.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Its frequency drift resembled expectations for a technological transmitter.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Follow-up analysis found interference consistent with local electronics and artifacts.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Follow-up analysis found interference consistent with local electronics and artifacts.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No independent telescope confirmed it, and alien significance was withdrawn.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No independent telescope confirmed it, and alien significance was withdrawn.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "BLC1 shows how exciting signals collapse under rigorous verification.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: BLC1 shows how exciting signals collapse under rigorous verification.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "BLC1؛ سیگنال نامزد از پروکسیما قنطورس",
+      "beats": [
+        "سیگنال رادیویی باریکی ظاهراً از ستاره‌ای نزدیک آمد، اما تکرار نشد.",
+        "برک‌ترو لیسن بی‌ال‌سی۱ را در داده‌های ۲۰۱۹ پروکسیما یافت.",
+        "رانش فرکانس با انتظار از فرستنده فناوری‌مند سازگار بود.",
+        "تحلیل بعدی تداخل الکترونیکی محلی و مصنوعات را محتمل دانست.",
+        "تلسکوپ مستقلی آن را تأیید نکرد و اهمیت بیگانه پس گرفته شد.",
+        "بی‌ال‌سی۱ نشان می‌دهد راستی‌آزمایی چگونه هیجان را فرو می‌ریزد."
+      ],
+      "question": "چرا سیگنال BLC1 پس از بررسی دقیق، نشانه تمدن بیگانه نماند؟",
+      "tags": [
+        "#BLC1",
+        "#پروکسیما_قنطورس",
+        "#جست‌وجوی_حیات"
+      ]
+    },
+    "notes": {
+      "proven": "BLC1 was detected and analyzed",
+      "probable": "terrestrial interference",
+      "unknown": "exact artifact mechanism; alien interpretation unsupported"
+    }
+  },
+  {
+    "id": "dark-matter",
+    "title": "The Dark Matter Mystery",
+    "tags": [
+      "cosmology",
+      "physics",
+      "science"
+    ],
+    "beats": [
+      {
+        "text": "Galaxies rotate as if surrounded by invisible mass, yet detectors have not caught it.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Galaxies rotate as if surrounded by invisible mass, yet detectors have not caught it.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Galaxy rotation and gravitational lensing revealed a missing-mass problem.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Galaxy rotation and gravitational lensing revealed a missing-mass problem.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Cold dark matter explains large-scale structure better than visible matter alone.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Cold dark matter explains large-scale structure better than visible matter alone.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Detectors, colliders, and space missions searched for candidate particles.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Detectors, colliders, and space missions searched for candidate particles.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Null results narrowed possibilities but did not eliminate axions or alternatives.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Null results narrowed possibilities but did not eliminate axions or alternatives.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Evidence for extra gravity is strong; dark matter’s identity remains unknown.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Evidence for extra gravity is strong; dark matter’s identity remains unknown.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "معمای ماده تاریک",
+      "beats": [
+        "کهکشان‌ها چنان می‌چرخند که گویی جرم نامرئی احاطه‌شان کرده، اما ذره دیده نشده است.",
+        "چرخش کهکشانی و عدسی گرانشی مسئله جرم گمشده را آشکار کردند.",
+        "ماده تاریک سرد ساختار بزرگ‌مقیاس را بهتر توضیح می‌دهد.",
+        "آشکارسازها، برخورددهنده‌ها و مأموریت‌ها نامزدها را جست‌وجو کردند.",
+        "نتایج منفی گزینه‌ها را محدود کردند، نه اینکه اکسیون‌ها را حذف کنند.",
+        "شواهد گرانش اضافی قوی است؛ هویت ماده تاریک ناشناخته است."
+      ],
+      "question": "آیا ماده تاریک ذره‌ای ناشناخته است یا نشانه‌ای از گرانش اصلاح‌شده؟",
+      "tags": [
+        "#ماده_تاریک",
+        "#کیهان‌شناسی",
+        "#فیزیک_ذرات"
+      ]
+    },
+    "notes": {
+      "proven": "gravitational evidence for unseen mass is extensive",
+      "probable": "new matter component or modified gravity",
+      "unknown": "particle identity"
+    }
+  },
+  {
+    "id": "hubble-tension",
+    "title": "The Hubble Tension",
+    "tags": [
+      "cosmology",
+      "physics",
+      "science"
+    ],
+    "beats": [
+      {
+        "text": "Two powerful methods measure cosmic expansion—and still disagree significantly.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Two powerful methods measure cosmic expansion—and still disagree significantly.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Nearby distance ladders imply a faster Hubble constant than early-universe observations.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Nearby distance ladders imply a faster Hubble constant than early-universe observations.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Planck’s microwave background results fit the slower standard-cosmology prediction.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Planck’s microwave background results fit the slower standard-cosmology prediction.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Supernova calibration, Cepheid dust, and instrument systematics were scrutinized.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Supernova calibration, Cepheid dust, and instrument systematics were scrutinized.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "New telescopes reduced uncertainty, but the discrepancy has not vanished.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: New telescopes reduced uncertainty, but the discrepancy has not vanished.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "If real, the tension may point beyond the standard cosmological model.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: If real, the tension may point beyond the standard cosmological model.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "تنش هابل",
+      "beats": [
+        "دو روش قدرتمند نرخ انبساط کیهان را می‌سنجند، اما اختلاف دارند.",
+        "نردبان فاصله‌های نزدیک مقدار هابل بیشتری از رصدهای کیهان اولیه می‌دهد.",
+        "نتایج تابش زمینه پلانک با پیش‌بینی کندتر مدل استاندارد سازگار است.",
+        "کالیبراسیون ابرنواختر، غبار قیفاووسی و خطای ابزار بررسی شدند.",
+        "تلسکوپ‌های جدید عدم‌قطعیت را کم کردند، اما اختلاف ناپدید نشد.",
+        "اگر واقعی باشد، تنش شاید به فیزیک فراتر از مدل استاندارد اشاره کند."
+      ],
+      "question": "آیا تنش هابل خطای اندازه‌گیری است یا نشانه فیزیک جدید؟",
+      "tags": [
+        "#تنش_هابل",
+        "#انبساط_کیهان",
+        "#کیهان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "independent methods yield discrepant Hubble estimates",
+      "probable": "systematics or new physics",
+      "unknown": "definitive resolution"
+    }
+  },
+  {
+    "id": "roman-concrete",
+    "title": "Roman Concrete’s Unusual Durability",
+    "tags": [
+      "engineering",
+      "archaeology",
+      "materials-science"
+    ],
+    "beats": [
+      {
+        "text": "Ancient harbor concrete survived seawater for millennia, while modern structures deteriorate sooner.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Ancient harbor concrete survived seawater for millennia, while modern structures deteriorate sooner.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Roman builders mixed volcanic ash, lime, and aggregate in marine structures.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Roman builders mixed volcanic ash, lime, and aggregate in marine structures.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Microscopic studies found mineral growth that can seal cracks under conditions.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Microscopic studies found mineral growth that can seal cracks under conditions.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Chemistry varies by site, so ancient recipes were not universal.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Chemistry varies by site, so ancient recipes were not universal.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Researchers test whether selected mechanisms can improve low-carbon concrete.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Researchers test whether selected mechanisms can improve low-carbon concrete.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery is how material, water, and environment interacted so well.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery is how material, water, and environment interacted so well.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "دوام شگفت‌انگیز بتن رومی",
+      "beats": [
+        "بتن بندرهای باستانی هزاره‌ها در آب دریا دوام آورد، اما سازه‌های جدید زودتر فرسوده می‌شوند.",
+        "رومیان خاکستر آتشفشانی، آهک و سنگ‌دانه را آمیختند.",
+        "مطالعات ریزمقیاس رشد کانی‌های ترک‌بند را در شرایطی یافتند.",
+        "شیمی مکان‌ها متفاوت است و دستور واحدی وجود نداشت.",
+        "پژوهشگران سازوکارها را برای بتن کم‌کربن آزمایش می‌کنند.",
+        "راز تعامل موفق ماده، آب و محیط است، نه جادوی ازدست‌رفته."
+      ],
+      "question": "چه ترکیبی باعث شد بتن دریایی روم باستان هزاران سال دوام بیاورد؟",
+      "tags": [
+        "#بتن_رومی",
+        "#مهندسی_باستان",
+        "#مصالح_ساختمانی"
+      ]
+    },
+    "notes": {
+      "proven": "Roman marine concrete survives at multiple sites",
+      "probable": "mineral reactions aided durability",
+      "unknown": "best generalizable modern recipe"
+    }
+  },
+  {
+    "id": "beaumont-children",
+    "title": "The Beaumont Children Disappearance",
+    "tags": [
+      "history",
+      "crime",
+      "disappearance"
+    ],
+    "beats": [
+      {
+        "text": "Three Australian siblings vanished during a beach outing in 1966.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Three Australian siblings vanished during a beach outing in 1966.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Jane, Arnna, and Grant Beaumont left their Adelaide home for Glenelg Beach on January 26.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Jane, Arnna, and Grant Beaumont left their Adelaide home for Glenelg Beach on January 26.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Witnesses reported seeing the children with a tall fair-haired man near the beach.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Witnesses reported seeing the children with a tall fair-haired man near the beach.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "They failed to return, and one shopkeeper said the children had bought pastries earlier.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: They failed to return, and one shopkeeper said the children had bought pastries earlier.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Large searches found no bodies, clothing, or confirmed trace of the siblings.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Large searches found no bodies, clothing, or confirmed trace of the siblings.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Their fate and the identity of the suspected man remain unknown despite later leads.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Their fate and the identity of the suspected man remain unknown despite later leads.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "ناپدیدشدن کودکان بومونت",
+      "beats": [
+        "سه خواهر و برادر استرالیایی در گردش ساحلی سال ۱۹۶۶ ناپدید شدند.",
+        "جین، آرنا و گرانت بومونت ۲۶ ژانویه برای رفتن به ساحل گلنلگ خانه آدلاید را ترک کردند.",
+        "شاهدان کودکان را نزدیک ساحل همراه مردی قدبلند و موطلایی دیدند.",
+        "آن‌ها بازنگشتند و مغازه‌داری گفت پیش‌تر شیرینی خریده بودند.",
+        "جست‌وجوهای گسترده جسد، لباس یا رد تأییدشده‌ای نیافت.",
+        "سرنوشت کودکان و هویت مرد مظنون با وجود سرنخ‌های بعدی ناشناخته است."
+      ],
+      "question": "آخرین کسی که کودکان بومونت را دید چه کسی بود؟",
+      "tags": [
+        "#کودکان_بومونت",
+        "#پرونده_مفقودی",
+        "#استرالیا"
+      ]
+    },
+    "notes": {
+      "proven": "three Beaumont siblings vanished from Glenelg Beach in 1966",
+      "probable": "they encountered an unknown adult after leaving the beach",
+      "unknown": "their fate and the adult’s identity"
+    }
+  },
+  {
+    "id": "springfield-three",
+    "title": "The Springfield Three Disappearance",
+    "tags": [
+      "history",
+      "crime",
+      "disappearance"
+    ],
+    "beats": [
+      {
+        "text": "Three women vanished from a Missouri house without leaving obvious signs of struggle.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Three women vanished from a Missouri house without leaving obvious signs of struggle.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Suzie Streeter, Stacy McCall, and Sherrill Levitt disappeared after a 1992 graduation night.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Suzie Streeter, Stacy McCall, and Sherrill Levitt disappeared after a 1992 graduation night.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Friends found purses, clothes, and personal items inside the Springfield home.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Friends found purses, clothes, and personal items inside the Springfield home.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A telephone had been moved, but investigators found no clear forced entry or reliable sighting.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A telephone had been moved, but investigators found no clear forced entry or reliable sighting.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Rumors and searches produced no confirmed bodies or definitive forensic trail.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Rumors and searches produced no confirmed bodies or definitive forensic trail.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The case remains open, with the women’s final movements and fate unresolved.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The case remains open, with the women’s final movements and fate unresolved.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "ناپدیدشدن سه زن اسپرینگفیلد",
+      "beats": [
+        "سه زن از خانه‌ای در میسوری بدون نشانه آشکار درگیری ناپدید شدند.",
+        "سوزی استریتر، استیسی مک‌کال و شریل لویت پس از شب جشن فارغ‌التحصیلی ۱۹۹۲ ناپدید شدند.",
+        "دوستان کیف‌ها، لباس‌ها و وسایل شخصی را در خانه اسپرینگفیلد یافتند.",
+        "تلفن جابه‌جا شده بود، اما ورود اجباری یا مشاهده معتبر پیدا نشد.",
+        "شایعه‌ها و جست‌وجوها جسد یا رد جنایی قطعی به دست ندادند.",
+        "پرونده باز است و آخرین حرکات و سرنوشت آنان حل نشده."
+      ],
+      "question": "در خانه اسپرینگفیلد چه اتفاقی افتاد که سه زن بی‌رد ناپدید شدند؟",
+      "tags": [
+        "#سه_زن_اسپرینگفیلد",
+        "#پرونده_مفقودی",
+        "#میسوری"
+      ]
+    },
+    "notes": {
+      "proven": "three women disappeared from a Springfield, Missouri home in 1992",
+      "probable": "someone known or unknown entered without leaving a clear scene",
+      "unknown": "their final movements and fate"
+    }
+  },
+  {
+    "id": "jamison-family",
+    "title": "The Jamison Family Disappearance",
+    "tags": [
+      "history",
+      "crime",
+      "wilderness"
+    ],
+    "beats": [
+      {
+        "text": "A family vanished during a remote Oklahoma trip, leaving their truck behind.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A family vanished during a remote Oklahoma trip, leaving their truck behind.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Bobby, Sherilynn, and their daughter Madyson were last seen in the Ouachita Mountains in 2009.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Bobby, Sherilynn, and their daughter Madyson were last seen in the Ouachita Mountains in 2009.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Investigators found their truck with belongings, food, and the family dog still nearby.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Investigators found their truck with belongings, food, and the family dog still nearby.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Skeletal remains discovered years later were identified as the three family members.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Skeletal remains discovered years later were identified as the three family members.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The cause of death and the reason they left the vehicle were never established.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The cause of death and the reason they left the vehicle were never established.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Financial stress, religious fears, exposure, and homicide theories remain disputed.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Financial stress, religious fears, exposure, and homicide theories remain disputed.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "ناپدیدشدن خانواده جمیسون",
+      "beats": [
+        "خانواده‌ای در سفری دورافتاده در اوکلاهما ناپدید شدند و کامیون را جا گذاشتند.",
+        "بابی، شریلین و دخترشان مدیسون آخرین بار ۲۰۰۹ در کوه‌های واشیتا دیده شدند.",
+        "بازرسان کامیون را همراه وسایل، غذا و سگ خانواده در نزدیکی یافتند.",
+        "بقایای اسکلتی سال‌ها بعد شناسایی شد و به هر سه عضو خانواده تعلق داشت.",
+        "علت مرگ و دلیل ترک خودرو هرگز مشخص نشد.",
+        "فشار مالی، ترس مذهبی، سرما و قتل همچنان نظریه‌های مورد اختلاف‌اند."
+      ],
+      "question": "چرا خانواده جمیسون کامیون خود را رها کردند و به کوهستان رفتند؟",
+      "tags": [
+        "#خانواده_جمیسون",
+        "#اوکلاهما",
+        "#معمای_مفقودی"
+      ]
+    },
+    "notes": {
+      "proven": "the three Jamisons disappeared and their remains were later identified",
+      "probable": "disorientation or a crisis preceded their deaths",
+      "unknown": "cause of death and why they left the truck"
+    }
+  },
+  {
+    "id": "asha-degree",
+    "title": "The Disappearance of Asha Degree",
+    "tags": [
+      "history",
+      "crime",
+      "disappearance"
+    ],
+    "beats": [
+      {
+        "text": "A child vanished after leaving home before dawn.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A child vanished after leaving home before dawn.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Asha Degree was nine when her family reported her missing on February 14, 2000.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Asha Degree was nine when her family reported her missing on February 14, 2000.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Motorists saw a small girl walking south in bad weather before she entered the darkness.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Motorists saw a small girl walking south in bad weather before she entered the darkness.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Her backpack was found years later in a construction site near a highway.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Her backpack was found years later in a construction site near a highway.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "DNA and witness leads have not revealed where she went or who encountered her.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: DNA and witness leads have not revealed where she went or who encountered her.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The reason she left home and her final fate remain unknown.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The reason she left home and her final fate remain unknown.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "ناپدیدشدن آشا دیگری",
+      "beats": [
+        "کودکی پیش از طلوع از خانه کارولینای شمالی بیرون رفت و در جاده‌ای روستایی ناپدید شد.",
+        "آشا دیگرید نه‌ساله بود که خانواده‌اش ۱۴ فوریه ۲۰۰۰ مفقودی او را گزارش کردند.",
+        "رانندگان پیش از ناپدیدشدن، دختری کوچک را در هوای بد در حال رفتن به جنوب دیدند.",
+        "کوله‌پشتی او سال‌ها بعد نزدیک بزرگراه و در محل ساخت‌وساز پیدا شد.",
+        "دی‌ان‌ای و سرنخ‌های شاهدان نشان ندادند کجا رفت یا با چه کسی روبه‌رو شد.",
+        "دلیل خروج از خانه و سرنوشت نهایی او ناشناخته است."
+      ],
+      "question": "آشا دیگری پیش از ناپدیدشدن چرا سحرگاه خانه را ترک کرد؟",
+      "tags": [
+        "#آشا_دیگری",
+        "#کودک_مفقود",
+        "#پرونده_حل_نشده"
+      ]
+    },
+    "notes": {
+      "proven": "Asha Degree disappeared after leaving home in 2000",
+      "probable": "she traveled along a rural road before being taken or becoming lost",
+      "unknown": "her final location and fate"
+    }
+  },
+  {
+    "id": "brandon-swanson",
+    "title": "The Disappearance of Brandon Swanson",
+    "tags": [
+      "history",
+      "crime",
+      "disappearance"
+    ],
+    "beats": [
+      {
+        "text": "A young driver vanished during a nighttime call after his car became stuck.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A young driver vanished during a nighttime call after his car became stuck.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Brandon Swanson called his parents in Minnesota in May 2008 after leaving a party.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Brandon Swanson called his parents in Minnesota in May 2008 after leaving a party.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "He believed he was near one town, while his parents searched from another location.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: He believed he was near one town, while his parents searched from another location.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "During the call he mentioned lights and suddenly exclaimed a profanity before disconnecting.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: During the call he mentioned lights and suddenly exclaimed a profanity before disconnecting.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "His car was found near the Yellow Medicine River, but no trace of him appeared.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: His car was found near the Yellow Medicine River, but no trace of him appeared.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "An accidental fall is possible, yet the precise route and final moments remain unknown.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: An accidental fall is possible, yet the precise route and final moments remain unknown.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "ناپدیدشدن براندون سوانسون",
+      "beats": [
+        "راننده جوانی پس از گیرکردن خودرو در تماس شبانه ناپدید شد.",
+        "براندون سوانسون پس از مهمانی در مه ۲۰۰۸ با والدینش در مینه‌سوتا تماس گرفت.",
+        "او فکر می‌کرد نزدیک شهری دیگر است و والدینش از مکان متفاوتی دنبالش می‌گشتند.",
+        "در تماس از نورها گفت و ناگهان ناسزایی گفت، سپس ارتباط قطع شد.",
+        "خودرو نزدیک رود یلو مدیسین پیدا شد، اما ردی از او نبود.",
+        "سقوط تصادفی ممکن است، ولی مسیر و دقایق پایانی نامعلوم‌اند."
+      ],
+      "question": "در آخرین تماس براندون سوانسون، او به کدام سمت می‌رفت؟",
+      "tags": [
+        "#براندون_سوانسون",
+        "#ناپدیدشدن",
+        "#مینسوتا"
+      ]
+    },
+    "notes": {
+      "proven": "Swanson disappeared after a 2008 nighttime phone call and car recovery",
+      "probable": "he walked from the stuck vehicle toward the river area",
+      "unknown": "exact route, cause, and final location"
+    }
+  },
+  {
+    "id": "maura-murray",
+    "title": "The Disappearance of Maura Murray",
+    "tags": [
+      "history",
+      "crime",
+      "disappearance"
+    ],
+    "beats": [
+      {
+        "text": "A university student crashed on a snowy road and vanished before help arrived.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A university student crashed on a snowy road and vanished before help arrived.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Maura Murray left Massachusetts in February 2004 after making an unexplained trip north.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Maura Murray left Massachusetts in February 2004 after making an unexplained trip north.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Her Saturn struck a guardrail near Woodsville, New Hampshire, shortly after evening.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Her Saturn struck a guardrail near Woodsville, New Hampshire, shortly after evening.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A bus driver offered assistance, but she was gone when police reached the scene.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A bus driver offered assistance, but she was gone when police reached the scene.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Her car, phone, and belongings yielded no confirmed destination or later sighting.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Her car, phone, and belongings yielded no confirmed destination or later sighting.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Accident, voluntary disappearance, and foul play all remain possible.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Accident, voluntary disappearance, and foul play all remain possible.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "ناپدیدشدن مورا موری",
+      "beats": [
+        "دانشجویی در جاده برفی تصادف کرد و پیش از رسیدن کمک ناپدید شد.",
+        "مائورا موری در فوریه ۲۰۰۴ پس از سفری بی‌توضیح به شمال ماساچوست را ترک کرد.",
+        "زحل او عصر همان روز نزدیک وودزویل نیوهمپشایر به گاردریل خورد.",
+        "راننده اتوبوسی کمک پیشنهاد داد، اما با رسیدن پلیس او رفته بود.",
+        "خودرو، تلفن و وسایلش مقصد یا مشاهده بعدی معتبری نشان ندادند.",
+        "تصادف، ناپدیدشدن عمدی و جنایت همچنان ممکن‌اند."
+      ],
+      "question": "مورا موری پس از تصادف در جاده برفی به کجا رفت؟",
+      "tags": [
+        "#مورا_موری",
+        "#ناپدیدشدن_مرموز",
+        "#نیوهامپشایر"
+      ]
+    },
+    "notes": {
+      "proven": "Murray vanished near her abandoned car in New Hampshire in 2004",
+      "probable": "she left the crash scene on foot or with another person",
+      "unknown": "destination, motive, and ultimate fate"
+    }
+  },
+  {
+    "id": "axeman-new-orleans",
+    "title": "The Axeman of New Orleans",
+    "tags": [
+      "history",
+      "crime",
+      "murder"
+    ],
+    "beats": [
+      {
+        "text": "A letter-writing killer terrorized New Orleans and was never identified.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A letter-writing killer terrorized New Orleans and was never identified.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A series of attacks struck mostly Italian-American households between 1918 and 1919.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A series of attacks struck mostly Italian-American households between 1918 and 1919.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Several victims were killed or wounded with household tools, often after doors were breached.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Several victims were killed or wounded with household tools, often after doors were breached.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "An infamous letter promised safety to homes playing jazz on a designated night.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: An infamous letter promised safety to homes playing jazz on a designated night.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Police investigated personal disputes, prejudice, and a possible serial offender.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Police investigated personal disputes, prejudice, and a possible serial offender.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The attacks stopped without a proven arrest, leaving the killer’s identity unknown.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The attacks stopped without a proven arrest, leaving the killer’s identity unknown.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "تبرزن نیواورلئان",
+      "beats": [
+        "قاتلی نامه‌نویس نیواورلئان را به وحشت انداخت و هرگز شناسایی نشد.",
+        "چند حمله بین ۱۹۱۸ و ۱۹۱۹ عمدتاً خانه‌های ایتالیایی‌آمریکایی را هدف گرفت.",
+        "چند قربانی با ابزار خانگی کشته یا زخمی شدند، اغلب پس از شکستن در.",
+        "نامه‌ای مشهور وعده داد خانه‌هایی که شب معین جاز بنوازند در امان می‌مانند.",
+        "پلیس اختلاف‌های شخصی، تعصب و قاتل زنجیره‌ای احتمالی را بررسی کرد.",
+        "حملات بدون بازداشت ثابت‌شده متوقف شد و هویت قاتل ناشناخته ماند."
+      ],
+      "question": "آیا تبرزن نیواورلئان یک قاتل زنجیره‌ای واحد بود؟",
+      "tags": [
+        "#تبرزن_نیواورلئان",
+        "#جنایت_تاریخی",
+        "#نیواورلئان"
+      ]
+    },
+    "notes": {
+      "proven": "multiple New Orleans attacks occurred in 1918–1919 and were linked by investigators",
+      "probable": "at least some attacks had a common offender",
+      "unknown": "the killer’s identity and full victim count"
+    }
+  },
+  {
+    "id": "circleville-letters",
+    "title": "The Circleville Letters",
+    "tags": [
+      "history",
+      "crime",
+      "anonymous-letters"
+    ],
+    "beats": [
+      {
+        "text": "Anonymous letters accused Ohio residents of secrets, affairs, and corruption.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Anonymous letters accused Ohio residents of secrets, affairs, and corruption.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Circleville residents began receiving threatening letters in the 1970s.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Circleville residents began receiving threatening letters in the 1970s.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "One family was targeted with intimate claims, and a roadside sign was altered.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: One family was targeted with intimate claims, and a roadside sign was altered.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Paul Freshour was convicted after an incident involving a booby-trapped sign, though he denied writing the letters.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Paul Freshour was convicted after an incident involving a booby-trapped sign, though he denied writing the letters.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Letters continued even while Freshour was imprisoned, weakening the case against him.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Letters continued even while Freshour was imprisoned, weakening the case against him.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The author or authors were never conclusively identified.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The author or authors were never conclusively identified.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "نامه‌های سیرکل‌ویل",
+      "beats": [
+        "نامه‌های ناشناس ساکنان اوهایو را به راز، رابطه و فساد متهم می‌کردند.",
+        "ساکنان سیرکل‌ویل در دهه ۱۹۷۰ نامه‌های تهدیدآمیز دریافت کردند.",
+        "خانواده‌ای با ادعاهای خصوصی هدف قرار گرفت و تابلوی کنار جاده تغییر داده شد.",
+        "پل فرشور پس از ماجرای تابلوی تله‌گذاری‌شده محکوم شد، اما نویسندگی نامه‌ها را انکار کرد.",
+        "نامه‌ها در دوران زندان فرشور هم ادامه یافتند و پرونده علیه او را تضعیف کردند.",
+        "نویسنده یا نویسندگان هرگز قطعی شناسایی نشدند."
+      ],
+      "question": "نویسنده نامه‌های سیرکل‌ویل چه کسی بود و چرا سال‌ها اتهام می‌زد؟",
+      "tags": [
+        "#نامه‌های_سیرکل‌ویل",
+        "#اوهایو",
+        "#معمای_جنایی"
+      ]
+    },
+    "notes": {
+      "proven": "threatening anonymous letters circulated in Circleville from the 1970s",
+      "probable": "several letters may have come from one local campaign",
+      "unknown": "the author or authors and their motive"
+    }
+  },
+  {
+    "id": "tamam-shud",
+    "title": "The Tamám Shud Case",
+    "tags": [
+      "history",
+      "crime",
+      "identity"
+    ],
+    "beats": [
+      {
+        "text": "An unidentified man was found dead with a torn phrase hidden in his pocket.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: An unidentified man was found dead with a torn phrase hidden in his pocket.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Police discovered him at Somerton Beach near Adelaide on December 1, 1948.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Police discovered him at Somerton Beach near Adelaide on December 1, 1948.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "His clothing labels were removed, and a scrap later linked him to a rare Rubáiyát copy.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: His clothing labels were removed, and a scrap later linked him to a rare Rubáiyát copy.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A notebook contained a short sequence of letters that looked like a code.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A notebook contained a short sequence of letters that looked like a code.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Possible connections to a nearby woman and espionage fueled speculation for decades.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Possible connections to a nearby woman and espionage fueled speculation for decades.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Genetic genealogy has suggested a name, but official identity and cause remain unsettled.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Genetic genealogy has suggested a name, but official identity and cause remain unsettled.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "پرونده تامام شود",
+      "beats": [
+        "مردی ناشناس مرده پیدا شد و تکه‌عبارتی پاره در جیبش پنهان بود.",
+        "پلیس اول دسامبر ۱۹۴۸ او را در ساحل سامرتون نزدیک آدلاید یافت.",
+        "برچسب لباس‌ها کنده شده بود و تکه‌کاغذی بعداً او را به نسخه‌ای کمیاب از رباعیات پیوند داد.",
+        "دفترچه‌ای رشته‌ای کوتاه از حروف داشت که شبیه رمز بود.",
+        "ارتباط احتمالی با زنی نزدیک و جاسوسی، گمانه‌زنی‌ها را دهه‌ها ادامه داد.",
+        "تبارشناسی ژنتیکی نامی پیشنهاد کرده، اما هویت رسمی و علت مرگ قطعی نیست."
+      ],
+      "question": "هویت مرد ساحل سامرتن چه بود و قطعه «تامام شود» از کجا آمد؟",
+      "tags": [
+        "#تامام_شود",
+        "#مرد_سامرتن",
+        "#معمای_جنایی"
+      ]
+    },
+    "notes": {
+      "proven": "an unidentified man died at Somerton Beach in 1948 with the Tamám Shud clue",
+      "probable": "genetic genealogy may point toward Carl Webb",
+      "unknown": "official identity, cause of death, and code meaning"
+    }
+  },
+  {
+    "id": "boy-in-box",
+    "title": "The Boy in the Box Identity Mystery",
+    "tags": [
+      "history",
+      "crime",
+      "identity"
+    ],
+    "beats": [
+      {
+        "text": "A child’s body was found in Philadelphia, but his name stayed unknown for decades.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A child’s body was found in Philadelphia, but his name stayed unknown for decades.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A passerby discovered the boy in a cardboard box in 1957 near Fox Chase.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A passerby discovered the boy in a cardboard box in 1957 near Fox Chase.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The child had been severely neglected, and investigators found little usable evidence.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The child had been severely neglected, and investigators found little usable evidence.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Photographs, reconstructions, and nationwide searches failed to produce a confirmed identity.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Photographs, reconstructions, and nationwide searches failed to produce a confirmed identity.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "In 2022, investigators announced a genetic genealogy identification as Joseph Augustus Zarelli.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: In 2022, investigators announced a genetic genealogy identification as Joseph Augustus Zarelli.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "His exact circumstances of death and the responsible person remain unresolved.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: His exact circumstances of death and the responsible person remain unresolved.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "معمای هویت پسر در جعبه",
+      "beats": [
+        "جسد کودکی در فیلادلفیا پیدا شد، اما نامش دهه‌ها ناشناخته ماند.",
+        "رهگذری در ۱۹۵۷ پسر را در جعبه‌ای مقوایی نزدیک فاکس چیس یافت.",
+        "کودک به‌شدت مورد غفلت بود و بازرسان شواهد قابل‌استفاده اندکی داشتند.",
+        "عکس‌ها، بازسازی چهره و جست‌وجوی سراسری هویت قطعی ندادند.",
+        "در ۲۰۲۲ بازرسان شناسایی ژنتیکی او را جوزف آگوستوس زارلی اعلام کردند.",
+        "شرایط دقیق مرگ و فرد مسئول همچنان حل نشده است."
+      ],
+      "question": "آیا شناسایی ژنتیکی پسر در جعبه پرونده را به پاسخ نهایی رسانده است؟",
+      "tags": [
+        "#پسر_در_جعبه",
+        "#تبارشناسی_ژنتیکی",
+        "#فیلادلفیا"
+      ]
+    },
+    "notes": {
+      "proven": "the child was found dead in Philadelphia in 1957 and identified in 2022",
+      "probable": "genetic genealogy correctly identified him as Joseph Augustus Zarelli",
+      "unknown": "killer and exact circumstances of death"
+    }
+  }
+]
