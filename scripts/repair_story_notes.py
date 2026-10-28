@@ -1,27 +1,45 @@
-"""Repair only the known truncated story-notes envelope, then validate it."""
+"""Repair only truncated outer story-notes JSON objects."""
 from __future__ import annotations
+
 import json
 from pathlib import Path
 
 PATH = Path(__file__).resolve().parents[1] / "content" / "story_notes_fa.json"
 
 
+def _load_valid(raw: str):
+    data = json.loads(raw)
+    stories = data.get("stories")
+    if not isinstance(stories, dict) or not stories:
+        raise ValueError("story notes must contain a non-empty stories object")
+    return data
+
+
+def _repair_truncated_outer_object(raw: str) -> str:
+    text = raw.rstrip()
+    for count in range(1, 4):
+        candidate = text + ("\n" + "}" * count) + "\n"
+        try:
+            _load_valid(candidate)
+            return candidate
+        except (json.JSONDecodeError, ValueError):
+            continue
+    raise json.JSONDecodeError(
+        "story notes JSON is malformed and is not a truncated outer object",
+        text,
+        len(text),
+    )
+
+
 def main() -> int:
     raw = PATH.read_text(encoding="utf-8")
     try:
-        json.loads(raw)
-    except json.JSONDecodeError as exc:
-        # The audited defect is a truncated object with exactly two missing closers.
-        if exc.pos != len(raw.rstrip()) or raw.rstrip().endswith("}"):
-            raise
-        repaired = raw.rstrip() + "\n}\n}\n"
-        json.loads(repaired)
+        data = _load_valid(raw)
+    except json.JSONDecodeError:
+        repaired = _repair_truncated_outer_object(raw)
+        data = _load_valid(repaired)
         PATH.write_text(repaired, encoding="utf-8")
-    data = json.loads(PATH.read_text(encoding="utf-8"))
-    stories = data.get("stories")
-    if not isinstance(stories, dict) or not stories:
-        raise SystemExit("story notes must contain a non-empty stories object")
-    print(f"story notes valid: {len(stories)} stories")
+    print(f"story notes valid: {len(data['stories'])} stories")
     return 0
 
 
