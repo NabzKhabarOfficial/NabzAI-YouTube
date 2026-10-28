@@ -45,7 +45,15 @@ def claim(path, key, metadata=None):
     with _locked(path):
         state = load_json(path, {})
         claims = _claims(state)
-        if key in claims: return False
+        existing = claims.get(key)
+        if key in claims:
+            # A deterministic provider rejection is safe to retry. Unknown or successful
+            # outcomes remain immutable until a human/provider reconciliation confirms them.
+            if isinstance(existing, dict) and existing.get("status") == "failed":
+                claims[key] = {"status": "pending", "metadata": metadata or existing.get("metadata") or {}}
+                save_json(path, state)
+                return True
+            return False
         claims[key] = {"status": "pending", "metadata": metadata or {}}
         save_json(path, state)
         return True
