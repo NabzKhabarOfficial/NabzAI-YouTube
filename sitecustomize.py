@@ -14,6 +14,18 @@ _repair_story_notes()
 _merge_story_notes()
 
 
+def _install_buffer_safety() -> None:
+    try:
+        from src import ig_buffer
+        from src.ig_runtime_safety import install
+        install(ig_buffer)
+    except Exception as exc:
+        print(f"IG BUFFER SAFETY: install skipped ({type(exc).__name__})", flush=True)
+
+
+_install_buffer_safety()
+
+
 def _merge_staged_batches() -> list[tuple[Path, bytes]]:
     root = Path(__file__).resolve().parent
     originals: list[tuple[Path, bytes]] = []
