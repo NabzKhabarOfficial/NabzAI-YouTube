@@ -1,0 +1,857 @@
+[
+  {
+    "id": "clovis-first-debate",
+    "title": "Before Clovis: The First Americans Question",
+    "tags": [
+      "history",
+      "archaeology",
+      "migration"
+    ],
+    "beats": [
+      {
+        "text": "Archaeology has challenged the idea that Clovis people were first in America.",
+        "visual": "محوطه باستانی کلوویس در دشت‌های آمریکای شمالی، باستان‌شناس کنار سرپیکان شیاردار، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Clovis sites contain distinctive fluted points dated roughly thirteen thousand years ago.",
+        "visual": "نمای نزدیک از سرپیکان‌های سنگی شیاردار در لایه‌ای حدود سیزده هزار ساله، نور موزه‌ای سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Older claims at Monte Verde, Paisley Caves, and other sites changed the debate.",
+        "visual": "کاوش مونته‌ورده و غارهای پایسلی با آثار سنگی در لایه‌های باستانی، فضای مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Dating, layer disturbance, and artifact identification remain critical disputes.",
+        "visual": "برش خاکی محوطه با لایه‌های جابه‌جا و پژوهشگری که قطعه‌سنگ را بررسی می‌کند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Genetic evidence supports complex peopling routes and multiple movements.",
+        "visual": "تصویر مفهومی از چند مسیر مهاجرت انسانی به قاره آمریکا و داده ژنتیکی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Exactly when and how the earliest populations arrived remains unresolved.",
+        "visual": "چشم‌انداز آمریکای پیشاتاریخی با ردپاهای محو در چند جهت، زمان و مسیر نامعلوم، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "پیش از کلوویس: پرسش نخستین آمریکاییان",
+      "beats": [
+        "باستان‌شناسی این دیدگاه را به چالش کشیده که مردم کلوویس نخستین ساکنان آمریکا بودند.",
+        "محوطه‌های کلوویس سرپیکان‌های شیاردار مشخصی دارند که حدود سیزده هزار سال قدمت‌گذاری شده‌اند.",
+        "ادعاهای قدیمی‌تر در مونته‌ورده، غارهای پایسلی و محوطه‌های دیگر بحث را تغییر دادند.",
+        "تاریخ‌گذاری، برهم‌خوردن لایه‌ها و شناسایی آثار همچنان محل اختلاف‌های اصلی‌اند.",
+        "شواهد ژنتیکی از مسیرهای پیچیده سکونت و چندین موج جابه‌جایی پشتیبانی می‌کند.",
+        "زمان و چگونگی رسیدن نخستین جمعیت‌ها هنوز حل نشده است."
+      ],
+      "question": "به نظر شما نخستین جمعیت‌ها چه زمانی و از کدام مسیر وارد آمریکا شدند؟",
+      "tags": [
+        "#کلوویس",
+        "#باستان‌شناسی",
+        "#مهاجرت"
+      ]
+    },
+    "notes": {
+      "proven": "چالش باستان‌شناسی به مدل «کلوویس نخستین» و وجود سرپیکان‌های شیاردار مستند است.",
+      "probable": "محوطه‌های قدیمی‌تر و ژنتیک، چند موج و مسیر را محتمل می‌کنند، اما بحث ادامه دارد.",
+      "unknown": "زمان و مسیر دقیق ورود نخستین جمعیت‌ها ناشناخته است."
+    }
+  },
+  {
+    "id": "ice-age-cave-art",
+    "title": "Ice Age Cave Art: Images Without a Written Key",
+    "tags": [
+      "history",
+      "archaeology",
+      "art"
+    ],
+    "beats": [
+      {
+        "text": "Ancient cave walls display animals and signs whose meanings are uncertain.",
+        "visual": "غار پارینه‌سنگی اروپا با نقاشی اسب و گاومیش در نور مشعل، فضای واقعی عصر یخبندان، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "People painted and engraved caves across Europe tens of thousands of years ago.",
+        "visual": "گروهی انسان عصر یخبندان در حال نقاشی دیواره غار اروپا با رنگ‌دانه طبیعی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Pigments, hand stencils, and repeated marks reveal skilled practice.",
+        "visual": "نمای نزدیک از رنگ‌دانه سرخ، شابلون دست و خطوط تکرارشونده روی سنگ، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Some images overlap and may have been revisited over generations.",
+        "visual": "لایه‌های نقاشی حیوانات که روی هم در دیواره غار دیده می‌شوند، گذر نسل‌ها در یک قاب، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Hunting magic, storytelling, ritual, and social memory are proposed meanings.",
+        "visual": "غار در کنار شکارچیان، آتش آیینی و جمعی قصه‌گو، چند تفسیر ممکن در تصویر سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No surviving explanation tells us what each artist intended.",
+        "visual": "دیواره خاموش غار با نقش‌های حیوانی و جای دست‌های ناشناس، معنای گمشده، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "هنر غارهای عصر یخبندان: تصویرهایی بی‌کلید",
+      "beats": [
+        "دیوارهای غارهای باستانی حیوانات و نشانه‌هایی را نشان می‌دهند که معنایشان قطعی نیست.",
+        "مردم در سراسر اروپا ده‌ها هزار سال پیش غارها را نقاشی و حکاکی کردند.",
+        "رنگ‌دانه‌ها، شابلون دست و نشانه‌های تکرارشونده از مهارت آنان خبر می‌دهند.",
+        "برخی تصاویر روی هم افتاده‌اند و شاید نسل‌های گوناگون به آن‌ها بازگشته باشند.",
+        "جادوی شکار، داستان‌گویی، آیین و حافظه اجتماعی از معناهای پیشنهادی‌اند.",
+        "هیچ توضیح باقی‌مانده‌ای نمی‌گوید هر هنرمند دقیقاً چه قصدی داشته است."
+      ],
+      "question": "اگر هنرمندان غارنشین زنده بودند، معنای این نقش‌ها را چگونه توضیح می‌دادند؟",
+      "tags": [
+        "#هنر_غار",
+        "#عصر_یخبندان",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "وجود نقاشی‌ها، حکاکی‌ها، رنگ‌دانه و شابلون‌های دست مستند است.",
+      "probable": "کارکرد آیینی، داستانی یا شکارمحور از تفسیرهای محتمل است، نه نتیجه قطعی.",
+      "unknown": "قصد هر هنرمند و معنای دقیق هر نشانه ناشناخته است."
+    }
+  },
+  {
+    "id": "antikythera-calendar",
+    "title": "The Antikythera Calendar’s Missing Pieces",
+    "tags": [
+      "history",
+      "archaeology",
+      "astronomy"
+    ],
+    "beats": [
+      {
+        "text": "A geared Greek device predicted cycles, but much of its original design is lost.",
+        "visual": "دستگاه برنزی آنتیکیترا در کشتی غرق‌شده یونانی، چرخ‌دنده‌های زنگ‌زده زیر آب مدیترانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Fragments from the Antikythera wreck include inscriptions and intricate gears.",
+        "visual": "قطعات دستگاه آنتیکیترا و کتیبه‌های ریز روی میز آزمایشگاه باستان‌شناسی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Reconstruction links it to lunar months, eclipses, and calendars.",
+        "visual": "بازسازی سه‌بعدی چرخ‌دنده‌های یونانی برای نمایش ماه، گرفت و تقویم، بدون نوشته و نماد خوانا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Only a fraction of its mechanism survived corrosion and recovery damage.",
+        "visual": "تکه‌های خورده‌شده سازوکار در کنار قطعات فلزی شکسته کشتی، نور سرد موزه‌ای، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Ancient workshop practices and companion instruments are unknown.",
+        "visual": "کارگاه یونانی باستان با صنعتگر و ابزارهای فلزی ظریف، همراهی سازوکارهای ناشناخته، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The machine’s full display and operating instructions remain conjectural.",
+        "visual": "دستگاه بازسازی‌شده نیمه‌کاره با پنجره‌های نمایشگر محو و سایه ابهام، سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "قطعات گمشده تقویم آنتیکیترا",
+      "beats": [
+        "دستگاهی یونانی با چرخ‌دنده چرخه‌ها را پیش‌بینی می‌کرد، اما بخش بزرگی از طراحی اصلی از دست رفته است.",
+        "قطعات کشتی آنتیکیترا کتیبه‌ها و چرخ‌دنده‌های پیچیده‌ای در خود دارند.",
+        "بازسازی‌ها آن را به ماه‌های قمری، گرفت‌ها و تقویم‌ها پیوند می‌دهند.",
+        "تنها بخشی از سازوکار پس از خوردگی و آسیب بازیابی باقی مانده است.",
+        "روش‌های کارگاه‌های باستانی و ابزارهای همراه ناشناخته‌اند.",
+        "نمایشگر کامل و دستور کار دستگاه همچنان حدسی است."
+      ],
+      "question": "اگر فقط بخشی از این سازوکار مانده، نمایشگر کاملش چه شکلی بوده است؟",
+      "tags": [
+        "#آنتیکیترا",
+        "#تاریخ_علم",
+        "#نجوم_باستان"
+      ]
+    },
+    "notes": {
+      "proven": "قطعات، کتیبه‌ها و چرخ‌دنده‌های کشف‌شده و پیوندهای تقویمی در بازسازی‌ها مستندند.",
+      "probable": "کارکرد قمری و گرفت‌محور محتمل است، اما طراحی کامل بازسازی‌شده قطعی نیست.",
+      "unknown": "نمایشگر کامل و دستورالعمل کار دستگاه ناشناخته است."
+    }
+  },
+  {
+    "id": "roman-concrete-seawalls",
+    "title": "Roman Concrete and Self-Healing Seawalls",
+    "tags": [
+      "science",
+      "history",
+      "materials"
+    ],
+    "beats": [
+      {
+        "text": "Roman harbor concrete has survived waves that destroy many modern mixtures.",
+        "visual": "موج‌شکن بندر رومی در دریای مدیترانه که موج‌ها به بتن باستانی می‌کوبند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Ancient builders combined lime, volcanic ash, seawater, and stone aggregate.",
+        "visual": "کارگران رومی در حال ترکیب آهک، خاکستر آتشفشانی، آب دریا و سنگ‌دانه، بازسازی تاریخی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Mineral crystals formed inside cracks and may have strengthened the material.",
+        "visual": "نمای میکروسکوپی سینمایی از بلورهای معدنی که ترک بتن رومی را پر می‌کنند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Researchers debate how intentional and general this self-healing process was.",
+        "visual": "آزمایشگاه پژوهش بتن با نمونه ترک‌خورده و آب شور، بررسی علمی خودترمیمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Recipes varied by site, purpose, and local volcanic resources.",
+        "visual": "چند بندر رومی با مصالح و سنگ‌های آتشفشانی متفاوت در امتداد مدیترانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The exact production sequence behind the longest-lived structures remains uncertain.",
+        "visual": "مقطع دیوار بندر باستانی در برابر موج، لایه‌های ساخت و راز ترتیب تولید، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "بتن رومی و موج‌شکن‌های خودترمیم‌شونده",
+      "beats": [
+        "بتن بندرهای رومی موج‌هایی را تحمل کرده که بسیاری از مخلوط‌های مدرن را تخریب می‌کنند.",
+        "سازندگان باستانی آهک، خاکستر آتشفشانی، آب دریا و سنگ‌دانه را ترکیب می‌کردند.",
+        "بلورهای معدنی درون ترک‌ها شکل گرفته‌اند و شاید ماده را مقاوم‌تر کرده باشند.",
+        "پژوهشگران درباره عمدی‌بودن و عمومیت این فرایند خودترمیمی بحث دارند.",
+        "دستورها با توجه به محل، کاربرد و منابع آتشفشانی محلی تغییر می‌کردند.",
+        "ترتیب دقیق تولید سازه‌های بادوام هنوز قطعی نیست."
+      ],
+      "question": "آیا سازوکار خودترمیمی بتن رومی می‌تواند به ساخت‌وساز امروز کمک کند؟",
+      "tags": [
+        "#بتن_رومی",
+        "#مهندسی",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "دوام بتن رومی در محیط دریایی و ترکیب مواد آن با شواهد فنی پشتیبانی می‌شود.",
+      "probable": "نقش بلورهای معدنی در ترمیم ترک محتمل است، اما عمدی‌بودن و تعمیم آن قطعی نیست.",
+      "unknown": "ترتیب دقیق تولید بادوام‌ترین سازه‌ها ناشناخته است."
+    }
+  },
+  {
+    "id": "great-oxidation-event",
+    "title": "The Great Oxidation Event",
+    "tags": [
+      "science",
+      "geology",
+      "biology"
+    ],
+    "beats": [
+      {
+        "text": "Earth’s atmosphere gained oxygen, transforming life and minerals forever.",
+        "visual": "زمین باستانی زیر آسمان کم‌اکسیژن که میکروب‌های فتوسنتزکننده اکسیژن آزاد می‌کنند، نمای علمی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Geological evidence places the major rise around 2.4 billion years ago.",
+        "visual": "صخره‌های ۲.۴ میلیارد ساله و برش زمین‌شناختی با نشانه‌های افزایش اکسیژن، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Photosynthetic microbes had produced oxygen before it accumulated globally.",
+        "visual": "میکروب‌های فتوسنتزکننده در دریای باستانی، حباب‌های اکسیژن پیش از انباشت جهانی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Iron formations and sulfur isotopes record changing chemical conditions.",
+        "visual": "سازند آهن نواری و نمونه‌های ایزوتوپ گوگرد در آزمایشگاه زمین‌شناسی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Volcanism, oceans, nutrients, and microbial ecosystems all influenced timing.",
+        "visual": "آتشفشان، اقیانوس و لایه‌های میکروبی در چشم‌انداز زمین اولیه، عوامل درهم‌تنیده در یک قاب، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Why oxygen rose in pulses rather than one smooth transition remains debated.",
+        "visual": "جو زمین با چند موج درخشان اکسیژن میان صخره‌های باستانی، تحول ناپیوسته و رازآلود، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "رویداد بزرگ اکسایش",
+      "beats": [
+        "جو زمین اکسیژن گرفت و برای همیشه زندگی و مواد معدنی را دگرگون کرد.",
+        "شواهد زمین‌شناختی افزایش عمده را حدود ۲.۴ میلیارد سال پیش قرار می‌دهند.",
+        "میکروب‌های فتوسنتزکننده پیش از انباشته‌شدن جهانی، اکسیژن تولید می‌کردند.",
+        "سازندهای آهن و ایزوتوپ‌های گوگرد تغییر شرایط شیمیایی را ثبت کرده‌اند.",
+        "آتشفشان‌ها، اقیانوس‌ها، مواد مغذی و بوم‌سازگان‌های میکروبی بر زمان‌بندی اثر گذاشتند.",
+        "این‌که چرا اکسیژن به‌صورت موجی بالا رفت، هنوز محل بحث است."
+      ],
+      "question": "چرا اکسیژن زمین در چند موج بالا رفت و نه در یک گذار ساده؟",
+      "tags": [
+        "#زمین_شناسی",
+        "#اکسیژن",
+        "#تکامل"
+      ]
+    },
+    "notes": {
+      "proven": "افزایش بزرگ اکسیژن در حدود ۲.۴ میلیارد سال پیش و شواهد سنگی و ایزوتوپی آن مستند است.",
+      "probable": "فعالیت میکروبی و عوامل اقیانوسی و آتشفشانی احتمالاً زمان‌بندی را شکل دادند.",
+      "unknown": "دلیل دقیق موجی‌بودن افزایش اکسیژن ناشناخته است."
+    }
+  },
+  {
+    "id": "snowball-earth",
+    "title": "Snowball Earth: A Planet Under Ice",
+    "tags": [
+      "science",
+      "geology",
+      "climate"
+    ],
+    "beats": [
+      {
+        "text": "Ancient rocks suggest ice may once have reached nearly global coverage.",
+        "visual": "زمین تقریباً سراسر پوشیده از یخ در دوران نئوپروتروزوییک، سیاره آبی و سفید از فضا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Neoproterozoic glacial deposits occur at surprisingly low paleolatitudes.",
+        "visual": "رسوبات یخچالی در عرض جغرافیایی گرمِ دیرینه، صخره‌های یخ‌زده در چشم‌انداز زمین‌شناسی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Ice-albedo feedback could have amplified cooling once oceans froze.",
+        "visual": "یخ گسترده اقیانوس و بازتاب شدید نور خورشید، بازخورد یخ‌سپیدایی در تصویر علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Volcanic carbon dioxide may eventually have triggered a greenhouse thaw.",
+        "visual": "آتشفشان‌های زیر آسمان یخی دی‌اکسیدکربن آزاد می‌کنند و شکاف آب می‌شود، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Cap carbonates record unusual conditions after major glaciations.",
+        "visual": "کربنات‌های پوششی و صخره‌های پس از یخ‌بندان در ساحل باستانی، نور سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Whether oceans fully froze or retained refuges remains uncertain.",
+        "visual": "اقیانوس یخ‌زده با لکه‌ای آب باز در نزدیکی آتشفشان زیر یخ، پناهگاه ممکن و ابهام علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "زمین گلوله‌برفی: سیاره‌ای زیر یخ",
+      "beats": [
+        "سنگ‌های باستانی نشان می‌دهند یخ شاید زمانی تقریباً سراسر زمین را پوشانده باشد.",
+        "رسوبات یخچالی نئوپروتروزوییک در عرض‌های جغرافیایی دیرینه شگفت‌انگیز پایینی دیده می‌شوند.",
+        "بازخورد یخ‌سپیدایی پس از یخ‌زدن اقیانوس‌ها می‌توانست سرمایش را تشدید کند.",
+        "دی‌اکسیدکربن آتشفشانی سرانجام شاید ذوب گلخانه‌ای را آغاز کرده باشد.",
+        "کربنات‌های پوششی شرایط نامعمول پس از یخ‌بندان‌های بزرگ را ثبت می‌کنند.",
+        "این‌که اقیانوس‌ها کاملاً یخ زدند یا پناهگاه داشتند، قطعی نیست."
+      ],
+      "question": "آیا در زمین گلوله‌برفی همه اقیانوس‌ها یخ زدند یا پناهگاه‌هایی باقی ماند؟",
+      "tags": [
+        "#زمین_گلوله_برفی",
+        "#اقلیم_باستان",
+        "#زمین‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "رسوبات یخچالی در عرض‌های پایین و کربنات‌های پوششی از یخ‌بندان‌های بزرگ پشتیبانی می‌کنند.",
+      "probable": "بازخورد یخ‌سپیدایی و ذوب گلخانه‌ای با CO2 آتشفشانی توضیح‌های محتمل‌اند.",
+      "unknown": "پوشش کامل یخ و وجود پناهگاه‌های اقیانوسی هنوز نامعلوم است."
+    }
+  },
+  {
+    "id": "faint-young-sun",
+    "title": "The Faint Young Sun Paradox",
+    "tags": [
+      "science",
+      "astronomy",
+      "climate"
+    ],
+    "beats": [
+      {
+        "text": "The young Sun was dimmer, yet ancient Earth held liquid water.",
+        "visual": "زمین جوان با رودخانه و اقیانوس زیر خورشیدی کم‌نور و کوچک، بازسازی علمی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Stellar models indicate early solar luminosity was roughly seventy percent modern.",
+        "visual": "خورشید جوان با درخششی حدود هفتاد درصد امروز بر زمین باستانی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Geological evidence includes ancient rivers, oceans, and possibly warm climates.",
+        "visual": "رودخانه‌ها و اقیانوس‌های زمین باستانی در کنار سنگ‌های کهن، شواهد اقلیم گرم احتمالی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Greenhouse gases could have compensated for reduced sunlight.",
+        "visual": "جو ضخیم سرشار از گاز گلخانه‌ای پیرامون زمین جوان، گرمای محبوس زیر نور کم، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Clouds, ocean chemistry, and atmospheric pressure affect the calculations.",
+        "visual": "ابرها، اقیانوس و جو متراکم در مدل اقلیمی چندلایه زمین اولیه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No single early-Earth climate model resolves every geological constraint.",
+        "visual": "چند مدل متناقض اقلیمی روی زمین جوان با رودخانه‌های واقعی و محدودیت‌های حل‌نشده، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "پارادوکس خورشید جوان کم‌نور",
+      "beats": [
+        "خورشید جوان کم‌نورتر بود، اما زمین باستانی آب مایع داشت.",
+        "مدل‌های ستاره‌ای نشان می‌دهند درخشش اولیه خورشید تقریباً هفتاد درصد امروز بوده است.",
+        "شواهد زمین‌شناختی شامل رودخانه‌ها، اقیانوس‌ها و شاید اقلیم‌های گرم باستانی است.",
+        "گازهای گلخانه‌ای می‌توانستند کاهش نور خورشید را جبران کنند.",
+        "ابرها، شیمی اقیانوس و فشار جو بر محاسبات اثر می‌گذارند.",
+        "هیچ مدل اقلیمی آغازین زمین همه محدودیت‌های زمین‌شناختی را حل نمی‌کند."
+      ],
+      "question": "چگونه زمینِ زیر خورشید جوان و کم‌نور آب مایع داشت؟",
+      "tags": [
+        "#خورشید_جوان",
+        "#اقلیم_زمین",
+        "#اخترشناسی"
+      ]
+    },
+    "notes": {
+      "proven": "کم‌نورتر بودن خورشید جوان و شواهد آب مایع و رودخانه‌های باستانی مستندند.",
+      "probable": "گازهای گلخانه‌ای و عوامل ابر و اقیانوس توضیح‌های محتمل‌اند.",
+      "unknown": "هیچ مدل واحدی همه شواهد زمین‌شناختی را توضیح نمی‌دهد."
+    }
+  },
+  {
+    "id": "oort-cloud",
+    "title": "The Oort Cloud: A Reservoir We Cannot See",
+    "tags": [
+      "science",
+      "astronomy",
+      "solar-system"
+    ],
+    "beats": [
+      {
+        "text": "A vast shell of icy bodies is inferred from long-period comets.",
+        "visual": "منظومه شمسی در میان پوسته‌ای دور از اجرام یخی و دنباله‌دارهای دوره‌بلند، تصویر مفهومی علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Comet orbits suggest a distant reservoir surrounding the Solar System.",
+        "visual": "دنباله‌دار دوردست با مدار کشیده پیرامون خورشید و سیاره‌ها، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Planetary encounters and passing stars can send objects inward.",
+        "visual": "ستاره‌ای گذری و غول‌های گازی که جرم یخی را به درون منظومه می‌فرستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No telescope has directly imaged the cloud’s individual population.",
+        "visual": "فضای تاریک و تلسکوپ زمینی که فقط یک دنباله‌دار دور را می‌بیند، ابر نامرئی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its size, shape, and inner boundary depend on dynamical models.",
+        "visual": "مدل سه‌بعدی پوسته ابر اورت با مرز درونی و اندازه‌های نامعلوم، بدون نوشته، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Even its existence is reconstructed from indirect gravitational evidence.",
+        "visual": "مدارهای گرانشی دنباله‌دارها به‌صورت ردهای نوری پیرامون خورشید، شواهد غیرمستقیم ابر، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "ابر اورت: مخزنی که نمی‌توانیم ببینیم",
+      "beats": [
+        "پوسته‌ای عظیم از اجرام یخی از روی دنباله‌دارهای دوره‌بلند استنباط می‌شود.",
+        "مدار دنباله‌دارها از مخزنی دوردست پیرامون منظومه شمسی خبر می‌دهد.",
+        "برخوردهای سیاره‌ای و ستاره‌های گذری می‌توانند اجرام را به درون بفرستند.",
+        "هیچ تلسکوپی جمعیت منفرد ابر را مستقیماً تصویربرداری نکرده است.",
+        "اندازه، شکل و مرز درونی آن به مدل‌های دینامیکی وابسته‌اند.",
+        "حتی وجود ابر از شواهد گرانشی غیرمستقیم بازسازی می‌شود."
+      ],
+      "question": "اگر ابر اورت دیده نمی‌شود، مدار دنباله‌دارها چگونه وجودش را آشکار می‌کنند؟",
+      "tags": [
+        "#ابر_اورت",
+        "#دنباله‌دار",
+        "#منظومه_شمسی"
+      ]
+    },
+    "notes": {
+      "proven": "وجود دنباله‌دارهای دوره‌بلند و مدارهای آن‌ها ثبت‌شده است.",
+      "probable": "مخزن دوردست و اثر ستاره‌ها و سیارات از مدل‌های دینامیکی محتمل استنباط می‌شود.",
+      "unknown": "هیچ مشاهده مستقیم از خود ابر یا اندازه دقیق آن نداریم."
+    }
+  },
+  {
+    "id": "dark-energy",
+    "title": "Dark Energy: The Universe’s Accelerating Expansion",
+    "tags": [
+      "science",
+      "cosmology",
+      "physics"
+    ],
+    "beats": [
+      {
+        "text": "The universe expands faster over time, but the cause is unknown.",
+        "visual": "کهکشان‌های دور که در شبکه کیهانی از هم دور می‌شوند، انبساط شتاب‌گیرنده در نمای سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Distant supernovae revealed unexpected cosmic acceleration in the 1990s.",
+        "visual": "ابرنواختر در کهکشانی دوردست و تلسکوپ زمینی دهه ۱۹۹۰، نور کیهانی در تاریکی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Cosmological constant, evolving fields, and modified gravity are candidates.",
+        "visual": "سه تصویر مفهومی از ثابت کیهان‌شناختی، میدان پویا و گرانش اصلاح‌شده در فضای کیهانی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Large surveys compare expansion history with structure growth.",
+        "visual": "رصدخانه و نقشه سه‌بعدی کهکشان‌ها برای مقایسه انبساط و رشد ساختار، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Current observations fit a simple constant surprisingly well.",
+        "visual": "جهان شبکه‌ای با انبساط یکنواخت و برازش ساده کیهان‌شناختی، نور آرام و علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Whether dark energy is a substance, geometry, or clue to new physics remains open.",
+        "visual": "کیهان در دوراهی ماده، هندسه و فیزیک نو، کهکشان‌ها در مه تاریک، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "انرژی تاریک: انبساط شتاب‌گیرنده کیهان",
+      "beats": [
+        "کیهان با گذر زمان سریع‌تر منبسط می‌شود، اما علت آن ناشناخته است.",
+        "ابرنواخترهای دوردست در دهه ۱۹۹۰ شتاب کیهانی غیرمنتظره را آشکار کردند.",
+        "ثابت کیهان‌شناختی، میدان‌های پویا و گرانش اصلاح‌شده نامزدهای این توضیح‌اند.",
+        "پیمایش‌های بزرگ تاریخچه انبساط را با رشد ساختار مقایسه می‌کنند.",
+        "مشاهدات کنونی با یک ثابت ساده، شگفت‌آورانه خوب سازگارند.",
+        "این‌که انرژی تاریک ماده، هندسه یا سرنخی از فیزیک نو باشد، باز است."
+      ],
+      "question": "آیا انرژی تاریک ماده است، ویژگی فضاست، یا نشانه فیزیکی تازه؟",
+      "tags": [
+        "#انرژی_تاریک",
+        "#کیهان‌شناسی",
+        "#اخترشناسی"
+      ]
+    },
+    "notes": {
+      "proven": "شتاب انبساط کیهان و کشف ابرنواخترهای دور مستند است.",
+      "probable": "ثابت کیهان‌شناختی فعلاً با داده‌ها سازگاری خوبی دارد، اما نامزدهای دیگری مطرح‌اند.",
+      "unknown": "ماهیت واقعی انرژی تاریک و علت آن ناشناخته است."
+    }
+  },
+  {
+    "id": "fine-structure-constant",
+    "title": "The Fine-Structure Constant Question",
+    "tags": [
+      "science",
+      "physics",
+      "cosmology"
+    ],
+    "beats": [
+      {
+        "text": "A dimensionless number controls the strength of electromagnetic interactions.",
+        "visual": "نمای سینمایی از اتم و برهم‌کنش فوتون با الکترون، نماد فیزیک بنیادی بدون نوشته، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The fine-structure constant affects atoms, spectra, chemistry, and stars.",
+        "visual": "طیف اتمی، مولکول و ستاره در یک قاب که اثر ثابت ساختار ریز را نشان دهد، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Physicists can measure it precisely in laboratories and distant light.",
+        "visual": "آزمایشگاه فیزیک با لیزر و ساعت دقیق برای اندازه‌گیری ثابت، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Some studies have reported tiny spatial or temporal variations.",
+        "visual": "نور یک اختروش دوردست از میان کیهان و طیف‌سنج رصدخانه، جست‌وجوی تغییرات کوچک، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Instrument calibration and astrophysical systematics complicate those claims.",
+        "visual": "پژوهشگر در حال کالیبره‌کردن طیف‌سنج و حذف خطاهای ابزار، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Why the constant has its observed value remains unexplained.",
+        "visual": "عدد بنیادی در میان شبکه‌ای از اتم‌ها و ستارگان با علامت پرسش مفهومی، بدون نمایش نوشته خوانا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "پرسش ثابت ساختار ریز",
+      "beats": [
+        "عددی بی‌بُعد شدت برهم‌کنش‌های الکترومغناطیسی را کنترل می‌کند.",
+        "ثابت ساختار ریز بر اتم‌ها، طیف‌ها، شیمی و ستارگان اثر می‌گذارد.",
+        "فیزیک‌دانان آن را با دقت در آزمایشگاه و نور دوردست اندازه می‌گیرند.",
+        "برخی پژوهش‌ها تغییرهای بسیار کوچک مکانی یا زمانی گزارش کرده‌اند.",
+        "کالیبراسیون ابزار و خطاهای اخترفیزیکی این ادعاها را پیچیده می‌کنند.",
+        "دلیل داشتن این مقدار مشاهده‌شده برای ثابت توضیح داده نشده است."
+      ],
+      "question": "چرا عدد بی‌بُعدِ تعیین‌کننده برهم‌کنش الکترومغناطیسی این مقدار را دارد؟",
+      "tags": [
+        "#فیزیک",
+        "#ثابت_ساختار_ریز",
+        "#کیهان"
+      ]
+    },
+    "notes": {
+      "proven": "ثابت ساختار ریز و اثر آن بر اتم‌ها و طیف‌ها و اندازه‌گیری‌های دقیق مستندند.",
+      "probable": "گزارش تغییرهای کوچک وجود دارد، اما خطاهای ابزار و اخترفیزیکی توضیح‌های رقیب‌اند.",
+      "unknown": "علت مقدار مشاهده‌شده ثابت ناشناخته است."
+    }
+  },
+  {
+    "id": "proton-decay",
+    "title": "Proton Decay: A Particle Mystery Still Waiting",
+    "tags": [
+      "science",
+      "physics",
+      "particle"
+    ],
+    "beats": [
+      {
+        "text": "Some grand unified theories predict that protons eventually decay.",
+        "visual": "آشکارساز عظیم آب در غار زیرزمینی و نور چرنکوف، جست‌وجوی واپاشی پروتون، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Experiments place the proton lifetime far beyond the universe’s age.",
+        "visual": "تصویر مفهومی پروتون در حال واپاشی در نظریه وحدت بزرگ، ذرات ریز در فضای تاریک، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Large water detectors search for characteristic particle patterns underground.",
+        "visual": "آزمایشگاه زیرزمینی با مخزن آب خالص و حسگرهای نوری، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No confirmed decay event has been observed despite long exposures.",
+        "visual": "آشکارساز خاموش با سال‌های ثبت داده و بدون رد رویداد روشن، فضای انتظار علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Non-detection constrains theories but does not prove absolute stability.",
+        "visual": "نمودار مفهومی محدودشدن نظریه‌ها پس از نبود سیگنال، بدون نمایش متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Whether protons decay, and through which channel, remains unknown.",
+        "visual": "پروتون معلق میان دو سرنوشت پایدار و واپاشیده، فضای رازآلود فیزیک ذرات، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "واپاشی پروتون: راز ذره‌ای در انتظار",
+      "beats": [
+        "برخی نظریه‌های وحدت بزرگ پیش‌بینی می‌کنند پروتون‌ها سرانجام واپاشی می‌کنند.",
+        "آزمایش‌ها طول عمر پروتون را بسیار بیشتر از عمر کیهان برآورد کرده‌اند.",
+        "آشکارسازهای بزرگ آب در زیر زمین الگوهای مشخص ذرات را جست‌وجو می‌کنند.",
+        "با وجود زمان آزمایش طولانی، هیچ رویداد واپاشی تأییدشده‌ای دیده نشده است.",
+        "ندیدن رویداد نظریه‌ها را محدود می‌کند، اما پایداری مطلق را ثابت نمی‌کند.",
+        "این‌که پروتون واپاشی می‌کند و کانال آن چیست، ناشناخته است."
+      ],
+      "question": "آیا پروتون‌ها واقعاً واپاشی می‌کنند و اگر بله، از کدام کانال؟",
+      "tags": [
+        "#فیزیک_ذرات",
+        "#پروتون",
+        "#آزمایش_علمی"
+      ]
+    },
+    "notes": {
+      "proven": "پیش‌بینی واپاشی در برخی نظریه‌های وحدت بزرگ و جست‌وجوی زیرزمینی مستند است.",
+      "probable": "نبود رویداد، طول عمر بسیار زیاد را محدود می‌کند اما پایداری مطلق را اثبات نمی‌کند.",
+      "unknown": "واپاشی پروتون و کانال آن ناشناخته است."
+    }
+  },
+  {
+    "id": "neutrino-ordering",
+    "title": "Neutrino Mass Ordering",
+    "tags": [
+      "science",
+      "physics",
+      "neutrinos"
+    ],
+    "beats": [
+      {
+        "text": "Neutrinos change flavor, proving that their masses are not identical.",
+        "visual": "نوترینوهایی که میان سه طعم تغییر می‌کنند در مسیر زمین، نمایش علمی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Oscillation experiments measure mass differences but not the full ordering.",
+        "visual": "آزمایشگاه نوسان نوترینو با پرتو نامرئی از شتاب‌دهنده و آشکارساز دوردست، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The normal and inverted hierarchies predict subtly different behavior.",
+        "visual": "دو مسیر مفهومی برای سلسله‌مراتب عادی و وارونه جرم نوترینو، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Reactors, accelerators, and atmospheric detectors collect complementary data.",
+        "visual": "راکتور هسته‌ای، شتاب‌دهنده و آشکارساز جوی در سه محیط علمی مرتبط، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Matter effects inside Earth may reveal which mass is heaviest.",
+        "visual": "نوترینو در حال عبور از لایه‌های زمین و تغییر بر اثر ماده، برش سیاره‌ای، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The ordering remains a major open question in particle physics.",
+        "visual": "آشکارساز زیرزمینی در تاریکی و سه جرم نوترینو در ترتیب نامعلوم، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "ترتیب جرم نوترینوها",
+      "beats": [
+        "نوترینوها با تغییر طعم نشان می‌دهند جرم‌های یکسانی ندارند.",
+        "آزمایش‌های نوسان اختلاف جرم‌ها را اندازه می‌گیرند، نه ترتیب کامل آن‌ها را.",
+        "سلسله‌مراتب عادی و وارونه رفتارهایی اندکی متفاوت پیش‌بینی می‌کنند.",
+        "راکتورها، شتاب‌دهنده‌ها و آشکارسازهای جوی داده‌های مکمل جمع می‌کنند.",
+        "اثر ماده درون زمین شاید نشان دهد کدام جرم سنگین‌تر است.",
+        "ترتیب جرم یکی از پرسش‌های بزرگ باز در فیزیک ذرات است."
+      ],
+      "question": "کدام نوترینو سنگین‌تر است: ترتیب عادی یا وارونه؟",
+      "tags": [
+        "#نوترینو",
+        "#فیزیک_ذرات",
+        "#آزمایش_علمی"
+      ]
+    },
+    "notes": {
+      "proven": "تغییر طعم نوترینو و اندازه‌گیری اختلاف جرم‌ها مستند است.",
+      "probable": "اثر ماده زمین و داده‌های مکمل برای تعیین ترتیب محتمل‌اند.",
+      "unknown": "ترتیب عادی یا وارونه جرم هنوز قطعی نشده است."
+    }
+  },
+  {
+    "id": "quantum-measurement",
+    "title": "The Quantum Measurement Problem",
+    "tags": [
+      "science",
+      "physics",
+      "quantum"
+    ],
+    "beats": [
+      {
+        "text": "Quantum equations allow superpositions, while measurements yield definite outcomes.",
+        "visual": "آزمایش تداخل فوتون‌ها در آزمایشگاه کوانتومی پیش از آشکارسازی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Experiments confirm interference until a system becomes entangled with its environment.",
+        "visual": "سامانه کوانتومی در برهم‌نهی و سپس درهم‌تنیدگی با محیط، ذرات نورانی در تصویر علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Collapse, many worlds, hidden variables, and decoherence offer different readings.",
+        "visual": "چهار تصویر مفهومی از فروپاشی، جهان‌های متعدد، متغیر پنهان و واهمدوسی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No interpretation changes the laboratory predictions in ordinary cases.",
+        "visual": "آزمایشگاه کوانتومی با نتایج یکسان از تفسیرهای رقیب، تأکید بر پیش‌بینی مشترک، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Researchers disagree about whether the wavefunction is physical or informational.",
+        "visual": "تابع موج مانند ابر اطلاعاتی یا موج فیزیکی پیرامون آشکارساز، دو برداشت در یک قاب، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "How possibilities become one observed result remains conceptually unsettled.",
+        "visual": "یک نقطه روشن از میان چند مسیر احتمالی بیرون می‌آید، تصویر مفهومی مسئله اندازه‌گیری، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "مسئله اندازه‌گیری کوانتومی",
+      "beats": [
+        "معادلات کوانتومی برهم‌نهی را مجاز می‌دانند، اما اندازه‌گیری نتیجه‌ای معین می‌دهد.",
+        "آزمایش‌ها تداخل را تا زمانی تأیید می‌کنند که سامانه با محیط درهم‌تنیده شود.",
+        "فروپاشی، جهان‌های متعدد، متغیرهای پنهان و واهمدوسی خوانش‌های متفاوتی ارائه می‌کنند.",
+        "در حالت‌های عادی هیچ تفسیری پیش‌بینی‌های آزمایشگاهی را تغییر نمی‌دهد.",
+        "پژوهشگران درباره فیزیکی یا اطلاعاتی‌بودن تابع موج اختلاف دارند.",
+        "چگونگی تبدیل امکان‌ها به یک نتیجه مفهومی حل‌نشده است."
+      ],
+      "question": "چگونه امکان‌های کوانتومی به یک نتیجه مشاهده‌شده تبدیل می‌شوند؟",
+      "tags": [
+        "#فیزیک_کوانتومی",
+        "#اندازه‌گیری",
+        "#علم"
+      ]
+    },
+    "notes": {
+      "proven": "برهم‌نهی، تداخل و درهم‌تنیدگی با محیط در آزمایش‌ها مشاهده می‌شوند.",
+      "probable": "تفسیرهای مختلف در حالت‌های معمول پیش‌بینی‌های یکسان دارند.",
+      "unknown": "رابطه دقیق تابع موج، اندازه‌گیری و نتیجه یکتا حل‌نشده است."
+    }
+  },
+  {
+    "id": "arrow-of-time",
+    "title": "The Arrow of Time",
+    "tags": [
+      "science",
+      "physics",
+      "thermodynamics"
+    ],
+    "beats": [
+      {
+        "text": "Everyday events run one way, although microscopic laws are mostly reversible.",
+        "visual": "تخم‌مرغ شکسته کنار تخم‌مرغ سالم در آشپزخانه با نور رو به جلو، استعاره سینمایی پیکان زمان، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Broken eggs do not spontaneously reassemble, while equations permit reversal.",
+        "visual": "حرکت معکوس ذرات در معادلات در برابر تخم‌مرغ شکسته واقعی، تصویر علمی مفهومی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Thermodynamics links this direction to increasing entropy.",
+        "visual": "اتاق ترمودینامیک با گاز پراکنده و شاخص افزایش بی‌نظمی، بدون نمایش نوشته، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Cosmology must explain why the early universe had unusually low entropy.",
+        "visual": "جهان آغازین بسیار منظم که به کیهان پرساختار تبدیل می‌شود، کهکشان‌ها در زمان، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Quantum measurement and gravity may add further arrows.",
+        "visual": "اندازه‌گیری کوانتومی و میدان گرانشی با پیکان‌های زمانی چندگانه در فضای کیهانی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Why time began in such an ordered state remains mysterious.",
+        "visual": "جهان جوان مانند نقطه‌ای مرتب در تاریکی، راز آغاز زمان در مه کیهانی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "پیکان زمان",
+      "beats": [
+        "رویدادهای روزمره یک‌طرفه‌اند، هرچند قوانین ریزمقیاس عمدتاً برگشت‌پذیرند.",
+        "تخم‌مرغ شکسته خودبه‌خود دوباره کامل نمی‌شود، در حالی که معادلات وارونگی را مجاز می‌دانند.",
+        "ترمودینامیک این جهت را به افزایش آنتروپی پیوند می‌دهد.",
+        "کیهان‌شناسی باید توضیح دهد چرا جهان آغازین آنتروپی بسیار کمی داشت.",
+        "اندازه‌گیری کوانتومی و گرانش شاید پیکان‌های دیگری اضافه کنند.",
+        "این‌که زمان چرا از حالتی چنین منظم آغاز شد، همچنان رازآلود است."
+      ],
+      "question": "چرا زمان از گذشته به آینده می‌رود، در حالی که قوانین ریزمقیاس برگشت‌پذیرند؟",
+      "tags": [
+        "#پیکان_زمان",
+        "#ترمودینامیک",
+        "#کیهان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "برگشت‌ناپذیری روزمره و ارتباط جهت زمان با آنتروپی در ترمودینامیک مستندند.",
+      "probable": "آنتروپی کم جهان آغازین و نقش احتمالی کوانتوم و گرانش پرسش‌های جدی‌اند.",
+      "unknown": "علت نظم آغازین و منشأ نهایی پیکان زمان ناشناخته است."
+    }
+  },
+  {
+    "id": "three-body-problem",
+    "title": "The Three-Body Problem",
+    "tags": [
+      "science",
+      "mathematics",
+      "astronomy"
+    ],
+    "beats": [
+      {
+        "text": "Three gravitating bodies can follow paths too complex for one simple formula.",
+        "visual": "سه جرم در حال گردش گرانشی پیچیده پیرامون یکدیگر در فضای ستاره‌ای، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Newton’s laws determine the forces, but tiny differences grow over time.",
+        "visual": "سه جرم و مسیرهای نیوتنی که با اختلافی کوچک از هم جدا می‌شوند، تصویر علمی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Chaos makes long-term prediction sensitive to initial measurements.",
+        "visual": "شبیه‌سازی آشوبناک مسیر سه جرم با ردهای نورانی و حساسیت به شرایط اولیه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Special stable configurations and numerical simulations reveal partial structure.",
+        "visual": "آرایش مثلثی پایدار سه جرم و رایانه‌ای که مدارهای عددی را محاسبه می‌کند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No universal closed-form solution covers all starting arrangements.",
+        "visual": "بسیاری از آرایش‌های آغازین سه جرم با مسیرهای پیچیده، بدون نمایش معادله خوانا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The mystery is not ignorance of the law but the limits of prediction.",
+        "visual": "قوانین فیزیک روشن و پیش‌بینی آینده تار و چندشاخه، تصویر مفهومی مسئله سه‌جسم، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "مسئله سه‌جسم",
+      "beats": [
+        "سه جرم گرانشی می‌توانند مسیرهایی چنان پیچیده داشته باشند که یک فرمول ساده پاسخ‌گو نباشد.",
+        "قوانین نیوتن نیروها را تعیین می‌کنند، اما تفاوت‌های کوچک با زمان رشد می‌کنند.",
+        "آشوب پیش‌بینی بلندمدت را به اندازه‌گیری‌های آغازین حساس می‌کند.",
+        "آرایش‌های پایدار ویژه و شبیه‌سازی‌های عددی بخشی از ساختار را آشکار می‌کنند.",
+        "هیچ حل بسته جهان‌شمولی همه آرایش‌های آغازین را پوشش نمی‌دهد.",
+        "راز مسئله ناآگاهی از قانون نیست، بلکه محدودیت پیش‌بینی است."
+      ],
+      "question": "چرا سه جرم گرانشی می‌توانند پیش‌بینی بلندمدت را این‌قدر دشوار کنند؟",
+      "tags": [
+        "#مسئله_سه_جسم",
+        "#فیزیک",
+        "#ریاضیات"
+      ]
+    },
+    "notes": {
+      "proven": "قوانین نیوتن و حساسیت سامانه‌های سه‌جسمی به شرایط اولیه مستندند.",
+      "probable": "آرایش‌های ویژه و شبیه‌سازی عددی ساختارهای قابل پیش‌بینی را نشان می‌دهند.",
+      "unknown": "حل بسته برای همه آرایش‌ها و پیش‌بینی بلندمدت دقیق وجود ندارد."
+    }
+  }
+]
