@@ -32,6 +32,16 @@ class IdempotencyTests(unittest.TestCase):
             self.assertEqual([result.get(timeout=2) for _ in workers].count(True), 1)
             self.assertEqual([result.get_nowait() for _ in []], [])
 
+    def test_explicit_failure_can_be_retried_but_success_cannot(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "claims.json"
+            key = fingerprint("youtube", "retryable")
+            self.assertTrue(claim(path, key))
+            finish(path, key, "", status="failed")
+            self.assertTrue(claim(path, key))
+            finish(path, key, "video-1", status="succeeded")
+            self.assertFalse(claim(path, key))
+
 
 if __name__ == "__main__":
     unittest.main()
