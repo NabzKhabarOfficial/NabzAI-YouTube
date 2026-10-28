@@ -43,6 +43,10 @@ def validate_row(row: dict, source: Path) -> None:
 
 def main() -> int:
     files = sorted(ROOT.glob(BATCH_GLOB))
+    if len(files) != 10:
+        raise ValueError(
+            f"expected exactly 10 story batch files, found {len(files)}"
+        )
     all_ids: set[str] = set()
     for path in files:
         rows = json.loads(path.read_text(encoding="utf-8"))
@@ -54,6 +58,10 @@ def main() -> int:
                 raise ValueError(f"{path}: duplicate or missing id {sid!r}")
             all_ids.add(sid)
             validate_row(row, path)
+    if len(all_ids) != 150:
+        raise ValueError(
+            f"expected exactly 150 stories, found {len(all_ids)}"
+        )
     print(f"Instagram batches valid: {len(files)} files, {len(all_ids)} stories")
     return 0
 
