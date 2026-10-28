@@ -1,11 +1,4 @@
-"""Merge the Instagram-only English story additions for one CI run.
-
-The YouTube Short pipeline must keep using content/mysteries.json unchanged. The
-Instagram pack, however, needs to see the reviewed additions in
-content/mysteries_add.json so its English/Persian ID intersection is complete.
-This helper runs only inside the Instagram workflow workspace and is followed
-by a checkout restore before pack state is committed.
-"""
+"""Merge Instagram-only English story additions for one CI run."""
 from __future__ import annotations
 
 import json
@@ -38,7 +31,7 @@ def validate(story: dict, source: Path) -> None:
 
 def main() -> None:
     bank_data, bank = read_stories(BANK)
-    _, additions = read_stories(ADD)
+    sources = [ADD] + sorted(ROOT.glob("content/mysteries_add_batch*.json"))
     by_id: dict[str, dict] = {}
     for story in bank:
         validate(story, BANK)
@@ -47,16 +40,20 @@ def main() -> None:
             raise ValueError(f"duplicate story id in {BANK}: {sid}")
         by_id[sid] = story
     added = 0
-    for story in additions:
-        validate(story, ADD)
-        sid = story["id"]
-        if sid not in by_id:
-            bank.append(story)
-            by_id[sid] = story
-            added += 1
+    for source in sources:
+        if not source.exists():
+            continue
+        _, additions = read_stories(source)
+        for story in additions:
+            validate(story, source)
+            sid = story["id"]
+            if sid not in by_id:
+                bank.append(story)
+                by_id[sid] = story
+                added += 1
     bank_data["stories"] = bank
     BANK.write_text(json.dumps(bank_data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(f"Instagram English bank: {len(by_id)} stories ({added} additions visible to planner)")
+    print(f"Instagram English bank: {len(by_id)} stories ({added} staged additions visible to planner)")
 
 
 if __name__ == "__main__":
