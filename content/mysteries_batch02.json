@@ -1,0 +1,857 @@
+[
+  {
+    "id": "monster-of-florence",
+    "title": "The Monster of Florence",
+    "tags": [
+      "crime",
+      "history",
+      "unresolved"
+    ],
+    "beats": [
+      {
+        "text": "A killer targeted couples in secluded cars around Tuscany for nearly two decades.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A killer targeted couples in secluded cars around Tuscany for nearly two decades.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "From 1968 to 1985, several double murders were attributed to the Monster.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: From 1968 to 1985, several double murders were attributed to the Monster.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Investigators found a recurring pistol and unusual mutilation, but no stable suspect.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Investigators found a recurring pistol and unusual mutilation, but no stable suspect.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Convictions of alleged accomplices were overturned or disputed later.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Convictions of alleged accomplices were overturned or disputed later.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Journalists and prosecutors turned the investigation into another mystery.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Journalists and prosecutors turned the investigation into another mystery.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The crimes are real; the full chain of responsibility remains contested.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The crimes are real; the full chain of responsibility remains contested.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "هیولای فلورانس",
+      "beats": [
+        "قاتلی نزدیک دو دهه زوج‌ها را در خودروهای دورافتاده توسکانی هدف گرفت.",
+        "از ۱۹۶۸ تا ۱۹۸۵ چند قتل دوگانه به هیولا نسبت داده شد.",
+        "اسلحه‌ای تکرارشونده و الگوی غیرعادی یافت شد، اما مظنون پایدار نه.",
+        "محکومیت همدستان ادعایی بعداً لغو یا محل اختلاف شد.",
+        "روزنامه‌نگاران و دادستان‌ها خود تحقیق را به معما تبدیل کردند.",
+        "جنایت‌ها واقعی‌اند؛ زنجیره کامل مسئولیت همچنان مورد اختلاف است."
+      ],
+      "question": "به نظر شما پشت قتل‌های هیولای فلورانس یک نفر بود یا شبکه‌ای از افراد؟",
+      "tags": [
+        "#هیولای_فلورانس",
+        "#جنایت_حل_نشده",
+        "#تاریخ_جنایی"
+      ]
+    },
+    "notes": {
+      "proven": "Tuscan double murders occurred from 1968–85",
+      "probable": "some incidents shared a firearm",
+      "unknown": "ultimate perpetrator structure"
+    }
+  },
+  {
+    "id": "julia-wallace-murder",
+    "title": "The Julia Wallace Murder",
+    "tags": [
+      "crime",
+      "history",
+      "unresolved"
+    ],
+    "beats": [
+      {
+        "text": "A husband followed a strange message to a house where his wife lay murdered.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A husband followed a strange message to a house where his wife lay murdered.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "In 1931 Liverpool, William Wallace received a summons to nonexistent Menlove Gardens East.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: In 1931 Liverpool, William Wallace received a summons to nonexistent Menlove Gardens East.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "He found no address, returned home, and discovered Julia Wallace dead.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: He found no address, returned home, and discovered Julia Wallace dead.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Wallace’s movements seemed suspicious, but his conviction was overturned.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Wallace’s movements seemed suspicious, but his conviction was overturned.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No alternative killer was proven, and the caller remained elusive.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No alternative killer was proven, and the caller remained elusive.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The case remains a puzzle of timing, alibis, and misleading directions.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The case remains a puzzle of timing, alibis, and misleading directions.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "قتل جولیا والاس",
+      "beats": [
+        "مردی پیامی عجیب را دنبال کرد و به خانه‌ای رسید که همسرش کشته شده بود.",
+        "در لیورپول ۱۹۳۱، ویلیام والاس به منلاو گاردنز شرقی احضار شد.",
+        "نشانی وجود نداشت؛ او برگشت و جولیا را مرده یافت.",
+        "رفتار والاس مشکوک بود، اما محکومیتش لغو شد.",
+        "قاتل جایگزین ثابت نشد و تماس‌گیرنده گریخت.",
+        "پرونده معمایی کلاسیک درباره زمان‌بندی، علیبی و نشانی گمراه‌کننده است."
+      ],
+      "question": "آیا در پرونده جولیا والاس، پیام تلفنی بخشی از نقشه قتل بود؟",
+      "tags": [
+        "#قتل_جولیا_والاس",
+        "#لیورپول",
+        "#پرونده_حل_نشده"
+      ]
+    },
+    "notes": {
+      "proven": "Julia Wallace was murdered in 1931 and conviction quashed",
+      "probable": "telephone summons was central",
+      "unknown": "killer and caller"
+    }
+  },
+  {
+    "id": "greenbrier-ghost",
+    "title": "The Greenbrier Ghost Case",
+    "tags": [
+      "history",
+      "crime",
+      "folklore"
+    ],
+    "beats": [
+      {
+        "text": "A dead woman’s mother claimed a ghost identified the man who killed her.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A dead woman’s mother claimed a ghost identified the man who killed her.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "In 1897, Zona Shue died in West Virginia after disputed illness.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: In 1897, Zona Shue died in West Virginia after disputed illness.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Her mother reported dreams describing the alleged attack in court.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Her mother reported dreams describing the alleged attack in court.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "An autopsy found a broken neck, contradicting the husband’s account.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: An autopsy found a broken neck, contradicting the husband’s account.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Edward Shue was convicted in an unusual American legal episode.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Edward Shue was convicted in an unusual American legal episode.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The ghost is unverified, but physical evidence and court records endure.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The ghost is unverified, but physical evidence and court records endure.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "پرونده روح گرین‌برایر",
+      "beats": [
+        "مادر زنی مرده ادعا کرد روح دخترش قاتل را معرفی کرده است.",
+        "در ۱۸۹۷ زونا شو پس از بیماری مورد اختلاف در ویرجینیا مرد.",
+        "مادرش خواب‌هایی درباره حمله ادعایی را در دادگاه شرح داد.",
+        "کالبدشکافی شکستگی گردن را یافت و روایت شوهر را نقض کرد.",
+        "ادوارد شو در رویدادی کم‌نظیر در حقوق آمریکا محکوم شد.",
+        "روح تأییدناپذیر است، اما شواهد و پرونده دادگاه باقی‌اند."
+      ],
+      "question": "آیا روایت «روح گرین‌برایر» را باید شاهدی حقوقی دانست یا افسانه‌ای محلی؟",
+      "tags": [
+        "#روح_گرینبرایر",
+        "#تاریخ_جنایی",
+        "#پرونده_دادگاهی"
+      ]
+    },
+    "notes": {
+      "proven": "Zona Shue died and Edward Shue was convicted in 1897",
+      "probable": "homicide supported by autopsy",
+      "unknown": "supernatural claim"
+    }
+  },
+  {
+    "id": "spring-heeled-jack",
+    "title": "Spring-Heeled Jack: London’s Leaping Attacker",
+    "tags": [
+      "history",
+      "folklore",
+      "urban-mystery"
+    ],
+    "beats": [
+      {
+        "text": "Victorian witnesses described a figure with claws, sparks, and impossible-looking leaps.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Victorian witnesses described a figure with claws, sparks, and impossible-looking leaps.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Reports began in London in 1837, including attacks on women and constables.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Reports began in London in 1837, including attacks on women and constables.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Accounts varied wildly, blending assault with theatrical costume and rumor.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Accounts varied wildly, blending assault with theatrical costume and rumor.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Newspapers amplified the name Spring-Heeled Jack across Britain.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Newspapers amplified the name Spring-Heeled Jack across Britain.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No single attacker was proven; some incidents were copycats or inventions.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No single attacker was proven; some incidents were copycats or inventions.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery shows how urban folklore can turn reports into one monster.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery shows how urban folklore can turn reports into one monster.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "جک پاشنه‌فنری؛ مهاجم جهنده لندن",
+      "beats": [
+        "شاهدان ویکتوریایی از چهره‌ای با چنگال، جرقه و پرش‌های ناممکن گفتند.",
+        "گزارش‌ها در ۱۸۳۷ لندن آغاز شد و حمله به زنان و پاسبانان داشت.",
+        "روایت‌ها متفاوت بودند و حمله، لباس نمایشی و شایعه را آمیختند.",
+        "روزنامه‌ها نام جک پاشنه‌فنری را در بریتانیا پخش کردند.",
+        "هیچ مهاجم واحدی ثابت نشد و برخی ماجراها تقلید یا ساختگی بودند.",
+        "راز نشان می‌دهد فولکلور شهری چگونه گزارش‌ها را به هیولا تبدیل می‌کند."
+      ],
+      "question": "به نظر شما جک پاشنه‌فنری یک مهاجم واقعی بود یا محصول شایعات شهری؟",
+      "tags": [
+        "#جک_پاشنه_فنری",
+        "#فولکلور_لندن",
+        "#افسانه_شهری"
+      ]
+    },
+    "notes": {
+      "proven": "numerous reports appeared from 1837 onward",
+      "probable": "multiple causes and copycats",
+      "unknown": "whether one real attacker existed"
+    }
+  },
+  {
+    "id": "beast-of-gevaudan",
+    "title": "The Beast of Gévaudan",
+    "tags": [
+      "history",
+      "folklore",
+      "animal-mystery"
+    ],
+    "beats": [
+      {
+        "text": "A large predator terrorized rural France, provoking hunts and royal attention.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A large predator terrorized rural France, provoking hunts and royal attention.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "From 1764 to 1767, attacks in Gévaudan killed and injured residents.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: From 1764 to 1767, attacks in Gévaudan killed and injured residents.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Witnesses disagreed whether the animal was wolf, hybrid, or exotic.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Witnesses disagreed whether the animal was wolf, hybrid, or exotic.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Royal hunts killed large wolves, but reports did not end cleanly.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Royal hunts killed large wolves, but reports did not end cleanly.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Later legends enlarged the beast beyond surviving records.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Later legends enlarged the beast beyond surviving records.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Victims are documented; the exact animal or animals remain debated.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Victims are documented; the exact animal or animals remain debated.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "هیولای ژِوُدان",
+      "beats": [
+        "درنده‌ای بزرگ روستاهای فرانسه را ترساند و شکار سلطنتی به‌راه انداخت.",
+        "از ۱۷۶۴ تا ۱۷۶۷ حملات ژوودان مردم را کشت یا زخمی کرد.",
+        "شاهدان درباره گرگ، دورگه یا حیوانی عجیب اختلاف داشتند.",
+        "شکارهای سلطنتی گرگ‌های بزرگی کشت، اما گزارش‌ها روشن پایان نیافتند.",
+        "افسانه‌های بعدی جانور را فراتر از اسناد موجود بزرگ کردند.",
+        "قربانیان مستندند؛ نوع حیوان یا حیوانات همچنان محل بحث است."
+      ],
+      "question": "آیا قربانیان ژِوُدان کار یک گرگ بود یا چند شکارچی ناشناخته؟",
+      "tags": [
+        "#هیولای_ژوودان",
+        "#فرانسه_قدیم",
+        "#افسانه_تاریخی"
+      ]
+    },
+    "notes": {
+      "proven": "attacks occurred in Gévaudan from 1764–67",
+      "probable": "wolves or other predators",
+      "unknown": "exact animal count and identity"
+    }
+  },
+  {
+    "id": "jersey-devil",
+    "title": "The Jersey Devil Legend",
+    "tags": [
+      "history",
+      "folklore",
+      "cryptid"
+    ],
+    "beats": [
+      {
+        "text": "A New Jersey legend grew into a creature blamed for tracks and livestock.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A New Jersey legend grew into a creature blamed for tracks and livestock.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The story centers on the Pine Barrens and a supposed child born in 1735.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The story centers on the Pine Barrens and a supposed child born in 1735.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Reports surged in January 1909, describing footprints, cries, and sightings.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Reports surged in January 1909, describing footprints, cries, and sightings.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Newspapers, hoaxes, and exhibitions transformed folklore into national spectacle.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Newspapers, hoaxes, and exhibitions transformed folklore into national spectacle.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No biological evidence supports a monster; animals and pranks explain reports.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No biological evidence supports a monster; animals and pranks explain reports.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery is cultural: how did a regional tale become a cryptid?",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery is cultural: how did a regional tale become a cryptid?; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "افسانه شیطان جرسی",
+      "beats": [
+        "افسانه‌ای در نیوجرسی به موجودی تبدیل شد که ردپا و دام‌های ترسیده را توضیح می‌داد.",
+        "داستان جنگل‌های پاین و کودکی را روایت می‌کند که ظاهراً در ۱۷۳۵ زاده شد.",
+        "گزارش‌ها ژانویه ۱۹۰۹ با ردپا، صدا و مشاهده افزایش یافتند.",
+        "روزنامه‌ها، حقه‌ها و نمایش‌ها افسانه را ملی کردند.",
+        "شواهد زیستی از هیولا نیست؛ حیوانات و شوخی‌ها گزارش‌ها را توضیح می‌دهند.",
+        "راز اصلی فرهنگی است: چگونه قصه‌ای محلی به کریپتید تبدیل شد؟"
+      ],
+      "question": "چگونه یک افسانه محلی جرسی به روایت موجودی ناشناخته تبدیل شد؟",
+      "tags": [
+        "#شیطان_جرسی",
+        "#پاین_بارنز",
+        "#موجود_افسانه‌ای"
+      ]
+    },
+    "notes": {
+      "proven": "regional folklore and a 1909 report wave existed",
+      "probable": "hoaxes and ordinary animals",
+      "unknown": "origins of individual sightings"
+    }
+  },
+  {
+    "id": "mad-gasser-of-mattoon",
+    "title": "The Mad Gasser of Mattoon",
+    "tags": [
+      "history",
+      "medical-mystery",
+      "anomaly"
+    ],
+    "beats": [
+      {
+        "text": "Residents reported sweet gas, weakness, and a shadowy intruder—but no culprit.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Residents reported sweet gas, weakness, and a shadowy intruder—but no culprit.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "In Mattoon, Illinois, during 1944, families described attacks through windows.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: In Mattoon, Illinois, during 1944, families described attacks through windows.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Police found little physical evidence while symptoms varied and fear spread.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Police found little physical evidence while symptoms varied and fear spread.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Newspapers named a Mad Gasser, intensifying a wartime community’s anxiety.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Newspapers named a Mad Gasser, intensifying a wartime community’s anxiety.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Psychogenic illness, household chemicals, and a real prowler were proposed.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Psychogenic illness, household chemicals, and a real prowler were proposed.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No perpetrator or substance was conclusively identified.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No perpetrator or substance was conclusively identified.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "گازپراکن ماتون",
+      "beats": [
+        "ساکنان از گاز خوش‌بو، ضعف و مهاجمی سایه‌وار گفتند، اما عامل پیدا نشد.",
+        "در متون ایلینوی در ۱۹۴۴ خانواده‌ها حمله از پنجره را گزارش کردند.",
+        "پلیس شواهد کمی یافت، علائم متفاوت بود و ترس پخش شد.",
+        "روزنامه‌ها نام گاززن دیوانه را ساختند و اضطراب جنگی را تشدید کردند.",
+        "بیماری روان‌زاد، مواد خانگی و مزاحم واقعی مطرح شدند.",
+        "هیچ مهاجم یا ماده‌ای قطعی شناسایی نشد و راز وحشت ماند."
+      ],
+      "question": "آیا گزارش‌های ماتون از یک مهاجم واقعی می‌آمد یا از هراس جمعی؟",
+      "tags": [
+        "#گازپراکن_ماتون",
+        "#هراس_جمعی",
+        "#تاریخ_آمریکا"
+      ]
+    },
+    "notes": {
+      "proven": "a 1944 report wave occurred in Mattoon",
+      "probable": "panic, environmental exposure, or multiple causes",
+      "unknown": "any deliberate attacker"
+    }
+  },
+  {
+    "id": "devil-footprints",
+    "title": "The Devil’s Footprints",
+    "tags": [
+      "history",
+      "folklore",
+      "anomaly"
+    ],
+    "beats": [
+      {
+        "text": "After a snowy night, footprints crossed rooftops and fields in an impossible-looking line.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: After a snowy night, footprints crossed rooftops and fields in an impossible-looking line.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "In Devon, England, residents reported the marks in February 1855.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: In Devon, England, residents reported the marks in February 1855.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Newspapers and letters described hoof-like prints stretching for miles.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Newspapers and letters described hoof-like prints stretching for miles.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Rain, animals, pranksters, and recording errors offer mundane possibilities.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Rain, animals, pranksters, and recording errors offer mundane possibilities.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No investigation established a single route or reliable pattern.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No investigation established a single route or reliable pattern.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A brief local report became a durable Victorian mystery.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A brief local report became a durable Victorian mystery.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "ردپاهای شیطان",
+      "beats": [
+        "پس از شبی برفی، ردپاها از بام و مزرعه در خطی عجیب گذشتند.",
+        "در دوون انگلستان، مردم فوریه ۱۸۵۵ این نشانه‌ها را گزارش کردند.",
+        "روزنامه‌ها و نامه‌ها ردپاهایی سم‌مانند و کیلومتری توصیف کردند.",
+        "باران، حیوانات، شوخی و خطای ثبت توضیح‌های عادی‌اند.",
+        "هیچ تحقیق مسیر واحد یا الگوی قابل‌اعتمادی ثابت نکرد.",
+        "گزارش محلی کوتاه به راز ویکتوریایی ماندگار تبدیل شد."
+      ],
+      "question": "ردپاهای دوون را بیشتر طبیعی می‌دانید یا حاصل شوخی و خطای ثبت؟",
+      "tags": [
+        "#ردپاهای_شیطان",
+        "#دوون",
+        "#معمای_ویکتوریایی"
+      ]
+    },
+    "notes": {
+      "proven": "unusual-track reports appeared in Devon in 1855",
+      "probable": "natural or human explanations",
+      "unknown": "exact source and route"
+    }
+  },
+  {
+    "id": "rendlesham-forest-incident",
+    "title": "The Rendlesham Forest Incident",
+    "tags": [
+      "history",
+      "ufo",
+      "military"
+    ],
+    "beats": [
+      {
+        "text": "US airmen reported strange lights near nuclear bases, creating Britain’s famous UFO case.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: US airmen reported strange lights near nuclear bases, creating Britain’s famous UFO case.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "In December 1980, personnel saw lights over Rendlesham Forest.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: In December 1980, personnel saw lights over Rendlesham Forest.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Some described a landed object; others recorded ordinary lights and radiation checks.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Some described a landed object; others recorded ordinary lights and radiation checks.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A deputy commander wrote a memo, but reviews found no threat or craft.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A deputy commander wrote a memo, but reviews found no threat or craft.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Skeptics cite lighthouse beams; witnesses maintain unusual events occurred.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Skeptics cite lighthouse beams; witnesses maintain unusual events occurred.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Records prove reports and investigation, not an extraterrestrial explanation.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Records prove reports and investigation, not an extraterrestrial explanation.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "رویداد جنگل رندلشام",
+      "beats": [
+        "هوانوردان آمریکایی نزدیک پایگاه‌های هسته‌ای نورهای عجیبی دیدند و پرونده‌ای مشهور ساختند.",
+        "دسامبر ۱۹۸۰ کارکنان نورهایی بر فراز جنگل رندلشام دیدند.",
+        "برخی جسم فرودآمده گفتند؛ دیگران نورهای عادی و بررسی تابش ثبت کردند.",
+        "فرمانده یادداشتی نوشت، اما بررسی‌ها تهدید یا وسیله‌ای نیافتند.",
+        "شکاکان نور فانوس دریایی را مطرح می‌کنند؛ شاهدان مخالف‌اند.",
+        "اسناد گزارش و تحقیق را ثابت می‌کنند، نه منشأ فرازمینی را."
+      ],
+      "question": "آیا نورهای رندلشام یک خطای دید بود یا چیزی ناشناخته در پایگاه‌ها دیده شد؟",
+      "tags": [
+        "#رندلشام",
+        "#یوفو",
+        "#جنگ_سرد"
+      ]
+    },
+    "notes": {
+      "proven": "military personnel reported lights in 1980 and a memo exists",
+      "probable": "misidentification of lights",
+      "unknown": "exact source of every observation"
+    }
+  },
+  {
+    "id": "shag-harbour-incident",
+    "title": "The Shag Harbour Incident",
+    "tags": [
+      "history",
+      "ufo",
+      "canada"
+    ],
+    "beats": [
+      {
+        "text": "Witnesses saw lights descend toward water, prompting a search with no aircraft recovered.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Witnesses saw lights descend toward water, prompting a search with no aircraft recovered.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "On October 4, 1967, residents reported a low object over the coast.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: On October 4, 1967, residents reported a low object over the coast.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Police and military teams found foam and disturbed water.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Police and military teams found foam and disturbed water.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No conventional plane was missing, and investigators logged it unexplained.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No conventional plane was missing, and investigators logged it unexplained.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Later accounts called it a crashed UFO, though original descriptions were cautious.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Later accounts called it a crashed UFO, though original descriptions were cautious.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery rests on a real search and an absent object.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery rests on a real search and an absent object.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "رویداد شیگ هاربر",
+      "beats": [
+        "شاهدان نورهایی را دیدند که به آب پایین رفتند؛ جست‌وجو هواپیمایی پیدا نکرد.",
+        "۴ اکتبر ۱۹۶۷ مردم جسمی کم‌ارتفاع را نزدیک ساحل گزارش کردند.",
+        "پلیس و ارتش کف و آب آشفته یافتند.",
+        "هواپیمای متعارفی مفقود نبود و پرونده توضیح‌ناپذیر ثبت شد.",
+        "روایت‌های بعدی آن را یوفوی سقوط‌کرده نامیدند، اما توصیف نخست محتاط بود.",
+        "راز بر جست‌وجوی واقعی و جسم غایب استوار است."
+      ],
+      "question": "اگر هواپیمایی پیدا نشد، نور دیده‌شده در شیگ هاربر چه بود؟",
+      "tags": [
+        "#شیگ_هاربر",
+        "#یوفو",
+        "#معمای_دریایی"
+      ]
+    },
+    "notes": {
+      "proven": "witnesses and official search documented an unexplained incident in 1967",
+      "probable": "aircraft or maritime phenomenon",
+      "unknown": "object identity"
+    }
+  },
+  {
+    "id": "cash-landrum-incident",
+    "title": "The Cash–Landrum Encounter",
+    "tags": [
+      "history",
+      "ufo",
+      "medical-mystery"
+    ],
+    "beats": [
+      {
+        "text": "Three Texans reported a fiery diamond-shaped object and later serious health problems.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Three Texans reported a fiery diamond-shaped object and later serious health problems.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "In December 1980, Betty Cash, Vickie Landrum, and Colby drove near Huffman.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: In December 1980, Betty Cash, Vickie Landrum, and Colby drove near Huffman.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "They described a bright object escorted by helicopters above a rural road.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: They described a bright object escorted by helicopters above a rural road.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "All reported symptoms, and Cash required hospitalization, but cause stayed disputed.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: All reported symptoms, and Cash required hospitalization, but cause stayed disputed.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A lawsuit against the US government failed; no aircraft match was confirmed.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A lawsuit against the US government failed; no aircraft match was confirmed.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Testimony documents the encounter, while the object’s identity remains unknown.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Testimony documents the encounter, while the object’s identity remains unknown.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "رویارویی کَش–لندروم",
+      "beats": [
+        "سه تگزاسی از جسمی الماسی و آتشین گفتند و بعداً مشکلات سلامتی داشتند.",
+        "دسامبر ۱۹۸۰ بتی کش، ویکی لندروم و کلبی نزدیک هافمن بودند.",
+        "آن‌ها جسمی روشن را دیدند که هلیکوپترها همراهی می‌کردند.",
+        "هر سه علائم داشتند و کش بستری شد، اما علت محل اختلاف ماند.",
+        "دعوی علیه دولت شکست خورد و هواپیمای تأییدشده‌ای پیدا نشد.",
+        "شهادت‌ها برخورد را ثبت کرده‌اند، اما هویت جسم ناشناخته است."
+      ],
+      "question": "آیا می‌توان بیماری‌های پس از رویارویی کش–لندروم را به یک علت مشخص نسبت داد؟",
+      "tags": [
+        "#کش_لندروم",
+        "#یوفو",
+        "#گزارش_شاهدان"
+      ]
+    },
+    "notes": {
+      "proven": "three witnesses reported an event and later illness",
+      "probable": "aviation or environmental cause remains possible",
+      "unknown": "object identity and medical mechanism"
+    }
+  },
+  {
+    "id": "phoenix-lights",
+    "title": "The Phoenix Lights",
+    "tags": [
+      "history",
+      "ufo",
+      "arizona"
+    ],
+    "beats": [
+      {
+        "text": "Thousands watched lights cross Arizona, but witnesses may have seen multiple events.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Thousands watched lights cross Arizona, but witnesses may have seen multiple events.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "On March 13, 1997, reports came from Nevada through Phoenix and Tucson.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: On March 13, 1997, reports came from Nevada through Phoenix and Tucson.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Some described a V-shaped formation; later viewers saw stationary city lights.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Some described a V-shaped formation; later viewers saw stationary city lights.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Military flares from a training range explained part of the display.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Military flares from a training range explained part of the display.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Officials and witnesses disagree whether an earlier object remained unexplained.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Officials and witnesses disagree whether an earlier object remained unexplained.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "One night combined mass observation, media, and competing explanations.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: One night combined mass observation, media, and competing explanations.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "چراغ‌های فینیکس",
+      "beats": [
+        "هزاران نفر نورهایی را بر فراز آریزونا دیدند، اما شاید چند رویداد بود.",
+        "۱۳ مارس ۱۹۹۷ گزارش‌ها از نوادا تا فینیکس و توسان رسید.",
+        "برخی آرایش Vشکل گفتند؛ دیگران نورهای ثابت شهری دیدند.",
+        "منورهای نظامی بخشی از نمایش را توضیح می‌دهند.",
+        "مقام‌ها و شاهدان درباره جسم زودتر اختلاف دارند.",
+        "یک شب مشاهده جمعی، رسانه و توضیح‌های رقیب را درهم آمیخت."
+      ],
+      "question": "آیا چراغ‌های فینیکس یک رویداد واحد بودند یا چند پدیده جداگانه؟",
+      "tags": [
+        "#چراغ‌های_فینیکس",
+        "#آریزونا",
+        "#یوفو"
+      ]
+    },
+    "notes": {
+      "proven": "widespread reports occurred on 13 March 1997",
+      "probable": "military flares explained later lights",
+      "unknown": "nature of earlier formation"
+    }
+  },
+  {
+    "id": "ghost-rockets",
+    "title": "Sweden’s Ghost Rockets",
+    "tags": [
+      "history",
+      "ufo",
+      "cold-war"
+    ],
+    "beats": [
+      {
+        "text": "After World War II, Scandinavians reported rockets crossing skies without known launches.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: After World War II, Scandinavians reported rockets crossing skies without known launches.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Most Swedish reports arrived in 1946, often describing cigar-shaped objects.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Most Swedish reports arrived in 1946, often describing cigar-shaped objects.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Military observers investigated impact sites but recovered little conclusive evidence.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Military observers investigated impact sites but recovered little conclusive evidence.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Soviet tests, meteors, aircraft, and secret technology were considered.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Soviet tests, meteors, aircraft, and secret technology were considered.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Some observations remained unexplained after intelligence exchanges.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Some observations remained unexplained after intelligence exchanges.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The wave is documented; its objects were not proven extraterrestrial craft.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The wave is documented; its objects were not proven extraterrestrial craft.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "موشک‌های شبح سوئد",
+      "beats": [
+        "پس از جنگ جهانی دوم، اسکاندیناویایی‌ها موشک‌هایی بی‌منشأ را گزارش کردند.",
+        "بیشتر گزارش‌ها در ۱۹۴۶ سوئد و از اجسام سیگاری‌شکل بود.",
+        "ناظران نظامی محل برخوردها را بررسی کردند، اما مدرک قطعی کم بود.",
+        "آزمایش شوروی، شهاب، هواپیما و فناوری محرمانه بررسی شد.",
+        "برخی مشاهدات پس از تبادل اطلاعات همچنان توضیح‌ناپذیر ماندند.",
+        "موج گزارش‌ها مستند است؛ فرازمینی‌بودن اجسام ثابت نشده است."
+      ],
+      "question": "آیا گزارش‌های موشک‌های شبح بیشتر به شهاب‌ها و هواپیماها مربوط بود؟",
+      "tags": [
+        "#موشک‌های_شبح",
+        "#سوئد",
+        "#یوفو_تاریخی"
+      ]
+    },
+    "notes": {
+      "proven": "a large 1946 report wave and military investigations occurred",
+      "probable": "meteors, aircraft, or rockets explain many",
+      "unknown": "residual cases"
+    }
+  },
+  {
+    "id": "vela-incident",
+    "title": "The Vela Incident",
+    "tags": [
+      "history",
+      "nuclear-science",
+      "cold-war"
+    ],
+    "beats": [
+      {
+        "text": "A satellite detected a double flash resembling a nuclear test, but no culprit emerged.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A satellite detected a double flash resembling a nuclear test, but no culprit emerged.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "On September 22, 1979, a US Vela satellite recorded the signal.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: On September 22, 1979, a US Vela satellite recorded the signal.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "An acoustic and radio anomaly accompanied the optical pulse.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: An acoustic and radio anomaly accompanied the optical pulse.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Analysts debated a clandestine test, sensor failure, or natural event.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Analysts debated a clandestine test, sensor failure, or natural event.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Later studies disagreed about reliability and exact location.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Later studies disagreed about reliability and exact location.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "It remains a Cold War mystery because crucial data stayed ambiguous.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: It remains a Cold War mystery because crucial data stayed ambiguous.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "رویداد وِلا",
+      "beats": [
+        "ماهواره‌ای دو نور شبیه آزمایش هسته‌ای دید، اما عامل ثابت نشد.",
+        "۲۲ سپتامبر ۱۹۷۹ ماهواره ولای آمریکا سیگنال را ثبت کرد.",
+        "ناهنجاری صوتی و رادیویی همراه پالس نوری بود.",
+        "آزمایش مخفی، خطای حسگر یا رویداد طبیعی مطرح شد.",
+        "پژوهش‌ها درباره اعتبار و مکان دقیق اختلاف دارند.",
+        "ابهام داده‌های حیاتی آن را به راز جنگ سرد تبدیل کرده است."
+      ],
+      "question": "آیا نور دوگانه وِلا آزمایش هسته‌ای بود یا خطای حسگر؟",
+      "tags": [
+        "#رویداد_ولا",
+        "#جنگ_سرد",
+        "#آزمایش_هسته‌ای"
+      ]
+    },
+    "notes": {
+      "proven": "Vela 5B recorded a disputed double flash in 1979",
+      "probable": "technical or nuclear explanations",
+      "unknown": "exact event and source"
+    }
+  },
+  {
+    "id": "oakville-blobs",
+    "title": "The Oakville Blobs",
+    "tags": [
+      "history",
+      "medical-mystery",
+      "anomaly"
+    ],
+    "beats": [
+      {
+        "text": "Clear gelatinous blobs fell over a Washington town, followed by reports of illness.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Clear gelatinous blobs fell over a Washington town, followed by reports of illness.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "In 1994, Oakville residents found translucent material on roads and cars.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: In 1994, Oakville residents found translucent material on roads and cars.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Samples reportedly contained water and cells, but testing was inconsistent.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Samples reportedly contained water and cells, but testing was inconsistent.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Officials considered jellyfish-like organisms, contamination, or decomposing matter.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Officials considered jellyfish-like organisms, contamination, or decomposing matter.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No controlled study established one source for every sample.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No controlled study established one source for every sample.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The blobs are documented reports, not confirmed evidence of exotic biology.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The blobs are documented reports, not confirmed evidence of exotic biology.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "توده‌های ژلاتینی اوکویل",
+      "beats": [
+        "توده‌های ژلاتینی شفاف بر شهری در واشنگتن بارید و سپس بیماری گزارش شد.",
+        "در ۱۹۹۴ ماده نیمه‌شفاف روی جاده و خودروهای اوک‌ویل پیدا شد.",
+        "گزارش شد نمونه‌ها آب و سلول داشتند، اما آزمایش‌ها ناهماهنگ بود.",
+        "موجودات شبیه عروس دریایی، آلودگی یا تجزیه بررسی شدند.",
+        "هیچ مطالعه کنترل‌شده‌ای منبع واحد همه نمونه‌ها را ثابت نکرد.",
+        "توده‌ها گزارش‌های مستندند، نه مدرک زیست‌شناسی عجیب."
+      ],
+      "question": "توده‌های اوکویل را آلودگی محیطی می‌دانید یا پدیده‌ای زیستی؟",
+      "tags": [
+        "#توده‌های_اوکویل",
+        "#ناهنجاری_زیستی",
+        "#واشنگتن"
+      ]
+    },
+    "notes": {
+      "proven": "residents reported gelatinous material in 1994",
+      "probable": "environmental debris or contamination",
+      "unknown": "source of all samples and illness link"
+    }
+  }
+]
