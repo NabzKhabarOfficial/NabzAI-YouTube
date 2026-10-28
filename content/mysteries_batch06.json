@@ -1,0 +1,857 @@
+[
+  {
+    "id": "coronal-heating",
+    "title": "The Solar Coronal Heating Problem",
+    "tags": [
+      "science",
+      "astrophysics",
+      "solar-physics"
+    ],
+    "beats": [
+      {
+        "text": "The Sun’s outer atmosphere is far hotter than its visible surface.",
+        "visual": "Cinematic documentary reconstruction, the Sun during a total eclipse, blazing coronal loops above the photosphere; beat 1 depicts: The Sun’s outer atmosphere is far hotter than its visible surface. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The photosphere is about 5,800 kelvin, while the corona reaches millions of kelvin.",
+        "visual": "Cinematic documentary reconstruction, the Sun during a total eclipse, blazing coronal loops above the photosphere; beat 2 depicts: The photosphere is about 5,800 kelvin, while the corona reaches millions of kelvin. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Magnetic fields carry energy upward, but the exact conversion into coronal heat is complex.",
+        "visual": "Cinematic documentary reconstruction, the Sun during a total eclipse, blazing coronal loops above the photosphere; beat 3 depicts: Magnetic fields carry energy upward, but the exact conversion into coronal heat is complex. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Alfvén waves, magnetic reconnection, and nanoflares are leading mechanisms.",
+        "visual": "Cinematic documentary reconstruction, the Sun during a total eclipse, blazing coronal loops above the photosphere; beat 4 depicts: Alfvén waves, magnetic reconnection, and nanoflares are leading mechanisms. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Solar missions have measured fine-scale waves and bursts but not a single complete explanation.",
+        "visual": "Cinematic documentary reconstruction, the Sun during a total eclipse, blazing coronal loops above the photosphere; beat 5 depicts: Solar missions have measured fine-scale waves and bursts but not a single complete explanation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "How energy is transported and dissipated throughout the corona remains unresolved.",
+        "visual": "Cinematic documentary reconstruction, the Sun during a total eclipse, blazing coronal loops above the photosphere; beat 6 depicts: How energy is transported and dissipated throughout the corona remains unresolved. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "مسئله گرمایش تاج خورشید",
+      "beats": [
+        "جو بیرونی خورشید بسیار داغ‌تر از سطح مرئی آن است.",
+        "دمای فوتوسفر حدود ۵۸۰۰ کلوین است، اما تاج خورشید به میلیون‌ها کلوین می‌رسد.",
+        "میدان‌های مغناطیسی انرژی را بالا می‌برند، اما تبدیل آن به گرمای تاج پیچیده است.",
+        "موج‌های آلفون، بازپیوند مغناطیسی و نانوشعله‌ها سازوکارهای اصلی‌اند.",
+        "مأموریت‌های خورشیدی موج‌ها و فوران‌های ریز را سنجیده‌اند، اما توضیح کامل واحدی ندارند.",
+        "نحوه انتقال و اتلاف انرژی در تاج همچنان حل نشده است."
+      ],
+      "question": "چرا تاج خورشید از سطح آن داغ‌تر است؟",
+      "tags": [
+        "#خورشید",
+        "#تاج_خورشیدی",
+        "#فیزیک_فضا"
+      ]
+    },
+    "notes": {
+      "proven": "the corona is much hotter than the photosphere",
+      "probable": "magnetic waves and reconnection heat much of it",
+      "unknown": "the dominant mechanism and its detailed energy budget"
+    }
+  },
+  {
+    "id": "venus-phosphine",
+    "title": "Phosphine on Venus: Signal or Spectral Trap?",
+    "tags": [
+      "science",
+      "planetary-science",
+      "atmosphere"
+    ],
+    "beats": [
+      {
+        "text": "A disputed spectral line was interpreted as possible phosphine in Venus’s clouds.",
+        "visual": "Cinematic documentary reconstruction, Venus’s yellow sulfuric-acid clouds viewed from orbit beside a radio telescope analyzing its atmosphere; beat 1 depicts: A disputed spectral line was interpreted as possible phosphine in Venus’s clouds. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "In 2020, researchers reported phosphine from ground-based radio observations.",
+        "visual": "Cinematic documentary reconstruction, Venus’s yellow sulfuric-acid clouds viewed from orbit beside a radio telescope analyzing its atmosphere; beat 2 depicts: In 2020, researchers reported phosphine from ground-based radio observations. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Because phosphine can be linked to biology on Earth, the claim drew intense attention.",
+        "visual": "Cinematic documentary reconstruction, Venus’s yellow sulfuric-acid clouds viewed from orbit beside a radio telescope analyzing its atmosphere; beat 3 depicts: Because phosphine can be linked to biology on Earth, the claim drew intense attention. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Reanalysis found calibration issues, sulfur dioxide confusion, and much lower or absent abundance.",
+        "visual": "Cinematic documentary reconstruction, Venus’s yellow sulfuric-acid clouds viewed from orbit beside a radio telescope analyzing its atmosphere; beat 4 depicts: Reanalysis found calibration issues, sulfur dioxide confusion, and much lower or absent abundance. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Venus’s chemistry and cloud dynamics make a biological explanation especially uncertain.",
+        "visual": "Cinematic documentary reconstruction, Venus’s yellow sulfuric-acid clouds viewed from orbit beside a radio telescope analyzing its atmosphere; beat 5 depicts: Venus’s chemistry and cloud dynamics make a biological explanation especially uncertain. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No confirmed biosignature has been established in the Venusian atmosphere.",
+        "visual": "Cinematic documentary reconstruction, Venus’s yellow sulfuric-acid clouds viewed from orbit beside a radio telescope analyzing its atmosphere; beat 6 depicts: No confirmed biosignature has been established in the Venusian atmosphere. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "فسفین در زهره: سیگنال یا دام طیفی؟",
+      "beats": [
+        "خط طیفی مورد اختلافی به‌عنوان فسفین احتمالی در ابرهای زهره تفسیر شد.",
+        "در ۲۰۲۰ پژوهشگران فسفین را از رصدهای رادیویی زمینی گزارش کردند.",
+        "چون فسفین روی زمین می‌تواند با زیست‌شناسی مرتبط باشد، ادعا توجه زیادی گرفت.",
+        "بازتحلیل مشکل کالیبراسیون، اشتباه با دی‌اکسید گوگرد و فراوانی بسیار کمتر یا صفر یافت.",
+        "شیمی و پویایی ابرهای زهره توضیح زیستی را بسیار نامطمئن می‌کند.",
+        "هیچ نشانگر زیستی تأییدشده‌ای در جو زهره ثبت نشده است."
+      ],
+      "question": "آیا در ابرهای زهره فسفین وجود دارد؟",
+      "tags": [
+        "#زهره",
+        "#فسفین",
+        "#زیست‌اخترشناسی"
+      ]
+    },
+    "notes": {
+      "proven": "a 2020 study reported a disputed spectral feature",
+      "probable": "calibration and sulfur-dioxide issues explain much of the claim",
+      "unknown": "true abundance and any biological significance"
+    }
+  },
+  {
+    "id": "mars-slope-lines",
+    "title": "Recurring Slope Lineae on Mars",
+    "tags": [
+      "science",
+      "mars",
+      "planetary-science"
+    ],
+    "beats": [
+      {
+        "text": "Dark streaks appear seasonally on some Martian slopes and then fade.",
+        "visual": "Cinematic documentary reconstruction, a dusty Martian crater slope with seasonal dark streaks descending across the red terrain; beat 1 depicts: Dark streaks appear seasonally on some Martian slopes and then fade. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Recurring slope lineae were first reported in high-resolution images as narrow downhill features.",
+        "visual": "Cinematic documentary reconstruction, a dusty Martian crater slope with seasonal dark streaks descending across the red terrain; beat 2 depicts: Recurring slope lineae were first reported in high-resolution images as narrow downhill features. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Their timing suggested flowing brines, raising hopes for present-day habitable niches.",
+        "visual": "Cinematic documentary reconstruction, a dusty Martian crater slope with seasonal dark streaks descending across the red terrain; beat 3 depicts: Their timing suggested flowing brines, raising hopes for present-day habitable niches. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Later observations linked many streaks to dry granular flows and dust movement.",
+        "visual": "Cinematic documentary reconstruction, a dusty Martian crater slope with seasonal dark streaks descending across the red terrain; beat 4 depicts: Later observations linked many streaks to dry granular flows and dust movement. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Water may still influence some sites, but direct liquid flow has not been observed.",
+        "visual": "Cinematic documentary reconstruction, a dusty Martian crater slope with seasonal dark streaks descending across the red terrain; beat 5 depicts: Water may still influence some sites, but direct liquid flow has not been observed. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Their precise formation mechanism and astrobiological importance remain debated.",
+        "visual": "Cinematic documentary reconstruction, a dusty Martian crater slope with seasonal dark streaks descending across the red terrain; beat 6 depicts: Their precise formation mechanism and astrobiological importance remain debated. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "خطوط شیب‌دار تکرارشونده در مریخ",
+      "beats": [
+        "رگه‌های تیره فصلی روی برخی دامنه‌های مریخ ظاهر و سپس محو می‌شوند.",
+        "خطوط شیب تکرارشونده نخست در تصاویر دقیق به‌صورت نوارهای باریک سراشیبی گزارش شدند.",
+        "زمان‌بندی آن‌ها جریان آب‌نمک را پیشنهاد می‌کرد و امید به زیست‌پذیری امروزی را بالا برد.",
+        "رصدهای بعدی بسیاری از رگه‌ها را به جریان خشک دانه‌ها و حرکت غبار پیوند دادند.",
+        "آب شاید در برخی نقاط اثر داشته باشد، اما جریان مایع مستقیم دیده نشده است.",
+        "سازوکار دقیق و اهمیت زیستی آن‌ها همچنان مورد بحث است."
+      ],
+      "question": "خطوط تکرارشونده دامنه‌های مریخ از چه ساخته شده‌اند؟",
+      "tags": [
+        "#مریخ",
+        "#زمین‌شناسی_سیاره‌ای",
+        "#زیست‌اخترشناسی"
+      ]
+    },
+    "notes": {
+      "proven": "seasonal dark streaks occur on some Martian slopes",
+      "probable": "dry granular flows explain many examples",
+      "unknown": "role of brines and any habitability significance"
+    }
+  },
+  {
+    "id": "lunar-transient",
+    "title": "Lunar Transient Phenomena",
+    "tags": [
+      "science",
+      "moon",
+      "astronomy"
+    ],
+    "beats": [
+      {
+        "text": "Brief flashes, glows, and color changes have been reported on the Moon.",
+        "visual": "Cinematic documentary reconstruction, the cratered lunar surface during lunar night, with a brief pinpoint flash on a distant ridge; beat 1 depicts: Brief flashes, glows, and color changes have been reported on the Moon. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Lunar transient phenomena appear in historical observing logs and modern telescope reports.",
+        "visual": "Cinematic documentary reconstruction, the cratered lunar surface during lunar night, with a brief pinpoint flash on a distant ridge; beat 2 depicts: Lunar transient phenomena appear in historical observing logs and modern telescope reports. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Proposed causes include impacts, outgassing, electrostatic dust, and seeing artifacts.",
+        "visual": "Cinematic documentary reconstruction, the cratered lunar surface during lunar night, with a brief pinpoint flash on a distant ridge; beat 3 depicts: Proposed causes include impacts, outgassing, electrostatic dust, and seeing artifacts. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Impacts can now be confirmed when telescopes record simultaneous flashes and debris signatures.",
+        "visual": "Cinematic documentary reconstruction, the cratered lunar surface during lunar night, with a brief pinpoint flash on a distant ridge; beat 4 depicts: Impacts can now be confirmed when telescopes record simultaneous flashes and debris signatures. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Older reports lack enough data to distinguish real events from atmospheric or optical effects.",
+        "visual": "Cinematic documentary reconstruction, the cratered lunar surface during lunar night, with a brief pinpoint flash on a distant ridge; beat 5 depicts: Older reports lack enough data to distinguish real events from atmospheric or optical effects. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The frequency and physical causes of the remaining reports remain uncertain.",
+        "visual": "Cinematic documentary reconstruction, the cratered lunar surface during lunar night, with a brief pinpoint flash on a distant ridge; beat 6 depicts: The frequency and physical causes of the remaining reports remain uncertain. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "پدیده‌های گذرای ماه",
+      "beats": [
+        "درخشش، برق و تغییر رنگ‌های کوتاه‌مدت روی ماه گزارش شده‌اند.",
+        "پدیده‌های گذرای ماه در دفترهای رصد تاریخی و گزارش‌های تلسکوپی جدید دیده می‌شوند.",
+        "برخورد، گاززدایی، غبار الکترواستاتیک و خطای دید از علت‌های پیشنهادی‌اند.",
+        "وقتی تلسکوپ‌ها هم‌زمان برق و نشانه برخورد را ثبت کنند، برخورد تأییدپذیر است.",
+        "گزارش‌های قدیمی داده کافی برای جداسازی پدیده واقعی از جو و خطای اپتیکی ندارند.",
+        "تعداد و علت فیزیکی گزارش‌های باقی‌مانده نامطمئن است."
+      ],
+      "question": "آیا نورهای گذرای ماه پدیده‌هایی واقعی‌اند؟",
+      "tags": [
+        "#ماه",
+        "#نجوم",
+        "#پدیده‌های_گذرای_ماه"
+      ]
+    },
+    "notes": {
+      "proven": "observers have reported brief lunar flashes and glows",
+      "probable": "confirmed impacts explain some modern flashes",
+      "unknown": "cause and reality of many historical reports"
+    }
+  },
+  {
+    "id": "lunar-swirls",
+    "title": "The Lunar Swirls and Their Magnetic Shields",
+    "tags": [
+      "science",
+      "moon",
+      "planetary-science"
+    ],
+    "beats": [
+      {
+        "text": "Bright, sinuous patterns decorate parts of the Moon without obvious topographic relief.",
+        "visual": "Cinematic documentary reconstruction, the Moon’s surface with bright sinuous swirls crossing darker regolith and localized magnetic fields; beat 1 depicts: Bright, sinuous patterns decorate parts of the Moon without obvious topographic relief. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Lunar swirls are light-colored markings associated with localized crustal magnetic fields.",
+        "visual": "Cinematic documentary reconstruction, the Moon’s surface with bright sinuous swirls crossing darker regolith and localized magnetic fields; beat 2 depicts: Lunar swirls are light-colored markings associated with localized crustal magnetic fields. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "One hypothesis says magnetic bubbles deflect solar wind and slow surface darkening.",
+        "visual": "Cinematic documentary reconstruction, the Moon’s surface with bright sinuous swirls crossing darker regolith and localized magnetic fields; beat 3 depicts: One hypothesis says magnetic bubbles deflect solar wind and slow surface darkening. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Other models invoke magnetized impact material, electric charging, or complex space weathering.",
+        "visual": "Cinematic documentary reconstruction, the Moon’s surface with bright sinuous swirls crossing darker regolith and localized magnetic fields; beat 4 depicts: Other models invoke magnetized impact material, electric charging, or complex space weathering. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Japan’s Kaguya and later missions improved maps but did not settle the formation process.",
+        "visual": "Cinematic documentary reconstruction, the Moon’s surface with bright sinuous swirls crossing darker regolith and localized magnetic fields; beat 5 depicts: Japan’s Kaguya and later missions improved maps but did not settle the formation process. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Why the swirls retain their brightness and exact origins remain open questions.",
+        "visual": "Cinematic documentary reconstruction, the Moon’s surface with bright sinuous swirls crossing darker regolith and localized magnetic fields; beat 6 depicts: Why the swirls retain their brightness and exact origins remain open questions. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "پیچش‌های ماه و سپرهای مغناطیسی آن",
+      "beats": [
+        "الگوهای روشن و پیچان بخش‌هایی از ماه را بدون پستی‌وبلندی آشکار پوشانده‌اند.",
+        "پیچش‌های ماه با میدان‌های مغناطیسی موضعی در پوسته مرتبط‌اند.",
+        "یک نظریه می‌گوید حباب‌های مغناطیسی باد خورشیدی را منحرف و تیرگی سطح را کند می‌کنند.",
+        "مدل‌های دیگر مواد برخوردی مغناطیده، بار الکتریکی یا هوازدگی فضایی را مطرح می‌کنند.",
+        "کاگویا و مأموریت‌های بعدی نقشه‌ها را بهتر کردند، اما فرایند شکل‌گیری قطعی نیست.",
+        "علت حفظ روشنایی و خاستگاه دقیق پیچش‌ها هنوز پرسش است."
+      ],
+      "question": "پیچش‌های روشن ماه چگونه شکل گرفته‌اند؟",
+      "tags": [
+        "#ماه",
+        "#مغناطیس_سیاره‌ای",
+        "#سیاره‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "lunar swirls coincide with localized magnetic anomalies",
+      "probable": "magnetic shielding affects their surface brightness",
+      "unknown": "complete formation history and dominant mechanism"
+    }
+  },
+  {
+    "id": "kordylewski-clouds",
+    "title": "The Kordylewski Dust Clouds",
+    "tags": [
+      "science",
+      "astronomy",
+      "earth-moon-system"
+    ],
+    "beats": [
+      {
+        "text": "Faint dust concentrations may occupy stable-looking regions near Earth’s orbit around the Moon.",
+        "visual": "Cinematic documentary reconstruction, the Earth–Moon system in space, a faint diffuse dust concentration near a Lagrange region; beat 1 depicts: Faint dust concentrations may occupy stable-looking regions near Earth’s orbit around the Moon. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Kordylewski clouds were proposed near the triangular Lagrange points of the Earth-Moon system.",
+        "visual": "Cinematic documentary reconstruction, the Earth–Moon system in space, a faint diffuse dust concentration near a Lagrange region; beat 2 depicts: Kordylewski clouds were proposed near the triangular Lagrange points of the Earth-Moon system. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Photographers reported diffuse light in the 1960s, but observations were difficult to reproduce.",
+        "visual": "Cinematic documentary reconstruction, the Earth–Moon system in space, a faint diffuse dust concentration near a Lagrange region; beat 3 depicts: Photographers reported diffuse light in the 1960s, but observations were difficult to reproduce. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Numerical models show dust can collect temporarily while solar pressure and gravity disperse it.",
+        "visual": "Cinematic documentary reconstruction, the Earth–Moon system in space, a faint diffuse dust concentration near a Lagrange region; beat 4 depicts: Numerical models show dust can collect temporarily while solar pressure and gravity disperse it. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Later claims of detection remain debated because the clouds are extremely faint.",
+        "visual": "Cinematic documentary reconstruction, the Earth–Moon system in space, a faint diffuse dust concentration near a Lagrange region; beat 5 depicts: Later claims of detection remain debated because the clouds are extremely faint. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Whether persistent clouds exist, and how much dust they contain, remains uncertain.",
+        "visual": "Cinematic documentary reconstruction, the Earth–Moon system in space, a faint diffuse dust concentration near a Lagrange region; beat 6 depicts: Whether persistent clouds exist, and how much dust they contain, remains uncertain. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ابرهای غباری کردیلِفسکی",
+      "beats": [
+        "ممکن است تمرکزهای کم‌نور غبار در نواحی نسبتاً پایدار مدار زمین و ماه باشند.",
+        "ابرهای کردیلِفسکی نزدیک نقاط لاگرانژی مثلثی سامانه زمین و ماه پیشنهاد شدند.",
+        "عکاسان دهه ۱۹۶۰ نور پخشیده‌ای گزارش کردند، اما تکرار رصد دشوار بود.",
+        "مدل‌ها نشان می‌دهند غبار موقتاً جمع می‌شود و فشار خورشیدی و گرانش آن را پخش می‌کنند.",
+        "ادعاهای کشف بعدی به‌دلیل کم‌نوری شدید ابرها محل بحث‌اند.",
+        "وجود پایدار و مقدار غبار آن‌ها هنوز نامعلوم است."
+      ],
+      "question": "آیا ابرهای غباری کردیلِفسکی واقعاً دیده شده‌اند؟",
+      "tags": [
+        "#ابرهای_کردیلِفسکی",
+        "#غبار_کیهانی",
+        "#نقاط_لاگرانژ"
+      ]
+    },
+    "notes": {
+      "proven": "models permit temporary dust concentrations near Earth-Moon Lagrange regions",
+      "probable": "any clouds are faint and dynamic rather than solid objects",
+      "unknown": "persistence, mass, and direct observational confirmation"
+    }
+  },
+  {
+    "id": "earth-hum",
+    "title": "The Earth’s Persistent Hum",
+    "tags": [
+      "science",
+      "geophysics",
+      "sound"
+    ],
+    "beats": [
+      {
+        "text": "Sensitive instruments detect a low-frequency vibration even when no earthquake occurs.",
+        "visual": "Cinematic documentary reconstruction, a sensitive seismometer on a quiet coast recording persistent low-frequency motion beneath the ground; beat 1 depicts: Sensitive instruments detect a low-frequency vibration even when no earthquake occurs. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The Earth hum consists of tiny seismic oscillations recorded by broadband seismometers.",
+        "visual": "Cinematic documentary reconstruction, a sensitive seismometer on a quiet coast recording persistent low-frequency motion beneath the ground; beat 2 depicts: The Earth hum consists of tiny seismic oscillations recorded by broadband seismometers. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Ocean waves and atmospheric pressure can transfer energy into the solid Earth.",
+        "visual": "Cinematic documentary reconstruction, a sensitive seismometer on a quiet coast recording persistent low-frequency motion beneath the ground; beat 3 depicts: Ocean waves and atmospheric pressure can transfer energy into the solid Earth. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Some signals vary with storms and ocean conditions, while others remain harder to model.",
+        "visual": "Cinematic documentary reconstruction, a sensitive seismometer on a quiet coast recording persistent low-frequency motion beneath the ground; beat 4 depicts: Some signals vary with storms and ocean conditions, while others remain harder to model. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Human ears usually cannot hear the frequencies, unlike reports of local audible hums.",
+        "visual": "Cinematic documentary reconstruction, a sensitive seismometer on a quiet coast recording persistent low-frequency motion beneath the ground; beat 5 depicts: Human ears usually cannot hear the frequencies, unlike reports of local audible hums. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The complete balance of oceanic, atmospheric, and internal sources remains under study.",
+        "visual": "Cinematic documentary reconstruction, a sensitive seismometer on a quiet coast recording persistent low-frequency motion beneath the ground; beat 6 depicts: The complete balance of oceanic, atmospheric, and internal sources remains under study. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "همهمه پایدار زمین",
+      "beats": [
+        "ابزارهای حساس لرزش کم‌فرکانسی را حتی بدون زلزله ثبت می‌کنند.",
+        "همهمه زمین از نوسان‌های بسیار کوچک لرزه‌ای تشکیل می‌شود که لرزه‌سنج‌های پهن‌باند می‌گیرند.",
+        "امواج اقیانوس و فشار جو می‌توانند انرژی را به زمین جامد منتقل کنند.",
+        "برخی سیگنال‌ها با طوفان و شرایط اقیانوس تغییر می‌کنند و برخی سخت‌تر مدل می‌شوند.",
+        "گوش انسان معمولاً این فرکانس‌ها را نمی‌شنود، برخلاف همهمه‌های محلی شنیدنی.",
+        "توازن کامل منابع اقیانوسی، جوی و درونی هنوز در دست بررسی است."
+      ],
+      "question": "همهمه پایدار زمین از کجا می‌آید؟",
+      "tags": [
+        "#ژئوفیزیک",
+        "#همهمه_زمین",
+        "#لرزه‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "seismometers record persistent low-frequency Earth oscillations",
+      "probable": "ocean waves and atmospheric forcing supply much of the energy",
+      "unknown": "complete source balance and relation to local audible hums"
+    }
+  },
+  {
+    "id": "upsweep-sound",
+    "title": "The Upsweep Ocean Sound",
+    "tags": [
+      "science",
+      "ocean",
+      "acoustics"
+    ],
+    "beats": [
+      {
+        "text": "An underwater sound rises in pitch every year.",
+        "visual": "Cinematic documentary reconstruction, a research vessel and deep-ocean hydrophone beneath dark water, tracking a rising acoustic signal; beat 1 depicts: An underwater sound rises in pitch every year. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "NOAA hydrophones detected Upsweep across the Pacific beginning in 1991.",
+        "visual": "Cinematic documentary reconstruction, a research vessel and deep-ocean hydrophone beneath dark water, tracking a rising acoustic signal; beat 2 depicts: NOAA hydrophones detected Upsweep across the Pacific beginning in 1991. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The signal is seasonal and strongest during periods of broad Southern Ocean activity.",
+        "visual": "Cinematic documentary reconstruction, a research vessel and deep-ocean hydrophone beneath dark water, tracking a rising acoustic signal; beat 3 depicts: The signal is seasonal and strongest during periods of broad Southern Ocean activity. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its frequency pattern suggests a distributed natural source rather than one point explosion.",
+        "visual": "Cinematic documentary reconstruction, a research vessel and deep-ocean hydrophone beneath dark water, tracking a rising acoustic signal; beat 4 depicts: Its frequency pattern suggests a distributed natural source rather than one point explosion. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Volcanic activity, ice movement, and seafloor processes are among proposed causes.",
+        "visual": "Cinematic documentary reconstruction, a research vessel and deep-ocean hydrophone beneath dark water, tracking a rising acoustic signal; beat 5 depicts: Volcanic activity, ice movement, and seafloor processes are among proposed causes. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No single source has been verified for the entire sound record.",
+        "visual": "Cinematic documentary reconstruction, a research vessel and deep-ocean hydrophone beneath dark water, tracking a rising acoustic signal; beat 6 depicts: No single source has been verified for the entire sound record. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "صدای زیرآبی آپ‌سوئیپ",
+      "beats": [
+        "صدای عظیم زیرآبی هر سال زیرتر می‌شود و توضیح کاملی ندارد.",
+        "هیدروفون‌های نوا از ۱۹۹۱ صدای آپ‌سوئیپ را در سراسر اقیانوس آرام ثبت کردند.",
+        "سیگنال فصلی است و هنگام فعالیت گسترده اقیانوس جنوبی قوی‌تر می‌شود.",
+        "الگوی فرکانس منبع طبیعی گسترده را، نه انفجار نقطه‌ای، پیشنهاد می‌کند.",
+        "فعالیت آتشفشانی، حرکت یخ و فرایندهای بستر دریا علت‌های پیشنهادی‌اند.",
+        "برای کل سابقه صدا منبع واحدی تأیید نشده است."
+      ],
+      "question": "صدای زیرآبی آپ‌سوئیپ چه منشأیی دارد؟",
+      "tags": [
+        "#اقیانوس",
+        "#صوت_زیرآب",
+        "#زمین‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "NOAA hydrophones recorded a seasonal rising underwater signal",
+      "probable": "a broad natural oceanic or seafloor process generates it",
+      "unknown": "the exact source and why the signal changes"
+    }
+  },
+  {
+    "id": "skyquakes",
+    "title": "Skyquakes: Explosions Without a Source",
+    "tags": [
+      "science",
+      "atmosphere",
+      "sound"
+    ],
+    "beats": [
+      {
+        "text": "People in many regions report loud booms with no visible explosion.",
+        "visual": "Cinematic documentary reconstruction, a quiet rural landscape under a broad sky, startled witnesses reacting to a distant unexplained boom; beat 1 depicts: People in many regions report loud booms with no visible explosion. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Skyquakes have been described from coastal communities, inland valleys, and lakeshores.",
+        "visual": "Cinematic documentary reconstruction, a quiet rural landscape under a broad sky, startled witnesses reacting to a distant unexplained boom; beat 2 depicts: Skyquakes have been described from coastal communities, inland valleys, and lakeshores. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Possible sources include sonic booms, thunder, landslides, gas releases, and distant industrial noise.",
+        "visual": "Cinematic documentary reconstruction, a quiet rural landscape under a broad sky, startled witnesses reacting to a distant unexplained boom; beat 3 depicts: Possible sources include sonic booms, thunder, landslides, gas releases, and distant industrial noise. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Atmospheric temperature layers can refract sound and make a distant event seem overhead.",
+        "visual": "Cinematic documentary reconstruction, a quiet rural landscape under a broad sky, startled witnesses reacting to a distant unexplained boom; beat 4 depicts: Atmospheric temperature layers can refract sound and make a distant event seem overhead. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Many reports lack synchronized instruments, so local causes cannot be tested afterward.",
+        "visual": "Cinematic documentary reconstruction, a quiet rural landscape under a broad sky, startled witnesses reacting to a distant unexplained boom; beat 5 depicts: Many reports lack synchronized instruments, so local causes cannot be tested afterward. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "“Skyquake” is a category of unexplained reports, not one established phenomenon.",
+        "visual": "Cinematic documentary reconstruction, a quiet rural landscape under a broad sky, startled witnesses reacting to a distant unexplained boom; beat 6 depicts: “Skyquake” is a category of unexplained reports, not one established phenomenon. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "آسمان‌لرزه‌ها: انفجارهای بی‌منبع",
+      "beats": [
+        "مردم در مناطق گوناگون صدای انفجار بلندی را بدون انفجار دیدنی گزارش می‌کنند.",
+        "آسمان‌لرزه‌ها از جوامع ساحلی، دره‌های داخلی و کنار دریاچه‌ها توصیف شده‌اند.",
+        "انفجار صوتی، رعد، رانش زمین، آزادشدن گاز و صدای صنعتی دور از علت‌های ممکن‌اند.",
+        "لایه‌های دمایی جو می‌توانند صدا را شکسته و رویداد دور را بالای سر نشان دهند.",
+        "بسیاری گزارش‌ها ابزار هم‌زمان ندارند و آزمون علت محلی بعداً ممکن نیست.",
+        "آسمان‌لرزه نام دسته‌ای از گزارش‌های حل‌نشده است، نه پدیده‌ای واحد."
+      ],
+      "question": "آسمان‌لرزه‌ها چه صداهایی هستند؟",
+      "tags": [
+        "#آسمان‌لرزه",
+        "#صدا",
+        "#جو"
+      ]
+    },
+    "notes": {
+      "proven": "unexplained loud booms are repeatedly reported in many regions",
+      "probable": "multiple ordinary acoustic causes account for different cases",
+      "unknown": "cause of individual reports without recordings"
+    }
+  },
+  {
+    "id": "ball-lightning",
+    "title": "Ball Lightning: A Rare Luminous Phenomenon",
+    "tags": [
+      "science",
+      "atmosphere",
+      "physics"
+    ],
+    "beats": [
+      {
+        "text": "Glowing spheres are reported during storms, but reliable measurements are rare.",
+        "visual": "Cinematic documentary reconstruction, a violent thunderstorm with a luminous spherical glow hovering near the ground; beat 1 depicts: Glowing spheres are reported during storms, but reliable measurements are rare. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Ball lightning is described as a luminous orb that persists longer than a spark.",
+        "visual": "Cinematic documentary reconstruction, a violent thunderstorm with a luminous spherical glow hovering near the ground; beat 2 depicts: Ball lightning is described as a luminous orb that persists longer than a spark. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Witnesses report motion through rooms, along wires, or near the ground.",
+        "visual": "Cinematic documentary reconstruction, a violent thunderstorm with a luminous spherical glow hovering near the ground; beat 3 depicts: Witnesses report motion through rooms, along wires, or near the ground. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Laboratory plasmas, vaporized soil, microwave cavities, and chemical combustion are proposed models.",
+        "visual": "Cinematic documentary reconstruction, a violent thunderstorm with a luminous spherical glow hovering near the ground; beat 4 depicts: Laboratory plasmas, vaporized soil, microwave cavities, and chemical combustion are proposed models. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Photographs and instrument records exist, but no model explains every report.",
+        "visual": "Cinematic documentary reconstruction, a violent thunderstorm with a luminous spherical glow hovering near the ground; beat 5 depicts: Photographs and instrument records exist, but no model explains every report. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Whether all accounts describe one phenomenon or several remains unresolved.",
+        "visual": "Cinematic documentary reconstruction, a violent thunderstorm with a luminous spherical glow hovering near the ground; beat 6 depicts: Whether all accounts describe one phenomenon or several remains unresolved. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "رعدگوی: پدیده‌ای نادر و نورانی",
+      "beats": [
+        "درخشش‌های کروی هنگام طوفان گزارش می‌شوند، اما اندازه‌گیری معتبر کمیاب است.",
+        "رعدگوی به‌صورت گوی نورانی توصیف می‌شود که بیش از جرقه دوام دارد.",
+        "شاهدان حرکت آن را در اتاق، کنار سیم یا نزدیک زمین گزارش می‌کنند.",
+        "پلاسما، خاک تبخیرشده، حفره مایکروویو و سوختن شیمیایی مدل‌های پیشنهادی‌اند.",
+        "عکس و ثبت ابزاری وجود دارد، اما هیچ مدل همه گزارش‌ها را توضیح نمی‌دهد.",
+        "هنوز معلوم نیست همه روایت‌ها یک پدیده‌اند یا چند پدیده."
+      ],
+      "question": "رعدگوی واقعاً چیست؟",
+      "tags": [
+        "#رعدگوی",
+        "#فیزیک_جو",
+        "#صاعقه"
+      ]
+    },
+    "notes": {
+      "proven": "witnesses and occasional instruments report luminous storm-associated spheres",
+      "probable": "several physical mechanisms may produce different cases",
+      "unknown": "whether ball lightning is one phenomenon and its dominant mechanism"
+    }
+  },
+  {
+    "id": "earthquake-lights",
+    "title": "Earthquake Lights",
+    "tags": [
+      "science",
+      "geophysics",
+      "atmosphere"
+    ],
+    "beats": [
+      {
+        "text": "Bright flashes are sometimes reported before or during earthquakes.",
+        "visual": "Cinematic documentary reconstruction, a city horizon during an earthquake, blue-white flashes appearing along the distant fault zone; beat 1 depicts: Bright flashes are sometimes reported before or during earthquakes. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Earthquake lights may appear as glows, flames, columns, or airborne luminous regions.",
+        "visual": "Cinematic documentary reconstruction, a city horizon during an earthquake, blue-white flashes appearing along the distant fault zone; beat 2 depicts: Earthquake lights may appear as glows, flames, columns, or airborne luminous regions. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Ancient accounts and modern videos have linked them to seismic activity, but timing varies.",
+        "visual": "Cinematic documentary reconstruction, a city horizon during an earthquake, blue-white flashes appearing along the distant fault zone; beat 3 depicts: Ancient accounts and modern videos have linked them to seismic activity, but timing varies. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Laboratory studies propose stressed rocks, charge carriers, and atmospheric ionization.",
+        "visual": "Cinematic documentary reconstruction, a city horizon during an earthquake, blue-white flashes appearing along the distant fault zone; beat 4 depicts: Laboratory studies propose stressed rocks, charge carriers, and atmospheric ionization. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Electrical lines, transformers, lightning, and camera artifacts can mimic the reports.",
+        "visual": "Cinematic documentary reconstruction, a city horizon during an earthquake, blue-white flashes appearing along the distant fault zone; beat 5 depicts: Electrical lines, transformers, lightning, and camera artifacts can mimic the reports. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The reality and mechanism of each alleged earthquake-light event remain difficult to verify.",
+        "visual": "Cinematic documentary reconstruction, a city horizon during an earthquake, blue-white flashes appearing along the distant fault zone; beat 6 depicts: The reality and mechanism of each alleged earthquake-light event remain difficult to verify. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "نورهای زلزله",
+      "beats": [
+        "گاهی پیش یا هنگام زلزله برق‌های روشن گزارش می‌شوند.",
+        "نورهای زلزله می‌توانند درخشش، شعله، ستون یا ناحیه نورانی در هوا باشند.",
+        "گزارش‌های قدیمی و ویدئوهای جدید آن‌ها را به لرزه پیوند داده‌اند، اما زمان‌بندی متفاوت است.",
+        "سنگ‌های تحت تنش، حامل‌های بار و یونش جو در آزمایشگاه پیشنهاد شده‌اند.",
+        "سیم برق، ترانسفورماتور، رعدوبرق و خطای دوربین می‌تواند تقلیدشان کند.",
+        "واقعیت و سازوکار هر رویداد ادعایی دشوار تأیید می‌شود."
+      ],
+      "question": "نورهای زلزله چگونه پدید می‌آیند؟",
+      "tags": [
+        "#نورهای_زلزله",
+        "#ژئوفیزیک",
+        "#زلزله"
+      ]
+    },
+    "notes": {
+      "proven": "luminous reports sometimes coincide with earthquakes",
+      "probable": "ordinary electrical sources explain some observations",
+      "unknown": "mechanism and authenticity of many individual cases"
+    }
+  },
+  {
+    "id": "devils-kettle",
+    "title": "The Devil’s Kettle Waterfall",
+    "tags": [
+      "science",
+      "geology",
+      "hydrology"
+    ],
+    "beats": [
+      {
+        "text": "Half a Minnesota waterfall disappears into a hole whose exit long puzzled visitors.",
+        "visual": "Cinematic documentary reconstruction, the Devil’s Kettle waterfall on Minnesota’s Brule River, one branch plunging into a deep pothole; beat 1 depicts: Half a Minnesota waterfall disappears into a hole whose exit long puzzled visitors. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "At Judge C. R. Magney State Park, the Brule River splits around a rock outcrop.",
+        "visual": "Cinematic documentary reconstruction, the Devil’s Kettle waterfall on Minnesota’s Brule River, one branch plunging into a deep pothole; beat 2 depicts: At Judge C. R. Magney State Park, the Brule River splits around a rock outcrop. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "One branch falls into a deep pothole while the other continues downstream visibly.",
+        "visual": "Cinematic documentary reconstruction, the Devil’s Kettle waterfall on Minnesota’s Brule River, one branch plunging into a deep pothole; beat 3 depicts: One branch falls into a deep pothole while the other continues downstream visibly. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Objects dropped into the chasm have not reliably reappeared, encouraging underground-river stories.",
+        "visual": "Cinematic documentary reconstruction, the Devil’s Kettle waterfall on Minnesota’s Brule River, one branch plunging into a deep pothole; beat 4 depicts: Objects dropped into the chasm have not reliably reappeared, encouraging underground-river stories. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Geologists argue the water likely returns through fractured rock and mixes rapidly below.",
+        "visual": "Cinematic documentary reconstruction, the Devil’s Kettle waterfall on Minnesota’s Brule River, one branch plunging into a deep pothole; beat 5 depicts: Geologists argue the water likely returns through fractured rock and mixes rapidly below. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its exact subterranean route remains untraced because the gorge is dangerous and complex.",
+        "visual": "Cinematic documentary reconstruction, the Devil’s Kettle waterfall on Minnesota’s Brule River, one branch plunging into a deep pothole; beat 6 depicts: Its exact subterranean route remains untraced because the gorge is dangerous and complex. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "آبشار دیگ شیطان",
+      "beats": [
+        "نیمی از آبشاری در مینه‌سوتا وارد حفره‌ای می‌شود که خروجی‌اش مدت‌ها معما بود.",
+        "در پارک جاج سی. آر. مگنی، رود برول دور برآمدگی سنگی دو شاخه می‌شود.",
+        "یک شاخه در گودالی عمیق می‌ریزد و شاخه دیگر آشکارا پایین‌دست می‌رود.",
+        "اشیای انداخته‌شده به‌طور قابل‌اعتماد بیرون نیامده‌اند و افسانه رود زیرزمینی را ساخته‌اند.",
+        "زمین‌شناسان می‌گویند آب احتمالاً از شکاف سنگ برمی‌گردد و زیرزمین سریع مخلوط می‌شود.",
+        "مسیر دقیق زیرزمینی به‌دلیل دره خطرناک و پیچیده ردیابی نشده است."
+      ],
+      "question": "آب آبشار دیگ شیطان از کجا خارج می‌شود؟",
+      "tags": [
+        "#آبشار_دیگ_شیطان",
+        "#زمین‌شناسی",
+        "#رودخانه"
+      ]
+    },
+    "notes": {
+      "proven": "one branch of the Brule River enters a deep pothole",
+      "probable": "water returns through fractured rock and disperses underground",
+      "unknown": "exact flow path and whether all water reemerges nearby"
+    }
+  },
+  {
+    "id": "baltic-sea-anomaly",
+    "title": "The Baltic Sea Anomaly",
+    "tags": [
+      "history",
+      "maritime",
+      "geology"
+    ],
+    "beats": [
+      {
+        "text": "Sonar imaging showed a strange shape on the seafloor and triggered extraordinary claims.",
+        "visual": "Cinematic documentary reconstruction, the Baltic Sea floor, a research vessel and sonar beam illuminating an unusual seafloor formation; beat 1 depicts: Sonar imaging showed a strange shape on the seafloor and triggered extraordinary claims. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "A Swedish exploration team reported the feature in 2011 in the northern Baltic Sea.",
+        "visual": "Cinematic documentary reconstruction, the Baltic Sea floor, a research vessel and sonar beam illuminating an unusual seafloor formation; beat 2 depicts: A Swedish exploration team reported the feature in 2011 in the northern Baltic Sea. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Images appeared to show a round object with angular edges and a long disturbance behind it.",
+        "visual": "Cinematic documentary reconstruction, the Baltic Sea floor, a research vessel and sonar beam illuminating an unusual seafloor formation; beat 3 depicts: Images appeared to show a round object with angular edges and a long disturbance behind it. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Later sonar work and geological specialists questioned the resolution and interpretation.",
+        "visual": "Cinematic documentary reconstruction, the Baltic Sea floor, a research vessel and sonar beam illuminating an unusual seafloor formation; beat 4 depicts: Later sonar work and geological specialists questioned the resolution and interpretation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Glacial deposits, rock formations, and equipment artifacts offer mundane explanations.",
+        "visual": "Cinematic documentary reconstruction, the Baltic Sea floor, a research vessel and sonar beam illuminating an unusual seafloor formation; beat 5 depicts: Glacial deposits, rock formations, and equipment artifacts offer mundane explanations. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No verified wreck or artificial structure has established the object’s identity.",
+        "visual": "Cinematic documentary reconstruction, the Baltic Sea floor, a research vessel and sonar beam illuminating an unusual seafloor formation; beat 6 depicts: No verified wreck or artificial structure has established the object’s identity. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ناهنجاری دریای بالتیک",
+      "beats": [
+        "تصویربرداری سونار شکلی عجیب در بستر دریا نشان داد و ادعاهای خارق‌العاده ساخت.",
+        "گروه اکتشافی سوئدی در ۲۰۱۱ این ویژگی را در شمال دریای بالتیک گزارش کرد.",
+        "تصاویر شیئی گرد با لبه‌های زاویه‌دار و رد کشیده پشت آن را نشان می‌دادند.",
+        "سونار بعدی و زمین‌شناسان وضوح و تفسیر تصویر را زیر سؤال بردند.",
+        "رسوبات یخچالی، سازند سنگی و خطای تجهیزات توضیحات عادی‌اند.",
+        "هیچ لاشه یا سازه مصنوعی تأییدشده هویت شیء را مشخص نکرده است."
+      ],
+      "question": "ناهنجاری دریای بالتیک چیست؟",
+      "tags": [
+        "#دریای_بالتیک",
+        "#سونار",
+        "#زمین‌شناسی_دریایی"
+      ]
+    },
+    "notes": {
+      "proven": "sonar surveys reported an unusual seafloor feature in 2011",
+      "probable": "geology or imaging artifacts explain the appearance",
+      "unknown": "exact nature of the feature and any associated wreckage"
+    }
+  },
+  {
+    "id": "diquis-spheres",
+    "title": "The Diquís Stone Spheres",
+    "tags": [
+      "history",
+      "archaeology",
+      "engineering"
+    ],
+    "beats": [
+      {
+        "text": "Hundreds of nearly spherical stones were shaped by a pre-Columbian society.",
+        "visual": "Cinematic documentary reconstruction, a pre-Columbian landscape in Costa Rica with carefully shaped stone spheres arranged on grass; beat 1 depicts: Hundreds of nearly spherical stones were shaped by a pre-Columbian society. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Diquís spheres occur in southern Costa Rica and range from small objects to massive stones.",
+        "visual": "Cinematic documentary reconstruction, a pre-Columbian landscape in Costa Rica with carefully shaped stone spheres arranged on grass; beat 2 depicts: Diquís spheres occur in southern Costa Rica and range from small objects to massive stones. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Petrographic studies show deliberate carving and polishing rather than natural roundness.",
+        "visual": "Cinematic documentary reconstruction, a pre-Columbian landscape in Costa Rica with carefully shaped stone spheres arranged on grass; beat 3 depicts: Petrographic studies show deliberate carving and polishing rather than natural roundness. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "They were arranged in settlements and plazas, but colonial disruption erased much context.",
+        "visual": "Cinematic documentary reconstruction, a pre-Columbian landscape in Costa Rica with carefully shaped stone spheres arranged on grass; beat 4 depicts: They were arranged in settlements and plazas, but colonial disruption erased much context. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Power symbols, astronomical markers, property signs, and ritual displays have been proposed.",
+        "visual": "Cinematic documentary reconstruction, a pre-Columbian landscape in Costa Rica with carefully shaped stone spheres arranged on grass; beat 5 depicts: Power symbols, astronomical markers, property signs, and ritual displays have been proposed. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Their exact meaning and the social labor behind their production remain uncertain.",
+        "visual": "Cinematic documentary reconstruction, a pre-Columbian landscape in Costa Rica with carefully shaped stone spheres arranged on grass; beat 6 depicts: Their exact meaning and the social labor behind their production remain uncertain. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "کره‌های سنگی دی‌کوئیس",
+      "beats": [
+        "صدها سنگ تقریباً کروی را جامعه‌ای پیشاکلمبی شکل داد.",
+        "کره‌های دی‌کوئیس در جنوب کاستاریکا از نمونه کوچک تا سنگ‌های عظیم دیده می‌شوند.",
+        "بررسی سنگ‌شناسی تراش و صیقل عمدی را، نه گردی طبیعی، نشان می‌دهد.",
+        "آن‌ها در سکونتگاه و میدان چیده می‌شدند، اما استعمار زمینه را از بین برد.",
+        "نماد قدرت، نشان نجومی، مالکیت و نمایش آیینی پیشنهاد شده است.",
+        "معنا و نیروی کار اجتماعی پشت ساختشان هنوز نامعلوم است."
+      ],
+      "question": "کره‌های سنگی دی‌کوئیس برای چه ساخته شدند؟",
+      "tags": [
+        "#کره‌های_سنگی",
+        "#کاستاریکا",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "pre-Columbian communities deliberately shaped and placed stone spheres in Costa Rica",
+      "probable": "they marked status, place, or ritual meaning",
+      "unknown": "exact symbolism and production organization"
+    }
+  },
+  {
+    "id": "sanxingdui-masks",
+    "title": "The Sanxingdui Masks and Their Ritual Use",
+    "tags": [
+      "history",
+      "archaeology",
+      "ritual"
+    ],
+    "beats": [
+      {
+        "text": "Large bronze masks with exaggerated eyes emerged from Chinese sacrificial pits.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui archaeological pits in China, excavators uncovering large bronze masks and ritual objects; beat 1 depicts: Large bronze masks with exaggerated eyes emerged from Chinese sacrificial pits. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Sanxingdui excavations near Guanghan revealed bronze heads, masks, jade, ivory, and burned objects.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui archaeological pits in China, excavators uncovering large bronze masks and ritual objects; beat 2 depicts: Sanxingdui excavations near Guanghan revealed bronze heads, masks, jade, ivory, and burned objects. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The assemblage dates mainly to the late second millennium BCE and differs from central China.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui archaeological pits in China, excavators uncovering large bronze masks and ritual objects; beat 3 depicts: The assemblage dates mainly to the late second millennium BCE and differs from central China. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Many objects were deliberately broken or burned before burial in pits.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui archaeological pits in China, excavators uncovering large bronze masks and ritual objects; beat 4 depicts: Many objects were deliberately broken or burned before burial in pits. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Ritual disposal, ancestor imagery, and political transformation are leading interpretations.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui archaeological pits in China, excavators uncovering large bronze masks and ritual objects; beat 5 depicts: Ritual disposal, ancestor imagery, and political transformation are leading interpretations. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Why the objects were buried and how the Sanxingdui polity ended remain debated.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui archaeological pits in China, excavators uncovering large bronze masks and ritual objects; beat 6 depicts: Why the objects were buried and how the Sanxingdui polity ended remain debated. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "نقاب‌های سان‌شینگ‌دویی و کاربرد آیینی آن‌ها",
+      "beats": [
+        "نقاب‌های برنزی بزرگ با چشمان اغراق‌شده از گودال‌های قربانی چین بیرون آمدند.",
+        "کاوش‌های سانشینگ‌دویی نزدیک گوانگهان سرهای برنزی، نقاب، یشم، عاج و اشیای سوخته یافت.",
+        "مجموعه عمدتاً به اواخر هزاره دوم پیش از میلاد تعلق دارد و با مرکز چین متفاوت است.",
+        "بسیاری اشیا پیش از دفن عمداً شکسته یا سوزانده شده بودند.",
+        "دورریختن آیینی، تصویر نیاکان و تحول سیاسی تفسیرهای اصلی‌اند.",
+        "دلیل دفن و پایان دولت سانشینگ‌دویی هنوز محل بحث است."
+      ],
+      "question": "نقاب‌های سان‌شینگ‌دویی چه کاربرد آیینی داشتند؟",
+      "tags": [
+        "#سان‌شینگ‌دویی",
+        "#نقاب‌های_برنزی",
+        "#آیین"
+      ]
+    },
+    "notes": {
+      "proven": "Sanxingdui pits contained deliberately deposited bronze and luxury objects",
+      "probable": "ritual destruction and burial were socially meaningful",
+      "unknown": "exact beliefs, political change, and reason for abandonment"
+    }
+  }
+]
