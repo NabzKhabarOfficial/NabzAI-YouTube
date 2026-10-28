@@ -1,0 +1,857 @@
+[
+  {
+    "id": "raoul-wallenberg",
+    "title": "Raoul Wallenberg’s Disappearance",
+    "tags": [
+      "history",
+      "war",
+      "disappearance"
+    ],
+    "beats": [
+      {
+        "text": "A diplomat who saved thousands during the Holocaust vanished after Soviet arrest.",
+        "visual": "Cinematic documentary reconstruction, Raoul Wallenberg in wartime Budapest in 1944–45, a diplomat, safe houses, and protective papers; beat 1 depicts: A diplomat who saved thousands during the Holocaust vanished after Soviet arrest. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Raoul Wallenberg issued protective documents in Budapest and organized safe houses in 1944.",
+        "visual": "Cinematic documentary reconstruction, Raoul Wallenberg in wartime Budapest in 1944–45, a diplomat, safe houses, and protective papers; beat 2 depicts: Raoul Wallenberg issued protective documents in Budapest and organized safe houses in 1944. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Soviet forces detained him in January 1945 while he traveled to meet military officials.",
+        "visual": "Cinematic documentary reconstruction, Raoul Wallenberg in wartime Budapest in 1944–45, a diplomat, safe houses, and protective papers; beat 3 depicts: Soviet forces detained him in January 1945 while he traveled to meet military officials. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Moscow later claimed he died in prison in 1947, citing a disputed medical report.",
+        "visual": "Cinematic documentary reconstruction, Raoul Wallenberg in wartime Budapest in 1944–45, a diplomat, safe houses, and protective papers; beat 4 depicts: Moscow later claimed he died in prison in 1947, citing a disputed medical report. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Witnesses and later archival research suggested he may have survived longer.",
+        "visual": "Cinematic documentary reconstruction, Raoul Wallenberg in wartime Budapest in 1944–45, a diplomat, safe houses, and protective papers; beat 5 depicts: Witnesses and later archival research suggested he may have survived longer. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "His final fate, detention record, and death date remain contested.",
+        "visual": "Cinematic documentary reconstruction, Raoul Wallenberg in wartime Budapest in 1944–45, a diplomat, safe houses, and protective papers; beat 6 depicts: His final fate, detention record, and death date remain contested. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ناپدیدشدن رائول والنبرگ",
+      "beats": [
+        "دیپلماتی که هزاران نفر را در هولوکاست نجات داد، پس از بازداشت شوروی ناپدید شد.",
+        "رائول والنبرگ در ۱۹۴۴ در بوداپست اسناد حمایتی و خانه‌های امن سازمان داد.",
+        "نیروهای شوروی ژانویه ۱۹۴۵ هنگام رفتن او برای دیدار با مقام‌های نظامی بازداشتش کردند.",
+        "مسکو بعداً گفت او ۱۹۴۷ در زندان مرده و به گزارشی پزشکی مورد اختلاف استناد کرد.",
+        "شاهدان و پژوهش‌های بایگانی احتمال زنده‌بودن طولانی‌تر را مطرح کردند.",
+        "سرنوشت نهایی، سوابق بازداشت و تاریخ مرگ او محل اختلاف است."
+      ],
+      "question": "رائول والنبرگ پس از بازداشت شوروی چه سرنوشتی پیدا کرد؟",
+      "tags": [
+        "#رائول_والنبرگ",
+        "#هولوکاست",
+        "#جنگ_جهانی_دوم"
+      ]
+    },
+    "notes": {
+      "proven": "Soviet forces detained Wallenberg in 1945 after his Budapest rescue work",
+      "probable": "he died in Soviet custody",
+      "unknown": "exact death date, circumstances, and surviving records"
+    }
+  },
+  {
+    "id": "owen-parfitt",
+    "title": "The Disappearance of Owen Parfitt",
+    "tags": [
+      "history",
+      "crime",
+      "disappearance"
+    ],
+    "beats": [
+      {
+        "text": "An elderly man vanished from a chair outside his English home.",
+        "visual": "Cinematic documentary reconstruction, a rural home in South Devon, England, in 1763, an elderly man and a wooden chair outside; beat 1 depicts: An elderly man vanished from a chair outside his English home. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Owen Parfitt, disabled and unable to walk independently, sat in South Devon in 1763.",
+        "visual": "Cinematic documentary reconstruction, a rural home in South Devon, England, in 1763, an elderly man and a wooden chair outside; beat 2 depicts: Owen Parfitt, disabled and unable to walk independently, sat in South Devon in 1763. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "His sister went inside briefly and returned to find the chair empty.",
+        "visual": "Cinematic documentary reconstruction, a rural home in South Devon, England, in 1763, an elderly man and a wooden chair outside; beat 3 depicts: His sister went inside briefly and returned to find the chair empty. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No clear footprints or reliable sighting established how he could have left.",
+        "visual": "Cinematic documentary reconstruction, a rural home in South Devon, England, in 1763, an elderly man and a wooden chair outside; beat 4 depicts: No clear footprints or reliable sighting established how he could have left. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Foul play, family involvement, and local folklore shaped later retellings.",
+        "visual": "Cinematic documentary reconstruction, a rural home in South Devon, England, in 1763, an elderly man and a wooden chair outside; beat 5 depicts: Foul play, family involvement, and local folklore shaped later retellings. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No body or conclusive evidence has explained the disappearance.",
+        "visual": "Cinematic documentary reconstruction, a rural home in South Devon, England, in 1763, an elderly man and a wooden chair outside; beat 6 depicts: No body or conclusive evidence has explained the disappearance. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ناپدیدشدن اوون پارفیت",
+      "beats": [
+        "مرد سالخورده‌ای از صندلی بیرون خانه‌اش در انگلستان ناپدید شد.",
+        "اوون پارفیت که ناتوان و بدون کمک قادر به راه‌رفتن نبود، ۱۷۶۳ در دوون جنوبی نشست.",
+        "خواهرش لحظه‌ای داخل رفت و با بازگشت صندلی خالی را دید.",
+        "ردپا یا مشاهده معتبری نشان نداد چگونه توانسته دور شود.",
+        "قتل، دخالت خانواده و افسانه محلی روایت‌های بعدی را شکل دادند.",
+        "هیچ جسد یا مدرک قطعی علت ناپدیدشدن را توضیح نداده است."
+      ],
+      "question": "اوون پارفیت چگونه از کنار خانه‌اش ناپدید شد؟",
+      "tags": [
+        "#اوون_پارفیت",
+        "#ناپدیدشدن",
+        "#تاریخ_جنایی"
+      ]
+    },
+    "notes": {
+      "proven": "Parfitt disappeared from outside his home in 1763",
+      "probable": "another person may have moved him or the chair",
+      "unknown": "destination, motive, and physical sequence"
+    }
+  },
+  {
+    "id": "lost-cosmonauts",
+    "title": "The Lost Cosmonauts Claims",
+    "tags": [
+      "history",
+      "spaceflight",
+      "evidence"
+    ],
+    "beats": [
+      {
+        "text": "Radio enthusiasts claimed to hear dying Soviet cosmonauts before official space missions.",
+        "visual": "Cinematic documentary reconstruction, a Cold War radio-monitoring room with Soviet-era equipment and operators listening for spacecraft; beat 1 depicts: Radio enthusiasts claimed to hear dying Soviet cosmonauts before official space missions. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Italian brothers Achille and Giovanni Judica-Cordiglia recorded signals they linked to secret flights.",
+        "visual": "Cinematic documentary reconstruction, a Cold War radio-monitoring room with Soviet-era equipment and operators listening for spacecraft; beat 2 depicts: Italian brothers Achille and Giovanni Judica-Cordiglia recorded signals they linked to secret flights. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Their tapes included alleged heartbeats, distress calls, and a female voice counting down.",
+        "visual": "Cinematic documentary reconstruction, a Cold War radio-monitoring room with Soviet-era equipment and operators listening for spacecraft; beat 3 depicts: Their tapes included alleged heartbeats, distress calls, and a female voice counting down. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Soviet authorities denied hidden crewed launches and no launch records corroborate the stories.",
+        "visual": "Cinematic documentary reconstruction, a Cold War radio-monitoring room with Soviet-era equipment and operators listening for spacecraft; beat 4 depicts: Soviet authorities denied hidden crewed launches and no launch records corroborate the stories. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Radio interference, misidentification, and later embellishment are plausible alternatives.",
+        "visual": "Cinematic documentary reconstruction, a Cold War radio-monitoring room with Soviet-era equipment and operators listening for spacecraft; beat 5 depicts: Radio interference, misidentification, and later embellishment are plausible alternatives. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No lost cosmonaut has been independently confirmed by archival or physical evidence.",
+        "visual": "Cinematic documentary reconstruction, a Cold War radio-monitoring room with Soviet-era equipment and operators listening for spacecraft; beat 6 depicts: No lost cosmonaut has been independently confirmed by archival or physical evidence. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ادعاهای فضانوردان گمشده",
+      "beats": [
+        "رادیوآماتورها ادعا کردند پیش از مأموریت‌های رسمی صدای فضانوردان در حال مرگ شوروی را شنیده‌اند.",
+        "برادران ایتالیایی آکیله و جووانی جودیکا کوردیلیا سیگنال‌ها را به پروازهای مخفی نسبت دادند.",
+        "نوارها ضربان قلب، پیام اضطراری و صدای زنی در حال شمارش را شامل می‌شدند.",
+        "شوروی پرتاب سرنشین‌دار مخفی را رد کرد و سند پرتابی داستان‌ها را تأیید نکرد.",
+        "تداخل رادیویی، شناسایی نادرست و اغراق بعدی جایگزین‌های محتمل‌اند.",
+        "هیچ فضانورد گمشده‌ای مستقل با بایگانی یا شواهد فیزیکی تأیید نشده است."
+      ],
+      "question": "آیا روایت فضانوردان گمشده شوروی حقیقت دارد؟",
+      "tags": [
+        "#فضانوردان_گمشده",
+        "#جنگ_سرد",
+        "#فضا"
+      ]
+    },
+    "notes": {
+      "proven": "the Judica-Cordiglia brothers recorded unusual radio material",
+      "probable": "recordings were interference, misidentification, or embellished reports",
+      "unknown": "whether any tape contains a real secret mission"
+    }
+  },
+  {
+    "id": "colares-incident",
+    "title": "The Colares UFO Reports",
+    "tags": [
+      "history",
+      "ufo",
+      "witnesses"
+    ],
+    "beats": [
+      {
+        "text": "Residents of a Brazilian island reported luminous objects and unusual injuries.",
+        "visual": "Cinematic documentary reconstruction, the village of Colares, Brazil, in 1977–78, witnesses beneath strange lights at night; beat 1 depicts: Residents of a Brazilian island reported luminous objects and unusual injuries. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "In 1977 and 1978, witnesses in Colares described lights over homes and boats.",
+        "visual": "Cinematic documentary reconstruction, the village of Colares, Brazil, in 1977–78, witnesses beneath strange lights at night; beat 2 depicts: In 1977 and 1978, witnesses in Colares described lights over homes and boats. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Some people claimed beams caused burns, punctures, weakness, or blood loss.",
+        "visual": "Cinematic documentary reconstruction, the village of Colares, Brazil, in 1977–78, witnesses beneath strange lights at night; beat 3 depicts: Some people claimed beams caused burns, punctures, weakness, or blood loss. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Brazilian Air Force investigators interviewed witnesses and collected reports during Operation Saucer.",
+        "visual": "Cinematic documentary reconstruction, the village of Colares, Brazil, in 1977–78, witnesses beneath strange lights at night; beat 4 depicts: Brazilian Air Force investigators interviewed witnesses and collected reports during Operation Saucer. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No physical craft or verified nonhuman cause was established by the investigation.",
+        "visual": "Cinematic documentary reconstruction, the village of Colares, Brazil, in 1977–78, witnesses beneath strange lights at night; beat 5 depicts: No physical craft or verified nonhuman cause was established by the investigation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Natural phenomena, misinterpretation, and an unidentified aerial source remain competing explanations.",
+        "visual": "Cinematic documentary reconstruction, the village of Colares, Brazil, in 1977–78, witnesses beneath strange lights at night; beat 6 depicts: Natural phenomena, misinterpretation, and an unidentified aerial source remain competing explanations. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "گزارش‌های یوفو در کولارس",
+      "beats": [
+        "ساکنان جزیره‌ای برزیلی از اجرام نورانی و جراحت‌های غیرعادی گفتند.",
+        "در ۱۹۷۷ و ۱۹۷۸ شاهدان کولارس نورهایی را بالای خانه‌ها و قایق‌ها توصیف کردند.",
+        "برخی ادعا کردند پرتوها سوختگی، سوراخ، ضعف یا خون‌ریزی ایجاد کرده‌اند.",
+        "نیروی هوایی برزیل در عملیات بشقاب شاهدان را مصاحبه و گزارش‌ها را جمع کرد.",
+        "هیچ وسیله فیزیکی یا علت غیرانسانی تأییدشده‌ای به دست نیامد.",
+        "پدیده طبیعی، برداشت نادرست و منبع هوایی ناشناخته توضیحات رقیب‌اند."
+      ],
+      "question": "گزارش‌های نورها و آسیب‌ها در کولارس چه بودند؟",
+      "tags": [
+        "#کولارس",
+        "#یوفو",
+        "#شاهدان"
+      ]
+    },
+    "notes": {
+      "proven": "Brazilian witnesses reported lights and injuries in Colares in 1977–78",
+      "probable": "the official investigation documented claims but not a confirmed craft",
+      "unknown": "causes of injuries and the lights’ origin"
+    }
+  },
+  {
+    "id": "westall-ufo",
+    "title": "The Westall School Encounter",
+    "tags": [
+      "history",
+      "ufo",
+      "witnesses"
+    ],
+    "beats": [
+      {
+        "text": "Schoolchildren in Melbourne reported a disc-shaped object landing near their school.",
+        "visual": "Cinematic documentary reconstruction, the Westall school grounds near Melbourne in 1966, schoolchildren and teachers looking at the sky; beat 1 depicts: Schoolchildren in Melbourne reported a disc-shaped object landing near their school. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "On April 6, 1966, students and teachers at Westall High saw an unusual object descend.",
+        "visual": "Cinematic documentary reconstruction, the Westall school grounds near Melbourne in 1966, schoolchildren and teachers looking at the sky; beat 2 depicts: On April 6, 1966, students and teachers at Westall High saw an unusual object descend. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Witnesses described a silver or gray craft near a grassy reserve and a fenced military area.",
+        "visual": "Cinematic documentary reconstruction, the Westall school grounds near Melbourne in 1966, schoolchildren and teachers looking at the sky; beat 3 depicts: Witnesses described a silver or gray craft near a grassy reserve and a fenced military area. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Accounts differed about its shape, duration, and whether officials restricted discussion.",
+        "visual": "Cinematic documentary reconstruction, the Westall school grounds near Melbourne in 1966, schoolchildren and teachers looking at the sky; beat 4 depicts: Accounts differed about its shape, duration, and whether officials restricted discussion. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No recovered object or official explanation has resolved the event.",
+        "visual": "Cinematic documentary reconstruction, the Westall school grounds near Melbourne in 1966, schoolchildren and teachers looking at the sky; beat 5 depicts: No recovered object or official explanation has resolved the event. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Aircraft, balloons, memory changes, and an unknown aerial object remain possible.",
+        "visual": "Cinematic documentary reconstruction, the Westall school grounds near Melbourne in 1966, schoolchildren and teachers looking at the sky; beat 6 depicts: Aircraft, balloons, memory changes, and an unknown aerial object remain possible. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "رویارویی با یوفو در مدرسه وستال",
+      "beats": [
+        "دانش‌آموزان ملبورن از فرود جرمی دیسک‌مانند نزدیک مدرسه گفتند.",
+        "۶ آوریل ۱۹۶۶ دانش‌آموزان و معلمان دبیرستان وستال شیئی غیرعادی را دیدند.",
+        "شاهدان وسیله‌ای نقره‌ای یا خاکستری را نزدیک زمین چمن و محدوده نظامی محصور توصیف کردند.",
+        "گزارش‌ها درباره شکل، مدت و محدودکردن گفت‌وگو توسط مقام‌ها متفاوت بود.",
+        "هیچ شیء بازیابی‌شده یا توضیح رسمی پرونده را نبسته است.",
+        "هواپیما، بالن، تغییر خاطره و جرم هوایی ناشناخته ممکن‌اند."
+      ],
+      "question": "در مدرسه وستال در سال ۱۹۶۶ چه چیزی دیده شد؟",
+      "tags": [
+        "#وستال",
+        "#یوفو",
+        "#استرالیا"
+      ]
+    },
+    "notes": {
+      "proven": "multiple witnesses reported an unusual aerial event at Westall in 1966",
+      "probable": "an ordinary aircraft or balloon may explain some observations",
+      "unknown": "object identity and exact event sequence"
+    }
+  },
+  {
+    "id": "tehran-ufo",
+    "title": "The 1976 Tehran UFO Incident",
+    "tags": [
+      "history",
+      "ufo",
+      "aviation"
+    ],
+    "beats": [
+      {
+        "text": "Two Iranian jets pursued a bright object that reportedly disrupted their instruments.",
+        "visual": "Cinematic documentary reconstruction, the night sky over Tehran in 1976, military jets and a bright unexplained aerial object; beat 1 depicts: Two Iranian jets pursued a bright object that reportedly disrupted their instruments. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "On September 19, 1976, civilians and military personnel saw lights over Tehran.",
+        "visual": "Cinematic documentary reconstruction, the night sky over Tehran in 1976, military jets and a bright unexplained aerial object; beat 2 depicts: On September 19, 1976, civilians and military personnel saw lights over Tehran. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "An F-4 pilot reported a large luminous object and attempted an intercept.",
+        "visual": "Cinematic documentary reconstruction, the night sky over Tehran in 1976, military jets and a bright unexplained aerial object; beat 3 depicts: An F-4 pilot reported a large luminous object and attempted an intercept. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Accounts said weapons and communications failed when the jet approached.",
+        "visual": "Cinematic documentary reconstruction, the night sky over Tehran in 1976, military jets and a bright unexplained aerial object; beat 4 depicts: Accounts said weapons and communications failed when the jet approached. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "United States diplomatic cables preserved the pilots’ reports but no physical evidence.",
+        "visual": "Cinematic documentary reconstruction, the night sky over Tehran in 1976, military jets and a bright unexplained aerial object; beat 5 depicts: United States diplomatic cables preserved the pilots’ reports but no physical evidence. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Satellite, aircraft, atmospheric, and misperception explanations remain debated.",
+        "visual": "Cinematic documentary reconstruction, the night sky over Tehran in 1976, military jets and a bright unexplained aerial object; beat 6 depicts: Satellite, aircraft, atmospheric, and misperception explanations remain debated. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "رویداد یوفوی تهران در سال ۱۹۷۶",
+      "beats": [
+        "دو جنگنده ایرانی شیئی روشن را دنبال کردند که ظاهراً ابزارشان را مختل کرد.",
+        "۱۹ سپتامبر ۱۹۷۶ غیرنظامیان و نظامیان نورهایی بالای تهران دیدند.",
+        "خلبان اف‌۴ از جرم نورانی بزرگی گفت و برای رهگیری نزدیک شد.",
+        "گزارش‌ها می‌گفتند با نزدیک‌شدن جنگنده، سلاح و ارتباطات از کار افتادند.",
+        "کابل‌های دیپلماتیک آمریکا گزارش خلبانان را حفظ کردند، اما مدرک فیزیکی وجود ندارد.",
+        "ماهواره، هواپیما، جو و برداشت نادرست توضیحات مورد بحث‌اند."
+      ],
+      "question": "شیء درخشان آسمان تهران در سال ۱۹۷۶ چه بود؟",
+      "tags": [
+        "#یوفو",
+        "#تهران",
+        "#هوانوردی"
+      ]
+    },
+    "notes": {
+      "proven": "pilots reported a bright aerial object over Tehran in 1976",
+      "probable": "some observations may have involved ordinary aircraft or astronomical objects",
+      "unknown": "object identity and reported instrument effects"
+    }
+  },
+  {
+    "id": "belgian-ufo-wave",
+    "title": "The Belgian UFO Wave",
+    "tags": [
+      "history",
+      "ufo",
+      "witnesses"
+    ],
+    "beats": [
+      {
+        "text": "Triangular lights were reported across Belgium during a sustained wave of sightings.",
+        "visual": "Cinematic documentary reconstruction, Belgium during the 1989–90 UFO wave, witnesses, a night sky, and radar operators; beat 1 depicts: Triangular lights were reported across Belgium during a sustained wave of sightings. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "From late 1989 into 1990, civilians described large silent shapes with bright lights.",
+        "visual": "Cinematic documentary reconstruction, Belgium during the 1989–90 UFO wave, witnesses, a night sky, and radar operators; beat 2 depicts: From late 1989 into 1990, civilians described large silent shapes with bright lights. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Police officers and military personnel joined the reports, increasing public attention.",
+        "visual": "Cinematic documentary reconstruction, Belgium during the 1989–90 UFO wave, witnesses, a night sky, and radar operators; beat 3 depicts: Police officers and military personnel joined the reports, increasing public attention. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "An F-16 mission recorded radar contacts but failed to obtain clear visual identification.",
+        "visual": "Cinematic documentary reconstruction, Belgium during the 1989–90 UFO wave, witnesses, a night sky, and radar operators; beat 4 depicts: An F-16 mission recorded radar contacts but failed to obtain clear visual identification. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "A famous photograph was later exposed as a model, not proof of the whole wave.",
+        "visual": "Cinematic documentary reconstruction, Belgium during the 1989–90 UFO wave, witnesses, a night sky, and radar operators; beat 5 depicts: A famous photograph was later exposed as a model, not proof of the whole wave. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Aircraft, misidentification, hoaxes, and unexplained observations remain difficult to separate.",
+        "visual": "Cinematic documentary reconstruction, Belgium during the 1989–90 UFO wave, witnesses, a night sky, and radar operators; beat 6 depicts: Aircraft, misidentification, hoaxes, and unexplained observations remain difficult to separate. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "موج یوفو در بلژیک",
+      "beats": [
+        "در موجی طولانی در بلژیک، نورهای مثلثی در سراسر کشور گزارش شدند.",
+        "از اواخر ۱۹۸۹ تا ۱۹۹۰ غیرنظامیان شکل‌های بزرگ و بی‌صدا با چراغ‌های روشن را توصیف کردند.",
+        "پلیس و نظامیان نیز گزارش دادند و توجه عمومی افزایش یافت.",
+        "مأموریت اف‌۱۶ تماس‌های راداری ثبت کرد، اما شناسایی دیداری روشنی به دست نیاورد.",
+        "عکس مشهور بعداً مدل ساختگی از آب درآمد و کل موج را ثابت نکرد.",
+        "هواپیما، اشتباه دیداری، جعل و مشاهدات حل‌نشده از هم جداشدنی نیستند."
+      ],
+      "question": "موج یوفو در بلژیک چگونه توضیح داده می‌شود؟",
+      "tags": [
+        "#یوفو",
+        "#بلژیک",
+        "#رادار"
+      ]
+    },
+    "notes": {
+      "proven": "Belgium experienced many reported sightings from 1989 to 1990",
+      "probable": "ordinary aircraft, perception errors, and hoaxes explain some cases",
+      "unknown": "the cause of the strongest reports and radar returns"
+    }
+  },
+  {
+    "id": "lubbock-lights",
+    "title": "The Lubbock Lights",
+    "tags": [
+      "history",
+      "ufo",
+      "astronomy"
+    ],
+    "beats": [
+      {
+        "text": "Citizens and professors saw a formation of lights cross the Texas night sky.",
+        "visual": "Cinematic documentary reconstruction, Lubbock, Texas, in 1951, a dark suburban street and a curved formation of lights overhead; beat 1 depicts: Citizens and professors saw a formation of lights cross the Texas night sky. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "In August 1951, witnesses in Lubbock described a sweeping V-shaped group of lights.",
+        "visual": "Cinematic documentary reconstruction, Lubbock, Texas, in 1951, a dark suburban street and a curved formation of lights overhead; beat 2 depicts: In August 1951, witnesses in Lubbock described a sweeping V-shaped group of lights. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Photographer Carl Hart captured images that became central to the investigation.",
+        "visual": "Cinematic documentary reconstruction, Lubbock, Texas, in 1951, a dark suburban street and a curved formation of lights overhead; beat 3 depicts: Photographer Carl Hart captured images that became central to the investigation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Air Force analysts considered birds reflecting city lights, but witnesses rejected that explanation.",
+        "visual": "Cinematic documentary reconstruction, Lubbock, Texas, in 1951, a dark suburban street and a curved formation of lights overhead; beat 4 depicts: Air Force analysts considered birds reflecting city lights, but witnesses rejected that explanation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No aircraft or craft was conclusively matched to every observation.",
+        "visual": "Cinematic documentary reconstruction, Lubbock, Texas, in 1951, a dark suburban street and a curved formation of lights overhead; beat 5 depicts: No aircraft or craft was conclusively matched to every observation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The lights may have been plovers, aircraft, or an unidentified formation.",
+        "visual": "Cinematic documentary reconstruction, Lubbock, Texas, in 1951, a dark suburban street and a curved formation of lights overhead; beat 6 depicts: The lights may have been plovers, aircraft, or an unidentified formation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "نورهای لوباک",
+      "beats": [
+        "شهروندان و استادان حرکت آرایش نورها را در آسمان شب تگزاس دیدند.",
+        "اوت ۱۹۵۱ شاهدان لوباک گروهی نور را به شکل وی توصیف کردند.",
+        "عکاس کارل هارت تصاویری گرفت که محور بررسی شد.",
+        "تحلیلگران نیروی هوایی پرندگان بازتاب‌دهنده نور شهر را مطرح کردند، اما شاهدان نپذیرفتند.",
+        "هیچ هواپیما یا وسیله‌ای با همه مشاهدات به‌طور قطعی تطبیق نیافت.",
+        "نورها شاید پرنده، هواپیما یا آرایشی ناشناخته بوده باشند."
+      ],
+      "question": "نورهای لوباک در سال ۱۹۵۱ چه بودند؟",
+      "tags": [
+        "#نورهای_لوباک",
+        "#یوفو",
+        "#نجوم"
+      ]
+    },
+    "notes": {
+      "proven": "multiple Lubbock witnesses and photographs recorded lights in 1951",
+      "probable": "birds or aircraft may explain the formation",
+      "unknown": "exact source of every light and photograph"
+    }
+  },
+  {
+    "id": "min-min-lights",
+    "title": "The Min Min Lights",
+    "tags": [
+      "history",
+      "folklore",
+      "optics"
+    ],
+    "beats": [
+      {
+        "text": "Travelers across Australian outback report lights that seem to follow them.",
+        "visual": "Cinematic documentary reconstruction, the Australian outback at night, a lone traveler facing a distant floating light on the horizon; beat 1 depicts: Travelers across Australian outback report lights that seem to follow them. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Min Min lights are named after a Queensland hotel where reports intensified in the twentieth century.",
+        "visual": "Cinematic documentary reconstruction, the Australian outback at night, a lone traveler facing a distant floating light on the horizon; beat 2 depicts: Min Min lights are named after a Queensland hotel where reports intensified in the twentieth century. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Witnesses describe glowing orbs near the horizon that change distance and direction.",
+        "visual": "Cinematic documentary reconstruction, the Australian outback at night, a lone traveler facing a distant floating light on the horizon; beat 3 depicts: Witnesses describe glowing orbs near the horizon that change distance and direction. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Atmospheric refraction can make distant headlights or campfires appear displaced and mobile.",
+        "visual": "Cinematic documentary reconstruction, the Australian outback at night, a lone traveler facing a distant floating light on the horizon; beat 4 depicts: Atmospheric refraction can make distant headlights or campfires appear displaced and mobile. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Folklore adds stories of spirits, while no instrument has established a single source.",
+        "visual": "Cinematic documentary reconstruction, the Australian outback at night, a lone traveler facing a distant floating light on the horizon; beat 5 depicts: Folklore adds stories of spirits, while no instrument has established a single source. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The phenomenon may combine optical effects, vehicles, and cultural storytelling.",
+        "visual": "Cinematic documentary reconstruction, the Australian outback at night, a lone traveler facing a distant floating light on the horizon; beat 6 depicts: The phenomenon may combine optical effects, vehicles, and cultural storytelling. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "نورهای مین‌مین",
+      "beats": [
+        "مسافران بیابان استرالیا از نورهایی می‌گویند که انگار دنبالشان می‌آیند.",
+        "نام نورهای مین‌مین از هتلی در کوئینزلند آمده که گزارش‌ها در قرن بیستم آنجا بیشتر شد.",
+        "شاهدان گوی‌های نورانی نزدیک افق را توصیف می‌کنند که فاصله و جهت عوض می‌کنند.",
+        "شکست نور در جو می‌تواند چراغ خودرو یا آتش دور را جابه‌جا و متحرک نشان دهد.",
+        "افسانه‌ها ارواح را اضافه کرده‌اند، اما ابزارها منبع واحدی ثابت نکرده‌اند.",
+        "این پدیده شاید ترکیبی از اپتیک، خودرو و روایت فرهنگی باشد."
+      ],
+      "question": "نورهای مین‌مین استرالیا از کجا می‌آیند؟",
+      "tags": [
+        "#نورهای_مین_مین",
+        "#فولکلور",
+        "#اپتیک"
+      ]
+    },
+    "notes": {
+      "proven": "recurring reports of distant lights exist in Australian outback lore",
+      "probable": "atmospheric refraction and distant lights explain many sightings",
+      "unknown": "cause of every reported event"
+    }
+  },
+  {
+    "id": "black-knight-satellite",
+    "title": "The Black Knight Satellite Claim",
+    "tags": [
+      "science",
+      "space",
+      "misidentification"
+    ],
+    "beats": [
+      {
+        "text": "A dark object in orbit became a legend about an ancient alien satellite.",
+        "visual": "Cinematic documentary reconstruction, low Earth orbit in 1998, a space shuttle and a dark piece of thermal material drifting against Earth; beat 1 depicts: A dark object in orbit became a legend about an ancient alien satellite. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Photographs from a 1998 shuttle mission showed a black thermal-cover fragment near the station.",
+        "visual": "Cinematic documentary reconstruction, low Earth orbit in 1998, a space shuttle and a dark piece of thermal material drifting against Earth; beat 2 depicts: Photographs from a 1998 shuttle mission showed a black thermal-cover fragment near the station. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Older stories were later linked to Nikola Tesla signals and a 1920s long-delay radio echo.",
+        "visual": "Cinematic documentary reconstruction, low Earth orbit in 1998, a space shuttle and a dark piece of thermal material drifting against Earth; beat 3 depicts: Older stories were later linked to Nikola Tesla signals and a 1920s long-delay radio echo. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "NASA identified the photographed object as lost insulation or debris during assembly work.",
+        "visual": "Cinematic documentary reconstruction, low Earth orbit in 1998, a space shuttle and a dark piece of thermal material drifting against Earth; beat 4 depicts: NASA identified the photographed object as lost insulation or debris during assembly work. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The separate historical reports do not provide evidence for one ancient spacecraft.",
+        "visual": "Cinematic documentary reconstruction, low Earth orbit in 1998, a space shuttle and a dark piece of thermal material drifting against Earth; beat 5 depicts: The separate historical reports do not provide evidence for one ancient spacecraft. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The mystery persists because unrelated observations were combined into a single narrative.",
+        "visual": "Cinematic documentary reconstruction, low Earth orbit in 1998, a space shuttle and a dark piece of thermal material drifting against Earth; beat 6 depicts: The mystery persists because unrelated observations were combined into a single narrative. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ادعای ماهواره شوالیه سیاه",
+      "beats": [
+        "جرمی تاریک در مدار به افسانه ماهواره‌ای بیگانه و باستانی تبدیل شد.",
+        "عکس‌های مأموریت شاتل در ۱۹۹۸ قطعه‌ای سیاه از پوشش حرارتی را نزدیک ایستگاه نشان دادند.",
+        "داستان‌های قدیمی‌تر بعدها به سیگنال‌های نیکولا تسلا و پژواک رادیویی دیررس پیوند خوردند.",
+        "ناسا شیء عکس‌برداری‌شده را عایق یا زباله گمشده هنگام کار مونتاژ دانست.",
+        "گزارش‌های جداگانه مدرکی برای یک فضاپیمای باستانی نمی‌دهند.",
+        "راز ماندگار است چون مشاهده‌های نامرتبط در روایتی واحد جمع شدند."
+      ],
+      "question": "ادعای ماهواره شوالیه سیاه بر چه شواهدی استوار است؟",
+      "tags": [
+        "#ماهواره_شوالیه_سیاه",
+        "#فضا",
+        "#افسانه"
+      ]
+    },
+    "notes": {
+      "proven": "the 1998 photograph showed an object near the shuttle or station",
+      "probable": "it was a piece of thermal material or orbital debris",
+      "unknown": "identities of earlier radio or sky observations"
+    }
+  },
+  {
+    "id": "shgb02-signal",
+    "title": "SHGb02+14a: A Brief SETI Candidate",
+    "tags": [
+      "science",
+      "astronomy",
+      "search-for-life"
+    ],
+    "beats": [
+      {
+        "text": "A weak radio source briefly appeared in a SETI data analysis and drew attention.",
+        "visual": "Cinematic documentary reconstruction, the Arecibo Observatory in 2004, a radio telescope under a star-filled sky and a focused observing team; beat 1 depicts: A weak radio source briefly appeared in a SETI data analysis and drew attention. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "SHGb02+14a was reported in 2004 from observations by the Arecibo telescope.",
+        "visual": "Cinematic documentary reconstruction, the Arecibo Observatory in 2004, a radio telescope under a star-filled sky and a focused observing team; beat 2 depicts: SHGb02+14a was reported in 2004 from observations by the Arecibo telescope. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its signal was near the hydrogen frequency but drifted unusually and lacked a stable source.",
+        "visual": "Cinematic documentary reconstruction, the Arecibo Observatory in 2004, a radio telescope under a star-filled sky and a focused observing team; beat 3 depicts: Its signal was near the hydrogen frequency but drifted unusually and lacked a stable source. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Repeat observations did not reproduce the event as a credible artificial transmission.",
+        "visual": "Cinematic documentary reconstruction, the Arecibo Observatory in 2004, a radio telescope under a star-filled sky and a focused observing team; beat 4 depicts: Repeat observations did not reproduce the event as a credible artificial transmission. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Interference, a satellite, or an unrecognized astronomical source were proposed.",
+        "visual": "Cinematic documentary reconstruction, the Arecibo Observatory in 2004, a radio telescope under a star-filled sky and a focused observing team; beat 5 depicts: Interference, a satellite, or an unrecognized astronomical source were proposed. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No evidence connects it to an extraterrestrial civilization.",
+        "visual": "Cinematic documentary reconstruction, the Arecibo Observatory in 2004, a radio telescope under a star-filled sky and a focused observing team; beat 6 depicts: No evidence connects it to an extraterrestrial civilization. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "نامزد کوتاه جست‌وجوی حیات: SHGb02+14a",
+      "beats": [
+        "منبع رادیویی ضعیفی در تحلیل داده ست‌ای کوتاه ظاهر شد و توجه گرفت.",
+        "اس‌اچ‌جی‌بی۰۲+۱۴ای در ۲۰۰۴ از رصدهای تلسکوپ آرسیبو گزارش شد.",
+        "سیگنال نزدیک فرکانس هیدروژن بود، اما غیرعادی تغییر می‌کرد و منبع پایدار نداشت.",
+        "رصدهای تکراری آن را به‌عنوان انتقال مصنوعی معتبر تکرار نکردند.",
+        "تداخل، ماهواره یا منبع نجومی ناشناخته پیشنهاد شدند.",
+        "هیچ مدرکی آن را به تمدن فرازمینی پیوند نمی‌دهد."
+      ],
+      "question": "سیگنال SHGb02+14a از کجا آمد؟",
+      "tags": [
+        "#جستجوی_حیات_هوشمند",
+        "#رادیوتلسکوپ",
+        "#سیگنال_رادیویی"
+      ]
+    },
+    "notes": {
+      "proven": "Arecibo data included a brief unusual candidate in 2004",
+      "probable": "interference or an ordinary source explains it",
+      "unknown": "precise source of the transient signal"
+    }
+  },
+  {
+    "id": "planet-nine",
+    "title": "Planet Nine: A Hypothetical Outer World",
+    "tags": [
+      "science",
+      "astronomy",
+      "solar-system"
+    ],
+    "beats": [
+      {
+        "text": "Distant icy bodies appear to share orbital alignments that suggest a hidden planet.",
+        "visual": "Cinematic documentary reconstruction, the distant outer Solar System, icy trans-Neptunian bodies tracing unusual orbits in deep space; beat 1 depicts: Distant icy bodies appear to share orbital alignments that suggest a hidden planet. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Caltech researchers proposed Planet Nine in 2016 from the clustering of trans-Neptunian orbits.",
+        "visual": "Cinematic documentary reconstruction, the distant outer Solar System, icy trans-Neptunian bodies tracing unusual orbits in deep space; beat 2 depicts: Caltech researchers proposed Planet Nine in 2016 from the clustering of trans-Neptunian orbits. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "A planet several Earth masses far beyond Neptune could gravitationally sculpt those paths.",
+        "visual": "Cinematic documentary reconstruction, the distant outer Solar System, icy trans-Neptunian bodies tracing unusual orbits in deep space; beat 3 depicts: A planet several Earth masses far beyond Neptune could gravitationally sculpt those paths. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Searches have surveyed large portions of the sky but have not found the predicted object.",
+        "visual": "Cinematic documentary reconstruction, the distant outer Solar System, icy trans-Neptunian bodies tracing unusual orbits in deep space; beat 4 depicts: Searches have surveyed large portions of the sky but have not found the predicted object. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Observational bias and small-number statistics may create the apparent alignment.",
+        "visual": "Cinematic documentary reconstruction, the distant outer Solar System, icy trans-Neptunian bodies tracing unusual orbits in deep space; beat 5 depicts: Observational bias and small-number statistics may create the apparent alignment. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Whether Planet Nine exists, and where it might be, remain open questions.",
+        "visual": "Cinematic documentary reconstruction, the distant outer Solar System, icy trans-Neptunian bodies tracing unusual orbits in deep space; beat 6 depicts: Whether Planet Nine exists, and where it might be, remain open questions. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "سیاره نهم: جهانی فرضی در حاشیه منظومه",
+      "beats": [
+        "به نظر می‌رسد اجرام یخی دوردست هم‌راستایی مداری دارند که سیاره‌ای پنهان را پیشنهاد می‌کند.",
+        "پژوهشگران کلتک در ۲۰۱۶ سیاره نه را بر پایه خوشه‌بندی مدارهای فرانپتونی مطرح کردند.",
+        "سیاره‌ای چند برابر زمین بسیار دورتر از نپتون می‌تواند این مسیرها را گرانشی شکل دهد.",
+        "جست‌وجوها بخش بزرگی از آسمان را بررسی کرده‌اند، اما جرم پیش‌بینی‌شده پیدا نشده است.",
+        "سوگیری رصدی و آمار کم‌نمونه شاید هم‌راستایی ظاهری بسازند.",
+        "وجود سیاره نه و مکان احتمالی آن هنوز پرسش باز است."
+      ],
+      "question": "آیا سیاره نهم واقعاً وجود دارد؟",
+      "tags": [
+        "#سیاره_نهم",
+        "#منظومه_شمسی",
+        "#نجوم"
+      ]
+    },
+    "notes": {
+      "proven": "some distant trans-Neptunian orbits show an unusual apparent clustering",
+      "probable": "observational bias or a distant planet could contribute",
+      "unknown": "existence, mass, and location of Planet Nine"
+    }
+  },
+  {
+    "id": "dark-flow",
+    "title": "The Dark Flow Claim",
+    "tags": [
+      "science",
+      "cosmology",
+      "galaxies"
+    ],
+    "beats": [
+      {
+        "text": "Clusters of galaxies were reported to share a motion too large for simple models.",
+        "visual": "Cinematic documentary reconstruction, a distant galaxy cluster field and a cosmological map of large-scale motion across the universe; beat 1 depicts: Clusters of galaxies were reported to share a motion too large for simple models. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Using cosmic microwave background data, researchers claimed a coherent flow in 2008.",
+        "visual": "Cinematic documentary reconstruction, a distant galaxy cluster field and a cosmological map of large-scale motion across the universe; beat 2 depicts: Using cosmic microwave background data, researchers claimed a coherent flow in 2008. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The proposed motion pointed beyond the observable survey volume and gained a dramatic name.",
+        "visual": "Cinematic documentary reconstruction, a distant galaxy cluster field and a cosmological map of large-scale motion across the universe; beat 3 depicts: The proposed motion pointed beyond the observable survey volume and gained a dramatic name. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Later analyses with improved data questioned its statistical significance and measurement method.",
+        "visual": "Cinematic documentary reconstruction, a distant galaxy cluster field and a cosmological map of large-scale motion across the universe; beat 4 depicts: Later analyses with improved data questioned its statistical significance and measurement method. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Instrument calibration, foreground contamination, and sample selection affect the result.",
+        "visual": "Cinematic documentary reconstruction, a distant galaxy cluster field and a cosmological map of large-scale motion across the universe; beat 5 depicts: Instrument calibration, foreground contamination, and sample selection affect the result. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No consensus confirms a real bulk flow requiring physics beyond standard cosmology.",
+        "visual": "Cinematic documentary reconstruction, a distant galaxy cluster field and a cosmological map of large-scale motion across the universe; beat 6 depicts: No consensus confirms a real bulk flow requiring physics beyond standard cosmology. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ادعای جریان تاریک",
+      "beats": [
+        "گزارش شد خوشه‌های کهکشانی حرکتی مشترک و بزرگ‌تر از مدل‌های ساده دارند.",
+        "پژوهشگران در ۲۰۰۸ با داده زمینه کیهانی جریان هماهنگی را مطرح کردند.",
+        "حرکت پیشنهادی فراتر از حجم قابل‌رصد اشاره داشت و نامی dramatic گرفت.",
+        "تحلیل‌های بعدی با داده بهتر اهمیت آماری و روش اندازه‌گیری را زیر سؤال بردند.",
+        "کالیبراسیون ابزار، آلودگی پیش‌زمینه و انتخاب نمونه بر نتیجه اثر دارند.",
+        "اجماعی برای جریان واقعی نیازمند فیزیک فراتر از کیهان‌شناسی استاندارد وجود ندارد."
+      ],
+      "question": "آیا جریان تاریک یک حرکت کیهانی واقعی است؟",
+      "tags": [
+        "#جریان_تاریک",
+        "#کیهان‌شناسی",
+        "#کهکشان‌ها"
+      ]
+    },
+    "notes": {
+      "proven": "an early analysis reported a coherent cluster motion",
+      "probable": "data systematics and foregrounds may explain the claim",
+      "unknown": "whether any statistically robust large-scale flow remains"
+    }
+  },
+  {
+    "id": "kbc-void",
+    "title": "The KBC Void and the Local Hubble Rate",
+    "tags": [
+      "science",
+      "cosmology",
+      "galaxies"
+    ],
+    "beats": [
+      {
+        "text": "Our galaxy may sit inside an unusually underdense region of the universe.",
+        "visual": "Cinematic documentary reconstruction, the local cosmic neighborhood around the Milky Way, galaxies thinning into a broad underdense region; beat 1 depicts: Our galaxy may sit inside an unusually underdense region of the universe. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The proposed KBC void was inferred from local galaxy counts and distance measurements.",
+        "visual": "Cinematic documentary reconstruction, the local cosmic neighborhood around the Milky Way, galaxies thinning into a broad underdense region; beat 2 depicts: The proposed KBC void was inferred from local galaxy counts and distance measurements. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "An underdensity could make nearby expansion appear faster than the cosmic average.",
+        "visual": "Cinematic documentary reconstruction, the local cosmic neighborhood around the Milky Way, galaxies thinning into a broad underdense region; beat 3 depicts: An underdensity could make nearby expansion appear faster than the cosmic average. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "It has been discussed as one possible contributor to the Hubble tension.",
+        "visual": "Cinematic documentary reconstruction, the local cosmic neighborhood around the Milky Way, galaxies thinning into a broad underdense region; beat 4 depicts: It has been discussed as one possible contributor to the Hubble tension. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Galaxy surveys disagree on the void’s size, depth, and whether it is statistically unusual.",
+        "visual": "Cinematic documentary reconstruction, the local cosmic neighborhood around the Milky Way, galaxies thinning into a broad underdense region; beat 5 depicts: Galaxy surveys disagree on the void’s size, depth, and whether it is statistically unusual. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The local environment’s role in cosmic expansion remains unsettled.",
+        "visual": "Cinematic documentary reconstruction, the local cosmic neighborhood around the Milky Way, galaxies thinning into a broad underdense region; beat 6 depicts: The local environment’s role in cosmic expansion remains unsettled. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "حفره KBC و نرخ محلی هابل",
+      "beats": [
+        "ممکن است کهکشان ما در ناحیه‌ای کم‌چگال و غیرعادی از جهان باشد.",
+        "حفره کی‌بی‌سی از شمارش کهکشان‌های محلی و اندازه‌گیری فاصله‌ها پیشنهاد شد.",
+        "کم‌چگالی می‌تواند انبساط نزدیک را سریع‌تر از میانگین کیهانی نشان دهد.",
+        "این ایده یکی از توضیحات احتمالی تنش هابل دانسته شده است.",
+        "بررسی‌های کهکشانی درباره اندازه، عمق و غیرعادی‌بودن آماری حفره اختلاف دارند.",
+        "نقش محیط محلی در انبساط کیهانی حل نشده است."
+      ],
+      "question": "آیا منظومه ما در حفره KBC قرار دارد؟",
+      "tags": [
+        "#حفره_کیهانی",
+        "#کیهان‌شناسی",
+        "#نرخ_هابل"
+      ]
+    },
+    "notes": {
+      "proven": "local galaxy surveys show structure and expansion measurements with environmental dependence",
+      "probable": "local underdensity may affect some distance estimates",
+      "unknown": "the KBC void’s true size and role in the Hubble tension"
+    }
+  },
+  {
+    "id": "cmb-axis-evil",
+    "title": "The CMB Axis of Evil",
+    "tags": [
+      "science",
+      "cosmology",
+      "observation"
+    ],
+    "beats": [
+      {
+        "text": "Large-scale microwave patterns seem aligned in a way standard cosmology did not predict.",
+        "visual": "Cinematic documentary reconstruction, a full-sky cosmic microwave background map rendered as colored low-order patterns in a scientific visualization; beat 1 depicts: Large-scale microwave patterns seem aligned in a way standard cosmology did not predict. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Analyses of cosmic microwave background maps found preferred directions in low multipoles.",
+        "visual": "Cinematic documentary reconstruction, a full-sky cosmic microwave background map rendered as colored low-order patterns in a scientific visualization; beat 2 depicts: Analyses of cosmic microwave background maps found preferred directions in low multipoles. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The nickname “Axis of Evil” refers to an apparent alignment near the ecliptic plane.",
+        "visual": "Cinematic documentary reconstruction, a full-sky cosmic microwave background map rendered as colored low-order patterns in a scientific visualization; beat 3 depicts: The nickname “Axis of Evil” refers to an apparent alignment near the ecliptic plane. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Foreground emission, map-making choices, and a posteriori selection can create anomalies.",
+        "visual": "Cinematic documentary reconstruction, a full-sky cosmic microwave background map rendered as colored low-order patterns in a scientific visualization; beat 4 depicts: Foreground emission, map-making choices, and a posteriori selection can create anomalies. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Different data releases and statistical tests have weakened or reshaped the significance.",
+        "visual": "Cinematic documentary reconstruction, a full-sky cosmic microwave background map rendered as colored low-order patterns in a scientific visualization; beat 5 depicts: Different data releases and statistical tests have weakened or reshaped the significance. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "It remains unclear whether the alignment is chance, contamination, or new cosmology.",
+        "visual": "Cinematic documentary reconstruction, a full-sky cosmic microwave background map rendered as colored low-order patterns in a scientific visualization; beat 6 depicts: It remains unclear whether the alignment is chance, contamination, or new cosmology. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "محور شر در تابش زمینه کیهانی",
+      "beats": [
+        "الگوهای بزرگ‌مقیاس مایکروویو ظاهراً به شکلی هم‌راستا هستند که کیهان‌شناسی استاندارد پیش‌بینی نمی‌کند.",
+        "تحلیل نقشه‌های زمینه کیهانی در چند مؤلفه کم‌مرتبه جهت‌های ترجیحی یافت.",
+        "نام «محور شر» به هم‌راستایی ظاهری نزدیک صفحه دایرةالبروج اشاره دارد.",
+        "تابش پیش‌زمینه، انتخاب روش نقشه‌سازی و گزینش پسینی می‌تواند ناهنجاری بسازد.",
+        "داده‌ها و آزمون‌های آماری متفاوت اهمیت ادعا را کاهش یا تغییر داده‌اند.",
+        "هنوز معلوم نیست تصادف، آلودگی یا کیهان‌شناسی جدید است."
+      ],
+      "question": "آیا هم‌راستایی موسوم به محور شر در تابش کیهانی معنادار است؟",
+      "tags": [
+        "#تابش_زمینه_کیهانی",
+        "#کیهان‌شناسی",
+        "#رصد"
+      ]
+    },
+    "notes": {
+      "proven": "some CMB map statistics show unusual low-order alignments",
+      "probable": "foregrounds, processing, or look-elsewhere effects contribute",
+      "unknown": "whether any alignment is cosmologically meaningful"
+    }
+  }
+]
