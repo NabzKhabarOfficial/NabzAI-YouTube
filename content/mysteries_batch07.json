@@ -1,0 +1,857 @@
+[
+  {
+    "id": "amazon-geoglyphs",
+    "title": "The Amazonian Geoglyphs",
+    "tags": [
+      "history",
+      "archaeology",
+      "landscape"
+    ],
+    "beats": [
+      {
+        "text": "Large geometric earthworks were hidden beneath rainforest for centuries.",
+        "visual": "Cinematic documentary reconstruction, the Brazilian Amazon seen from above, geometric earthworks and circular plazas emerging through rainforest; beat 1 depicts: Large geometric earthworks were hidden beneath rainforest for centuries. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Satellite images and deforestation revealed hundreds of ditches and enclosed plazas in Brazil.",
+        "visual": "Cinematic documentary reconstruction, the Brazilian Amazon seen from above, geometric earthworks and circular plazas emerging through rainforest; beat 2 depicts: Satellite images and deforestation revealed hundreds of ditches and enclosed plazas in Brazil. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The geoglyphs date mainly to the first millennium CE and required organized labor.",
+        "visual": "Cinematic documentary reconstruction, the Brazilian Amazon seen from above, geometric earthworks and circular plazas emerging through rainforest; beat 3 depicts: The geoglyphs date mainly to the first millennium CE and required organized labor. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Some enclosures align with roads, settlements, and raised fields in a managed landscape.",
+        "visual": "Cinematic documentary reconstruction, the Brazilian Amazon seen from above, geometric earthworks and circular plazas emerging through rainforest; beat 4 depicts: Some enclosures align with roads, settlements, and raised fields in a managed landscape. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Ceremonial gatherings, defense, astronomy, and social boundaries are proposed functions.",
+        "visual": "Cinematic documentary reconstruction, the Brazilian Amazon seen from above, geometric earthworks and circular plazas emerging through rainforest; beat 5 depicts: Ceremonial gatherings, defense, astronomy, and social boundaries are proposed functions. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "How many people built them and why the network was later abandoned remain uncertain.",
+        "visual": "Cinematic documentary reconstruction, the Brazilian Amazon seen from above, geometric earthworks and circular plazas emerging through rainforest; beat 6 depicts: How many people built them and why the network was later abandoned remain uncertain. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ژئوگلیف‌های آمازون",
+      "beats": [
+        "سازه‌های هندسی بزرگ قرن‌ها زیر جنگل آمازون پنهان بودند.",
+        "تصاویر ماهواره‌ای و جنگل‌زدایی صدها خندق و میدان محصور را در برزیل آشکار کرد.",
+        "ژئوگلیف‌ها عمدتاً به هزاره اول میلادی تعلق دارند و نیروی کار سازمان‌یافته می‌خواستند.",
+        "برخی محوطه‌ها با جاده، سکونتگاه و زمین‌های مرتفع در چشم‌اندازی مدیریت‌شده پیوند دارند.",
+        "گردهمایی آیینی، دفاع، نجوم و مرزبندی اجتماعی کارکردهای پیشنهادی‌اند.",
+        "تعداد سازندگان و دلیل ترک شبکه همچنان نامعلوم است."
+      ],
+      "question": "ژئوگلیف‌های آمازون برای چه ساخته شدند؟",
+      "tags": [
+        "#ژئوگلیف",
+        "#آمازون",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "pre-Columbian geometric earthworks exist across parts of Amazonia",
+      "probable": "organized communities used them for social or ritual purposes",
+      "unknown": "complete function, population, and abandonment history"
+    }
+  },
+  {
+    "id": "cochno-stone",
+    "title": "The Cochno Stone’s Lost Symbols",
+    "tags": [
+      "history",
+      "archaeology",
+      "rock-art"
+    ],
+    "beats": [
+      {
+        "text": "A Scottish rock slab bears hundreds of mysterious cup-and-ring markings.",
+        "visual": "Cinematic documentary reconstruction, the Cochno Stone in West Dunbartonshire, Scotland, a broad slab covered in cup-and-ring carvings; beat 1 depicts: A Scottish rock slab bears hundreds of mysterious cup-and-ring markings. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The Cochno Stone was documented in West Dunbartonshire before being buried for protection in 1965.",
+        "visual": "Cinematic documentary reconstruction, the Cochno Stone in West Dunbartonshire, Scotland, a broad slab covered in cup-and-ring carvings; beat 2 depicts: The Cochno Stone was documented in West Dunbartonshire before being buried for protection in 1965. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its Neolithic or Bronze Age designs include spirals, cups, rings, and later graffiti.",
+        "visual": "Cinematic documentary reconstruction, the Cochno Stone in West Dunbartonshire, Scotland, a broad slab covered in cup-and-ring carvings; beat 3 depicts: Its Neolithic or Bronze Age designs include spirals, cups, rings, and later graffiti. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Artist and archaeologist Ludovic MacLellan Mann painted measurements across the slab in 1937.",
+        "visual": "Cinematic documentary reconstruction, the Cochno Stone in West Dunbartonshire, Scotland, a broad slab covered in cup-and-ring carvings; beat 4 depicts: Artist and archaeologist Ludovic MacLellan Mann painted measurements across the slab in 1937. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Excavation and digital recording recovered much of the pattern after the stone was re-exposed.",
+        "visual": "Cinematic documentary reconstruction, the Cochno Stone in West Dunbartonshire, Scotland, a broad slab covered in cup-and-ring carvings; beat 5 depicts: Excavation and digital recording recovered much of the pattern after the stone was re-exposed. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its makers’ symbolism and use of the surrounding landscape remain unknown.",
+        "visual": "Cinematic documentary reconstruction, the Cochno Stone in West Dunbartonshire, Scotland, a broad slab covered in cup-and-ring carvings; beat 6 depicts: Its makers’ symbolism and use of the surrounding landscape remain unknown. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "نمادهای گمشده سنگ کوچنو",
+      "beats": [
+        "تخته‌سنگی اسکاتلندی صدها نقش فنجانی و حلقه‌ای مرموز دارد.",
+        "سنگ کوچنو در غرب دامبارتون‌شر ثبت شد و برای حفاظت در ۱۹۶۵ زیر خاک رفت.",
+        "طرح‌های نوسنگی یا عصر برنز شامل مارپیچ، فنجان، حلقه و نوشته‌های بعدی‌اند.",
+        "هنرمند و باستان‌شناس لودویک مک‌للان من در ۱۹۳۷ اندازه‌گیری‌ها را روی سنگ نقاشی کرد.",
+        "پس از آشکارسازی دوباره، کاوش و ثبت دیجیتال بخش بزرگی از نقش را حفظ کرد.",
+        "نمادها و کاربرد چشم‌انداز پیرامون برای سازندگان ناشناخته است."
+      ],
+      "question": "نقش‌های سنگ کوچنو چه معنایی داشتند؟",
+      "tags": [
+        "#سنگ_کوچنو",
+        "#هنر_صخره‌ای",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "Cochno Stone bears extensive prehistoric cup-and-ring motifs",
+      "probable": "the markings had structured social or ritual significance",
+      "unknown": "exact symbolism and landscape function"
+    }
+  },
+  {
+    "id": "bimini-road",
+    "title": "The Bimini Road Formation",
+    "tags": [
+      "history",
+      "geology",
+      "archaeology"
+    ],
+    "beats": [
+      {
+        "text": "Underwater blocks near the Bahamas have been called a lost civilization’s road.",
+        "visual": "Cinematic documentary reconstruction, the shallow seabed near North Bimini, Bahamas, with rectangular beachrock blocks in clear blue water; beat 1 depicts: Underwater blocks near the Bahamas have been called a lost civilization’s road. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Divers reported the formation near North Bimini in 1968, where rectangular stones line the seabed.",
+        "visual": "Cinematic documentary reconstruction, the shallow seabed near North Bimini, Bahamas, with rectangular beachrock blocks in clear blue water; beat 2 depicts: Divers reported the formation near North Bimini in 1968, where rectangular stones line the seabed. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Atlantis theories grew after psychic predictions and popular books drew attention to the site.",
+        "visual": "Cinematic documentary reconstruction, the shallow seabed near North Bimini, Bahamas, with rectangular beachrock blocks in clear blue water; beat 3 depicts: Atlantis theories grew after psychic predictions and popular books drew attention to the site. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Geologists identified many blocks as naturally fractured beachrock with joint patterns.",
+        "visual": "Cinematic documentary reconstruction, the shallow seabed near North Bimini, Bahamas, with rectangular beachrock blocks in clear blue water; beat 4 depicts: Geologists identified many blocks as naturally fractured beachrock with joint patterns. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Dredging and marine weathering can create straight-looking edges and pavement-like arrangements.",
+        "visual": "Cinematic documentary reconstruction, the shallow seabed near North Bimini, Bahamas, with rectangular beachrock blocks in clear blue water; beat 5 depicts: Dredging and marine weathering can create straight-looking edges and pavement-like arrangements. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Whether any section was modified by people remains unproven.",
+        "visual": "Cinematic documentary reconstruction, the shallow seabed near North Bimini, Bahamas, with rectangular beachrock blocks in clear blue water; beat 6 depicts: Whether any section was modified by people remains unproven. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "سازند جاده بیمینی",
+      "beats": [
+        "بلوک‌های زیرآبی نزدیک باهاما جاده تمدنی گمشده نامیده شده‌اند.",
+        "غواصان در ۱۹۶۸ سازه را نزدیک بیمینی شمالی گزارش کردند؛ سنگ‌های مستطیلی در بستر ردیف‌اند.",
+        "پس از پیش‌گویی‌های روانی و کتاب‌های عامه‌پسند، نظریه آتلانتیس رواج گرفت.",
+        "زمین‌شناسان بسیاری بلوک‌ها را سنگ ساحلی طبیعی با شکستگی‌های منظم دانستند.",
+        "فرسایش دریایی و هوازدگی می‌تواند لبه‌های مستقیم و آرایش سنگفرشی بسازد.",
+        "دستکاری انسانی هر بخش اثبات نشده است."
+      ],
+      "question": "آیا جاده بیمینی طبیعی است یا ساخته انسان؟",
+      "tags": [
+        "#جاده_بیمینی",
+        "#زمین‌شناسی",
+        "#باستان‌شناسی_دریایی"
+      ]
+    },
+    "notes": {
+      "proven": "a rectangular seabed formation exists near North Bimini",
+      "probable": "natural beachrock fracturing explains much of its appearance",
+      "unknown": "whether any stones were intentionally modified"
+    }
+  },
+  {
+    "id": "paracas-skulls",
+    "title": "The Paracas Skull Debate",
+    "tags": [
+      "history",
+      "archaeology",
+      "genetics"
+    ],
+    "beats": [
+      {
+        "text": "Elongated skulls from Peru inspired claims of a nonhuman ancient population.",
+        "visual": "Cinematic documentary reconstruction, a Paracas burial site on the Peruvian coast, archaeologists examining deliberately elongated human skulls; beat 1 depicts: Elongated skulls from Peru inspired claims of a nonhuman ancient population. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Paracas burials preserve skulls shaped by intentional head binding during childhood.",
+        "visual": "Cinematic documentary reconstruction, a Paracas burial site on the Peruvian coast, archaeologists examining deliberately elongated human skulls; beat 2 depicts: Paracas burials preserve skulls shaped by intentional head binding during childhood. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Photographs and early DNA claims were circulated before controlled samples and context were clear.",
+        "visual": "Cinematic documentary reconstruction, a Paracas burial site on the Peruvian coast, archaeologists examining deliberately elongated human skulls; beat 3 depicts: Photographs and early DNA claims were circulated before controlled samples and context were clear. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Known cranial modification can change appearance without changing human ancestry.",
+        "visual": "Cinematic documentary reconstruction, a Paracas burial site on the Peruvian coast, archaeologists examining deliberately elongated human skulls; beat 4 depicts: Known cranial modification can change appearance without changing human ancestry. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Genetic studies of ancient remains require contamination controls and transparent comparison groups.",
+        "visual": "Cinematic documentary reconstruction, a Paracas burial site on the Peruvian coast, archaeologists examining deliberately elongated human skulls; beat 5 depicts: Genetic studies of ancient remains require contamination controls and transparent comparison groups. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The evidence supports cultural modification, while extraordinary ancestry claims remain unproven.",
+        "visual": "Cinematic documentary reconstruction, a Paracas burial site on the Peruvian coast, archaeologists examining deliberately elongated human skulls; beat 6 depicts: The evidence supports cultural modification, while extraordinary ancestry claims remain unproven. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "بحث درباره جمجمه‌های پاراکاس",
+      "beats": [
+        "جمجمه‌های کشیده پرو ادعاهایی درباره جمعیتی غیرانسانی برانگیختند.",
+        "دفن‌های پاراکاس جمجمه‌هایی را حفظ کرده‌اند که در کودکی عمداً شکل داده شده بودند.",
+        "عکس و ادعاهای اولیه دی‌ان‌ای پیش از روشن‌شدن نمونه کنترل‌شده و زمینه منتشر شدند.",
+        "تغییر شکل شناخته‌شده جمجمه بدون تغییر تبار انسانی ظاهر را عوض می‌کند.",
+        "پژوهش ژنتیکی بقایا به کنترل آلودگی و گروه مقایسه شفاف نیاز دارد.",
+        "شواهد از تغییر فرهنگی پشتیبانی می‌کند و ادعای تبار خارق‌العاده ثابت نشده است."
+      ],
+      "question": "جمجمه‌های پاراکاس درباره فرهنگ سازندگانشان چه می‌گویند؟",
+      "tags": [
+        "#جمجمه‌های_پاراکاس",
+        "#باستان‌شناسی",
+        "#ژنتیک"
+      ]
+    },
+    "notes": {
+      "proven": "Paracas communities practiced deliberate cranial modification",
+      "probable": "cultural head shaping explains the elongated forms",
+      "unknown": "ancestry of poorly documented samples and exact social meaning"
+    }
+  },
+  {
+    "id": "dead-sea-scrolls",
+    "title": "The Dead Sea Scrolls’ Missing Authors",
+    "tags": [
+      "history",
+      "archaeology",
+      "manuscripts"
+    ],
+    "beats": [
+      {
+        "text": "Ancient scrolls transformed biblical studies while leaving their writers unnamed.",
+        "visual": "Cinematic documentary reconstruction, the Qumran caves beside the Dead Sea, ancient leather scroll fragments and a dry desert landscape; beat 1 depicts: Ancient scrolls transformed biblical studies while leaving their writers unnamed. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Dead Sea Scrolls were found in caves near Qumran from 1947 onward.",
+        "visual": "Cinematic documentary reconstruction, the Qumran caves beside the Dead Sea, ancient leather scroll fragments and a dry desert landscape; beat 2 depicts: Dead Sea Scrolls were found in caves near Qumran from 1947 onward. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "They include biblical texts, rules, poems, calendars, and apocalyptic writings in several languages.",
+        "visual": "Cinematic documentary reconstruction, the Qumran caves beside the Dead Sea, ancient leather scroll fragments and a dry desert landscape; beat 3 depicts: They include biblical texts, rules, poems, calendars, and apocalyptic writings in several languages. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Most scrolls lack explicit author names, and their relationship to the nearby settlement is debated.",
+        "visual": "Cinematic documentary reconstruction, the Qumran caves beside the Dead Sea, ancient leather scroll fragments and a dry desert landscape; beat 4 depicts: Most scrolls lack explicit author names, and their relationship to the nearby settlement is debated. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Essene communities are often proposed, but other Jewish groups may also be involved.",
+        "visual": "Cinematic documentary reconstruction, the Qumran caves beside the Dead Sea, ancient leather scroll fragments and a dry desert landscape; beat 5 depicts: Essene communities are often proposed, but other Jewish groups may also be involved. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Who composed, copied, and stored every text cannot be reconstructed with certainty.",
+        "visual": "Cinematic documentary reconstruction, the Qumran caves beside the Dead Sea, ancient leather scroll fragments and a dry desert landscape; beat 6 depicts: Who composed, copied, and stored every text cannot be reconstructed with certainty. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "نویسندگان گمشده طومارهای دریای مرده",
+      "beats": [
+        "طومارهای باستانی مطالعه کتاب مقدس را دگرگون کردند، اما نویسندگانشان نامعلوم ماندند.",
+        "طومارهای دریای مرده از ۱۹۴۷ به بعد در غارهای نزدیک قمران پیدا شدند.",
+        "آن‌ها متن مقدس، قانون، شعر، تقویم و نوشته آخرالزمانی را به چند زبان دارند.",
+        "بیشتر طومارها نام نویسنده ندارند و رابطه‌شان با سکونتگاه نزدیک محل بحث است.",
+        "جامعه اسنی اغلب پیشنهاد می‌شود، اما گروه‌های یهودی دیگر هم ممکن‌اند.",
+        "نمی‌توان با قطعیت گفت چه کسانی هر متن را نوشتند، رونویسی کردند و نگه داشتند."
+      ],
+      "question": "نویسندگان طومارهای دریای مرده چه کسانی بودند؟",
+      "tags": [
+        "#طومارهای_دریای_مرده",
+        "#قمران",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "Qumran caves contained diverse Jewish manuscripts from the Second Temple period",
+      "probable": "multiple scribal and community networks produced the texts",
+      "unknown": "authorship, storage community, and exact provenance of every scroll"
+    }
+  },
+  {
+    "id": "gundestrup-cauldron",
+    "title": "The Gundestrup Cauldron’s Origin",
+    "tags": [
+      "history",
+      "archaeology",
+      "art"
+    ],
+    "beats": [
+      {
+        "text": "A richly decorated silver cauldron combines Celtic-looking scenes with distant artistic styles.",
+        "visual": "Cinematic documentary reconstruction, the silver Gundestrup Cauldron displayed after excavation in Denmark, its mixed relief panels gleaming; beat 1 depicts: A richly decorated silver cauldron combines Celtic-looking scenes with distant artistic styles. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The Gundestrup Cauldron was found in a Danish peat bog in 1891.",
+        "visual": "Cinematic documentary reconstruction, the silver Gundestrup Cauldron displayed after excavation in Denmark, its mixed relief panels gleaming; beat 2 depicts: The Gundestrup Cauldron was found in a Danish peat bog in 1891. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its panels show deities, animals, warriors, and a possible ritual transformation scene.",
+        "visual": "Cinematic documentary reconstruction, the silver Gundestrup Cauldron displayed after excavation in Denmark, its mixed relief panels gleaming; beat 3 depicts: Its panels show deities, animals, warriors, and a possible ritual transformation scene. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Silver analysis suggests metal from southeastern Europe, while imagery has multiple cultural parallels.",
+        "visual": "Cinematic documentary reconstruction, the silver Gundestrup Cauldron displayed after excavation in Denmark, its mixed relief panels gleaming; beat 4 depicts: Silver analysis suggests metal from southeastern Europe, while imagery has multiple cultural parallels. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "It may have been made in Thrace for a Celtic patron or assembled through exchange.",
+        "visual": "Cinematic documentary reconstruction, the silver Gundestrup Cauldron displayed after excavation in Denmark, its mixed relief panels gleaming; beat 5 depicts: It may have been made in Thrace for a Celtic patron or assembled through exchange. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its workshop, owner, route to Denmark, and precise meaning remain uncertain.",
+        "visual": "Cinematic documentary reconstruction, the silver Gundestrup Cauldron displayed after excavation in Denmark, its mixed relief panels gleaming; beat 6 depicts: Its workshop, owner, route to Denmark, and precise meaning remain uncertain. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "خاستگاه دیگ گوندستروپ",
+      "beats": [
+        "دیگ نقره‌ای پرنقشی صحنه‌های سلت‌نما را با سبک‌های دوردست ترکیب می‌کند.",
+        "دیگ گوندستروپ در ۱۸۹۱ در مردابی در دانمارک پیدا شد.",
+        "صفحات آن ایزدان، جانوران، جنگجویان و صحنه‌ای احتمالی از دگرگونی آیینی دارند.",
+        "تحلیل نقره منشأ جنوب‌شرقی اروپا را پیشنهاد می‌کند و تصاویر چند همتای فرهنگی دارند.",
+        "شاید در تراکیه برای حامی سلت ساخته یا از راه مبادله گردآوری شده باشد.",
+        "کارگاه، مالک، مسیر رسیدن به دانمارک و معنای دقیق ناشناخته‌اند."
+      ],
+      "question": "دیگ گوندستروپ را چه کسانی ساختند؟",
+      "tags": [
+        "#دیگ_گوندستروپ",
+        "#هنر_باستانی",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "the silver cauldron was found in Denmark with mixed artistic motifs",
+      "probable": "it originated in southeastern Europe and moved through exchange",
+      "unknown": "workshop, patron, route, and exact iconographic meaning"
+    }
+  },
+  {
+    "id": "sacsayhuaman-stones",
+    "title": "Sacsayhuamán’s Fitted Stones",
+    "tags": [
+      "history",
+      "archaeology",
+      "engineering"
+    ],
+    "beats": [
+      {
+        "text": "Immense stones at a Peruvian fortress fit together without mortar and defy easy explanation.",
+        "visual": "Cinematic documentary reconstruction, the massive fitted stone walls of Sacsayhuamán above Cusco, with Inca workers and mountain terrain; beat 1 depicts: Immense stones at a Peruvian fortress fit together without mortar and defy easy explanation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Sacsayhuamán overlooks Cusco and was expanded by Inca rulers in the fifteenth century.",
+        "visual": "Cinematic documentary reconstruction, the massive fitted stone walls of Sacsayhuamán above Cusco, with Inca workers and mountain terrain; beat 2 depicts: Sacsayhuamán overlooks Cusco and was expanded by Inca rulers in the fifteenth century. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its zigzag walls use massive polygonal blocks shaped to interlock against earthquakes.",
+        "visual": "Cinematic documentary reconstruction, the massive fitted stone walls of Sacsayhuamán above Cusco, with Inca workers and mountain terrain; beat 3 depicts: Its zigzag walls use massive polygonal blocks shaped to interlock against earthquakes. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Colonial chroniclers described Inca labor but often exaggerated the site’s age and builders.",
+        "visual": "Cinematic documentary reconstruction, the massive fitted stone walls of Sacsayhuamán above Cusco, with Inca workers and mountain terrain; beat 4 depicts: Colonial chroniclers described Inca labor but often exaggerated the site’s age and builders. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Quarrying, transport, ramps, and stone dressing could be organized without lost technology.",
+        "visual": "Cinematic documentary reconstruction, the massive fitted stone walls of Sacsayhuamán above Cusco, with Inca workers and mountain terrain; beat 5 depicts: Quarrying, transport, ramps, and stone dressing could be organized without lost technology. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The exact construction sequence and labor logistics remain partly reconstructed.",
+        "visual": "Cinematic documentary reconstruction, the massive fitted stone walls of Sacsayhuamán above Cusco, with Inca workers and mountain terrain; beat 6 depicts: The exact construction sequence and labor logistics remain partly reconstructed. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "سنگ‌های چفت‌شده ساکسای‌هوامان",
+      "beats": [
+        "سنگ‌های عظیم ساکسای‌هوامان بدون ملات در هم چفت شده‌اند و توضیح ساده‌ای ندارند.",
+        "ساکسای‌هوامان بر کوسکو مشرف است و اینکاها در سده پانزدهم گسترشش دادند.",
+        "دیوارهای زیگزاگ از بلوک‌های چندضلعی عظیم ساخته شده‌اند که در برابر زلزله قفل می‌شوند.",
+        "وقایع‌نگاران استعماری کار اینکاها را ثبت کردند، اما درباره قدمت و سازندگان اغراق کردند.",
+        "استخراج، حمل، رمپ و تراش سنگ با سازمان‌دهی انسانی ممکن بود و فناوری گمشده لازم نیست.",
+        "توالی ساخت و لجستیک نیروی کار هنوز فقط بخشی بازسازی شده است."
+      ],
+      "question": "سنگ‌های ساکسای‌هوامان چگونه جابه‌جا و چفت شدند؟",
+      "tags": [
+        "#ساکسای‌هوامان",
+        "#مهندسی_اینکا",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "Inca builders created massive fitted walls at Sacsayhuamán",
+      "probable": "organized labor, ramps, and stone dressing explain the construction",
+      "unknown": "exact sequence and logistical details"
+    }
+  },
+  {
+    "id": "planetary-defense-chelyabinsk",
+    "title": "The Chelyabinsk Meteor Mystery",
+    "tags": [
+      "science",
+      "astronomy",
+      "impact"
+    ],
+    "beats": [
+      {
+        "text": "A daytime asteroid airburst injured people and shattered windows across a Russian region.",
+        "visual": "Cinematic documentary reconstruction, the sky over Chelyabinsk, Russia, in 2013, a brilliant meteor streaking above the city; beat 1 depicts: A daytime asteroid airburst injured people and shattered windows across a Russian region. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "On February 15, 2013, a roughly twenty-meter object entered over Chelyabinsk.",
+        "visual": "Cinematic documentary reconstruction, the sky over Chelyabinsk, Russia, in 2013, a brilliant meteor streaking above the city; beat 2 depicts: On February 15, 2013, a roughly twenty-meter object entered over Chelyabinsk. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its shock wave damaged buildings and injured more than a thousand people, mostly through glass.",
+        "visual": "Cinematic documentary reconstruction, the sky over Chelyabinsk, Russia, in 2013, a brilliant meteor streaking above the city; beat 3 depicts: Its shock wave damaged buildings and injured more than a thousand people, mostly through glass. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The event arrived from near the Sun and was not detected in advance by surveys.",
+        "visual": "Cinematic documentary reconstruction, the sky over Chelyabinsk, Russia, in 2013, a brilliant meteor streaking above the city; beat 4 depicts: The event arrived from near the Sun and was not detected in advance by surveys. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Fragments recovered from Lake Chebarkul confirmed an ordinary stony meteorite.",
+        "visual": "Cinematic documentary reconstruction, the sky over Chelyabinsk, Russia, in 2013, a brilliant meteor streaking above the city; beat 5 depicts: Fragments recovered from Lake Chebarkul confirmed an ordinary stony meteorite. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "How to detect and mitigate similar small objects remains a planetary-defense challenge.",
+        "visual": "Cinematic documentary reconstruction, the sky over Chelyabinsk, Russia, in 2013, a brilliant meteor streaking above the city; beat 6 depicts: How to detect and mitigate similar small objects remains a planetary-defense challenge. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "معمای شهاب‌سنگ چلیابینسک",
+      "beats": [
+        "انفجار جوی سیارکی در روز در منطقه‌ای روسی مردم را زخمی و شیشه‌ها را خرد کرد.",
+        "۱۵ فوریه ۲۰۱۳ جرمی حدود بیست‌متری بر فراز چلیابینسک وارد جو شد.",
+        "موج ضربه ساختمان‌ها را آسیب زد و بیش از هزار نفر را، عمدتاً با شیشه، زخمی کرد.",
+        "جرم از نزدیکی خورشید آمد و بررسی‌ها پیشاپیش آن را ندیده بودند.",
+        "قطعات بازیابی‌شده از دریاچه چبارکول شهاب‌سنگ سنگی معمولی را تأیید کردند.",
+        "کشف و کاهش خطر اجرام کوچک مشابه همچنان چالش دفاع سیاره‌ای است."
+      ],
+      "question": "چرا شهاب‌سنگ چلیابینسک پیش از برخورد دیده نشد؟",
+      "tags": [
+        "#چلیابینسک",
+        "#شهاب‌سنگ",
+        "#دفاع_سیاره‌ای"
+      ]
+    },
+    "notes": {
+      "proven": "the 2013 Chelyabinsk airburst caused widespread shock damage and injuries",
+      "probable": "its solar-ward approach hid it from many surveys",
+      "unknown": "how to guarantee early warning for similar small objects"
+    }
+  },
+  {
+    "id": "venus-superrotation",
+    "title": "Venus’s Super-Rotating Atmosphere",
+    "tags": [
+      "science",
+      "planetary-science",
+      "atmosphere"
+    ],
+    "beats": [
+      {
+        "text": "Venus’s atmosphere circles the planet far faster than the surface beneath it.",
+        "visual": "Cinematic documentary reconstruction, Venus viewed from orbit, bright cloud bands sweeping rapidly around the slowly rotating planet; beat 1 depicts: Venus’s atmosphere circles the planet far faster than the surface beneath it. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Cloud tops complete a rotation in about four Earth days, while Venus itself rotates slowly backward.",
+        "visual": "Cinematic documentary reconstruction, Venus viewed from orbit, bright cloud bands sweeping rapidly around the slowly rotating planet; beat 2 depicts: Cloud tops complete a rotation in about four Earth days, while Venus itself rotates slowly backward. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Solar heating, thermal tides, mountain waves, and turbulent momentum transport are involved.",
+        "visual": "Cinematic documentary reconstruction, Venus viewed from orbit, bright cloud bands sweeping rapidly around the slowly rotating planet; beat 3 depicts: Solar heating, thermal tides, mountain waves, and turbulent momentum transport are involved. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Observations from orbiters reveal changing winds, vortices, and wave patterns.",
+        "visual": "Cinematic documentary reconstruction, Venus viewed from orbit, bright cloud bands sweeping rapidly around the slowly rotating planet; beat 4 depicts: Observations from orbiters reveal changing winds, vortices, and wave patterns. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Models reproduce parts of the circulation but struggle with the full energy and momentum budget.",
+        "visual": "Cinematic documentary reconstruction, Venus viewed from orbit, bright cloud bands sweeping rapidly around the slowly rotating planet; beat 5 depicts: Models reproduce parts of the circulation but struggle with the full energy and momentum budget. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Why the atmosphere accelerates into superrotation remains an active planetary mystery.",
+        "visual": "Cinematic documentary reconstruction, Venus viewed from orbit, bright cloud bands sweeping rapidly around the slowly rotating planet; beat 6 depicts: Why the atmosphere accelerates into superrotation remains an active planetary mystery. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "ابرچرخش جو زهره",
+      "beats": [
+        "جو زهره بسیار سریع‌تر از سطح زیرین سیاره دور آن می‌چرخد.",
+        "ابرها تقریباً در چهار روز زمینی یک دور می‌زنند، در حالی که زهره آهسته و وارونه می‌چرخد.",
+        "گرمایش خورشیدی، جزرومد حرارتی، موج کوهستان و انتقال تکانه دخیل‌اند.",
+        "مدارگردها باد، گردابه و الگوهای موجی متغیر را نشان می‌دهند.",
+        "مدل‌ها بخشی از گردش را بازسازی می‌کنند، اما بودجه کامل انرژی و تکانه دشوار است.",
+        "علت شتاب‌گرفتن جو به چرخش سریع همچنان معمایی فعال است."
+      ],
+      "question": "چرا ابرهای زهره سریع‌تر از خود سیاره می‌چرخند؟",
+      "tags": [
+        "#زهره",
+        "#ابرچرخش",
+        "#جو_سیاره‌ای"
+      ]
+    },
+    "notes": {
+      "proven": "Venus cloud tops rotate much faster than the solid planet",
+      "probable": "solar tides, waves, and momentum transport contribute",
+      "unknown": "complete mechanism sustaining superrotation"
+    }
+  },
+  {
+    "id": "saturn-rings-age",
+    "title": "The Age of Saturn’s Rings",
+    "tags": [
+      "science",
+      "planetary-science",
+      "astronomy"
+    ],
+    "beats": [
+      {
+        "text": "Saturn’s brilliant rings may be young, ancient, or repeatedly renewed.",
+        "visual": "Cinematic documentary reconstruction, Saturn and its icy rings lit by sunlight, countless particles casting delicate shadows in space; beat 1 depicts: Saturn’s brilliant rings may be young, ancient, or repeatedly renewed. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Cassini data showed ring material is mostly water ice with surprisingly little dark contamination.",
+        "visual": "Cinematic documentary reconstruction, Saturn and its icy rings lit by sunlight, countless particles casting delicate shadows in space; beat 2 depicts: Cassini data showed ring material is mostly water ice with surprisingly little dark contamination. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "One interpretation dates the main rings to a relatively recent breakup of a moon or comet.",
+        "visual": "Cinematic documentary reconstruction, Saturn and its icy rings lit by sunlight, countless particles casting delicate shadows in space; beat 3 depicts: One interpretation dates the main rings to a relatively recent breakup of a moon or comet. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Other models allow primordial rings whose appearance is refreshed by impacts and recycling.",
+        "visual": "Cinematic documentary reconstruction, Saturn and its icy rings lit by sunlight, countless particles casting delicate shadows in space; beat 4 depicts: Other models allow primordial rings whose appearance is refreshed by impacts and recycling. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Ring rain and meteoroid pollution can change age estimates in opposite directions.",
+        "visual": "Cinematic documentary reconstruction, Saturn and its icy rings lit by sunlight, countless particles casting delicate shadows in space; beat 5 depicts: Ring rain and meteoroid pollution can change age estimates in opposite directions. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Whether the visible rings formed early or late in Saturn’s history remains unsettled.",
+        "visual": "Cinematic documentary reconstruction, Saturn and its icy rings lit by sunlight, countless particles casting delicate shadows in space; beat 6 depicts: Whether the visible rings formed early or late in Saturn’s history remains unsettled. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "سن حلقه‌های زحل",
+      "beats": [
+        "حلقه‌های درخشان زحل شاید جوان، باستانی یا پیوسته نوسازی‌شده باشند.",
+        "داده کاسینی نشان داد مواد حلقه عمدتاً یخ آب با آلودگی تیره شگفت‌آور کم است.",
+        "یک تفسیر حلقه‌های اصلی را حاصل فروپاشی نسبتاً جدید قمر یا دنباله‌دار می‌داند.",
+        "مدل‌های دیگر حلقه‌های نخستین را ممکن می‌دانند که با برخورد و بازیافت تازه می‌شوند.",
+        "بارش حلقه و آلودگی شهاب‌واره‌ای برآورد سن را در جهت‌های مخالف تغییر می‌دهد.",
+        "این‌که حلقه‌های مرئی زود یا دیر در تاریخ زحل ساخته شدند، حل نشده است."
+      ],
+      "question": "حلقه‌های زحل چند سال دارند؟",
+      "tags": [
+        "#زحل",
+        "#حلقه‌های_زحل",
+        "#سیاره‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "Saturn’s rings are mostly water ice and dynamically active",
+      "probable": "their appearance can be altered by recycling and pollution",
+      "unknown": "formation age and dominant origin scenario"
+    }
+  },
+  {
+    "id": "stone-spheres-costa-rica",
+    "title": "Costa Rica’s Stone Spheres",
+    "tags": [
+      "history",
+      "archaeology",
+      "mystery"
+    ],
+    "beats": [
+      {
+        "text": "Perfect stone spheres lie across Costa Rica, but their purpose is unknown.",
+        "visual": "Cinematic documentary reconstruction, a tropical Costa Rican landscape with perfectly rounded stone spheres arranged across a grassy clearing; beat 1 depicts: Perfect stone spheres lie across Costa Rica, but their purpose is unknown. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Diquís communities made hundreds of spheres before Spanish contact.",
+        "visual": "Cinematic documentary reconstruction, a tropical Costa Rican landscape with perfectly rounded stone spheres arranged across a grassy clearing; beat 2 depicts: Diquís communities made hundreds of spheres before Spanish contact. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Craftspeople shaped gabbro, granodiorite, and other hard stones with remarkable symmetry.",
+        "visual": "Cinematic documentary reconstruction, a tropical Costa Rican landscape with perfectly rounded stone spheres arranged across a grassy clearing; beat 3 depicts: Craftspeople shaped gabbro, granodiorite, and other hard stones with remarkable symmetry. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Some spheres stood in ceremonial settlements; others were moved or damaged later.",
+        "visual": "Cinematic documentary reconstruction, a tropical Costa Rican landscape with perfectly rounded stone spheres arranged across a grassy clearing; beat 4 depicts: Some spheres stood in ceremonial settlements; others were moved or damaged later. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Rank, astronomy, landscape symbolism, and social display are proposed uses.",
+        "visual": "Cinematic documentary reconstruction, a tropical Costa Rican landscape with perfectly rounded stone spheres arranged across a grassy clearing; beat 5 depicts: Rank, astronomy, landscape symbolism, and social display are proposed uses. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No surviving record explains who commissioned each sphere or why.",
+        "visual": "Cinematic documentary reconstruction, a tropical Costa Rican landscape with perfectly rounded stone spheres arranged across a grassy clearing; beat 6 depicts: No surviving record explains who commissioned each sphere or why. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "کره‌های سنگی کاستاریکا",
+      "beats": [
+        "این پرونده به معمای «کره‌های سنگی کاستاریکا» می‌پردازد.",
+        "شواهد تاریخی یا علمی اصل ماجرا را ثبت کرده‌اند.",
+        "آثار و داده‌های موجود بخشی از داستان را روشن می‌کنند.",
+        "چند توضیح برای این معما پیشنهاد شده است.",
+        "برخی نتیجه‌ها قطعی و برخی هنوز احتمالی هستند.",
+        "پاسخ نهایی یا علت دقیق همچنان روشن نیست."
+      ],
+      "question": "کره‌های سنگی کاستاریکا چه کاربردی داشتند؟",
+      "tags": [
+        "#کره‌های_سنگی",
+        "#کاستاریکا",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "Perfect stone spheres lie across Costa Rica, but their purpose is unknown.",
+      "probable": "Rank, astronomy, landscape symbolism, and social display are proposed uses.",
+      "unknown": "No surviving record explains who commissioned each sphere or why."
+    }
+  },
+  {
+    "id": "sanxingdui-bronzes",
+    "title": "Sanxingdui: The Masks from a Lost Culture",
+    "tags": [
+      "history",
+      "archaeology",
+      "china"
+    ],
+    "beats": [
+      {
+        "text": "An unexpected Chinese site revealed giant masks and unfamiliar ritual art.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui ritual pits in China, enormous bronze masks and artifacts deposited in dark earth; beat 1 depicts: An unexpected Chinese site revealed giant masks and unfamiliar ritual art. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Sanxingdui’s pits were found near Guanghan in Sichuan in 1986.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui ritual pits in China, enormous bronze masks and artifacts deposited in dark earth; beat 2 depicts: Sanxingdui’s pits were found near Guanghan in Sichuan in 1986. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Bronze heads, gold objects, ivory, and jade had been deliberately buried.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui ritual pits in China, enormous bronze masks and artifacts deposited in dark earth; beat 3 depicts: Bronze heads, gold objects, ivory, and jade had been deliberately buried. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "The style differs sharply from better-known Central Plains traditions.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui ritual pits in China, enormous bronze masks and artifacts deposited in dark earth; beat 4 depicts: The style differs sharply from better-known Central Plains traditions. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Warfare, ritual destruction, migration, and political change may explain the deposits.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui ritual pits in China, enormous bronze masks and artifacts deposited in dark earth; beat 5 depicts: Warfare, ritual destruction, migration, and political change may explain the deposits. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Why the objects were made and buried remains unresolved.",
+        "visual": "Cinematic documentary reconstruction, the Sanxingdui ritual pits in China, enormous bronze masks and artifacts deposited in dark earth; beat 6 depicts: Why the objects were made and buried remains unresolved. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "سان‌شینگ‌دویی: نقاب‌های فرهنگی فراموش‌شده",
+      "beats": [
+        "این پرونده به معمای «ماسک‌های برنزی سن‌ستاره» می‌پردازد.",
+        "شواهد تاریخی یا علمی اصل ماجرا را ثبت کرده‌اند.",
+        "آثار و داده‌های موجود بخشی از داستان را روشن می‌کنند.",
+        "چند توضیح برای این معما پیشنهاد شده است.",
+        "برخی نتیجه‌ها قطعی و برخی هنوز احتمالی هستند.",
+        "پاسخ نهایی یا علت دقیق همچنان روشن نیست."
+      ],
+      "question": "ماسک‌های برنزی سان‌شینگ‌دویی چرا ساخته و دفن شدند؟",
+      "tags": [
+        "#سان‌شینگ‌دویی",
+        "#برنزهای_باستانی",
+        "#چین_باستان"
+      ]
+    },
+    "notes": {
+      "proven": "An unexpected Chinese site revealed giant masks and unfamiliar ritual art.",
+      "probable": "Warfare, ritual destruction, migration, and political change may explain the deposits.",
+      "unknown": "Why the objects were made and buried remains unresolved."
+    }
+  },
+  {
+    "id": "rongorongo-script",
+    "title": "Rongorongo: Easter Island’s Unread Signs",
+    "tags": [
+      "history",
+      "linguistics",
+      "writing"
+    ],
+    "beats": [
+      {
+        "text": "Wooden tablets from Rapa Nui carry signs that remain undeciphered.",
+        "visual": "Cinematic documentary reconstruction, a Rapa Nui setting with a weathered wooden rongorongo tablet resting on volcanic stone; beat 1 depicts: Wooden tablets from Rapa Nui carry signs that remain undeciphered. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Missionaries recorded the objects in the nineteenth century, when few survived.",
+        "visual": "Cinematic documentary reconstruction, a Rapa Nui setting with a weathered wooden rongorongo tablet resting on volcanic stone; beat 2 depicts: Missionaries recorded the objects in the nineteenth century, when few survived. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Glyphs show repeated sequences and possible human, animal, and plant forms.",
+        "visual": "Cinematic documentary reconstruction, a Rapa Nui setting with a weathered wooden rongorongo tablet resting on volcanic stone; beat 3 depicts: Glyphs show repeated sequences and possible human, animal, and plant forms. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No bilingual text securely links the signs to a known language.",
+        "visual": "Cinematic documentary reconstruction, a Rapa Nui setting with a weathered wooden rongorongo tablet resting on volcanic stone; beat 4 depicts: No bilingual text securely links the signs to a known language. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Writing, mnemonic notation, and later invention remain competing interpretations.",
+        "visual": "Cinematic documentary reconstruction, a Rapa Nui setting with a weathered wooden rongorongo tablet resting on volcanic stone; beat 5 depicts: Writing, mnemonic notation, and later invention remain competing interpretations. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Only a small corpus survives, limiting any definitive decipherment.",
+        "visual": "Cinematic documentary reconstruction, a Rapa Nui setting with a weathered wooden rongorongo tablet resting on volcanic stone; beat 6 depicts: Only a small corpus survives, limiting any definitive decipherment. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "رونگورونگو: نشانه‌های ناخوانای جزیره ایستر",
+      "beats": [
+        "این پرونده به معمای «خط رونگورونگو» می‌پردازد.",
+        "شواهد تاریخی یا علمی اصل ماجرا را ثبت کرده‌اند.",
+        "آثار و داده‌های موجود بخشی از داستان را روشن می‌کنند.",
+        "چند توضیح برای این معما پیشنهاد شده است.",
+        "برخی نتیجه‌ها قطعی و برخی هنوز احتمالی هستند.",
+        "پاسخ نهایی یا علت دقیق همچنان روشن نیست."
+      ],
+      "question": "آیا نشانه‌های رونگورونگو یک خط واقعی هستند؟",
+      "tags": [
+        "#رونگورونگو",
+        "#راپا_نویی",
+        "#خطوط_باستانی"
+      ]
+    },
+    "notes": {
+      "proven": "Wooden tablets from Rapa Nui carry signs that remain undeciphered.",
+      "probable": "Writing, mnemonic notation, and later invention remain competing interpretations.",
+      "unknown": "Only a small corpus survives, limiting any definitive decipherment."
+    }
+  },
+  {
+    "id": "quipu-code",
+    "title": "Quipu: The Knotted Records of the Andes",
+    "tags": [
+      "history",
+      "archaeology",
+      "writing"
+    ],
+    "beats": [
+      {
+        "text": "Knotted cords recorded information across the Inca world, but much remains unread.",
+        "visual": "Cinematic documentary reconstruction, the high Andes, an Inca record keeper holding a bundle of multicolored knotted cords; beat 1 depicts: Knotted cords recorded information across the Inca world, but much remains unread. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Quipus use cords, colors, knots, spacing, and pendant arrangements.",
+        "visual": "Cinematic documentary reconstruction, the high Andes, an Inca record keeper holding a bundle of multicolored knotted cords; beat 2 depicts: Quipus use cords, colors, knots, spacing, and pendant arrangements. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Some clearly encode numbers used for administration and tribute.",
+        "visual": "Cinematic documentary reconstruction, the high Andes, an Inca record keeper holding a bundle of multicolored knotted cords; beat 3 depicts: Some clearly encode numbers used for administration and tribute. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Chroniclers also suggest records of names, events, and obligations.",
+        "visual": "Cinematic documentary reconstruction, the high Andes, an Inca record keeper holding a bundle of multicolored knotted cords; beat 4 depicts: Chroniclers also suggest records of names, events, and obligations. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Researchers debate how much nonnumeric meaning the cords carried.",
+        "visual": "Cinematic documentary reconstruction, the high Andes, an Inca record keeper holding a bundle of multicolored knotted cords; beat 5 depicts: Researchers debate how much nonnumeric meaning the cords carried. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Few surviving examples preserve enough context to reconstruct the full system.",
+        "visual": "Cinematic documentary reconstruction, the high Andes, an Inca record keeper holding a bundle of multicolored knotted cords; beat 6 depicts: Few surviving examples preserve enough context to reconstruct the full system. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "کیپو: اسناد گره‌خورده آند",
+      "beats": [
+        "این پرونده به معمای «کیپو و گره‌های آند» می‌پردازد.",
+        "شواهد تاریخی یا علمی اصل ماجرا را ثبت کرده‌اند.",
+        "آثار و داده‌های موجود بخشی از داستان را روشن می‌کنند.",
+        "چند توضیح برای این معما پیشنهاد شده است.",
+        "برخی نتیجه‌ها قطعی و برخی هنوز احتمالی هستند.",
+        "پاسخ نهایی یا علت دقیق همچنان روشن نیست."
+      ],
+      "question": "کیپوها چه اطلاعاتی را در گره‌های خود ثبت می‌کردند؟",
+      "tags": [
+        "#کیپو",
+        "#اینکا",
+        "#ثبت_اطلاعات"
+      ]
+    },
+    "notes": {
+      "proven": "Knotted cords recorded information across the Inca world, but much remains unread.",
+      "probable": "Researchers debate how much nonnumeric meaning the cords carried.",
+      "unknown": "Few surviving examples preserve enough context to reconstruct the full system."
+    }
+  },
+  {
+    "id": "proto-elamite-script",
+    "title": "Proto-Elamite: Accounting Before Translation",
+    "tags": [
+      "history",
+      "archaeology",
+      "writing"
+    ],
+    "beats": [
+      {
+        "text": "Clay tablets preserve a script whose language and signs resist translation.",
+        "visual": "Cinematic documentary reconstruction, ancient Susa, with clay tablets bearing Proto-Elamite signs on a workshop table; beat 1 depicts: Clay tablets preserve a script whose language and signs resist translation. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Proto-Elamite tablets came from ancient sites in southwestern Iran.",
+        "visual": "Cinematic documentary reconstruction, ancient Susa, with clay tablets bearing Proto-Elamite signs on a workshop table; beat 2 depicts: Proto-Elamite tablets came from ancient sites in southwestern Iran. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Many appear to record goods, quantities, and administrative transactions.",
+        "visual": "Cinematic documentary reconstruction, ancient Susa, with clay tablets bearing Proto-Elamite signs on a workshop table; beat 3 depicts: Many appear to record goods, quantities, and administrative transactions. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Numerical signs can be studied, but the written language remains obscure.",
+        "visual": "Cinematic documentary reconstruction, ancient Susa, with clay tablets bearing Proto-Elamite signs on a workshop table; beat 4 depicts: Numerical signs can be studied, but the written language remains obscure. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "No long bilingual inscription supplies a reliable key.",
+        "visual": "Cinematic documentary reconstruction, ancient Susa, with clay tablets bearing Proto-Elamite signs on a workshop table; beat 5 depicts: No long bilingual inscription supplies a reliable key. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      },
+      {
+        "text": "Its brief administrative texts still conceal the society behind them.",
+        "visual": "Cinematic documentary reconstruction, ancient Susa, with clay tablets bearing Proto-Elamite signs on a workshop table; beat 6 depicts: Its brief administrative texts still conceal the society behind them. Photorealistic composition, period-accurate details, dramatic natural lighting, clear subject and environment, no text, no logos, no watermark."
+      }
+    ],
+    "fa": {
+      "title": "پروتوایلامی: حسابداری پیش از ترجمه",
+      "beats": [
+        "این پرونده به معمای «خط پروتوایلامی» می‌پردازد.",
+        "شواهد تاریخی یا علمی اصل ماجرا را ثبت کرده‌اند.",
+        "آثار و داده‌های موجود بخشی از داستان را روشن می‌کنند.",
+        "چند توضیح برای این معما پیشنهاد شده است.",
+        "برخی نتیجه‌ها قطعی و برخی هنوز احتمالی هستند.",
+        "پاسخ نهایی یا علت دقیق همچنان روشن نیست."
+      ],
+      "question": "چرا خط پروتوایلامی هنوز ترجمه نشده است؟",
+      "tags": [
+        "#پروتوایلامی",
+        "#ایلام",
+        "#خطوط_باستانی"
+      ]
+    },
+    "notes": {
+      "proven": "Clay tablets preserve a script whose language and signs resist translation.",
+      "probable": "No long bilingual inscription supplies a reliable key.",
+      "unknown": "Its brief administrative texts still conceal the society behind them."
+    }
+  }
+]

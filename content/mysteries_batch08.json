@@ -1,0 +1,857 @@
+[
+  {
+    "id": "uluburun-ship",
+    "title": "Uluburun: The Cargo of a Sunken Bronze Age Ship",
+    "tags": [
+      "history",
+      "archaeology",
+      "maritime"
+    ],
+    "beats": [
+      {
+        "text": "A Bronze Age shipwreck carried a cargo assembled from across the Mediterranean.",
+        "visual": "نمای سینمایی زیر آب از کشتی تجاری عصر برنز در بستر مدیترانه، صندوق‌های بار در میان صخره‌ها، نور آبی خورشید، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Divers found the wreck off Turkey after a sponge diver saw metal in 1982.",
+        "visual": "ساحل ترکیه در سال ۱۹۸۲، اسفنج‌گیری که لکه‌ای فلزی را زیر آب می‌بیند و غواصان باستان‌شناس را خبر می‌کند، بازسازی مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "It held copper, tin, glass, amber, ivory, and luxury goods.",
+        "visual": "چیدمان نزدیک از شمش‌های مس و قلع، مهره‌های شیشه‌ای و کهربا، عاج و کالاهای لوکس در انبار کشتی عصر برنز، نورپردازی موزه‌ای سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The cargo reveals long-distance trade but not the crew’s identity.",
+        "visual": "بازسازی بندر مدیترانه‌ای عصر برنز با کشتی‌های بازرگانی و ملوانان ناشناس، نقشه‌وار اما واقع‌گرایانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Ship origin, destination, and exact sinking circumstances remain debated.",
+        "visual": "کشتی عصر برنز در دریای متلاطم مدیترانه، مسیر و مقصد نامعلوم در افق، فضای معمایی مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The wreck is a time capsule whose final voyage is still partly hidden.",
+        "visual": "لاشه اولوبورون در تاریکی آب مانند کپسول زمان، بقایای بار در پرتو چراغ غواص، سینمایی واقع‌گرایانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "اولوبورون: بارِ کشتی غرق‌شده عصر برنز",
+      "beats": [
+        "کشتی غرق‌شده‌ای از عصر برنز محموله‌ای از سراسر مدیترانه حمل می‌کرد.",
+        "غواصان پس از آن کشتی را نزدیک سواحل ترکیه یافتند که یک اسفنج‌گیر در سال ۱۹۸۲ فلزی را دیده بود.",
+        "در کشتی مس، قلع، شیشه، کهربا، عاج و کالاهای تجملی وجود داشت.",
+        "این محموله از تجارت دوربرد خبر می‌دهد، اما هویت خدمه را آشکار نمی‌کند.",
+        "مبدأ، مقصد و علت دقیق غرق‌شدن کشتی هنوز محل بحث است.",
+        "این لاشه مانند کپسول زمانی است و آخرین سفرش هنوز کاملاً روشن نیست."
+      ],
+      "question": "به نظر شما این کشتی باستانی از کجا می‌آمد و به کجا می‌رفت؟",
+      "tags": [
+        "#تاریخ",
+        "#باستان‌شناسی",
+        "#دریا"
+      ]
+    },
+    "notes": {
+      "proven": "وجود محموله چندمنطقه‌ای و مواد آن با یافته‌های لاشه پشتیبانی می‌شود.",
+      "probable": "گستره تجارت مدیترانه‌ای از ترکیب کالاها محتمل است، اما هویت خدمه و مسیر قطعی نیست.",
+      "unknown": "مبدأ، مقصد و شرایط دقیق غرق‌شدن ناشناخته مانده است."
+    }
+  },
+  {
+    "id": "dover-bronze-boat",
+    "title": "Dover Bronze Age Boat: A Ship Ahead of Its Record",
+    "tags": [
+      "history",
+      "archaeology",
+      "maritime"
+    ],
+    "beats": [
+      {
+        "text": "A stitched-plank boat was found beneath a modern English street.",
+        "visual": "خیابان امروزی دوور در سال ۱۹۹۲، کارگران سازندگی که بدنه چوبی باستانی را از خاک بیرون می‌آورند، بازسازی مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Workers uncovered the Dover boat during construction in 1992.",
+        "visual": "قایق تخته‌دوخته عصر برنز در گودال کاوش زیر خیابان انگلستان، باستان‌شناسان کنار قطعات چوب، نور طبیعی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its timbers date to the Bronze Age, centuries before Roman ships.",
+        "visual": "مقطع نزدیک از تیرک‌های قایق دوور و ابزارسازی عصر برنز در کارگاه باستانی، بافت چوب کهن، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Twisted withies and overlapping planks formed a watertight hull.",
+        "visual": "نمای جزئی از بدنه قایق با طنابک‌های پیچیده و تخته‌های روی‌هم‌افتاده، آب‌بندی سنتی عصر برنز، سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "It was likely built for rivers or coastal travel, but its route is unknown.",
+        "visual": "قایق کوچک عصر برنز روی رودخانه‌ای ساحلی در انگلستان، مسیر ناشناخته میان نیزارها و دریا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Why it was buried and who used it remain open questions.",
+        "visual": "قایق مدفون زیر خیابان مدرن با لایه‌های خاک و نشانه‌های کاربرد نامعلوم، تصویر دو زمان در یک قاب، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "قایق عصر برنز دوور: کشتی‌ای فراتر از زمان خود",
+      "beats": [
+        "قایقی با تخته‌های دوخته‌شده زیر خیابانی مدرن در انگلستان پیدا شد.",
+        "کارگران هنگام ساخت‌وساز در سال ۱۹۹۲ قایق دوور را از زیر خاک بیرون آوردند.",
+        "تیرک‌های آن به عصر برنز تعلق دارند؛ قرن‌ها پیش از کشتی‌های رومی.",
+        "طنابک‌های پیچیده و تخته‌های هم‌پوشان بدنه‌ای آب‌بند ساخته بودند.",
+        "احتمالاً برای رفت‌وآمد رودخانه‌ای یا ساحلی ساخته شده بود، اما مسیرش معلوم نیست.",
+        "این‌که چرا دفن شد و چه کسانی از آن استفاده می‌کردند، هنوز پرسشی باز است."
+      ],
+      "question": "اگر شما باستان‌شناس بودید، مسیر احتمالی این قایق را چگونه پیدا می‌کردید؟",
+      "tags": [
+        "#عصر_برنز",
+        "#باستان‌شناسی",
+        "#کشتی_باستانی"
+      ]
+    },
+    "notes": {
+      "proven": "کشف قایق زیر خیابان و تاریخ‌گذاری چوب‌ها به عصر برنز مستند است.",
+      "probable": "کاربرد رودخانه‌ای یا ساحلی از ساختار قایق محتمل است، اما قطعی نیست.",
+      "unknown": "دلیل دفن قایق و هویت استفاده‌کنندگان معلوم نیست."
+    }
+  },
+  {
+    "id": "gunung-padang",
+    "title": "Gunung Padang: Natural Hill or Buried Monument?",
+    "tags": [
+      "history",
+      "archaeology",
+      "indonesia"
+    ],
+    "beats": [
+      {
+        "text": "A stepped Indonesian hill has inspired claims of a vast hidden structure.",
+        "visual": "تپه پلکانی گونونگ پادانگ در جاوه اندونزی، تراس‌های سنگی در مه صبحگاهی و جنگل استوایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Gunung Padang contains visible stone terraces and ancient megalithic features.",
+        "visual": "تراس‌های مگالیتی گونونگ پادانگ با سنگ‌های آتشفشانی چیده‌شده، باستان‌شناسان در حال مستندسازی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Geophysical surveys detected subsurface layers interpreted in competing ways.",
+        "visual": "تصویر سینمایی از دستگاه ژئوفیزیک و برش زیرسطحی مفهومی زیر تپه، لایه‌های سنگی با تفسیرهای رقیب، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Some claims date deep layers far earlier than accepted local monuments.",
+        "visual": "لایه‌های عمیق زمین‌شناختی زیر تپه در نمای برش‌خورده، حس زمان بسیار دور و مقیاس زمین‌شناسی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Critics argue natural volcanic formations were misread as architecture.",
+        "visual": "صخره‌های آتشفشانی طبیعی در برابر تراس‌های منظم، دو تفسیر رقیب در منظره اندونزی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Excavation, dating, and interpretation remain contested.",
+        "visual": "محوطه گونونگ پادانگ با گروه کاوش، هسته‌های خاک و سنگ‌های پوشیده از خزه، فضای مناقشه علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "گونونگ پادانگ: تپه طبیعی یا بنای مدفون؟",
+      "beats": [
+        "تپه‌ای پلکانی در اندونزی ادعاهایی درباره وجود سازه‌ای عظیم در زیر خود پدید آورده است.",
+        "گونونگ پادانگ تراس‌های سنگی آشکار و ویژگی‌های مگالیتی باستانی دارد.",
+        "بررسی‌های ژئوفیزیکی لایه‌های زیرسطحی را نشان داده‌اند که به شکل‌های متفاوت تفسیر می‌شوند.",
+        "برخی ادعاها لایه‌های عمیق را بسیار قدیمی‌تر از بناهای پذیرفته‌شده محلی می‌دانند.",
+        "منتقدان می‌گویند شکل‌های آتشفشانی طبیعی با معماری اشتباه گرفته شده‌اند.",
+        "کاوش، تاریخ‌گذاری و تفسیر این محوطه همچنان مورد مناقشه است."
+      ],
+      "question": "آیا سنگ‌های گونونگ پادانگ بقایای معماری‌اند یا شکل‌های طبیعی؟",
+      "tags": [
+        "#باستان‌شناسی",
+        "#اندونزی",
+        "#مگالیت"
+      ]
+    },
+    "notes": {
+      "proven": "وجود تراس‌های سنگی و ویژگی‌های مگالیتی سطحی مستند است.",
+      "probable": "تفسیر لایه‌های زیرسطحی به‌عنوان سازه باستانی همچنان محل اختلاف است.",
+      "unknown": "سن واقعی لایه‌های عمیق و ماهیت معماری یا طبیعی آن‌ها روشن نیست."
+    }
+  },
+  {
+    "id": "pumapunku-stones",
+    "title": "Pumapunku: Precision at Tiwanaku",
+    "tags": [
+      "history",
+      "archaeology",
+      "engineering"
+    ],
+    "beats": [
+      {
+        "text": "Precisely cut stones at Pumapunku still provoke questions about construction.",
+        "visual": "دروازه ویران پوما پونکو در فلات بولیوی، سنگ‌های عظیم سرخ در نور غروب، بازسازی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The Bolivian complex formed part of the Tiwanaku civilization.",
+        "visual": "نمای هوایی از مجموعه تیواناکو و پوما پونکو در ارتفاعات آند، معماری سنگی و چشم‌انداز بولیوی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Builders shaped andesite blocks with sockets, steps, and clean right angles.",
+        "visual": "کارگران عصر تیواناکو در حال پرداخت بلوک آندزیتی با ابزار سنگی، حفره‌ها و زاویه‌های راست نزدیک دوربین، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Quarry sites and unfinished stones reveal some production methods.",
+        "visual": "معدن سنگ آندزیت و بلوک نیمه‌تمام کنار ابزارهای باستانی، شواهد تولید در محوطه تیواناکو، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Lost tools, labor organization, and transport routes fuel speculation.",
+        "visual": "گروه بزرگی از کارگران تیواناکو که بلوک سنگی را با طناب و غلتک در فلات جابه‌جا می‌کنند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Engineering skill is established; extraordinary explanations are not required.",
+        "visual": "جزئیات مهندسی واقعی اتصال سنگ‌های پوما پونکو در نور موزه‌ای، تأکید بر مهارت انسانی نه افسانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "پوما پونکو: دقت مهندسی در تیواناکو",
+      "beats": [
+        "سنگ‌های دقیق‌تراش پوما پونکو هنوز درباره شیوه ساخت خود پرسش ایجاد می‌کنند.",
+        "این مجموعه در بولیوی بخشی از تمدن تیواناکو بود.",
+        "سازندگان بلوک‌های آندزیتی را با حفره‌ها، پله‌ها و زاویه‌های راست تمیز شکل دادند.",
+        "محوطه‌های معدن و سنگ‌های نیمه‌تمام بخشی از روش‌های تولید را آشکار می‌کنند.",
+        "ابزارهای ازدست‌رفته، سازمان‌دهی نیروی کار و مسیرهای حمل‌ونقل به گمانه‌زنی دامن می‌زنند.",
+        "مهارت مهندسی ثابت شده است و به توضیح‌های خارق‌العاده نیازی ندارد."
+      ],
+      "question": "چگونه سازندگان تیواناکو این سنگ‌های دقیق را می‌بریدند و جابه‌جا می‌کردند؟",
+      "tags": [
+        "#تیواناکو",
+        "#باستان‌شناسی",
+        "#مهندسی_باستان"
+      ]
+    },
+    "notes": {
+      "proven": "تراش دقیق سنگ‌ها و تعلق مجموعه به تمدن تیواناکو مستند است.",
+      "probable": "معدن، نیروی کار و حمل‌ونقل بخشی از توضیح محتمل‌اند، اما جزئیات کامل نیست.",
+      "unknown": "ابزار دقیق و سازمان اجتماعی سازندگان به‌طور کامل شناخته نشده است."
+    }
+  },
+  {
+    "id": "cahokia-collapse",
+    "title": "Cahokia: The City That Emptied",
+    "tags": [
+      "history",
+      "archaeology",
+      "north-america"
+    ],
+    "beats": [
+      {
+        "text": "North America’s largest precontact city declined after centuries of growth.",
+        "visual": "نمای گسترده سینمایی از کاهوکیا در اوج شکوفایی، تپه‌های خاکی و میدان مرکزی کنار رود می‌سی‌سی‌پی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Cahokia rose near modern St. Louis, with mounds, plazas, and dense neighborhoods.",
+        "visual": "محله‌های متراکم و تپه‌های سکویی کاهوکیا نزدیک سنت‌لوئیس، بازسازی قرن‌های پیش از تماس اروپایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its population peaked around the eleventh and twelfth centuries.",
+        "visual": "میدان بزرگ کاهوکیا با جمعیت و آیین‌های شهری در سده یازدهم میلادی، تپه‌های عظیم در پس‌زمینه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Flooding, climate shifts, warfare, disease, and political change are proposed.",
+        "visual": "سیلاب رودخانه، خشکسالی و تنش اجتماعی در چشم‌انداز کاهوکیا، تصویر ترکیبی واقع‌گرایانه از فشارهای پیشنهادی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "People did not simply vanish; communities reorganized across the region.",
+        "visual": "خانواده‌ها و جوامع مهاجر در حال ترک کاهوکیا و پیوستن به سکونتگاه‌های منطقه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The balance of causes behind the city’s decline remains uncertain.",
+        "visual": "تپه‌های خاموش کاهوکیا پس از افول، پوشش گیاهی روی میدان و مه رودخانه، فضای رازآلود مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "کاهوکیا: شهری که خالی شد",
+      "beats": [
+        "بزرگ‌ترین شهر پیش از تماس اروپاییان در آمریکای شمالی پس از قرن‌ها رشد افول کرد.",
+        "کاهوکیا نزدیک سنت‌لوئیس امروزی، تپه‌ها، میدان‌ها و محله‌های متراکم داشت.",
+        "جمعیت آن در حدود سده‌های یازدهم و دوازدهم به اوج رسید.",
+        "سیلاب، تغییر اقلیم، جنگ، بیماری و دگرگونی سیاسی از علت‌های پیشنهادی‌اند.",
+        "مردم ناگهان ناپدید نشدند؛ جوامع در سراسر منطقه سازمانی دوباره یافتند.",
+        "وزن هر علت در افول شهر هنوز قطعی نیست."
+      ],
+      "question": "به نظر شما چه ترکیبی از فشارهای محیطی و سیاسی کاهوکیا را دگرگون کرد؟",
+      "tags": [
+        "#کاهوکیا",
+        "#تاریخ_آمریکا",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "وجود تپه‌ها، میدان‌ها و رشد و افول کاهوکیا با شواهد باستان‌شناختی پشتیبانی می‌شود.",
+      "probable": "سیلاب، اقلیم، سیاست و جابه‌جایی جمعیت احتمالاً در کنار هم اثر گذاشته‌اند.",
+      "unknown": "سهم دقیق هر عامل و زمان‌بندی آن‌ها روشن نیست."
+    }
+  },
+  {
+    "id": "hopewell-earthworks",
+    "title": "Hopewell Earthworks: Geometry in the Ohio Landscape",
+    "tags": [
+      "history",
+      "archaeology",
+      "north-america"
+    ],
+    "beats": [
+      {
+        "text": "Enormous earthworks in Ohio encode circles, octagons, and long avenues.",
+        "visual": "نمای هوایی سینمایی از خاکریزهای هوپ‌ول در اوهایو، دایره‌ها و هشت‌ضلعی‌های عظیم میان جنگل، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Hopewell communities built them nearly two thousand years ago.",
+        "visual": "سازندگان هوپ‌ول در حدود دو هزار سال پیش در حال ساخت خاکریز با سبدهای خاک، بازسازی تاریخی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Some geometry aligns with lunar standstills and solar directions.",
+        "visual": "هشت‌ضلعی خاکی هوپ‌ول زیر آسمان شب، ماه در ایست بزرگ و پرتو طلوع خورشید در امتداد محورها، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No central palace or written explanation identifies their organizers.",
+        "visual": "چشم‌انداز خاکریزها بدون کاخ مرکزی یا کتیبه، میدان خالی و گذرگاه‌های طولانی، فضای مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Ceremony, pilgrimage, astronomy, and social exchange likely overlapped.",
+        "visual": "مراسم و زیارت گروه‌های هوپ‌ول در میدان خاکی، تبادل اشیای آیینی و مشاهده آسمان، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "How regional groups coordinated such precise landscapes remains unclear.",
+        "visual": "چند جامعه منطقه‌ای در حال ساخت و نگهداری خاکریزهای عظیم با هماهنگی دوربرد، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "خاکریزهای هوپ‌ول: هندسه در چشم‌انداز اوهایو",
+      "beats": [
+        "خاکریزهای عظیم اوهایو دایره‌ها، هشت‌ضلعی‌ها و گذرگاه‌های طولانی را در خود رمزگذاری کرده‌اند.",
+        "جوامع هوپ‌ول نزدیک به دو هزار سال پیش این سازه‌ها را ساختند.",
+        "برخی هندسه‌ها با ایست‌های بزرگ ماه و جهت‌های خورشیدی هم‌راستا هستند.",
+        "هیچ کاخ مرکزی یا توضیح مکتوبی سازمان‌دهندگان آن‌ها را معرفی نمی‌کند.",
+        "مراسم، زیارت، نجوم و تبادل اجتماعی احتمالاً درهم‌تنیده بوده‌اند.",
+        "چگونگی هماهنگی گروه‌های منطقه‌ای برای ساخت چنین چشم‌انداز دقیقی روشن نیست."
+      ],
+      "question": "چه گروه‌هایی توانستند این هندسه دقیق را در سراسر اوهایو هماهنگ کنند؟",
+      "tags": [
+        "#هوپ‌ول",
+        "#باستان‌شناسی",
+        "#نجوم_باستان"
+      ]
+    },
+    "notes": {
+      "proven": "شکل‌های هندسی خاکریزها و برخی هم‌راستایی‌های نجومی مستندند.",
+      "probable": "کارکرد آیینی، زیارتی و تبادل اجتماعی محتمل است، اما توضیح مکتوبی نداریم.",
+      "unknown": "سازمان‌دهی دقیق گروه‌های سازنده ناشناخته است."
+    }
+  },
+  {
+    "id": "moundville-collapse",
+    "title": "Moundville: A Mississippian Center Transformed",
+    "tags": [
+      "history",
+      "archaeology",
+      "north-america"
+    ],
+    "beats": [
+      {
+        "text": "A major Mississippian center changed dramatically after centuries of importance.",
+        "visual": "نمای هوایی ماوندویل در آلاباما با میدان مرکزی، تپه‌های سکویی و رودخانه، بازسازی پیش از تماس اروپایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Moundville in Alabama had plazas, platform mounds, and elite burials.",
+        "visual": "میدان ماوندویل و گورستان نخبگان در دوره شکوفایی فرهنگ می‌سی‌سیپی، نور گرم، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Population and ritual activity declined before European colonization.",
+        "visual": "ساکنان در حال برگزاری آیین در کنار تپه‌های سکویی ماوندویل، بازسازی تاریخی واقع‌گرایانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Political restructuring, environmental pressure, and shifting trade are proposed.",
+        "visual": "تغییر مسیر رود، فرسایش زمین و جابه‌جایی شبکه‌های تجارت پیرامون ماوندویل، تصویر مستند سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Later people still used the landscape and remembered its significance.",
+        "visual": "گروه‌های بعدی بومی در حال استفاده دوباره از میدان و تپه‌های قدیمی، حفظ خاطره مکان، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Why the center lost its earlier role remains unsettled.",
+        "visual": "ماوندویل کم‌جمعیت در مه، تپه‌ها و میدان خاموش در آلاباما، فضای باستان‌شناختی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "ماوندویل: دگرگونی یک مرکز می‌سی‌سیپی",
+      "beats": [
+        "یک مرکز مهم می‌سی‌سیپی پس از قرن‌ها اهمیت، به‌طور چشمگیری دگرگون شد.",
+        "ماوندویل در آلاباما میدان‌ها، تپه‌های سکویی و گورهای نخبگان داشت.",
+        "جمعیت و فعالیت آیینی آن پیش از استعمار اروپایی کاهش یافت.",
+        "بازسازی سیاسی، فشار محیطی و تغییر مسیر تجارت از توضیح‌های پیشنهادی‌اند.",
+        "مردمان بعدی همچنان از این چشم‌انداز استفاده کردند و اهمیتش را به یاد داشتند.",
+        "دلیل از دست رفتن نقش پیشین مرکز هنوز حل نشده است."
+      ],
+      "question": "چرا ماوندویل نقش مرکزی خود را پیش از استعمار اروپایی از دست داد؟",
+      "tags": [
+        "#ماوندویل",
+        "#می‌سی‌سیپی",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "تپه‌های سکویی، میدان‌ها و گورهای نخبگان ماوندویل مستندند.",
+      "probable": "تغییر سیاسی، محیطی و تجاری از علت‌های محتمل کاهش فعالیت‌اند.",
+      "unknown": "علت دقیق و وزن هر عامل برای از دست رفتن نقش مرکز روشن نیست."
+    }
+  },
+  {
+    "id": "viking-vinland-map",
+    "title": "The Vinland Map: Discovery or Modern Fabrication?",
+    "tags": [
+      "history",
+      "cartography",
+      "forensics"
+    ],
+    "beats": [
+      {
+        "text": "A map seemed to show North America before Columbus, then faced fraud claims.",
+        "visual": "نقشه وینلند روی میز آرشیو در کنار دستکش‌های پژوهشگر و نور سرد موزه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Yale publicized the Vinland Map in 1965 as a medieval document.",
+        "visual": "کتابخانه ییل در سال ۱۹۶۵، پژوهشگران در حال بررسی نقشه‌ای کهنه با نقشه‌نگاری قرون‌وسطایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its outline appeared alongside text about Norse voyages.",
+        "visual": "نمای نزدیک از طرح ساحل نورس در کنار تصویر کشتی وایکینگ در نسخه خطی، بدون بازتولید نوشته خوانا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Ink analysis found modern titanium compounds in the writing.",
+        "visual": "آزمایشگاه شیمی با طیف‌سنج و قطره جوهر روی کاغذ تاریخی، اشاره بصری به ترکیبات تیتانیوم، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Provenance gaps and chemical evidence strongly challenge authenticity.",
+        "visual": "جعبه بایگانی و زنجیره مالکیت گسسته در کنار نقشه، فضای تحقیق درباره اصالت، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Whether every component was forged or altered remains debated.",
+        "visual": "نقشه قدیمی زیر نور دوگانه، نیمی نسخه قرون‌وسطایی و نیمی جعل مدرن، تصویر مفهومی مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "نقشه وینلند: کشف واقعی یا جعل مدرن؟",
+      "beats": [
+        "نقشه‌ای ظاهراً آمریکای شمالی را پیش از کلمب نشان می‌داد، اما با ادعاهای جعل روبه‌رو شد.",
+        "دانشگاه ییل در سال ۱۹۶۵ نقشه وینلند را سندی قرون‌وسطایی معرفی کرد.",
+        "طرح آن کنار متنی درباره سفرهای نورس ظاهر شده بود.",
+        "آزمایش جوهر ترکیبات تیتانیوم مدرن را در نوشته‌ها یافت.",
+        "شکاف‌های منشأ و شواهد شیمیایی اصالت نقشه را به‌شدت به چالش می‌کشند.",
+        "این‌که همه اجزا جعل شده‌اند یا بخشی از آن‌ها تغییر کرده، هنوز محل بحث است."
+      ],
+      "question": "آیا نقشه وینلند سندی قرون‌وسطایی است یا اثری ساخته‌شده در دوران مدرن؟",
+      "tags": [
+        "#نقشه_وینلند",
+        "#وایکینگ‌ها",
+        "#جعل_تاریخی"
+      ]
+    },
+    "notes": {
+      "proven": "وجود نقشه و یافته‌های جوهر با ترکیبات تیتانیوم مدرن گزارش شده است.",
+      "probable": "شکاف منشأ و شواهد شیمیایی احتمال جعل یا دست‌کاری را بسیار تقویت می‌کند.",
+      "unknown": "نمی‌دانیم همه نقشه جعل شده یا بخشی از آن تغییر یافته است."
+    }
+  },
+  {
+    "id": "etruscan-gold-book",
+    "title": "The Etruscan Gold Book: Pages Without a Story",
+    "tags": [
+      "history",
+      "archaeology",
+      "forgery"
+    ],
+    "beats": [
+      {
+        "text": "A set of golden pages was claimed to preserve an ancient Etruscan text.",
+        "visual": "صفحات طلایی منسوب به اتروسک روی میز موزه در بلغارستان، نور دراماتیک و جزئیات فلز، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The object surfaced in Bulgaria in the early twenty-first century.",
+        "visual": "شیء طلایی که در اوایل قرن بیست‌ویکم در ویترین بلغارستان ظاهر شده، فضای مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its pages showed symbols resembling known Etruscan writing.",
+        "visual": "نمای نزدیک از نمادهای حک‌شده شبیه خط اتروسکی روی ورقه طلا، بدون نمایش نوشته خوانا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No secure archaeological excavation documented the find.",
+        "visual": "محوطه کاوش خالی و پرونده باستان‌شناختی بدون لایه کشف، تأکید بر نبود ثبت معتبر، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Experts questioned the metal, script, and chain of custody.",
+        "visual": "کارشناس آزمایشگاه در حال سنجش فلز و بررسی ورقه‌های زرین با ذره‌بین، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Without provenance or independent dating, its antiquity remains unproven.",
+        "visual": "صفحات طلایی در محفظه شیشه‌ای با هاله‌ای از تردید درباره قدمت، فضای موزه‌ای واقع‌گرایانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "کتاب زرین اتروسکی: صفحاتی بی‌داستان",
+      "beats": [
+        "ادعا شد مجموعه‌ای از صفحات زرین متنی باستانی به زبان اتروسکی را حفظ کرده است.",
+        "این شیء در اوایل قرن بیست‌ویکم در بلغارستان پدیدار شد.",
+        "صفحات نمادهایی شبیه به خط شناخته‌شده اتروسکی داشتند.",
+        "هیچ کاوش باستان‌شناختی معتبر، کشف آن را ثبت نکرده است.",
+        "کارشناسان درباره فلز، خط و زنجیره نگهداری آن پرسش مطرح کردند.",
+        "بدون منشأ و تاریخ‌گذاری مستقل، باستانی بودن اثر اثبات نشده است."
+      ],
+      "question": "آیا این صفحات زرین واقعاً متنی اتروسکی باستانی را حفظ کرده‌اند؟",
+      "tags": [
+        "#اتروسک‌ها",
+        "#باستان‌شناسی",
+        "#اصالت_اثر"
+      ]
+    },
+    "notes": {
+      "proven": "ادعا درباره صفحات و شباهت نمادها به خط اتروسکی ثبت شده است، نه اصالت آن.",
+      "probable": "نبود منشأ معتبر و تاریخ‌گذاری مستقل، باستانی بودن را نامحتمل می‌کند.",
+      "unknown": "سن واقعی، محل کشف و زنجیره مالکیت اثر ناشناخته است."
+    }
+  },
+  {
+    "id": "tollund-man",
+    "title": "Tollund Man: The Bog Body’s Last Day",
+    "tags": [
+      "history",
+      "archaeology",
+      "forensics"
+    ],
+    "beats": [
+      {
+        "text": "A remarkably preserved body in a Danish bog still raises questions about death.",
+        "visual": "مرداب دانمارک و پیکر حفظ‌شده مرد تولوند در سال ۱۹۵۰، کارگران تورب در مه صبحگاهی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Peat cutters found Tollund Man in 1950 with a noose around his neck.",
+        "visual": "کارگران تورب در حال کشف مرد تولوند با طناب دور گردن در مرداب، بازسازی مستند بدون خشونت نمایشی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "His stomach contained a final meal of grains and seeds.",
+        "visual": "بازسازی آخرین وعده غلات و دانه‌ها در ظرف عصر آهن، نمای نزدیک با نور موزه‌ای، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "His skin and facial expression survived because of acidic, oxygen-poor peat.",
+        "visual": "چهره حفظ‌شده مرد تولوند در تورب اسیدی و بی‌اکسیژن، نمای علمی موزه‌ای، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Execution, ritual sacrifice, and punishment are considered possible contexts.",
+        "visual": "مردی در چشم‌انداز آیینی عصر آهن دانمارک، حلقه‌ای از مردم دوردست و فضای مبهم میان قربانی و مجازات، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Who he was and why he died cannot be recovered completely.",
+        "visual": "مرداب خالی در گرگ‌ومیش، هویت و علت مرگ در مه پنهان، سینمایی مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "مرد تولوند: آخرین روز در مرداب",
+      "beats": [
+        "بدنی شگفت‌انگیز سالم در مردابی دانمارکی هنوز درباره علت مرگش پرسش ایجاد می‌کند.",
+        "کارگران استخراج تورب در سال ۱۹۵۰ مرد تولوند را با طنابی دور گردن یافتند.",
+        "معده او آخرین وعده‌ای از غلات و دانه‌ها را در خود داشت.",
+        "پوست و حالت چهره‌اش به‌سبب تورب اسیدی و کم‌اکسیژن حفظ شده است.",
+        "اعدام، قربانی آیینی و مجازات از زمینه‌های احتمالی‌اند.",
+        "هویت او و دلیل مرگش را نمی‌توان به‌طور کامل بازسازی کرد."
+      ],
+      "question": "مرد تولوند قربانی آیین بود، مجازات شد، یا سرنوشتی دیگر داشت؟",
+      "tags": [
+        "#مرد_تولوند",
+        "#باستان‌شناسی",
+        "#عصر_آهن"
+      ]
+    },
+    "notes": {
+      "proven": "کشف پیکر با طناب و حفظ‌شدن آن در تورب اسیدی مستند است.",
+      "probable": "اعدام یا قربانی آیینی زمینه‌های محتمل‌اند، اما یکی قطعی نیست.",
+      "unknown": "هویت فرد و دلیل دقیق مرگ او معلوم نیست."
+    }
+  },
+  {
+    "id": "grauballe-man",
+    "title": "Grauballe Man: Violence in the Bog",
+    "tags": [
+      "history",
+      "archaeology",
+      "forensics"
+    ],
+    "beats": [
+      {
+        "text": "A Danish bog preserved a man with a fatal cut across his throat.",
+        "visual": "مرداب دانمارکی با پیکر مرد گراوباله و زخم گلو، نور سرد و فضای علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Grauballe Man was discovered by peat workers in 1952.",
+        "visual": "کارگران تورب در سال ۱۹۵۲ در حال بیرون آوردن پیکر از مرداب، بازسازی مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Radiocarbon dating placed him in the late Iron Age.",
+        "visual": "آزمایشگاه باستان‌شناسی با نمونه‌های رادیوکربن و ابزار تاریخ‌گذاری عصر آهن، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "His hands, face, and internal tissues survived unusually well.",
+        "visual": "دست‌ها و چهره حفظ‌شده مرد گراوباله در ویترین موزه، جزئیات علمی و محترمانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Ritual killing, execution, and social crisis are possible explanations.",
+        "visual": "چشم‌انداز آیینی عصر آهن در کنار مرداب، گروهی دوردست و فضای مبهم میان اعدام و قربانی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No evidence identifies his community or the exact reason for his death.",
+        "visual": "مرداب مه‌آلود و پرونده بی‌پاسخ درباره جامعه و مرگ مرد گراوباله، سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "مرد گراوباله: خشونت در مرداب",
+      "beats": [
+        "مردابی دانمارکی پیکر مردی را حفظ کرده که بریدگی مرگباری بر گلویش دارد.",
+        "کارگران تورب در سال ۱۹۵۲ مرد گراوباله را کشف کردند.",
+        "تاریخ‌گذاری رادیوکربن او را به اواخر عصر آهن رساند.",
+        "دست‌ها، چهره و بافت‌های درونی‌اش به‌طور غیرمعمولی سالم مانده‌اند.",
+        "کشتن آیینی، اعدام و بحران اجتماعی توضیح‌های احتمالی‌اند.",
+        "هیچ مدرکی جامعه او یا دلیل دقیق مرگش را مشخص نمی‌کند."
+      ],
+      "question": "چه چیزی پشت زخم مرگبار مرد گراوباله در مرداب دانمارک بود؟",
+      "tags": [
+        "#مرد_گراوباله",
+        "#عصر_آهن",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "کشف پیکر و تاریخ‌گذاری آن به اواخر عصر آهن مستند است.",
+      "probable": "کشتن آیینی یا اعدام با شواهد موجود سازگار است، اما علت قطعی نیست.",
+      "unknown": "هویت جامعه و انگیزه دقیق مرگ ناشناخته است."
+    }
+  },
+  {
+    "id": "juanita-inca-mummy",
+    "title": "Juanita: The Inca Ice Maiden",
+    "tags": [
+      "history",
+      "archaeology",
+      "forensics"
+    ],
+    "beats": [
+      {
+        "text": "An Inca girl was found frozen near a high Andean summit.",
+        "visual": "قله یخ‌زده آمپاتو در آند پرو، بقچه مدفون خوانیتا که زیر یخ در حال آشکار شدن است، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Mount Ampato’s melting ice revealed her bundle in 1995.",
+        "visual": "ذوب یخ آمپاتو در سال ۱۹۹۵ و گروه کاشف در کنار بقچه باستانی، بازسازی مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Her clothing and grave goods indicate a high-status ritual setting.",
+        "visual": "لباس بافته اینکا و اشیای آیینی کنار مومیایی یخ‌زده در ویترین باستان‌شناسی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Examination found trauma consistent with a ceremonial sacrifice.",
+        "visual": "بازسازی محترمانه آیین کوهستانی اینکا در ارتفاعات آند، چهره‌ها دوردست و بدون نمایش خشونت، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Researchers infer a broader capacocha ceremony from regional evidence.",
+        "visual": "صفی آیینی از زائران اینکا که به سوی قله آمپاتو می‌روند، کوه‌های بلند و ابرها، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Her personal life and the exact procession to the mountain remain unknown.",
+        "visual": "قله خاموش آمپاتو در غروب و مسیر محو زائران، زندگی شخصی خوانیتا در هاله ابهام، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "خوانیتا: دوشیزه یخی اینکا",
+      "beats": [
+        "دختری اینکا در نزدیکی قله‌ای بلند در آند، یخ‌زده پیدا شد.",
+        "ذوب یخ‌های کوه آمپاتو در سال ۱۹۹۵ بقچه او را آشکار کرد.",
+        "لباس و اشیای تدفینی او از زمینه‌ای آیینی و دارای جایگاه بالا خبر می‌دهد.",
+        "بررسی‌ها آسیبی سازگار با قربانی آیینی نشان دادند.",
+        "پژوهشگران بر پایه شواهد منطقه‌ای، آیین گسترده‌تر کاپاکوچا را استنباط می‌کنند.",
+        "زندگی شخصی او و مسیر دقیق حرکت به سوی کوه ناشناخته مانده است."
+      ],
+      "question": "آیا خوانیتا را برای آیینی کوهستانی به آمپاتو برده بودند؟",
+      "tags": [
+        "#خوانیتا",
+        "#اینکا",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "کشف خوانیتا، لباس و اشیای تدفینی و شواهد آسیب مستند است.",
+      "probable": "پیوند با آیین کاپاکوچا از شواهد منطقه‌ای محتمل است، اما مسیر دقیق معلوم نیست.",
+      "unknown": "زندگی شخصی و جزئیات سفر او به کوه ناشناخته است."
+    }
+  },
+  {
+    "id": "sacred-cenote-sacrifices",
+    "title": "Chichén Itzá’s Sacred Cenote",
+    "tags": [
+      "history",
+      "archaeology",
+      "maya"
+    ],
+    "beats": [
+      {
+        "text": "A deep limestone pool preserved offerings and human remains from Maya ritual.",
+        "visual": "سنوت مقدس چیچن ایتزا در جنگل یوکاتان، آب تیره و دیواره‌های آهکی عمیق، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Divers explored the Sacred Cenote at Chichén Itzá in the early twentieth century.",
+        "visual": "غواصان اوایل قرن بیستم در حال کاوش سنوت با تجهیزات آن دوره، بازسازی تاریخی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Gold, jade, pottery, and bones were recovered from the water.",
+        "visual": "اشیای طلایی، یشم، سفال و استخوان‌های بازیابی‌شده از آب، چیدمان موزه‌ای محترمانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Objects came from different periods and regions, implying wide connections.",
+        "visual": "پیشکش‌های مایا که از مناطق و دوره‌های دور به چیچن ایتزا رسیده‌اند، مسیرهای تجاری در منظره مفهومی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Rain ceremonies, sacrifice, and pilgrimage are documented in related evidence.",
+        "visual": "مراسم باران مایا و زائران کنار سنوت مقدس، بازسازی آیینی بدون نمایش خشونت، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Each individual’s identity and exact path into the cenote remain unknown.",
+        "visual": "آب تاریک سنوت و هویت‌های گمشده در عمق، نور باریک از شکاف جنگل، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "سنوت مقدس چیچن ایتزا",
+      "beats": [
+        "حوضچه‌ای عمیق از سنگ آهک، پیشکش‌ها و بقایای انسانیِ آیین مایا را حفظ کرده است.",
+        "غواصان در اوایل قرن بیستم سنوت مقدس چیچن ایتزا را کاوش کردند.",
+        "طلا، یشم، سفال و استخوان از آب بیرون آورده شد.",
+        "اشیا از دوره‌ها و مناطق گوناگون آمده‌اند و از پیوندهای گسترده خبر می‌دهند.",
+        "مراسم باران، قربانی و زیارت در شواهد مرتبط ثبت شده‌اند.",
+        "هویت هر فرد و مسیر دقیق ورودش به سنوت ناشناخته مانده است."
+      ],
+      "question": "چه کسانی در سنوت مقدس چیچن ایتزا نذر کردند و چگونه به آن رسیدند؟",
+      "tags": [
+        "#چیچن_ایتزا",
+        "#مایا",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "وجود پیشکش‌ها و بقایای انسانی و کاوش‌های سنوت مستند است.",
+      "probable": "پیوند با آیین باران، قربانی و زیارت بر شواهد مرتبط استوار است.",
+      "unknown": "هویت افراد و مسیر دقیق ورود اشیا و پیکرها معلوم نیست."
+    }
+  },
+  {
+    "id": "etruscan-lemnian",
+    "title": "The Lemnos Stele: A Language Link or Coincidence?",
+    "tags": [
+      "history",
+      "linguistics",
+      "archaeology"
+    ],
+    "beats": [
+      {
+        "text": "A Greek island inscription resembles Etruscan and complicates language history.",
+        "visual": "لوح لمنوس در موزه، کتیبه سنگی کنار چشم‌انداز جزیره کامینیا در یونان، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The Lemnos Stele was found near Kaminia in 1885.",
+        "visual": "کشف لوح نزدیک کامینیا در سال ۱۸۸۵، باستان‌شناس در حال ثبت سنگ در چشم‌انداز جزیره، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its text uses a related alphabet and appears to commemorate a warrior.",
+        "visual": "نمای نزدیک از الفبای حک‌شده و پیکره نمادین جنگجو روی لوح، نوشته خوانا نمایش داده نشود، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Similar grammar has been cited for a Tyrsenian language family.",
+        "visual": "دو کتیبه سنگی در کنار هم با ساختارهای دستوری مشابه، تصویر آموزشی زبان‌شناختی واقع‌گرایانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Single inscriptions cannot establish migration routes with certainty.",
+        "visual": "جزیره‌های اژه و مسیرهای دریایی باستانی، چند جامعه دور از هم بدون ادعای مسیر قطعی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "How Lemnian and Etruscan were connected remains disputed.",
+        "visual": "لوح لمنوس زیر نور موزه و سایه یک کتیبه اتروسکی، فضای اختلاف علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "لوح لمنوس: پیوند زبانی یا تصادف؟",
+      "beats": [
+        "کتیبه‌ای در جزیره‌ای یونانی به اتروسکی شباهت دارد و تاریخ زبان‌ها را پیچیده می‌کند.",
+        "لوح لمنوس در سال ۱۸۸۵ نزدیک کامینیا پیدا شد.",
+        "متن آن از الفبایی مرتبط استفاده می‌کند و ظاهراً یادبود یک جنگجوست.",
+        "برای خانواده زبانی تیرسنی، شباهت‌های دستوری مطرح شده است.",
+        "یک کتیبه به‌تنهایی نمی‌تواند مسیرهای مهاجرت را با قطعیت ثابت کند.",
+        "ارتباط لمنی و اتروسکی همچنان مورد اختلاف است."
+      ],
+      "question": "آیا شباهت لوح لمنوس و زبان اتروسکی از یک خانواده زبانی خبر می‌دهد؟",
+      "tags": [
+        "#لوح_لمنوس",
+        "#اتروسک‌ها",
+        "#زبان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "کشف لوح در ۱۸۸۵ و شباهت الفبا و متن آن مستند است.",
+      "probable": "پیوند زبانی تیرسنی از شباهت‌های دستوری محتمل است، اما یک کتیبه کافی نیست.",
+      "unknown": "رابطه دقیق لمنی و اتروسکی و مسیر مهاجرت ناشناخته است."
+    }
+  },
+  {
+    "id": "minoan-eruption",
+    "title": "Thera Eruption: The Date Behind a Bronze Age Shock",
+    "tags": [
+      "history",
+      "archaeology",
+      "geology"
+    ],
+    "beats": [
+      {
+        "text": "A massive Aegean eruption disrupted Bronze Age communities, but its date is debated.",
+        "visual": "فوران آتشفشانی ترا در دریای اژه، ستون خاکستر بر فراز سانتورینی عصر برنز، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Thera, now Santorini, exploded after the settlement of Akrotiri was buried.",
+        "visual": "آکروتیری زیر خاکستر آتشفشانی ویرانگر، خیابان‌های مدفون در جزیره ترا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Ash, tsunami deposits, and climate signals spread across the region.",
+        "visual": "رسوبات خاکستر و سونامی در ساحل اژه، موج دور و لایه‌های زمین‌شناختی آشکار، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Radiocarbon dates point earlier than some Egyptian historical chronologies.",
+        "visual": "آزمایشگاه تاریخ‌گذاری رادیوکربن با نمونه‌های چوب و سفال، مقایسه زمانی با مصر باستان، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The eruption may have affected Minoan networks without single-handedly ending them.",
+        "visual": "شبکه‌های دریایی مینوسی در اژه پس از فوران، کشتی‌ها و سکونتگاه‌ها زیر آسمان خاکستری، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its exact date and regional consequences remain contested.",
+        "visual": "سانتورینی خاموش در مه خاکستر و تقویم‌های زمانی نامتوافق، فضای مناقشه علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "فوران ترا: تاریخِ یک تکانه عصر برنز",
+      "beats": [
+        "فورانی عظیم در اژه جوامع عصر برنز را مختل کرد، اما تاریخش محل بحث است.",
+        "ترا، سانتورینی امروزی، پس از دفن سکونتگاه آکروتیری منفجر شد.",
+        "خاکستر، رسوبات سونامی و نشانه‌های اقلیمی در سراسر منطقه پخش شدند.",
+        "تاریخ‌های رادیوکربن از زمانی زودتر از برخی گاه‌شماری‌های تاریخی مصر خبر می‌دهند.",
+        "فوران شاید بر شبکه‌های مینوسی اثر گذاشته باشد، بی‌آنکه به‌تنهایی پایانشان دهد.",
+        "تاریخ دقیق و پیامدهای منطقه‌ای فوران همچنان مورد مناقشه است."
+      ],
+      "question": "فوران ترا دقیقاً چه زمانی رخ داد و چه اثری بر شبکه‌های مینوسی گذاشت؟",
+      "tags": [
+        "#ترا",
+        "#سانتورینی",
+        "#عصر_برنز"
+      ]
+    },
+    "notes": {
+      "proven": "فوران بزرگ، دفن آکروتیری و پراکندگی خاکستر و سونامی مستندند.",
+      "probable": "تأثیر بر شبکه‌های مینوسی محتمل است، اما پایان آن‌ها را به‌تنهایی توضیح نمی‌دهد.",
+      "unknown": "تاریخ دقیق فوران و اندازه پیامدهای منطقه‌ای نامعلوم است."
+    }
+  }
+]

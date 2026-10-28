@@ -1,0 +1,857 @@
+[
+  {
+    "id": "high-temp-superconductivity",
+    "title": "High-Temperature Superconductivity",
+    "tags": [
+      "science",
+      "physics",
+      "materials"
+    ],
+    "beats": [
+      {
+        "text": "Some materials carry electrical current without resistance at unexpectedly high temperatures.",
+        "visual": "قرص سرامیکی ابررسانا در میدان مغناطیسی با حلقه‌های نور آبی، آزمایشگاه فیزیک، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Copper-oxide superconductors were discovered in 1986.",
+        "visual": "نمونه اکسید مس و دستگاه آزمایش در سال ۱۹۸۶، بازسازی آزمایشگاه کشف ابررسانایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Their transition temperatures exceed the range explained by simple phonon models.",
+        "visual": "شبکه لایه‌ای اتمی با فونون‌ها و الکترون‌های جفت‌شده، نمایش علمی میکروسکوپی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Pressure and layered structures produce additional unusual superconductors.",
+        "visual": "سلول فشار بالا و ماده لایه‌ای در آزمایشگاه مواد، درخشش فلزی و ابزار علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Competing theories emphasize magnetism, pairing, and electronic correlations.",
+        "visual": "سه دیدگاه مفهومی مغناطیس، جفت‌شدن و هم‌بستگی الکترونی در شبکه بلوری، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The microscopic mechanism of many high-temperature materials remains unsettled.",
+        "visual": "شبکه اتمی تاریک با سازوکار نامعلوم و ابررسانای شناور در پس‌زمینه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "ابررسانایی دمای بالا",
+      "beats": [
+        "برخی مواد در دماهایی غیرمنتظره بالا جریان را بدون مقاومت عبور می‌دهند.",
+        "ابررساناهای اکسید مس در سال ۱۹۸۶ کشف شدند.",
+        "دمای گذار آن‌ها از محدوده‌ای فراتر می‌رود که مدل‌های ساده فونونی توضیح می‌دهند.",
+        "فشار و ساختارهای لایه‌ای ابررساناهای نامعمول دیگری پدید می‌آورند.",
+        "نظریه‌های رقیب بر مغناطیس، جفت‌شدن و هم‌بستگی‌های الکترونی تأکید دارند.",
+        "سازوکار میکروسکوپی بسیاری از مواد دمای بالا هنوز حل نشده است."
+      ],
+      "question": "چرا سازوکار میکروسکوپی بسیاری از ابررساناهای دمای بالا هنوز روشن نیست؟",
+      "tags": [
+        "#ابررسانایی",
+        "#فیزیک",
+        "#مواد"
+      ]
+    },
+    "notes": {
+      "proven": "رسانش بدون مقاومت و کشف اکسیدهای مس در ۱۹۸۶ مستند است.",
+      "probable": "نقش مغناطیس، جفت‌شدن و هم‌بستگی‌ها در نظریه‌های رقیب محتمل است.",
+      "unknown": "سازوکار میکروسکوپی بسیاری از ابررساناهای دمای بالا ناشناخته است."
+    }
+  },
+  {
+    "id": "room-temp-superconductivity",
+    "title": "Room-Temperature Superconductivity Claims",
+    "tags": [
+      "science",
+      "physics",
+      "materials"
+    ],
+    "beats": [
+      {
+        "text": "Reports of room-temperature superconductivity have repeatedly attracted scrutiny.",
+        "visual": "سلول الماسی فشار بالا با نمونه فلزی درخشان و سیم‌پیچ مغناطیسی در آزمایشگاه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "High-pressure hydrides showed remarkable transition temperatures under extreme compression.",
+        "visual": "هیدرید فشرده میان الماس‌ها و اندازه‌گیری دمای گذار، فضای علمی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Later claims faced replication, sample, or data-integrity challenges.",
+        "visual": "آزمایشگاه تکرار مستقل با نمونه‌های متفاوت و داده‌های در حال بررسی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Superconductivity requires simultaneous evidence of resistance loss and magnetic response.",
+        "visual": "نمونه ابررسانا در کنار نمودار مفهومی افت مقاومت و میدان مغناطیسی، بدون نمایش نوشته، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Pressure makes promising materials difficult to use in ordinary devices.",
+        "visual": "دستگاه فشار بالا و قطعه کوچک ماده‌ای که برای کاربرد روزمره دسترس‌ناپذیر است، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Which claims survive independent testing remains an active scientific question.",
+        "visual": "چند آزمایشگاه مستقل و نمونه‌های زیر نور آزمون، بقای ادعاها در هاله تردید، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "ادعاهای ابررسانایی در دمای اتاق",
+      "beats": [
+        "گزارش‌های ابررسانایی در دمای اتاق بارها توجه و بررسی دقیق را برانگیخته‌اند.",
+        "هیدریدهای پرفشار در فشردگی شدید دماهای گذار شگفت‌انگیزی نشان دادند.",
+        "ادعاهای بعدی با چالش‌های تکرار، نمونه یا یکپارچگی داده روبه‌رو شدند.",
+        "ابررسانایی به شواهد هم‌زمانِ افت مقاومت و پاسخ مغناطیسی نیاز دارد.",
+        "فشار بالا استفاده از مواد امیدبخش را در وسایل معمولی دشوار می‌کند.",
+        "این‌که کدام ادعاها آزمون مستقل را پشت سر می‌گذارند، پرسشی فعال است."
+      ],
+      "question": "کدام ادعای ابررسانایی دمای اتاق از آزمون مستقل جان سالم به در می‌برد؟",
+      "tags": [
+        "#ابررسانایی",
+        "#فیزیک",
+        "#روش_علمی"
+      ]
+    },
+    "notes": {
+      "proven": "گزارش‌های دماهای گذار بالا در هیدریدهای پرفشار و نیاز به دو شاهد ابررسانایی مستند است.",
+      "probable": "چالش‌های تکرار و نمونه و داده، برخی ادعاها را تضعیف کرده‌اند.",
+      "unknown": "پایداری ادعاها پس از آزمون مستقل و کاربردپذیری در فشار معمول نامعلوم است."
+    }
+  },
+  {
+    "id": "cold-fusion",
+    "title": "Cold Fusion: The Experiment That Would Not Settle",
+    "tags": [
+      "science",
+      "physics",
+      "history"
+    ],
+    "beats": [
+      {
+        "text": "Two chemists announced excess heat from electrochemical cells in 1989.",
+        "visual": "دو شیمی‌دان در آزمایشگاه سال ۱۹۸۹ و سلول الکتروشیمیایی درخشان، بازسازی تاریخی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "They proposed nuclear fusion in palladium loaded with deuterium at room temperature.",
+        "visual": "سلول پالادیمی با حباب‌های دوتریم و نمودار مفهومی همجوشی در دمای اتاق، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Laboratories worldwide attempted replications with inconsistent results.",
+        "visual": "آزمایشگاه‌های مختلف در جهان که سلول‌های مشابه را تکرار می‌کنند و نتایج متفاوت می‌بینند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Calorimetry, contamination, and reporting standards became central disputes.",
+        "visual": "گرماسنج دقیق، نمونه آلوده احتمالی و دفتر ثبت آزمایش روی میز پژوهشگر، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Most mainstream reviews found no reliable, reproducible nuclear signal.",
+        "visual": "آزمایشگاه خالی با نبود سیگنال هسته‌ای تکرارپذیر و ابزار خاموش، فضای مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The episode remains a case study in extraordinary claims and replication.",
+        "visual": "مقاله علمی و گروه پژوهشگران در مسیر بازتولید آزمایش، تأکید بر آزمون‌پذیری، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "همجوشی سرد: آزمایشی که به نتیجه نرسید",
+      "beats": [
+        "دو شیمی‌دان در سال ۱۹۸۹ از گرمای اضافی در سلول‌های الکتروشیمیایی خبر دادند.",
+        "آن‌ها همجوشی هسته‌ای را در پالادیمِ بارگذاری‌شده با دوتریم و در دمای اتاق پیشنهاد کردند.",
+        "آزمایشگاه‌های سراسر جهان تلاش کردند نتیجه را تکرار کنند، اما نتایج ناسازگار بود.",
+        "گرماسنجی، آلودگی و استانداردهای گزارش‌دهی به اختلاف‌های اصلی تبدیل شدند.",
+        "بیشتر مرورهای جریان اصلی هیچ سیگنال هسته‌ای مطمئن و تکرارپذیری نیافتند.",
+        "این ماجرا نمونه‌ای از ادعاهای خارق‌العاده و اهمیت تکرار است."
+      ],
+      "question": "چرا ادعای همجوشی سرد نتوانست شواهدی پایدار و تکرارپذیر ارائه کند؟",
+      "tags": [
+        "#همجوشی_سرد",
+        "#روش_علمی",
+        "#فیزیک"
+      ]
+    },
+    "notes": {
+      "proven": "اعلام گرمای اضافی در سال ۱۹۸۹ و تلاش‌های تکرار جهانی مستند است.",
+      "probable": "توضیح‌های مربوط به گرماسنجی و آلودگی در اختلاف‌ها نقش محتمل دارند؛ نتیجه هسته‌ای تأیید نشده است.",
+      "unknown": "وجود همجوشی سردِ تکرارپذیر و سیگنال هسته‌ای ناشناخته و اثبات‌نشده است."
+    }
+  },
+  {
+    "id": "water-memory",
+    "title": "Water Memory: A Controversial Homeopathy Claim",
+    "tags": [
+      "science",
+      "chemistry",
+      "history"
+    ],
+    "beats": [
+      {
+        "text": "A controversial experiment claimed water retained effects after molecules were diluted away.",
+        "visual": "آزمایشگاه شیشه‌ای با رقت‌های بسیار زیاد آب و قطره‌ای که زیر نور معلق است، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Jacques Benveniste’s 1988 paper linked diluted antibodies to biological activity.",
+        "visual": "ژاک بنونیست و سلول‌های آزمایشگاهی در بازسازی سال ۱۹۸۸، فضای علمی مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Independent teams struggled to reproduce the reported results.",
+        "visual": "چند گروه مستقل با نمونه‌های آب و تلاش برای تکرار آزمایش، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Blinded tests failed when the experimental controls were strengthened.",
+        "visual": "آزمون دوسوکور با نمونه‌های کدگذاری‌شده و کنترل‌های دقیق در آزمایشگاه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Homeopathy advocates and critics continue to cite the episode differently.",
+        "visual": "پژوهشگران و منتقدان هومیوپاتی در دو سوی میز علمی، اختلاف تفسیر بدون نمایش متن، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No accepted chemistry explains a memory-like effect in pure water.",
+        "visual": "مولکول‌های ناپدیدشده و آب خالص زیر نور سرد، نبود توضیح شیمیایی برای حافظه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "حافظه آب: ادعایی بحث‌برانگیز در هومیوپاتی",
+      "beats": [
+        "آزمایشی بحث‌برانگیز ادعا کرد آب پس از حذف مولکول‌ها اثر آن‌ها را حفظ می‌کند.",
+        "مقاله ژاک بنونیست در سال ۱۹۸۸ رقیق‌سازی آنتی‌بادی‌ها را به فعالیت زیستی پیوند داد.",
+        "گروه‌های مستقل برای تکرار نتایج گزارش‌شده با مشکل روبه‌رو شدند.",
+        "آزمون‌های دوسوکور با تقویت کنترل‌های آزمایشی موفق نشدند نتیجه را بازتولید کنند.",
+        "حامیان و منتقدان هومیوپاتی هنوز این ماجرا را متفاوت تفسیر می‌کنند.",
+        "هیچ شیمی پذیرفته‌شده‌ای اثر حافظه‌مانند را در آب خالص توضیح نمی‌دهد."
+      ],
+      "question": "آیا آب پس از رقیق‌شدن شدید می‌تواند اثر مولکول‌های حذف‌شده را حفظ کند؟",
+      "tags": [
+        "#حافظه_آب",
+        "#هومیوپاتی",
+        "#روش_علمی"
+      ]
+    },
+    "notes": {
+      "proven": "گزارش آزمایش بنونیست در ۱۹۸۸ و تلاش‌های مستقل برای تکرار آن مستند است.",
+      "probable": "آزمون‌های کنترل‌شده نتیجه را بازتولید نکردند و تفسیرهای طرفداران و منتقدان متفاوت است.",
+      "unknown": "سازوکار شیمیایی پذیرفته‌شده برای حافظه آب وجود ندارد."
+    }
+  },
+  {
+    "id": "ninth-legion-hispana",
+    "title": "Ninth Legion Hispana: The Missing Roman Unit",
+    "tags": [
+      "history",
+      "romans",
+      "disappearance"
+    ],
+    "beats": [
+      {
+        "text": "A Roman legion vanished from the surviving record after serving in Britain.",
+        "visual": "لژیونرهای رومی در دژ بریتانیا در سده دوم میلادی، بازسازی تاریخی هوای ابری، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Legio IX Hispana was stationed in Britain during the second century CE.",
+        "visual": "دژ لژیون نهم هیسپانا در بریتانیا و سربازان رومی در حال نگهبانی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its name appears on earlier inscriptions, but later evidence becomes sparse.",
+        "visual": "کتیبه سنگی با نام لژیون نهم در کنار بخش‌های محو پرونده تاریخی، بدون نمایش نوشته خوانا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "A destroyed legion, reassignment, and administrative renaming are competing explanations.",
+        "visual": "سه سناریو در منظره بریتانیا: نبرد، راهپیمایی انتقالی و بایگانی اداری، تصویر مستند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The popular story that it was wiped out in northern Britain is unproven.",
+        "visual": "دژ شمالی بریتانیا در مه و داستان عامه‌پسند نابودی لژیون بدون شاهد قطعی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No surviving source securely records the unit’s final fate or location.",
+        "visual": "جاده رومی که در مه ناپدید می‌شود و جای خالی یک واحد نظامی، فضای تاریخی معمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "لژیون نهم هیسپانا: واحد گمشده روم",
+      "beats": [
+        "یک لژیون رومی پس از خدمت در بریتانیا از اسناد باقی‌مانده ناپدید شد.",
+        "لژیون نهم هیسپانا در سده دوم میلادی در بریتانیا مستقر بود.",
+        "نام آن در کتیبه‌های قدیمی‌تر دیده می‌شود، اما شواهد بعدی کم می‌شوند.",
+        "نابودی لژیون، انتقال و تغییر نام اداری توضیح‌های رقیب‌اند.",
+        "داستان عامه‌پسند نابودی آن در شمال بریتانیا اثبات نشده است.",
+        "هیچ منبع باقی‌مانده‌ای سرنوشت یا مکان نهایی واحد را با اطمینان ثبت نمی‌کند."
+      ],
+      "question": "سرنوشت نهایی لژیون نهم هیسپانا در بریتانیا چه بود؟",
+      "tags": [
+        "#روم_باستان",
+        "#لژیون_نهم",
+        "#تاریخ"
+      ]
+    },
+    "notes": {
+      "proven": "استقرار لژیون در بریتانیا و حضور نامش در کتیبه‌های قدیمی‌تر مستند است.",
+      "probable": "انتقال، تغییر نام یا نابودی از توضیح‌های محتمل‌اند؛ نابودی در شمال اثبات نشده است.",
+      "unknown": "سرنوشت و مکان نهایی لژیون ناشناخته است."
+    }
+  },
+  {
+    "id": "europa-plumes",
+    "title": "Europa’s Plumes: Water Escaping an Icy Moon",
+    "tags": [
+      "science",
+      "astronomy",
+      "planetary"
+    ],
+    "beats": [
+      {
+        "text": "Jupiter’s moon Europa may vent water through cracks in its ice.",
+        "visual": "اروپا در برابر مشتری با فواره باریک آب از شکاف پوسته یخی، تصویر فضایی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Hubble observations reported ultraviolet signatures consistent with transient plumes.",
+        "visual": "تلسکوپ هابل در حال ثبت نور فرابنفش پیرامون اروپا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Flyby geometry and sparse data make the detections difficult to repeat.",
+        "visual": "هندسه گذر فضاپیما از کنار اروپا و داده کم درباره فواره احتمالی، بدون نمایش متن، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Plumes could sample an ocean hidden beneath the frozen crust.",
+        "visual": "فواره یخی اروپا که به فضای تاریک می‌رسد و از اقیانوس زیرسطحی نمونه برمی‌دارد، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Alternative explanations include charged particles and surface sputtering.",
+        "visual": "سطح یخی اروپا با ذرات باردار و پاشش سطحی زیر تابش مشتری، توضیح جایگزین، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Whether Europa regularly erupts remains unresolved.",
+        "visual": "اروپا آرام در تاریکی، ترک‌های یخ و فواره‌ای که شاید رخ دهد، فضای نامطمئن علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "فواره‌های اروپا: آبی که از قمر یخی می‌گریزد",
+      "beats": [
+        "قمر اروپا، مشتری، شاید از شکاف‌های یخ خود آب به بیرون می‌فرستد.",
+        "رصدهای هابل نشانه‌های فرابنفشی سازگار با فواره‌های گذرا گزارش کردند.",
+        "هندسه گذر و داده کم، تکرار این آشکارسازی‌ها را دشوار می‌کند.",
+        "فواره‌ها می‌توانند نمونه‌ای از اقیانوس پنهان زیر پوسته یخ باشند.",
+        "ذرات باردار و پاشش سطحی توضیح‌های جایگزین‌اند.",
+        "این‌که اروپا مرتب فوران می‌کند یا نه، حل نشده است."
+      ],
+      "question": "آیا اروپا واقعاً از اقیانوس زیرسطحی خود فواره‌های آب به فضا می‌فرستد؟",
+      "tags": [
+        "#اروپا",
+        "#قمر_یخی",
+        "#فضا"
+      ]
+    },
+    "notes": {
+      "proven": "نشانه‌های فرابنفشی و احتمال فواره‌های اروپا در داده‌های هابل گزارش شده است.",
+      "probable": "فواره‌های آب و دسترسی احتمالی به اقیانوس زیرسطحی محتمل‌اند، اما آشکارسازی‌ها دشوار تکرار می‌شوند.",
+      "unknown": "فوران منظم اروپا و منشأ قطعی سیگنال‌ها ناشناخته است."
+    }
+  },
+  {
+    "id": "enceladus-ocean",
+    "title": "Enceladus: An Ocean Beneath the Ice",
+    "tags": [
+      "science",
+      "astronomy",
+      "planetary"
+    ],
+    "beats": [
+      {
+        "text": "Saturn’s small moon sprays icy particles and vapor into space.",
+        "visual": "انسلادوس در مدار زحل با فواره‌های یخی از قطب جنوب، پس‌زمینه سیاه فضا، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Cassini detected jets near the south pole and found salts and organics.",
+        "visual": "فضاپیمای کاسینی در حال عبور از فواره‌های نمکی و آلی انسلادوس، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Gravity and libration measurements support a subsurface global ocean.",
+        "visual": "برش درونی انسلادوس با اقیانوس جهانی زیر پوسته یخ و میدان گرانشی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The plume chemistry may reveal seafloor reactions or hydrothermal activity.",
+        "visual": "کف اقیانوس زیر یخ با منافذ گرمابی و مواد شیمیایی بالا آمده در فواره، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Contamination and limited sampling complicate claims about habitability.",
+        "visual": "آزمایشگاه فضایی با نمونه محدود فواره و احتمال آلودگی، فضای علمی محتاطانه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Whether life exists beneath the ice remains completely unknown.",
+        "visual": "اقیانوس تاریک زیر پوسته انسلادوس و نشانه‌ای مبهم از حیات، بدون ادعای قطعی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "انسلادوس: اقیانوسی زیر یخ",
+      "beats": [
+        "قمر کوچک زحل ذرات یخی و بخار را به فضا می‌پاشد.",
+        "کاسینی نزدیک قطب جنوب فواره‌ها را دید و نمک‌ها و مواد آلی یافت.",
+        "اندازه‌گیری گرانش و نوسان‌پذیری از اقیانوس جهانی زیرسطحی پشتیبانی می‌کنند.",
+        "شیمی فواره شاید واکنش‌های کف دریا یا فعالیت گرمابی را آشکار کند.",
+        "آلودگی و نمونه‌برداری محدود ادعاهای زیست‌پذیری را پیچیده می‌کنند.",
+        "این‌که زیر یخ حیات وجود دارد، کاملاً ناشناخته است."
+      ],
+      "question": "آیا در اقیانوس پنهان انسلادوس حیات وجود دارد؟",
+      "tags": [
+        "#انسلادوس",
+        "#اقیانوس_زیرسطحی",
+        "#حیات_در_فضا"
+      ]
+    },
+    "notes": {
+      "proven": "فواره‌ها، نمک‌ها و مواد آلی مشاهده‌شده توسط کاسینی و شواهد اقیانوس زیرسطحی مستندند.",
+      "probable": "واکنش گرمابی و زیست‌پذیری از شواهد شیمیایی محتمل‌اند، اما نمونه‌برداری محدود است.",
+      "unknown": "وجود حیات در انسلادوس ناشناخته است."
+    }
+  },
+  {
+    "id": "titan-methane-cycle",
+    "title": "Titan’s Methane Cycle",
+    "tags": [
+      "science",
+      "astronomy",
+      "planetary"
+    ],
+    "beats": [
+      {
+        "text": "Saturn’s moon has lakes and rain made of methane rather than water.",
+        "visual": "دریاچه‌های متان زیر آسمان نارنجی تیتان و قمر زحل در دوردست، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Titan’s thick atmosphere supports clouds, storms, rivers, and shorelines.",
+        "visual": "ابرهای ضخیم، باران متان و رودخانه‌های تیتان در چشم‌انداز ساحلی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Sunlight breaks methane apart, so some process must replenish it.",
+        "visual": "نور خورشید مولکول‌های متان را در جو تیتان می‌شکند، تصویر علمی بدون نوشته، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Cryovolcanism, underground chemistry, and clathrate release are proposed.",
+        "visual": "شکاف یخی، شیمی زیرزمینی و بلورهای کلاترات که متان آزاد می‌کنند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Titan’s seasonal climate is only partly observed from orbit.",
+        "visual": "تیتان در فصل‌های متفاوت با تغییر ابر و دریاچه‌ها از دید مدارگرد، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "How the methane cycle stays active over geological time remains uncertain.",
+        "visual": "چرخه متان میان ابر، باران، دریاچه و مخزن زیرزمینی در گذر زمان، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "چرخه متان تیتان",
+      "beats": [
+        "قمر زحل دریاچه‌ها و بارانی از متان، نه آب، دارد.",
+        "جو ضخیم تیتان از ابر، توفان، رودخانه و ساحل پشتیبانی می‌کند.",
+        "نور خورشید متان را تجزیه می‌کند، پس فرایندی باید آن را دوباره تأمین کند.",
+        "آتشفشان‌زایی یخی، شیمی زیرزمینی و آزادشدن کلاترات پیشنهاد شده‌اند.",
+        "اقلیم فصلی تیتان از مدار فقط تا حدی مشاهده شده است.",
+        "چگونگی فعال‌ماندن چرخه متان در زمان زمین‌شناختی نامطمئن است."
+      ],
+      "question": "چه فرایندی چرخه متان تیتان را در مقیاس زمین‌شناختی زنده نگه می‌دارد؟",
+      "tags": [
+        "#تیتان",
+        "#متان",
+        "#سیاره‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "وجود دریاچه‌ها، باران متان و جو ضخیم تیتان با رصدها مستند است.",
+      "probable": "تجدید متان از کلاترات، شیمی زیرزمینی یا آتشفشان‌زایی یخی محتمل است.",
+      "unknown": "منبع اصلی متان و پایداری چرخه در زمان زمین‌شناختی ناشناخته است."
+    }
+  },
+  {
+    "id": "uranus-tilt",
+    "title": "Uranus: The Planet on Its Side",
+    "tags": [
+      "science",
+      "astronomy",
+      "planetary"
+    ],
+    "beats": [
+      {
+        "text": "Uranus rotates with an extreme axial tilt unlike the other giant planets.",
+        "visual": "اورانوس آبی‌رنگ با محور چرخش تقریباً افقی و حلقه‌های کم‌نور، فضای عمیق، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Its poles alternately face the Sun during a long Uranian year.",
+        "visual": "قطب اورانوس رو به خورشید و سپس در فصل دیگر دور از آن، تصویر مداری سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "A giant impact is the leading explanation for the unusual orientation.",
+        "visual": "برخورد سیاره‌ای عظیم با اورانوس جوان و تغییر محور چرخش، بازسازی علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Multiple impacts or early satellite interactions could also contribute.",
+        "visual": "چند برخورد کوچک و قمرهای اولیه که بر چرخش اورانوس اثر می‌گذارند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The planet’s interior and atmospheric response preserve clues.",
+        "visual": "برش درونی اورانوس و جو نواری آن با سرنخ‌های حفظ‌شده از گذشته، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "What event set the tilt, and when, remains unresolved.",
+        "visual": "اورانوس کج در تاریکی و تاریخچه برخوردی نامعلوم در پس‌زمینه ستاره‌ها، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "اورانوس: سیاره‌ای بر پهلو",
+      "beats": [
+        "اورانوس با کجی محوری شدید، برخلاف دیگر غول‌های منظومه می‌چرخد.",
+        "در طول سال بسیار طولانی اورانوسی، قطب‌های آن به نوبت رو به خورشید قرار می‌گیرند.",
+        "برخورد عظیم پیشروترین توضیح برای این جهت‌گیری نامعمول است.",
+        "چند برخورد یا برهم‌کنش اولیه با قمرها نیز می‌تواند سهم داشته باشد.",
+        "درون سیاره و واکنش جو سرنخ‌هایی را حفظ کرده‌اند.",
+        "این‌که چه رویدادی و چه زمانی این کجی را ساخت، حل نشده است."
+      ],
+      "question": "چه رویدادی محور چرخش اورانوس را تا این اندازه کج کرد؟",
+      "tags": [
+        "#اورانوس",
+        "#سیاره‌ها",
+        "#اخترشناسی"
+      ]
+    },
+    "notes": {
+      "proven": "کجی محوری شدید اورانوس و فصل‌های طولانی آن با مشاهدات نجومی مستند است.",
+      "probable": "برخورد عظیم توضیح پیشرو است؛ چند برخورد یا برهم‌کنش قمری نیز ممکن‌اند.",
+      "unknown": "رویداد دقیق و زمان ایجاد کجی ناشناخته است."
+    }
+  },
+  {
+    "id": "triton-capture",
+    "title": "Triton: Neptune’s Captured Moon",
+    "tags": [
+      "science",
+      "astronomy",
+      "planetary"
+    ],
+    "beats": [
+      {
+        "text": "Neptune’s largest moon orbits backward, hinting at a violent origin.",
+        "visual": "تریتون با سطح یخی در مدار پس‌رونده پیرامون نپتون آبی، تصویر فضایی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Triton’s retrograde path differs from moons formed around their planets.",
+        "visual": "مسیر مدار تریتون در جهت مخالف چرخش معمول قمرها، نپتون در پس‌زمینه، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "A captured Kuiper Belt object is the favored explanation.",
+        "visual": "جرم یخی کمربند کویپر که با گرانش نپتون به‌دام می‌افتد، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Tidal evolution probably circularized its orbit and heated its interior.",
+        "visual": "نیروهای کشندی مدار بیضی تریتون را دایره‌ای و درون قمر را گرم می‌کنند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Capture may have destroyed or expelled Neptune’s earlier satellite system.",
+        "visual": "برخورد و پراکندگی قمرهای اولیه نپتون پس از ورود تریتون، بازسازی علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The exact encounter history remains uncertain.",
+        "visual": "تریتون و نپتون با چند مسیر احتمالی در گذشته دور، تاریخچه برخورد نامعلوم، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "تریتون: قمر به‌دام‌افتاده نپتون",
+      "beats": [
+        "بزرگ‌ترین قمر نپتون پس‌رونده می‌گردد و به خاستگاهی خشن اشاره می‌کند.",
+        "مسیر پس‌رونده تریتون با قمرهایی که کنار سیاره شکل گرفته‌اند متفاوت است.",
+        "به‌دام‌افتادن یک جرم کمربند کویپر توضیح پذیرفته‌شده‌تر است.",
+        "تکامل کشندی احتمالاً مدارش را دایره‌ای و درونش را گرم کرده است.",
+        "به‌دام‌افتادن شاید سامانه قمری پیشین نپتون را نابود یا پراکنده کرده باشد.",
+        "تاریخچه دقیق این رویارویی نامطمئن است."
+      ],
+      "question": "تریتون چگونه از کمربند کویپر به مدار پس‌رونده نپتون افتاد؟",
+      "tags": [
+        "#تریتون",
+        "#نپتون",
+        "#منظومه_شمسی"
+      ]
+    },
+    "notes": {
+      "proven": "مدار پس‌رونده تریتون و تفاوت آن با قمرهای شکل‌گرفته کنار سیاره مستند است.",
+      "probable": "به‌دام‌افتادن از کمربند کویپر و تکامل کشندی توضیح‌های محتمل و پذیرفته‌شده‌اند.",
+      "unknown": "جزئیات رویارویی و سرنوشت سامانه قمری پیشین ناشناخته است."
+    }
+  },
+  {
+    "id": "lunar-mascons",
+    "title": "Lunar Mascons: Hidden Weight Beneath the Moon",
+    "tags": [
+      "science",
+      "astronomy",
+      "planetary"
+    ],
+    "beats": [
+      {
+        "text": "Gravity maps reveal dense regions hidden beneath several lunar basins.",
+        "visual": "ماه از مدار با نواحی گرانشی پرقدرت زیر حوضه‌های بزرگ، تصویر علمی سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Apollo tracking first exposed unusually strong gravitational anomalies.",
+        "visual": "فضاپیمای آپولو و ردیابی مدارش که ناهنجاری گرانشی ماه را آشکار می‌کند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Large impacts may have excavated crust and allowed dense mantle uplift.",
+        "visual": "برخورد سیارک بزرگ، پوسته کنده‌شده و گوشته چگال که به حوضه ماه بالا می‌آید، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Lava filling and cooling later modified the basin structure.",
+        "visual": "حوضه برخوردی ماه که با گدازه پر و سپس سرد شده، مقطع زمین‌شناختی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "GRAIL data mapped the mascons in unprecedented detail.",
+        "visual": "دو فضاپیمای گریل در مدار ماه و نقشه‌برداری دقیق میدان گرانشی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "How each basin formed and evolved remains a geological puzzle.",
+        "visual": "مقطع حوضه ماه با لایه‌های ناشناخته و تاریخچه برخوردی پیچیده، فضای معمای زمین‌شناختی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "ماسکان‌های ماه: جرم پنهان زیر سطح",
+      "beats": [
+        "نقشه‌های گرانشی نواحی چگالی را زیر چند حوضه ماه نشان می‌دهند.",
+        "ردیابی آپولو نخستین بار ناهنجاری‌های گرانشی غیرعادی را آشکار کرد.",
+        "برخوردهای بزرگ شاید پوسته را کنار زده و به بالا آمدن گوشته چگال اجازه داده باشند.",
+        "پرشدن با گدازه و سردشدن بعدی ساختار حوضه را تغییر داده است.",
+        "داده‌های گریل ماسکان‌ها را با جزئیاتی بی‌سابقه نقشه‌برداری کردند.",
+        "چگونگی شکل‌گیری و تحول هر حوضه همچنان معمایی زمین‌شناختی است."
+      ],
+      "question": "چگونه حوضه‌های برخوردی ماه توده‌های چگال پنهان در زیر خود ساختند؟",
+      "tags": [
+        "#ماه",
+        "#ماسکان",
+        "#زمین‌شناسی_فضا"
+      ]
+    },
+    "notes": {
+      "proven": "ناهنجاری‌های گرانشی زیر حوضه‌ها و نقشه‌برداری گریل مستندند.",
+      "probable": "بالاآمدن گوشته و پرشدن گدازه توضیح‌های محتمل برای شکل‌گیری ماسکان‌ها هستند.",
+      "unknown": "تاریخچه دقیق هر حوضه و سهم فرایندها ناشناخته است."
+    }
+  },
+  {
+    "id": "earth-core-superrotation",
+    "title": "Earth’s Inner Core: Does It Rotate Differently?",
+    "tags": [
+      "science",
+      "geophysics",
+      "earth"
+    ],
+    "beats": [
+      {
+        "text": "Earth’s solid inner core may rotate at a slightly different rate than the mantle.",
+        "visual": "برش زمین با هسته جامد درونی و گوشته که اندکی متفاوت می‌چرخند، تصویر ژئوفیزیکی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Seismic waves crossing the core provide indirect timing evidence.",
+        "visual": "امواج زلزله که از هسته زمین عبور می‌کنند و زمان‌بندی غیرمستقیم می‌سازند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Some studies infer superrotation; others find changing or negligible differences.",
+        "visual": "دو مدل از چرخش پیش‌رونده و حرکت ناچیز هسته درونی، تصویر علمی مقایسه‌ای، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Core shape, magnetic coupling, and data selection affect the estimates.",
+        "visual": "هسته زمین با میدان مغناطیسی و شکل نامنظم که بر برآورد حرکت اثر می‌گذارند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Observations span decades and are difficult to compare directly.",
+        "visual": "ردیف لرزه‌نگارها و داده‌های چند دهه‌ای در اتاق پژوهش ژئوفیزیک، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The inner core’s exact motion remains unsettled.",
+        "visual": "هسته درونی در تاریکی زمین با فلش حرکتی بسیار ظریف و نامطمئن، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "هسته درونی زمین: آیا متفاوت می‌چرخد؟",
+      "beats": [
+        "هسته جامد درونی زمین شاید با نرخی اندکی متفاوت از گوشته بچرخد.",
+        "امواج لرزه‌ای عبوری از هسته شواهد زمانی غیرمستقیم فراهم می‌کنند.",
+        "برخی پژوهش‌ها چرخش پیش‌رونده و برخی اختلاف‌های متغیر یا ناچیز را استنباط می‌کنند.",
+        "شکل هسته، پیوند مغناطیسی و انتخاب داده‌ها بر برآوردها اثر دارند.",
+        "مشاهدات چند دهه‌ای‌اند و مقایسه مستقیمشان دشوار است.",
+        "حرکت دقیق هسته درونی هنوز قطعی نشده است."
+      ],
+      "question": "آیا هسته جامد درونی زمین با سرعتی متفاوت از گوشته می‌چرخد؟",
+      "tags": [
+        "#هسته_زمین",
+        "#زلزله‌شناسی",
+        "#ژئوفیزیک"
+      ]
+    },
+    "notes": {
+      "proven": "شواهد لرزه‌ای غیرمستقیم درباره سرعت هسته درونی و اختلاف نظر مطالعات مستند است.",
+      "probable": "چرخش پیش‌رونده یا تفاوت متغیر به داده و مدل وابسته است.",
+      "unknown": "حرکت دقیق و نرخ چرخش هسته درونی ناشناخته است."
+    }
+  },
+  {
+    "id": "geomagnetic-reversal",
+    "title": "Geomagnetic Reversals: When North Becomes South",
+    "tags": [
+      "science",
+      "geophysics",
+      "earth"
+    ],
+    "beats": [
+      {
+        "text": "Earth’s magnetic field has reversed polarity many times in deep history.",
+        "visual": "زمین با خطوط میدان مغناطیسی که قطب‌های شمال و جنوب را جابه‌جا می‌کنند، نمای فضایی علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Basalt and seafloor stripes preserve the direction of ancient magnetism.",
+        "visual": "برش بازالت و نوارهای بستر اقیانوس با جهت‌های متناوب مغناطیس، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Reversals arise from changing convection in the liquid outer core.",
+        "visual": "هسته بیرونی مایع با جریان‌های همرفتی و میدان مغناطیسی در حال تغییر، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The timing is irregular, with brief excursions between stable states.",
+        "visual": "خط زمانی مفهومی با وارونگی‌های نامنظم و گشت‌های کوتاه میدان، بدون نمایش متن، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "No model predicts the exact date of the next reversal.",
+        "visual": "رصدخانه‌های مغناطیسی و زمین زیر سپر میدان در آستانه تغییر، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "How rapidly the field changes and what hazards follow remain uncertain.",
+        "visual": "میدان زمین که در برابر باد خورشیدی دگرگون می‌شود و پیامدهای نامعلوم دارد، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "وارونگی‌های ژئومغناطیسی: وقتی شمال جنوب می‌شود",
+      "beats": [
+        "میدان مغناطیسی زمین در تاریخ ژرف بارها قطبیت خود را وارونه کرده است.",
+        "بازالت و نوارهای بستر دریا جهت مغناطیس باستانی را حفظ کرده‌اند.",
+        "وارونگی‌ها از تغییر همرفت در هسته بیرونی مایع ناشی می‌شوند.",
+        "زمان‌بندی نامنظم است و میان حالت‌های پایدار، گشت‌های کوتاه رخ می‌دهد.",
+        "هیچ مدلی تاریخ دقیق وارونگی بعدی را پیش‌بینی نمی‌کند.",
+        "سرعت تغییر میدان و خطرهای پس از آن هنوز نامطمئن است."
+      ],
+      "question": "وارونگی بعدی میدان مغناطیسی زمین چه زمانی رخ می‌دهد و چه پیامدی دارد؟",
+      "tags": [
+        "#مغناطیس_زمین",
+        "#زمین‌شناسی",
+        "#وارونگی_قطب‌ها"
+      ]
+    },
+    "notes": {
+      "proven": "وارونگی‌های گذشته و ثبت جهت میدان در بازالت و بستر دریا مستند است.",
+      "probable": "همرفت هسته بیرونی سازوکار پذیرفته‌شده است، اما زمان‌بندی نامنظم است.",
+      "unknown": "تاریخ وارونگی بعدی، سرعت تغییر و خطرهای دقیق ناشناخته‌اند."
+    }
+  },
+  {
+    "id": "cambrian-explosion",
+    "title": "The Cambrian Explosion",
+    "tags": [
+      "science",
+      "paleontology",
+      "evolution"
+    ],
+    "beats": [
+      {
+        "text": "Many animal body plans appear in the fossil record over a geologically short interval.",
+        "visual": "بستر دریایی کامبرین با جانوران نخستین، تریلوبیت و پوسته‌های تازه در نور اقیانوسی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "The Cambrian diversification began about 540 million years ago.",
+        "visual": "چشم‌انداز دریایی حدود ۵۴۰ میلیون سال پیش با تنوع جانوری رو به افزایش، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Fossils show new shells, appendages, eyes, and ecological interactions.",
+        "visual": "فسیل‌های تریلوبیت، چشم، اندام و پوسته در سنگ کامبرین، نمای موزه‌ای سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Oxygen, genes, developmental innovation, and predator pressure may have interacted.",
+        "visual": "اکسیژن اقیانوس، شبکه ژن‌های رشدی و شکارچیان در یک بوم‌سازگان باستانی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Fossil preservation and earlier hidden lineages complicate the apparent burst.",
+        "visual": "لایه‌های فسیلی که حفظ‌شدن گزینشی و دودمان‌های پنهان را نشان می‌دهند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Why diversity accelerated when it did remains an active debate.",
+        "visual": "تنوع ناگهانی جانوران در اقیانوس کامبرین با علت‌های رقیب، فضای علمی معمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "انفجار کامبرین",
+      "beats": [
+        "بسیاری از طرح‌های بدنی جانوران در بازه‌ای کوتاه از نظر زمین‌شناختی در فسیل‌ها ظاهر می‌شوند.",
+        "تنوع کامبرین حدود ۵۴۰ میلیون سال پیش آغاز شد.",
+        "فسیل‌ها پوسته‌ها، اندام‌ها، چشم‌ها و برهم‌کنش‌های بوم‌شناختی تازه را نشان می‌دهند.",
+        "اکسیژن، ژن‌ها، نوآوری رشدی و فشار شکارچیان شاید با هم اثر گذاشته باشند.",
+        "حفظ‌شدن فسیل و دودمان‌های پنهان قدیمی‌تر، ظاهر این جهش را پیچیده می‌کنند.",
+        "این‌که چرا تنوع در آن زمان شتاب گرفت، همچنان محل بحث است."
+      ],
+      "question": "چرا تنوع جانوری در کامبرین با چنین شتابی افزایش یافت؟",
+      "tags": [
+        "#کامبرین",
+        "#تکامل",
+        "#دیرینه‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "ظهور طرح‌های بدنی و آغاز تنوع کامبرین در فسیل‌ها مستند است.",
+      "probable": "اکسیژن، نوآوری رشدی و شکارچیان عوامل محتمل‌اند و حفظ فسیل بر تصویر اثر دارد.",
+      "unknown": "علت دقیق شتاب تنوع در کامبرین ناشناخته است."
+    }
+  },
+  {
+    "id": "evolutionary-stasis",
+    "title": "Evolutionary Stasis: Why Some Species Barely Change",
+    "tags": [
+      "science",
+      "paleontology",
+      "evolution"
+    ],
+    "beats": [
+      {
+        "text": "Some fossil lineages remain morphologically stable for millions of years.",
+        "visual": "ردیف فسیل‌های مشابه یک گونه در لایه‌های سنگی میلیون‌ها ساله، نمای موزه‌ای سینمایی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Paleontologists call this pattern evolutionary stasis.",
+        "visual": "دیرینه‌شناس که فسیل‌های یک دودمان پایدار را از لایه‌های مختلف مقایسه می‌کند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Stable environments, developmental constraints, and stabilizing selection may help.",
+        "visual": "محیط دریایی پایدار و جانوری که طی زمان طولانی شکل مشابه دارد، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Gaps in the fossil record can also make change invisible.",
+        "visual": "درخت رشد جانوری و فشار انتخاب تثبیت‌کننده در کنار نمونه فسیلی، تصویر علمی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Punctuated equilibrium describes bursts separated by long quiet intervals.",
+        "visual": "لایه‌های گسسته فسیلی با فاصله‌های خالی که تغییر پنهان را نشان می‌دهند، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      },
+      {
+        "text": "Why rates differ among lineages remains unresolved.",
+        "visual": "دودمان فسیلی با دوره‌های طولانی ثبات و جهش کوتاه در یک چشم‌انداز زمین‌شناختی، بدون متن، لوگو یا واترمارک. No text, logos, or watermark."
+      }
+    ],
+    "fa": {
+      "title": "ایستایی تکاملی: چرا برخی گونه‌ها کم تغییر می‌کنند؟",
+      "beats": [
+        "برخی دودمان‌های فسیلی میلیون‌ها سال از نظر ریخت‌شناسی پایدار می‌مانند.",
+        "دیرینه‌شناسان این الگو را ایستایی تکاملی می‌نامند.",
+        "محیط پایدار، محدودیت‌های رشدی و انتخاب تثبیت‌کننده شاید به آن کمک کنند.",
+        "شکاف‌های سوابق فسیلی نیز می‌توانند تغییر را پنهان کنند.",
+        "تعادل نقطه‌ای جهش‌هایی را توصیف می‌کند که با دوره‌های طولانی سکون جدا شده‌اند.",
+        "این‌که نرخ تغییر میان دودمان‌ها چرا متفاوت است، حل نشده است."
+      ],
+      "question": "چرا بعضی دودمان‌های فسیلی میلیون‌ها سال از نظر شکل تقریباً ثابت می‌مانند؟",
+      "tags": [
+        "#تکامل",
+        "#دیرینه‌شناسی",
+        "#فسیل"
+      ]
+    },
+    "notes": {
+      "proven": "پایداری ریخت‌شناختی در برخی دودمان‌های فسیلی و مفهوم ایستایی تکاملی مستند است.",
+      "probable": "محیط پایدار، محدودیت رشدی، انتخاب تثبیت‌کننده و سوگیری فسیل توضیح‌های محتمل‌اند.",
+      "unknown": "علت تفاوت نرخ تغییر میان دودمان‌ها ناشناخته است."
+    }
+  }
+]

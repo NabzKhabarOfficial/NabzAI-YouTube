@@ -1,0 +1,855 @@
+[
+  {
+    "id": "bermuda-triangle",
+    "title": "The Bermuda Triangle",
+    "tags": [
+      "history",
+      "maritime",
+      "anomaly"
+    ],
+    "beats": [
+      {
+        "text": "A popular map turned ordinary maritime losses into a legendary zone of disappearance.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A popular map turned ordinary maritime losses into a legendary zone of disappearance.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The Bermuda Triangle usually spans Miami, Bermuda, and Puerto Rico.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The Bermuda Triangle usually spans Miami, Bermuda, and Puerto Rico.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Flight 19 and USS Cyclops became central to its mythology.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Flight 19 and USS Cyclops became central to its mythology.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Weather, navigation error, equipment failure, and incomplete records explain many incidents.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Weather, navigation error, equipment failure, and incomplete records explain many incidents.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No reliable evidence shows unusually high losses in the region.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No reliable evidence shows unusually high losses in the region.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The enduring mystery concerns storytelling as much as ships and aircraft.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The enduring mystery concerns storytelling as much as ships and aircraft.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "مثلث برمودا",
+      "beats": [
+        "نقشه‌ای مشهور گم‌شدن‌های معمول دریایی را به منطقه‌ای افسانه‌ای تبدیل کرد.",
+        "مثلث برمودا معمولاً میان میامی، برمودا و پورتوریکوست.",
+        "پرواز ۱۹ و سایکلاپس هسته اسطوره آن شدند.",
+        "آب‌وهوا، خطای ناوبری، خرابی و سوابق ناقص بسیاری را توضیح می‌دهند.",
+        "شواهد معتبری از تلفات غیرعادی بیشتر وجود ندارد.",
+        "راز پایدار درباره روایت‌سازی است، نه فقط کشتی و هواپیما."
+      ],
+      "question": "به نظر شما افسانه مثلث برمودا بیشتر از دریاها، درباره قدرت روایت‌هاست؟",
+      "tags": [
+        "#مثلث_برمودا",
+        "#معمای_دریایی",
+        "#افسانه_مدرن"
+      ]
+    },
+    "notes": {
+      "proven": "multiple real losses occurred in the broad region",
+      "probable": "ordinary maritime and aviation causes",
+      "unknown": "exact causes of individual cases"
+    }
+  },
+  {
+    "id": "dragon-triangle",
+    "title": "The Dragon’s Triangle",
+    "tags": [
+      "history",
+      "maritime",
+      "anomaly"
+    ],
+    "beats": [
+      {
+        "text": "Japanese waters south of Tokyo gained a reputation for vanished vessels and strange sightings.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Japanese waters south of Tokyo gained a reputation for vanished vessels and strange sightings.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The Dragon’s Triangle has no single official boundary.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The Dragon’s Triangle has no single official boundary.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Stories cite ships lost near volcanic islands and unusual lights.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Stories cite ships lost near volcanic islands and unusual lights.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Volcanic activity, storms, navigation errors, and selective retelling offer grounded explanations.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Volcanic activity, storms, navigation errors, and selective retelling offer grounded explanations.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Extraordinary claims often mix dates, locations, and unrelated incidents.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Extraordinary claims often mix dates, locations, and unrelated incidents.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "It is best treated as folklore around a hazardous active sea.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: It is best treated as folklore around a hazardous active sea.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "مثلث اژدها",
+      "beats": [
+        "آب‌های جنوب توکیو به‌خاطر کشتی‌های گمشده و مشاهدات عجیب مشهور شدند.",
+        "مثلث اژدها یا دریای شیطان مرز رسمی واحدی ندارد.",
+        "داستان‌ها از کشتی‌های گمشده و نورهای عجیب نزدیک جزایر می‌گویند.",
+        "آتشفشان، طوفان، خطای ناوبری و بازگویی گزینشی توضیح‌های مستندند.",
+        "ادعاهای خارق‌العاده اغلب تاریخ‌ها و مکان‌های نامرتبط را می‌آمیزند.",
+        "بهتر است آن را افسانه‌ای پیرامون دریایی فعال و خطرناک دانست."
+      ],
+      "question": "آیا مثلث اژدها منطقه‌ای واقعی از خطرهای طبیعی است یا افسانه‌ای دریایی؟",
+      "tags": [
+        "#مثلث_اژدها",
+        "#ژاپن",
+        "#فولکلور_دریایی"
+      ]
+    },
+    "notes": {
+      "proven": "hazardous waters and real maritime incidents exist",
+      "probable": "natural hazards explain losses",
+      "unknown": "basis of individual legends"
+    }
+  },
+  {
+    "id": "roman-dodecahedra",
+    "title": "The Roman Dodecahedra Mystery",
+    "tags": [
+      "history",
+      "archaeology"
+    ],
+    "beats": [
+      {
+        "text": "Roman-era hollow bronze objects survive, but their purpose remains uncertain.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Roman-era hollow bronze objects survive, but their purpose remains uncertain.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Over a hundred dodecahedra have been found across northern provinces.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Over a hundred dodecahedra have been found across northern provinces.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Twelve faces vary in size, with knobs and holes but no instructions.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Twelve faces vary in size, with knobs and holes but no instructions.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Theories include measuring tools, candle holders, knitting gauges, and ritual objects.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Theories include measuring tools, candle holders, knitting gauges, and ritual objects.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Find spots range from settlements to graves, offering no single context.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Find spots range from settlements to graves, offering no single context.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The artifacts are genuine; their function remains archaeology’s durable puzzle.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The artifacts are genuine; their function remains archaeology’s durable puzzle.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "معمای دوازده‌وجهی‌های رومی",
+      "beats": [
+        "اشیای برنزی توخالی رومی باقی مانده‌اند، اما کاربردشان نامعلوم است.",
+        "بیش از صد دوازده‌وجهی در استان‌های شمالی پیدا شده است.",
+        "دوازده وجه اندازه‌های متفاوت و سوراخ و برجستگی دارند، بدون راهنما.",
+        "ابزار اندازه‌گیری، شمع‌دان، وسیله بافندگی و شیء آیینی پیشنهاد شده‌اند.",
+        "از سکونتگاه تا گور یافت شده‌اند و زمینه واحدی ندارند.",
+        "اصالت اشیا روشن است؛ کاربردشان معمای پایدار باستان‌شناسی است."
+      ],
+      "question": "دوازده‌وجهی‌های رومی به نظر شما ابزار بودند یا اشیای آیینی؟",
+      "tags": [
+        "#دوازده_وجهی_رومی",
+        "#باستان‌شناسی",
+        "#رم_باستان"
+      ]
+    },
+    "notes": {
+      "proven": "genuine Roman dodecahedra have been excavated",
+      "probable": "specialized practical or ritual use",
+      "unknown": "function"
+    }
+  },
+  {
+    "id": "ulfberht-swords",
+    "title": "The Ulfberht Sword Mystery",
+    "tags": [
+      "history",
+      "metallurgy",
+      "archaeology"
+    ],
+    "beats": [
+      {
+        "text": "Viking-era swords bear a famous name and unusually refined steel.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Viking-era swords bear a famous name and unusually refined steel.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "About 170 Ulfberht-inscribed blades have been found across Europe.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: About 170 Ulfberht-inscribed blades have been found across Europe.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Analysis shows some contain high-quality crucible steel with low impurities.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Analysis shows some contain high-quality crucible steel with low impurities.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Forgery, trade routes, and lost metallurgical knowledge complicate interpretation.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Forgery, trade routes, and lost metallurgical knowledge complicate interpretation.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Not every inscribed blade is equally authentic or advanced.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Not every inscribed blade is equally authentic or advanced.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery asks where the steel came from and who mastered it.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery asks where the steel came from and who mastered it.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "معمای شمشیرهای اولفبرت",
+      "beats": [
+        "شمشیرهای عصر وایکینگ نامی مشهور و فولادی بسیار پیشرفته داشتند.",
+        "حدود ۱۷۰ تیغه با کتیبه اولفبرشت در اروپا پیدا شده است.",
+        "تحلیل برخی را از فولاد بوته‌ای کم‌ناخالصی نشان می‌دهد.",
+        "جعل، مسیر تجاری و دانش ازدست‌رفته تفسیر را پیچیده می‌کنند.",
+        "همه تیغه‌های کتیبه‌دار اصیل یا به یک اندازه پیشرفته نیستند.",
+        "پرسش اصلی منشأ فولاد و استادان تولید آن است."
+      ],
+      "question": "فناوری فولاد شمشیرهای اولفبرت در کدام کارگاه شکل گرفت؟",
+      "tags": [
+        "#شمشیر_اولفبرت",
+        "#وایکینگ‌ها",
+        "#باستان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "inscribed swords and high-quality steel samples exist",
+      "probable": "multiple workshops and trade networks",
+      "unknown": "production center and process"
+    }
+  },
+  {
+    "id": "yonaguni-monument",
+    "title": "Yonaguni Monument: Nature or Ruins?",
+    "tags": [
+      "archaeology",
+      "geology",
+      "mystery"
+    ],
+    "beats": [
+      {
+        "text": "Underwater terraces near Japan resemble architecture, but geology offers an alternative.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Underwater terraces near Japan resemble architecture, but geology offers an alternative.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Divers found the formations off Yonaguni Island in the 1980s.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Divers found the formations off Yonaguni Island in the 1980s.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Straight edges, platforms, and apparent steps inspired submerged-city claims.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Straight edges, platforms, and apparent steps inspired submerged-city claims.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Researchers note sandstone joints and tectonic forces can create sharp geometry.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Researchers note sandstone joints and tectonic forces can create sharp geometry.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No inscriptions or cultural layer prove human construction.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No inscriptions or cultural layer prove human construction.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The debate persists because appearance outruns archaeological evidence.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The debate persists because appearance outruns archaeological evidence.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "بنای یونագونی؛ طبیعت یا ویرانه؟",
+      "beats": [
+        "تراس‌های زیرآبی ژاپن شبیه معماری‌اند، اما زمین‌شناسی توضیحی نیرومند دارد.",
+        "غواصان این سازه‌ها را در دهه ۱۹۸۰ نزدیک یوناغونی یافتند.",
+        "لبه‌های راست، سکوها و پله‌های ظاهری ادعای شهر غرق‌شده ساختند.",
+        "درزه‌های ماسه‌سنگ و نیروهای زمین‌ساختی هندسه تیز را توضیح می‌دهند.",
+        "کتیبه یا لایه فرهنگی ساخت انسانی را ثابت نمی‌کند.",
+        "بحث ادامه دارد چون ظاهر از شواهد باستان‌شناسی جلو زده است."
+      ],
+      "question": "آیا پله‌های زیرآبی یونագونی ساخته انسان‌اند یا نتیجه زمین‌شناسی؟",
+      "tags": [
+        "#بنای_یوناگونی",
+        "#باستان‌شناسی_زیرآب",
+        "#ژاپن"
+      ]
+    },
+    "notes": {
+      "proven": "submerged formations exist off Yonaguni",
+      "probable": "natural jointed sandstone",
+      "unknown": "extent of human modification"
+    }
+  },
+  {
+    "id": "copper-scroll",
+    "title": "The Copper Scroll Treasure Mystery",
+    "tags": [
+      "archaeology",
+      "dead-sea-scrolls",
+      "history"
+    ],
+    "beats": [
+      {
+        "text": "A Dead Sea Scroll written on copper lists hidden treasures no one recovered conclusively.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A Dead Sea Scroll written on copper lists hidden treasures no one recovered conclusively.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Found at Qumran in 1952, it differs from nearby literary scrolls.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Found at Qumran in 1952, it differs from nearby literary scrolls.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Engraved locations describe gold and silver caches in cryptic measurements.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Engraved locations describe gold and silver caches in cryptic measurements.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Searchers tested sites, but no verified hoard matched the list.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Searchers tested sites, but no verified hoard matched the list.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Scholars debate whether the inventory was real, symbolic, or removed.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Scholars debate whether the inventory was real, symbolic, or removed.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The artifact is authentic; the treasure’s fate remains unresolved.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The artifact is authentic; the treasure’s fate remains unresolved.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "معمای گنج طومار مسی",
+      "beats": [
+        "طوماری مسی از دریای مرده گنج‌هایی را فهرست می‌کند که قطعی پیدا نشده‌اند.",
+        "طومار در ۱۹۵۲ در قمران پیدا شد و با متن‌های ادبی فرق دارد.",
+        "مکان‌های طلا و نقره با اندازه‌گیری رمزآلود حک شده‌اند.",
+        "جست‌وجوگران مکان‌ها را آزمودند، اما گنجی تأیید نشد.",
+        "پژوهشگران درباره واقعی، نمادین یا خارج‌شده‌بودن گنج اختلاف دارند.",
+        "اصالت شیء قطعی است؛ سرنوشت گنج حل نشده است."
+      ],
+      "question": "آیا طومار مسی فهرست یک گنج واقعی بود یا متنی نمادین؟",
+      "tags": [
+        "#طومار_مسی",
+        "#طومارهای_بحرالمیت",
+        "#گنج_باستانی"
+      ]
+    },
+    "notes": {
+      "proven": "Copper Scroll is an authentic Qumran artifact",
+      "probable": "real or symbolic inventory",
+      "unknown": "whether any treasure survives"
+    }
+  },
+  {
+    "id": "codex-gigas",
+    "title": "The Codex Gigas and Its Giant Portrait",
+    "tags": [
+      "history",
+      "manuscript-mystery"
+    ],
+    "beats": [
+      {
+        "text": "A medieval manuscript became famous for size and a full-page devil.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A medieval manuscript became famous for size and a full-page devil.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Created in the early thirteenth century, it contains biblical and historical texts.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Created in the early thirteenth century, it contains biblical and historical texts.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Legend says one monk wrote it overnight with supernatural help.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Legend says one monk wrote it overnight with supernatural help.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Ink, handwriting, and parchment show sustained human production over time.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Ink, handwriting, and parchment show sustained human production over time.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The manuscript moved from Bohemia to Sweden during the Thirty Years’ War.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The manuscript moved from Bohemia to Sweden during the Thirty Years’ War.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Its mystery lies in scale and legend, not proven demonic authorship.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Its mystery lies in scale and legend, not proven demonic authorship.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "کدکس گیگاس و تصویر غول‌آسا",
+      "beats": [
+        "نسخه‌ای قرون‌وسطایی به‌خاطر اندازه عظیم و تصویر تمام‌صفحه شیطان مشهور شد.",
+        "کدکس گیگاس اوایل قرن سیزدهم متون کتاب مقدس و تاریخی دارد.",
+        "افسانه می‌گوید راهبی آن را یک‌شبه با کمک ماورایی نوشت.",
+        "جوهر، دست‌خط و پوست تولید انسانی طولانی را نشان می‌دهند.",
+        "نسخه در جنگ سی‌ساله از بوهم به سوئد رفت.",
+        "راز آن در اندازه و افسانه است، نه نویسندگی شیطانی اثبات‌شده."
+      ],
+      "question": "راز کدکس گیگاس را در اندازه کتاب می‌بینید یا در افسانه نویسنده شیطانی؟",
+      "tags": [
+        "#کدکس_گیگاس",
+        "#نسخه‌های_خطی",
+        "#تاریخ_اروپا"
+      ]
+    },
+    "notes": {
+      "proven": "Codex Gigas is a medieval manuscript with devil illustration",
+      "probable": "long human production",
+      "unknown": "exact authorship and legend origins"
+    }
+  },
+  {
+    "id": "rohonc-codex",
+    "title": "The Rohonc Codex",
+    "tags": [
+      "history",
+      "manuscript-mystery",
+      "cryptography"
+    ],
+    "beats": [
+      {
+        "text": "A small illustrated book uses unknown writing that resists credible decipherment.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A small illustrated book uses unknown writing that resists credible decipherment.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The Rohonc Codex entered the Hungarian Academy collection in the nineteenth century.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The Rohonc Codex entered the Hungarian Academy collection in the nineteenth century.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Pages show religious scenes, battles, and symbols unlike known alphabets.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Pages show religious scenes, battles, and symbols unlike known alphabets.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Proposed readings identify secret writing, invented script, or modern forgery.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Proposed readings identify secret writing, invented script, or modern forgery.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No solution has gained broad scholarly acceptance or cultural linkage.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No solution has gained broad scholarly acceptance or cultural linkage.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Its origin, language, and purpose remain open questions.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Its origin, language, and purpose remain open questions.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "کدکس روهونتس",
+      "beats": [
+        "کتابی مصور با خطی ناشناخته در برابر رمزگشایی معتبر مقاومت کرده است.",
+        "کدکس روهونتس در قرن نوزدهم وارد مجموعه آکادمی مجارستان شد.",
+        "صفحات صحنه‌های دینی، نبرد و نمادهای ناآشنا دارند.",
+        "خوانش‌ها خط سری، اختراعی یا جعل مدرن را پیشنهاد می‌کنند.",
+        "هیچ راه‌حل یا پیوند فرهنگی پذیرش گسترده‌ای نگرفته است.",
+        "منشأ، زبان و هدف نسخه همچنان پرسش‌های باز هستند."
+      ],
+      "question": "آیا خط کدکس روهونتس زبانی ناشناخته است یا رمز و جعل مدرن؟",
+      "tags": [
+        "#کدکس_روهونتس",
+        "#خط_ناشناخته",
+        "#نسخه‌های_خطی"
+      ]
+    },
+    "notes": {
+      "proven": "illustrated codex and unknown script exist",
+      "probable": "invented script or forgery remains plausible",
+      "unknown": "language and origin"
+    }
+  },
+  {
+    "id": "book-of-soyga",
+    "title": "The Book of Soyga",
+    "tags": [
+      "history",
+      "cryptography",
+      "occult-history"
+    ],
+    "beats": [
+      {
+        "text": "John Dee owned a mysterious Latin book whose final tables resisted understanding.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: John Dee owned a mysterious Latin book whose final tables resisted understanding.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The Book of Soyga combines magical treatises with large numerical tables.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The Book of Soyga combines magical treatises with large numerical tables.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Dee asked spirit Uriel for help, according to recorded conversations in 1556.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Dee asked spirit Uriel for help, according to recorded conversations in 1556.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The work vanished after Dee’s death and resurfaced centuries later.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The work vanished after Dee’s death and resurfaced centuries later.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Modern researchers decoded parts, but the complete algorithm remains debated.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Modern researchers decoded parts, but the complete algorithm remains debated.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Its mystery joins Renaissance occult practice with stubborn cipher tables.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Its mystery joins Renaissance occult practice with stubborn cipher tables.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "کتاب سویگا",
+      "beats": [
+        "جان دی کتابی لاتین داشت که جدول‌های پایانی‌اش فهم‌ناپذیر بود.",
+        "کتاب سوئیگا رساله‌های جادویی و جدول‌های عددی بزرگ دارد.",
+        "دی طبق یادداشت‌های ۱۵۵۶ برای کمک از روح اوریئل پرسید.",
+        "کتاب پس از مرگ دی ناپدید شد و قرن‌ها بعد بازگشت.",
+        "پژوهشگران بخشی را رمزگشایی کردند، اما الگوریتم کامل محل بحث است.",
+        "راز آن جادوی رنسانس را با جدول‌های رمز پیوند می‌دهد."
+      ],
+      "question": "جدول‌های عددی کتاب سویگا را رمز می‌دانید یا شیوه‌ای فراموش‌شده؟",
+      "tags": [
+        "#کتاب_سویگا",
+        "#جان_دی",
+        "#رمزنگاری_تاریخی"
+      ]
+    },
+    "notes": {
+      "proven": "Dee owned the book and tables",
+      "probable": "structured cipher or algorithm",
+      "unknown": "complete method and intended use"
+    }
+  },
+  {
+    "id": "kryptos",
+    "title": "Kryptos: The Unfinished CIA Cipher",
+    "tags": [
+      "cryptography",
+      "modern-mystery",
+      "history"
+    ],
+    "beats": [
+      {
+        "text": "A sculpture outside CIA headquarters contains four encrypted texts, one unsolved.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A sculpture outside CIA headquarters contains four encrypted texts, one unsolved.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Artist Jim Sanborn installed Kryptos in Langley in 1990.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Artist Jim Sanborn installed Kryptos in Langley in 1990.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Cryptographers solved three sections, revealing messages and literary references.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Cryptographers solved three sections, revealing messages and literary references.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The final 97 characters remain unreadable after decades of attempts.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The final 97 characters remain unreadable after decades of attempts.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Sanborn released clues, including words tied to Berlin and a clock.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Sanborn released clues, including words tied to Berlin and a clock.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery is a known ciphertext with a stubborn final fragment.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery is a known ciphertext with a stubborn final fragment.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "کریپتوس؛ رمز ناتمام سیا",
+      "beats": [
+        "مجسمه‌ای بیرون مقر سیا چهار متن رمزگذاری‌شده دارد که یکی حل نشده است.",
+        "جیم سنبورن کریپتوس را در ۱۹۹۰ در لنگلی نصب کرد.",
+        "رمزشناسان سه بخش را حل کردند و پیام و ارجاع ادبی یافتند.",
+        "۹۷ نویسه پایانی پس از دهه‌ها تلاش خوانده نشده‌اند.",
+        "سنبورن سرنخ‌هایی درباره برلین و ساعت منتشر کرده است.",
+        "راز آن متنی شناخته‌شده با قطعه‌ای سرسخت است."
+      ],
+      "question": "آیا ۹۷ نویسه پایانی کریپتوس روزی به‌طور قطعی رمزگشایی می‌شود؟",
+      "tags": [
+        "#کریپتوس",
+        "#رمزنگاری",
+        "#سیا"
+      ]
+    },
+    "notes": {
+      "proven": "Kryptos was installed in 1990 and three sections solved",
+      "probable": "remaining text is a solvable cipher",
+      "unknown": "final plaintext"
+    }
+  },
+  {
+    "id": "cicada-3301",
+    "title": "Cicada 3301’s Recruitment Puzzles",
+    "tags": [
+      "internet",
+      "cryptography",
+      "modern-mystery"
+    ],
+    "beats": [
+      {
+        "text": "Anonymous puzzles appeared online, leading solvers through cryptography and hidden locations.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Anonymous puzzles appeared online, leading solvers through cryptography and hidden locations.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The first Cicada 3301 challenge launched in January 2012 with an image.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The first Cicada 3301 challenge launched in January 2012 with an image.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Solvers found steganography, Tor sites, and posters across several countries.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Solvers found steganography, Tor sites, and posters across several countries.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Later rounds suggested a privacy-minded group seeking capable participants.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Later rounds suggested a privacy-minded group seeking capable participants.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No organization publicly claimed the puzzles or explained their final purpose.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No organization publicly claimed the puzzles or explained their final purpose.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery survives in archives, while anonymity was part of its design.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery survives in archives, while anonymity was part of its design.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "معماهای استخدامی سیکادا ۳۳۰۱",
+      "beats": [
+        "معماهای ناشناس آنلاین حل‌کنندگان را از رمزنگاری به مکان‌های پنهان بردند.",
+        "نخستین چالش سیکادا ۳۳۰۱ ژانویه ۲۰۱۲ با تصویری آغاز شد.",
+        "حل‌کنندگان پنهان‌نگاری، سایت‌های تور و پوسترهایی در چند کشور یافتند.",
+        "دورهای بعدی از گروهی حریم‌خصوصی‌محور برای جذب افراد توانمند گفتند.",
+        "هیچ سازمانی مسئولیت یا هدف نهایی را اعلام نکرد.",
+        "راز در آرشیوها زنده است و ناشناسی بخشی از طراحی بود."
+      ],
+      "question": "آیا سیکادا ۳۳۰۱ یک فراخوان استخدامی بود یا پروژه‌ای هنری و رمزنگارانه؟",
+      "tags": [
+        "#سیکادا_۳۳۰۱",
+        "#رمزنگاری",
+        "#اینترنت"
+      ]
+    },
+    "notes": {
+      "proven": "puzzle releases and solving trails occurred from 2012",
+      "probable": "recruitment or cryptographic art project",
+      "unknown": "organizers and final purpose"
+    }
+  },
+  {
+    "id": "tabbys-star",
+    "title": "Tabby’s Star and Its Vanishing Dips",
+    "tags": [
+      "astronomy",
+      "science",
+      "mystery"
+    ],
+    "beats": [
+      {
+        "text": "A distant star dimmed irregularly, inspiring speculation beyond ordinary exoplanets.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A distant star dimmed irregularly, inspiring speculation beyond ordinary exoplanets.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Kepler data showed KIC 8462852 fading by different amounts and durations.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Kepler data showed KIC 8462852 fading by different amounts and durations.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "A giant artificial megastructure was proposed, but dust fit later observations better.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A giant artificial megastructure was proposed, but dust fit later observations better.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Follow-up monitoring found color-dependent dimming, favoring natural material.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Follow-up monitoring found color-dependent dimming, favoring natural material.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No complete model explains every historical dip with equal confidence.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No complete model explains every historical dip with equal confidence.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery shifted from alien engineering to an unusual star system.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery shifted from alien engineering to an unusual star system.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "ستاره تَبی و کم‌نورشدن‌های ناپدیدشونده",
+      "beats": [
+        "ستاره‌ای دوردست نامنظم کم‌نور شد و گمانه‌زنی‌هایی فراتر از سیارات ساخت.",
+        "داده‌های کپلر افت‌های متفاوت KIC 8462852 را نشان دادند.",
+        "سازه مصنوعی پیشنهاد شد، اما غبار با داده‌های بعدی بهتر سازگار است.",
+        "پایش‌ها کم‌شدن وابسته به رنگ را یافتند و ماده طبیعی را تقویت کردند.",
+        "هیچ مدل کاملی همه افت‌های تاریخی را توضیح نمی‌دهد.",
+        "راز از مهندسی بیگانه به سامانه‌ای غیرعادی تغییر کرده است."
+      ],
+      "question": "آیا گردوغبار می‌تواند همه کم‌نورشدن‌های عجیب ستاره تَبی را توضیح دهد؟",
+      "tags": [
+        "#ستاره_تَبی",
+        "#نجوم",
+        "#سیاره‌های_فراخورشیدی"
+      ]
+    },
+    "notes": {
+      "proven": "irregular dimming is observed in KIC 8462852",
+      "probable": "dust or circumstellar material",
+      "unknown": "complete physical model"
+    }
+  },
+  {
+    "id": "oumuamua",
+    "title": "ʻOumuamua: The Interstellar Visitor",
+    "tags": [
+      "astronomy",
+      "science",
+      "interstellar"
+    ],
+    "beats": [
+      {
+        "text": "A fast-moving object crossed the Solar System before astronomers could inspect it closely.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: A fast-moving object crossed the Solar System before astronomers could inspect it closely.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Detected in 2017, ʻOumuamua was the first confirmed interstellar visitor near the Sun.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Detected in 2017, ʻOumuamua was the first confirmed interstellar visitor near the Sun.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Brightness variations implied an unusual elongated or flattened shape.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Brightness variations implied an unusual elongated or flattened shape.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "It showed slight nongravitational acceleration without an obvious cometary tail.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: It showed slight nongravitational acceleration without an obvious cometary tail.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Outgassing, icy composition, and artificial-sail ideas competed in debate.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Outgassing, icy composition, and artificial-sail ideas competed in debate.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "It is gone now, leaving its true nature uncertain.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: It is gone now, leaving its true nature uncertain.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "اوموآموآ؛ مهمان میان‌ستاره‌ای",
+      "beats": [
+        "جسمی تندرو از منظومه شمسی گذشت و پیش از بررسی نزدیک آن را ترک کرد.",
+        "اوموآموا در ۲۰۱۷ نخستین مهمان میان‌ستاره‌ای تأییدشده نزدیک خورشید بود.",
+        "تغییر روشنایی شکل کشیده یا تختی غیرعادی را نشان داد.",
+        "شتاب غیرگرانشی کوچکی بدون دنباله دنباله‌داری آشکار دیده شد.",
+        "گازدهی، ترکیب یخی و بادبان مصنوعی در بحث رقابت کردند.",
+        "اکنون دور شده و ماهیت واقعی‌اش نامعلوم مانده است."
+      ],
+      "question": "اوموآموآ را دنباله‌داری طبیعی می‌دانید یا چیزی ناشناخته‌تر؟",
+      "tags": [
+        "#اوموآموآ",
+        "#مهمان_میان‌ستاره‌ای",
+        "#نجوم"
+      ]
+    },
+    "notes": {
+      "proven": "ʻOumuamua was observed in 2017 on interstellar trajectory",
+      "probable": "natural comet-like explanation",
+      "unknown": "composition and acceleration cause"
+    }
+  },
+  {
+    "id": "fast-radio-bursts",
+    "title": "Fast Radio Bursts",
+    "tags": [
+      "astronomy",
+      "science",
+      "cosmic-mystery"
+    ],
+    "beats": [
+      {
+        "text": "Millisecond radio flashes arrive from distant galaxies, some repeating precisely.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Millisecond radio flashes arrive from distant galaxies, some repeating precisely.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Fast radio bursts were first recognized in archival data in 2007.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Fast radio bursts were first recognized in archival data in 2007.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Extreme brightness implies powerful compact sources beyond ordinary stellar flares.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Extreme brightness implies powerful compact sources beyond ordinary stellar flares.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Repeating bursts and a Milky Way magnetar linked some events to magnetars.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Repeating bursts and a Milky Way magnetar linked some events to magnetars.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Other bursts remain one-off signals with uncertain origins.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Other bursts remain one-off signals with uncertain origins.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "No single mechanism yet explains the entire observed population.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: No single mechanism yet explains the entire observed population.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "فوران‌های سریع رادیویی",
+      "beats": [
+        "پالس‌های رادیویی میلی‌ثانیه‌ای از کهکشان‌های دور می‌رسند و برخی تکرار می‌شوند.",
+        "فوران‌های سریع رادیویی نخستین‌بار در داده‌های آرشیوی ۲۰۰۷ شناخته شدند.",
+        "درخشندگی شدید منابع فشرده و نیرومند فراتر از شراره‌ها را نشان می‌دهد.",
+        "تکرارها و یک مگنتار راه شیری برخی رویدادها را توضیح دادند.",
+        "فوران‌های یک‌باره هنوز منشأ نامعلومی دارند.",
+        "هیچ سازوکار واحدی همه جمعیت مشاهده‌شده را توضیح نمی‌دهد."
+      ],
+      "question": "آیا مگنتارها همه فوران‌های سریع رادیویی را توضیح می‌دهند؟",
+      "tags": [
+        "#فوران_رادیویی_سریع",
+        "#مگنتار",
+        "#کیهان‌شناسی"
+      ]
+    },
+    "notes": {
+      "proven": "FRBs are real millisecond radio transients",
+      "probable": "magnetars produce at least some",
+      "unknown": "origins of full population"
+    }
+  },
+  {
+    "id": "mars-methane",
+    "title": "Methane on Mars",
+    "tags": [
+      "astronomy",
+      "planetary-science",
+      "mystery"
+    ],
+    "beats": [
+      {
+        "text": "Mars missions detected methane, but instruments disagree about when and where it appears.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Mars missions detected methane, but instruments disagree about when and where it appears.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Curiosity measured seasonal and transient methane in Gale Crater.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Curiosity measured seasonal and transient methane in Gale Crater.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "European orbiters sometimes failed to detect gas in the same broad region.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: European orbiters sometimes failed to detect gas in the same broad region.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Rock chemistry, atmospheric destruction, instrument limits, and biology remain possible.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Rock chemistry, atmospheric destruction, instrument limits, and biology remain possible.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "Landing and orbital measurements have different sensitivities and timescales.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: Landing and orbital measurements have different sensitivities and timescales.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      },
+      {
+        "text": "The mystery is why Mars’s methane signal is so inconsistent.",
+        "visual": "Cinematic documentary still, concrete scene depicting the following beat: The mystery is why Mars’s methane signal is so inconsistent.; show the specific time, place, subject, and action stated or implied here with historically grounded lighting, realistic composition, and atmospheric detail; no visible text, logo, watermark, or UI elements."
+      }
+    ],
+    "fa": {
+      "title": "متان در مریخ",
+      "beats": [
+        "مأموریت‌های مریخ متان را دیدند، اما ابزارها درباره زمان و مکان اختلاف دارند.",
+        "کنجکاوی متان فصلی و گذرا را در دهانه گیل اندازه گرفت.",
+        "مدارگردهای اروپایی گاهی در همان منطقه گازی ندیدند.",
+        "شیمی سنگ، نابودی جوی، محدودیت ابزار و زیست‌شناسی مطرح‌اند.",
+        "اندازه‌گیری‌های سطحی و مداری حساسیت و مقیاس زمانی متفاوت دارند.",
+        "راز اصلی چرایی ناهماهنگی سیگنال متان مریخ است."
+      ],
+      "question": "چرا اندازه‌گیری متان مریخ از یک ابزار و زمان به زمان دیگر فرق می‌کند؟",
+      "tags": [
+        "#متان_مریخ",
+        "#مریخ",
+        "#علم_سیاره‌ای"
+      ]
+    },
+    "notes": {
+      "proven": "methane detections and non-detections vary by instrument and time",
+      "probable": "geological or atmospheric processes",
+      "unknown": "source and biological contribution"
+    }
+  }
+]

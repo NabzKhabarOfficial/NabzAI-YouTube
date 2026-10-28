@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - brain/ig-english-bank-loader
   pull_request:
     branches:
       - main
@@ -34,8 +35,6 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
-          cache-dependency-path: requirements.txt
 
       - name: Install system packages
         run: |
@@ -59,6 +58,9 @@ jobs:
       - name: Run Instagram due-slot check
         run: |
           python -m instagram.runner --due
+
+      - name: Validate Instagram English story batches
+        run: python scripts/validate_ig_batches.py
 
       - name: Run offline regression tests
         run: |
