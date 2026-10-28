@@ -18,7 +18,7 @@ def _load_valid(raw: str):
 def _repair_truncated_outer_object(raw: str) -> str:
     text = raw.rstrip()
     for count in range(1, 4):
-        candidate = text + ("\\n" + "}" * count) + "\\n"
+        candidate = text + ("\n" + "}" * count) + "\n"
         try:
             _load_valid(candidate)
             return candidate
