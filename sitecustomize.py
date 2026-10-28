@@ -13,38 +13,37 @@ _repair_story_notes()
 _merge_story_notes()
 
 
-def _merge_extra(base_path: Path, extra_path: Path) -> bytes:
-    original = base_path.read_bytes()
-    base = json.loads(original.decode("utf-8"))
-    extra = json.loads(extra_path.read_text(encoding="utf-8"))
-    base.setdefault("stories", {}).update(extra.get("stories") or {})
-    base_path.write_text(json.dumps(base, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
-    return original
+def _merge_staged_batches() -> list[tuple[Path, bytes]]:
+    root = Path(__file__).resolve().parent
+    originals: list[tuple[Path, bytes]] = []
+    en_bank = root / "content" / "mysteries.json"
+    fa_bank = root / "content" / "mysteries_fa.json"
+    notes_bank = root / "content" / "story_notes_fa.json"
+    en_data = json.loads(en_bank.read_text(encoding="utf-8"))
+    fa_data = json.loads(fa_bank.read_text(encoding="utf-8"))
+    notes_data = json.loads(notes_bank.read_text(encoding="utf-8"))
+    for path in sorted((root / "content").glob("mysteries_batch*.json")):
+        rows = json.loads(path.read_text(encoding="utf-8"))
+        for row in rows:
+            sid = row["id"]
+            if not any(x.get("id") == sid for x in en_data["stories"]):
+                en_data["stories"].append({"id": sid, "title": row["title"], "tags": row["tags"], "beats": row["beats"]})
+            fa_data["stories"][sid] = row["fa"]
+            notes_data["stories"][sid] = row["notes"]
+    if len(originals) == 0 and any((root / "content").glob("mysteries_batch*.json")):
+        for path in (en_bank, fa_bank, notes_bank):
+            originals.append((path, path.read_bytes()))
+        en_bank.write_text(json.dumps(en_data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        fa_bank.write_text(json.dumps(fa_data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        notes_bank.write_text(json.dumps(notes_data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return originals
 
 
-# Instagram may stage several reviewed batches. They are visible only while the
-# Instagram planner runs; YouTube never sees these temporary merges.
 if sys.argv and sys.argv[0].endswith("ig_pack.py"):
-    from scripts.prepare_ig_english_bank import ADD as _IG_ADD
-    from scripts.prepare_ig_english_bank import BANK as _IG_BANK
-    from scripts.prepare_ig_english_bank import main as _prepare_ig_bank
+    _staged_originals = _merge_staged_batches()
 
-    _ig_original_bank = _IG_BANK.read_bytes()
-    if _IG_ADD.exists():
-        _prepare_ig_bank()
+    def _restore_staged_batches() -> None:
+        for path, content in _staged_originals:
+            path.write_bytes(content)
 
-    _fa_bank = Path(__file__).resolve().parent / "content" / "mysteries_fa.json"
-    _fa_add = Path(__file__).resolve().parent / "content" / "mysteries_fa_add_batch2.json"
-    _notes = Path(__file__).resolve().parent / "content" / "story_notes_fa.json"
-    _notes_add = Path(__file__).resolve().parent / "content" / "story_notes_fa_add_batch2.json"
-    _fa_original = _merge_extra(_fa_bank, _fa_add) if _fa_add.exists() else None
-    _notes_original = _merge_extra(_notes, _notes_add) if _notes_add.exists() else None
-
-    def _restore_instagram_inputs() -> None:
-        _IG_BANK.write_bytes(_ig_original_bank)
-        if _fa_original is not None:
-            _fa_bank.write_bytes(_fa_original)
-        if _notes_original is not None:
-            _notes.write_bytes(_notes_original)
-
-    atexit.register(_restore_instagram_inputs)
+    atexit.register(_restore_staged_batches)
