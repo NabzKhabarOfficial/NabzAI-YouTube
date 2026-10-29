@@ -4,38 +4,41 @@
 - This private repository owns Instagram and YouTube work.
 - Telegram news-channel code belongs in `NabzKhabar`.
 
-## Backup and change control
-- Immutable-backup candidate branch: `backup/immutable-2026-10-25`
-- Backup source snapshot: `caf8729b81447eff280595ed9016b174a6d9a748`
-- Backup policy: `CHANGE_CONTROL_POLICY.md`
-- The backup branch must be protected in GitHub against force-push and deletion. A branch name alone is not technically immutable.
+## Audit snapshot
+- Audited current `main` on 2026-10-28.
+- Open PRs still requiring review: [#3](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/3), [#4](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/4), [#5](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/5).
+- Do not merge any of them wholesale. Recreate only targeted fixes against current `main`.
 
-## Production status
-- The 150 staged English/Persian mystery stories are merged on `main`; validation and post-merge checks are green.
-- YouTube uses Kokoro `am_michael` with deepening and story-level duplicate protection.
-- Instagram Reels/Buffer uses per-operation durable claims for reels, stories, and carousels.
-- Missing Buffer hosting/provider secrets fail closed.
-- Succeeded claims reuse external IDs; pending/ambiguous claims stop blind retries.
-- PR #8 was recreated from current `main`, passed offline CI, and merged. It preserves locally scheduled Buffer records, including overdue records, when the Buffer queue cannot be read, and routes Buffer state writes through atomic JSON persistence.
-- Live provider verification is not proven by the current repository checks.
+## Changes applied in this audit
+- Guarded Buffer now installs `ig_runtime_safety` before running, so overdue local posts are preserved when the provider queue cannot be read.
+- Guarded Buffer distinguishes deterministic provider rejection (`failed`) from transport uncertainty (`ambiguous`). Ambiguous claims still stop blind retries.
+- The workflow file could not be changed through the connected GitHub permission because workflow-edit scope is unavailable. The manual one-line change is recorded below.
+- Publication claims remain durable repository state, but a successful external mutation followed by a failed Git push can still require provider reconciliation.
 
-## PR audit: 2026-10-28
-- [PR #3](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/3), Buffer safety: remains open and stale. Its highest-confidence queue-safety fix was recreated as [PR #8](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/8) and merged on current `main`.
-- [PR #5](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/5), production hardening: remains open and diverged. Do not merge wholesale; current `main` already contains newer guarded paths.
+## Content and runtime findings still open
+- The ten validated English batch files must be included in the effective runtime bank and in `guard_today`; validation alone is not proof of runtime availability.
+- Meta/Instagram publisher POST mutations still need idempotency and provider reconciliation before live publishing.
+- YouTube/Buffer external success followed by state-push failure can duplicate on a fresh runner without deterministic provider lookup.
+- Several metrics, reports and pack state writers still bypass the shared atomic helper.
+- Persian story banks contain known language/wording defects and have no machine-verifiable source citations.
+- Live Buffer, Meta, YouTube, GitHub Pages and final audio/video checks were not performed.
 
-## Instagram smoke-test boundary
-- No live Buffer smoke test has been executed or independently verified.
-- Keep `buffer_max=10` disabled for broad rollout. The first real test remains `per_day=2`, `buffer_max=1`, empty-week input, after current-main safety checks are green.
-- Do not claim a successful Instagram publication until Buffer state and the resulting external item are independently verified.
+## Safe offline checks
+```bash
+python -m compileall -q src scripts instagram
+PYTHONPATH=. NABZ_VOICE_CHECK=0 python -m unittest discover -s tests -v
+python scripts/validate_ig_batches.py
+PYTHONPATH=. NABZ_VOICE_CHECK=0 python -m instagram.runner --check
+```
 
-## Known non-blocking maintenance debt
-- Some metrics/report and pack/published state writers still use direct writes instead of the shared atomic helper. They do not bypass publication claims, but should be migrated in a maintenance pass.
-- Instagram Stories in `instagram-v1.yml` remain intentionally dry-run.
-- External dashboard state is stronger evidence than repository state alone.
+## Manual-only continuation
+1. Run the offline suite on the exact current `main` commit.
+2. Verify the effective runtime bank includes every staged batch story.
+3. In `.github/workflows/ig-pack.yml`, change the Buffer environment default to `${{ inputs.buffer_max || '1' }}` and keep the manual options ordered `1`, then `10`.
+4. Run one manual Buffer smoke test with `per_day=2`, `buffer_max=1` only.
+5. Independently verify the resulting Buffer item and repository claim.
+6. Keep `buffer_max=10` disabled until that evidence is clean.
+7. Never retry a pending or ambiguous claim without provider reconciliation.
 
-## Required continuation
-1. Protect the backup branch in GitHub.
-2. Recreate only selected PR #5 fixes on current `main`, with fresh tests.
-3. Run only the one-item `buffer_max=1` smoke test and verify provider state.
-4. Keep `buffer_max=10` blocked until that evidence is clean.
-5. Never rerun a pending or ambiguous claim without provider reconciliation.
+## Guarantee boundary
+Offline checks can establish deterministic code behavior only. They cannot guarantee Telegram/Buffer/Meta/YouTube delivery, external provider state, factual truth of stories, or final rendered media quality.
