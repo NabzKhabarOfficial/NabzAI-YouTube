@@ -11,7 +11,7 @@ from googleapiclient.http import MediaFileUpload
 
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 TOKEN_URI = "https://oauth2.googleapis.com/token"
-_QUOTES = {"\u201c": '"', "\u201d": '"', "\u201e": '"', "\u00ab": '"', "\u00bb": '"', "\u2018": "'", "\u2019": "'"}
+_QUOTES = {"“": '"', "”": '"', "„": '"', "«": '"', "»": '"', "‘": "'", "’": "'"}
 
 # Daily Shorts go live at 22:30 Tehran: 20:00 London / 21:00 Berlin (Europe evening)
 # and 15:00 New York / 12:00 Los Angeles (US afternoon), so both audiences are awake.
@@ -73,8 +73,7 @@ def load_credential_info(token_json=None, env=None) -> dict:
             try:
                 info = json.loads(text)
             except json.JSONDecodeError as exc:
-                raise RuntimeError(f"YOUTUBE_TOKEN is not valid JSON (position {exc.pos}). "
-                                   "Easier fix: use the three separate secrets instead.") from None
+                raise RuntimeError(f"YOUTUBE_TOKEN is not valid JSON (position {exc.pos}). Easier fix: use the three separate secrets instead.") from None
         info = {k: _clean(v) for k, v in info.items() if isinstance(v, (str, int, float))}
     info.setdefault("token_uri", TOKEN_URI)
     missing = [k for k in ("client_id", "client_secret", "refresh_token") if not info.get(k)]
@@ -139,9 +138,10 @@ def upload_video(
     except Exception as exc:
         if not publish_at:
             raise
-        print(f"WARNING: scheduled upload rejected ({exc}); retrying as a plain private upload.")
-        body["status"].pop("publishAt", None)
-        response = _insert(youtube, body, video_path)
+        # Never issue a second videos.insert after a scheduled request fails. The provider may
+        # have accepted the upload before returning the error, so a fallback would create a
+        # duplicate and erase the true outcome. The claim guard records this as ambiguous.
+        raise RuntimeError(f"scheduled YouTube upload rejected or has an unknown outcome: {exc}") from exc
     if not response or not response.get("id"):
         raise RuntimeError("YouTube upload returned no video id.")
 
@@ -151,8 +151,7 @@ def upload_video(
         if status.get("publishAt"):
             print(f"YOUTUBE_SCHEDULED: goes public at {status['publishAt']} (22:30 Tehran)")
         else:
-            print("::warning title=Not scheduled::YouTube kept the video private without a publish time "
-                  "(usually an unaudited API project). Publish it in YouTube Studio.")
+            raise RuntimeError("YouTube upload returned no publishAt; scheduled claim is not confirmed")
 
     if thumbnail_path:
         thumb = Path(thumbnail_path)
@@ -182,7 +181,7 @@ CTAS = [
 
 
 def hashtag(text) -> str:
-    words = re.findall(r"[A-Za-z0-9]+", re.sub(r"['\u2019]", "", str(text or "")))
+    words = re.findall(r"[A-Za-z0-9]+", re.sub(r"['’]", "", str(text or "")))
     if not words or all(w.isdigit() for w in words):
         return ""
     return "#" + "".join(w if w.isupper() else w[:1].upper() + w[1:] for w in words)
@@ -255,12 +254,12 @@ if __name__ == "__main__":
         raise
     print("YOUTUBE_VIDEO_ID:", vid)
     print("YOUTUBE_URL: https://youtu.be/" + vid)
-    try:  # catch-up: yesterday's Short gets its first comment even if the evening run was missed
+    try:
         from src import yt_comment
         yt_comment.main()
     except Exception as exc:
         print(f"YT COMMENT catch-up skipped: {type(exc).__name__}: {exc}")
-    try:  # daily performance report (review/yt_stats.md), committed with review/ by this run
+    try:
         from src import yt_stats
         yt_stats.main()
     except Exception as exc:
