@@ -26,6 +26,25 @@ def _install_buffer_safety() -> None:
 _install_buffer_safety()
 
 
+def _remove_stale_bank_finder_for_tests() -> None:
+    """Do not let the Instagram-only add-bank hook replace load_bank in tests.
+
+    The canonical mystery_short loader owns mysteries_batch*.json. The old
+    import hook exists only for the Instagram pack's mysteries_add.json overlay;
+    leaving it installed during unittest hides the canonical loader and makes
+    all 150 staged stories disappear from the runtime test.
+    """
+    if sys.argv and sys.argv[0].endswith("ig_pack.py"):
+        return
+    sys.meta_path[:] = [
+        finder for finder in sys.meta_path
+        if type(finder).__name__ != "_BankAddFinder"
+    ]
+
+
+_remove_stale_bank_finder_for_tests()
+
+
 def _merge_staged_batches() -> list[tuple[Path, bytes]]:
     root = Path(__file__).resolve().parent
     originals: list[tuple[Path, bytes]] = []
