@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import atexit
 import builtins
+import importlib
 import importlib.abc
 import importlib.machinery
 import json
@@ -127,13 +128,7 @@ builtins.__import__ = _effective_consumer_import
 
 
 class _BatchSafeFinder(importlib.abc.MetaPathFinder):
-    """Load mystery_short normally, then keep only the non-bank production patches.
-
-    src.__init__ installs an older add-bank finder after sitecustomize runs. That finder
-    replaces the canonical batch-aware loader with a base-plus-add loader, causing CI to
-    drop all mysteries_batch*.json stories. This higher-priority finder preserves the
-    canonical loader and still applies image/TTS production patches.
-    """
+    """Load mystery_short normally, then keep only the non-bank production patches."""
 
     def find_spec(self, name, path, target=None):
         if name != "src.mystery_short":
@@ -160,3 +155,18 @@ class _BatchSafeFinder(importlib.abc.MetaPathFinder):
 
 if not any(isinstance(f, _BatchSafeFinder) for f in sys.meta_path):
     sys.meta_path.insert(0, _BatchSafeFinder())
+
+
+def _reload_canonical_story_loader() -> None:
+    """Fix startup ordering: buffer safety imports mystery_short before our finder exists."""
+    sys.meta_path[:] = [finder for finder in sys.meta_path if type(finder).__name__ != "_BankAddFinder"]
+    module = sys.modules.get("src.mystery_short")
+    if module is None:
+        return
+    try:
+        importlib.reload(module)
+    except Exception as exc:
+        print(f"EFFECTIVE BANK: canonical loader reload skipped ({type(exc).__name__}: {exc})", flush=True)
+
+
+_reload_canonical_story_loader()
