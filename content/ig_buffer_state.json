@@ -12,7 +12,6 @@
   "fail_streak": 0,
   "films_page": "1e2e58547c34",
   "hosted": [
-    "07_2026-10-29_1359_toynbee-tiles",
     "08_2026-10-29_2254_lost-army-of-cambyses",
     "08_2026-10-29_2254_lost-army-of-cambyses_story",
     "09_2026-10-30_0957_walter-collins",
@@ -20,6 +19,7 @@
     "10_2026-10-30_1800_gobekli-tepe_story",
     "11_2026-10-30_2213_mary-celeste",
     "12_2026-10-31_1218_percy-fawcett",
+    "13_2026-10-31_2134_baghdad-battery",
     "car_behistun",
     "car_oxus-treasure"
   ],
@@ -380,7 +380,7 @@
       "due": "2026-10-29T13:59:00+03:30",
       "kind": "reel",
       "post_id": "6adf7305be236a10f9e0c2cb",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-29_1359_toynbee-tiles.mp4?v=3"
     },
     "08_2026-10-15_2233_kaz-ii": {
@@ -663,6 +663,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-24_2131_hessdalen-lights_story.mp4?v=2"
+    },
+    "13_2026-10-31_2134_baghdad-battery": {
+      "at": "2026-10-29T14:30+03:30",
+      "audio_v": 3,
+      "cap": "5138e60cd090",
+      "due": "2026-10-31T21:34:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae327e3568655049ec0b0fb",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-31_2134_baghdad-battery.mp4?v=3"
     },
     "14_2026-10-18_2121_princes-in-the-tower": {
       "at": "2026-10-15T22:48+03:30",
