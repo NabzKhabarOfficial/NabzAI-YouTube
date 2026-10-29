@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import atexit
 import builtins
+import importlib.abc
+import importlib.machinery
 import json
 import sys
 from pathlib import Path
@@ -92,6 +94,7 @@ if sys.argv and sys.argv[0].endswith("ig_pack.py"):
 # avoids comments/stats silently missing staged batch stories.
 _original_import = builtins.__import__
 
+
 def _effective_consumer_import(name, globals=None, locals=None, fromlist=(), level=0):
     module = _original_import(name, globals, locals, fromlist, level)
     if name in {"src.yt_comment", "src.yt_stats"}:
@@ -99,6 +102,7 @@ def _effective_consumer_import(name, globals=None, locals=None, fromlist=(), lev
             import src.effective_bank as _bank
             if name == "src.yt_comment":
                 target = module
+
                 def _find_story(title, bank_path=None):
                     want = target._norm(target.re.sub(r"#\w+", "", title))
                     for story in _bank.stories():
@@ -112,10 +116,47 @@ def _effective_consumer_import(name, globals=None, locals=None, fromlist=(), lev
                                 pass
                             return out
                     return None
+
                 target.find_story = _find_story
         except Exception as exc:
-            print(f"EFFECTIVE BANK: consumer patch skipped ({type(exc).__name__})", flush=True)
+            print(f"EFFECTIVE BANK: consumer patch skipped ({type(exc).__name__}: {exc})", flush=True)
     return module
 
 
 builtins.__import__ = _effective_consumer_import
+
+
+class _BatchSafeFinder(importlib.abc.MetaPathFinder):
+    """Load mystery_short normally, then keep only the non-bank production patches.
+
+    src.__init__ installs an older add-bank finder after sitecustomize runs. That finder
+    replaces the canonical batch-aware loader with a base-plus-add loader, causing CI to
+    drop all mysteries_batch*.json stories. This higher-priority finder preserves the
+    canonical loader and still applies image/TTS production patches.
+    """
+
+    def find_spec(self, name, path, target=None):
+        if name != "src.mystery_short":
+            return None
+        spec = importlib.machinery.PathFinder.find_spec(name, path)
+        if spec is None or spec.loader is None or not hasattr(spec.loader, "exec_module"):
+            return spec
+        run = spec.loader.exec_module
+
+        def exec_module(module, _run=run):
+            _run(module)
+            try:
+                import src as package
+                for patch_name in ("_patch_images", "_patch_tts"):
+                    patch = getattr(package, patch_name, None)
+                    if callable(patch):
+                        patch(module)
+            except Exception as exc:
+                print(f"::warning title=Production patch skipped::{type(exc).__name__}: {exc}", flush=True)
+
+        spec.loader.exec_module = exec_module
+        return spec
+
+
+if not any(isinstance(f, _BatchSafeFinder) for f in sys.meta_path):
+    sys.meta_path.insert(0, _BatchSafeFinder())
