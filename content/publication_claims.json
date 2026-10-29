@@ -97,6 +97,16 @@
       },
       "status": "succeeded"
     },
+    "a31797b4a74738abe7bffb7c6c8187737581722f0ff2cc56be99bb696a54adf4": {
+      "external_id": "8pnf1BtqDyc",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-10-29T19:00:00.000Z",
+        "story_id": "toynbee-tiles",
+        "video_sha256_24": "3fcca317dfa7e3afc830c295"
+      },
+      "status": "succeeded"
+    },
     "ac000a0fedb950c2dcf9ec19de7515ddd11cfe009116775225738f6ebe885896": {
       "external_id": "6ae0c4390574aed3d269375d",
       "metadata": {

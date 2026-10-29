@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 41.87,
+  "duration_seconds": 46.8,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 16.75,
+  "file_mb": 18.04,
   "audio": {
-    "mean_volume": -18.1,
-    "max_volume": -0.3
+    "mean_volume": -18.0,
+    "max_volume": -0.4
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "solway-firth-spaceman",
-  "story_bank": "Story bank: 34 of 60 stories left (next: solway-firth-spaceman, toynbee-tiles, isdal-woman)"
+  "story_id": "toynbee-tiles",
+  "story_bank": ""
 }
