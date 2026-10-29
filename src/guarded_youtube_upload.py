@@ -28,14 +28,9 @@ def _quality_gate(root: Path) -> None:
 
 def _existing_story_claim(story_id: str) -> dict | None:
     for claim in (load_json(CLAIMS, {}).get("claims") or {}).values():
-        if not isinstance(claim, dict):
-            continue
+        if not isinstance(claim, dict): continue
         metadata = claim.get("metadata") or {}
-        if metadata.get("provider") == "youtube" and metadata.get("story_id") == story_id:
-            # Failed credentials/API validation are deterministic and safe to retry.
-            # Pending, succeeded, and ambiguous claims still require reconciliation.
-            if claim.get("status") != "failed":
-                return claim
+        if metadata.get("provider") == "youtube" and metadata.get("story_id") == story_id and claim.get("status") != "failed": return claim
     return None
 
 def _safe_scheduling_rejection(exc: Exception) -> bool:
@@ -52,8 +47,10 @@ def _single_insert_only():
         except Exception as exc:
             if state["count"] == 1 and _safe_scheduling_rejection(exc): state["safe_fallback"] = True
             raise
-        if state["expected_schedule"] and state["count"] > 1 and not (response or {}).get("status", {}).get("publishAt"):
-            raise RuntimeError("YouTube fallback upload returned no publishAt; claim is not a confirmed schedule")
+        if state["expected_schedule"] and not (response or {}).get("status", {}).get("publishAt"):
+            if state["count"] == 1 and state["safe_fallback"]:
+                return response
+            raise RuntimeError("YouTube upload returned no publishAt; scheduled claim is not confirmed")
         return response
     youtube_uploader._insert = guarded
     return original, state
@@ -72,7 +69,10 @@ def run(root: str, privacy: str = "private", publish_at: str | None = None) -> s
         else: mark_ambiguous(CLAIMS, key, f"upload outcome unknown after {state['count']} insert attempt(s): {type(exc).__name__}: {exc}")
         raise
     finally: youtube_uploader._insert = original_insert
-    if not video_id: mark_ambiguous(CLAIMS, key, "YouTube returned no video id"); raise RuntimeError("YouTube upload returned no video id")
+    if not video_id: mark_ambiguous(CLAIMS, key, "YouTube upload returned no video id"); raise RuntimeError("YouTube upload returned no video id")
+    if publish_at and not state["safe_fallback"] and not state["expected_schedule"]:
+        mark_ambiguous(CLAIMS, key, "scheduled upload did not carry an expected publishAt")
+        raise RuntimeError("scheduled YouTube claim missing publishAt confirmation")
     mark_succeeded(CLAIMS, key, video_id); print(f"YOUTUBE_CLAIM_CONFIRMED: {key}"); return video_id
 
 def main() -> int:
