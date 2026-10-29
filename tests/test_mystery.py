@@ -16,6 +16,18 @@ class MysteryShortTests(unittest.TestCase):
             words = sum(len(b["text"].split()) for b in s["beats"])
             self.assertLessEqual(words / 2.7, 36, s["id"])  # tight ~30 s Shorts at ~2.7+ words/s
 
+    def test_all_150_batch_stories_are_loaded_into_runtime(self):
+        batch_ids = set()
+        for path in sorted((m.ROOT / "content").glob("mysteries_batch*.json")):
+            rows = json.loads(path.read_text(encoding="utf-8"))
+            self.assertIsInstance(rows, list, path.name)
+            self.assertEqual(len(rows), 15, path.name)
+            batch_ids.update(str(row["id"]) for row in rows)
+        runtime_ids = {str(story["id"]) for story in m.load_bank()}
+        self.assertEqual(len(batch_ids), 150)
+        self.assertTrue(batch_ids.issubset(runtime_ids))
+        self.assertEqual(batch_ids - runtime_ids, set())
+
     def test_pick_cycles_without_repeats(self):
         stories = m.load_bank()
         with TemporaryDirectory() as tmp:
