@@ -27,11 +27,11 @@ on:
       buffer_max:
         description: "Most reels to send to Buffer in this run"
         required: true
-        default: "10"
+        default: "1"
         type: choice
         options:
-          - "10"
           - "1"
+          - "10"
 
   schedule:
     # Tehran 08:00, 13:00 and 19:00
@@ -177,7 +177,7 @@ jobs:
       REELS_PAT: ${{ secrets.REELS_PAT }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-      NABZ_BUFFER_MAX_NEW: ${{ inputs.buffer_max || '10' }}
+      NABZ_BUFFER_MAX_NEW: ${{ inputs.buffer_max || '1' }}
 
     steps:
       - name: Checkout main
