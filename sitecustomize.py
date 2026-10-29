@@ -24,7 +24,7 @@ def _install_buffer_safety() -> None:
         from src.ig_runtime_safety import install
         install(ig_buffer)
     except Exception as exc:
-        print(f"IG BUFFER SAFETY: install skipped ({type(exc).__name__})", flush=True)
+        print(f"IG BUFFER SAFETY: install skipped ({type(exc).__name__}: {exc})", flush=True)
 
 
 _install_buffer_safety()
@@ -91,8 +91,6 @@ if sys.argv and sys.argv[0].endswith("ig_pack.py"):
     atexit.register(_restore_staged_batches)
 
 
-# Keep read-only YouTube tools on the same effective bank as production. This
-# avoids comments/stats silently missing staged batch stories.
 _original_import = builtins.__import__
 
 
@@ -128,7 +126,7 @@ builtins.__import__ = _effective_consumer_import
 
 
 class _BatchSafeFinder(importlib.abc.MetaPathFinder):
-    """Load mystery_short normally, then keep only the non-bank production patches."""
+    """Load mystery_short normally, then keep only non-bank production patches."""
 
     def find_spec(self, name, path, target=None):
         if name != "src.mystery_short":
@@ -158,15 +156,69 @@ if not any(isinstance(f, _BatchSafeFinder) for f in sys.meta_path):
 
 
 def _reload_canonical_story_loader() -> None:
-    """Fix startup ordering: buffer safety imports mystery_short before our finder exists."""
+    """Fix startup ordering: buffer safety may import mystery_short before this finder."""
     sys.meta_path[:] = [finder for finder in sys.meta_path if type(finder).__name__ != "_BankAddFinder"]
+    module = sys.modules.get("src.mystery_short")
+    if module is not None:
+        try:
+            importlib.reload(module)
+        except Exception as exc:
+            print(f"EFFECTIVE BANK: canonical loader reload skipped ({type(exc).__name__}: {exc})", flush=True)
+
+
+def _bind_canonical_batch_loader() -> None:
+    """Bind the real batch-aware implementation, independent of import-hook order."""
     module = sys.modules.get("src.mystery_short")
     if module is None:
         return
-    try:
-        importlib.reload(module)
-    except Exception as exc:
-        print(f"EFFECTIVE BANK: canonical loader reload skipped ({type(exc).__name__}: {exc})", flush=True)
+    canonical = module.load_bank
+    root = module.ROOT
+    bank = module.BANK
+    read_rows = module._read_story_rows
+    apply = module.apply_overrides
+    validate = module.validate_story
+
+    def load_bank(path=None, strict=False):
+        chosen = bank if path is None else Path(path)
+        default = chosen.resolve() == bank.resolve()
+        stories = read_rows(chosen)
+        batch_ids = set()
+        if default:
+            for batch_path in sorted((root / "content").glob("mysteries_batch*.json")):
+                rows = read_rows(batch_path)
+                if not rows:
+                    raise RuntimeError(f"story batch is empty: {batch_path}")
+                for row in rows:
+                    sid = str(row.get("id") or "").strip()
+                    if not sid:
+                        raise RuntimeError(f"story batch has a story without id: {batch_path}")
+                    batch_ids.add(sid)
+                stories.extend(rows)
+            stories = apply(stories)
+        ids = [str(s.get("id") or "").strip() for s in stories]
+        if any(not sid for sid in ids):
+            raise RuntimeError("story bank contains a missing id")
+        if len(ids) != len(set(ids)):
+            raise RuntimeError("duplicate story ids across the effective bank")
+        good = []
+        for story in stories:
+            try:
+                validate(story)
+                good.append(story)
+            except RuntimeError as exc:
+                sid = str(story.get("id") or "")
+                if strict or sid in batch_ids:
+                    raise RuntimeError(f"invalid required story {sid}: {exc}") from exc
+                print(f"::warning title=Story skipped::{exc}", flush=True)
+        if not good:
+            raise RuntimeError("no valid stories in the bank")
+        missing = batch_ids - {str(s.get("id")) for s in good}
+        if default and missing:
+            raise RuntimeError(f"runtime bank is missing {len(missing)} required batch stories: " + ", ".join(sorted(missing)[:20]))
+        return good
+
+    module.load_bank = load_bank
 
 
 _reload_canonical_story_loader()
+_bind_canonical_batch_loader()
