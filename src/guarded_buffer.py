@@ -57,56 +57,54 @@ def _wrap_mutations():
     original_story, original_carousel, original_delete = ig_buffer.create_story, ig_buffer.create_carousel, ig_buffer.delete_post
     def strict_gql(query, variables=None):
         return _mutation_once(query, variables) if str(query).lstrip().startswith("mutation") else original_gql(query, variables)
+    def guard_queue_known():
+        if not getattr(ig_buffer, "_buffer_queue_known", True):
+            raise RuntimeError("Buffer queue state is unknown; provider reconciliation required before any mutation")
     def guarded_post(channel, text, video_url, due):
+        guard_queue_known()
         key, cached = _reserve("reel", _identity("reel", video_url, due.isoformat(), text), {"provider":"buffer","kind":"reel","video_url":video_url,"due":due.isoformat()})
         if cached: return cached
         try: post = original_post(channel, text, video_url, due)
         except Exception as exc:
-            status = _finish_failure(key, exc)
-            raise RuntimeError(f"Buffer reel outcome {status} for claim {key}: {exc}") from exc
+            status = _finish_failure(key, exc); raise RuntimeError(f"Buffer reel outcome {status} for claim {key}: {exc}") from exc
         pid = str((post or {}).get("id") or "")
         if not pid: finish(CLAIMS, key, "", status="ambiguous"); raise RuntimeError(f"Buffer reel returned no post id for claim {key}")
         return _confirmed(key, pid)
     def guarded_story(channel, video_url, due):
+        guard_queue_known()
         key, cached = _reserve("story", _identity("story", video_url, due.isoformat()), {"provider":"buffer","kind":"story","video_url":video_url,"due":due.isoformat()})
         if cached: return cached
         try: post = original_story(channel, video_url, due)
         except Exception as exc:
-            status = _finish_failure(key, exc)
-            raise RuntimeError(f"Buffer story outcome {status} for claim {key}: {exc}") from exc
+            status = _finish_failure(key, exc); raise RuntimeError(f"Buffer story outcome {status} for claim {key}: {exc}") from exc
         pid = str((post or {}).get("id") or "")
         if not pid: finish(CLAIMS, key, "", status="ambiguous"); raise RuntimeError(f"Buffer story returned no post id for claim {key}")
         return _confirmed(key, pid)
     def guarded_carousel(channel, text, image_urls, due):
+        guard_queue_known()
         key, cached = _reserve("carousel", _identity("carousel", "|".join(image_urls), due.isoformat(), text), {"provider":"buffer","kind":"carousel","images":list(image_urls),"due":due.isoformat()})
         if cached: return cached
         try: post = original_carousel(channel, text, image_urls, due)
         except Exception as exc:
-            status = _finish_failure(key, exc)
-            raise RuntimeError(f"Buffer carousel outcome {status} for claim {key}: {exc}") from exc
+            status = _finish_failure(key, exc); raise RuntimeError(f"Buffer carousel outcome {status} for claim {key}: {exc}") from exc
         pid = str((post or {}).get("id") or "")
         if not pid: finish(CLAIMS, key, "", status="ambiguous"); raise RuntimeError(f"Buffer carousel returned no post id for claim {key}")
         return _confirmed(key, pid)
     def guarded_delete(post_id):
+        guard_queue_known()
         key, cached = _reserve("delete", _identity("delete", post_id), {"provider":"buffer","kind":"delete","post_id":str(post_id)})
         if cached: return None
         try: original_delete(post_id)
         except Exception as exc:
-            status = _finish_failure(key, exc)
-            raise RuntimeError(f"Buffer delete outcome {status} for claim {key}: {exc}") from exc
+            status = _finish_failure(key, exc); raise RuntimeError(f"Buffer delete outcome {status} for claim {key}: {exc}") from exc
         finish(CLAIMS, key, str(post_id), status="succeeded"); return None
-    ig_buffer.gql = strict_gql
-    ig_buffer.create_post = guarded_post
-    ig_buffer.create_story = guarded_story
-    ig_buffer.create_carousel = guarded_carousel
-    ig_buffer.delete_post = guarded_delete
-    ig_buffer._NABZ_GUARDED = True
+    ig_buffer.gql = strict_gql; ig_buffer.create_post = guarded_post; ig_buffer.create_story = guarded_story
+    ig_buffer.create_carousel = guarded_carousel; ig_buffer.delete_post = guarded_delete; ig_buffer._NABZ_GUARDED = True
 
 def run():
     if not os.getenv("BUFFER_API_KEY", "").strip(): raise RuntimeError("BUFFER_API_KEY is missing; refusing to report a successful Buffer run")
     if not os.getenv("REELS_PAT", "").strip(): raise RuntimeError("REELS_PAT is missing; refusing to publish without public video hosting")
-    install_runtime_safety(ig_buffer)
-    _wrap_mutations(); result = ig_buffer.main(); state = ig_buffer.load_json(BUFFER_STATE, {})
+    install_runtime_safety(ig_buffer); _wrap_mutations(); result = ig_buffer.main(); state = ig_buffer.load_json(BUFFER_STATE, {})
     if int(state.get("fail_streak", 0) or 0) > 0: raise RuntimeError("Buffer recorded a failed run; claims require reconciliation")
     return int(result or 0)
 if __name__ == "__main__": raise SystemExit(run())
