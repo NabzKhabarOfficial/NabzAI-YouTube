@@ -20,8 +20,8 @@
     "11_2026-10-30_2213_mary-celeste",
     "12_2026-10-31_1218_percy-fawcett",
     "13_2026-10-31_2134_baghdad-battery",
-    "car_behistun",
-    "car_oxus-treasure"
+    "14_2026-11-01_1446_mallory-irvine",
+    "car_behistun"
   ],
   "last_fail": "videos not public on nabz-reels Pages",
   "org_id": "6aca87101f8562f188533a3e",
@@ -705,6 +705,16 @@
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-25_1411_villisca-axe-murders.mp4?v=3"
     },
+    "14_2026-11-01_1446_mallory-irvine": {
+      "at": "2026-10-29T19:01+03:30",
+      "audio_v": 3,
+      "cap": "8e02978a0de5",
+      "due": "2026-11-01T14:46:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae3677cc073f399d5efe728",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-01_1446_mallory-irvine.mp4?v=3"
+    },
     "15_2026-10-25_2056_green-children-of-woolpit": {
       "at": "2026-10-23T19:00+03:30",
       "audio_v": 3,
@@ -771,7 +781,7 @@
       "due": "2026-10-29T17:04:00+03:30",
       "kind": "carousel",
       "post_id": "6adf7306be236a10f9e0c2fe",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_1.jpg"
     },
     "car_persepolis-fire": {
