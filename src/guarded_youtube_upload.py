@@ -48,8 +48,6 @@ def _single_insert_only():
             if state["count"] == 1 and _safe_scheduling_rejection(exc): state["safe_fallback"] = True
             raise
         if state["expected_schedule"] and not (response or {}).get("status", {}).get("publishAt"):
-            if state["count"] == 1 and state["safe_fallback"]:
-                return response
             raise RuntimeError("YouTube upload returned no publishAt; scheduled claim is not confirmed")
         return response
     youtube_uploader._insert = guarded
@@ -70,7 +68,10 @@ def run(root: str, privacy: str = "private", publish_at: str | None = None) -> s
         raise
     finally: youtube_uploader._insert = original_insert
     if not video_id: mark_ambiguous(CLAIMS, key, "YouTube upload returned no video id"); raise RuntimeError("YouTube upload returned no video id")
-    if publish_at and not state["safe_fallback"] and not state["expected_schedule"]:
+    if publish_at and state["safe_fallback"]:
+        mark_ambiguous(CLAIMS, key, "YouTube scheduling was rejected and fallback produced a private upload; schedule not confirmed")
+        raise RuntimeError("YouTube upload exists but scheduling was not confirmed; manual reconciliation required")
+    if publish_at and not state["expected_schedule"]:
         mark_ambiguous(CLAIMS, key, "scheduled upload did not carry an expected publishAt")
         raise RuntimeError("scheduled YouTube claim missing publishAt confirmation")
     mark_succeeded(CLAIMS, key, video_id); print(f"YOUTUBE_CLAIM_CONFIRMED: {key}"); return video_id
