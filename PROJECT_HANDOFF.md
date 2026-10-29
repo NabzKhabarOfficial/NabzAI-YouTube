@@ -6,39 +6,31 @@
 
 ## Audit snapshot
 - Audited current `main` on 2026-10-28.
-- Open PRs still requiring review: [#3](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/3), [#4](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/4), [#5](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/5).
-- Do not merge any of them wholesale. Recreate only targeted fixes against current `main`.
+- Main now includes the safe Buffer default, runtime batch loader, and explicit runtime batch test.
+- Open PRs still requiring review: [#3](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/3), [#4](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/4), [#5](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/pull/5). Do not merge any of them wholesale.
 
 ## Changes applied in this audit
-- Guarded Buffer now installs `ig_runtime_safety` before running, so overdue local posts are preserved when the provider queue cannot be read.
-- Guarded Buffer distinguishes deterministic provider rejection (`failed`) from transport uncertainty (`ambiguous`). Ambiguous claims still stop blind retries.
-- The workflow file could not be changed through the connected GitHub permission because workflow-edit scope is unavailable. The manual one-line change is recorded below.
-- Publication claims remain durable repository state, but a successful external mutation followed by a failed Git push can still require provider reconciliation.
+- Guarded Buffer installs `ig_runtime_safety` before running.
+- Guarded Buffer distinguishes deterministic provider rejection (`failed`) from transport uncertainty (`ambiguous`).
+- Scheduled Buffer runs default to one new item. Broad batches require an explicit manual choice of 10.
+- `mystery_short.load_bank()` loads every `content/mysteries_batch*.json` file and fails closed on invalid required batch entries.
+- `scripts/guard_today.py` now uses the same batch population for repeat protection.
 
-## Content and runtime findings still open
-- The ten validated English batch files must be included in the effective runtime bank and in `guard_today`; validation alone is not proof of runtime availability.
-- Meta/Instagram publisher POST mutations still need idempotency and provider reconciliation before live publishing.
-- YouTube/Buffer external success followed by state-push failure can duplicate on a fresh runner without deterministic provider lookup.
-- Several metrics, reports and pack state writers still bypass the shared atomic helper.
-- Persian story banks contain known language/wording defects and have no machine-verifiable source citations.
-- Live Buffer, Meta, YouTube, GitHub Pages and final audio/video checks were not performed.
+## Verification status
+- Offline and hardening GitHub Actions runs reported success for the workflow-default change: [offline run](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40793044886), [hardening run](https://github.com/NabzKhabarOfficial/NabzAI-YouTube/actions/runs/40793044874).
+- The runtime batch-loader verification run was still pending at the last handoff; verify its final result before any live smoke test.
+- No live Buffer, Meta, YouTube, GitHub Pages or final audio/video verification has been performed.
 
-## Safe offline checks
-```bash
-python -m compileall -q src scripts instagram
-PYTHONPATH=. NABZ_VOICE_CHECK=0 python -m unittest discover -s tests -v
-python scripts/validate_ig_batches.py
-PYTHONPATH=. NABZ_VOICE_CHECK=0 python -m instagram.runner --check
-```
+## Remaining manual-only items
+1. Protect `backup/immutable-2026-10-25` against deletion and force-push. It is currently unprotected.
+2. Verify the runtime batch test and the full current-main offline suite are green.
+3. Run exactly one Buffer smoke test with `per_day=2`, `buffer_max=1`.
+4. Independently verify the Buffer item, `content/ig_buffer_state.json`, and `content/publication_claims.json`.
+5. Keep `buffer_max=10` disabled until that evidence is clean.
+6. Never retry a pending or ambiguous claim without provider reconciliation.
 
-## Manual-only continuation
-1. Run the offline suite on the exact current `main` commit.
-2. Verify the effective runtime bank includes every staged batch story.
-3. In `.github/workflows/ig-pack.yml`, change the Buffer environment default to `${{ inputs.buffer_max || '1' }}` and keep the manual options ordered `1`, then `10`.
-4. Run one manual Buffer smoke test with `per_day=2`, `buffer_max=1` only.
-5. Independently verify the resulting Buffer item and repository claim.
-6. Keep `buffer_max=10` disabled until that evidence is clean.
-7. Never retry a pending or ambiguous claim without provider reconciliation.
+## Current limitation
+Branch protection and full backup immutability require GitHub repository administration access not available through the current connection.
 
 ## Guarantee boundary
-Offline checks can establish deterministic code behavior only. They cannot guarantee Telegram/Buffer/Meta/YouTube delivery, external provider state, factual truth of stories, or final rendered media quality.
+Offline checks establish deterministic code behavior only. They cannot guarantee provider delivery, factual truth, or final rendered media quality.
