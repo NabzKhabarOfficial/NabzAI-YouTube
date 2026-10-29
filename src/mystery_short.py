@@ -149,17 +149,18 @@ def _read_story_rows(path: Path) -> list[dict]:
     return rows
 
 
-def load_bank(path: Path = BANK, strict: bool = False) -> list[dict]:
+def load_bank(path: Path | None = None, strict: bool = False) -> list[dict]:
     """Load the base bank plus every validated English batch on the production path.
 
     The base bank keeps its historical tolerant behavior for individual invalid
     entries. Batch entries are mandatory: if one cannot be validated, fail the
     load rather than silently dropping a staged story from the effective bank.
     """
-    path = Path(path)
+    default_bank = path is None or Path(path).resolve() == BANK.resolve()
+    path = BANK if path is None else Path(path)
     stories = _read_story_rows(path)
     batch_ids: set[str] = set()
-    if path.resolve() == BANK.resolve():
+    if default_bank:
         for batch_path in sorted((ROOT / "content").glob("mysteries_batch*.json")):
             rows = _read_story_rows(batch_path)
             if not rows:
@@ -190,7 +191,7 @@ def load_bank(path: Path = BANK, strict: bool = False) -> list[dict]:
             print(f"::warning title=Story skipped::{exc}", flush=True)
     if not good:
         raise RuntimeError("no valid stories in the bank")
-    if path.resolve() == BANK.resolve():
+    if default_bank:
         loaded_ids = {str(s.get("id")) for s in good}
         missing = sorted(batch_ids - loaded_ids)
         if missing:
