@@ -88,14 +88,15 @@ def contact_sheet(paths: list[Path]) -> None:
         sheet.paste(Image.open(p).convert("RGB").resize((tw, th)), (i * tw, 0))
         d.text((i * tw + 10, th + 12), ["start", "25%", "50%", "75%", "end"][i], fill=(240, 220, 150))
     sheet.save(REVIEW / "contact-sheet.jpg", quality=82, optimize=True)
-    for p in paths:  # keep the repo light: only the sheet is committed
+    for p in paths:
         p.unlink(missing_ok=True)
 
 
 def bank_status() -> dict:
-    """How many unpublished mystery stories are left in the bank."""
-    bank = json.loads((ROOT / "content" / "mysteries.json").read_text(encoding="utf-8"))
-    ids = [s["id"] for s in bank.get("stories", [])]
+    """How many unpublished mystery stories are left in the effective bank."""
+    from src.effective_bank import stories
+    loaded = stories()
+    ids = [str(s["id"]) for s in loaded]
     pub_path = ROOT / "content" / "published.json"
     done = set()
     if pub_path.exists():
@@ -113,8 +114,7 @@ def report_bank() -> str:
     line = f"Story bank: {b['remaining']} of {b['total']} stories left (next: {', '.join(b['next'])})"
     print("review: " + line)
     if b["low"]:
-        print(f"::warning title=Story bank low::Only {b['remaining']} mystery stories left. "
-              "Add a new batch to content/mysteries.json.")
+        print(f"::warning title=Story bank low::Only {b['remaining']} mystery stories left. Add a new batch to the effective bank.")
         line = "LOW: " + line
     return line
 
