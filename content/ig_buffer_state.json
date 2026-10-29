@@ -1,782 +1,16 @@
 {
-  "sent": {
-    "01_2026-10-12_1345_db-cooper": {
-      "post_id": "6acb13bced92ed8fa5ef9d76",
-      "due": "2026-10-12T13:45:00+03:30",
-      "status": "deleted",
-      "note": "Oct 12: removed from Buffer by the owner (old voice); rebuilt as 01_2026-10-14_1720_db-cooper",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-12_1345_db-cooper.mp4",
-      "at": "2026-10-10T22:49+03:30",
-      "cap": "492dfffdfbb7"
-    },
-    "02_2026-10-12_2049_flight-19": {
-      "post_id": "6acb13beed92ed8fa5ef9da1",
-      "due": "2026-10-12T20:49:00+03:30",
-      "status": "deleted",
-      "note": "Oct 12: removed from Buffer by the owner (old voice)",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2049_flight-19.mp4",
-      "at": "2026-10-10T23:22+03:30",
-      "cap": "58d64045b536"
-    },
-    "01_2026-10-11_2137_carroll-deering": {
-      "post_id": "6acb71b5bba9419ccb336285",
-      "due": "2026-10-11T21:37:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-11_2137_carroll-deering.mp4",
-      "cap": "a4bdd0eec399",
-      "at": "2026-10-11T14:52+03:30"
-    },
-    "car_peter-bergmann": {
-      "post_id": "6acbaeb6d9cab260a701842e",
-      "due": "2026-10-13T17:13:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_peter-bergmann_1.jpg",
-      "cap": "e154ef038ce9",
-      "kind": "carousel",
-      "at": "2026-10-11T19:12+03:30"
-    },
-    "04_2026-10-13_2031_dancing-plague-1518": {
-      "post_id": "6accc7de0543a6114d42a26d",
-      "due": "2026-10-13T20:31:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518.mp4?v=3",
-      "cap": "e57ae173ea12",
-      "kind": "reel",
-      "at": "2026-10-11T19:12+03:30",
-      "audio_v": 3
-    },
-    "car_jiroft": {
-      "post_id": "6acbaeb7b07d37ac97afe17c",
-      "due": "2026-10-15T17:32:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_jiroft_1.jpg",
-      "cap": "36a4805dc895",
-      "kind": "carousel",
-      "at": "2026-10-11T19:12+03:30"
-    },
-    "05_2026-10-14_1317_hinterkaifeck": {
-      "post_id": "6accd882ddeaf8c524eadb96",
-      "due": "2026-10-14T13:17:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-14_1317_hinterkaifeck.mp4?v=3",
-      "cap": "d97b3ca36291",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-11T23:28+03:30"
-    },
-    "03_2026-10-13_1353_mh370": {
-      "post_id": "6accd8838130a0adb8ed1350",
-      "due": "2026-10-12T21:40:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370.mp4?v=3",
-      "cap": "d3af17fe0ca4",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-12T16:23+03:30"
-    },
-    "02_2026-10-12_2140_flight-19": {
-      "post_id": "6accd8837659eb754b6f2f67",
-      "due": "2026-10-13T13:53:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2140_flight-19.mp4?v=3",
-      "cap": "2b12188b1876",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-12T16:23+03:30"
-    },
-    "01_2026-10-14_1720_db-cooper": {
-      "post_id": "6acd0b1c61aba56bcace3a80",
-      "due": "2026-10-14T17:20:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper.mp4?v=3",
-      "cap": "966b2c4e46c4",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-12T19:59+03:30"
-    },
-    "06_2026-10-14_2134_lead-masks": {
-      "post_id": "6acd0b1d7562cfd84bc3373e",
-      "due": "2026-10-14T21:34:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks.mp4?v=3",
-      "cap": "158027d186c7",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-12T19:59+03:30"
-    },
-    "03_2026-10-13_1353_mh370_story": {
-      "post_id": "6acd10b3506e9770f8811178",
-      "due": "2026-10-12T21:55:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370_story.mp4",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-12T20:22+03:30"
-    },
-    "04_2026-10-13_2031_dancing-plague-1518_story": {
-      "post_id": "6ace03c4aa6f147b955c97b7",
-      "due": "2026-10-13T20:46:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-13T13:39+03:30",
-      "story_v": 2
-    },
-    "01_2026-10-14_1720_db-cooper_story": {
-      "post_id": "6ace03c4b8e63d8727dec088",
-      "due": "2026-10-14T17:35:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-13T13:39+03:30",
-      "story_v": 2
-    },
-    "06_2026-10-14_2134_lead-masks_story": {
-      "post_id": "6ace03c504adf1ce5982aa17",
-      "due": "2026-10-14T21:49:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-13T13:39+03:30",
-      "story_v": 2
-    },
-    "07_2026-10-15_1359_amelia-earhart": {
-      "post_id": "6ace074b2e1ced41dd5e7dac",
-      "due": "2026-10-15T13:59:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-15_1359_amelia-earhart.mp4?v=3",
-      "cap": "8f49a0d5d800",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-13T13:54+03:30"
-    },
-    "08_2026-10-15_2233_kaz-ii": {
-      "post_id": "6ace566805447a55936eaafc",
-      "due": "2026-10-15T22:33:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-15_2233_kaz-ii.mp4?v=3",
-      "cap": "22d023037b15",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-13T19:31+03:30"
-    },
-    "08_2026-10-15_2233_kaz-ii_story": {
-      "post_id": "6acf0c54f847f2ad9ec27f93",
-      "due": "2026-10-15T22:48:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-15_2233_kaz-ii_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-14T08:28+03:30",
-      "story_v": 2
-    },
-    "09_2026-10-16_1325_zodiac-killer": {
-      "post_id": "6acf0c55f847f2ad9ec28465",
-      "due": "2026-10-16T13:25:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-16_1325_zodiac-killer.mp4?v=3",
-      "cap": "a26124e58fa3",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-14T08:28+03:30"
-    },
-    "10_2026-10-16_2202_paula-welden": {
-      "post_id": "6acf51b930bf4c96981f3a23",
-      "due": "2026-10-16T22:02:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-16_2202_paula-welden.mp4?v=3",
-      "cap": "79c75251b938",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-14T13:24+03:30"
-    },
-    "10_2026-10-16_2202_paula-welden_story": {
-      "post_id": "6acfa51661a1b9da73649bf2",
-      "due": "2026-10-16T22:17:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-16_2202_paula-welden_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-14T19:17+03:30",
-      "story_v": 2
-    },
-    "11_2026-10-17_1403_nazca-lines": {
-      "post_id": "6acfa51781eb78c8f8b03745",
-      "due": "2026-10-17T14:03:00+03:30",
-      "status": "deleted",
-      "note": "Oct 15: not a film story; replaced by andes-flight-571 at the same time, the owner deletes this Buffer post by hand (its mp4 is no longer hosted)",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-17_1403_nazca-lines.mp4?v=3",
-      "cap": "aa800cd1a6bb",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-14T19:17+03:30"
-    },
-    "car_alamut": {
-      "post_id": "6acfdf10a0a1bd470f497efd",
-      "due": "2026-10-17T17:37:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_alamut_1.jpg",
-      "cap": "58cd2aa8c6a4",
-      "kind": "carousel",
-      "audio_v": 1,
-      "at": "2026-10-14T23:26+03:30"
-    },
-    "12_2026-10-17_2134_oak-island": {
-      "post_id": "6acfdf113166073688d382f3",
-      "due": "2026-10-17T21:34:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-17_2134_oak-island.mp4?v=3",
-      "cap": "842a1480d77c",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-14T23:26+03:30"
-    },
-    "11_2026-10-17_1403_andes-flight-571": {
-      "post_id": "6ad0ac33230b9109a48c5cca",
-      "due": "2026-10-17T14:03:00+03:30",
-      "status": "sent",
-      "note": "Oct 15: sent with due Sun 10-18 13:30 because the stale nazca record still held Sat 14:03; set back to its plan time Sat 10-17 14:03 (the owner moves the Buffer post to that time)",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-17_1403_andes-flight-571.mp4?v=3",
-      "cap": "bd97ba35459d",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-15T14:02+03:30"
-    },
-    "12_2026-10-17_2134_oak-island_story": {
-      "post_id": "6ad0e14d10fd2689b3e59cf6",
-      "due": "2026-10-17T21:49:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-17_2134_oak-island_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-15T17:48+03:30",
-      "story_v": 2
-    },
-    "13_2026-10-18_1323_chris-mccandless": {
-      "post_id": "6ad0e14e91a4bd77397236d9",
-      "due": "2026-10-18T13:23:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-18_1323_chris-mccandless.mp4?v=3",
-      "cap": "57f7abd4a1da",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-15T17:48+03:30"
-    },
-    "14_2026-10-18_2121_princes-in-the-tower": {
-      "post_id": "6ad1277529e9cdc489e10aef",
-      "due": "2026-10-18T21:21:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-18_2121_princes-in-the-tower.mp4?v=3",
-      "cap": "3e3bbb02915d",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-15T22:48+03:30"
-    },
-    "01_2026-10-19_1331_jack-the-ripper": {
-      "post_id": "6ad12775cc37abfeb9e5dc8a",
-      "due": "2026-10-19T13:31:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-19_1331_jack-the-ripper.mp4?v=3",
-      "cap": "a9629c1435ad",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-15T22:48+03:30"
-    },
-    "02_2026-10-19_1802_dorothy-arnold": {
-      "post_id": "6ad1f658aa117851c0f05228",
-      "due": "2026-10-19T18:02:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-19_1802_dorothy-arnold.mp4?v=3",
-      "cap": "40176fe83505",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-16T13:30+03:30"
-    },
-    "14_2026-10-18_2121_princes-in-the-tower_story": {
-      "post_id": "6ad273447460b00587c6fc91",
-      "due": "2026-10-18T21:36:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-18_2121_princes-in-the-tower_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-16T22:24+03:30",
-      "story_v": 2
-    },
-    "02_2026-10-19_1802_dorothy-arnold_story": {
-      "post_id": "6ad273447460b00587c6fcdd",
-      "due": "2026-10-19T18:17:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-19_1802_dorothy-arnold_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-16T22:24+03:30",
-      "story_v": 2
-    },
-    "03_2026-10-20_1319_alcatraz-escape": {
-      "post_id": "6ad3734c769b4579347aad10",
-      "due": "2026-10-20T13:19:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-20_1319_alcatraz-escape.mp4?v=3",
-      "cap": "3b97dd7ea873",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-17T16:36+03:30"
-    },
-    "car_persepolis-fire": {
-      "post_id": "6ad3956bae173d6e00c255ee",
-      "due": "2026-10-20T17:40:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_persepolis-fire_1.jpg",
-      "cap": "a42f8e30fbd6",
-      "kind": "carousel",
-      "audio_v": 1,
-      "at": "2026-10-17T19:01+03:30"
-    },
-    "04_2026-10-20_2104_phaistos-disc": {
-      "post_id": "6ad492e46d56c60a7303e89d",
-      "due": "2026-10-20T21:04:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-20_2104_phaistos-disc.mp4?v=3",
-      "cap": "afc319e539f1",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-18T13:03+03:30"
-    },
-    "05_2026-10-21_1541_jimmy-hoffa": {
-      "post_id": "6ad492e4ae173d6e00f52a68",
-      "due": "2026-10-21T15:41:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-21_1541_jimmy-hoffa.mp4?v=3",
-      "cap": "c10ad23e87bc",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-18T13:03+03:30"
-    },
-    "06_2026-10-21_1857_beale-ciphers": {
-      "post_id": "6ad4c94a769b457934c412f9",
-      "due": "2026-10-21T18:57:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-21_1857_beale-ciphers.mp4?v=3",
-      "cap": "2930b7e02813",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-18T16:56+03:30"
-    },
-    "04_2026-10-20_2104_phaistos-disc_story": {
-      "post_id": "6ad50d170a208cb323784c04",
-      "due": "2026-10-20T21:19:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-20_2104_phaistos-disc_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-18T21:44+03:30",
-      "story_v": 2
-    },
-    "06_2026-10-21_1857_beale-ciphers_story": {
-      "post_id": "6ad50d18ae173d6e0012a5a0",
-      "due": "2026-10-21T19:12:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-21_1857_beale-ciphers_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-18T21:44+03:30",
-      "story_v": 2
-    },
-    "07_2026-10-22_1356_kaspar-hauser": {
-      "post_id": "6ad5ecbd38bcdab6ee4c5b6f",
-      "due": "2026-10-22T13:56:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-22_1356_kaspar-hauser.mp4?v=3",
-      "cap": "86a123d00f45",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-19T13:38+03:30"
-    },
-    "car_gorgan-wall": {
-      "post_id": "6ad646efb5b645b3c33a03d3",
-      "due": "2026-10-22T17:31:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gorgan-wall_1.jpg",
-      "cap": "2396564f1a7a",
-      "kind": "carousel",
-      "audio_v": 1,
-      "at": "2026-10-19T20:04+03:30"
-    },
-    "09_2026-10-23_0956_glenn-miller": {
-      "post_id": "6ad77a7bdcfa786848cb3522",
-      "due": "2026-10-23T09:56:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-23_0956_glenn-miller.mp4?v=3",
-      "cap": "90b61499e76d",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-20T17:55+03:30"
-    },
-    "10_2026-10-23_1759_amber-room": {
-      "post_id": "6ad7c14864a2e76528e15b3f",
-      "due": "2026-10-23T17:59:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-23_1759_amber-room.mp4?v=3",
-      "cap": "89d2a051a048",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-20T22:57+03:30"
-    },
-    "11_2026-10-23_2206_franklin-expedition": {
-      "post_id": "6ad7c1499f8712d7ad7d3f60",
-      "due": "2026-10-23T22:06:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-23_2206_franklin-expedition.mp4?v=3",
-      "cap": "acc55037e21f",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-20T22:57+03:30"
-    },
-    "12_2026-10-24_1255_lake-bodom": {
-      "post_id": "6ad8ce70df27e4a2784ed782",
-      "due": "2026-10-24T12:55:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-24_1255_lake-bodom.mp4?v=3",
-      "cap": "5c6632769622",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-21T18:04+03:30"
-    },
-    "car_tarim-mummies": {
-      "post_id": "6ad8db207159dc2c40c0f1e4",
-      "due": "2026-10-24T17:04:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_tarim-mummies_1.jpg",
-      "cap": "172e702fbc80",
-      "kind": "carousel",
-      "audio_v": 1,
-      "at": "2026-10-21T19:00+03:30"
-    },
-    "13_2026-10-24_2131_hessdalen-lights": {
-      "post_id": "6ad9125f10f3165f4b736df8",
-      "due": "2026-10-24T21:31:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-24_2131_hessdalen-lights.mp4?v=3",
-      "cap": "747d1f0274ce",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-21T22:56+03:30"
-    },
-    "10_2026-10-23_1759_amber-room_story": {
-      "post_id": "6ada21751cc831fdc3c29b96",
-      "due": "2026-10-23T18:14:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-23_1759_amber-room_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-22T18:06+03:30",
-      "story_v": 2
-    },
-    "11_2026-10-23_2206_franklin-expedition_story": {
-      "post_id": "6ada2176a6a09108d26fd400",
-      "due": "2026-10-23T22:21:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-23_2206_franklin-expedition_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-22T18:06+03:30",
-      "story_v": 2
-    },
-    "14_2026-10-25_1411_villisca-axe-murders": {
-      "post_id": "6ada62742f4faf5f7963359f",
-      "due": "2026-10-25T14:11:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-25_1411_villisca-axe-murders.mp4?v=3",
-      "cap": "304170c47b58",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-22T22:50+03:30"
-    },
-    "08_2026-10-22_2245_sodder-children": {
-      "post_id": "6adb292f81bbc7cbcf5d95e0",
-      "due": "2026-10-25T22:31:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-22_2245_sodder-children.mp4?v=3",
-      "cap": "a61b883039c9",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-23T12:58+03:30"
-    },
-    "13_2026-10-24_2131_hessdalen-lights_story": {
-      "post_id": "6adb292f2baa602d024313a5",
-      "due": "2026-10-24T21:46:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-24_2131_hessdalen-lights_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-23T12:58+03:30",
-      "story_v": 2
-    },
-    "15_2026-10-25_2056_green-children-of-woolpit": {
-      "post_id": "6adb7e5f7af932dee4ea08c6",
-      "due": "2026-10-26T14:03:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-10-25_2056_green-children-of-woolpit.mp4?v=3",
-      "cap": "9acbb71d30cd",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-23T19:00+03:30"
-    },
-    "08_2026-10-22_2245_sodder-children_story": {
-      "post_id": "6adb7e5f6fe59a6ed280834e",
-      "due": "2026-10-25T22:46:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-22_2245_sodder-children_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-23T19:00+03:30",
-      "story_v": 2
-    },
-    "01_2026-10-26_1328_dyatlov-pass": {
-      "post_id": "6adbb5329acae620d81545ff",
-      "due": "2026-10-26T21:23:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-26_1328_dyatlov-pass.mp4?v=3",
-      "cap": "c813a72be77a",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-23T22:55+03:30"
-    },
-    "02_2026-10-26_1805_nazca-lines": {
-      "post_id": "6adbb532e4be8a4d8621b2bb",
-      "due": "2026-10-26T18:05:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-26_1805_nazca-lines.mp4?v=3",
-      "cap": "5842eb8a1375",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-23T22:55+03:30"
-    },
-    "03_2026-10-27_1324_lost-dutchmans-mine": {
-      "post_id": "6adc7b3bbd33ce99c315d307",
-      "due": "2026-10-27T13:24:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-27_1324_lost-dutchmans-mine.mp4?v=3",
-      "cap": "3f542db19b7d",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-24T13:00+03:30"
-    },
-    "car_kaaba-zartosht": {
-      "post_id": "6adccf993d5b27036b8f5743",
-      "due": "2026-10-27T17:24:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_kaaba-zartosht_1.jpg",
-      "cap": "b86641712099",
-      "kind": "carousel",
-      "audio_v": 1,
-      "at": "2026-10-24T19:00+03:30"
-    },
-    "02_2026-10-26_1805_nazca-lines_story": {
-      "post_id": "6adcf68a8b3d437ddcd1f2c3",
-      "due": "2026-10-26T18:20:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-26_1805_nazca-lines_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-24T21:46+03:30",
-      "story_v": 2
-    },
-    "01_2026-10-26_1328_dyatlov-pass_story": {
-      "post_id": "6adcf68b8b3d437ddcd1f2ef",
-      "due": "2026-10-26T21:38:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-26_1328_dyatlov-pass_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-24T21:46+03:30",
-      "story_v": 2
-    },
-    "04_2026-10-27_2059_taos-hum": {
-      "post_id": "6addf2d40b5343d070cf0c3b",
-      "due": "2026-10-27T20:59:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum.mp4?v=3",
-      "cap": "4f33b5cd423a",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-25T15:42+03:30"
-    },
-    "04_2026-10-27_2059_taos-hum_story": {
-      "post_id": "6adf1eab865e1471ed5a0135",
-      "due": "2026-10-27T21:14:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-26T13:02+03:30",
-      "story_v": 2
-    },
-    "05_2026-10-28_1450_ninth-legion": {
-      "post_id": "6adf1eac865e1471ed5a0197",
-      "due": "2026-10-28T14:50:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-28_1450_ninth-legion.mp4?v=3",
-      "cap": "24fdc65a830c",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-26T13:02+03:30"
-    },
-    "06_2026-10-28_1900_max-headroom-hijack": {
-      "post_id": "6adf7304fc9719069070ffa0",
-      "due": "2026-10-28T19:00:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack.mp4?v=3",
-      "cap": "44171b612593",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-26T19:02+03:30"
-    },
-    "07_2026-10-29_1359_toynbee-tiles": {
-      "post_id": "6adf7305be236a10f9e0c2cb",
-      "due": "2026-10-29T13:59:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-29_1359_toynbee-tiles.mp4?v=3",
-      "cap": "d9e904db8a70",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-26T19:02+03:30"
-    },
-    "car_oxus-treasure": {
-      "post_id": "6adf7306be236a10f9e0c2fe",
-      "due": "2026-10-29T17:04:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_1.jpg",
-      "cap": "5aa28078786a",
-      "kind": "carousel",
-      "audio_v": 1,
-      "at": "2026-10-26T19:02+03:30"
-    },
-    "06_2026-10-28_1900_max-headroom-hijack_story": {
-      "post_id": "6adfbb433ffda7dd058f8546",
-      "due": "2026-10-28T19:15:00+03:30",
-      "status": "sent",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-27T00:09+03:30",
-      "story_v": 2
-    },
-    "08_2026-10-29_2254_lost-army-of-cambyses": {
-      "post_id": "6adfbb44a72c078abdb7e3b2",
-      "due": "2026-10-29T22:54:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses.mp4?v=3",
-      "cap": "fc6de3dae39c",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-27T00:09+03:30"
-    },
-    "09_2026-10-30_0957_walter-collins": {
-      "post_id": "6ae075fdcedf2995f649c21d",
-      "due": "2026-10-30T09:57:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-30_0957_walter-collins.mp4?v=3",
-      "cap": "9a9021bd0881",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-27T13:27+03:30"
-    },
-    "10_2026-10-30_1800_gobekli-tepe": {
-      "post_id": "6ae0c4390574aed3d269375d",
-      "due": "2026-10-30T18:00:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe.mp4?v=3",
-      "cap": "f413187b683d",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-27T19:00+03:30"
-    },
-    "08_2026-10-29_2254_lost-army-of-cambyses_story": {
-      "post_id": "6ae1063c0add83c2778fc85a",
-      "due": "2026-10-29T23:09:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-27T23:41+03:30",
-      "story_v": 2
-    },
-    "10_2026-10-30_1800_gobekli-tepe_story": {
-      "post_id": "6ae1063d944977ae025535d9",
-      "due": "2026-10-30T18:15:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe_story.mp4?v=2",
-      "cap": "da39a3ee5e6b",
-      "kind": "story",
-      "audio_v": 1,
-      "at": "2026-10-27T23:41+03:30",
-      "story_v": 2
-    },
-    "11_2026-10-30_2213_mary-celeste": {
-      "post_id": "6ae216411e48dc602a3d9c9f",
-      "due": "2026-10-30T22:13:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste.mp4?v=3",
-      "cap": "68a342ceb69e",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-28T19:01+03:30"
-    },
-    "12_2026-10-31_1218_percy-fawcett": {
-      "post_id": "6ae21642ef3865d804f8cdd4",
-      "due": "2026-10-31T12:18:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-31_1218_percy-fawcett.mp4?v=3",
-      "cap": "df1485ce3c38",
-      "kind": "reel",
-      "audio_v": 3,
-      "at": "2026-10-28T19:01+03:30"
-    },
-    "car_behistun": {
-      "post_id": "6ae21fdb4785904534fd8833",
-      "due": "2026-10-31T17:04:00+03:30",
-      "status": "scheduled",
-      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_behistun_1.jpg",
-      "cap": "9beea15ad88b",
-      "kind": "carousel",
-      "audio_v": 1,
-      "at": "2026-10-28T19:43+03:30"
-    }
-  },
+  "channel_id": "6aca88406a5c39ccb6753843",
+  "channel_name": "nabz.moamma",
   "deleted_by_owner": {
     "02_2026-10-12_2140_flight-19": "6accc7df5e5ffb1101e55175",
     "03_2026-10-13_1353_mh370": "6accc7ddfcd88e54a9450ca0",
-    "11_2026-10-17_1403_nazca-lines": "6acfa51781eb78c8f8b03745",
     "08_2026-10-22_2245_sodder-children": "6ad646f0d7a5a2882da9dd4b",
-    "08_2026-10-22_2245_sodder-children_story": "6ad77a7aca72dcf891808238"
+    "08_2026-10-22_2245_sodder-children_story": "6ad77a7aca72dcf891808238",
+    "11_2026-10-17_1403_nazca-lines": "6acfa51781eb78c8f8b03745"
   },
-  "org_id": "6aca87101f8562f188533a3e",
-  "channel_id": "6aca88406a5c39ccb6753843",
-  "channel_name": "nabz.moamma",
+  "fail_alerted": false,
+  "fail_streak": 0,
+  "films_page": "1e2e58547c34",
   "hosted": [
     "07_2026-10-29_1359_toynbee-tiles",
     "08_2026-10-29_2254_lost-army-of-cambyses",
@@ -789,10 +23,776 @@
     "car_behistun",
     "car_oxus-treasure"
   ],
-  "films_page": "1e2e58547c34",
-  "fail_streak": 0,
-  "fail_alerted": false,
-  "report_week": "2026-10-26",
   "last_fail": "videos not public on nabz-reels Pages",
+  "org_id": "6aca87101f8562f188533a3e",
+  "report_week": "2026-10-26",
+  "sent": {
+    "01_2026-10-11_2137_carroll-deering": {
+      "at": "2026-10-11T14:52+03:30",
+      "cap": "a4bdd0eec399",
+      "due": "2026-10-11T21:37:00+03:30",
+      "post_id": "6acb71b5bba9419ccb336285",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-11_2137_carroll-deering.mp4"
+    },
+    "01_2026-10-12_1345_db-cooper": {
+      "at": "2026-10-10T22:49+03:30",
+      "cap": "492dfffdfbb7",
+      "due": "2026-10-12T13:45:00+03:30",
+      "note": "Oct 12: removed from Buffer by the owner (old voice); rebuilt as 01_2026-10-14_1720_db-cooper",
+      "post_id": "6acb13bced92ed8fa5ef9d76",
+      "status": "deleted",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-12_1345_db-cooper.mp4"
+    },
+    "01_2026-10-14_1720_db-cooper": {
+      "at": "2026-10-12T19:59+03:30",
+      "audio_v": 3,
+      "cap": "966b2c4e46c4",
+      "due": "2026-10-14T17:20:00+03:30",
+      "kind": "reel",
+      "post_id": "6acd0b1c61aba56bcace3a80",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper.mp4?v=3"
+    },
+    "01_2026-10-14_1720_db-cooper_story": {
+      "at": "2026-10-13T13:39+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-14T17:35:00+03:30",
+      "kind": "story",
+      "post_id": "6ace03c4b8e63d8727dec088",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-14_1720_db-cooper_story.mp4?v=2"
+    },
+    "01_2026-10-19_1331_jack-the-ripper": {
+      "at": "2026-10-15T22:48+03:30",
+      "audio_v": 3,
+      "cap": "a9629c1435ad",
+      "due": "2026-10-19T13:31:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad12775cc37abfeb9e5dc8a",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-19_1331_jack-the-ripper.mp4?v=3"
+    },
+    "01_2026-10-26_1328_dyatlov-pass": {
+      "at": "2026-10-23T22:55+03:30",
+      "audio_v": 3,
+      "cap": "c813a72be77a",
+      "due": "2026-10-26T21:23:00+03:30",
+      "kind": "reel",
+      "post_id": "6adbb5329acae620d81545ff",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-26_1328_dyatlov-pass.mp4?v=3"
+    },
+    "01_2026-10-26_1328_dyatlov-pass_story": {
+      "at": "2026-10-24T21:46+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-26T21:38:00+03:30",
+      "kind": "story",
+      "post_id": "6adcf68b8b3d437ddcd1f2ef",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-10-26_1328_dyatlov-pass_story.mp4?v=2"
+    },
+    "02_2026-10-12_2049_flight-19": {
+      "at": "2026-10-10T23:22+03:30",
+      "cap": "58d64045b536",
+      "due": "2026-10-12T20:49:00+03:30",
+      "note": "Oct 12: removed from Buffer by the owner (old voice)",
+      "post_id": "6acb13beed92ed8fa5ef9da1",
+      "status": "deleted",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2049_flight-19.mp4"
+    },
+    "02_2026-10-12_2140_flight-19": {
+      "at": "2026-10-12T16:23+03:30",
+      "audio_v": 3,
+      "cap": "2b12188b1876",
+      "due": "2026-10-13T13:53:00+03:30",
+      "kind": "reel",
+      "post_id": "6accd8837659eb754b6f2f67",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-12_2140_flight-19.mp4?v=3"
+    },
+    "02_2026-10-19_1802_dorothy-arnold": {
+      "at": "2026-10-16T13:30+03:30",
+      "audio_v": 3,
+      "cap": "40176fe83505",
+      "due": "2026-10-19T18:02:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad1f658aa117851c0f05228",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-19_1802_dorothy-arnold.mp4?v=3"
+    },
+    "02_2026-10-19_1802_dorothy-arnold_story": {
+      "at": "2026-10-16T22:24+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-19T18:17:00+03:30",
+      "kind": "story",
+      "post_id": "6ad273447460b00587c6fcdd",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-19_1802_dorothy-arnold_story.mp4?v=2"
+    },
+    "02_2026-10-26_1805_nazca-lines": {
+      "at": "2026-10-23T22:55+03:30",
+      "audio_v": 3,
+      "cap": "5842eb8a1375",
+      "due": "2026-10-26T18:05:00+03:30",
+      "kind": "reel",
+      "post_id": "6adbb532e4be8a4d8621b2bb",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-26_1805_nazca-lines.mp4?v=3"
+    },
+    "02_2026-10-26_1805_nazca-lines_story": {
+      "at": "2026-10-24T21:46+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-26T18:20:00+03:30",
+      "kind": "story",
+      "post_id": "6adcf68a8b3d437ddcd1f2c3",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-26_1805_nazca-lines_story.mp4?v=2"
+    },
+    "03_2026-10-13_1353_mh370": {
+      "at": "2026-10-12T16:23+03:30",
+      "audio_v": 3,
+      "cap": "d3af17fe0ca4",
+      "due": "2026-10-12T21:40:00+03:30",
+      "kind": "reel",
+      "post_id": "6accd8838130a0adb8ed1350",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370.mp4?v=3"
+    },
+    "03_2026-10-13_1353_mh370_story": {
+      "at": "2026-10-12T20:22+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-12T21:55:00+03:30",
+      "kind": "story",
+      "post_id": "6acd10b3506e9770f8811178",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-13_1353_mh370_story.mp4"
+    },
+    "03_2026-10-20_1319_alcatraz-escape": {
+      "at": "2026-10-17T16:36+03:30",
+      "audio_v": 3,
+      "cap": "3b97dd7ea873",
+      "due": "2026-10-20T13:19:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad3734c769b4579347aad10",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-20_1319_alcatraz-escape.mp4?v=3"
+    },
+    "03_2026-10-27_1324_lost-dutchmans-mine": {
+      "at": "2026-10-24T13:00+03:30",
+      "audio_v": 3,
+      "cap": "3f542db19b7d",
+      "due": "2026-10-27T13:24:00+03:30",
+      "kind": "reel",
+      "post_id": "6adc7b3bbd33ce99c315d307",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-27_1324_lost-dutchmans-mine.mp4?v=3"
+    },
+    "04_2026-10-13_2031_dancing-plague-1518": {
+      "at": "2026-10-11T19:12+03:30",
+      "audio_v": 3,
+      "cap": "e57ae173ea12",
+      "due": "2026-10-13T20:31:00+03:30",
+      "kind": "reel",
+      "post_id": "6accc7de0543a6114d42a26d",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518.mp4?v=3"
+    },
+    "04_2026-10-13_2031_dancing-plague-1518_story": {
+      "at": "2026-10-13T13:39+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-13T20:46:00+03:30",
+      "kind": "story",
+      "post_id": "6ace03c4aa6f147b955c97b7",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-13_2031_dancing-plague-1518_story.mp4?v=2"
+    },
+    "04_2026-10-20_2104_phaistos-disc": {
+      "at": "2026-10-18T13:03+03:30",
+      "audio_v": 3,
+      "cap": "afc319e539f1",
+      "due": "2026-10-20T21:04:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad492e46d56c60a7303e89d",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-20_2104_phaistos-disc.mp4?v=3"
+    },
+    "04_2026-10-20_2104_phaistos-disc_story": {
+      "at": "2026-10-18T21:44+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-20T21:19:00+03:30",
+      "kind": "story",
+      "post_id": "6ad50d170a208cb323784c04",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-20_2104_phaistos-disc_story.mp4?v=2"
+    },
+    "04_2026-10-27_2059_taos-hum": {
+      "at": "2026-10-25T15:42+03:30",
+      "audio_v": 3,
+      "cap": "4f33b5cd423a",
+      "due": "2026-10-27T20:59:00+03:30",
+      "kind": "reel",
+      "post_id": "6addf2d40b5343d070cf0c3b",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum.mp4?v=3"
+    },
+    "04_2026-10-27_2059_taos-hum_story": {
+      "at": "2026-10-26T13:02+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-27T21:14:00+03:30",
+      "kind": "story",
+      "post_id": "6adf1eab865e1471ed5a0135",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-10-27_2059_taos-hum_story.mp4?v=2"
+    },
+    "05_2026-10-14_1317_hinterkaifeck": {
+      "at": "2026-10-11T23:28+03:30",
+      "audio_v": 3,
+      "cap": "d97b3ca36291",
+      "due": "2026-10-14T13:17:00+03:30",
+      "kind": "reel",
+      "post_id": "6accd882ddeaf8c524eadb96",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-14_1317_hinterkaifeck.mp4?v=3"
+    },
+    "05_2026-10-21_1541_jimmy-hoffa": {
+      "at": "2026-10-18T13:03+03:30",
+      "audio_v": 3,
+      "cap": "c10ad23e87bc",
+      "due": "2026-10-21T15:41:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad492e4ae173d6e00f52a68",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-21_1541_jimmy-hoffa.mp4?v=3"
+    },
+    "05_2026-10-28_1450_ninth-legion": {
+      "at": "2026-10-26T13:02+03:30",
+      "audio_v": 3,
+      "cap": "24fdc65a830c",
+      "due": "2026-10-28T14:50:00+03:30",
+      "kind": "reel",
+      "post_id": "6adf1eac865e1471ed5a0197",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-28_1450_ninth-legion.mp4?v=3"
+    },
+    "06_2026-10-14_2134_lead-masks": {
+      "at": "2026-10-12T19:59+03:30",
+      "audio_v": 3,
+      "cap": "158027d186c7",
+      "due": "2026-10-14T21:34:00+03:30",
+      "kind": "reel",
+      "post_id": "6acd0b1d7562cfd84bc3373e",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks.mp4?v=3"
+    },
+    "06_2026-10-14_2134_lead-masks_story": {
+      "at": "2026-10-13T13:39+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-14T21:49:00+03:30",
+      "kind": "story",
+      "post_id": "6ace03c504adf1ce5982aa17",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-14_2134_lead-masks_story.mp4?v=2"
+    },
+    "06_2026-10-21_1857_beale-ciphers": {
+      "at": "2026-10-18T16:56+03:30",
+      "audio_v": 3,
+      "cap": "2930b7e02813",
+      "due": "2026-10-21T18:57:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad4c94a769b457934c412f9",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-21_1857_beale-ciphers.mp4?v=3"
+    },
+    "06_2026-10-21_1857_beale-ciphers_story": {
+      "at": "2026-10-18T21:44+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-21T19:12:00+03:30",
+      "kind": "story",
+      "post_id": "6ad50d18ae173d6e0012a5a0",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-21_1857_beale-ciphers_story.mp4?v=2"
+    },
+    "06_2026-10-28_1900_max-headroom-hijack": {
+      "at": "2026-10-26T19:02+03:30",
+      "audio_v": 3,
+      "cap": "44171b612593",
+      "due": "2026-10-28T19:00:00+03:30",
+      "kind": "reel",
+      "post_id": "6adf7304fc9719069070ffa0",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack.mp4?v=3"
+    },
+    "06_2026-10-28_1900_max-headroom-hijack_story": {
+      "at": "2026-10-27T00:09+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-28T19:15:00+03:30",
+      "kind": "story",
+      "post_id": "6adfbb433ffda7dd058f8546",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack_story.mp4?v=2"
+    },
+    "07_2026-10-15_1359_amelia-earhart": {
+      "at": "2026-10-13T13:54+03:30",
+      "audio_v": 3,
+      "cap": "8f49a0d5d800",
+      "due": "2026-10-15T13:59:00+03:30",
+      "kind": "reel",
+      "post_id": "6ace074b2e1ced41dd5e7dac",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-15_1359_amelia-earhart.mp4?v=3"
+    },
+    "07_2026-10-22_1356_kaspar-hauser": {
+      "at": "2026-10-19T13:38+03:30",
+      "audio_v": 3,
+      "cap": "86a123d00f45",
+      "due": "2026-10-22T13:56:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad5ecbd38bcdab6ee4c5b6f",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-22_1356_kaspar-hauser.mp4?v=3"
+    },
+    "07_2026-10-29_1359_toynbee-tiles": {
+      "at": "2026-10-26T19:02+03:30",
+      "audio_v": 3,
+      "cap": "d9e904db8a70",
+      "due": "2026-10-29T13:59:00+03:30",
+      "kind": "reel",
+      "post_id": "6adf7305be236a10f9e0c2cb",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-29_1359_toynbee-tiles.mp4?v=3"
+    },
+    "08_2026-10-15_2233_kaz-ii": {
+      "at": "2026-10-13T19:31+03:30",
+      "audio_v": 3,
+      "cap": "22d023037b15",
+      "due": "2026-10-15T22:33:00+03:30",
+      "kind": "reel",
+      "post_id": "6ace566805447a55936eaafc",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-15_2233_kaz-ii.mp4?v=3"
+    },
+    "08_2026-10-15_2233_kaz-ii_story": {
+      "at": "2026-10-14T08:28+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-15T22:48:00+03:30",
+      "kind": "story",
+      "post_id": "6acf0c54f847f2ad9ec27f93",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-15_2233_kaz-ii_story.mp4?v=2"
+    },
+    "08_2026-10-22_2245_sodder-children": {
+      "at": "2026-10-23T12:58+03:30",
+      "audio_v": 3,
+      "cap": "a61b883039c9",
+      "due": "2026-10-25T22:31:00+03:30",
+      "kind": "reel",
+      "post_id": "6adb292f81bbc7cbcf5d95e0",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-22_2245_sodder-children.mp4?v=3"
+    },
+    "08_2026-10-22_2245_sodder-children_story": {
+      "at": "2026-10-23T19:00+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-25T22:46:00+03:30",
+      "kind": "story",
+      "post_id": "6adb7e5f6fe59a6ed280834e",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-22_2245_sodder-children_story.mp4?v=2"
+    },
+    "08_2026-10-29_2254_lost-army-of-cambyses": {
+      "at": "2026-10-27T00:09+03:30",
+      "audio_v": 3,
+      "cap": "fc6de3dae39c",
+      "due": "2026-10-29T22:54:00+03:30",
+      "kind": "reel",
+      "post_id": "6adfbb44a72c078abdb7e3b2",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses.mp4?v=3"
+    },
+    "08_2026-10-29_2254_lost-army-of-cambyses_story": {
+      "at": "2026-10-27T23:41+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-29T23:09:00+03:30",
+      "kind": "story",
+      "post_id": "6ae1063c0add83c2778fc85a",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses_story.mp4?v=2"
+    },
+    "09_2026-10-16_1325_zodiac-killer": {
+      "at": "2026-10-14T08:28+03:30",
+      "audio_v": 3,
+      "cap": "a26124e58fa3",
+      "due": "2026-10-16T13:25:00+03:30",
+      "kind": "reel",
+      "post_id": "6acf0c55f847f2ad9ec28465",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-16_1325_zodiac-killer.mp4?v=3"
+    },
+    "09_2026-10-23_0956_glenn-miller": {
+      "at": "2026-10-20T17:55+03:30",
+      "audio_v": 3,
+      "cap": "90b61499e76d",
+      "due": "2026-10-23T09:56:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad77a7bdcfa786848cb3522",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-23_0956_glenn-miller.mp4?v=3"
+    },
+    "09_2026-10-30_0957_walter-collins": {
+      "at": "2026-10-27T13:27+03:30",
+      "audio_v": 3,
+      "cap": "9a9021bd0881",
+      "due": "2026-10-30T09:57:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae075fdcedf2995f649c21d",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-30_0957_walter-collins.mp4?v=3"
+    },
+    "10_2026-10-16_2202_paula-welden": {
+      "at": "2026-10-14T13:24+03:30",
+      "audio_v": 3,
+      "cap": "79c75251b938",
+      "due": "2026-10-16T22:02:00+03:30",
+      "kind": "reel",
+      "post_id": "6acf51b930bf4c96981f3a23",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-16_2202_paula-welden.mp4?v=3"
+    },
+    "10_2026-10-16_2202_paula-welden_story": {
+      "at": "2026-10-14T19:17+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-16T22:17:00+03:30",
+      "kind": "story",
+      "post_id": "6acfa51661a1b9da73649bf2",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-16_2202_paula-welden_story.mp4?v=2"
+    },
+    "10_2026-10-23_1759_amber-room": {
+      "at": "2026-10-20T22:57+03:30",
+      "audio_v": 3,
+      "cap": "89d2a051a048",
+      "due": "2026-10-23T17:59:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad7c14864a2e76528e15b3f",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-23_1759_amber-room.mp4?v=3"
+    },
+    "10_2026-10-23_1759_amber-room_story": {
+      "at": "2026-10-22T18:06+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-23T18:14:00+03:30",
+      "kind": "story",
+      "post_id": "6ada21751cc831fdc3c29b96",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-23_1759_amber-room_story.mp4?v=2"
+    },
+    "10_2026-10-30_1800_gobekli-tepe": {
+      "at": "2026-10-27T19:00+03:30",
+      "audio_v": 3,
+      "cap": "f413187b683d",
+      "due": "2026-10-30T18:00:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae0c4390574aed3d269375d",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe.mp4?v=3"
+    },
+    "10_2026-10-30_1800_gobekli-tepe_story": {
+      "at": "2026-10-27T23:41+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-30T18:15:00+03:30",
+      "kind": "story",
+      "post_id": "6ae1063d944977ae025535d9",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe_story.mp4?v=2"
+    },
+    "11_2026-10-17_1403_andes-flight-571": {
+      "at": "2026-10-15T14:02+03:30",
+      "audio_v": 3,
+      "cap": "bd97ba35459d",
+      "due": "2026-10-17T14:03:00+03:30",
+      "kind": "reel",
+      "note": "Oct 15: sent with due Sun 10-18 13:30 because the stale nazca record still held Sat 14:03; set back to its plan time Sat 10-17 14:03 (the owner moves the Buffer post to that time)",
+      "post_id": "6ad0ac33230b9109a48c5cca",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-17_1403_andes-flight-571.mp4?v=3"
+    },
+    "11_2026-10-17_1403_nazca-lines": {
+      "at": "2026-10-14T19:17+03:30",
+      "audio_v": 3,
+      "cap": "aa800cd1a6bb",
+      "due": "2026-10-17T14:03:00+03:30",
+      "kind": "reel",
+      "note": "Oct 15: not a film story; replaced by andes-flight-571 at the same time, the owner deletes this Buffer post by hand (its mp4 is no longer hosted)",
+      "post_id": "6acfa51781eb78c8f8b03745",
+      "status": "deleted",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-17_1403_nazca-lines.mp4?v=3"
+    },
+    "11_2026-10-23_2206_franklin-expedition": {
+      "at": "2026-10-20T22:57+03:30",
+      "audio_v": 3,
+      "cap": "acc55037e21f",
+      "due": "2026-10-23T22:06:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad7c1499f8712d7ad7d3f60",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-23_2206_franklin-expedition.mp4?v=3"
+    },
+    "11_2026-10-23_2206_franklin-expedition_story": {
+      "at": "2026-10-22T18:06+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-23T22:21:00+03:30",
+      "kind": "story",
+      "post_id": "6ada2176a6a09108d26fd400",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-23_2206_franklin-expedition_story.mp4?v=2"
+    },
+    "11_2026-10-30_2213_mary-celeste": {
+      "at": "2026-10-28T19:01+03:30",
+      "audio_v": 3,
+      "cap": "68a342ceb69e",
+      "due": "2026-10-30T22:13:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae216411e48dc602a3d9c9f",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste.mp4?v=3"
+    },
+    "12_2026-10-17_2134_oak-island": {
+      "at": "2026-10-14T23:26+03:30",
+      "audio_v": 3,
+      "cap": "842a1480d77c",
+      "due": "2026-10-17T21:34:00+03:30",
+      "kind": "reel",
+      "post_id": "6acfdf113166073688d382f3",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-17_2134_oak-island.mp4?v=3"
+    },
+    "12_2026-10-17_2134_oak-island_story": {
+      "at": "2026-10-15T17:48+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-17T21:49:00+03:30",
+      "kind": "story",
+      "post_id": "6ad0e14d10fd2689b3e59cf6",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-17_2134_oak-island_story.mp4?v=2"
+    },
+    "12_2026-10-24_1255_lake-bodom": {
+      "at": "2026-10-21T18:04+03:30",
+      "audio_v": 3,
+      "cap": "5c6632769622",
+      "due": "2026-10-24T12:55:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad8ce70df27e4a2784ed782",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-24_1255_lake-bodom.mp4?v=3"
+    },
+    "12_2026-10-31_1218_percy-fawcett": {
+      "at": "2026-10-28T19:01+03:30",
+      "audio_v": 3,
+      "cap": "df1485ce3c38",
+      "due": "2026-10-31T12:18:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae21642ef3865d804f8cdd4",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-31_1218_percy-fawcett.mp4?v=3"
+    },
+    "13_2026-10-18_1323_chris-mccandless": {
+      "at": "2026-10-15T17:48+03:30",
+      "audio_v": 3,
+      "cap": "57f7abd4a1da",
+      "due": "2026-10-18T13:23:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad0e14e91a4bd77397236d9",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-18_1323_chris-mccandless.mp4?v=3"
+    },
+    "13_2026-10-24_2131_hessdalen-lights": {
+      "at": "2026-10-21T22:56+03:30",
+      "audio_v": 3,
+      "cap": "747d1f0274ce",
+      "due": "2026-10-24T21:31:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad9125f10f3165f4b736df8",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-24_2131_hessdalen-lights.mp4?v=3"
+    },
+    "13_2026-10-24_2131_hessdalen-lights_story": {
+      "at": "2026-10-23T12:58+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-24T21:46:00+03:30",
+      "kind": "story",
+      "post_id": "6adb292f2baa602d024313a5",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-24_2131_hessdalen-lights_story.mp4?v=2"
+    },
+    "14_2026-10-18_2121_princes-in-the-tower": {
+      "at": "2026-10-15T22:48+03:30",
+      "audio_v": 3,
+      "cap": "3e3bbb02915d",
+      "due": "2026-10-18T21:21:00+03:30",
+      "kind": "reel",
+      "post_id": "6ad1277529e9cdc489e10aef",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-18_2121_princes-in-the-tower.mp4?v=3"
+    },
+    "14_2026-10-18_2121_princes-in-the-tower_story": {
+      "at": "2026-10-16T22:24+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-18T21:36:00+03:30",
+      "kind": "story",
+      "post_id": "6ad273447460b00587c6fc91",
+      "status": "sent",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-18_2121_princes-in-the-tower_story.mp4?v=2"
+    },
+    "14_2026-10-25_1411_villisca-axe-murders": {
+      "at": "2026-10-22T22:50+03:30",
+      "audio_v": 3,
+      "cap": "304170c47b58",
+      "due": "2026-10-25T14:11:00+03:30",
+      "kind": "reel",
+      "post_id": "6ada62742f4faf5f7963359f",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-10-25_1411_villisca-axe-murders.mp4?v=3"
+    },
+    "15_2026-10-25_2056_green-children-of-woolpit": {
+      "at": "2026-10-23T19:00+03:30",
+      "audio_v": 3,
+      "cap": "9acbb71d30cd",
+      "due": "2026-10-26T14:03:00+03:30",
+      "kind": "reel",
+      "post_id": "6adb7e5f7af932dee4ea08c6",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-10-25_2056_green-children-of-woolpit.mp4?v=3"
+    },
+    "car_alamut": {
+      "at": "2026-10-14T23:26+03:30",
+      "audio_v": 1,
+      "cap": "58cd2aa8c6a4",
+      "due": "2026-10-17T17:37:00+03:30",
+      "kind": "carousel",
+      "post_id": "6acfdf10a0a1bd470f497efd",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_alamut_1.jpg"
+    },
+    "car_behistun": {
+      "at": "2026-10-28T19:43+03:30",
+      "audio_v": 1,
+      "cap": "9beea15ad88b",
+      "due": "2026-10-31T17:04:00+03:30",
+      "kind": "carousel",
+      "post_id": "6ae21fdb4785904534fd8833",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_behistun_1.jpg"
+    },
+    "car_gorgan-wall": {
+      "at": "2026-10-19T20:04+03:30",
+      "audio_v": 1,
+      "cap": "2396564f1a7a",
+      "due": "2026-10-22T17:31:00+03:30",
+      "kind": "carousel",
+      "post_id": "6ad646efb5b645b3c33a03d3",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gorgan-wall_1.jpg"
+    },
+    "car_jiroft": {
+      "at": "2026-10-11T19:12+03:30",
+      "cap": "36a4805dc895",
+      "due": "2026-10-15T17:32:00+03:30",
+      "kind": "carousel",
+      "post_id": "6acbaeb7b07d37ac97afe17c",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_jiroft_1.jpg"
+    },
+    "car_kaaba-zartosht": {
+      "at": "2026-10-24T19:00+03:30",
+      "audio_v": 1,
+      "cap": "b86641712099",
+      "due": "2026-10-27T17:24:00+03:30",
+      "kind": "carousel",
+      "post_id": "6adccf993d5b27036b8f5743",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_kaaba-zartosht_1.jpg"
+    },
+    "car_oxus-treasure": {
+      "at": "2026-10-26T19:02+03:30",
+      "audio_v": 1,
+      "cap": "5aa28078786a",
+      "due": "2026-10-29T17:04:00+03:30",
+      "kind": "carousel",
+      "post_id": "6adf7306be236a10f9e0c2fe",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_1.jpg"
+    },
+    "car_persepolis-fire": {
+      "at": "2026-10-17T19:01+03:30",
+      "audio_v": 1,
+      "cap": "a42f8e30fbd6",
+      "due": "2026-10-20T17:40:00+03:30",
+      "kind": "carousel",
+      "post_id": "6ad3956bae173d6e00c255ee",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_persepolis-fire_1.jpg"
+    },
+    "car_peter-bergmann": {
+      "at": "2026-10-11T19:12+03:30",
+      "cap": "e154ef038ce9",
+      "due": "2026-10-13T17:13:00+03:30",
+      "kind": "carousel",
+      "post_id": "6acbaeb6d9cab260a701842e",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_peter-bergmann_1.jpg"
+    },
+    "car_tarim-mummies": {
+      "at": "2026-10-21T19:00+03:30",
+      "audio_v": 1,
+      "cap": "172e702fbc80",
+      "due": "2026-10-24T17:04:00+03:30",
+      "kind": "carousel",
+      "post_id": "6ad8db207159dc2c40c0f1e4",
+      "status": "sent",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_tarim-mummies_1.jpg"
+    }
+  },
   "story_errors": {}
 }
