@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import atexit
+import builtins
 import json
 import sys
 from pathlib import Path
@@ -27,19 +28,10 @@ _install_buffer_safety()
 
 
 def _remove_stale_bank_finder_for_tests() -> None:
-    """Do not let the Instagram-only add-bank hook replace load_bank in tests.
-
-    The canonical mystery_short loader owns mysteries_batch*.json. The old
-    import hook exists only for the Instagram pack's mysteries_add.json overlay;
-    leaving it installed during unittest hides the canonical loader and makes
-    all 150 staged stories disappear from the runtime test.
-    """
+    """Do not let the Instagram-only add-bank hook replace load_bank in tests."""
     if sys.argv and sys.argv[0].endswith("ig_pack.py"):
         return
-    sys.meta_path[:] = [
-        finder for finder in sys.meta_path
-        if type(finder).__name__ != "_BankAddFinder"
-    ]
+    sys.meta_path[:] = [finder for finder in sys.meta_path if type(finder).__name__ != "_BankAddFinder"]
 
 
 _remove_stale_bank_finder_for_tests()
@@ -94,3 +86,36 @@ if sys.argv and sys.argv[0].endswith("ig_pack.py"):
             path.write_bytes(content)
 
     atexit.register(_restore_staged_batches)
+
+
+# Keep read-only YouTube tools on the same effective bank as production. This
+# avoids comments/stats silently missing staged batch stories.
+_original_import = builtins.__import__
+
+def _effective_consumer_import(name, globals=None, locals=None, fromlist=(), level=0):
+    module = _original_import(name, globals, locals, fromlist, level)
+    if name in {"src.yt_comment", "src.yt_stats"}:
+        try:
+            import src.effective_bank as _bank
+            if name == "src.yt_comment":
+                target = module
+                def _find_story(title, bank_path=None):
+                    want = target._norm(target.re.sub(r"#\w+", "", title))
+                    for story in _bank.stories():
+                        if target._norm(story.get("title")) == want:
+                            out = dict(story)
+                            try:
+                                extra = _bank.mystery_short.OVERRIDE
+                                overrides = _bank.mystery_short.apply_overrides([out], extra)
+                                out = overrides[0] if overrides else out
+                            except Exception:
+                                pass
+                            return out
+                    return None
+                target.find_story = _find_story
+        except Exception as exc:
+            print(f"EFFECTIVE BANK: consumer patch skipped ({type(exc).__name__})", flush=True)
+    return module
+
+
+builtins.__import__ = _effective_consumer_import
