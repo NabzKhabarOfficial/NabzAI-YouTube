@@ -135,27 +135,69 @@ def apply_overrides(stories: list[dict], path: Path = OVERRIDE) -> list[dict]:
     return stories
 
 
+def _read_story_rows(path: Path) -> list[dict]:
+    """Read either a standard {stories: [...]} bank or a raw JSON story list."""
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        raise RuntimeError(f"cannot read story bank {path}: {type(exc).__name__}: {exc}") from exc
+    rows = data if isinstance(data, list) else data.get("stories") if isinstance(data, dict) else None
+    if not isinstance(rows, list):
+        raise RuntimeError(f"story bank {path} must be a list or contain a stories list")
+    if any(not isinstance(row, dict) for row in rows):
+        raise RuntimeError(f"story bank {path} contains a non-object story")
+    return rows
+
+
 def load_bank(path: Path = BANK, strict: bool = False) -> list[dict]:
-    """Valid stories of the bank. One broken story is skipped with a warning (strict=True
-    raises instead), so a single bad entry can never stop the daily Short."""
-    data = json.loads(path.read_text(encoding="utf-8"))
-    stories = data["stories"]
-    if path == BANK:
+    """Load the base bank plus every validated English batch on the production path.
+
+    The base bank keeps its historical tolerant behavior for individual invalid
+    entries. Batch entries are mandatory: if one cannot be validated, fail the
+    load rather than silently dropping a staged story from the effective bank.
+    """
+    path = Path(path)
+    stories = _read_story_rows(path)
+    batch_ids: set[str] = set()
+    if path.resolve() == BANK.resolve():
+        for batch_path in sorted((ROOT / "content").glob("mysteries_batch*.json")):
+            rows = _read_story_rows(batch_path)
+            if not rows:
+                raise RuntimeError(f"story batch is empty: {batch_path}")
+            for row in rows:
+                sid = str(row.get("id") or "").strip()
+                if not sid:
+                    raise RuntimeError(f"story batch has a story without id: {batch_path}")
+                batch_ids.add(sid)
+            stories.extend(rows)
         stories = apply_overrides(stories)
-    ids = [s["id"] for s in stories]
+
+    ids = [str(s.get("id") or "").strip() for s in stories]
+    if any(not sid for sid in ids):
+        raise RuntimeError("story bank contains a missing id")
     if len(ids) != len(set(ids)):
-        raise RuntimeError("duplicate story ids in bank")
+        raise RuntimeError("duplicate story ids across the effective bank")
+
     good = []
     for s in stories:
         try:
             validate_story(s)
             good.append(s)
         except RuntimeError as exc:
-            if strict:
-                raise
+            sid = str(s.get("id") or "")
+            if strict or sid in batch_ids:
+                raise RuntimeError(f"invalid required story {sid}: {exc}") from exc
             print(f"::warning title=Story skipped::{exc}", flush=True)
     if not good:
         raise RuntimeError("no valid stories in the bank")
+    if path.resolve() == BANK.resolve():
+        loaded_ids = {str(s.get("id")) for s in good}
+        missing = sorted(batch_ids - loaded_ids)
+        if missing:
+            raise RuntimeError(
+                f"runtime bank is missing {len(missing)} required batch stories: "
+                + ", ".join(missing[:20])
+            )
     return good
 
 
