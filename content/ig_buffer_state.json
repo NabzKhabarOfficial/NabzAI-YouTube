@@ -18,6 +18,7 @@
     "11_2026-10-30_2213_mary-celeste_story",
     "12_2026-10-31_1218_percy-fawcett",
     "13_2026-10-31_2134_baghdad-battery",
+    "13_2026-10-31_2134_baghdad-battery_story",
     "14_2026-11-01_1446_mallory-irvine",
     "car_behistun"
   ],
@@ -682,6 +683,17 @@
       "post_id": "6ae327e3568655049ec0b0fb",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-31_2134_baghdad-battery.mp4?v=3"
+    },
+    "13_2026-10-31_2134_baghdad-battery_story": {
+      "at": "2026-10-30T13:00+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-31T21:49:00+03:30",
+      "kind": "story",
+      "post_id": "6ae4642f58a62337fb791618",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-31_2134_baghdad-battery_story.mp4?v=2"
     },
     "14_2026-10-18_2121_princes-in-the-tower": {
       "at": "2026-10-15T22:48+03:30",
