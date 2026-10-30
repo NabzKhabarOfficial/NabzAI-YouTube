@@ -12,12 +12,10 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "08_2026-10-29_2254_lost-army-of-cambyses",
-    "08_2026-10-29_2254_lost-army-of-cambyses_story",
-    "09_2026-10-30_0957_walter-collins",
     "10_2026-10-30_1800_gobekli-tepe",
     "10_2026-10-30_1800_gobekli-tepe_story",
     "11_2026-10-30_2213_mary-celeste",
+    "11_2026-10-30_2213_mary-celeste_story",
     "12_2026-10-31_1218_percy-fawcett",
     "13_2026-10-31_2134_baghdad-battery",
     "14_2026-11-01_1446_mallory-irvine",
@@ -432,7 +430,7 @@
       "due": "2026-10-29T22:54:00+03:30",
       "kind": "reel",
       "post_id": "6adfbb44a72c078abdb7e3b2",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses.mp4?v=3"
     },
     "08_2026-10-29_2254_lost-army-of-cambyses_story": {
@@ -442,7 +440,7 @@
       "due": "2026-10-29T23:09:00+03:30",
       "kind": "story",
       "post_id": "6ae1063c0add83c2778fc85a",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses_story.mp4?v=2"
     },
@@ -473,7 +471,7 @@
       "due": "2026-10-30T09:57:00+03:30",
       "kind": "reel",
       "post_id": "6ae075fdcedf2995f649c21d",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-30_0957_walter-collins.mp4?v=3"
     },
     "10_2026-10-16_2202_paula-welden": {
@@ -591,6 +589,17 @@
       "post_id": "6ae216411e48dc602a3d9c9f",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste.mp4?v=3"
+    },
+    "11_2026-10-30_2213_mary-celeste_story": {
+      "at": "2026-10-30T12:57+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-10-30T22:28:00+03:30",
+      "kind": "story",
+      "post_id": "6ae4634736e83ed16369ccc9",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste_story.mp4?v=2"
     },
     "12_2026-10-17_2134_oak-island": {
       "at": "2026-10-14T23:26+03:30",
