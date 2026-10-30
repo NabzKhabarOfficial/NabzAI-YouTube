@@ -1,0 +1,131 @@
+name: NABZ Send Existing Reels to Buffer
+
+# Sends already-built Instagram files through the guarded Buffer path.
+# Does not run src.ig_pack and does not call AI providers.
+
+on:
+  workflow_dispatch:
+    inputs:
+      buffer_max:
+        description: "Maximum number of new Buffer posts"
+        required: true
+        default: "1"
+        type: choice
+        options:
+          - "1"
+          - "2"
+          - "3"
+
+concurrency:
+  group: nabz-ig-buffer-only
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  buffer-only:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+      REELS_PAT: ${{ secrets.REELS_PAT }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      NABZ_BUFFER_MAX_NEW: ${{ inputs.buffer_max || '1' }}
+
+    steps:
+      - name: Checkout existing project state
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Buffer dependencies only
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Validate required credentials
+        run: |
+          test -n "$BUFFER_API_KEY" || {
+            echo "::error::BUFFER_API_KEY is missing."
+            exit 1
+          }
+
+          test -n "$REELS_PAT" || {
+            echo "::error::REELS_PAT is missing."
+            exit 1
+          }
+
+      - name: Validate guarded Buffer modules
+        run: |
+          python -m py_compile \
+            src/atomic_state.py \
+            src/idempotency.py \
+            src/production_state.py \
+            src/guarded_buffer.py \
+            src/ig_buffer.py
+
+      - name: Show existing built state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("content/ig_pack_state.json")
+
+          if not path.exists():
+              raise SystemExit("content/ig_pack_state.json does not exist.")
+
+          data = json.loads(path.read_text(encoding="utf-8"))
+
+          built = 0
+          for info in (data.get("weeks") or {}).values():
+              built += len(info.get("built") or {})
+
+          print(f"Existing built reels: {built}")
+          print("No pack build step will run.")
+          PY
+
+      - name: Send existing files to Buffer
+        run: |
+          python -m src.guarded_buffer
+
+      - name: Persist Buffer state and publication claims
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if [ -f content/ig_buffer_state.json ]; then
+            git add content/ig_buffer_state.json
+          fi
+
+          if [ -f content/ig_stats.json ]; then
+            git add content/ig_stats.json
+          fi
+
+          if [ -f review/ig_weekly.md ]; then
+            git add review/ig_weekly.md
+          fi
+
+          if [ -f content/publication_claims.json ]; then
+            git add content/publication_claims.json
+          fi
+
+          if git diff --cached --quiet; then
+            echo "No Buffer state changes."
+            exit 0
+          fi
+
+          git commit -m "chore(ig-buffer): record existing-file Buffer send [skip ci]"
+
+          git pull --rebase --autostash
+          git push origin main
