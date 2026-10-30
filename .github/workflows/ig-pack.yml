@@ -34,9 +34,7 @@ on:
           - "10"
 
   schedule:
-    # Tehran 08:00, 13:00 and 19:00
-    - cron: "30 4 * * *"
-    - cron: "30 9 * * *"
+    # One daily run, Tehran 19:00
     - cron: "30 15 * * *"
 
 concurrency:
