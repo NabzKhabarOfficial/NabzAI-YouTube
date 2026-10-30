@@ -1,9 +1,10 @@
 name: NABZ Instagram Stories V2
 
+# This workflow is validation-only and publishing is intentionally disabled.
+# Keep it manual so a dormant dry-run does not burn Actions minutes.
+
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/15 * * * *"
 
 concurrency:
   group: nabz-instagram-stories
@@ -16,26 +17,34 @@ jobs:
   instagram:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install requests
+
       - name: Compile Instagram package
         run: python -m py_compile instagram/*.py
+
       - name: Validate 60-day Stories calendar
         env:
           PYTHONPATH: .
         run: python -m instagram.runner --check
+
       - name: Show due slot in dry-run mode
         env:
           PYTHONPATH: .
         run: python -m instagram.runner --due
+
       - name: Publish gate
-        run: echo "Publishing is intentionally disabled until public media hosting, Meta secrets, and explicit production enablement are configured."
+        run: |
+          echo "Publishing is intentionally disabled until public media hosting, Meta secrets, and explicit production enablement are configured."
