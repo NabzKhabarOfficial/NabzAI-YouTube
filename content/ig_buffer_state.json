@@ -12,14 +12,11 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "10_2026-10-30_1800_gobekli-tepe",
-    "10_2026-10-30_1800_gobekli-tepe_story",
-    "11_2026-10-30_2213_mary-celeste",
-    "11_2026-10-30_2213_mary-celeste_story",
     "12_2026-10-31_1218_percy-fawcett",
     "13_2026-10-31_2134_baghdad-battery",
     "13_2026-10-31_2134_baghdad-battery_story",
     "14_2026-11-01_1446_mallory-irvine",
+    "15_2026-11-01_2059_ss-waratah",
     "car_behistun"
   ],
   "last_fail": "videos not public on nabz-reels Pages",
@@ -524,7 +521,7 @@
       "due": "2026-10-30T18:00:00+03:30",
       "kind": "reel",
       "post_id": "6ae0c4390574aed3d269375d",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe.mp4?v=3"
     },
     "10_2026-10-30_1800_gobekli-tepe_story": {
@@ -534,7 +531,7 @@
       "due": "2026-10-30T18:15:00+03:30",
       "kind": "story",
       "post_id": "6ae1063d944977ae025535d9",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe_story.mp4?v=2"
     },
@@ -588,7 +585,7 @@
       "due": "2026-10-30T22:13:00+03:30",
       "kind": "reel",
       "post_id": "6ae216411e48dc602a3d9c9f",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste.mp4?v=3"
     },
     "11_2026-10-30_2213_mary-celeste_story": {
@@ -598,7 +595,7 @@
       "due": "2026-10-30T22:28:00+03:30",
       "kind": "story",
       "post_id": "6ae4634736e83ed16369ccc9",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste_story.mp4?v=2"
     },
@@ -745,6 +742,16 @@
       "post_id": "6adb7e5f7af932dee4ea08c6",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-10-25_2056_green-children-of-woolpit.mp4?v=3"
+    },
+    "15_2026-11-01_2059_ss-waratah": {
+      "at": "2026-10-30T23:30+03:30",
+      "audio_v": 3,
+      "cap": "2480ce69cb07",
+      "due": "2026-11-01T20:59:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae4f7b5406ab8a0187d430d",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-01_2059_ss-waratah.mp4?v=3"
     },
     "car_alamut": {
       "at": "2026-10-14T23:26+03:30",
