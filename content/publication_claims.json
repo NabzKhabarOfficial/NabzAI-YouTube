@@ -127,6 +127,16 @@
       },
       "status": "succeeded"
     },
+    "ab3162e49b3fe54f79f2ba77917e57eed802abe827ef9982d39a071788448c93": {
+      "external_id": "efkrW5DBZzI",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-10-30T19:00:00.000Z",
+        "story_id": "isdal-woman",
+        "video_sha256_24": "2f3099c344ee693514100df3"
+      },
+      "status": "succeeded"
+    },
     "ac000a0fedb950c2dcf9ec19de7515ddd11cfe009116775225738f6ebe885896": {
       "external_id": "6ae0c4390574aed3d269375d",
       "metadata": {

@@ -328,5 +328,21 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-10-30",
+    "story": "isdal-woman",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "Isdal",
+        "heard": "who was the Iztil woman, and why had she traveled under so many names?",
+        "score": 0.33,
+        "kept": null
+      }
+    ]
   }
 ]
