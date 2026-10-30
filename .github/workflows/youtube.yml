@@ -20,10 +20,8 @@ on:
         type: string
 
   schedule:
-    - cron: "30 8 * * *"
-    - cron: "15 10 * * *"
+    # One daily run
     - cron: "0 12 * * *"
-    - cron: "0 14 * * *"
 
 concurrency:
   group: nabz-ai-youtube
