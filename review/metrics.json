@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 38.87,
+  "duration_seconds": 40.73,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 15.0,
+  "file_mb": 14.9,
   "audio": {
     "mean_volume": -18.1,
-    "max_volume": 0.0
+    "max_volume": -0.3
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "isdal-woman",
+  "story_id": "babushka-lady",
   "story_bank": ""
 }
