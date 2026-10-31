@@ -12,11 +12,11 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "12_2026-10-31_1218_percy-fawcett",
     "13_2026-10-31_2134_baghdad-battery",
     "13_2026-10-31_2134_baghdad-battery_story",
     "14_2026-11-01_1446_mallory-irvine",
     "15_2026-11-01_2059_ss-waratah",
+    "15_2026-11-01_2059_ss-waratah_story",
     "car_behistun"
   ],
   "last_fail": "videos not public on nabz-reels Pages",
@@ -637,7 +637,7 @@
       "due": "2026-10-31T12:18:00+03:30",
       "kind": "reel",
       "post_id": "6ae21642ef3865d804f8cdd4",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-31_1218_percy-fawcett.mp4?v=3"
     },
     "13_2026-10-18_1323_chris-mccandless": {
@@ -752,6 +752,17 @@
       "post_id": "6ae4f7b5406ab8a0187d430d",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-01_2059_ss-waratah.mp4?v=3"
+    },
+    "15_2026-11-01_2059_ss-waratah_story": {
+      "at": "2026-10-31T13:01+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-01T21:14:00+03:30",
+      "kind": "story",
+      "post_id": "6ae5b5da1891472093c4c081",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-01_2059_ss-waratah_story.mp4?v=2"
     },
     "car_alamut": {
       "at": "2026-10-14T23:26+03:30",
