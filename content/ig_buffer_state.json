@@ -12,8 +12,6 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "13_2026-10-31_2134_baghdad-battery",
-    "13_2026-10-31_2134_baghdad-battery_story",
     "14_2026-11-01_1446_mallory-irvine",
     "15_2026-11-01_2059_ss-waratah",
     "15_2026-11-01_2059_ss-waratah_story",
@@ -678,7 +676,7 @@
       "due": "2026-10-31T21:34:00+03:30",
       "kind": "reel",
       "post_id": "6ae327e3568655049ec0b0fb",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-31_2134_baghdad-battery.mp4?v=3"
     },
     "13_2026-10-31_2134_baghdad-battery_story": {
@@ -688,7 +686,7 @@
       "due": "2026-10-31T21:49:00+03:30",
       "kind": "story",
       "post_id": "6ae4642f58a62337fb791618",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-31_2134_baghdad-battery_story.mp4?v=2"
     },
