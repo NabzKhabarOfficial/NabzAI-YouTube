@@ -17,7 +17,7 @@
     "14_2026-11-01_1446_mallory-irvine",
     "15_2026-11-01_2059_ss-waratah",
     "15_2026-11-01_2059_ss-waratah_story",
-    "car_behistun"
+    "car_chogha-zanbil"
   ],
   "last_fail": "videos not public on nabz-reels Pages",
   "org_id": "6aca87101f8562f188533a3e",
@@ -781,8 +781,18 @@
       "due": "2026-10-31T17:04:00+03:30",
       "kind": "carousel",
       "post_id": "6ae21fdb4785904534fd8833",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_behistun_1.jpg"
+    },
+    "car_chogha-zanbil": {
+      "at": "2026-10-31T19:01+03:30",
+      "audio_v": 1,
+      "cap": "6d4ebc9b61ed",
+      "due": "2026-11-03T17:16:00+03:30",
+      "kind": "carousel",
+      "post_id": "6ae60a3cabbfa4c0cc1daaa5",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_1.jpg"
     },
     "car_gorgan-wall": {
       "at": "2026-10-19T20:04+03:30",

@@ -97,6 +97,23 @@
       },
       "status": "succeeded"
     },
+    "85bd23183695df8668f827b8ea5dacb01d15cf1dfc5cbce2573ac67c811c95aa": {
+      "external_id": "6ae60a3cabbfa4c0cc1daaa5",
+      "metadata": {
+        "due": "2026-11-03T17:16:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
     "897e92a8a0d58ceab2ac6e9aa94b90a236d4202b2aa615905ea705b7a71b190d": {
       "external_id": "6adf7304fc9719069070ffa0",
       "metadata": {
