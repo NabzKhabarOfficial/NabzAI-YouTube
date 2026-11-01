@@ -6,12 +6,14 @@ The Buffer job runs only when there is work for it. Work means:
 - evening stories whose source reel is scheduled/sent and whose story is not recorded yet;
 - upkeep: a scheduled reel whose video was rebuilt after it was queued (audio_v newer);
 - upkeep: a post recorded as 'error' (Buffer could not publish it);
-- upkeep: today's stats have not been collected yet (ig_stats.json 'collected');
 - upkeep: the Monday weekly report for this week has not been sent (report_week).
 
+Daily stats are NOT a reason to run: the stats pass reads one metric per post from the Buffer API,
+which is rate limited (HTTP 429), so on a run started only for stats it took 25 minutes and did
+nothing else. Stats still run whenever the job runs for real work.
+
 Not covered by the gate (they run on any job that does run): caption refresh of waiting posts,
-replacement of rebuilt videos, and stories remade in a newer design. Those need the caption
-bank, so the gate does not try to reproduce them.
+replacement of rebuilt videos, and stories remade in a newer design.
 
 On an unreadable state file the script exits non-zero without writing run=false, and the
 workflow step uses continue-on-error, so downstream steps fail open.
@@ -26,7 +28,6 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "content" / "ig_pack_state.json"
 BUFFER = ROOT / "content" / "ig_buffer_state.json"
-STATS = ROOT / "content" / "ig_stats.json"
 TEHRAN = timezone(timedelta(hours=3, minutes=30))
 LEAD_MIN = 30
 STORY_AFTER_MIN = 15
@@ -74,7 +75,7 @@ def due_at(item: dict) -> datetime:
     return datetime.fromisoformat(f"{item['date']}T{item['time']}:00").replace(tzinfo=TEHRAN)
 
 
-def upkeep(pack: dict, buffer_state: dict, stats: dict, now: datetime, reels: dict) -> tuple[bool, str]:
+def upkeep(buffer_state: dict, now: datetime, reels: dict) -> tuple[bool, str]:
     sent = buffer_state.get("sent") or {}
     for key, rec in sent.items():
         if not isinstance(rec, dict):
@@ -84,17 +85,13 @@ def upkeep(pack: dict, buffer_state: dict, stats: dict, now: datetime, reels: di
         if rec.get("status") == "scheduled" and key in reels:
             if int(reels[key].get("audio_v", 1)) > int(rec.get("audio_v", 1)):
                 return True, f"video rebuilt after queueing: {key}"
-    if stats.get("collected") != now.astimezone(TEHRAN).date().isoformat():
-        return True, "today's stats not collected yet"
     local = now.astimezone(TEHRAN)
-    if local.weekday() == 0:
-        monday = (local.date()).isoformat()
-        if buffer_state.get("report_week") != monday:
-            return True, "Monday report not sent yet"
+    if local.weekday() == 0 and buffer_state.get("report_week") != local.date().isoformat():
+        return True, "Monday report not sent yet"
     return False, ""
 
 
-def has_eligible_item(pack: dict, buffer_state: dict, now: datetime, stats: dict | None = None) -> tuple[bool, str]:
+def has_eligible_item(pack: dict, buffer_state: dict, now: datetime) -> tuple[bool, str]:
     sent = buffer_state.get("sent") or {}
     if not isinstance(sent, dict):
         raise ValueError("content/ig_buffer_state.json: sent must be an object")
@@ -137,7 +134,7 @@ def has_eligible_item(pack: dict, buffer_state: dict, now: datetime, stats: dict
                 continue
             return True, f"unsent story: {story_stem}"
 
-    ok, why = upkeep(pack, buffer_state, stats or {}, now, reels)
+    ok, why = upkeep(buffer_state, now, reels)
     if ok:
         return True, why
 
@@ -147,9 +144,8 @@ def has_eligible_item(pack: dict, buffer_state: dict, now: datetime, stats: dict
 def main() -> int:
     pack = read_json(PACK)
     buffer_state = read_json(BUFFER)
-    stats = read_json(STATS)
     now = datetime.now(timezone.utc)
-    should_run, reason = has_eligible_item(pack, buffer_state, now, stats)
+    should_run, reason = has_eligible_item(pack, buffer_state, now)
     print(f"Buffer gate: {'run' if should_run else 'skip'} - {reason}")
     output = os.getenv("GITHUB_OUTPUT")
     if output:
