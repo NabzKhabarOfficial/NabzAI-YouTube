@@ -49,6 +49,16 @@
       },
       "status": "succeeded"
     },
+    "47853eb990f95af21a58b0d6786f40d24fdeab9b3f27e8bcf47a783c98ddd964": {
+      "external_id": "Pco6Nn8QyBs",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-01T19:00:00.000Z",
+        "story_id": "princes-in-the-tower",
+        "video_sha256_24": "85bfd433dffbae42f484d2f5"
+      },
+      "status": "succeeded"
+    },
     "494e276e2f58ce600f32cbb8880b57629d2cad13144b3ddba9f56e5c169b0d33": {
       "external_id": "6addf2d40b5343d070cf0c3b",
       "metadata": {

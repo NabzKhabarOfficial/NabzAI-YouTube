@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 40.73,
+  "duration_seconds": 41.2,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 14.9,
+  "file_mb": 17.51,
   "audio": {
     "mean_volume": -18.1,
-    "max_volume": -0.3
+    "max_volume": -0.2
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "babushka-lady",
+  "story_id": "princes-in-the-tower",
   "story_bank": ""
 }
