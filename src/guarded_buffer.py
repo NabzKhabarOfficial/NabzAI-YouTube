@@ -1,6 +1,6 @@
 """Fail-closed, claim-guarded Buffer entry point."""
 from __future__ import annotations
-import hashlib, json, os, urllib.error, urllib.request
+import hashlib, json, os, time, urllib.error, urllib.request
 from pathlib import Path
 from src import ig_buffer
 from src.idempotency import claim, finish, fingerprint, get
@@ -50,6 +50,28 @@ def _mutation_once(query, variables=None):
         raise BufferTransportAmbiguous(f"mutation transport outcome ambiguous: {exc}") from None
     if data.get("errors"): raise ig_buffer.BufferError("; ".join(str(e.get("message", e)) for e in data["errors"])[:500])
     return data.get("data") or {}
+
+def _cache_safe_url_ready(url: str, size: int) -> bool:
+    """Verify the current Pages asset, not a stale HEAD response from a CDN edge."""
+    probe = url + ("&" if "?" in url else "?") + f"ready={int(time.time() * 1000)}"
+    req = urllib.request.Request(probe, method="GET", headers={
+        "User-Agent": "nabz-reels/1.0", "Cache-Control": "no-cache", "Range": "bytes=0-0"})
+    try:
+        with urllib.request.urlopen(req, timeout=45) as resp:
+            status = int(getattr(resp, "status", 200) or 200)
+            body = resp.read(1)
+            if status not in (200, 206) or not body:
+                return False
+            length = resp.headers.get("Content-Length", "")
+            if status == 200 and length:
+                try:
+                    if int(length) < max(1, min(size, 100_000)):
+                        return False
+                except ValueError:
+                    pass
+            return True
+    except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, ValueError):
+        return False
 
 def _wrap_mutations():
     if getattr(ig_buffer, "_NABZ_GUARDED", False): return
@@ -104,7 +126,8 @@ def _wrap_mutations():
 def run():
     if not os.getenv("BUFFER_API_KEY", "").strip(): raise RuntimeError("BUFFER_API_KEY is missing; refusing to report a successful Buffer run")
     if not os.getenv("REELS_PAT", "").strip(): raise RuntimeError("REELS_PAT is missing; refusing to publish without public video hosting")
-    install_runtime_safety(ig_buffer); _wrap_mutations(); result = ig_buffer.main(); state = ig_buffer.load_json(BUFFER_STATE, {})
+    install_runtime_safety(ig_buffer); _wrap_mutations(); ig_buffer.url_ready = _cache_safe_url_ready
+    result = ig_buffer.main(); state = ig_buffer.load_json(BUFFER_STATE, {})
     if int(state.get("fail_streak", 0) or 0) > 0: raise RuntimeError("Buffer recorded a failed run; claims require reconciliation")
     return int(result or 0)
 if __name__ == "__main__": raise SystemExit(run())
