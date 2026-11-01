@@ -1,12 +1,11 @@
 """Cheap first step of ig-pack.yml: should the pack job run at all?
 
 The pack job is skipped when:
-- the target week is complete;
-- today's YouTube Short is not built yet and no old-voice reel needs an urgent rebuild
-  (the Short gets the free quotas first);
-- every reel due from today to two days ahead (Tehran dates) is already built, in any planned
-  week, so a run would only repeat work. There must be at least one such reel, otherwise the
-  pack keeps running.
+- the target week is complete (done);
+- today's YouTube Short is not built yet and no old-voice reel needs an urgent rebuild;
+- every reel due from today to two days ahead (Tehran dates) is already built, and the target
+  week is not waiting for its final ZIP. A week whose reels are all built but not finished must
+  still run, otherwise finish() never creates the ZIP.
 
 Writes skip=true|false to $GITHUB_OUTPUT. Loads src/ig_pack.py straight from its file
 (standard library only, no package import).
@@ -44,9 +43,13 @@ for wk_info in (state.get("weeks") or {}).values():
 if covered_items == 0:
     covered = False
 
+plan = info.get("plan") or []
+built_all = bool(plan) and all(item["id"] in (info.get("built") or {}) for item in plan)
+final_pending = built_all and not info.get("done")
+
 skip_done = bool(info.get("done"))
 skip_short = pack.youtube_first() and not urgent
-skip_covered = covered
+skip_covered = covered and not final_pending
 skip = skip_done or skip_short or skip_covered
 
 if skip_done:
@@ -56,11 +59,13 @@ elif skip_short:
     reason = "waiting for the Short"
 elif skip_covered:
     reason = f"all {covered_items} reels due {today.isoformat()}..{end.isoformat()} are built"
+elif final_pending:
+    reason = f"week-{week.isoformat()} is fully built and needs its ZIP"
 else:
     reason = f"reels still to build for {today.isoformat()}..{end.isoformat()}"
 
 print(f"week-{week.isoformat()}: {'skipping' if skip else 'to build'} ({reason}; "
-      f"{len(info.get('built', {}))}/{len(info.get('plan', []))} reels ready)")
+      f"{len(info.get('built', {}))}/{len(plan)} reels ready)")
 out = os.getenv("GITHUB_OUTPUT")
 if out:
     with open(out, "a", encoding="utf-8") as fh:
