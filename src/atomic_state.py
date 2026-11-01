@@ -19,12 +19,20 @@ def _replace_bytes(path: Path, payload: bytes) -> None:
         try: os.unlink(tmp_name)
         except FileNotFoundError: pass
 
-def load_json(path, default=None):
+def load_json(path, default=None, strict=False):
+    """Read a JSON state file.
+
+    strict=True is for publication claim registries: a missing file is empty, but an unreadable
+    or corrupt file raises, so the run stops instead of forgetting what was already published
+    (Oct 31 2026 audit: an empty registry would let the same reel or video be sent again).
+    """
     path = Path(path); fallback = {} if default is None else default
     try:
         with path.open("r", encoding="utf-8") as handle: return json.load(handle)
     except FileNotFoundError: return fallback
     except (OSError, ValueError, TypeError) as exc:
+        if strict:
+            raise RuntimeError(f"state file {path.name} is unreadable ({type(exc).__name__}); refusing to continue") from exc
         if path.exists():
             try: os.replace(path, path.with_name(path.name + f".corrupt-{time.strftime('%Y%m%d-%H%M%S')}"))
             except OSError: pass
