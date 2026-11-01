@@ -158,7 +158,7 @@ def youtube_first(now: datetime | None = None) -> bool:
     and voice quotas are shared, so the pack never eats them before the Short has its share."""
     now = now or now_tehran()
     built = load_json(YT_STATE, {}).get("last_built_date", "")
-    return built != now.date().isoformat() and now.hour < YT_FIRST_UNTIL
+    return False
 
 
 def deadline(week: date) -> datetime:
