@@ -187,17 +187,26 @@ jobs:
         run: |
           git pull --rebase --autostash
 
+      - name: Check for built Buffer items that are not sent
+        id: gate
+        continue-on-error: true
+        run: |
+          python3 scripts/buffer_gate.py
+
       - name: Setup Python
+        if: steps.gate.outputs.run != 'false'
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
       - name: Install Buffer dependencies
+        if: steps.gate.outputs.run != 'false'
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
 
       - name: Validate guarded Buffer modules
+        if: steps.gate.outputs.run != 'false'
         run: |
           python -m py_compile \
             src/atomic_state.py \
@@ -206,11 +215,12 @@ jobs:
             src/guarded_buffer.py
 
       - name: Send finished reels to Buffer through guarded adapter
+        if: steps.gate.outputs.run != 'false'
         run: |
           python -m src.guarded_buffer
 
       - name: Persist Buffer state and publication claims
-        if: always()
+        if: always() && steps.gate.outputs.run != 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
