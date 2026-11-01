@@ -1,6 +1,7 @@
 """Fail-closed, claim-guarded Buffer entry point."""
 from __future__ import annotations
 import hashlib, json, os, urllib.error, urllib.request
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from src import ig_buffer
 from src.idempotency import claim, finish, fingerprint, get
@@ -8,6 +9,7 @@ from src.ig_runtime_safety import install as install_runtime_safety
 ROOT = Path(__file__).resolve().parents[1]
 CLAIMS = ROOT / "content" / "publication_claims.json"
 BUFFER_STATE = ROOT / "content" / "ig_buffer_state.json"
+STATS_PER_RUN = 5  # metric reads per run; Buffer's API is rate limited (HTTP 429)
 
 class BufferTransportAmbiguous(RuntimeError):
     """The provider may have accepted a mutation but the response was lost."""
@@ -53,6 +55,54 @@ def _mutation_once(query, variables=None):
         raise BufferTransportAmbiguous(f"mutation transport outcome ambiguous: {exc}") from None
     if data.get("errors"): raise ig_buffer.BufferError("; ".join(str(e.get("message", e)) for e in data["errors"])[:500])
     return data.get("data") or {}
+
+def _query_once(query, variables=None):
+    """One read from Buffer, no retries (a retry on 429 only makes the rate limit worse)."""
+    key = os.getenv("BUFFER_API_KEY", "").strip()
+    if not key: raise ig_buffer.BufferError("BUFFER_API_KEY secret is missing")
+    body = json.dumps({"query": query, "variables": variables or {}}).encode()
+    req = urllib.request.Request(ig_buffer.API, data=body, method="POST", headers={"Content-Type":"application/json", "Authorization":f"Bearer {key}", "User-Agent":"nabz-reels/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp: data = json.loads(resp.read().decode())
+    except urllib.error.HTTPError as exc:
+        raise ig_buffer.BufferError(f"HTTP {exc.code}: {exc.read().decode(errors='replace')[:200]}") from None
+    except (urllib.error.URLError, TimeoutError) as exc:
+        raise ig_buffer.BufferError(f"network: {exc}") from None
+    if data.get("errors"): raise ig_buffer.BufferError("; ".join(str(e.get("message", e)) for e in data["errors"])[:300])
+    return data.get("data") or {}
+
+def limited_collect_stats(state):
+    """Replaces ig_buffer.collect_stats: at most STATS_PER_RUN posts per run, one try each, and it
+    stops at the first rate limit. Oct 31 2026: the full pass retried every 429 and took 25 minutes."""
+    stats = ig_buffer.load_json(ig_buffer.STATS_FILE, {"posts": {}})
+    stats.setdefault("posts", {})
+    today = datetime.now(ig_buffer.TEHRAN).date().isoformat()
+    if stats.get("collected") == today:
+        return
+    now = datetime.now(timezone.utc)
+    read, limited = 0, False
+    for key, rec in state.get("sent", {}).items():
+        if read >= STATS_PER_RUN or limited:
+            break
+        due = datetime.fromisoformat(rec["due"])
+        if rec.get("status") != "sent" or key in stats["posts"] or not now - timedelta(days=14) < due < now - timedelta(hours=24):
+            continue
+        try:
+            post = _query_once(ig_buffer.METRICS_Q % json.dumps(rec["post_id"]))["post"]
+        except ig_buffer.BufferError as exc:
+            if "429" in str(exc) or "Too many" in str(exc):
+                limited = True
+                break
+            continue
+        read += 1
+        vals = {m["type"]: m["value"] for m in post.get("metrics") or []}
+        if vals:
+            stats["posts"][key] = {"due": rec["due"], **{k: vals[k] for k in vals if k in ig_buffer.KEYS},
+                                   "updated": post.get("metricsUpdatedAt")}
+    # The day counts as collected only when no rate limit stopped the pass; otherwise the next run continues.
+    if not limited:
+        stats["collected"] = today
+    ig_buffer.STATS_FILE.write_text(json.dumps(stats, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 def _wrap_mutations():
     if getattr(ig_buffer, "_NABZ_GUARDED", False): return
@@ -103,6 +153,7 @@ def _wrap_mutations():
         finish(CLAIMS, key, str(post_id), status="succeeded"); return None
     ig_buffer.gql = strict_gql; ig_buffer.create_post = guarded_post; ig_buffer.create_story = guarded_story
     ig_buffer.create_carousel = guarded_carousel; ig_buffer.delete_post = guarded_delete; ig_buffer._NABZ_GUARDED = True
+    ig_buffer.collect_stats = limited_collect_stats
 
 def run():
     if not os.getenv("BUFFER_API_KEY", "").strip(): raise RuntimeError("BUFFER_API_KEY is missing; refusing to report a successful Buffer run")
