@@ -37,13 +37,13 @@ def _claims(state):
     return claims
 
 def get(path, key):
-    value = (load_json(path, {}).get("claims") or {}).get(key)
+    value = (load_json(path, {}, strict=True).get("claims") or {}).get(key)
     if not isinstance(value, dict): return None
     return Claim(key, str(value.get("status", "pending")), str(value.get("external_id", "")), value.get("metadata") or {})
 
 def claim(path, key, metadata=None):
     with _locked(path):
-        state = load_json(path, {})
+        state = load_json(path, {}, strict=True)
         claims = _claims(state)
         existing = claims.get(key)
         if key in claims:
@@ -61,7 +61,7 @@ def claim(path, key, metadata=None):
 def finish(path, key, external_id, status="succeeded"):
     if status not in {"succeeded", "ambiguous", "failed"}: raise ValueError(f"invalid claim status: {status}")
     with _locked(path):
-        state = load_json(path, {})
+        state = load_json(path, {}, strict=True)
         claims = _claims(state)
         claims[key] = {**(claims.get(key) or {}), "status": status, "external_id": str(external_id or "")}
         save_json(path, state)
