@@ -811,6 +811,196 @@
       "planned_at": "2026-10-15T16:20+03:30",
       "note": "Oct 15 (Brain, owner asked): planned by hand with the same golden times plan_week gives this week and one film reel at noon every day; nazca-lines (Mon night) and max-headroom-hijack (Wed night) come back from week 2026-10-12.",
       "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-10-26"
+    },
+    "2026-11-02": {
+      "per_day": 2,
+      "plan": [
+        {
+          "n": 1,
+          "id": "roanoke-colony",
+          "date": "2026-11-02",
+          "time": "13:29"
+        },
+        {
+          "n": 2,
+          "id": "isdal-woman",
+          "date": "2026-11-02",
+          "time": "18:03"
+        },
+        {
+          "n": 3,
+          "id": "ambrose-small",
+          "date": "2026-11-03",
+          "time": "13:54"
+        },
+        {
+          "n": 4,
+          "id": "solway-firth-spaceman",
+          "date": "2026-11-03",
+          "time": "21:01"
+        },
+        {
+          "n": 5,
+          "id": "rongorongo",
+          "date": "2026-11-04",
+          "time": "13:56"
+        },
+        {
+          "n": 6,
+          "id": "ss-baychimo",
+          "date": "2026-11-04",
+          "time": "19:01"
+        },
+        {
+          "n": 7,
+          "id": "babushka-lady",
+          "date": "2026-11-05",
+          "time": "14:26"
+        },
+        {
+          "n": 8,
+          "id": "marfa-lights",
+          "date": "2026-11-05",
+          "time": "22:51"
+        },
+        {
+          "n": 9,
+          "id": "lars-mittank",
+          "date": "2026-11-06",
+          "time": "09:56"
+        },
+        {
+          "n": 10,
+          "id": "mv-joyita",
+          "date": "2026-11-06",
+          "time": "18:05"
+        },
+        {
+          "n": 11,
+          "id": "frederick-valentich",
+          "date": "2026-11-06",
+          "time": "22:11"
+        },
+        {
+          "n": 12,
+          "id": "lord-lucan",
+          "date": "2026-11-07",
+          "time": "14:21"
+        },
+        {
+          "n": 13,
+          "id": "brian-shaffer",
+          "date": "2026-11-07",
+          "time": "21:28"
+        },
+        {
+          "n": 14,
+          "id": "yuba-county-five",
+          "date": "2026-11-08",
+          "time": "14:17"
+        },
+        {
+          "n": 15,
+          "id": "linear-a",
+          "date": "2026-11-08",
+          "time": "21:01"
+        }
+      ],
+      "built": {
+        "roanoke-colony": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 48.1,
+          "check_words": [
+            "شدند",
+            "هشتاد",
+            "آذوقه",
+            "عقب",
+            "جنگ",
+            "کرواتوان",
+            "پیوسته"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-02T01:20+03:30"
+        },
+        "isdal-woman": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 44.6,
+          "check_words": [
+            "نروژ",
+            "دره‌ای",
+            "کلاه‌گیس",
+            "دروغی",
+            "ثابت",
+            "حتی",
+            "مرگ"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-02T01:24+03:30"
+        },
+        "ambrose-small": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 40.9,
+          "check_words": [
+            "گذاشت",
+            "عمداً",
+            "تازه‌ای",
+            "شروع",
+            "کند",
+            "کرد"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-02T01:28+03:30"
+        },
+        "solway-firth-spaceman": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.7,
+          "check_words": [
+            "عکس",
+            "شصت",
+            "بود",
+            "ثابت",
+            "جیم",
+            "ندیدش"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-02T01:31+03:30"
+        },
+        "rongorongo": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 47.2,
+          "check_words": [
+            "حالا",
+            "هشتصد",
+            "شصت",
+            "جزیره",
+            "نوشته‌ها"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-02T01:35+03:30"
+        },
+        "ss-baychimo": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 49.5,
+          "check_words": [
+            "رها",
+            "قطب",
+            "آورد",
+            "غرق",
+            "شده",
+            "چند",
+            "حتی",
+            "سوارش",
+            "نگذاشت",
+            "برگرداند",
+            "رها",
+            "غرق"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-02T01:39+03:30"
+        }
+      },
+      "done": false,
+      "planned_at": "2026-11-02T01:16+03:30"
     }
   },
   "carousels": {
