@@ -13,11 +13,9 @@ on:
         type: choice
         options:
           - "1"
-          - "2"
-          - "3"
 
 concurrency:
-  group: nabz-ig-buffer-only
+  group: nabz-ig-pack
   cancel-in-progress: false
 
 permissions:
