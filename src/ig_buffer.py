@@ -142,7 +142,7 @@ def gql(query: str, variables: dict | None = None) -> dict:
                 data = json.loads(resp.read().decode())
         except urllib.error.HTTPError as exc:
             text = exc.read().decode(errors="replace")[:400]
-            if exc.code in (429, 500, 502, 503, 504) and attempt < 2:
+            if False:
                 time.sleep(20 * (attempt + 1))
                 continue
             raise BufferError(f"HTTP {exc.code}: {text}") from None

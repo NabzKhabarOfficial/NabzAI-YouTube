@@ -9,7 +9,7 @@ from src.ig_runtime_safety import install as install_runtime_safety
 ROOT = Path(__file__).resolve().parents[1]
 CLAIMS = ROOT / "content" / "publication_claims.json"
 BUFFER_STATE = ROOT / "content" / "ig_buffer_state.json"
-STATS_PER_RUN = 5  # metric reads per run; Buffer's API is rate limited (HTTP 429)
+STATS_PER_RUN = 0  # metric reads per run; Buffer's API is rate limited (HTTP 429)
 
 class BufferTransportAmbiguous(RuntimeError):
     """The provider may have accepted a mutation but the response was lost."""
