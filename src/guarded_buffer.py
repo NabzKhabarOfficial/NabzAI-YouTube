@@ -20,7 +20,10 @@ def _reserve(kind, identity, metadata):
     key = fingerprint("buffer_" + kind, identity); current = get(CLAIMS, key)
     if current is not None:
         if current.status == "succeeded": return key, {"id": current.external_id, "_already_confirmed": True}
-        raise RuntimeError(f"Buffer {kind} claim is {current.status}; manual reconciliation required: {key}")
+        # A clean rejection ('failed') may be sent again. 'pending' and 'ambiguous' mean the provider
+        # may already have the post, so they wait for reconciliation.
+        if current.status != "failed":
+            raise RuntimeError(f"Buffer {kind} claim is {current.status}; manual reconciliation required: {key}")
     if not claim(CLAIMS, key, metadata): raise RuntimeError(f"Buffer {kind} claim appeared concurrently; manual reconciliation required: {key}")
     return key, None
 
