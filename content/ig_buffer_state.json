@@ -12,10 +12,10 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "14_2026-11-01_1446_mallory-irvine",
     "15_2026-11-01_2059_ss-waratah",
     "15_2026-11-01_2059_ss-waratah_story",
-    "car_chogha-zanbil"
+    "car_chogha-zanbil",
+    "car_marlik"
   ],
   "last_fail": "videos not public on nabz-reels Pages",
   "org_id": "6aca87101f8562f188533a3e",
@@ -728,7 +728,7 @@
       "due": "2026-11-01T14:46:00+03:30",
       "kind": "reel",
       "post_id": "6ae3677cc073f399d5efe728",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-01_1446_mallory-irvine.mp4?v=3"
     },
     "15_2026-10-25_2056_green-children-of-woolpit": {
@@ -820,6 +820,16 @@
       "post_id": "6adccf993d5b27036b8f5743",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_kaaba-zartosht_1.jpg"
+    },
+    "car_marlik": {
+      "at": "2026-11-01T19:00+03:30",
+      "audio_v": 1,
+      "cap": "3311431fcad6",
+      "due": "2026-11-05T17:02:00+03:30",
+      "kind": "carousel",
+      "post_id": "6ae75baf354a6ae7df879c47",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_marlik_1.jpg"
     },
     "car_oxus-treasure": {
       "at": "2026-10-26T19:02+03:30",
