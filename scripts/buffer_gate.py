@@ -1,13 +1,20 @@
-"""Cheap, dependency-free gate for the Buffer part of ig-pack.yml.
+"""Dependency-free gate for the Buffer part of ig-pack.yml.
 
-The gate mirrors the eligibility rules in src.ig_buffer without importing it:
-- built reels not present in the local Buffer sent-state are eligible;
-- built carousels are eligible only inside CAR_AHEAD_DAYS;
-- evening stories are eligible when their source reel is already scheduled/sent,
-  the story has not been recorded, and its due time is not too close/past.
+The Buffer job runs only when there is work for it. Work means:
+- built reels not present in the local Buffer sent-state (new posts);
+- built carousels inside CAR_AHEAD_DAYS that are not sent yet;
+- evening stories whose source reel is scheduled/sent and whose story is not recorded yet;
+- upkeep: a scheduled reel whose video was rebuilt after it was queued (audio_v newer);
+- upkeep: a post recorded as 'error' (Buffer could not publish it);
+- upkeep: today's stats have not been collected yet (ig_stats.json 'collected');
+- upkeep: the Monday weekly report for this week has not been sent (report_week).
 
-On an unreadable state file this script exits non-zero without writing run=false.
-The workflow step uses continue-on-error, so downstream steps fail open.
+Not covered by the gate (they run on any job that does run): caption refresh of waiting posts,
+replacement of rebuilt videos, and stories remade in a newer design. Those need the caption
+bank, so the gate does not try to reproduce them.
+
+On an unreadable state file the script exits non-zero without writing run=false, and the
+workflow step uses continue-on-error, so downstream steps fail open.
 """
 from __future__ import annotations
 
@@ -19,6 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "content" / "ig_pack_state.json"
 BUFFER = ROOT / "content" / "ig_buffer_state.json"
+STATS = ROOT / "content" / "ig_stats.json"
 TEHRAN = timezone(timedelta(hours=3, minutes=30))
 LEAD_MIN = 30
 STORY_AFTER_MIN = 15
@@ -63,12 +71,30 @@ def built_reels(pack: dict) -> dict[str, dict]:
 
 
 def due_at(item: dict) -> datetime:
-    return datetime.fromisoformat(
-        f"{item['date']}T{item['time']}:00"
-    ).replace(tzinfo=TEHRAN)
+    return datetime.fromisoformat(f"{item['date']}T{item['time']}:00").replace(tzinfo=TEHRAN)
 
 
-def has_eligible_item(pack: dict, buffer_state: dict, now: datetime) -> tuple[bool, str]:
+def upkeep(pack: dict, buffer_state: dict, stats: dict, now: datetime, reels: dict) -> tuple[bool, str]:
+    sent = buffer_state.get("sent") or {}
+    for key, rec in sent.items():
+        if not isinstance(rec, dict):
+            continue
+        if rec.get("status") == "error":
+            return True, f"Buffer reported an error for {key}"
+        if rec.get("status") == "scheduled" and key in reels:
+            if int(reels[key].get("audio_v", 1)) > int(rec.get("audio_v", 1)):
+                return True, f"video rebuilt after queueing: {key}"
+    if stats.get("collected") != now.astimezone(TEHRAN).date().isoformat():
+        return True, "today's stats not collected yet"
+    local = now.astimezone(TEHRAN)
+    if local.weekday() == 0:
+        monday = (local.date()).isoformat()
+        if buffer_state.get("report_week") != monday:
+            return True, "Monday report not sent yet"
+    return False, ""
+
+
+def has_eligible_item(pack: dict, buffer_state: dict, now: datetime, stats: dict | None = None) -> tuple[bool, str]:
     sent = buffer_state.get("sent") or {}
     if not isinstance(sent, dict):
         raise ValueError("content/ig_buffer_state.json: sent must be an object")
@@ -111,15 +137,20 @@ def has_eligible_item(pack: dict, buffer_state: dict, now: datetime) -> tuple[bo
                 continue
             return True, f"unsent story: {story_stem}"
 
-    return False, "no eligible built reels, carousels, or stories"
+    ok, why = upkeep(pack, buffer_state, stats or {}, now, reels)
+    if ok:
+        return True, why
+
+    return False, "no eligible built reels, carousels, stories, or upkeep"
 
 
 def main() -> int:
     pack = read_json(PACK)
     buffer_state = read_json(BUFFER)
+    stats = read_json(STATS)
     now = datetime.now(timezone.utc)
-    should_run, reason = has_eligible_item(pack, buffer_state, now)
-    print(f"Buffer gate: {'run' if should_run else 'skip'} — {reason}")
+    should_run, reason = has_eligible_item(pack, buffer_state, now, stats)
+    print(f"Buffer gate: {'run' if should_run else 'skip'} - {reason}")
     output = os.getenv("GITHUB_OUTPUT")
     if output:
         with open(output, "a", encoding="utf-8") as handle:
