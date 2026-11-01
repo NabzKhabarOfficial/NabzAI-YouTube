@@ -217,7 +217,7 @@
       "shares": 0,
       "saves": 3,
       "reach": 153,
-      "updated": "2026-10-31T00:20:13.534Z"
+      "updated": "2026-11-01T00:20:23.389Z"
     },
     "14_2026-10-18_2121_princes-in-the-tower": {
       "due": "2026-10-18T21:21:00+03:30",
@@ -227,7 +227,7 @@
       "shares": 0,
       "saves": 4,
       "reach": 1202,
-      "updated": "2026-10-31T00:20:13.544Z"
+      "updated": "2026-11-01T00:20:23.374Z"
     },
     "14_2026-10-18_2121_princes-in-the-tower_story": {
       "due": "2026-10-18T21:36:00+03:30",
@@ -245,17 +245,17 @@
       "shares": 0,
       "saves": 2,
       "reach": 20,
-      "updated": "2026-10-31T00:20:13.537Z"
+      "updated": "2026-11-01T00:20:23.381Z"
     },
     "02_2026-10-19_1802_dorothy-arnold": {
       "due": "2026-10-19T18:02:00+03:30",
       "reactions": 2,
       "comments": 0,
-      "views": 36,
+      "views": 38,
       "shares": 0,
       "saves": 2,
-      "reach": 22,
-      "updated": "2026-10-31T00:20:13.572Z"
+      "reach": 23,
+      "updated": "2026-11-01T00:20:23.398Z"
     },
     "02_2026-10-19_1802_dorothy-arnold_story": {
       "due": "2026-10-19T18:17:00+03:30",
@@ -269,22 +269,22 @@
       "due": "2026-10-20T13:19:00+03:30",
       "reactions": 48,
       "comments": 4,
-      "views": 1864,
+      "views": 1867,
       "shares": 0,
       "saves": 9,
-      "reach": 1599,
-      "updated": "2026-10-31T00:20:13.483Z"
+      "reach": 1608,
+      "updated": "2026-11-01T00:20:23.385Z"
     },
     "car_persepolis-fire": {
       "due": "2026-10-20T17:40:00+03:30",
       "reactions": 2,
       "comments": 0,
-      "views": 27,
+      "views": 28,
       "shares": 0,
       "saves": 2,
       "follows": 0,
       "reach": 16,
-      "updated": "2026-10-31T00:20:13.618Z"
+      "updated": "2026-11-01T00:20:23.349Z"
     },
     "04_2026-10-20_2104_phaistos-disc": {
       "due": "2026-10-20T21:04:00+03:30",
@@ -294,7 +294,7 @@
       "shares": 1,
       "saves": 6,
       "reach": 1214,
-      "updated": "2026-10-31T00:20:13.518Z"
+      "updated": "2026-11-01T00:20:23.401Z"
     },
     "04_2026-10-20_2104_phaistos-disc_story": {
       "due": "2026-10-20T21:19:00+03:30",
@@ -306,23 +306,23 @@
     },
     "05_2026-10-21_1541_jimmy-hoffa": {
       "due": "2026-10-21T15:41:00+03:30",
-      "reactions": 32,
+      "reactions": 33,
       "comments": 10,
-      "views": 1680,
+      "views": 1681,
       "shares": 1,
       "saves": 5,
       "reach": 1400,
-      "updated": "2026-10-31T00:20:13.498Z"
+      "updated": "2026-11-01T00:20:23.353Z"
     },
     "06_2026-10-21_1857_beale-ciphers": {
       "due": "2026-10-21T18:57:00+03:30",
       "reactions": 4,
       "comments": 0,
-      "views": 152,
+      "views": 153,
       "shares": 0,
       "saves": 2,
-      "reach": 148,
-      "updated": "2026-10-31T00:20:13.583Z"
+      "reach": 149,
+      "updated": "2026-11-01T00:20:23.361Z"
     },
     "06_2026-10-21_1857_beale-ciphers_story": {
       "due": "2026-10-21T19:12:00+03:30",
@@ -340,28 +340,28 @@
       "shares": 0,
       "saves": 4,
       "reach": 1161,
-      "updated": "2026-10-31T00:20:13.543Z"
+      "updated": "2026-11-01T00:20:23.405Z"
     },
     "car_gorgan-wall": {
       "due": "2026-10-22T17:31:00+03:30",
       "reactions": 3,
       "comments": 0,
-      "views": 26,
+      "views": 37,
       "shares": 0,
       "saves": 2,
       "follows": 0,
-      "reach": 14,
-      "updated": "2026-10-31T00:20:13.569Z"
+      "reach": 15,
+      "updated": "2026-11-01T00:20:23.357Z"
     },
     "09_2026-10-23_0956_glenn-miller": {
       "due": "2026-10-23T09:56:00+03:30",
       "reactions": 13,
       "comments": 0,
-      "views": 1163,
+      "views": 1164,
       "shares": 0,
       "saves": 2,
-      "reach": 1049,
-      "updated": "2026-10-31T00:20:13.507Z"
+      "reach": 1051,
+      "updated": "2026-11-01T00:20:23.367Z"
     },
     "10_2026-10-23_1759_amber-room": {
       "due": "2026-10-23T17:59:00+03:30",
@@ -371,7 +371,7 @@
       "shares": 0,
       "saves": 4,
       "reach": 593,
-      "updated": "2026-10-31T00:20:13.574Z"
+      "updated": "2026-11-01T00:20:23.347Z"
     },
     "11_2026-10-23_2206_franklin-expedition": {
       "due": "2026-10-23T22:06:00+03:30",
@@ -381,7 +381,7 @@
       "shares": 1,
       "saves": 5,
       "reach": 1392,
-      "updated": "2026-10-31T00:20:13.620Z"
+      "updated": "2026-11-01T00:20:23.399Z"
     },
     "10_2026-10-23_1759_amber-room_story": {
       "due": "2026-10-23T18:14:00+03:30",
@@ -407,7 +407,7 @@
       "shares": 0,
       "saves": 2,
       "reach": 25,
-      "updated": "2026-10-31T00:20:13.516Z"
+      "updated": "2026-11-01T00:20:23.383Z"
     },
     "car_tarim-mummies": {
       "due": "2026-10-24T17:04:00+03:30",
@@ -418,17 +418,17 @@
       "saves": 2,
       "follows": 0,
       "reach": 18,
-      "updated": "2026-10-31T00:20:13.585Z"
+      "updated": "2026-11-01T00:20:23.409Z"
     },
     "13_2026-10-24_2131_hessdalen-lights": {
       "due": "2026-10-24T21:31:00+03:30",
-      "reactions": 63,
+      "reactions": 64,
       "comments": 0,
-      "views": 2699,
+      "views": 2711,
       "shares": 5,
-      "saves": 11,
-      "reach": 2096,
-      "updated": "2026-10-31T00:20:13.567Z"
+      "saves": 12,
+      "reach": 2110,
+      "updated": "2026-11-01T00:20:23.355Z"
     },
     "13_2026-10-24_2131_hessdalen-lights_story": {
       "due": "2026-10-24T21:46:00+03:30",
@@ -446,17 +446,17 @@
       "shares": 2,
       "saves": 7,
       "reach": 661,
-      "updated": "2026-10-31T00:20:13.539Z"
+      "updated": "2026-11-01T00:20:23.372Z"
     },
     "08_2026-10-22_2245_sodder-children": {
       "due": "2026-10-25T22:31:00+03:30",
       "reactions": 10,
       "comments": 1,
-      "views": 1079,
+      "views": 1080,
       "shares": 0,
       "saves": 3,
-      "reach": 876,
-      "updated": "2026-10-31T00:20:13.485Z"
+      "reach": 878,
+      "updated": "2026-11-01T00:20:23.364Z"
     },
     "08_2026-10-22_2245_sodder-children_story": {
       "due": "2026-10-25T22:46:00+03:30",
@@ -468,33 +468,33 @@
     },
     "15_2026-10-25_2056_green-children-of-woolpit": {
       "due": "2026-10-26T14:03:00+03:30",
-      "reactions": 35,
+      "reactions": 36,
       "comments": 0,
-      "views": 1654,
+      "views": 1660,
       "shares": 2,
       "saves": 14,
-      "reach": 1209,
-      "updated": "2026-10-31T00:20:13.523Z"
+      "reach": 1216,
+      "updated": "2026-11-01T00:20:23.351Z"
     },
     "01_2026-10-26_1328_dyatlov-pass": {
       "due": "2026-10-26T21:23:00+03:30",
       "reactions": 4,
       "comments": 0,
-      "views": 201,
+      "views": 202,
       "shares": 0,
       "saves": 2,
-      "reach": 161,
-      "updated": "2026-10-31T00:20:13.520Z"
+      "reach": 162,
+      "updated": "2026-11-01T00:20:23.308Z"
     },
     "02_2026-10-26_1805_nazca-lines": {
       "due": "2026-10-26T18:05:00+03:30",
       "reactions": 53,
       "comments": 0,
-      "views": 2633,
+      "views": 2640,
       "shares": 2,
       "saves": 6,
-      "reach": 2003,
-      "updated": "2026-10-31T00:20:13.592Z"
+      "reach": 2009,
+      "updated": "2026-11-01T00:20:23.360Z"
     },
     "02_2026-10-26_1805_nazca-lines_story": {
       "due": "2026-10-26T18:20:00+03:30",
@@ -516,32 +516,32 @@
       "due": "2026-10-27T13:24:00+03:30",
       "reactions": 43,
       "comments": 8,
-      "views": 1845,
+      "views": 1854,
       "shares": 0,
       "saves": 9,
-      "reach": 1476,
-      "updated": "2026-10-31T00:20:13.563Z"
+      "reach": 1489,
+      "updated": "2026-11-01T00:20:23.369Z"
     },
     "car_kaaba-zartosht": {
       "due": "2026-10-27T17:24:00+03:30",
       "reactions": 3,
       "comments": 0,
-      "views": 32,
+      "views": 35,
       "shares": 0,
       "saves": 2,
       "follows": 0,
       "reach": 15,
-      "updated": "2026-10-31T00:20:13.487Z"
+      "updated": "2026-11-01T00:20:23.393Z"
     },
     "04_2026-10-27_2059_taos-hum": {
       "due": "2026-10-27T20:59:00+03:30",
       "reactions": 43,
       "comments": 0,
-      "views": 1636,
+      "views": 1640,
       "shares": 1,
       "saves": 10,
-      "reach": 1198,
-      "updated": "2026-10-31T00:20:13.526Z"
+      "reach": 1203,
+      "updated": "2026-11-01T00:20:23.336Z"
     },
     "04_2026-10-27_2059_taos-hum_story": {
       "due": "2026-10-27T21:14:00+03:30",
@@ -555,21 +555,21 @@
       "due": "2026-10-28T14:50:00+03:30",
       "reactions": 69,
       "comments": 8,
-      "views": 3294,
+      "views": 3312,
       "shares": 3,
       "saves": 8,
-      "reach": 2908,
-      "updated": "2026-10-31T00:20:13.504Z"
+      "reach": 2937,
+      "updated": "2026-11-01T00:20:23.320Z"
     },
     "06_2026-10-28_1900_max-headroom-hijack": {
       "due": "2026-10-28T19:00:00+03:30",
       "reactions": 23,
       "comments": 0,
-      "views": 1596,
+      "views": 1598,
       "shares": 0,
       "saves": 7,
-      "reach": 1211,
-      "updated": "2026-10-31T00:20:13.575Z"
+      "reach": 1212,
+      "updated": "2026-11-01T00:20:23.366Z"
     },
     "06_2026-10-28_1900_max-headroom-hijack_story": {
       "due": "2026-10-28T19:15:00+03:30",
@@ -583,21 +583,21 @@
       "due": "2026-10-29T13:59:00+03:30",
       "reactions": 23,
       "comments": 0,
-      "views": 1504,
+      "views": 1519,
       "shares": 1,
       "saves": 2,
-      "reach": 1325,
-      "updated": "2026-10-31T00:20:13.541Z"
+      "reach": 1340,
+      "updated": "2026-11-01T00:20:23.333Z"
     },
     "08_2026-10-29_2254_lost-army-of-cambyses": {
       "due": "2026-10-29T22:54:00+03:30",
       "reactions": 22,
       "comments": 0,
-      "views": 1526,
+      "views": 1552,
       "shares": 5,
       "saves": 6,
-      "reach": 1154,
-      "updated": "2026-10-31T00:20:13.496Z"
+      "reach": 1174,
+      "updated": "2026-11-01T00:20:23.335Z"
     },
     "08_2026-10-29_2254_lost-army-of-cambyses_story": {
       "due": "2026-10-29T23:09:00+03:30",
@@ -609,25 +609,71 @@
     },
     "09_2026-10-30_0957_walter-collins": {
       "due": "2026-10-30T09:57:00+03:30",
-      "reactions": 21,
-      "comments": 4,
-      "views": 1899,
+      "reactions": 23,
+      "comments": 5,
+      "views": 1996,
       "shares": 3,
-      "saves": 9,
-      "reach": 1674,
-      "updated": "2026-10-31T00:20:13.481Z"
+      "saves": 11,
+      "reach": 1759,
+      "updated": "2026-11-01T00:20:23.363Z"
     },
     "car_oxus-treasure": {
       "due": "2026-10-29T17:04:00+03:30",
       "reactions": 1,
       "comments": 0,
-      "views": 20,
+      "views": 24,
       "shares": 0,
       "saves": 1,
       "follows": 0,
       "reach": 10,
-      "updated": "2026-10-31T00:20:13.581Z"
+      "updated": "2026-11-01T00:20:23.345Z"
+    },
+    "10_2026-10-30_1800_gobekli-tepe": {
+      "due": "2026-10-30T18:00:00+03:30",
+      "reactions": 5,
+      "comments": 0,
+      "views": 366,
+      "shares": 0,
+      "saves": 2,
+      "reach": 314,
+      "updated": "2026-11-01T00:20:23.338Z"
+    },
+    "10_2026-10-30_1800_gobekli-tepe_story": {
+      "due": "2026-10-30T18:15:00+03:30",
+      "views": 21,
+      "reach": 19,
+      "comments": 0,
+      "reactions": 0,
+      "updated": "2026-10-31T14:35:57.250Z"
+    },
+    "11_2026-10-30_2213_mary-celeste": {
+      "due": "2026-10-30T22:13:00+03:30",
+      "reactions": 42,
+      "comments": 0,
+      "views": 2566,
+      "shares": 2,
+      "saves": 6,
+      "reach": 1728,
+      "updated": "2026-11-01T00:20:23.340Z"
+    },
+    "11_2026-10-30_2213_mary-celeste_story": {
+      "due": "2026-10-30T22:28:00+03:30",
+      "views": 20,
+      "reach": 18,
+      "comments": 0,
+      "reactions": 0,
+      "updated": "2026-10-31T18:51:07.630Z"
+    },
+    "12_2026-10-31_1218_percy-fawcett": {
+      "due": "2026-10-31T12:18:00+03:30",
+      "reactions": 19,
+      "comments": 0,
+      "views": 536,
+      "shares": 2,
+      "saves": 1,
+      "reach": 446,
+      "updated": "2026-11-01T00:20:23.396Z"
     }
   },
-  "collected": "2026-10-31"
+  "collected": "2026-11-01"
 }
