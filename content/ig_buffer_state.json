@@ -9,13 +9,14 @@
     "11_2026-10-17_1403_nazca-lines": "6acfa51781eb78c8f8b03745"
   },
   "fail_alerted": false,
-  "fail_streak": 0,
+  "fail_streak": 1,
   "films_page": "9e43fe38f018",
   "hosted": [
+    "01_2026-11-02_1329_roanoke-colony",
     "car_chogha-zanbil",
     "car_marlik"
   ],
-  "last_fail": "videos not public on nabz-reels Pages",
+  "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
   "report_week": "2026-11-02",
   "sent": {
