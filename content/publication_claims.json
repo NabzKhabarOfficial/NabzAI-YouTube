@@ -301,6 +301,16 @@
       },
       "status": "succeeded"
     },
+    "c14dfb705111c2fcfa6a97e3df619411adc1d7f346e557c87444ea8f4c4cfaa3": {
+      "external_id": "zVqyg7-hR0U",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-03T19:00:00.000Z",
+        "story_id": "gobekli-tepe",
+        "video_sha256_24": "1b4efca448b122b7768c071a"
+      },
+      "status": "succeeded"
+    },
     "c449f2db5bd57350fb77c5e2d8e564974e0cd282e5e4f427db3ef0804925d5d7": {
       "external_id": "6ae327e3568655049ec0b0fb",
       "metadata": {
