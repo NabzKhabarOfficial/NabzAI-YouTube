@@ -39,6 +39,16 @@
       },
       "status": "succeeded"
     },
+    "25c5a702fbe60e6311f4f381ec0fcb2a51c8853a0894d2321d39ea3b62c5e07b": {
+      "external_id": "6ae8acfe31e164b233edd5cd",
+      "metadata": {
+        "due": "2026-11-03T21:01:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-03_2101_solway-firth-spaceman.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "301dc8cce8322a992855bd0b38ea85e704754e38d60450b94c6bc5a945fd35b4": {
       "external_id": "uydyCd7Zx-w",
       "metadata": {
@@ -56,6 +66,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-02_1329_roanoke-colony.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "3cdc650c8657d02c58093f67788550bd33cb7dc1feee8a89d454fbda74141991": {
+      "external_id": "6ae8acfff1669be3eabd33c5",
+      "metadata": {
+        "due": "2026-11-04T13:56:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-04_1356_rongorongo.mp4?v=3"
       },
       "status": "succeeded"
     },
