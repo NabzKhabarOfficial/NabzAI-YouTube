@@ -13,6 +13,8 @@
   "films_page": "9e43fe38f018",
   "hosted": [
     "01_2026-11-02_1329_roanoke-colony",
+    "02_2026-11-02_1803_isdal-woman",
+    "03_2026-11-03_1354_ambrose-small",
     "car_chogha-zanbil",
     "car_marlik"
   ],
@@ -160,6 +162,16 @@
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-10-26_1805_nazca-lines_story.mp4?v=2"
     },
+    "02_2026-11-02_1803_isdal-woman": {
+      "at": "2026-11-02T13:01+03:30",
+      "audio_v": 3,
+      "cap": "9a990825bfe6",
+      "due": "2026-11-02T18:03:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae858fb5e62d9a270fb4dba",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-02_1803_isdal-woman.mp4?v=3"
+    },
     "03_2026-10-13_1353_mh370": {
       "at": "2026-10-12T16:23+03:30",
       "audio_v": 3,
@@ -199,6 +211,16 @@
       "post_id": "6adc7b3bbd33ce99c315d307",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-10-27_1324_lost-dutchmans-mine.mp4?v=3"
+    },
+    "03_2026-11-03_1354_ambrose-small": {
+      "at": "2026-11-02T13:01+03:30",
+      "audio_v": 3,
+      "cap": "4d79f2bd710b",
+      "due": "2026-11-03T13:54:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae858fc43b939472a7bb0aa",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-03_1354_ambrose-small.mp4?v=3"
     },
     "04_2026-10-13_2031_dancing-plague-1518": {
       "at": "2026-10-11T19:12+03:30",

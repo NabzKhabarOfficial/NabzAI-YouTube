@@ -19,6 +19,16 @@
       },
       "status": "succeeded"
     },
+    "1c0ef9b54d4cb242d4d43aed9361901e76024c17aebd63380752e2a7a195ce62": {
+      "external_id": "6ae858fc43b939472a7bb0aa",
+      "metadata": {
+        "due": "2026-11-03T13:54:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-03_1354_ambrose-small.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "1e21e663ed8b5d7c7d3aab1c9b65b70f945b4c232e0156e619b743af546627b7": {
       "external_id": "6ae3677cc073f399d5efe728",
       "metadata": {
@@ -97,6 +107,16 @@
         "kind": "story",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-10-28_1900_max-headroom-hijack_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
+    "67c0da0f87aaaebc7326ff7be162cb3f24352805c2b625fe47def1e3388fdf26": {
+      "external_id": "6ae858fb5e62d9a270fb4dba",
+      "metadata": {
+        "due": "2026-11-02T18:03:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-02_1803_isdal-woman.mp4?v=3"
       },
       "status": "succeeded"
     },
