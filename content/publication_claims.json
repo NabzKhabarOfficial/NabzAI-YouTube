@@ -80,6 +80,16 @@
       },
       "status": "succeeded"
     },
+    "5765e175bd619963a3ebc5aa11c70006868f622d2fa7fffece5dfc4cca79a244": {
+      "external_id": "oTlC-uE2WQQ",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-02T19:00:00.000Z",
+        "story_id": "nazca-lines",
+        "video_sha256_24": "88ace5c6fb82fa0c3e1f0213"
+      },
+      "status": "succeeded"
+    },
     "63ffd2862f8446192b4b21f7fdc60aebea1e5f456953e08ce1682d3fba375250": {
       "external_id": "6adfbb433ffda7dd058f8546",
       "metadata": {

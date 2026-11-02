@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 41.2,
+  "duration_seconds": 36.37,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 17.51,
+  "file_mb": 14.53,
   "audio": {
     "mean_volume": -18.1,
-    "max_volume": -0.2
+    "max_volume": -0.4
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "princes-in-the-tower",
+  "story_id": "nazca-lines",
   "story_bank": ""
 }
