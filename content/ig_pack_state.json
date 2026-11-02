@@ -997,6 +997,100 @@
           ],
           "audio_v": 3,
           "at": "2026-11-02T01:39+03:30"
+        },
+        "babushka-lady": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 47.83,
+          "check_words": [
+            "نشان",
+            "می‌داد",
+            "هیچ‌وقت",
+            "نیامد",
+            "ثابت",
+            "است",
+            "بقیه",
+            "ولی",
+            "دیده"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-03T02:45+03:30"
+        },
+        "marfa-lights": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.2,
+          "check_words": [
+            "تگزاس",
+            "ولی",
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-03T02:49+03:30"
+        },
+        "lars-mittank": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 40.0,
+          "check_words": [
+            "ثبت",
+            "دعوا",
+            "گذاشت",
+            "ثبت",
+            "ولی"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-03T02:52+03:30"
+        },
+        "mv-joyita": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 40.0,
+          "check_words": [
+            "آرام",
+            "جویتا",
+            "کجا",
+            "رفتند",
+            "پنج",
+            "بدنه‌اش",
+            "غرق",
+            "ثابت",
+            "شده",
+            "غرق",
+            "نیست",
+            "غرق"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-03T02:55+03:30"
+        },
+        "frederick-valentich": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.83,
+          "check_words": [
+            "شیء",
+            "موتورش",
+            "تکه",
+            "ثابت",
+            "شیء"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-03T02:59+03:30"
+        },
+        "lord-lucan": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 41.77,
+          "check_words": [
+            "رفته",
+            "نهصد",
+            "لرد",
+            "لوکان",
+            "کجا",
+            "حمله",
+            "قاتل",
+            "دانست",
+            "قرضی‌اش",
+            "مرد",
+            "هزار",
+            "شانزده"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-03T03:03+03:30"
         }
       },
       "done": false,
