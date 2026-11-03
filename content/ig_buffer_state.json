@@ -12,14 +12,14 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "03_2026-11-03_1354_ambrose-small",
     "04_2026-11-03_2101_solway-firth-spaceman",
     "04_2026-11-03_2101_solway-firth-spaceman_story",
     "05_2026-11-04_1356_rongorongo",
     "06_2026-11-04_1901_ss-baychimo",
     "06_2026-11-04_1901_ss-baychimo_story",
     "07_2026-11-05_1426_babushka-lady",
-    "car_chogha-zanbil",
+    "08_2026-11-05_2251_marfa-lights",
+    "09_2026-11-06_0956_lars-mittank",
     "car_marlik"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -223,7 +223,7 @@
       "due": "2026-11-03T13:54:00+03:30",
       "kind": "reel",
       "post_id": "6ae858fc43b939472a7bb0aa",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-03_1354_ambrose-small.mp4?v=3"
     },
     "04_2026-10-13_2031_dancing-plague-1518": {
@@ -537,6 +537,16 @@
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses_story.mp4?v=2"
     },
+    "08_2026-11-05_2251_marfa-lights": {
+      "at": "2026-11-03T19:01+03:30",
+      "audio_v": 3,
+      "cap": "87bfff036c9c",
+      "due": "2026-11-05T22:51:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae9fee101362e3aaea12d83",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights.mp4?v=3"
+    },
     "09_2026-10-16_1325_zodiac-killer": {
       "at": "2026-10-14T08:28+03:30",
       "audio_v": 3,
@@ -566,6 +576,16 @@
       "post_id": "6ae075fdcedf2995f649c21d",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-10-30_0957_walter-collins.mp4?v=3"
+    },
+    "09_2026-11-06_0956_lars-mittank": {
+      "at": "2026-11-03T19:01+03:30",
+      "audio_v": 3,
+      "cap": "4ae108840b99",
+      "due": "2026-11-06T09:56:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae9fee2b75704f9ac5e4042",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-11-06_0956_lars-mittank.mp4?v=3"
     },
     "10_2026-10-16_2202_paula-welden": {
       "at": "2026-10-14T13:24+03:30",
@@ -886,7 +906,7 @@
       "due": "2026-11-03T17:16:00+03:30",
       "kind": "carousel",
       "post_id": "6ae60a3cabbfa4c0cc1daaa5",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_1.jpg"
     },
     "car_gorgan-wall": {

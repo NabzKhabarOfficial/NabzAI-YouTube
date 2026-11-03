@@ -197,6 +197,16 @@
       },
       "status": "succeeded"
     },
+    "756780f4c39c8e8f1928d34bfee01b5d728ace05cdab00c7d457e1984241315b": {
+      "external_id": "6ae9fee101362e3aaea12d83",
+      "metadata": {
+        "due": "2026-11-05T22:51:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "85bd23183695df8668f827b8ea5dacb01d15cf1dfc5cbce2573ac67c811c95aa": {
       "external_id": "6ae60a3cabbfa4c0cc1daaa5",
       "metadata": {
@@ -378,6 +388,16 @@
         "publish_at": "2026-10-27T19:00:00.000Z",
         "story_id": "taos-hum",
         "video_sha256_24": "9a49d1f5522bd0dc16bb1f54"
+      },
+      "status": "succeeded"
+    },
+    "d8bdf8e0884005e61bb378a8aa56a24ed1aa031306288504c4219f89ebd66956": {
+      "external_id": "6ae9fee2b75704f9ac5e4042",
+      "metadata": {
+        "due": "2026-11-06T09:56:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-11-06_0956_lars-mittank.mp4?v=3"
       },
       "status": "succeeded"
     },
