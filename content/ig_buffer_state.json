@@ -17,6 +17,8 @@
     "04_2026-11-03_2101_solway-firth-spaceman_story",
     "05_2026-11-04_1356_rongorongo",
     "06_2026-11-04_1901_ss-baychimo",
+    "06_2026-11-04_1901_ss-baychimo_story",
+    "07_2026-11-05_1426_babushka-lady",
     "car_chogha-zanbil",
     "car_marlik"
   ],
@@ -421,6 +423,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-04_1901_ss-baychimo.mp4?v=3"
     },
+    "06_2026-11-04_1901_ss-baychimo_story": {
+      "at": "2026-11-03T13:00+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-04T19:16:00+03:30",
+      "kind": "story",
+      "post_id": "6ae9aa73be1f6ddaea3c4828",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-04_1901_ss-baychimo_story.mp4?v=2"
+    },
     "07_2026-10-15_1359_amelia-earhart": {
       "at": "2026-10-13T13:54+03:30",
       "audio_v": 3,
@@ -450,6 +463,16 @@
       "post_id": "6adf7305be236a10f9e0c2cb",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-10-29_1359_toynbee-tiles.mp4?v=3"
+    },
+    "07_2026-11-05_1426_babushka-lady": {
+      "at": "2026-11-03T13:00+03:30",
+      "audio_v": 3,
+      "cap": "0531c8e4a643",
+      "due": "2026-11-05T14:26:00+03:30",
+      "kind": "reel",
+      "post_id": "6ae9aa74749426a5a468eb1f",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-05_1426_babushka-lady.mp4?v=3"
     },
     "08_2026-10-15_2233_kaz-ii": {
       "at": "2026-10-13T19:31+03:30",

@@ -59,6 +59,16 @@
       },
       "status": "succeeded"
     },
+    "315df999b62144bbd0b945b2fd078aa4effa3fe723b5ec3c81d57942a2fce366": {
+      "external_id": "6ae9aa74749426a5a468eb1f",
+      "metadata": {
+        "due": "2026-11-05T14:26:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-05_1426_babushka-lady.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "330ce92f9962107e6ac84aed00a2f6db5c10a76a108427b09937af548aabe39a": {
       "external_id": "6ae7c583779ee9f13cbdbc72",
       "metadata": {
@@ -117,6 +127,16 @@
         "kind": "story",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-03_2101_solway-firth-spaceman_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
+    "4afaa916600d124ad1ae2bb2c553a79b05f10a252b0318f6019f1d747099b44e": {
+      "external_id": "6ae9aa73be1f6ddaea3c4828",
+      "metadata": {
+        "due": "2026-11-04T19:16:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-04_1901_ss-baychimo_story.mp4?v=2"
       },
       "status": "succeeded"
     },
