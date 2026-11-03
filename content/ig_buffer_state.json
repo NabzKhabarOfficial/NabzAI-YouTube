@@ -12,14 +12,14 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "04_2026-11-03_2101_solway-firth-spaceman",
-    "04_2026-11-03_2101_solway-firth-spaceman_story",
     "05_2026-11-04_1356_rongorongo",
     "06_2026-11-04_1901_ss-baychimo",
     "06_2026-11-04_1901_ss-baychimo_story",
     "07_2026-11-05_1426_babushka-lady",
     "08_2026-11-05_2251_marfa-lights",
+    "08_2026-11-05_2251_marfa-lights_story",
     "09_2026-11-06_0956_lars-mittank",
+    "10_2026-11-06_1805_mv-joyita",
     "car_marlik"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -296,7 +296,7 @@
       "due": "2026-11-03T21:01:00+03:30",
       "kind": "reel",
       "post_id": "6ae8acfe31e164b233edd5cd",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-03_2101_solway-firth-spaceman.mp4?v=3"
     },
     "04_2026-11-03_2101_solway-firth-spaceman_story": {
@@ -306,7 +306,7 @@
       "due": "2026-11-03T21:16:00+03:30",
       "kind": "story",
       "post_id": "6ae91e6c9e9bda3b49d64f8e",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-03_2101_solway-firth-spaceman_story.mp4?v=2"
     },
@@ -547,6 +547,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights.mp4?v=3"
     },
+    "08_2026-11-05_2251_marfa-lights_story": {
+      "at": "2026-11-04T00:41+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-05T23:06:00+03:30",
+      "kind": "story",
+      "post_id": "6aea4e79fdaa0acca707d7b6",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights_story.mp4?v=2"
+    },
     "09_2026-10-16_1325_zodiac-killer": {
       "at": "2026-10-14T08:28+03:30",
       "audio_v": 3,
@@ -649,6 +660,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe_story.mp4?v=2"
+    },
+    "10_2026-11-06_1805_mv-joyita": {
+      "at": "2026-11-04T00:41+03:30",
+      "audio_v": 3,
+      "cap": "20e7a42ded83",
+      "due": "2026-11-06T18:05:00+03:30",
+      "kind": "reel",
+      "post_id": "6aea4e7a0a183b1b742ca50d",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-11-06_1805_mv-joyita.mp4?v=3"
     },
     "11_2026-10-17_1403_andes-flight-571": {
       "at": "2026-10-15T14:02+03:30",

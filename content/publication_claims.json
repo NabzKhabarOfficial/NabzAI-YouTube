@@ -160,6 +160,16 @@
       },
       "status": "succeeded"
     },
+    "66c92fe27993eb0d488b2dd621e7e70f53d5c80a289ed4f66dc18215d1836f6c": {
+      "external_id": "6aea4e7a0a183b1b742ca50d",
+      "metadata": {
+        "due": "2026-11-06T18:05:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-11-06_1805_mv-joyita.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "67c0da0f87aaaebc7326ff7be162cb3f24352805c2b625fe47def1e3388fdf26": {
       "external_id": "6ae858fb5e62d9a270fb4dba",
       "metadata": {
@@ -388,6 +398,16 @@
         "publish_at": "2026-10-27T19:00:00.000Z",
         "story_id": "taos-hum",
         "video_sha256_24": "9a49d1f5522bd0dc16bb1f54"
+      },
+      "status": "succeeded"
+    },
+    "d4f475b641278e9b5245f8926fc6c97dba72db606d082938695e07275f973e23": {
+      "external_id": "6aea4e79fdaa0acca707d7b6",
+      "metadata": {
+        "due": "2026-11-05T23:06:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights_story.mp4?v=2"
       },
       "status": "succeeded"
     },
