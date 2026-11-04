@@ -12,7 +12,6 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "05_2026-11-04_1356_rongorongo",
     "06_2026-11-04_1901_ss-baychimo",
     "06_2026-11-04_1901_ss-baychimo_story",
     "07_2026-11-05_1426_babushka-lady",
@@ -21,6 +20,7 @@
     "09_2026-11-06_0956_lars-mittank",
     "10_2026-11-06_1805_mv-joyita",
     "11_2026-11-06_2211_frederick-valentich",
+    "12_2026-11-07_1421_lord-lucan",
     "car_marlik"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -348,7 +348,7 @@
       "due": "2026-11-04T13:56:00+03:30",
       "kind": "reel",
       "post_id": "6ae8acfff1669be3eabd33c5",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-04_1356_rongorongo.mp4?v=3"
     },
     "06_2026-10-14_2134_lead-masks": {
@@ -786,6 +786,16 @@
       "post_id": "6ae21642ef3865d804f8cdd4",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-31_1218_percy-fawcett.mp4?v=3"
+    },
+    "12_2026-11-07_1421_lord-lucan": {
+      "at": "2026-11-04T19:01+03:30",
+      "audio_v": 3,
+      "cap": "077a7ae50871",
+      "due": "2026-11-07T14:21:00+03:30",
+      "kind": "reel",
+      "post_id": "6aeb504555381ceedcbfe582",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-11-07_1421_lord-lucan.mp4?v=3"
     },
     "13_2026-10-18_1323_chris-mccandless": {
       "at": "2026-10-15T17:48+03:30",
