@@ -1091,10 +1091,54 @@
           ],
           "audio_v": 3,
           "at": "2026-11-03T03:03+03:30"
+        },
+        "brian-shaffer": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 47.53,
+          "check_words": [
+            "پزشکی",
+            "شدن"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-05T00:57+03:30"
+        },
+        "yuba-county-five": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 46.97,
+          "check_words": [
+            "مسابقه‌ی",
+            "وسط",
+            "کوه",
+            "کالیفرنیا",
+            "هفتاد",
+            "زود",
+            "قفل",
+            "غذا",
+            "متیاس",
+            "غذا"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-05T01:01+03:30"
+        },
+        "linear-a": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 50.63,
+          "check_words": [
+            "معنایش",
+            "الف",
+            "هزار",
+            "نهصد",
+            "پنجاه",
+            "الف",
+            "جمع"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-05T01:05+03:30"
         }
       },
-      "done": false,
-      "planned_at": "2026-11-02T01:16+03:30"
+      "done": true,
+      "planned_at": "2026-11-02T01:16+03:30",
+      "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-11-02"
     }
   },
   "carousels": {
