@@ -20,6 +20,7 @@
     "08_2026-11-05_2251_marfa-lights_story",
     "09_2026-11-06_0956_lars-mittank",
     "10_2026-11-06_1805_mv-joyita",
+    "11_2026-11-06_2211_frederick-valentich",
     "car_marlik"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -734,6 +735,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste_story.mp4?v=2"
+    },
+    "11_2026-11-06_2211_frederick-valentich": {
+      "at": "2026-11-04T13:00+03:30",
+      "audio_v": 3,
+      "cap": "e984cc24a0a5",
+      "due": "2026-11-06T22:11:00+03:30",
+      "kind": "reel",
+      "post_id": "6aeafbe620b88292aa79e6dd",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-11-06_2211_frederick-valentich.mp4?v=3"
     },
     "12_2026-10-17_2134_oak-island": {
       "at": "2026-10-14T23:26+03:30",

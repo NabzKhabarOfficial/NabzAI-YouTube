@@ -190,6 +190,16 @@
       },
       "status": "succeeded"
     },
+    "6891004f85f381105aa1b146df061ef2598eec93bae42d23b1b30978f68be70b": {
+      "external_id": "6aeafbe620b88292aa79e6dd",
+      "metadata": {
+        "due": "2026-11-06T22:11:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-11-06_2211_frederick-valentich.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "729950e35128893cd650c3158f1af188bf772487aedd1f80656f45ef1514b193": {
       "external_id": "6ae5b5da1891472093c4c081",
       "metadata": {
