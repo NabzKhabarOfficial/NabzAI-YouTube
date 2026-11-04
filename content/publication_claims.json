@@ -291,6 +291,16 @@
       },
       "status": "succeeded"
     },
+    "8b29669b039e9a2024aa832715ee7cf9d73ba1514fc206fafa05d3e9b9535283": {
+      "external_id": "6aeba5b9c91738fad505b6c3",
+      "metadata": {
+        "due": "2026-11-06T22:26:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-11-06_2211_frederick-valentich_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "8ceec218899b1f10c9755173d7dd4a206b6cc84183cc8e795c7392f1eb1d6bc7": {
       "external_id": "YWsnMtRKZOk",
       "metadata": {
@@ -408,6 +418,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-10-31_1218_percy-fawcett.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "cdc805e5134a4085374704ed012c040315a70504a63391c03999a7ff06b2e379": {
+      "external_id": "6aeba5b83a6057e11e774299",
+      "metadata": {
+        "due": "2026-11-06T18:20:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-11-06_1805_mv-joyita_story.mp4?v=2"
       },
       "status": "succeeded"
     },

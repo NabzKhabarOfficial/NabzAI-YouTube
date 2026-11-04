@@ -12,14 +12,14 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "06_2026-11-04_1901_ss-baychimo",
-    "06_2026-11-04_1901_ss-baychimo_story",
     "07_2026-11-05_1426_babushka-lady",
     "08_2026-11-05_2251_marfa-lights",
     "08_2026-11-05_2251_marfa-lights_story",
     "09_2026-11-06_0956_lars-mittank",
     "10_2026-11-06_1805_mv-joyita",
+    "10_2026-11-06_1805_mv-joyita_story",
     "11_2026-11-06_2211_frederick-valentich",
+    "11_2026-11-06_2211_frederick-valentich_story",
     "12_2026-11-07_1421_lord-lucan",
     "car_marlik"
   ],
@@ -421,7 +421,7 @@
       "due": "2026-11-04T19:01:00+03:30",
       "kind": "reel",
       "post_id": "6ae91e6db62d192bcc4eb90e",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-04_1901_ss-baychimo.mp4?v=3"
     },
     "06_2026-11-04_1901_ss-baychimo_story": {
@@ -431,7 +431,7 @@
       "due": "2026-11-04T19:16:00+03:30",
       "kind": "story",
       "post_id": "6ae9aa73be1f6ddaea3c4828",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-04_1901_ss-baychimo_story.mp4?v=2"
     },
@@ -672,6 +672,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-11-06_1805_mv-joyita.mp4?v=3"
     },
+    "10_2026-11-06_1805_mv-joyita_story": {
+      "at": "2026-11-05T01:06+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-06T18:20:00+03:30",
+      "kind": "story",
+      "post_id": "6aeba5b83a6057e11e774299",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-11-06_1805_mv-joyita_story.mp4?v=2"
+    },
     "11_2026-10-17_1403_andes-flight-571": {
       "at": "2026-10-15T14:02+03:30",
       "audio_v": 3,
@@ -745,6 +756,17 @@
       "post_id": "6aeafbe620b88292aa79e6dd",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-11-06_2211_frederick-valentich.mp4?v=3"
+    },
+    "11_2026-11-06_2211_frederick-valentich_story": {
+      "at": "2026-11-05T01:06+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-06T22:26:00+03:30",
+      "kind": "story",
+      "post_id": "6aeba5b9c91738fad505b6c3",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-11-06_2211_frederick-valentich_story.mp4?v=2"
     },
     "12_2026-10-17_2134_oak-island": {
       "at": "2026-10-14T23:26+03:30",
