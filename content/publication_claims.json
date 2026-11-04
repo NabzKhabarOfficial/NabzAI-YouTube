@@ -1,5 +1,15 @@
 {
   "claims": {
+    "08a3ee0f4966c3b958f605f5c0ea8911adbba58a976edc867b2623adf59331ca": {
+      "external_id": "chhtNID5QvY",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-04T19:00:00.000Z",
+        "story_id": "phaistos-disc",
+        "video_sha256_24": "3ee60914fe829ae69825d83c"
+      },
+      "status": "succeeded"
+    },
     "0b1c4c4dcc617671da984687a6c0be2e07fe7526c881f673dbe46453dbacaacf": {
       "external_id": "7spAuv-5Lic",
       "metadata": {
