@@ -1,5 +1,15 @@
 {
   "claims": {
+    "07cb70d19fd0e39484074c682c5dd0f9383c3b5362c4ae0ed6d8947b92e45ad6": {
+      "external_id": "6aeca2341e9c3911e565fd62",
+      "metadata": {
+        "due": "2026-11-07T21:28:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "08a3ee0f4966c3b958f605f5c0ea8911adbba58a976edc867b2623adf59331ca": {
       "external_id": "chhtNID5QvY",
       "metadata": {
@@ -308,6 +318,23 @@
         "publish_at": "2026-10-26T19:00:00.000Z",
         "story_id": "ss-baychimo",
         "video_sha256_24": "e81cda3a70e8d30d92083995"
+      },
+      "status": "succeeded"
+    },
+    "99b71d2cea0158178d91e68c605b1ea401e5ab636b5ce1d2064147350773c8aa": {
+      "external_id": "6aeca23414c42730f5c0db82",
+      "metadata": {
+        "due": "2026-11-07T17:33:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
       },
       "status": "succeeded"
     },
