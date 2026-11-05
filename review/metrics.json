@@ -1,9 +1,9 @@
 {
-  "duration_seconds": 34.83,
+  "duration_seconds": 36.23,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 15.84,
+  "file_mb": 15.93,
   "audio": {
     "mean_volume": -18.0,
     "max_volume": -0.4
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "phaistos-disc",
+  "story_id": "rongorongo",
   "story_bank": ""
 }

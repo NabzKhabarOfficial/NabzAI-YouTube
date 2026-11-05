@@ -545,6 +545,16 @@
       },
       "status": "succeeded"
     },
+    "eaaee376a8eb86c539228663d48b1b23414064c2f42a5dc819d298263840a8e5": {
+      "external_id": "w9DiZ_72lis",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-06T19:00:00.000Z",
+        "story_id": "rongorongo",
+        "video_sha256_24": "f3127c67c4d07fcf577dcb88"
+      },
+      "status": "succeeded"
+    },
     "f0b00838f5649117bebce59ca4e2675142b161c11289c0280c58ced01f8ddce0": {
       "external_id": "6ae4f7b5406ab8a0187d430d",
       "metadata": {
