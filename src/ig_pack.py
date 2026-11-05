@@ -84,23 +84,22 @@ MAX_PER_DAY = int(os.getenv("NABZ_PACK_MAX_PER_DAY", "6"))
 
 # Posting slots (Tehran): (earliest, latest) in minutes after midnight.
 SLOTS = {
+    1: [(21 * 60 + 25, 21 * 60 + 35)],
     2: [(13 * 60, 14 * 60 + 10), (20 * 60 + 30, 22 * 60 + 40)],
     3: [(12 * 60 + 50, 14 * 60 + 10), (19 * 60 + 50, 21 * 60), (21 * 60 + 40, 22 * 60 + 55)],
 }
 MIN_DAY_SHIFT = 4  # minutes: the same slot never repeats yesterday's time this closely
 
-# Owner's golden hours (Oct 12 2026), Tehran, per weekday (Monday = 0): [day slot, (extra,) night slot].
-# A range is used as given; a single time gets +-5 minutes so posts do not look automated.
-# Friday has three reels (owner, Oct 12): 10:00, 18:00 and 22:10. The first slot of a day is the
-# film story, the others mysteries. In a short week the extra Friday slot is dropped first.
+# Owner's single daily golden slot (Tehran): 21:25-21:35, every weekday.
+# A deterministic minute is selected inside the ten-minute window for each day.
 GOLDEN = {
-    5: [(10 * 60 + 30, 14 * 60 + 30), (21 * 60 + 25, 21 * 60 + 35)],  # Saturday
-    6: [(14 * 60, 15 * 60 + 30), (20 * 60 + 55, 21 * 60 + 5)],         # Sunday
-    0: [(13 * 60 + 25, 13 * 60 + 35), (17 * 60 + 55, 18 * 60 + 5)],    # Monday
-    1: [(13 * 60 + 10, 14 * 60), (20 * 60 + 55, 21 * 60 + 5)],         # Tuesday
-    2: [(13 * 60 + 30, 16 * 60), (18 * 60 + 55, 19 * 60 + 5)],         # Wednesday
-    3: [(13 * 60 + 45, 15 * 60), (22 * 60 + 45, 22 * 60 + 55)],        # Thursday
-    4: [(9 * 60 + 55, 10 * 60 + 5), (17 * 60 + 55, 18 * 60 + 5), (22 * 60 + 5, 22 * 60 + 15)],  # Friday
+    0: [(21 * 60 + 25, 21 * 60 + 35)],  # Monday
+    1: [(21 * 60 + 25, 21 * 60 + 35)],  # Tuesday
+    2: [(21 * 60 + 25, 21 * 60 + 35)],  # Wednesday
+    3: [(21 * 60 + 25, 21 * 60 + 35)],  # Thursday
+    4: [(21 * 60 + 25, 21 * 60 + 35)],  # Friday
+    5: [(21 * 60 + 25, 21 * 60 + 35)],  # Saturday
+    6: [(21 * 60 + 25, 21 * 60 + 35)],  # Sunday
 }
 GOLDEN_FROM = date(2026, 10, 19)  # weeks already planned and queued in Buffer keep their times
 
@@ -191,7 +190,7 @@ def fa_digits(text: str) -> str:
 
 
 def golden_times(week: date) -> list[list[str]]:
-    """Seven days of the owner's golden posting times (2 a day, Friday 3), reproducible for a week."""
+    """Seven days with one deterministic golden posting time per day."""
     rng = random.Random(f"nabz-ig-golden-{week.isoformat()}")
     days = []
     for day in range(7):
@@ -203,7 +202,7 @@ def golden_times(week: date) -> list[list[str]]:
 def schedule_times(week: date, per_day: int) -> list[list[str]]:
     """Seven days of posting times ("HH:MM"), shifted every day, reproducible for a week.
     The number of times can differ per day (golden hours: Friday has 3)."""
-    if per_day == 2 and week >= GOLDEN_FROM:
+    if per_day == 1 and week >= GOLDEN_FROM:
         return golden_times(week)
     rng = random.Random(f"nabz-ig-{week.isoformat()}-{per_day}")
     slots = SLOTS[per_day]
@@ -338,7 +337,7 @@ def plan_week(state: dict, week: date, per_day: int, fa_bank: dict, en_ids: set,
               f"week {key} waits for the next batch.", flush=True)
         return None
     if len(fresh) < want:  # a short week: fewer reels a day (Friday's extra golden slot goes first)
-        per_day = max(2, min(per_day, len(fresh) // 7))
+        per_day = max(1, min(per_day, len(fresh) // 7))
         times = [t[:per_day] for t in schedule_times(week, per_day)]
     films = film_ids()
     want_n = min(len(fresh), sum(len(t) for t in times))
@@ -849,8 +848,8 @@ def urgent_redo(state: dict, now: datetime | None = None) -> list[str]:
 def run_week(started: float) -> bool:
     """Builds the current week as far as possible. True only when it completed a week just now."""
     state = load_json(STATE_FILE, {})
-    per_day = int(os.getenv("NABZ_PACK_PER_DAY", "2") or 2)
-    per_day = 3 if per_day >= 3 else 2
+    per_day = int(os.getenv("NABZ_PACK_PER_DAY", "1") or 1)
+    per_day = max(1, min(per_day, 3))
     week = pick_week(state, os.getenv("NABZ_PACK_WEEK", "").strip())
     tag = f"week-{week.isoformat()}"
     info = (state.get("weeks") or {}).get(week.isoformat())
