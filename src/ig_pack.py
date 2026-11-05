@@ -5,11 +5,10 @@ simulated clicks). This script only PREPARES a week of Persian Reels; the owner 
 them himself in Meta Business Suite (or the Instagram app's Schedule option).
 
 One run (workflow ig-pack.yml) does:
-  1. Plans the target week (next Monday .. Sunday): 2 or 3 reels a day, each one a different,
+  1. Plans the target week (next Monday .. Sunday): 1, 2 or 3 reels a day, each one a different,
      fact-checked story from content/mysteries_fa.json that was never posted or packed before.
-     Posting times: from the week of Oct 19 2026 the owner's golden hours per weekday (GOLDEN:
-     2 reels a day, Friday 3, so 15 a week); before that (and for 3 reels a day) 13:00-14:10 and
-     20:30-22:40 Tehran, plus 21:40-22:55.
+     One-reel weeks use the owner's nightly Tehran slot (21:25-21:35); two- and three-reel
+     schedules use the broader SLOTS windows below.
   2. Builds every planned reel that is not built yet: fresh AI pictures, the deep Gemini voice
      (ONE request per reel: the whole script is read in one go and cut back into beats with the
      listening model, then checked word by word), Persian captions, cover. 1080x1920, H.264 + AAC, 15-90 s, checked.
@@ -200,8 +199,8 @@ def golden_times(week: date) -> list[list[str]]:
 
 
 def schedule_times(week: date, per_day: int) -> list[list[str]]:
-    """Seven days of posting times ("HH:MM"), shifted every day, reproducible for a week.
-    The number of times can differ per day (golden hours: Friday has 3)."""
+    """Seven days of posting times ("HH:MM"), reproducible for a week.
+    One-reel weeks use the daily golden slot; two- and three-reel weeks use SLOTS."""
     if per_day == 1 and week >= GOLDEN_FROM:
         return golden_times(week)
     rng = random.Random(f"nabz-ig-{week.isoformat()}-{per_day}")
@@ -336,7 +335,7 @@ def plan_week(state: dict, week: date, per_day: int, fa_bank: dict, en_ids: set,
         print(f"::warning title=Persian bank empty::only {len(fresh)} ready Persian stories: "
               f"week {key} waits for the next batch.", flush=True)
         return None
-    if len(fresh) < want:  # a short week: fewer reels a day (Friday's extra golden slot goes first)
+    if len(fresh) < want:  # a short week: reduce the daily target evenly, never below one reel per day
         per_day = max(1, min(per_day, len(fresh) // 7))
         times = [t[:per_day] for t in schedule_times(week, per_day)]
     films = film_ids()
