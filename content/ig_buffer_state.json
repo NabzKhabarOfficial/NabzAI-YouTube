@@ -12,8 +12,6 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "08_2026-11-05_2251_marfa-lights",
-    "08_2026-11-05_2251_marfa-lights_story",
     "09_2026-11-06_0956_lars-mittank",
     "10_2026-11-06_1805_mv-joyita",
     "10_2026-11-06_1805_mv-joyita_story",
@@ -21,6 +19,8 @@
     "11_2026-11-06_2211_frederick-valentich_story",
     "12_2026-11-07_1421_lord-lucan",
     "13_2026-11-07_2128_brian-shaffer",
+    "13_2026-11-07_2128_brian-shaffer_story",
+    "14_2026-11-08_1417_yuba-county-five",
     "car_shapur-cave"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -545,7 +545,7 @@
       "due": "2026-11-05T22:51:00+03:30",
       "kind": "reel",
       "post_id": "6ae9fee101362e3aaea12d83",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights.mp4?v=3"
     },
     "08_2026-11-05_2251_marfa-lights_story": {
@@ -555,7 +555,7 @@
       "due": "2026-11-05T23:06:00+03:30",
       "kind": "story",
       "post_id": "6aea4e79fdaa0acca707d7b6",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights_story.mp4?v=2"
     },
@@ -881,6 +881,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer.mp4?v=3"
     },
+    "13_2026-11-07_2128_brian-shaffer_story": {
+      "at": "2026-11-06T01:01+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-07T21:43:00+03:30",
+      "kind": "story",
+      "post_id": "6aecf62d088ebc7501ac1992",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer_story.mp4?v=2"
+    },
     "14_2026-10-18_2121_princes-in-the-tower": {
       "at": "2026-10-15T22:48+03:30",
       "audio_v": 3,
@@ -921,6 +932,16 @@
       "post_id": "6ae3677cc073f399d5efe728",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-01_1446_mallory-irvine.mp4?v=3"
+    },
+    "14_2026-11-08_1417_yuba-county-five": {
+      "at": "2026-11-06T01:01+03:30",
+      "audio_v": 3,
+      "cap": "de38e108c117",
+      "due": "2026-11-08T14:17:00+03:30",
+      "kind": "reel",
+      "post_id": "6aecf62d30c2a60197e50eb9",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-08_1417_yuba-county-five.mp4?v=3"
     },
     "15_2026-10-25_2056_green-children-of-woolpit": {
       "at": "2026-10-23T19:00+03:30",

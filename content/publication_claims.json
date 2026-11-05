@@ -69,6 +69,16 @@
       },
       "status": "succeeded"
     },
+    "1e44e21c6858dbf90cb6a5e45098c0832fcc74a6fb56ac00396d88f7ed180e2c": {
+      "external_id": "6aecf62d088ebc7501ac1992",
+      "metadata": {
+        "due": "2026-11-07T21:43:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "25c5a702fbe60e6311f4f381ec0fcb2a51c8853a0894d2321d39ea3b62c5e07b": {
       "external_id": "6ae8acfe31e164b233edd5cd",
       "metadata": {
@@ -495,6 +505,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-11-06_0956_lars-mittank.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "de25aaff89cd8d683ea8d6a8bddcf0ac0e270d824e54023a89710cff4a119f49": {
+      "external_id": "6aecf62d30c2a60197e50eb9",
+      "metadata": {
+        "due": "2026-11-08T14:17:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-08_1417_yuba-county-five.mp4?v=3"
       },
       "status": "succeeded"
     },
