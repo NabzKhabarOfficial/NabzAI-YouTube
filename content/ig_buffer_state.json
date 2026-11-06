@@ -12,8 +12,7 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "10_2026-11-06_1805_mv-joyita",
-    "10_2026-11-06_1805_mv-joyita_story",
+    "01_2026-11-09_2133_patterson-gimlin",
     "11_2026-11-06_2211_frederick-valentich",
     "11_2026-11-06_2211_frederick-valentich_story",
     "12_2026-11-07_1421_lord-lucan",
@@ -21,6 +20,7 @@
     "13_2026-11-07_2128_brian-shaffer_story",
     "14_2026-11-08_1417_yuba-county-five",
     "15_2026-11-08_2101_linear-a",
+    "15_2026-11-08_2101_linear-a_story",
     "car_shapur-cave"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -105,6 +105,16 @@
       "post_id": "6ae7c583779ee9f13cbdbc72",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-02_1329_roanoke-colony.mp4?v=3"
+    },
+    "01_2026-11-09_2133_patterson-gimlin": {
+      "at": "2026-11-06T19:28+03:30",
+      "audio_v": 3,
+      "cap": "8b9c725f9a7a",
+      "due": "2026-11-09T21:33:00+03:30",
+      "kind": "reel",
+      "post_id": "6aedf9a0dac279812edd6980",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-09_2133_patterson-gimlin.mp4?v=3"
     },
     "02_2026-10-12_2049_flight-19": {
       "at": "2026-10-10T23:22+03:30",
@@ -669,7 +679,7 @@
       "due": "2026-11-06T18:05:00+03:30",
       "kind": "reel",
       "post_id": "6aea4e7a0a183b1b742ca50d",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-11-06_1805_mv-joyita.mp4?v=3"
     },
     "10_2026-11-06_1805_mv-joyita_story": {
@@ -679,7 +689,7 @@
       "due": "2026-11-06T18:20:00+03:30",
       "kind": "story",
       "post_id": "6aeba5b83a6057e11e774299",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-11-06_1805_mv-joyita_story.mp4?v=2"
     },
@@ -983,6 +993,17 @@
       "post_id": "6aed9efcdbada656be07b064",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-08_2101_linear-a.mp4?v=3"
+    },
+    "15_2026-11-08_2101_linear-a_story": {
+      "at": "2026-11-06T19:28+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-08T21:16:00+03:30",
+      "kind": "story",
+      "post_id": "6aedf99f4525bf695e6cc505",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-08_2101_linear-a_story.mp4?v=2"
     },
     "car_alamut": {
       "at": "2026-10-14T23:26+03:30",

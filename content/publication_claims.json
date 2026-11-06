@@ -358,6 +358,16 @@
       },
       "status": "succeeded"
     },
+    "a1b4d7c2edab80834c484191f569bc9e0cee4d88a989dec4211d41aa6b2c8637": {
+      "external_id": "6aedf9a0dac279812edd6980",
+      "metadata": {
+        "due": "2026-11-09T21:33:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-09_2133_patterson-gimlin.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "a1dec3ac2469ef1a722249bc647a7bde17b04f008ce7b7a26b2a7b07f0feafe2": {
       "external_id": "6ae075fdcedf2995f649c21d",
       "metadata": {
@@ -455,6 +465,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-31_2134_baghdad-battery.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "c78af4d85abcc6cc48e26efffa0c607147296d4912f61c1ef3e20a052465a569": {
+      "external_id": "6aedf99f4525bf695e6cc505",
+      "metadata": {
+        "due": "2026-11-08T21:16:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-08_2101_linear-a_story.mp4?v=2"
       },
       "status": "succeeded"
     },
