@@ -1139,6 +1139,146 @@
       "done": true,
       "planned_at": "2026-11-02T01:16+03:30",
       "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-11-02"
+    },
+    "2026-11-09": {
+      "per_day": 1,
+      "plan": [
+        {
+          "n": 1,
+          "id": "patterson-gimlin",
+          "date": "2026-11-09",
+          "time": "21:33"
+        },
+        {
+          "n": 2,
+          "id": "piri-reis-map",
+          "date": "2026-11-10",
+          "time": "21:27"
+        },
+        {
+          "n": 3,
+          "id": "shroud-of-turin",
+          "date": "2026-11-11",
+          "time": "21:30"
+        },
+        {
+          "n": 4,
+          "id": "iron-mask",
+          "date": "2026-11-12",
+          "time": "21:30"
+        },
+        {
+          "n": 5,
+          "id": "princess-caraboo",
+          "date": "2026-11-13",
+          "time": "21:30"
+        },
+        {
+          "n": 6,
+          "id": "mary-rose",
+          "date": "2026-11-14",
+          "time": "21:26"
+        },
+        {
+          "n": 7,
+          "id": "dancing-forest",
+          "date": "2026-11-15",
+          "time": "21:33"
+        }
+      ],
+      "built": {
+        "patterson-gimlin": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 37.9,
+          "check_words": [
+            "فیلم",
+            "گرفتند",
+            "گذشت",
+            "واقعی",
+            "بود",
+            "نظر",
+            "نمی‌رسید",
+            "اشاره",
+            "کردند",
+            "معلوم",
+            "ثبت",
+            "قطعی"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-06T19:05+03:30"
+        },
+        "piri-reis-map": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 43.87,
+          "check_words": [
+            "بعضی‌ها",
+            "ثابت",
+            "کپی"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-06T19:10+03:30"
+        },
+        "shroud-of-turin": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 36.07,
+          "check_words": [
+            "عیسی",
+            "سال",
+            "دادند",
+            "گرفتند",
+            "است",
+            "بعضی",
+            "شده",
+            "احتمال",
+            "وسطایی",
+            "دقیق",
+            "مانده",
+            "قطعیت"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-06T19:14+03:30"
+        },
+        "iron-mask": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 35.0,
+          "check_words": [
+            "نقابی",
+            "داشت",
+            "غذای",
+            "فقط",
+            "دوژه",
+            "معلوم"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-06T19:18+03:30"
+        },
+        "princess-caraboo": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 41.1,
+          "check_words": [
+            "ربوده‌اند",
+            "کردند",
+            "دادند",
+            "ثابت"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-06T19:23+03:30"
+        },
+        "mary-rose": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 38.8,
+          "check_words": [
+            "غرق",
+            "اثر",
+            "سرعت",
+            "غرق"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-06T19:27+03:30"
+        }
+      },
+      "done": false,
+      "planned_at": "2026-11-06T19:01+03:30"
     }
   },
   "carousels": {
