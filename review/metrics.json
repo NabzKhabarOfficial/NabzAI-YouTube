@@ -1,9 +1,9 @@
 {
-  "duration_seconds": 36.23,
+  "duration_seconds": 35.47,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 15.93,
+  "file_mb": 16.43,
   "audio": {
     "mean_volume": -18.0,
     "max_volume": -0.4
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "rongorongo",
+  "story_id": "linear-a",
   "story_bank": ""
 }

@@ -1,8 +1,8 @@
-# Review: The Lost Writing of Easter Island
+# Review: Linear A: The Script That Still Has No Voice
 
 | Check | Result |
 |---|---|
-| duration 20-40s | OK (36.2s) |
+| duration 20-40s | OK (35.5s) |
 | vertical 1080x1920 | OK (1080x1920) |
 | audio not too quiet | OK (-18.0 dB) |
 | no clipping | OK (-0.4 dB) |
