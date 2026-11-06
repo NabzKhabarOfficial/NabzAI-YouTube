@@ -12,16 +12,16 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "07_2026-11-05_1426_babushka-lady",
-    "08_2026-11-05_2251_marfa-lights",
-    "08_2026-11-05_2251_marfa-lights_story",
-    "09_2026-11-06_0956_lars-mittank",
     "10_2026-11-06_1805_mv-joyita",
     "10_2026-11-06_1805_mv-joyita_story",
     "11_2026-11-06_2211_frederick-valentich",
     "11_2026-11-06_2211_frederick-valentich_story",
     "12_2026-11-07_1421_lord-lucan",
-    "car_marlik"
+    "13_2026-11-07_2128_brian-shaffer",
+    "13_2026-11-07_2128_brian-shaffer_story",
+    "14_2026-11-08_1417_yuba-county-five",
+    "15_2026-11-08_2101_linear-a",
+    "car_shapur-cave"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -472,7 +472,7 @@
       "due": "2026-11-05T14:26:00+03:30",
       "kind": "reel",
       "post_id": "6ae9aa74749426a5a468eb1f",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-05_1426_babushka-lady.mp4?v=3"
     },
     "08_2026-10-15_2233_kaz-ii": {
@@ -545,7 +545,7 @@
       "due": "2026-11-05T22:51:00+03:30",
       "kind": "reel",
       "post_id": "6ae9fee101362e3aaea12d83",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights.mp4?v=3"
     },
     "08_2026-11-05_2251_marfa-lights_story": {
@@ -555,7 +555,7 @@
       "due": "2026-11-05T23:06:00+03:30",
       "kind": "story",
       "post_id": "6aea4e79fdaa0acca707d7b6",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-11-05_2251_marfa-lights_story.mp4?v=2"
     },
@@ -596,7 +596,7 @@
       "due": "2026-11-06T09:56:00+03:30",
       "kind": "reel",
       "post_id": "6ae9fee2b75704f9ac5e4042",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-11-06_0956_lars-mittank.mp4?v=3"
     },
     "10_2026-10-16_2202_paula-welden": {
@@ -871,6 +871,27 @@
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-10-31_2134_baghdad-battery_story.mp4?v=2"
     },
+    "13_2026-11-07_2128_brian-shaffer": {
+      "at": "2026-11-05T19:02+03:30",
+      "audio_v": 3,
+      "cap": "ca8a2f18b96e",
+      "due": "2026-11-07T21:28:00+03:30",
+      "kind": "reel",
+      "post_id": "6aeca2341e9c3911e565fd62",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer.mp4?v=3"
+    },
+    "13_2026-11-07_2128_brian-shaffer_story": {
+      "at": "2026-11-06T01:01+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-07T21:43:00+03:30",
+      "kind": "story",
+      "post_id": "6aecf62d088ebc7501ac1992",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer_story.mp4?v=2"
+    },
     "14_2026-10-18_2121_princes-in-the-tower": {
       "at": "2026-10-15T22:48+03:30",
       "audio_v": 3,
@@ -912,6 +933,16 @@
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-01_1446_mallory-irvine.mp4?v=3"
     },
+    "14_2026-11-08_1417_yuba-county-five": {
+      "at": "2026-11-06T01:01+03:30",
+      "audio_v": 3,
+      "cap": "de38e108c117",
+      "due": "2026-11-08T14:17:00+03:30",
+      "kind": "reel",
+      "post_id": "6aecf62d30c2a60197e50eb9",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-08_1417_yuba-county-five.mp4?v=3"
+    },
     "15_2026-10-25_2056_green-children-of-woolpit": {
       "at": "2026-10-23T19:00+03:30",
       "audio_v": 3,
@@ -942,6 +973,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-01_2059_ss-waratah_story.mp4?v=2"
+    },
+    "15_2026-11-08_2101_linear-a": {
+      "at": "2026-11-06T13:01+03:30",
+      "audio_v": 3,
+      "cap": "0e721c175b6f",
+      "due": "2026-11-08T21:01:00+03:30",
+      "kind": "reel",
+      "post_id": "6aed9efcdbada656be07b064",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-08_2101_linear-a.mp4?v=3"
     },
     "car_alamut": {
       "at": "2026-10-14T23:26+03:30",
@@ -1009,7 +1050,7 @@
       "due": "2026-11-05T17:02:00+03:30",
       "kind": "carousel",
       "post_id": "6ae75baf354a6ae7df879c47",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_marlik_1.jpg"
     },
     "car_oxus-treasure": {
@@ -1040,6 +1081,16 @@
       "post_id": "6acbaeb6d9cab260a701842e",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_peter-bergmann_1.jpg"
+    },
+    "car_shapur-cave": {
+      "at": "2026-11-05T19:02+03:30",
+      "audio_v": 1,
+      "cap": "6f86fe611ce7",
+      "due": "2026-11-07T17:33:00+03:30",
+      "kind": "carousel",
+      "post_id": "6aeca23414c42730f5c0db82",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_1.jpg"
     },
     "car_tarim-mummies": {
       "at": "2026-10-21T19:00+03:30",

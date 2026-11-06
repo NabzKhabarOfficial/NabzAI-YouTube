@@ -1,5 +1,15 @@
 {
   "claims": {
+    "07cb70d19fd0e39484074c682c5dd0f9383c3b5362c4ae0ed6d8947b92e45ad6": {
+      "external_id": "6aeca2341e9c3911e565fd62",
+      "metadata": {
+        "due": "2026-11-07T21:28:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "08a3ee0f4966c3b958f605f5c0ea8911adbba58a976edc867b2623adf59331ca": {
       "external_id": "chhtNID5QvY",
       "metadata": {
@@ -56,6 +66,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-01_1446_mallory-irvine.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "1e44e21c6858dbf90cb6a5e45098c0832fcc74a6fb56ac00396d88f7ed180e2c": {
+      "external_id": "6aecf62d088ebc7501ac1992",
+      "metadata": {
+        "due": "2026-11-07T21:43:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer_story.mp4?v=2"
       },
       "status": "succeeded"
     },
@@ -311,6 +331,23 @@
       },
       "status": "succeeded"
     },
+    "99b71d2cea0158178d91e68c605b1ea401e5ab636b5ce1d2064147350773c8aa": {
+      "external_id": "6aeca23414c42730f5c0db82",
+      "metadata": {
+        "due": "2026-11-07T17:33:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
     "a1a21530d5328fd6e45adc167cac8094c9ee1ad224e39800c35573169f810b2f": {
       "external_id": "6ae4642f58a62337fb791618",
       "metadata": {
@@ -388,6 +425,16 @@
         "kind": "story",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
+    "c13f7ff1e83e94d1ec9f68885a7f9ad806b979ba225c5280f63d6453302a754e": {
+      "external_id": "6aed9efcdbada656be07b064",
+      "metadata": {
+        "due": "2026-11-08T21:01:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-08_2101_linear-a.mp4?v=3"
       },
       "status": "succeeded"
     },
@@ -471,6 +518,26 @@
       },
       "status": "succeeded"
     },
+    "ddb816ba8bc6ebd9fef5593fc193af48b0fef459ba848b508ea896fb1699d729": {
+      "external_id": "0H9r6JY1VQ8",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-06T19:00:00.000Z",
+        "story_id": "linear-a",
+        "video_sha256_24": "a2c949377d2be01a9ccceefb"
+      },
+      "status": "succeeded"
+    },
+    "de25aaff89cd8d683ea8d6a8bddcf0ac0e270d824e54023a89710cff4a119f49": {
+      "external_id": "6aecf62d30c2a60197e50eb9",
+      "metadata": {
+        "due": "2026-11-08T14:17:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-08_1417_yuba-county-five.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "e04104ef311e3f5eca4a663f4a846d82fd89024fb44e8ccb6338b2906a70ced3": {
       "external_id": "6adf7306be236a10f9e0c2fe",
       "metadata": {
@@ -515,6 +582,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-10-28_1450_ninth-legion.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "eaaee376a8eb86c539228663d48b1b23414064c2f42a5dc819d298263840a8e5": {
+      "external_id": "w9DiZ_72lis",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-06T19:00:00.000Z",
+        "story_id": "rongorongo",
+        "video_sha256_24": "f3127c67c4d07fcf577dcb88"
       },
       "status": "succeeded"
     },
