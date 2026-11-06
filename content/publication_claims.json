@@ -528,6 +528,16 @@
       },
       "status": "succeeded"
     },
+    "d4f54c3cb56f5d27c5a0f5b5aa0cd8fd51709fb844eee112fb4965a1a7014820": {
+      "external_id": "6aee402daf7e526d43e003f1",
+      "metadata": {
+        "due": "2026-11-09T21:48:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-09_2133_patterson-gimlin_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "d8bdf8e0884005e61bb378a8aa56a24ed1aa031306288504c4219f89ebd66956": {
       "external_id": "6ae9fee2b75704f9ac5e4042",
       "metadata": {
@@ -622,6 +632,23 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-01_2059_ss-waratah.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "f2bd9814c53bce068ffbe8a5eb2c5d9ed9977c8e63d9d65d0314c7045fb9c8e3": {
+      "external_id": "6aee402d9214322f68afdce8",
+      "metadata": {
+        "due": "2026-11-10T17:26:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
       },
       "status": "succeeded"
     },

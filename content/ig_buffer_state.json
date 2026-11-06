@@ -13,14 +13,14 @@
   "films_page": "9e43fe38f018",
   "hosted": [
     "01_2026-11-09_2133_patterson-gimlin",
-    "11_2026-11-06_2211_frederick-valentich",
-    "11_2026-11-06_2211_frederick-valentich_story",
+    "01_2026-11-09_2133_patterson-gimlin_story",
     "12_2026-11-07_1421_lord-lucan",
     "13_2026-11-07_2128_brian-shaffer",
     "13_2026-11-07_2128_brian-shaffer_story",
     "14_2026-11-08_1417_yuba-county-five",
     "15_2026-11-08_2101_linear-a",
     "15_2026-11-08_2101_linear-a_story",
+    "car_ganj-nameh",
     "car_shapur-cave"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -115,6 +115,17 @@
       "post_id": "6aedf9a0dac279812edd6980",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-09_2133_patterson-gimlin.mp4?v=3"
+    },
+    "01_2026-11-09_2133_patterson-gimlin_story": {
+      "at": "2026-11-07T00:28+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-09T21:48:00+03:30",
+      "kind": "story",
+      "post_id": "6aee402daf7e526d43e003f1",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-09_2133_patterson-gimlin_story.mp4?v=2"
     },
     "02_2026-10-12_2049_flight-19": {
       "at": "2026-10-10T23:22+03:30",
@@ -764,7 +775,7 @@
       "due": "2026-11-06T22:11:00+03:30",
       "kind": "reel",
       "post_id": "6aeafbe620b88292aa79e6dd",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-11-06_2211_frederick-valentich.mp4?v=3"
     },
     "11_2026-11-06_2211_frederick-valentich_story": {
@@ -774,7 +785,7 @@
       "due": "2026-11-06T22:26:00+03:30",
       "kind": "story",
       "post_id": "6aeba5b9c91738fad505b6c3",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-11-06_2211_frederick-valentich_story.mp4?v=2"
     },
@@ -1034,6 +1045,16 @@
       "post_id": "6ae60a3cabbfa4c0cc1daaa5",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_1.jpg"
+    },
+    "car_ganj-nameh": {
+      "at": "2026-11-07T00:28+03:30",
+      "audio_v": 1,
+      "cap": "35294e912fab",
+      "due": "2026-11-10T17:26:00+03:30",
+      "kind": "carousel",
+      "post_id": "6aee402d9214322f68afdce8",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_1.jpg"
     },
     "car_gorgan-wall": {
       "at": "2026-10-19T20:04+03:30",
