@@ -12,7 +12,6 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "09_2026-11-06_0956_lars-mittank",
     "10_2026-11-06_1805_mv-joyita",
     "10_2026-11-06_1805_mv-joyita_story",
     "11_2026-11-06_2211_frederick-valentich",
@@ -21,6 +20,7 @@
     "13_2026-11-07_2128_brian-shaffer",
     "13_2026-11-07_2128_brian-shaffer_story",
     "14_2026-11-08_1417_yuba-county-five",
+    "15_2026-11-08_2101_linear-a",
     "car_shapur-cave"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -596,7 +596,7 @@
       "due": "2026-11-06T09:56:00+03:30",
       "kind": "reel",
       "post_id": "6ae9fee2b75704f9ac5e4042",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/09_2026-11-06_0956_lars-mittank.mp4?v=3"
     },
     "10_2026-10-16_2202_paula-welden": {
@@ -973,6 +973,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-01_2059_ss-waratah_story.mp4?v=2"
+    },
+    "15_2026-11-08_2101_linear-a": {
+      "at": "2026-11-06T13:01+03:30",
+      "audio_v": 3,
+      "cap": "0e721c175b6f",
+      "due": "2026-11-08T21:01:00+03:30",
+      "kind": "reel",
+      "post_id": "6aed9efcdbada656be07b064",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-08_2101_linear-a.mp4?v=3"
     },
     "car_alamut": {
       "at": "2026-10-14T23:26+03:30",
