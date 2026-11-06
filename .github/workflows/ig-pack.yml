@@ -18,9 +18,10 @@ on:
       per_day:
         description: "Reels per day"
         required: true
-        default: "2"
+        default: "1"
         type: choice
         options:
+          - "1"
           - "2"
           - "3"
 
@@ -77,7 +78,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
 
       NABZ_PACK_WEEK: ${{ inputs.week }}
-      NABZ_PACK_PER_DAY: ${{ inputs.per_day || '2' }}
+      NABZ_PACK_PER_DAY: ${{ inputs.per_day || '1' }}
       NABZ_VOICE_CHECK_TRIES: "4"
 
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
