@@ -29,6 +29,16 @@
       },
       "status": "succeeded"
     },
+    "0fa6663e7b189d74179b135ee166e04de6bd11a771b2f9e547166e592a9e5b57": {
+      "external_id": "9CR4fSt-qOQ",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-07T19:00:00.000Z",
+        "story_id": "lake-bodom",
+        "video_sha256_24": "bc4c1b2a3f8ad59ff5b10f34"
+      },
+      "status": "succeeded"
+    },
     "0fed2fa0133dfd0de45d4086254720c3b730657ce97394933da09a779f0690e9": {
       "external_id": "6ae1063d944977ae025535d9",
       "metadata": {

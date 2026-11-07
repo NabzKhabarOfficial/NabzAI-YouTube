@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 35.47,
+  "duration_seconds": 38.87,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 16.43,
+  "file_mb": 17.67,
   "audio": {
     "mean_volume": -18.0,
-    "max_volume": -0.4
+    "max_volume": -0.3
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "linear-a",
+  "story_id": "lake-bodom",
   "story_bank": ""
 }
