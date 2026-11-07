@@ -15,9 +15,9 @@
     "01_2026-11-09_2133_patterson-gimlin",
     "01_2026-11-09_2133_patterson-gimlin_story",
     "02_2026-11-10_2127_piri-reis-map",
+    "02_2026-11-10_2127_piri-reis-map_story",
     "03_2026-11-11_2130_shroud-of-turin",
-    "13_2026-11-07_2128_brian-shaffer",
-    "13_2026-11-07_2128_brian-shaffer_story",
+    "03_2026-11-11_2130_shroud-of-turin_story",
     "14_2026-11-08_1417_yuba-county-five",
     "15_2026-11-08_2101_linear-a",
     "15_2026-11-08_2101_linear-a_story",
@@ -208,6 +208,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-10_2127_piri-reis-map.mp4?v=3"
     },
+    "02_2026-11-10_2127_piri-reis-map_story": {
+      "at": "2026-11-07T23:01+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-10T21:42:00+03:30",
+      "kind": "story",
+      "post_id": "6aef7d02d6bbae6fa1a88c81",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-10_2127_piri-reis-map_story.mp4?v=2"
+    },
     "03_2026-10-13_1353_mh370": {
       "at": "2026-10-12T16:23+03:30",
       "audio_v": 3,
@@ -267,6 +278,17 @@
       "post_id": "6aef449851492b796ee5d392",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-11_2130_shroud-of-turin.mp4?v=3"
+    },
+    "03_2026-11-11_2130_shroud-of-turin_story": {
+      "at": "2026-11-07T23:01+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-11T21:45:00+03:30",
+      "kind": "story",
+      "post_id": "6aef7d039214322f6810c843",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-11_2130_shroud-of-turin_story.mp4?v=2"
     },
     "04_2026-10-13_2031_dancing-plague-1518": {
       "at": "2026-10-11T19:12+03:30",
@@ -919,7 +941,7 @@
       "due": "2026-11-07T21:28:00+03:30",
       "kind": "reel",
       "post_id": "6aeca2341e9c3911e565fd62",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer.mp4?v=3"
     },
     "13_2026-11-07_2128_brian-shaffer_story": {
@@ -929,7 +951,7 @@
       "due": "2026-11-07T21:43:00+03:30",
       "kind": "story",
       "post_id": "6aecf62d088ebc7501ac1992",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/13_2026-11-07_2128_brian-shaffer_story.mp4?v=2"
     },

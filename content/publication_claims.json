@@ -398,6 +398,16 @@
       },
       "status": "succeeded"
     },
+    "ab2814c3aed6977f3b617cd9dd08aab2010a07df263e4ee296e0bd48eac79dd2": {
+      "external_id": "6aef7d02d6bbae6fa1a88c81",
+      "metadata": {
+        "due": "2026-11-10T21:42:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-10_2127_piri-reis-map_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "ab3162e49b3fe54f79f2ba77917e57eed802abe827ef9982d39a071788448c93": {
       "external_id": "efkrW5DBZzI",
       "metadata": {
@@ -689,6 +699,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-04_1901_ss-baychimo.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "feb5590673a26b398de45d7d6801f0e9c0151b900762985a17704ffa98397029": {
+      "external_id": "6aef7d039214322f6810c843",
+      "metadata": {
+        "due": "2026-11-11T21:45:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-11_2130_shroud-of-turin_story.mp4?v=2"
       },
       "status": "succeeded"
     }
