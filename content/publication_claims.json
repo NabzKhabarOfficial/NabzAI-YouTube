@@ -408,6 +408,16 @@
       },
       "status": "succeeded"
     },
+    "ab42bb3389fc389a59cba20b644ac790300a6cfe65900edd1ffd5cfc1b28bd51": {
+      "external_id": "6aef449851492b796ee5d392",
+      "metadata": {
+        "due": "2026-11-11T21:30:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-11_2130_shroud-of-turin.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "ac000a0fedb950c2dcf9ec19de7515ddd11cfe009116775225738f6ebe885896": {
       "external_id": "6ae0c4390574aed3d269375d",
       "metadata": {
@@ -545,6 +555,16 @@
         "kind": "story",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-09_2133_patterson-gimlin_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
+    "d818f87dfa55bca64d3d8d619c236d702a27882463c78a60387fbe10271615ca": {
+      "external_id": "6aef4498d6bbae6fa196a187",
+      "metadata": {
+        "due": "2026-11-10T21:27:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-10_2127_piri-reis-map.mp4?v=3"
       },
       "status": "succeeded"
     },

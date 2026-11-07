@@ -14,14 +14,14 @@
   "hosted": [
     "01_2026-11-09_2133_patterson-gimlin",
     "01_2026-11-09_2133_patterson-gimlin_story",
-    "12_2026-11-07_1421_lord-lucan",
+    "02_2026-11-10_2127_piri-reis-map",
+    "03_2026-11-11_2130_shroud-of-turin",
     "13_2026-11-07_2128_brian-shaffer",
     "13_2026-11-07_2128_brian-shaffer_story",
     "14_2026-11-08_1417_yuba-county-five",
     "15_2026-11-08_2101_linear-a",
     "15_2026-11-08_2101_linear-a_story",
-    "car_ganj-nameh",
-    "car_shapur-cave"
+    "car_ganj-nameh"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -198,6 +198,16 @@
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-02_1803_isdal-woman.mp4?v=3"
     },
+    "02_2026-11-10_2127_piri-reis-map": {
+      "at": "2026-11-07T19:00+03:30",
+      "audio_v": 3,
+      "cap": "e5fbdfdc19d9",
+      "due": "2026-11-10T21:27:00+03:30",
+      "kind": "reel",
+      "post_id": "6aef4498d6bbae6fa196a187",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-10_2127_piri-reis-map.mp4?v=3"
+    },
     "03_2026-10-13_1353_mh370": {
       "at": "2026-10-12T16:23+03:30",
       "audio_v": 3,
@@ -247,6 +257,16 @@
       "post_id": "6ae858fc43b939472a7bb0aa",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-03_1354_ambrose-small.mp4?v=3"
+    },
+    "03_2026-11-11_2130_shroud-of-turin": {
+      "at": "2026-11-07T19:00+03:30",
+      "audio_v": 3,
+      "cap": "b29c3ba21e24",
+      "due": "2026-11-11T21:30:00+03:30",
+      "kind": "reel",
+      "post_id": "6aef449851492b796ee5d392",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-11_2130_shroud-of-turin.mp4?v=3"
     },
     "04_2026-10-13_2031_dancing-plague-1518": {
       "at": "2026-10-11T19:12+03:30",
@@ -837,7 +857,7 @@
       "due": "2026-11-07T14:21:00+03:30",
       "kind": "reel",
       "post_id": "6aeb504555381ceedcbfe582",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/12_2026-11-07_1421_lord-lucan.mp4?v=3"
     },
     "13_2026-10-18_1323_chris-mccandless": {
@@ -1131,7 +1151,7 @@
       "due": "2026-11-07T17:33:00+03:30",
       "kind": "carousel",
       "post_id": "6aeca23414c42730f5c0db82",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_1.jpg"
     },
     "car_tarim-mummies": {
