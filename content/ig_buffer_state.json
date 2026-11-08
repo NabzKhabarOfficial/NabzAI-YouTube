@@ -18,10 +18,10 @@
     "02_2026-11-10_2127_piri-reis-map_story",
     "03_2026-11-11_2130_shroud-of-turin",
     "03_2026-11-11_2130_shroud-of-turin_story",
-    "14_2026-11-08_1417_yuba-county-five",
     "15_2026-11-08_2101_linear-a",
     "15_2026-11-08_2101_linear-a_story",
-    "car_ganj-nameh"
+    "car_ganj-nameh",
+    "car_hasanlu-lovers"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -1003,7 +1003,7 @@
       "due": "2026-11-08T14:17:00+03:30",
       "kind": "reel",
       "post_id": "6aecf62d30c2a60197e50eb9",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/14_2026-11-08_1417_yuba-county-five.mp4?v=3"
     },
     "15_2026-10-25_2056_green-children-of-woolpit": {
@@ -1107,6 +1107,16 @@
       "post_id": "6ad646efb5b645b3c33a03d3",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gorgan-wall_1.jpg"
+    },
+    "car_hasanlu-lovers": {
+      "at": "2026-11-08T19:00+03:30",
+      "audio_v": 1,
+      "cap": "e77a70be7553",
+      "due": "2026-11-12T17:12:00+03:30",
+      "kind": "carousel",
+      "post_id": "6af09621229bf05dafbd6a07",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_hasanlu-lovers_1.jpg"
     },
     "car_jiroft": {
       "at": "2026-10-11T19:12+03:30",

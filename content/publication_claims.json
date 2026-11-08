@@ -89,6 +89,23 @@
       },
       "status": "succeeded"
     },
+    "20379d9970a9bef42a326b1c39601c524edb6694890ba1e39481cee736832706": {
+      "external_id": "6af09621229bf05dafbd6a07",
+      "metadata": {
+        "due": "2026-11-12T17:12:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_hasanlu-lovers_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_hasanlu-lovers_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_hasanlu-lovers_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_hasanlu-lovers_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_hasanlu-lovers_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_hasanlu-lovers_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
     "25c5a702fbe60e6311f4f381ec0fcb2a51c8853a0894d2321d39ea3b62c5e07b": {
       "external_id": "6ae8acfe31e164b233edd5cd",
       "metadata": {
