@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 38.87,
+  "duration_seconds": 31.8,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 17.67,
+  "file_mb": 13.34,
   "audio": {
     "mean_volume": -18.0,
-    "max_volume": -0.3
+    "max_volume": -0.5
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "lake-bodom",
+  "story_id": "villisca-axe-murders",
   "story_bank": ""
 }
