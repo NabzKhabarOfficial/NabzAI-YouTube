@@ -116,6 +116,16 @@
       },
       "status": "succeeded"
     },
+    "2a194a37ab641c1d0baff9ab09e631e1ea2cf4704460fd28d5735c00903fd8e7": {
+      "external_id": "6af0d325004e4879a7d9e7b1",
+      "metadata": {
+        "due": "2026-11-13T21:30:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-13_2130_princess-caraboo.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "301dc8cce8322a992855bd0b38ea85e704754e38d60450b94c6bc5a945fd35b4": {
       "external_id": "uydyCd7Zx-w",
       "metadata": {
@@ -422,6 +432,16 @@
         "publish_at": "2026-10-29T19:00:00.000Z",
         "story_id": "toynbee-tiles",
         "video_sha256_24": "3fcca317dfa7e3afc830c295"
+      },
+      "status": "succeeded"
+    },
+    "aadd37d2a8c4aa461fe2d2060c25ca66e0b05fa78e3c31a0bec46d2a12db37a9": {
+      "external_id": "6af0d324229bf05dafd04c5f",
+      "metadata": {
+        "due": "2026-11-12T21:30:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-12_2130_iron-mask.mp4?v=3"
       },
       "status": "succeeded"
     },
