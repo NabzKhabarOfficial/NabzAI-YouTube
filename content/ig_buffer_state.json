@@ -12,14 +12,14 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "01_2026-11-09_2133_patterson-gimlin",
-    "01_2026-11-09_2133_patterson-gimlin_story",
     "02_2026-11-10_2127_piri-reis-map",
     "02_2026-11-10_2127_piri-reis-map_story",
     "03_2026-11-11_2130_shroud-of-turin",
     "03_2026-11-11_2130_shroud-of-turin_story",
     "04_2026-11-12_2130_iron-mask",
+    "04_2026-11-12_2130_iron-mask_story",
     "05_2026-11-13_2130_princess-caraboo",
+    "05_2026-11-13_2130_princess-caraboo_story",
     "car_ganj-nameh",
     "car_hasanlu-lovers"
   ],
@@ -113,7 +113,7 @@
       "due": "2026-11-09T21:33:00+03:30",
       "kind": "reel",
       "post_id": "6aedf9a0dac279812edd6980",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-09_2133_patterson-gimlin.mp4?v=3"
     },
     "01_2026-11-09_2133_patterson-gimlin_story": {
@@ -123,7 +123,7 @@
       "due": "2026-11-09T21:48:00+03:30",
       "kind": "story",
       "post_id": "6aee402daf7e526d43e003f1",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-09_2133_patterson-gimlin_story.mp4?v=2"
     },
@@ -384,6 +384,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-12_2130_iron-mask.mp4?v=3"
     },
+    "04_2026-11-12_2130_iron-mask_story": {
+      "at": "2026-11-10T03:19+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-12T21:45:00+03:30",
+      "kind": "story",
+      "post_id": "6af25d34223aa16048d82d62",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-12_2130_iron-mask_story.mp4?v=2"
+    },
     "05_2026-10-14_1317_hinterkaifeck": {
       "at": "2026-10-11T23:28+03:30",
       "audio_v": 3,
@@ -433,6 +444,17 @@
       "post_id": "6af0d325004e4879a7d9e7b1",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-13_2130_princess-caraboo.mp4?v=3"
+    },
+    "05_2026-11-13_2130_princess-caraboo_story": {
+      "at": "2026-11-10T03:19+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-13T21:45:00+03:30",
+      "kind": "story",
+      "post_id": "6af25d34223aa16048d82d90",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-13_2130_princess-caraboo_story.mp4?v=2"
     },
     "06_2026-10-14_2134_lead-masks": {
       "at": "2026-10-12T19:59+03:30",

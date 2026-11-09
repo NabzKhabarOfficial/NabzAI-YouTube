@@ -575,6 +575,16 @@
       },
       "status": "succeeded"
     },
+    "cbb91779110ff8669e0a7a5a5fc432f9b546dfd16e938d41323d06aeca9fb2f6": {
+      "external_id": "6af25d34223aa16048d82d90",
+      "metadata": {
+        "due": "2026-11-13T21:45:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-13_2130_princess-caraboo_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "cdc805e5134a4085374704ed012c040315a70504a63391c03999a7ff06b2e379": {
       "external_id": "6aeba5b83a6057e11e774299",
       "metadata": {
@@ -689,6 +699,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/11_2026-10-30_2213_mary-celeste.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "e41601532d10ee583d57a93bb416fb57b8ca6ed1e3442bb315ad529832538fd3": {
+      "external_id": "6af25d34223aa16048d82d62",
+      "metadata": {
+        "due": "2026-11-12T21:45:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-12_2130_iron-mask_story.mp4?v=2"
       },
       "status": "succeeded"
     },
