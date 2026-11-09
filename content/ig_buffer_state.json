@@ -25,7 +25,7 @@
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
-  "report_week": "2026-11-02",
+  "report_week": "2026-11-09",
   "sent": {
     "01_2026-10-11_2137_carroll-deering": {
       "at": "2026-10-11T14:52+03:30",
