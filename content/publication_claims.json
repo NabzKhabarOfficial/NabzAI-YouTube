@@ -702,6 +702,16 @@
       },
       "status": "succeeded"
     },
+    "e8e34475660ac81531c677fcf3292981801e67d9b443b9d01bf82cac8b5a94b8": {
+      "external_id": "SnYcjz4H3p4",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-09T19:00:00.000Z",
+        "story_id": "frederick-valentich",
+        "video_sha256_24": "193a43e1bcb4c4140b888612"
+      },
+      "status": "succeeded"
+    },
     "eaaee376a8eb86c539228663d48b1b23414064c2f42a5dc819d298263840a8e5": {
       "external_id": "w9DiZ_72lis",
       "metadata": {
