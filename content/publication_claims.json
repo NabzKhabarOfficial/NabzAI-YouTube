@@ -227,6 +227,16 @@
       },
       "status": "succeeded"
     },
+    "5884ad2b00754de0fa1a211745d628fcab01143168c7caf2ca3a7b625baa0441": {
+      "external_id": "Ta42lNsbRcU",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-10T19:00:00.000Z",
+        "story_id": "lost-dutchmans-mine",
+        "video_sha256_24": "23b32fb5bf6ab99676883a77"
+      },
+      "status": "succeeded"
+    },
     "60ea9f00993c850d19d1644012d80341a2286589f7cf97d62fefa5a47a4dff21": {
       "external_id": "ic3MpYI0fFY",
       "metadata": {

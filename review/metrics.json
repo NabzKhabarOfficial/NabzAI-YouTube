@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 37.97,
+  "duration_seconds": 42.17,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 13.24,
+  "file_mb": 18.14,
   "audio": {
     "mean_volume": -18.0,
-    "max_volume": -0.3
+    "max_volume": -0.4
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "frederick-valentich",
+  "story_id": "lost-dutchmans-mine",
   "story_bank": ""
 }
