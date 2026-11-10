@@ -12,14 +12,13 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "02_2026-11-10_2127_piri-reis-map",
-    "02_2026-11-10_2127_piri-reis-map_story",
     "03_2026-11-11_2130_shroud-of-turin",
     "03_2026-11-11_2130_shroud-of-turin_story",
     "04_2026-11-12_2130_iron-mask",
     "04_2026-11-12_2130_iron-mask_story",
     "05_2026-11-13_2130_princess-caraboo",
     "05_2026-11-13_2130_princess-caraboo_story",
+    "06_2026-11-14_2126_mary-rose",
     "car_cyrus-cylinder",
     "car_hasanlu-lovers"
   ],
@@ -205,7 +204,7 @@
       "due": "2026-11-10T21:27:00+03:30",
       "kind": "reel",
       "post_id": "6aef4498d6bbae6fa196a187",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-10_2127_piri-reis-map.mp4?v=3"
     },
     "02_2026-11-10_2127_piri-reis-map_story": {
@@ -215,7 +214,7 @@
       "due": "2026-11-10T21:42:00+03:30",
       "kind": "story",
       "post_id": "6aef7d02d6bbae6fa1a88c81",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-10_2127_piri-reis-map_story.mp4?v=2"
     },
@@ -539,6 +538,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-04_1901_ss-baychimo_story.mp4?v=2"
+    },
+    "06_2026-11-14_2126_mary-rose": {
+      "at": "2026-11-11T00:52+03:30",
+      "audio_v": 3,
+      "cap": "cd3a865c5a01",
+      "due": "2026-11-14T21:26:00+03:30",
+      "kind": "reel",
+      "post_id": "6af38b7c91300263f781aabf",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-14_2126_mary-rose.mp4?v=3"
     },
     "07_2026-10-15_1359_amelia-earhart": {
       "at": "2026-10-13T13:54+03:30",
