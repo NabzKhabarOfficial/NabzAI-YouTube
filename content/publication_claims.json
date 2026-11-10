@@ -324,6 +324,23 @@
       },
       "status": "succeeded"
     },
+    "794bc584fb9a64ddccd2823adc89747cd742e72bae90e586523002928a43ba41": {
+      "external_id": "6af339f842d372a81f656e52",
+      "metadata": {
+        "due": "2026-11-14T17:24:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_cyrus-cylinder_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_cyrus-cylinder_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_cyrus-cylinder_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_cyrus-cylinder_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_cyrus-cylinder_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_cyrus-cylinder_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
     "85bd23183695df8668f827b8ea5dacb01d15cf1dfc5cbce2573ac67c811c95aa": {
       "external_id": "6ae60a3cabbfa4c0cc1daaa5",
       "metadata": {

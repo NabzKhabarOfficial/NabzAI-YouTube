@@ -20,7 +20,7 @@
     "04_2026-11-12_2130_iron-mask_story",
     "05_2026-11-13_2130_princess-caraboo",
     "05_2026-11-13_2130_princess-caraboo_story",
-    "car_ganj-nameh",
+    "car_cyrus-cylinder",
     "car_hasanlu-lovers"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -1130,6 +1130,16 @@
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_chogha-zanbil_1.jpg"
     },
+    "car_cyrus-cylinder": {
+      "at": "2026-11-10T19:00+03:30",
+      "audio_v": 1,
+      "cap": "d93900346c9c",
+      "due": "2026-11-14T17:24:00+03:30",
+      "kind": "carousel",
+      "post_id": "6af339f842d372a81f656e52",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_cyrus-cylinder_1.jpg"
+    },
     "car_ganj-nameh": {
       "at": "2026-11-07T00:28+03:30",
       "audio_v": 1,
@@ -1137,7 +1147,7 @@
       "due": "2026-11-10T17:26:00+03:30",
       "kind": "carousel",
       "post_id": "6aee402d9214322f68afdce8",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_1.jpg"
     },
     "car_gorgan-wall": {
