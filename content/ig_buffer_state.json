@@ -12,13 +12,12 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "03_2026-11-11_2130_shroud-of-turin",
-    "03_2026-11-11_2130_shroud-of-turin_story",
     "04_2026-11-12_2130_iron-mask",
     "04_2026-11-12_2130_iron-mask_story",
     "05_2026-11-13_2130_princess-caraboo",
     "05_2026-11-13_2130_princess-caraboo_story",
     "06_2026-11-14_2126_mary-rose",
+    "06_2026-11-14_2126_mary-rose_story",
     "car_cyrus-cylinder",
     "car_hasanlu-lovers"
   ],
@@ -275,7 +274,7 @@
       "due": "2026-11-11T21:30:00+03:30",
       "kind": "reel",
       "post_id": "6aef449851492b796ee5d392",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-11_2130_shroud-of-turin.mp4?v=3"
     },
     "03_2026-11-11_2130_shroud-of-turin_story": {
@@ -285,7 +284,7 @@
       "due": "2026-11-11T21:45:00+03:30",
       "kind": "story",
       "post_id": "6aef7d039214322f6810c843",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-11_2130_shroud-of-turin_story.mp4?v=2"
     },
@@ -548,6 +547,17 @@
       "post_id": "6af38b7c91300263f781aabf",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-14_2126_mary-rose.mp4?v=3"
+    },
+    "06_2026-11-14_2126_mary-rose_story": {
+      "at": "2026-11-12T01:36+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-14T21:41:00+03:30",
+      "kind": "story",
+      "post_id": "6af4e732bc9f3773a1a2edee",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-14_2126_mary-rose_story.mp4?v=2"
     },
     "07_2026-10-15_1359_amelia-earhart": {
       "at": "2026-10-13T13:54+03:30",
