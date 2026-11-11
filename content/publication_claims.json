@@ -156,6 +156,16 @@
       },
       "status": "succeeded"
     },
+    "3315e53ca9b514728ce9f832d37d78c80909b9f1ca4e346b62864aea85d00af6": {
+      "external_id": "YXh9OFAV9uM",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-11T19:00:00.000Z",
+        "story_id": "amber-room",
+        "video_sha256_24": "ff17b4b297740c85f3262c42"
+      },
+      "status": "succeeded"
+    },
     "3cdc650c8657d02c58093f67788550bd33cb7dc1feee8a89d454fbda74141991": {
       "external_id": "6ae8acfff1669be3eabd33c5",
       "metadata": {
