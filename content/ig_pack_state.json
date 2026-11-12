@@ -1275,10 +1275,27 @@
           ],
           "audio_v": 3,
           "at": "2026-11-06T19:27+03:30"
+        },
+        "dancing-forest": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 43.73,
+          "check_words": [
+            "دارند",
+            "تنه‌های",
+            "محیط",
+            "رشد",
+            "توضیح",
+            "است",
+            "توضیحش",
+            "است"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-13T01:27+03:30"
         }
       },
-      "done": false,
-      "planned_at": "2026-11-06T19:01+03:30"
+      "done": true,
+      "planned_at": "2026-11-06T19:01+03:30",
+      "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-11-09"
     }
   },
   "carousels": {
