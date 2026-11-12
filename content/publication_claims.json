@@ -227,6 +227,16 @@
       },
       "status": "succeeded"
     },
+    "4bd5eb520c6dbd3ac50b9ca8fd357e60aea340530c8fbdc280c71aa516f5b0ce": {
+      "external_id": "iCBS-UuxP-0",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-12T19:00:00.000Z",
+        "story_id": "kaspar-hauser",
+        "video_sha256_24": "159096fb23508133f67e7305"
+      },
+      "status": "succeeded"
+    },
     "5765e175bd619963a3ebc5aa11c70006868f622d2fa7fffece5dfc4cca79a244": {
       "external_id": "oTlC-uE2WQQ",
       "metadata": {

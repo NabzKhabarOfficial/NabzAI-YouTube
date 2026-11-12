@@ -452,5 +452,27 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-11-12",
+    "story": "kaspar-hauser",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "Hauser",
+        "heard": "Was Caspar Hosser an abused captive, a fraud, or a hidden royal heir?",
+        "score": 0.57,
+        "kept": null
+      },
+      {
+        "word": "Hauser",
+        "heard": "Proven, Hosser lived and died after a stabbing.  Probable, the Prince story is false.  Unknown, his childhood.",
+        "score": 0.57,
+        "kept": null
+      }
+    ]
   }
 ]
