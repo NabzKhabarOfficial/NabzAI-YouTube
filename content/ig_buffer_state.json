@@ -12,14 +12,12 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "04_2026-11-12_2130_iron-mask",
-    "04_2026-11-12_2130_iron-mask_story",
     "05_2026-11-13_2130_princess-caraboo",
     "05_2026-11-13_2130_princess-caraboo_story",
     "06_2026-11-14_2126_mary-rose",
     "06_2026-11-14_2126_mary-rose_story",
-    "car_cyrus-cylinder",
-    "car_hasanlu-lovers"
+    "07_2026-11-15_2133_dancing-forest",
+    "car_cyrus-cylinder"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -379,7 +377,7 @@
       "due": "2026-11-12T21:30:00+03:30",
       "kind": "reel",
       "post_id": "6af0d324229bf05dafd04c5f",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-12_2130_iron-mask.mp4?v=3"
     },
     "04_2026-11-12_2130_iron-mask_story": {
@@ -389,7 +387,7 @@
       "due": "2026-11-12T21:45:00+03:30",
       "kind": "story",
       "post_id": "6af25d34223aa16048d82d62",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-12_2130_iron-mask_story.mp4?v=2"
     },
@@ -598,6 +596,16 @@
       "post_id": "6ae9aa74749426a5a468eb1f",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-05_1426_babushka-lady.mp4?v=3"
+    },
+    "07_2026-11-15_2133_dancing-forest": {
+      "at": "2026-11-13T01:28+03:30",
+      "audio_v": 3,
+      "cap": "09f5795ef15b",
+      "due": "2026-11-15T21:33:00+03:30",
+      "kind": "reel",
+      "post_id": "6af636e2045a66fcd505b3fe",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-15_2133_dancing-forest.mp4?v=3"
     },
     "08_2026-10-15_2233_kaz-ii": {
       "at": "2026-10-13T19:31+03:30",
@@ -1186,7 +1194,7 @@
       "due": "2026-11-12T17:12:00+03:30",
       "kind": "carousel",
       "post_id": "6af09621229bf05dafbd6a07",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_hasanlu-lovers_1.jpg"
     },
     "car_jiroft": {
