@@ -742,6 +742,16 @@
       },
       "status": "succeeded"
     },
+    "de550b33b82699e994e014e0cdb0b18672195717fd4f2d8e8e57c81bd4009485": {
+      "external_id": "oFGzSHVBIlg",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-13T19:00:00.000Z",
+        "story_id": "green-children-of-woolpit",
+        "video_sha256_24": "75c4bf6f249fa226244c2f51"
+      },
+      "status": "succeeded"
+    },
     "e04104ef311e3f5eca4a663f4a846d82fd89024fb44e8ccb6338b2906a70ced3": {
       "external_id": "6adf7306be236a10f9e0c2fe",
       "metadata": {
