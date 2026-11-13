@@ -462,6 +462,16 @@
       },
       "status": "succeeded"
     },
+    "9cfbe714af54d597e92291e41c7ff81422a265e23f26d21c4fea8c45ef4055c6": {
+      "external_id": "6af6d95e562501e68e960387",
+      "metadata": {
+        "due": "2026-11-15T21:48:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-15_2133_dancing-forest_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "a1a21530d5328fd6e45adc167cac8094c9ee1ad224e39800c35573169f810b2f": {
       "external_id": "6ae4642f58a62337fb791618",
       "metadata": {

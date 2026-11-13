@@ -17,6 +17,7 @@
     "06_2026-11-14_2126_mary-rose",
     "06_2026-11-14_2126_mary-rose_story",
     "07_2026-11-15_2133_dancing-forest",
+    "07_2026-11-15_2133_dancing-forest_story",
     "car_cyrus-cylinder"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -606,6 +607,17 @@
       "post_id": "6af636e2045a66fcd505b3fe",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-15_2133_dancing-forest.mp4?v=3"
+    },
+    "07_2026-11-15_2133_dancing-forest_story": {
+      "at": "2026-11-13T13:01+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-15T21:48:00+03:30",
+      "kind": "story",
+      "post_id": "6af6d95e562501e68e960387",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-15_2133_dancing-forest_story.mp4?v=2"
     },
     "08_2026-10-15_2233_kaz-ii": {
       "at": "2026-10-13T19:31+03:30",
