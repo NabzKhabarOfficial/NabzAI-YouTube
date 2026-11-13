@@ -18,7 +18,8 @@
     "06_2026-11-14_2126_mary-rose_story",
     "07_2026-11-15_2133_dancing-forest",
     "07_2026-11-15_2133_dancing-forest_story",
-    "car_cyrus-cylinder"
+    "car_cyrus-cylinder",
+    "car_pasargadae-tomb"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -1247,6 +1248,16 @@
       "post_id": "6adf7306be236a10f9e0c2fe",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_oxus-treasure_1.jpg"
+    },
+    "car_pasargadae-tomb": {
+      "at": "2026-11-13T19:01+03:30",
+      "audio_v": 1,
+      "cap": "0f28fd915660",
+      "due": "2026-11-17T17:28:00+03:30",
+      "kind": "carousel",
+      "post_id": "6af72dcdbc4abf9aec257a5d",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_pasargadae-tomb_1.jpg"
     },
     "car_persepolis-fire": {
       "at": "2026-10-17T19:01+03:30",

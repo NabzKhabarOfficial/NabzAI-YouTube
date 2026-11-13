@@ -839,6 +839,23 @@
       },
       "status": "succeeded"
     },
+    "f082122f6ec02970d1ea0f8e92a6846e2af4a308c3d3f6d5432767cc970f7903": {
+      "external_id": "6af72dcdbc4abf9aec257a5d",
+      "metadata": {
+        "due": "2026-11-17T17:28:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_pasargadae-tomb_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_pasargadae-tomb_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_pasargadae-tomb_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_pasargadae-tomb_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_pasargadae-tomb_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_pasargadae-tomb_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
     "f0b00838f5649117bebce59ca4e2675142b161c11289c0280c58ced01f8ddce0": {
       "external_id": "6ae4f7b5406ab8a0187d430d",
       "metadata": {
