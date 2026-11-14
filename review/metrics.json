@@ -1,12 +1,12 @@
 {
-  "duration_seconds": 42.5,
+  "duration_seconds": 34.7,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 17.44,
+  "file_mb": 14.82,
   "audio": {
     "mean_volume": -18.1,
-    "max_volume": -0.4
+    "max_volume": -0.1
   },
   "image_sources": [
     "hfspace",
@@ -17,6 +17,6 @@
     "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "green-children-of-woolpit",
+  "story_id": "mv-joyita",
   "story_bank": ""
 }

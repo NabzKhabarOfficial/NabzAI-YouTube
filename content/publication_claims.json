@@ -381,6 +381,16 @@
       },
       "status": "succeeded"
     },
+    "82997e6355a7e2c3fbf718eef5d95cf1899a15223808c03d8b8e09859fdf37e6": {
+      "external_id": "ilUyK_ztvaY",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-14T19:00:00.000Z",
+        "story_id": "mv-joyita",
+        "video_sha256_24": "6ed2bedc737cdbd9eac52e2b"
+      },
+      "status": "succeeded"
+    },
     "85bd23183695df8668f827b8ea5dacb01d15cf1dfc5cbce2573ac67c811c95aa": {
       "external_id": "6ae60a3cabbfa4c0cc1daaa5",
       "metadata": {

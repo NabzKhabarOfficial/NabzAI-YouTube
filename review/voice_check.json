@@ -483,5 +483,21 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-11-14",
+    "story": "mv-joyita",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "twenty-five",
+        "heard": "A boat carrying 25 people was found drifting and everyone was gone.",
+        "score": 0.36,
+        "kept": null
+      }
+    ]
   }
 ]
