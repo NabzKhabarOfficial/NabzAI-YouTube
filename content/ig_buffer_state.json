@@ -12,14 +12,10 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "05_2026-11-13_2130_princess-caraboo",
-    "05_2026-11-13_2130_princess-caraboo_story",
-    "06_2026-11-14_2126_mary-rose",
-    "06_2026-11-14_2126_mary-rose_story",
     "07_2026-11-15_2133_dancing-forest",
     "07_2026-11-15_2133_dancing-forest_story",
-    "car_cyrus-cylinder",
-    "car_pasargadae-tomb"
+    "car_pasargadae-tomb",
+    "car_takht-e-soleyman"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -440,7 +436,7 @@
       "due": "2026-11-13T21:30:00+03:30",
       "kind": "reel",
       "post_id": "6af0d325004e4879a7d9e7b1",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-13_2130_princess-caraboo.mp4?v=3"
     },
     "05_2026-11-13_2130_princess-caraboo_story": {
@@ -450,7 +446,7 @@
       "due": "2026-11-13T21:45:00+03:30",
       "kind": "story",
       "post_id": "6af25d34223aa16048d82d90",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-13_2130_princess-caraboo_story.mp4?v=2"
     },
@@ -545,7 +541,7 @@
       "due": "2026-11-14T21:26:00+03:30",
       "kind": "reel",
       "post_id": "6af38b7c91300263f781aabf",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-14_2126_mary-rose.mp4?v=3"
     },
     "06_2026-11-14_2126_mary-rose_story": {
@@ -555,7 +551,7 @@
       "due": "2026-11-14T21:41:00+03:30",
       "kind": "story",
       "post_id": "6af4e732bc9f3773a1a2edee",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-14_2126_mary-rose_story.mp4?v=2"
     },
@@ -1177,7 +1173,7 @@
       "due": "2026-11-14T17:24:00+03:30",
       "kind": "carousel",
       "post_id": "6af339f842d372a81f656e52",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_cyrus-cylinder_1.jpg"
     },
     "car_ganj-nameh": {
@@ -1287,6 +1283,16 @@
       "post_id": "6aeca23414c42730f5c0db82",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_shapur-cave_1.jpg"
+    },
+    "car_takht-e-soleyman": {
+      "at": "2026-11-15T19:01+03:30",
+      "audio_v": 1,
+      "cap": "ce5b372a4419",
+      "due": "2026-11-19T17:39:00+03:30",
+      "kind": "carousel",
+      "post_id": "6af9d0ab16191f4f5d2b49d8",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_takht-e-soleyman_1.jpg"
     },
     "car_tarim-mummies": {
       "at": "2026-10-21T19:00+03:30",
