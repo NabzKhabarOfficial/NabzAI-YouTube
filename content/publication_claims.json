@@ -582,6 +582,16 @@
       },
       "status": "succeeded"
     },
+    "b762dc7f6fa928e27e032940912eff7535f2afbae55cf00076cae5fdaeb26174": {
+      "external_id": "Dxa_fQBb27Q",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-15T19:00:00.000Z",
+        "story_id": "jimmy-hoffa",
+        "video_sha256_24": "9ae1179fcf597c9ecf0e2599"
+      },
+      "status": "succeeded"
+    },
     "baa6bfd99a7834ea3216a105799d226f74fb4e6eaaa502c5b8e41ca36fc0bb48": {
       "external_id": "6adfbb44a72c078abdb7e3b2",
       "metadata": {
