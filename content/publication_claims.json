@@ -532,6 +532,16 @@
       },
       "status": "succeeded"
     },
+    "a9cb93e05891b894b7d16fad8c71051bd15084f9ceb2aa3743bf63ef6496f69d": {
+      "external_id": "Ek_kWuULRyY",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-17T19:00:00.000Z",
+        "story_id": "hessdalen-lights",
+        "video_sha256_24": "14e8cb27e3a5910fbcf6a48b"
+      },
+      "status": "succeeded"
+    },
     "aadd37d2a8c4aa461fe2d2060c25ca66e0b05fa78e3c31a0bec46d2a12db37a9": {
       "external_id": "6af0d324229bf05dafd04c5f",
       "metadata": {

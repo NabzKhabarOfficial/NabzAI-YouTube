@@ -525,5 +525,14 @@
         "new_score": 1.0
       }
     ]
+  },
+  {
+    "date": "2026-11-17",
+    "story": "hessdalen-lights",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
   }
 ]
