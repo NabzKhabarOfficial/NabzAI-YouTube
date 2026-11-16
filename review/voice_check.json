@@ -508,5 +508,22 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-11-16",
+    "story": "dorothy-arnold",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "writer",
+        "heard": "A rider left for a short walk and her family never saw her again.",
+        "score": 0.57,
+        "kept": "vriter",
+        "new_score": 1.0
+      }
+    ]
   }
 ]

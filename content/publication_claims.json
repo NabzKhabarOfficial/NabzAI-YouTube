@@ -257,6 +257,16 @@
       },
       "status": "succeeded"
     },
+    "57af63a3cd915c88657f98f1db90a084201e9e0e02cd5a86b4a6850c21ad12a7": {
+      "external_id": "Xugk2EtDMpw",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-16T19:00:00.000Z",
+        "story_id": "dorothy-arnold",
+        "video_sha256_24": "d21a7c2e77b3d2c1f2e2bc0a"
+      },
+      "status": "succeeded"
+    },
     "5884ad2b00754de0fa1a211745d628fcab01143168c7caf2ca3a7b625baa0441": {
       "external_id": "Ta42lNsbRcU",
       "metadata": {
