@@ -12,7 +12,7 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "car_pasargadae-tomb",
+    "car_gonabad-qanat",
     "car_takht-e-soleyman"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -1184,6 +1184,16 @@
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_ganj-nameh_1.jpg"
     },
+    "car_gonabad-qanat": {
+      "at": "2026-11-17T19:02+03:30",
+      "audio_v": 1,
+      "cap": "aa3d149badc7",
+      "due": "2026-11-21T17:05:00+03:30",
+      "kind": "carousel",
+      "post_id": "6afc73bb0ec7d2b0822a0951",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gonabad-qanat_1.jpg"
+    },
     "car_gorgan-wall": {
       "at": "2026-10-19T20:04+03:30",
       "audio_v": 1,
@@ -1250,7 +1260,7 @@
       "due": "2026-11-17T17:28:00+03:30",
       "kind": "carousel",
       "post_id": "6af72dcdbc4abf9aec257a5d",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_pasargadae-tomb_1.jpg"
     },
     "car_persepolis-fire": {

@@ -247,6 +247,23 @@
       },
       "status": "succeeded"
     },
+    "4f609b3b548eb14d2088b1297f1ed0bdbe40518d094ca8fd400c7a144fd315e0": {
+      "external_id": "6afc73bb0ec7d2b0822a0951",
+      "metadata": {
+        "due": "2026-11-21T17:05:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gonabad-qanat_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gonabad-qanat_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gonabad-qanat_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gonabad-qanat_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gonabad-qanat_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gonabad-qanat_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
     "5765e175bd619963a3ebc5aa11c70006868f622d2fa7fffece5dfc4cca79a244": {
       "external_id": "oTlC-uE2WQQ",
       "metadata": {
