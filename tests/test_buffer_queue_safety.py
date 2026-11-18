@@ -56,7 +56,7 @@ class BufferQueueSafetyTests(unittest.TestCase):
             [sys.executable, "-c", "from src.ig_buffer import MAX_NEW; print(MAX_NEW)"],
             cwd=root, env=env, text=True, capture_output=True, check=True,
         )
-        self.assertEqual(result.stdout.strip(), "1")
+        self.assertEqual(result.stdout.strip().splitlines()[-1], "1")
 
 
 if __name__ == "__main__":
