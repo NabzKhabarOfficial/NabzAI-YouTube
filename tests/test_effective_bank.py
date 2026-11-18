@@ -31,7 +31,7 @@ class EffectiveBankTests(unittest.TestCase):
         rows = json.loads(batch_path.read_text(encoding="utf-8"))
         fa = json.loads((mystery_short.ROOT / "content" / "mysteries_fa.json").read_text(encoding="utf-8"))["stories"]
         notes = json.loads((mystery_short.ROOT / "content" / "story_notes_fa.json").read_text(encoding="utf-8"))["stories"]
-        self.assertEqual(len(rows), 14)
+        self.assertEqual(len(rows), 25)
         for story in rows:
             mystery_short.validate_story(story)
             self.assertIn(story["id"], fa)
