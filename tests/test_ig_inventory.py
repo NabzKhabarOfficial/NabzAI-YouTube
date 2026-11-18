@@ -13,7 +13,7 @@ class InstagramInventoryTests(unittest.TestCase):
             content = root / "content"
             content.mkdir()
             (content / "mysteries.json").write_text(json.dumps([
-                {"id": "posted"}, {"id": "planned"}, {"id": "fresh"}
+                {"id": "posted"}, {"id": "planned"}, {"id": "fresh"}, {"id": "eilean-mor"}
             ]), encoding="utf-8")
             (content / "mysteries_add.json").write_text(json.dumps({
                 "stories": [{"id": "fresh-add"}]
@@ -23,11 +23,11 @@ class InstagramInventoryTests(unittest.TestCase):
             ]), encoding="utf-8")
             (content / "mysteries_fa.json").write_text(json.dumps({
                 "stories": {sid: {"title": sid} for sid in
-                           ("posted", "planned", "fresh", "retired", "not-approved", "no-english", "fresh-add")}
+                           ("posted", "planned", "fresh", "retired", "not-approved", "no-english", "fresh-add", "eilean-mor")}
             }), encoding="utf-8")
             (content / "story_notes_fa.json").write_text(json.dumps({
                 "stories": {sid: ["proven", "probable", "unknown"] for sid in
-                           ("posted", "planned", "fresh", "retired", "fresh-add")}
+                           ("posted", "planned", "fresh", "retired", "fresh-add", "eilean-mor")}
             }), encoding="utf-8")
             (content / "ig_state.json").write_text(json.dumps({"posted": ["posted"]}), encoding="utf-8")
             (content / "ig_pack_state.json").write_text(json.dumps({
