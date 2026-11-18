@@ -844,6 +844,13 @@ def urgent_redo(state: dict, now: datetime | None = None) -> list[str]:
     return out
 
 
+def load_english_bank() -> dict[str, dict]:
+    """Load the canonical batch-aware English bank used by Instagram production."""
+    from src.effective_bank import load_bank
+
+    return {str(story["id"]): story for story in load_bank()}
+
+
 def run_week(started: float) -> bool:
     """Builds the current week as far as possible. True only when it completed a week just now."""
     state = load_json(STATE_FILE, {})
@@ -865,7 +872,7 @@ def run_week(started: float) -> bool:
     rf, m, _, vc = _modules()
     vc.REPORT = OUT / "voice_check.json"  # keep the daily Short's review report untouched
     fa_bank = rf.load_fa()
-    en = {s["id"]: s for s in m.load_bank()}
+    en = load_english_bank()
     late = now_tehran() >= deadline(week)
     info = plan_week(state, week, per_day, fa_bank, set(en), allow_partial=late)
     if info is None:
