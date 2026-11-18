@@ -4,6 +4,9 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+# These Persian entries duplicate stories already published under their canonical IDs.
+KNOWN_DUPLICATE_STORY_IDS = {"eilean-mor", "wow-signal-duplicate"}
+
 
 def _json(path: Path, default):
     if not path.exists():
@@ -64,7 +67,7 @@ def available_story_ids(root: Path) -> list[str]:
             if item.get("id"):
                 used.add(item["id"])
 
-    return sorted((set(fa) & set(approved) & english) - used)
+    return sorted((set(fa) & set(approved) & english) - used - KNOWN_DUPLICATE_STORY_IDS)
 
 
 def inventory_status(root: Path, reserve: int = 14) -> dict:
