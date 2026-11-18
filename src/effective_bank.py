@@ -38,6 +38,17 @@ def load_bank(path: Path | None = None, strict: bool = False) -> list[dict]:
                     raise RuntimeError(f"story batch has missing id: {batch}")
                 required.add(sid)
             rows.extend(batch_rows)
+
+        # Preserve the legacy src.__init__ extra bank on the canonical production path too.
+        add_path = ROOT / "content" / "mysteries_add.json"
+        if add_path.exists():
+            add_rows = _read_rows(add_path)
+            for row in add_rows:
+                sid = str(row.get("id") or "").strip()
+                if not sid:
+                    raise RuntimeError(f"extra story has missing id: {add_path}")
+                required.add(sid)
+            rows.extend(add_rows)
         rows = mystery_short.apply_overrides(rows)
     ids_seen = [str(row.get("id") or "").strip() for row in rows]
     if any(not sid for sid in ids_seen):
