@@ -22,11 +22,10 @@ on:
         type: choice
         options:
           - "1"
-          - "2"
           - "3"
 
       buffer_max:
-        description: "Most reels to send to Buffer in this run"
+        description: "Maximum new reels per run (hard-capped at one)"
         required: true
         default: "1"
         type: choice
