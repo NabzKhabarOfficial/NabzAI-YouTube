@@ -27,8 +27,10 @@ spec.loader.exec_module(pack)
 
 LOOKAHEAD_DAYS = 2
 
-from src.ig_inventory import inventory_status
-inventory = inventory_status(ROOT, reserve=14)
+inventory_spec = importlib.util.spec_from_file_location("ig_inventory_light", ROOT / "src" / "ig_inventory.py")
+inventory_module = importlib.util.module_from_spec(inventory_spec)
+inventory_spec.loader.exec_module(inventory_module)
+inventory = inventory_module.inventory_status(ROOT, reserve=14)
 print("Instagram story inventory: {} unused approved stories (reserve target: {})".format(
     inventory["available"], inventory["reserve"]))
 if inventory["low"]:
