@@ -15,16 +15,19 @@ class InstagramInventoryTests(unittest.TestCase):
             (content / "mysteries.json").write_text(json.dumps([
                 {"id": "posted"}, {"id": "planned"}, {"id": "fresh"}
             ]), encoding="utf-8")
+            (content / "mysteries_add.json").write_text(json.dumps({
+                "stories": [{"id": "fresh-add"}]
+            }), encoding="utf-8")
             (content / "mysteries_batch01.json").write_text(json.dumps([
                 {"id": "retired"}, {"id": "not-approved"}
             ]), encoding="utf-8")
             (content / "mysteries_fa.json").write_text(json.dumps({
                 "stories": {sid: {"title": sid} for sid in
-                           ("posted", "planned", "fresh", "retired", "not-approved", "no-english")}
+                           ("posted", "planned", "fresh", "retired", "not-approved", "no-english", "fresh-add")}
             }), encoding="utf-8")
             (content / "story_notes_fa.json").write_text(json.dumps({
                 "stories": {sid: ["proven", "probable", "unknown"] for sid in
-                           ("posted", "planned", "fresh", "retired")}
+                           ("posted", "planned", "fresh", "retired", "fresh-add")}
             }), encoding="utf-8")
             (content / "ig_state.json").write_text(json.dumps({"posted": ["posted"]}), encoding="utf-8")
             (content / "ig_pack_state.json").write_text(json.dumps({
@@ -32,9 +35,9 @@ class InstagramInventoryTests(unittest.TestCase):
                 "weeks": {"2026-11-23": {"plan": [{"id": "planned"}]}}
             }), encoding="utf-8")
 
-            self.assertEqual(available_story_ids(root), ["fresh"])
+            self.assertEqual(available_story_ids(root), ["fresh", "fresh-add"])
             status = inventory_status(root, reserve=3)
-            self.assertEqual(status["available"], 1)
+            self.assertEqual(status["available"], 2)
             self.assertTrue(status["low"])
 
     def test_duplicate_english_ids_fail_closed(self):
