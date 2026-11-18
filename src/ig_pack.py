@@ -111,6 +111,9 @@ TAG_POOL = ["#دانستنی", "#رازهای_تاریخ", "#داستان_واق
 class StopPack(Exception):
     """Stop building for now (voice quota or time); the next run continues."""
 
+class StoryInventoryShortage(RuntimeError):
+    """No safe full-week story plan can be made from the unused approved inventory."""
+
 
 def log(msg: str) -> None:
     print(f"[ig-pack] {msg}", flush=True)
@@ -791,9 +794,18 @@ def main() -> int:
     merge_fa_bank()
     prepare_slides()
     forced = os.getenv("NABZ_PACK_WEEK", "").strip()
+    completed_any = False
     for _ in range(3):
-        if not run_week(started) or forced:
+        try:
+            completed = run_week(started)
+        except StoryInventoryShortage as exc:
+            if completed_any:
+                log(f"next weekly pack waits for more approved stories; completed packs remain intact: {exc}")
+                break
+            raise
+        if not completed or forced:
             break
+        completed_any = True
         if time.time() - started > TIME_BUDGET - REEL_SECONDS:
             break
         log("week complete and quota left: going on with the next week")
@@ -878,7 +890,7 @@ def run_week(started: float) -> bool:
     if info is None:
         message = f"{tag}: fewer than seven unused approved Persian/English story pairs; no reel can be planned safely"
         log(message)
-        raise RuntimeError(message)
+        raise StoryInventoryShortage(message)
     allow_edge = os.getenv("NABZ_PACK_ALLOW_EDGE", "0") == "1"  # owner rule: one voice, so never by default
     install_narrator(allow_edge)
     ensure_release(tag, week)
