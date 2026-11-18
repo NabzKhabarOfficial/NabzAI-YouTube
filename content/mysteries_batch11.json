@@ -791,5 +791,402 @@
       "probable": "بخشی از جزئیات سفر در بازگویی‌های بعدی بزرگ شد.",
       "unknown": "جزئیات دقیق مسیر."
     }
+  },
+  {
+    "id": "apollo-13",
+    "title": "The Apollo 13 Failure Began Before Launch",
+    "tags": [
+      "NASA",
+      "Apollo 13",
+      "space history"
+    ],
+    "beats": [
+      {
+        "text": "The failure that crippled Apollo 13 began years before the spacecraft launched.",
+        "visual": "Apollo 13 spacecraft on the launch pad at Kennedy Space Center, 1970"
+      },
+      {
+        "text": "In April 1970, an oxygen tank ruptured on the way to the Moon.",
+        "visual": "Damaged service module drifting in space near the Moon, realistic NASA documentary style"
+      },
+      {
+        "text": "The crew survived by using the lunar module as a lifeboat.",
+        "visual": "Three astronauts inside a cramped lunar module, emergency checklist atmosphere"
+      },
+      {
+        "text": "Investigators traced the trouble to a heater switch designed for lower voltage.",
+        "visual": "Close-up of a vintage electrical thermostat switch and scorched wiring on a workbench"
+      },
+      {
+        "text": "A ground test had damaged wiring; a spark likely ignited oxygen in space.",
+        "visual": "Engineers inspecting a spacecraft oxygen tank in a 1970s test facility"
+      },
+      {
+        "text": "The danger had not come from the stars; it was already inside the equipment.",
+        "visual": "Apollo command module descending by parachute toward the Pacific Ocean"
+      }
+    ],
+    "fa": {
+      "title": "انفجاری که پیش از پرتاب شروع شده بود",
+      "beats": [
+        "انفجاری که آپولو ۱۳ را زمین‌گیر کرد، سال‌ها پیش از پرتاب شروع شده بود.",
+        "آوریل ۱۹۷۰. مخزن اکسیژن در مسیر ماه منفجر شد. چرا؟",
+        "خدمه با استفاده از ماه‌نشین به‌عنوان قایق نجات زنده ماندند. شاید شهاب‌سنگ به آن‌ها خورده بود.",
+        "اما بررسی‌ها مشکل را روی زمین پیدا کردند: کلید بخاری برای ولتاژ پایین ساخته شده و جوش خورده بود.",
+        "ثابت شده: آزمایش پیش از پرتاب سیم‌ها را سوزاند. محتمل: جرقه در فضا گاز را مشتعل کرد. نامعلوم: اولین نقطه‌ی شکست.",
+        "خطر همراهشان به فضا نرفت؛ از قبل داخل تجهیزات بسته شده بود."
+      ],
+      "question": "🧩 مشکل آپولو ۱۳ از کجا شروع شد؟\nالف) یک شهاب‌سنگ\nب) آزمایش روی زمین\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#آپولو۱۳",
+        "#ناسا",
+        "#معما"
+      ]
+    },
+    "notes": {
+      "proven": "۱۳ آوریل ۱۹۷۰ حدود ۵۶ ساعت بعد از پرتاب، مخزن اکسیژن شماره‌ی ۲ ترکید؛ خدمه (لاول، سوئیگرت، هیز) با ماژول ماه «آکواریوس» به عنوان قایق نجات برگشتند و ۱۷ آوریل فرود آمدند؛ کمیته‌ی بررسی: کلیدهای ترموستات برای ۲۸ ولت ساخته شده بودند، در تخلیه‌ی آزمایشی زمینی با ۶۵ ولت جوش خوردند و گرمکن روکش سیم‌ها را سوزاند.",
+      "probable": "-",
+      "unknown": "-"
+    }
+  },
+  {
+    "id": "frank-abagnale",
+    "title": "The Con Artist Who May Have Fooled Us Twice",
+    "tags": [
+      "Frank Abagnale",
+      "fraud",
+      "true crime"
+    ],
+    "beats": [
+      {
+        "text": "Frank Abagnale became famous for claiming he posed as a pilot, doctor, and lawyer.",
+        "visual": "1960s airport terminal with a young man in an airline pilot uniform, cinematic realism"
+      },
+      {
+        "text": "He said the disguises and forged checks helped him evade police in the 1960s.",
+        "visual": "Vintage forged checks, passport and airline uniform arranged on a detective desk"
+      },
+      {
+        "text": "His story became a bestselling book, television appearances, and a Hollywood film.",
+        "visual": "Book manuscript and television studio lights representing a public celebrity story"
+      },
+      {
+        "text": "Later researchers found records showing he spent much of that period in custody.",
+        "visual": "Researcher comparing prison records and newspaper archives at a library desk"
+      },
+      {
+        "text": "His check fraud convictions are documented; many larger adventures appear exaggerated.",
+        "visual": "Old courtroom records and check-writing equipment, restrained documentary composition"
+      },
+      {
+        "text": "Perhaps his most successful deception was the story he told about himself.",
+        "visual": "Empty dressing room mirror reflecting a shadowed silhouette, metaphorical but realistic"
+      }
+    ],
+    "fa": {
+      "title": "کلاهبرداری که شاید درباره‌ی کلاهبرداری‌هایش هم دروغ گفت",
+      "beats": [
+        "مشهورترین کلاهبردار جهان شاید درباره‌ی کلاهبرداری‌های خودش هم ما را فریب داده باشد.",
+        "فرانک ابگنیل گفت در دهه‌ی ۱۹۶۰ خلبان، پزشک و وکیل بوده. واقعاً چنین بود؟",
+        "او این داستان را در کتاب پرفروش، برنامه‌های تلویزیونی و فیلم اسپیلبرگ تعریف کرد.",
+        "اما پژوهشگران در اسناد پیدا کردند که بخش بزرگی از آن سال‌ها در زندان بوده است.",
+        "ثابت شده: به‌خاطر چک‌های جعلی محکوم شد. محتمل: داستان‌های بزرگ‌تر اغراق شده بودند. نامعلوم: چه مقدارش واقعی بود.",
+        "شاید بزرگ‌ترین حقه‌اش خود کلاهبرداری‌ها نبود؛ داستانی بود که درباره‌شان ساخت."
+      ],
+      "question": "🧩 کدام بخش قطعی است؟\nالف) محکومیت بابت چک جعلی\nب) همه‌ی نقش‌هایش\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#فرانک_ابگنیل",
+        "#کلاهبرداری",
+        "#معما"
+      ]
+    },
+    "notes": {
+      "proven": "اباگنیل در فرانسه (۱۹۶۹)، سوئد و آمریکا به خاطر جعل چک زندانی شد؛ کتاب ۱۹۸۰ و فیلم ۲۰۰۲ ماجراهایش را مشهور کرد.",
+      "probable": "کتاب آلن لوگان (۲۰۲۰، The Greatest Hoax on Earth) با اسناد نشان داد او در بخش بزرگی از دوره‌ی ادعایی زندانی یا در آمریکا بوده؛ بیشتر ادعاها اغراق است.",
+      "unknown": "کدام بخش‌ها واقعاً رخ داد."
+    }
+  },
+  {
+    "id": "lake-nyos",
+    "title": "The Lake That Killed Without a Wave",
+    "tags": [
+      "Cameroon",
+      "Lake Nyos",
+      "natural disaster"
+    ],
+    "beats": [
+      {
+        "text": "One night, a lake released a gas cloud that killed nearly two thousand people.",
+        "visual": "Remote volcanic lake in Cameroon at night, still water and surrounding hills"
+      },
+      {
+        "text": "In August 1986, villagers near Lake Nyos in Cameroon died in their homes.",
+        "visual": "Small rural village near Lake Nyos, Cameroon, 1980s documentary atmosphere"
+      },
+      {
+        "text": "There was no fire, flood, or visible attacker; survivors woke beside the dead.",
+        "visual": "Quiet village homes at dawn with emergency responders in the distance, respectful non-graphic scene"
+      },
+      {
+        "text": "The lake’s water changed color as gas rose from its deep layers.",
+        "visual": "Lake surface with reddish water near the shore, scientific documentary realism"
+      },
+      {
+        "text": "Carbon dioxide flowed downhill and suffocated people and livestock in nearby valleys.",
+        "visual": "Heavy invisible gas cloud represented by low mist flowing through a valley, no people harmed"
+      },
+      {
+        "text": "The trigger remains uncertain, but pipes now release gas from the lake safely.",
+        "visual": "Modern degassing pipe releasing bubbles at Lake Nyos, engineers monitoring from shore"
+      }
+    ],
+    "fa": {
+      "title": "دریاچه‌ای که بی‌صدا کشت",
+      "beats": [
+        "یک شب، دریاچه‌ای نزدیک دو هزار نفر را کشت؛ بی آتش و بی موج.",
+        "کامرون، اوت ۱۹۸۶. مردم روستاهای کنار دریاچه‌ی نیوس در خانه‌هایشان مرده پیدا شدند. چه چیزی کشتشان؟",
+        "نه آتشی بود، نه سیلی. بازمانده‌ها کنار مرده‌ها بیدار شده بودند.",
+        "ولی رنگ دریاچه از آبی به قرمز زنگ‌زده تغییر کرده بود: گازی از ته آب بیرون زده بود.",
+        "ثابت شده که ابری از گاز کربنیک پایین آمد و آنها را خفه کرد. محتمل است ریزش زمین رهایش کرده باشد.",
+        "قاتل دیده نمی‌شد، از هوا سنگین‌تر بود، و در آب خوابیده بود."
+      ],
+      "question": "🧩 کدام بخش برداشتت را عوض کرد؟\nالف) اتفاق اول\nب) سرنخ\nج) توضیح آخر\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#دریاچه_نیوس",
+        "#کامرون",
+        "#معما"
+      ]
+    },
+    "notes": {
+      "proven": "۲۱ اوت ۱۹۸۶ دریاچه‌ی نیوس کامرون ناگهان ابری از دی‌اکسید کربن رها کرد که در دره‌ها پایین رفت و ۱۷۴۶ نفر و حدود ۳۵۰۰ دام را خفه کرد؛ آب دریاچه قرمز شد؛ از ۲۰۰۱ لوله‌هایی گاز ته دریاچه را بیرون می‌دهند.",
+      "probable": "ریزش زمین یا آب سرد باران لایه‌های آب را به هم زد و فوران را شروع کرد.",
+      "unknown": "محرک دقیق."
+    }
+  },
+  {
+    "id": "mary-rogers",
+    "title": "The Unsolved Murder That Inspired Edgar Allan Poe",
+    "tags": [
+      "Mary Rogers",
+      "Edgar Allan Poe",
+      "New York history"
+    ],
+    "beats": [
+      {
+        "text": "Mary Rogers worked in a popular tobacco shop in New York before she disappeared.",
+        "visual": "1840s New York tobacco shop interior with a young shop worker, historical realism"
+      },
+      {
+        "text": "In July 1841, the young woman left home and never returned.",
+        "visual": "Young woman walking along a nineteenth-century New York street, period clothing"
+      },
+      {
+        "text": "Days later, her body was found in the Hudson River near Hoboken, New Jersey.",
+        "visual": "Quiet Hudson River shoreline near Hoboken in 1841, distant investigators, non-graphic"
+      },
+      {
+        "text": "Her death was treated as a violent crime, but the case was never solved.",
+        "visual": "19th-century coroner and police examining evidence beside the river, respectful documentary framing"
+      },
+      {
+        "text": "One theory involved a trusted acquaintance, but no killer was proven.",
+        "visual": "Old case papers and a sealed evidence envelope on a wooden desk"
+      },
+      {
+        "text": "Edgar Allan Poe later used the case as inspiration for a detective story.",
+        "visual": "Edgar Allan Poe writing at a candlelit desk, nineteenth-century room"
+      }
+    ],
+    "fa": {
+      "title": "قتل دختر سیگارفروش که الهام‌بخش پو شد",
+      "beats": [
+        "دختری که در مغازه‌ی توتون نیویورک کار می‌کرد ناپدید شد. چند روز بعد جسدش در رودخانه پیدا شد.",
+        "نیویورک، ۱۸۴۱. مری راجرز، دختری جوان و محبوب مشتری‌ها، در مغازه‌ی توتون کار می‌کرد. چه کسی می‌خواست او را از بین ببرد؟",
+        "یک صبح از خانه بیرون رفت و دیگر برنگشت.",
+        "جسدش در رودخانه‌ی مقابل هوبوکن، نیوجرسی پیدا شد. مرگش شبیه قتل بود.",
+        "ثابت شده که مرگش خشونت‌آمیز بود و پرونده حل نشد. محتمل: با کسی که به او اعتماد داشت قرار گذاشته بود. نامعلوم: آن کسی که بود.",
+        "مرگ این دختر الهام داستان کارآگاهی ادگار آلن پو شد، ولی قاتلش هیچ‌وقت شناخته نشد."
+      ],
+      "question": "🧩 به نظرت کی پشت این ماجرا بود؟\nالف) کسی که به او اعتماد داشت\nب) یک غریبه\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#مری_راجرز",
+        "#ادگار_آلن_پو",
+        "#معما"
+      ]
+    },
+    "notes": {
+      "proven": "ژوئیه‌ی ۱۸۴۱ مری راجرز ناپدید شد؛ جسدش ۲۸ ژوئیه در رود هادسون نزدیک هوبوکن پیدا شد؛ پرونده حل نشد؛ نامزدش ماه‌ها بعد خودکشی کرد.",
+      "probable": "مرگ در پی سقط جنین ناموفق (نظریه‌ی روزنامه‌های آن زمان).",
+      "unknown": "قاتل. ادگار آلن پو داستان «راز ماری روژه» را بر پایه‌ی این پرونده نوشت."
+    }
+  },
+  {
+    "id": "tutankhamun-curse",
+    "title": "The Curse of Tutankhamun: A Newspaper Legend",
+    "tags": [
+      "Ancient Egypt",
+      "Tutankhamun",
+      "archaeology"
+    ],
+    "beats": [
+      {
+        "text": "In 1922, Howard Carter uncovered the tomb of the young Egyptian king Tutankhamun.",
+        "visual": "Howard Carter and archaeological team at the entrance to Tutankhamun's tomb, 1922"
+      },
+      {
+        "text": "Newspapers warned that disturbing the tomb would bring death to anyone who entered.",
+        "visual": "Ancient Egyptian tomb doorway with sealed stone entrance, dramatic but factual"
+      },
+      {
+        "text": "Months later, Lord Carnarvon, who funded the excavation, died in Cairo.",
+        "visual": "Lord Carnarvon in early twentieth-century Cairo hotel room, period portrait style"
+      },
+      {
+        "text": "A mosquito bite had become infected, and blood poisoning was reported.",
+        "visual": "Antique medical instruments and a bandaged mosquito bite, non-graphic historical scene"
+      },
+      {
+        "text": "Most people involved in the discovery lived for years after the tomb opened.",
+        "visual": "Archaeologists cataloguing golden objects inside an Egyptian tomb, careful museum lighting"
+      },
+      {
+        "text": "The curse became a headline, but no evidence proved it was real.",
+        "visual": "Newspaper pages beside an Egyptian artifact, the myth of a curse in the public imagination"
+      }
+    ],
+    "fa": {
+      "title": "نفرین توت‌عنخ‌آمون: هر کس مقبره را باز کرد",
+      "beats": [
+        "مصر، ۱۹۲۲. هوارد کارتر مقبره‌ی توت‌عنخ‌آمون، پادشاه نوجوان را پیدا کرد.",
+        "روزنامه‌ها نوشتند هر کس آرامش پادشاه را بر هم بزند، می‌میرد.",
+        "چند ماه بعد، لرد کارناروون، حامی هیئت حفاری، در قاهره مرد.",
+        "زخم پشه‌ای که نیش زده بود، عفونی شد. این مرگ به نفرین ربط داده شد.",
+        "مسمومیت خون. احتمال زیاد: قصه‌ی نفرین را مطبوعات ساختند. معلوم نیست: چرا این‌همه آدم باورش کردند.",
+        "بیشتر کسانی که آن روز حاضر بودند، سال‌ها زنده ماندند. پس نفرین ماند، ولی ثابت نشد."
+      ],
+      "question": "🧩 به نظرت این نفرین واقعی بود؟\nالف) نه، قصه‌ی روزنامه‌ها بود\nب) آره\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#معما",
+        "#داستان_واقعی"
+      ]
+    },
+    "notes": {
+      "proven": "مسمومیت خون",
+      "probable": "قصه‌ی نفرین را مطبوعات ساختند",
+      "unknown": "چرا این‌همه آدم باورش کردند"
+    }
+  },
+  {
+    "id": "hope-diamond",
+    "title": "The Blue Diamond Said to Bring Bad Luck",
+    "tags": [
+      "Hope Diamond",
+      "gemstones",
+      "history"
+    ],
+    "beats": [
+      {
+        "text": "In 1668, French merchant Jean-Baptiste Tavernier brought a large blue diamond from India.",
+        "visual": "Large deep-blue historic diamond displayed on dark velvet, museum-quality macro photograph"
+      },
+      {
+        "text": "The stone was later recut and sold, while stories of bad luck followed it.",
+        "visual": "Seventeenth-century merchant examining a blue gemstone by candlelight, historical realism"
+      },
+      {
+        "text": "During the French Revolution, the jewel was stolen from a royal storehouse in 1792.",
+        "visual": "French royal treasury during the Revolution, opened jewel case and scattered papers"
+      },
+      {
+        "text": "Decades later, a blue diamond reappeared under the name of the Hope family.",
+        "visual": "Nineteenth-century jeweler inspecting a blue diamond under a loupe, period setting"
+      },
+      {
+        "text": "The jewel’s later history is documented; the supposed curse has no reliable proof.",
+        "visual": "Blue diamond behind museum glass with visitors blurred in the background"
+      },
+      {
+        "text": "Today it sits in the Smithsonian, famous for its color and its legend.",
+        "visual": "Smithsonian-style gemstone gallery with a brilliant blue diamond under focused lighting"
+      }
+    ],
+    "fa": {
+      "title": "الماس هوپ: الماسی که گفتند بدبختی می‌آورد",
+      "beats": [
+        "هند، ۱۶۶۸. ژان باتیست تاورنیه الماس بزرگ آبی را به اروپا آورد.",
+        "بعداً دوباره تراشیده و فروخته شد و شایعه‌های بدشانسی دنبالش آمد.",
+        "در ۱۷۹۲، در جریان انقلاب فرانسه، از انبار سلطنتی دزدیده شد.",
+        "دهه‌ها بعد، زیر نام خانواده‌ی هوپ دوباره ظاهر شد.",
+        "الماس بعداً ظاهر شد. احتمال زیاد: قصه‌ی نفرین بعداً ساخته شد. معلوم نیست: کجا پنهان بود.",
+        "امروز در موزه‌ی اسمیتسونین است؛ و نفرینش هنوز قابل اثبات نیست."
+      ],
+      "question": "🧩 به نظرت این نفرین واقعی بود؟\nالف) نه، قصه‌ی بعدی بود\nب) آره، شانس بد آورد\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#معما",
+        "#داستان_واقعی"
+      ]
+    },
+    "notes": {
+      "proven": "الماس دهه‌ها بعد زیر نام خانواده‌ی هوپ دوباره ظاهر شد",
+      "probable": "قصه‌ی نفرین بعداً ساخته شد",
+      "unknown": "کجا پنهان بود"
+    }
+  },
+  {
+    "id": "saroo-brierley",
+    "title": "The Boy Who Found His Childhood Home From Space",
+    "tags": [
+      "Saroo Brierley",
+      "India",
+      "human story"
+    ],
+    "beats": [
+      {
+        "text": "At five years old, Saroo Brierley fell asleep on a train in India and became lost.",
+        "visual": "Five-year-old boy alone on a crowded Indian railway platform in 1980s, respectful documentary scene"
+      },
+      {
+        "text": "He woke in Kolkata, far from his family and unable to explain where home was.",
+        "visual": "Busy Kolkata railway station in the 1980s, trains and crowds, cinematic realism"
+      },
+      {
+        "text": "Years later, he remembered a station name and a water tower from childhood.",
+        "visual": "Small railway station and water tower in central India, warm afternoon light"
+      },
+      {
+        "text": "Adopted by an Australian family, he searched railway lines using satellite images.",
+        "visual": "Adult man studying satellite imagery on a computer in Australia, modern home office"
+      },
+      {
+        "text": "In 2012, he identified his hometown and reunited with his birth mother.",
+        "visual": "Emotional reunion between adult son and his mother in an Indian neighborhood, respectful candid style"
+      },
+      {
+        "text": "A fragment of memory, matched against images from space, led him home.",
+        "visual": "Satellite view of Indian railway lines crossing a vast landscape, subtle and realistic"
+      }
+    ],
+    "fa": {
+      "title": "پسری که خانه را از فضا پیدا کرد",
+      "beats": [
+        "او بیست‌وپنج سال پس از گم‌شدن، مادرش را با عکس‌های ماهواره‌ای پیدا کرد.",
+        "هند، ۱۹۸۶. پسربچه‌ی پنج‌ساله در قطار خوابش برد و در کلکته بیدار شد. خانه کجا بود؟",
+        "فقط نامی مبهم، یک ایستگاه و یک برج آب را به یاد داشت. شاید خانه دیگر وجود نداشت.",
+        "سال‌ها بعد در استرالیا، شب‌به‌شب خطوط راه‌آهن را با گوگل‌ارث جست‌وجو کرد.",
+        "ثابت شده: در ۲۰۱۲ شهر خاندوا و مادرش را پیدا کرد. محتمل: خاطره‌ی ناقص مسیر را نجات داد. نامعلوم: جزئیات همه‌ی آن سال‌ها.",
+        "پسری که فاصله گمش کرده بود، با نگاه‌کردن از فضا به خانه برگشت."
+      ],
+      "question": "🧩 او با چه چیزی خانه را پیدا کرد؟\nالف) نقشه‌ی کاغذی\nب) تصاویر ماهواره‌ای\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#سارو",
+        "#هند",
+        "#معما"
+      ]
+    },
+    "notes": {
+      "proven": "حدود ۱۹۸۶ سارو بریرلی پنج ساله در ایستگاه برهانپور سوار قطار شد و در کلکته پیاده شد؛ ۱۹۸۷ خانواده‌ای استرالیایی در تاسمانی او را به فرزندی گرفت؛ با گوگل ارث جست‌وجو کرد و ۲۰۱۲ محله‌ی گنش تلای در خندوا و مادرش را پیدا کرد؛ اسم «جینستلی» در یادش همان گنش تلای بود.",
+      "probable": "-",
+      "unknown": "-"
+    }
   }
 ]
