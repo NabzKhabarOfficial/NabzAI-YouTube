@@ -48,5 +48,16 @@ class BufferQueueSafetyTests(unittest.TestCase):
         self.assertEqual(result.stdout.strip(), "1")
 
 
+    def test_provider_clamps_larger_environment_values_to_one(self):
+        root = Path(__file__).resolve().parents[1]
+        env = os.environ.copy()
+        env["NABZ_BUFFER_MAX_NEW"] = "2"
+        result = subprocess.run(
+            [sys.executable, "-c", "from src.ig_buffer import MAX_NEW; print(MAX_NEW)"],
+            cwd=root, env=env, text=True, capture_output=True, check=True,
+        )
+        self.assertEqual(result.stdout.strip(), "1")
+
+
 if __name__ == "__main__":
     unittest.main()
