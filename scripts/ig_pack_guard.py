@@ -25,6 +25,19 @@ spec.loader.exec_module(pack)
 
 LOOKAHEAD_DAYS = 2
 
+from src.ig_inventory import inventory_status
+inventory = inventory_status(ROOT, reserve=14)
+print("Instagram story inventory: {} unused approved stories (reserve target: {})".format(
+    inventory["available"], inventory["reserve"]))
+if inventory["low"]:
+    print("::warning title=Instagram story reserve low::{} unused approved stories remain; target is {}. Replenish before the next weekly pack runs.".format(
+        inventory["available"], inventory["reserve"]))
+summary = os.getenv("GITHUB_STEP_SUMMARY")
+if summary:
+    with open(summary, "a", encoding="utf-8") as fh:
+        fh.write("### Instagram story inventory\n\n- Available: **{}**\n- Reserve target: **{}**\n- Status: **{}**\n\n".format(
+            inventory["available"], inventory["reserve"], "LOW" if inventory["low"] else "OK"))
+
 state = pack.load_json(pack.STATE_FILE, {})
 week = pack.pick_week(state, os.getenv("NABZ_PACK_WEEK", "").strip())
 info = (state.get("weeks") or {}).get(week.isoformat()) or {}
