@@ -26,6 +26,17 @@ class EffectiveBankTests(unittest.TestCase):
         loaded = list(ids())
         self.assertEqual(len(loaded), len(set(loaded)))
 
+    def test_new_persian_story_pairs_are_complete_and_valid(self):
+        batch_path = mystery_short.ROOT / "content" / "mysteries_batch11.json"
+        rows = json.loads(batch_path.read_text(encoding="utf-8"))
+        fa = json.loads((mystery_short.ROOT / "content" / "mysteries_fa.json").read_text(encoding="utf-8"))["stories"]
+        notes = json.loads((mystery_short.ROOT / "content" / "story_notes_fa.json").read_text(encoding="utf-8"))["stories"]
+        self.assertEqual(len(rows), 14)
+        for story in rows:
+            mystery_short.validate_story(story)
+            self.assertIn(story["id"], fa)
+            self.assertIn(story["id"], notes)
+
 
 if __name__ == "__main__":
     unittest.main()
