@@ -191,7 +191,6 @@ jobs:
 
       - name: Check for built Buffer items that are not sent
         id: gate
-        continue-on-error: true
         run: |
           python3 scripts/buffer_gate.py
 
@@ -222,7 +221,7 @@ jobs:
           python -m src.guarded_buffer
 
       - name: Persist Buffer state and publication claims
-        if: always() && steps.gate.outputs.run != 'false'
+        if: always() && success() && steps.gate.outputs.run != 'false'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
