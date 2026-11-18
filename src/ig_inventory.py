@@ -25,7 +25,11 @@ def _mapping(path: Path) -> dict:
 
 
 def _english_ids(content: Path) -> set[str]:
-    paths = [content / "mysteries.json", *sorted(content.glob("mysteries_batch*.json"))]
+    paths = [content / "mysteries.json"]
+    add_path = content / "mysteries_add.json"
+    if add_path.exists():
+        paths.append(add_path)
+    paths.extend(sorted(content.glob("mysteries_batch*.json")))
     found: set[str] = set()
     for path in paths:
         data = _json(path, None)
