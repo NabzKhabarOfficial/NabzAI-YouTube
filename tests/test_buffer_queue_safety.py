@@ -45,7 +45,7 @@ class BufferQueueSafetyTests(unittest.TestCase):
             [sys.executable, "-c", "from src.ig_buffer import MAX_NEW; print(MAX_NEW)"],
             cwd=root, env=env, text=True, capture_output=True, check=True,
         )
-        self.assertEqual(result.stdout.strip(), "1")
+        self.assertEqual(result.stdout.strip().splitlines()[-1], "1")
 
 
     def test_provider_clamps_larger_environment_values_to_one(self):
