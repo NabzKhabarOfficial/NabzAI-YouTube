@@ -22,6 +22,19 @@ class EffectiveBankTests(unittest.TestCase):
         self.assertTrue(self._batch_ids().issubset(production_bank))
         self.assertEqual(len(production_bank), len(set(production_bank)))
 
+
+    def _add_ids(self):
+        path = mystery_short.ROOT / "content" / "mysteries_add.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        return {str(row["id"]) for row in data.get("stories", [])}
+
+    def test_effective_bank_contains_legacy_extra_stories(self):
+        self.assertTrue(self._add_ids().issubset(ids()))
+
+    def test_instagram_production_loader_contains_legacy_extra_stories(self):
+        production_bank = ig_pack.load_english_bank()
+        self.assertTrue(self._add_ids().issubset(production_bank))
+
     def test_effective_bank_ids_are_unique(self):
         loaded = list(ids())
         self.assertEqual(len(loaded), len(set(loaded)))
