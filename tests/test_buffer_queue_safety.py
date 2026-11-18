@@ -1,4 +1,7 @@
 import json
+import os
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -32,6 +35,17 @@ class BufferQueueSafetyTests(unittest.TestCase):
             install(module)
             rows = module.scheduled_posts("org", "channel")
             self.assertEqual(rows, [{"id": "buffer-old", "dueAt": "2020-01-01T00:00:00+00:00"}])
+
+
+    def test_provider_defaults_to_one_new_reel_per_run(self):
+        root = Path(__file__).resolve().parents[1]
+        env = os.environ.copy()
+        env.pop("NABZ_BUFFER_MAX_NEW", None)
+        result = subprocess.run(
+            [sys.executable, "-c", "from src.ig_buffer import MAX_NEW; print(MAX_NEW)"],
+            cwd=root, env=env, text=True, capture_output=True, check=True,
+        )
+        self.assertEqual(result.stdout.strip(), "1")
 
 
 if __name__ == "__main__":
