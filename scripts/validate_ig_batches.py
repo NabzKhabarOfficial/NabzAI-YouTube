@@ -48,7 +48,7 @@ def main() -> int:
         raise ValueError(f"expected at least 10 story batch files, found {len(files)}")
     numbers = []
     for path in files:
-        match = re.fullmatch(r"mysteries_batch(\\d+)\\.json", path.name)
+        match = re.fullmatch(r"mysteries_batch(\d+)\.json", path.name)
         if not match:
             raise ValueError(f"unexpected story batch filename: {path.name}")
         numbers.append(int(match.group(1)))
