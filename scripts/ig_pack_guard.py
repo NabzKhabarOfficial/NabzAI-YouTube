@@ -15,10 +15,12 @@ Writes skip=true|false to $GITHUB_OUTPUT. Loads src/ig_pack.py straight from its
 """
 import importlib.util
 import os
+import sys
 from datetime import timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 spec = importlib.util.spec_from_file_location("ig_pack_light", ROOT / "src" / "ig_pack.py")
 pack = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pack)
