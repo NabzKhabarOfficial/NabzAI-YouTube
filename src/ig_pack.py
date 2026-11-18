@@ -876,8 +876,9 @@ def run_week(started: float) -> bool:
     late = now_tehran() >= deadline(week)
     info = plan_week(state, week, per_day, fa_bank, set(en), allow_partial=late)
     if info is None:
-        log(f"{tag}: waiting for more Persian stories (a short week is planned only after the deadline)")
-        return False
+        message = f"{tag}: fewer than seven unused approved Persian/English story pairs; no reel can be planned safely"
+        log(message)
+        raise RuntimeError(message)
     allow_edge = os.getenv("NABZ_PACK_ALLOW_EDGE", "0") == "1"  # owner rule: one voice, so never by default
     install_narrator(allow_edge)
     ensure_release(tag, week)
