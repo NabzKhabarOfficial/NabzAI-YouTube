@@ -22,13 +22,12 @@ on:
         type: choice
         options:
           - "1"
-          - "2"
           - "3"
 
       buffer_max:
-        description: "Most reels to send to Buffer in this run"
+        description: "Maximum new reels per run (hard-capped at one)"
         required: true
-        default: "2"
+        default: "1"
         type: choice
         options:
           - "1"
@@ -176,7 +175,7 @@ jobs:
       REELS_PAT: ${{ secrets.REELS_PAT }}
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
-      NABZ_BUFFER_MAX_NEW: ${{ inputs.buffer_max || '2' }}
+      NABZ_BUFFER_MAX_NEW: ${{ inputs.buffer_max || '1' }}
 
     steps:
       - name: Checkout main

@@ -16,15 +16,21 @@ class MysteryShortTests(unittest.TestCase):
             words = sum(len(b["text"].split()) for b in s["beats"])
             self.assertLessEqual(words / 2.7, 36, s["id"])  # tight ~30 s Shorts at ~2.7+ words/s
 
-    def test_all_150_batch_stories_are_loaded_into_runtime(self):
+    def test_all_story_batches_are_loaded_into_runtime(self):
         batch_ids = set()
-        for path in sorted((m.ROOT / "content").glob("mysteries_batch*.json")):
+        files = sorted((m.ROOT / "content").glob("mysteries_batch*.json"))
+        self.assertGreaterEqual(len(files), 10)
+        for index, path in enumerate(files, 1):
             rows = json.loads(path.read_text(encoding="utf-8"))
             self.assertIsInstance(rows, list, path.name)
-            self.assertEqual(len(rows), 15, path.name)
+            if index <= 10:
+                self.assertEqual(len(rows), 15, path.name)
+            else:
+                self.assertGreaterEqual(len(rows), 1, path.name)
+                self.assertLessEqual(len(rows), 25, path.name)
             batch_ids.update(str(row["id"]) for row in rows)
+        self.assertGreaterEqual(len(batch_ids), 150)
         runtime_ids = {str(story["id"]) for story in m.load_bank()}
-        self.assertEqual(len(batch_ids), 150)
         self.assertTrue(batch_ids.issubset(runtime_ids))
         self.assertEqual(batch_ids - runtime_ids, set())
 
