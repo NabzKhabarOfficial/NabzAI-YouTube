@@ -534,5 +534,21 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-11-18",
+    "story": "ss-waratah",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "eleven",
+        "heard": "One passenger walked off a ship, 211 stayed and vanished.",
+        "score": 0.43,
+        "kept": null
+      }
+    ]
   }
 ]

@@ -247,6 +247,16 @@
       },
       "status": "succeeded"
     },
+    "4dcfa0975748a2035fbebd7a8125f223a76f37b4eacfd2077df1945ef258b798": {
+      "external_id": "_8v6tekX-mM",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-18T19:00:00.000Z",
+        "story_id": "ss-waratah",
+        "video_sha256_24": "d0ec5233bd17a764243ab7a0"
+      },
+      "status": "succeeded"
+    },
     "4f609b3b548eb14d2088b1297f1ed0bdbe40518d094ca8fd400c7a144fd315e0": {
       "external_id": "6afc73bb0ec7d2b0822a0951",
       "metadata": {
