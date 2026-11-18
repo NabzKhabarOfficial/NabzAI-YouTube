@@ -1188,5 +1188,232 @@
       "probable": "-",
       "unknown": "-"
     }
+  },
+  {
+    "id": "the-bloop",
+    "title": "The Ocean Sound Too Powerful for Any Known Animal",
+    "tags": [
+      "ocean",
+      "NOAA",
+      "natural phenomena"
+    ],
+    "beats": [
+      {
+        "text": "In 1997, underwater microphones recorded a deep sound that rose in pitch.",
+        "visual": "Deep ocean hydrophone suspended beneath a research vessel, 1990s documentary realism"
+      },
+      {
+        "text": "Sensors thousands of kilometres apart detected it across the Pacific Ocean.",
+        "visual": "Scientific ocean monitoring stations spread across the Pacific, map table and instruments"
+      },
+      {
+        "text": "Some listeners imagined an enormous unknown animal hidden beneath the waves.",
+        "visual": "Dark underwater abyss with a distant whale silhouette, natural not fantastical"
+      },
+      {
+        "text": "Scientists later compared the sound with signals made by cracking Antarctic ice.",
+        "visual": "Huge Antarctic ice shelf cracking and breaking into the sea, cinematic documentary"
+      },
+      {
+        "text": "NOAA said an icequake was the likely explanation, not a giant creature.",
+        "visual": "Researchers studying acoustic waveforms on a computer screen, no readable text"
+      },
+      {
+        "text": "The sound was real; the monster was never found because the ice was enough.",
+        "visual": "Massive Antarctic iceberg drifting in cold blue water, quiet unresolved atmosphere"
+      }
+    ],
+    "fa": {
+      "title": "صدای اقیانوس که برای هر حیوانی زیادی بزرگ بود",
+      "beats": [
+        "اقیانوس صدایی ساخت که برای هر حیوان شناخته‌شده‌ای بیش از حد قدرتمند بود.",
+        "۱۹۹۷. میکروفن‌های زیرآبی اقیانوس آرام صدایی عمیق و رو به اوج گرفتند. چه چیزی بود؟",
+        "حسگرها با فاصله‌ی بیش از پنج‌هزار کیلومتر آن را شنیدند و بعضی‌ها حدس زدند هیولایی ناشناخته است.",
+        "اما صدا با چیزی دیگر جور درآمد: یخ، تکه‌های عظیمی که از یخچال‌های قطب جنوب می‌شکستند.",
+        "ثابت شده: الگوی صدا با زلزله‌های یخی تطبیق داشت. محتمل: فروپاشی یخ‌های قطبی بود. نامعلوم: جزئیات دقیق هر شکست.",
+        "هیولا واقعی بود، اما از جنس قاره‌ای از یخ که داشت از هم می‌شکست."
+      ],
+      "question": "🧩 صدا از چه چیزی بود؟\nالف) یک حیوان بزرگ\nب) شکستن یخ‌های قطب جنوب\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#بلُوپ",
+        "#اقیانوس",
+        "#معما"
+      ]
+    },
+    "notes": {
+      "proven": "۱۹۹۷ میکروفون‌های زیر آب اداره‌ی ملی اقیانوس و جو آمریکا (NOAA) صدایی بسیار قوی و بم با فرکانس رو به بالا ثبت کردند؛ دستگاه‌هایی با بیش از ۵۰۰۰ کیلومتر فاصله آن را شنیدند؛ ۲۰۱۲ NOAA آن را با زمین‌لرزه‌ی یخی (شکستن یخ قطب جنوب) سازگار دانست.",
+      "probable": "زمین‌لرزه‌ی یخی (جمع‌بندی رسمی).",
+      "unknown": "-"
+    }
+  },
+  {
+    "id": "kon-tiki",
+    "title": "The Raft Experts Said Could Never Cross the Ocean",
+    "tags": [
+      "Kon-Tiki",
+      "Pacific Ocean",
+      "exploration"
+    ],
+    "beats": [
+      {
+        "text": "In 1947, Thor Heyerdahl sailed a raft made from balsa wood from Peru.",
+        "visual": "Thor Heyerdahl and crew preparing a balsa raft on the Peruvian coast, 1947"
+      },
+      {
+        "text": "Experts doubted the craft could survive the Pacific crossing.",
+        "visual": "Large handmade balsa raft on open Pacific swells, period expedition photography"
+      },
+      {
+        "text": "After 101 days and roughly seven thousand kilometres, it reached the Tuamotu Islands.",
+        "visual": "Kon-Tiki raft approaching a coral atoll in the Tuamotu Islands, historical realism"
+      },
+      {
+        "text": "All six crew members survived the voyage and reached safety.",
+        "visual": "Six exhausted sailors standing safely on a tropical shore after a long voyage"
+      },
+      {
+        "text": "The journey proved the route was possible, but not that ancient South Americans founded Polynesia.",
+        "visual": "Museum display of the Kon-Tiki raft and expedition equipment, documentary lighting"
+      },
+      {
+        "text": "Later genetic research suggested contact around the year 1200, with migration mainly from Asia.",
+        "visual": "Polynesian and South American coastlines shown on a vintage navigation map, no text"
+      }
+    ],
+    "fa": {
+      "title": "کلکی که کارشناسان گفتند غرق می‌شود",
+      "beats": [
+        "کارشناسان گفتند این کلک غرق می‌شود؛ اما از اقیانوس عبور کرد.",
+        "پرو، ۱۹۴۷. تور هایردال با کلکی از چوب بالسا به غرب رفت. آیا مردم باستانی آمریکای جنوبی به پلی‌نزی رسیدند؟",
+        "پس از ۱۰۱ روز و حدود هفت‌هزار کیلومتر، کلک به صخره‌ای پلی‌نزی خورد و همه زنده ماندند.",
+        "اما زبان، گیاهان و پژوهش‌های بعدی بیشتر به مهاجرت پلی‌نزی‌ها از آسیا اشاره کردند.",
+        "ثابت شده: چنین سفری ممکن است. محتمل: حدود سال ۱۲۰۰ میان دو منطقه تماس رخ داده. نامعلوم: چه کسی اول به کجا رفت.",
+        "کلک فقط امکان سفر را ثابت کرد؛ دیدار واقعی شاید از طرف دیگر شروع شده بود."
+      ],
+      "question": "🧩 کن‌تیکی چه چیزی را ثابت کرد؟\nالف) مسیر سفر ممکن بود\nب) همه‌ی نظریه‌ها درست بود\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#کن_تیکی",
+        "#اقیانوس_آرام",
+        "#معما"
+      ]
+    },
+    "notes": {
+      "proven": "۱۹۴۷ تور هیردال و پنج همراه با کلک بالسا از کالائو پرو راه افتادند؛ بعد از ۱۰۱ روز و حدود ۷۰۰۰ کیلومتر به صخره‌ی رارویا در توآموتو خوردند؛ همه زنده ماندند.",
+      "probable": "پولینزیایی‌ها از آسیا آمدند؛ پژوهش ژنتیکی ۲۰۲۰ (Nature) تماس با بومیان آمریکای جنوبی حدود ۱۲۰۰ میلادی را نشان داد.",
+      "unknown": "کدام طرف سفر کرد."
+    }
+  },
+  {
+    "id": "sully-hudson",
+    "title": "The Pilot Who Landed an Airliner on a River",
+    "tags": [
+      "US Airways 1549",
+      "Hudson River",
+      "aviation"
+    ],
+    "beats": [
+      {
+        "text": "Both engines failed above New York after the plane struck a flock of geese.",
+        "visual": "Airbus passenger jet climbing above New York City in winter, 2009"
+      },
+      {
+        "text": "On January 15, 2009, Flight 1549 lost power shortly after takeoff.",
+        "visual": "Flock of Canada geese near an aircraft engine, realistic aviation documentary image"
+      },
+      {
+        "text": "Captain Chesley Sullenberger chose to land on the Hudson River.",
+        "visual": "Passenger jet descending toward the Hudson River between Manhattan and New Jersey"
+      },
+      {
+        "text": "All 155 people survived, and investigators later reviewed the decision.",
+        "visual": "Passengers standing on the wings of a safely ditched aircraft, rescue boats approaching"
+      },
+      {
+        "text": "Simulations that omitted the real thirty-five-second delay gave misleading results.",
+        "visual": "Flight safety investigators reviewing cockpit data and simulation screens, no readable text"
+      },
+      {
+        "text": "The river landing was extraordinary, but the crew’s calm timing made it possible.",
+        "visual": "Rescued passengers wrapped in blankets aboard a ferry on the Hudson, winter daylight"
+      }
+    ],
+    "fa": {
+      "title": "خلبانی که روی رودخانه فرود آمد",
+      "beats": [
+        "هر دو موتور بالای نیویورک از کار افتادند؛ خلبان روی رودخانه نشست.",
+        "ژانویه‌ی ۲۰۰۹. پرواز ۱۵۴۹ به دسته‌ای غاز خورد. آیا باید به فرودگاه برمی‌گشت؟",
+        "هر ۱۵۵ نفر زنده ماندند، اما شبیه‌سازی‌های اولیه گفتند شاید به باند می‌رسیدند.",
+        "خلبان‌های آزمایش از قبل می‌دانستند و فوری چرخیدند؛ با تأخیر واقعی ۳۵ ثانیه، سقوط می‌کردند.",
+        "ثابت شده: بررسی‌ها تصمیم او را تأیید کردند. محتمل: فرود روی هادسون بهترین گزینه بود. نامعلوم: اگر چند ثانیه فرق می‌کرد چه می‌شد.",
+        "همان ثانیه‌هایی که برای فکر کردن لازم داشت، در شبیه‌سازی‌ها حذف شده بود."
+      ],
+      "question": "🧩 چرا به هادسون برگشت؟\nالف) چون زمان تصمیم واقعی بود\nب) چون موتور سالم بود\nج) نظر خودت\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#پرواز۱۵۴۹",
+        "#رودخانه_هادسون",
+        "#معما"
+      ]
+    },
+    "notes": {
+      "proven": "۱۵ ژانویه ۲۰۰۹ پرواز ۱۵۴۹ یو‌اس ایرویز بعد از برخورد با غازهای کانادایی هر دو موتور را از دست داد؛ چسلی سالنبرگر روی رود هادسون نشست؛ ۱۵۵ نفر زنده ماندند؛ هیئت ملی ایمنی حمل‌ونقل (NTSB) نشان داد با ۳۵ ثانیه تأخیر واقعی، برگشت به لاگواردیا شکست می‌خورد و تصمیم او را تأیید کرد.",
+      "probable": "فیلم سخت‌گیری هیئت را دراماتیک‌تر از واقعیت نشان داد.",
+      "unknown": "-"
+    }
+  },
+  {
+    "id": "great-escape",
+    "title": "The Great Escape: Seventy-Six Got Out, Three Got Home",
+    "tags": [
+      "World War II",
+      "Stalag Luft III",
+      "escape history"
+    ],
+    "beats": [
+      {
+        "text": "In March 1944, Allied prisoners dug tunnels beneath a German prisoner-of-war camp.",
+        "visual": "World War II prisoner-of-war barracks at Stalag Luft III, historical documentary realism"
+      },
+      {
+        "text": "Seventy-six men escaped through a tunnel, but its exit fell short of the trees.",
+        "visual": "Prisoners digging a concealed tunnel beneath a wooden bunk, period setting"
+      },
+      {
+        "text": "A guard discovered the escape, and most of the men were captured again.",
+        "visual": "Tunnel exit emerging in snowy forest short of the tree line, night scene"
+      },
+      {
+        "text": "Fifty prisoners were murdered on Hitler’s orders after their recapture.",
+        "visual": "German guards searching a forest after a mass escape, distant non-graphic framing"
+      },
+      {
+        "text": "Only three escapees reached freedom: two Norwegians and one Dutch airman.",
+        "visual": "Three Allied airmen travelling through occupied Europe in civilian disguises, historical realism"
+      },
+      {
+        "text": "The tunnel worked, but only a handful made it safely beyond the war.",
+        "visual": "Quiet memorial plaque and empty barracks at a former POW camp, reflective atmosphere"
+      }
+    ],
+    "fa": {
+      "title": "فرار بزرگ: هفتادوشش نفر، سه نفر به خانه رسیدند",
+      "beats": [
+        "آلمان، ۱۹۴۴. اسیران جنگی زیر اردوگاه تونل کندند.",
+        "تونل کمی جلوتر از درخت‌ها بیرون آمد و نگهبان، فرار را دید.",
+        "بعد، پنجاه نفر از فراری‌ها به دستور هیتلر کشته شدند.",
+        "فقط دو نروژی و یک هلندی به آزادی رسیدند.",
+        "این سه نفر به خانه رسیدند. احتمال زیاد: تونل مسیر فرار را باز کرد. معلوم نیست: سرنوشت همه‌ی فراری‌ها.",
+        "تونل کار کرد؛ فرار واقعی، عبور از قاره‌ای در میانه‌ی جنگ بود."
+      ],
+      "question": "🧩 چند نفر به خانه رسیدند؟\nالف) سه نفر\nب) پنجاه نفر\nج) همه‌ی فراری‌ها\nجوابت رو با حرف بنویس 👇",
+      "tags": [
+        "#معما",
+        "#داستان_واقعی"
+      ]
+    },
+    "notes": {
+      "proven": "این سه نفر به خانه رسیدند",
+      "probable": "تونل مسیر فرار را باز کرد",
+      "unknown": "سرنوشت همه‌ی فراری‌ها"
+    }
   }
 ]
