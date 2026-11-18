@@ -28,13 +28,13 @@ class InstagramInventoryTests(unittest.TestCase):
             }), encoding="utf-8")
             (content / "ig_state.json").write_text(json.dumps({"posted": ["posted"]}), encoding="utf-8")
             (content / "ig_pack_state.json").write_text(json.dumps({
-                "retired": [],
+                "retired": ["retired"],
                 "weeks": {"2026-11-23": {"plan": [{"id": "planned"}]}}
             }), encoding="utf-8")
 
-            self.assertEqual(available_story_ids(root), ["fresh", "retired"])
+            self.assertEqual(available_story_ids(root), ["fresh"])
             status = inventory_status(root, reserve=3)
-            self.assertEqual(status["available"], 2)
+            self.assertEqual(status["available"], 1)
             self.assertTrue(status["low"])
 
     def test_duplicate_english_ids_fail_closed(self):
