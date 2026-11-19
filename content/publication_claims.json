@@ -69,6 +69,16 @@
       },
       "status": "succeeded"
     },
+    "1a237138c823b780d4bb4863e166cad5c540b5fe5ea6d111a0b30eedfe3c9744": {
+      "external_id": "6aff7beeb3e65522f8362925",
+      "metadata": {
+        "due": "2026-11-23T21:33:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-23_2133_uss-cyclops.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "1c0ef9b54d4cb242d4d43aed9361901e76024c17aebd63380752e2a7a195ce62": {
       "external_id": "6ae858fc43b939472a7bb0aa",
       "metadata": {
@@ -193,6 +203,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-19_2129_theodosia-burr.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "37ae34d36c5d6af99458476b6b8f358b550a51791dbee7d0b59f88efd933aea7": {
+      "external_id": "6aff7bef1a1724ac8f562551",
+      "metadata": {
+        "due": "2026-11-24T21:35:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-24_2135_judge-crater.mp4?v=3"
       },
       "status": "succeeded"
     },

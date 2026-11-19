@@ -12,10 +12,10 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "01_2026-11-19_2129_theodosia-burr",
-    "01_2026-11-19_2129_theodosia-burr_story",
+    "01_2026-11-23_2133_uss-cyclops",
     "02_2026-11-20_2130_rudolf-diesel",
     "02_2026-11-20_2130_rudolf-diesel_story",
+    "02_2026-11-24_2135_judge-crater",
     "03_2026-11-21_2130_michael-rockefeller",
     "03_2026-11-21_2130_michael-rockefeller_story",
     "04_2026-11-22_2131_edgar-allan-poe-death",
@@ -133,7 +133,7 @@
       "due": "2026-11-19T21:29:00+03:30",
       "kind": "reel",
       "post_id": "6afe4389c69bd1cb88931e2a",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-19_2129_theodosia-burr.mp4?v=3"
     },
     "01_2026-11-19_2129_theodosia-burr_story": {
@@ -143,9 +143,19 @@
       "due": "2026-11-19T21:44:00+03:30",
       "kind": "story",
       "post_id": "6afe5911f6b6aa0cd493e371",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-19_2129_theodosia-burr_story.mp4?v=2"
+    },
+    "01_2026-11-23_2133_uss-cyclops": {
+      "at": "2026-11-20T02:13+03:30",
+      "audio_v": 3,
+      "cap": "79d02849cfe1",
+      "due": "2026-11-23T21:33:00+03:30",
+      "kind": "reel",
+      "post_id": "6aff7beeb3e65522f8362925",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-23_2133_uss-cyclops.mp4?v=3"
     },
     "02_2026-10-12_2049_flight-19": {
       "at": "2026-10-10T23:22+03:30",
@@ -259,6 +269,16 @@
       "status": "scheduled",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-20_2130_rudolf-diesel_story.mp4?v=2"
+    },
+    "02_2026-11-24_2135_judge-crater": {
+      "at": "2026-11-20T02:13+03:30",
+      "audio_v": 3,
+      "cap": "ba3f4c26d7fc",
+      "due": "2026-11-24T21:35:00+03:30",
+      "kind": "reel",
+      "post_id": "6aff7bef1a1724ac8f562551",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-24_2135_judge-crater.mp4?v=3"
     },
     "03_2026-10-13_1353_mh370": {
       "at": "2026-10-12T16:23+03:30",
