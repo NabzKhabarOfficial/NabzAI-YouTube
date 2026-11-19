@@ -550,5 +550,21 @@
         "kept": null
       }
     ]
+  },
+  {
+    "date": "2026-11-19",
+    "story": "lost-army-of-cambyses",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "Cambyses’",
+        "heard": "Did a sandstorm bury Canberra's soldiers or did the story grow in transit?",
+        "score": 0.56,
+        "kept": null
+      }
+    ]
   }
 ]

@@ -997,6 +997,16 @@
       },
       "status": "succeeded"
     },
+    "f3cd98f6600122ed8319351999eaa0c7b2b76e15cf12cf918e7721f700edf6b0": {
+      "external_id": "3EBDAGXlBOY",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-19T19:00:00.000Z",
+        "story_id": "lost-army-of-cambyses",
+        "video_sha256_24": "4d740fc7eac4c771051a8285"
+      },
+      "status": "succeeded"
+    },
     "fd00cb793348732ade270a2b33935f666525859f8ed49cc0ec6e9bd7154e9ca1": {
       "external_id": "6ae91e6db62d192bcc4eb90e",
       "metadata": {

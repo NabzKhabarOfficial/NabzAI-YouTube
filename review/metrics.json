@@ -1,22 +1,22 @@
 {
-  "duration_seconds": 36.97,
+  "duration_seconds": 42.0,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 16.05,
+  "file_mb": 18.43,
   "audio": {
     "mean_volume": -18.0,
-    "max_volume": -0.2
+    "max_volume": -0.4
   },
   "image_sources": [
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace",
-    "hfspace"
+    "cloudflare",
+    "cloudflare",
+    "cloudflare",
+    "cloudflare",
+    "cloudflare",
+    "cloudflare"
   ],
   "quality_passed": true,
-  "story_id": "ss-waratah",
+  "story_id": "lost-army-of-cambyses",
   "story_bank": ""
 }

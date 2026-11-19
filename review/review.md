@@ -1,12 +1,12 @@
-# Review: The SS Waratah Disappearance
+# Review: The Lost Army of Cambyses
 
 | Check | Result |
 |---|---|
-| duration 20-40s | OK (37.0s) |
+| duration 20-40s | CHECK (42.0s) |
 | vertical 1080x1920 | OK (1080x1920) |
 | audio not too quiet | OK (-18.0 dB) |
-| no clipping | OK (-0.2 dB) |
+| no clipping | OK (-0.4 dB) |
 
-Images: hfspace, hfspace, hfspace, hfspace, hfspace, hfspace
+Images: cloudflare, cloudflare, cloudflare, cloudflare, cloudflare, cloudflare
 
 
