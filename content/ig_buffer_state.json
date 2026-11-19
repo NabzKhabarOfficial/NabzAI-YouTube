@@ -17,9 +17,10 @@
     "02_2026-11-20_2130_rudolf-diesel",
     "02_2026-11-20_2130_rudolf-diesel_story",
     "03_2026-11-21_2130_michael-rockefeller",
+    "03_2026-11-21_2130_michael-rockefeller_story",
     "04_2026-11-22_2131_edgar-allan-poe-death",
-    "car_gonabad-qanat",
-    "car_takht-e-soleyman"
+    "04_2026-11-22_2131_edgar-allan-poe-death_story",
+    "car_gonabad-qanat"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -340,6 +341,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-21_2130_michael-rockefeller.mp4?v=3"
     },
+    "03_2026-11-21_2130_michael-rockefeller_story": {
+      "at": "2026-11-19T19:00+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-21T21:45:00+03:30",
+      "kind": "story",
+      "post_id": "6aff16a015631cf5a652b65d",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-21_2130_michael-rockefeller_story.mp4?v=2"
+    },
     "04_2026-10-13_2031_dancing-plague-1518": {
       "at": "2026-10-11T19:12+03:30",
       "audio_v": 3,
@@ -454,6 +466,17 @@
       "post_id": "6afec232fc3e30ab95bbbb3e",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-22_2131_edgar-allan-poe-death.mp4?v=3"
+    },
+    "04_2026-11-22_2131_edgar-allan-poe-death_story": {
+      "at": "2026-11-19T19:00+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-22T21:46:00+03:30",
+      "kind": "story",
+      "post_id": "6aff16a1cfb6abb6944d40ed",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-22_2131_edgar-allan-poe-death_story.mp4?v=2"
     },
     "05_2026-10-14_1317_hinterkaifeck": {
       "at": "2026-10-11T23:28+03:30",
@@ -1367,7 +1390,7 @@
       "due": "2026-11-19T17:39:00+03:30",
       "kind": "carousel",
       "post_id": "6af9d0ab16191f4f5d2b49d8",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_takht-e-soleyman_1.jpg"
     },
     "car_tarim-mummies": {
