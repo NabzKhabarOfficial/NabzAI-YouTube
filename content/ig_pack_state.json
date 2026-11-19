@@ -1296,6 +1296,37 @@
       "done": true,
       "planned_at": "2026-11-06T19:01+03:30",
       "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-11-09"
+    },
+    "2026-11-16": {
+      "per_day": 1,
+      "plan": [
+        {
+          "n": 1,
+          "id": "theodosia-burr",
+          "date": "2026-11-19",
+          "time": "21:29"
+        },
+        {
+          "n": 2,
+          "id": "rudolf-diesel",
+          "date": "2026-11-20",
+          "time": "21:30"
+        },
+        {
+          "n": 3,
+          "id": "michael-rockefeller",
+          "date": "2026-11-21",
+          "time": "21:30"
+        },
+        {
+          "n": 4,
+          "id": "edgar-allan-poe-death",
+          "date": "2026-11-22",
+          "time": "21:31"
+        }
+      ],
+      "built": {},
+      "planned_at": "2026-11-19T03:31+03:30"
     }
   },
   "carousels": {
