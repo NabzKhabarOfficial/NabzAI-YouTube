@@ -16,6 +16,8 @@
     "01_2026-11-19_2129_theodosia-burr_story",
     "02_2026-11-20_2130_rudolf-diesel",
     "02_2026-11-20_2130_rudolf-diesel_story",
+    "03_2026-11-21_2130_michael-rockefeller",
+    "04_2026-11-22_2131_edgar-allan-poe-death",
     "car_gonabad-qanat",
     "car_takht-e-soleyman"
   ],
@@ -328,6 +330,16 @@
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-11_2130_shroud-of-turin_story.mp4?v=2"
     },
+    "03_2026-11-21_2130_michael-rockefeller": {
+      "at": "2026-11-19T13:00+03:30",
+      "audio_v": 3,
+      "cap": "8b1d89e01b9c",
+      "due": "2026-11-21T21:30:00+03:30",
+      "kind": "reel",
+      "post_id": "6afec231812d9e91e674b2ea",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-21_2130_michael-rockefeller.mp4?v=3"
+    },
     "04_2026-10-13_2031_dancing-plague-1518": {
       "at": "2026-10-11T19:12+03:30",
       "audio_v": 3,
@@ -432,6 +444,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-12_2130_iron-mask_story.mp4?v=2"
+    },
+    "04_2026-11-22_2131_edgar-allan-poe-death": {
+      "at": "2026-11-19T13:00+03:30",
+      "audio_v": 3,
+      "cap": "f88df0d7697a",
+      "due": "2026-11-22T21:31:00+03:30",
+      "kind": "reel",
+      "post_id": "6afec232fc3e30ab95bbbb3e",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-22_2131_edgar-allan-poe-death.mp4?v=3"
     },
     "05_2026-10-14_1317_hinterkaifeck": {
       "at": "2026-10-11T23:28+03:30",
