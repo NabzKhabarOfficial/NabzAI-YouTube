@@ -13,7 +13,9 @@
   "films_page": "9e43fe38f018",
   "hosted": [
     "01_2026-11-19_2129_theodosia-burr",
+    "01_2026-11-19_2129_theodosia-burr_story",
     "02_2026-11-20_2130_rudolf-diesel",
+    "02_2026-11-20_2130_rudolf-diesel_story",
     "car_gonabad-qanat",
     "car_takht-e-soleyman"
   ],
@@ -131,6 +133,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-19_2129_theodosia-burr.mp4?v=3"
     },
+    "01_2026-11-19_2129_theodosia-burr_story": {
+      "at": "2026-11-19T05:32+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-19T21:44:00+03:30",
+      "kind": "story",
+      "post_id": "6afe5911f6b6aa0cd493e371",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-19_2129_theodosia-burr_story.mp4?v=2"
+    },
     "02_2026-10-12_2049_flight-19": {
       "at": "2026-10-10T23:22+03:30",
       "cap": "58d64045b536",
@@ -232,6 +245,17 @@
       "post_id": "6afe438a4cace847b385652a",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-20_2130_rudolf-diesel.mp4?v=3"
+    },
+    "02_2026-11-20_2130_rudolf-diesel_story": {
+      "at": "2026-11-19T05:32+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-20T21:45:00+03:30",
+      "kind": "story",
+      "post_id": "6afe59123802f5b9fc5d2d36",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-20_2130_rudolf-diesel_story.mp4?v=2"
     },
     "03_2026-10-13_1353_mh370": {
       "at": "2026-10-12T16:23+03:30",

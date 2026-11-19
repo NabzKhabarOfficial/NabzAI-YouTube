@@ -49,6 +49,16 @@
       },
       "status": "succeeded"
     },
+    "0ff36555e5da65336ec52d62cef46dab442d169529b8c43696e0f7d2a1945784": {
+      "external_id": "6afe5911f6b6aa0cd493e371",
+      "metadata": {
+        "due": "2026-11-19T21:44:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-19_2129_theodosia-burr_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "13d9671f4c807226e4fdff7e6a2248555fabfc52bf85358730c6bdcb42c21011": {
       "external_id": "6aeb504555381ceedcbfe582",
       "metadata": {
@@ -994,6 +1004,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-04_1901_ss-baychimo.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "fd40de9e7a889724d7f5dfa9394878955be6808d182355a98ec89f1c14d44fd2": {
+      "external_id": "6afe59123802f5b9fc5d2d36",
+      "metadata": {
+        "due": "2026-11-20T21:45:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-20_2130_rudolf-diesel_story.mp4?v=2"
       },
       "status": "succeeded"
     },
