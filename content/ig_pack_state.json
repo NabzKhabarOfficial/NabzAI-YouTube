@@ -1325,8 +1325,155 @@
           "time": "21:31"
         }
       ],
-      "built": {},
-      "planned_at": "2026-11-19T03:31+03:30"
+      "built": {
+        "theodosia-burr": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 42.1,
+          "check_words": [
+            "اواخر",
+            "کرد",
+            "نرسید",
+            "هیچ",
+            "بقایای",
+            "طوفان",
+            "بعد",
+            "مطرح",
+            "شدند",
+            "فاجعه‌ای",
+            "دقیق"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-19T03:38+03:30"
+        },
+        "rudolf-diesel": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 35.7,
+          "check_words": [
+            "موتور",
+            "صبح",
+            "ناپدید",
+            "عرشه",
+            "شمال",
+            "حادثه",
+            "توضیح"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-19T03:43+03:30"
+        },
+        "michael-rockefeller": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 42.73,
+          "check_words": [
+            "رنه",
+            "گینهٔ",
+            "واژگون",
+            "وسیله‌ای",
+            "واسینگ",
+            "غرق‌شدن",
+            "گفتند",
+            "حفظ"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-19T03:47+03:30"
+        },
+        "edgar-allan-poe-death": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 40.73,
+          "check_words": [
+            "توضیح",
+            "حوزهٔ",
+            "حتی",
+            "مطرح‌اند",
+            "علت"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-19T03:51+03:30"
+        }
+      },
+      "planned_at": "2026-11-19T03:31+03:30",
+      "done": true,
+      "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-11-16"
+    },
+    "2026-11-23": {
+      "per_day": 1,
+      "plan": [
+        {
+          "n": 1,
+          "id": "uss-cyclops",
+          "date": "2026-11-23",
+          "time": "21:33"
+        },
+        {
+          "n": 2,
+          "id": "judge-crater",
+          "date": "2026-11-24",
+          "time": "21:35"
+        },
+        {
+          "n": 3,
+          "id": "benjamin-bathurst",
+          "date": "2026-11-25",
+          "time": "21:35"
+        },
+        {
+          "n": 4,
+          "id": "princess-doe",
+          "date": "2026-11-26",
+          "time": "21:25"
+        },
+        {
+          "n": 5,
+          "id": "peter-bergmann",
+          "date": "2026-11-27",
+          "time": "21:29"
+        },
+        {
+          "n": 6,
+          "id": "jennifer-fairgate",
+          "date": "2026-11-28",
+          "time": "21:32"
+        },
+        {
+          "n": 7,
+          "id": "setagaya-family-murders",
+          "date": "2026-11-29",
+          "time": "21:29"
+        }
+      ],
+      "built": {
+        "uss-cyclops": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 45.23,
+          "check_words": [
+            "عظیمی",
+            "ناپدید",
+            "خود",
+            "برد",
+            "یواس‌اس",
+            "سایکلاپس",
+            "حرکت",
+            "کرد",
+            "موتور",
+            "طوفان"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-19T03:56+03:30"
+        },
+        "judge-crater": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 39.3,
+          "check_words": [
+            "غیرعادی",
+            "اوت",
+            "نقد",
+            "گشت"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-19T04:00+03:30"
+        }
+      },
+      "done": false,
+      "planned_at": "2026-11-19T03:52+03:30"
     }
   },
   "carousels": {
