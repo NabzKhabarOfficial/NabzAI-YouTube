@@ -166,6 +166,16 @@
       },
       "status": "succeeded"
     },
+    "3454ccdf1dd08818d0610f8b5f8fa6a4c8ff273adb3d31633a1283bc1827e343": {
+      "external_id": "6afe4389c69bd1cb88931e2a",
+      "metadata": {
+        "due": "2026-11-19T21:29:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-19_2129_theodosia-burr.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "3aadf148c583ae71a0bdbc6bd3c2fac4b1bc636b25756287dd0f2492a45608ee": {
       "external_id": "6af636e2045a66fcd505b3fe",
       "metadata": {
@@ -646,6 +656,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/08_2026-10-29_2254_lost-army-of-cambyses.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "bb6f40da09b0e7209977359bf074b80ff8774701c0b37ddc372fb489471e204d": {
+      "external_id": "6afe438a4cace847b385652a",
+      "metadata": {
+        "due": "2026-11-20T21:30:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-20_2130_rudolf-diesel.mp4?v=3"
       },
       "status": "succeeded"
     },
