@@ -13,9 +13,9 @@
   "films_page": "9e43fe38f018",
   "hosted": [
     "01_2026-11-23_2133_uss-cyclops",
-    "02_2026-11-20_2130_rudolf-diesel",
-    "02_2026-11-20_2130_rudolf-diesel_story",
+    "01_2026-11-23_2133_uss-cyclops_story",
     "02_2026-11-24_2135_judge-crater",
+    "02_2026-11-24_2135_judge-crater_story",
     "03_2026-11-21_2130_michael-rockefeller",
     "03_2026-11-21_2130_michael-rockefeller_story",
     "04_2026-11-22_2131_edgar-allan-poe-death",
@@ -158,6 +158,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-23_2133_uss-cyclops.mp4?v=3"
     },
+    "01_2026-11-23_2133_uss-cyclops_story": {
+      "at": "2026-11-21T01:47+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-23T21:48:00+03:30",
+      "kind": "story",
+      "post_id": "6b00c773dd205ed7799e3468",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-23_2133_uss-cyclops_story.mp4?v=2"
+    },
     "02_2026-10-12_2049_flight-19": {
       "at": "2026-10-10T23:22+03:30",
       "cap": "58d64045b536",
@@ -257,7 +268,7 @@
       "due": "2026-11-20T21:30:00+03:30",
       "kind": "reel",
       "post_id": "6afe438a4cace847b385652a",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-20_2130_rudolf-diesel.mp4?v=3"
     },
     "02_2026-11-20_2130_rudolf-diesel_story": {
@@ -267,7 +278,7 @@
       "due": "2026-11-20T21:45:00+03:30",
       "kind": "story",
       "post_id": "6afe59123802f5b9fc5d2d36",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-20_2130_rudolf-diesel_story.mp4?v=2"
     },
@@ -280,6 +291,17 @@
       "post_id": "6aff7bef1a1724ac8f562551",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-24_2135_judge-crater.mp4?v=3"
+    },
+    "02_2026-11-24_2135_judge-crater_story": {
+      "at": "2026-11-21T01:47+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-24T21:50:00+03:30",
+      "kind": "story",
+      "post_id": "6b00c77320a2d09a0ab4efb6",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-24_2135_judge-crater_story.mp4?v=2"
     },
     "03_2026-10-13_1353_mh370": {
       "at": "2026-10-12T16:23+03:30",
