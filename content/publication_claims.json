@@ -20,6 +20,23 @@
       },
       "status": "succeeded"
     },
+    "0ae0d4e9e53bda4ae6cd79435e972754d89949fd80f7a27773248ab48c1ec14d": {
+      "external_id": "6b0068477efc64d5e42ef826",
+      "metadata": {
+        "due": "2026-11-24T17:37:00+03:30",
+        "images": [
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_yakhchal_1.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_yakhchal_2.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_yakhchal_3.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_yakhchal_4.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_yakhchal_5.jpg",
+          "https://nabzkhabarofficial.github.io/nabz-reels/v/c_yakhchal_6.jpg"
+        ],
+        "kind": "carousel",
+        "provider": "buffer"
+      },
+      "status": "succeeded"
+    },
     "0b1c4c4dcc617671da984687a6c0be2e07fe7526c881f673dbe46453dbacaacf": {
       "external_id": "7spAuv-5Lic",
       "metadata": {

@@ -20,7 +20,8 @@
     "03_2026-11-21_2130_michael-rockefeller_story",
     "04_2026-11-22_2131_edgar-allan-poe-death",
     "04_2026-11-22_2131_edgar-allan-poe-death_story",
-    "car_gonabad-qanat"
+    "car_gonabad-qanat",
+    "car_yakhchal"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -1422,6 +1423,16 @@
       "post_id": "6ad8db207159dc2c40c0f1e4",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_tarim-mummies_1.jpg"
+    },
+    "car_yakhchal": {
+      "at": "2026-11-20T19:01+03:30",
+      "audio_v": 1,
+      "cap": "091292eb4a7d",
+      "due": "2026-11-24T17:37:00+03:30",
+      "kind": "carousel",
+      "post_id": "6b0068477efc64d5e42ef826",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_yakhchal_1.jpg"
     }
   },
   "story_errors": {}
