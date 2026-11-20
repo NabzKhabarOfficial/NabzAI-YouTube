@@ -1,22 +1,22 @@
 {
-  "duration_seconds": 42.0,
+  "duration_seconds": 37.37,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 18.43,
+  "file_mb": 15.46,
   "audio": {
-    "mean_volume": -18.0,
-    "max_volume": -0.4
+    "mean_volume": -18.1,
+    "max_volume": -0.1
   },
   "image_sources": [
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare"
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "lost-army-of-cambyses",
+  "story_id": "ninth-legion",
   "story_bank": ""
 }

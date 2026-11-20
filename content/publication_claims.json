@@ -689,6 +689,16 @@
       },
       "status": "succeeded"
     },
+    "b48d967e469383c291b7f8056f340464c9d8d4c7c6da382671c42d428d60a0b5": {
+      "external_id": "SM45ifB5sns",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-20T19:00:00.000Z",
+        "story_id": "ninth-legion",
+        "video_sha256_24": "f142832b9596973562d74de4"
+      },
+      "status": "succeeded"
+    },
     "b71016bc3905b92a1d8b407e1538e3109fd9258454a91b041569f05fe21bb93e": {
       "external_id": "6adf7305be236a10f9e0c2cb",
       "metadata": {
