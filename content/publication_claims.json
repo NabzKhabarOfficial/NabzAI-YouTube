@@ -273,6 +273,16 @@
       },
       "status": "succeeded"
     },
+    "47de04d33d4a70af47018301aabcad183c1190c104811a1dab7181a889c7d332": {
+      "external_id": "eIo8FyTuQkk",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-21T19:00:00.000Z",
+        "story_id": "sodder-children",
+        "video_sha256_24": "72d0fe62c818f481d39e808b"
+      },
+      "status": "succeeded"
+    },
     "494e276e2f58ce600f32cbb8880b57629d2cad13144b3ddba9f56e5c169b0d33": {
       "external_id": "6addf2d40b5343d070cf0c3b",
       "metadata": {

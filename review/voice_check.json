@@ -575,5 +575,21 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-11-21",
+    "story": "sodder-children",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "Sodder",
+        "heard": "Did the slaughter children die in the 1945 fire, or disappear before it ended?",
+        "score": 0.43,
+        "kept": null
+      }
+    ]
   }
 ]
