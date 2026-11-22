@@ -1470,10 +1470,146 @@
           ],
           "audio_v": 3,
           "at": "2026-11-19T04:00+03:30"
+        },
+        "benjamin-bathurst": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 43.67,
+          "check_words": [
+            "صحنه‌ای",
+            "کالسکه",
+            "اسب‌ها",
+            "ساختگی"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-23T00:42+03:30"
+        },
+        "princess-doe": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 42.6,
+          "check_words": [
+            "دهه‌ها",
+            "ژوئیهٔ",
+            "اثر",
+            "نداشت",
+            "نکردند",
+            "صحنهٔ",
+            "جرم"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-23T00:45+03:30"
+        },
+        "peter-bergmann": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 33.8,
+          "check_words": [
+            "جان",
+            "داشت",
+            "ثبت",
+            "کردند",
+            "اثر",
+            "نکرد",
+            "ثبت"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-23T00:48+03:30"
+        },
+        "jennifer-fairgate": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 43.77,
+          "check_words": [
+            "هتل",
+            "نگذاشت",
+            "اسلو",
+            "گذرنامهٔ",
+            "قتل"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-23T00:51+03:30"
+        },
+        "setagaya-family-murders": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 38.03,
+          "check_words": [
+            "عضو",
+            "غذا",
+            "وسایل",
+            "شناسایی",
+            "صحنه",
+            "تناقضی"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-23T00:54+03:30"
+        }
+      },
+      "done": true,
+      "planned_at": "2026-11-19T03:52+03:30",
+      "zip": "https://github.com/NabzKhabarOfficial/NabzAI-YouTube/releases/tag/week-2026-11-23"
+    },
+    "2026-11-30": {
+      "per_day": 1,
+      "plan": [
+        {
+          "n": 1,
+          "id": "keddie-cabin-murders",
+          "date": "2026-11-30",
+          "time": "21:30"
+        },
+        {
+          "n": 2,
+          "id": "cleveland-torso-murders",
+          "date": "2026-12-01",
+          "time": "21:34"
+        },
+        {
+          "n": 3,
+          "id": "texarkana-moonlight-murders",
+          "date": "2026-12-02",
+          "time": "21:25"
+        },
+        {
+          "n": 4,
+          "id": "bible-john",
+          "date": "2026-12-03",
+          "time": "21:28"
+        },
+        {
+          "n": 5,
+          "id": "monster-of-florence",
+          "date": "2026-12-04",
+          "time": "21:27"
+        },
+        {
+          "n": 6,
+          "id": "julia-wallace-murder",
+          "date": "2026-12-05",
+          "time": "21:31"
+        },
+        {
+          "n": 7,
+          "id": "greenbrier-ghost",
+          "date": "2026-12-06",
+          "time": "21:30"
+        }
+      ],
+      "built": {
+        "keddie-cabin-murders": {
+          "voice": "gemini:gemini-3.8-flash-tts:Algenib",
+          "duration": 39.67,
+          "check_words": [
+            "کلبهٔ",
+            "شمارهٔ",
+            "کِدی",
+            "حمله‌ای",
+            "صحنه",
+            "حفظ",
+            "کرد"
+          ],
+          "audio_v": 3,
+          "at": "2026-11-23T00:57+03:30"
         }
       },
       "done": false,
-      "planned_at": "2026-11-19T03:52+03:30"
+      "planned_at": "2026-11-23T00:54+03:30"
     }
   },
   "carousels": {
