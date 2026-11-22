@@ -126,6 +126,16 @@
       },
       "status": "succeeded"
     },
+    "1ea7d579c5e1e8c5f33e08425fc7c8204d379c70fb6dff274366f70345090819": {
+      "external_id": "DUVhfoVlePQ",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-22T19:00:00.000Z",
+        "story_id": "marfa-lights",
+        "video_sha256_24": "efc95b289ba7e6451f4173a1"
+      },
+      "status": "succeeded"
+    },
     "20379d9970a9bef42a326b1c39601c524edb6694890ba1e39481cee736832706": {
       "external_id": "6af09621229bf05dafbd6a07",
       "metadata": {

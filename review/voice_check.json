@@ -591,5 +591,14 @@
         "kept": null
       }
     ]
+  },
+  {
+    "date": "2026-11-22",
+    "story": "marfa-lights",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
   }
 ]
