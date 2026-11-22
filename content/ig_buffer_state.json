@@ -16,11 +16,9 @@
     "01_2026-11-23_2133_uss-cyclops_story",
     "02_2026-11-24_2135_judge-crater",
     "02_2026-11-24_2135_judge-crater_story",
-    "03_2026-11-21_2130_michael-rockefeller",
-    "03_2026-11-21_2130_michael-rockefeller_story",
     "04_2026-11-22_2131_edgar-allan-poe-death",
     "04_2026-11-22_2131_edgar-allan-poe-death_story",
-    "car_gonabad-qanat",
+    "car_meymand",
     "car_yakhchal"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -381,7 +379,7 @@
       "due": "2026-11-21T21:30:00+03:30",
       "kind": "reel",
       "post_id": "6afec231812d9e91e674b2ea",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-21_2130_michael-rockefeller.mp4?v=3"
     },
     "03_2026-11-21_2130_michael-rockefeller_story": {
@@ -391,7 +389,7 @@
       "due": "2026-11-21T21:45:00+03:30",
       "kind": "story",
       "post_id": "6aff16a015631cf5a652b65d",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-21_2130_michael-rockefeller_story.mp4?v=2"
     },
@@ -1325,7 +1323,7 @@
       "due": "2026-11-21T17:05:00+03:30",
       "kind": "carousel",
       "post_id": "6afc73bb0ec7d2b0822a0951",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_gonabad-qanat_1.jpg"
     },
     "car_gorgan-wall": {
@@ -1376,6 +1374,16 @@
       "post_id": "6ae75baf354a6ae7df879c47",
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_marlik_1.jpg"
+    },
+    "car_meymand": {
+      "at": "2026-11-22T19:01+03:30",
+      "audio_v": 1,
+      "cap": "7d5886a87042",
+      "due": "2026-11-26T17:27:00+03:30",
+      "kind": "carousel",
+      "post_id": "6b030b0e846b0ee907982b9e",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_meymand_1.jpg"
     },
     "car_oxus-treasure": {
       "at": "2026-10-26T19:02+03:30",
