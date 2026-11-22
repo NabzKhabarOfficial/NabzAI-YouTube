@@ -173,6 +173,16 @@
       },
       "status": "succeeded"
     },
+    "2dd745a5106be1b03254d05af5252e456e88823548fdb7869daf8087387794d5": {
+      "external_id": "6b035eb8c72676f5e9608fd5",
+      "metadata": {
+        "due": "2026-11-25T21:35:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-25_2135_benjamin-bathurst.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "301dc8cce8322a992855bd0b38ea85e704754e38d60450b94c6bc5a945fd35b4": {
       "external_id": "uydyCd7Zx-w",
       "metadata": {
@@ -760,6 +770,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/10_2026-10-30_1800_gobekli-tepe.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "aca3a6d6906d0b35331630cacc00172ee9e0e12e1663d46d258362d91982278e": {
+      "external_id": "6b035eb8d864a01105f87c7b",
+      "metadata": {
+        "due": "2026-11-26T21:25:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-26_2125_princess-doe.mp4?v=3"
       },
       "status": "succeeded"
     },
