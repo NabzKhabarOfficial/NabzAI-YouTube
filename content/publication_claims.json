@@ -793,6 +793,16 @@
       },
       "status": "succeeded"
     },
+    "ae406603c1a1469048b63688c844b6f253a7f5286bcb0fd9367b05db9a70e31c": {
+      "external_id": "VnsuQiynMqI",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-24T19:00:00.000Z",
+        "story_id": "lord-lucan",
+        "video_sha256_24": "1cfa51d33afc2b3038fae7c8"
+      },
+      "status": "succeeded"
+    },
     "b48d967e469383c291b7f8056f340464c9d8d4c7c6da382671c42d428d60a0b5": {
       "external_id": "SM45ifB5sns",
       "metadata": {

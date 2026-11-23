@@ -1,12 +1,12 @@
-# Review: The Alcatraz Escape
+# Review: Lord Lucan
 
 | Check | Result |
 |---|---|
-| duration 20-40s | OK (39.7s) |
+| duration 20-40s | OK (35.0s) |
 | vertical 1080x1920 | OK (1080x1920) |
-| audio not too quiet | OK (-18.1 dB) |
+| audio not too quiet | OK (-18.0 dB) |
 | no clipping | OK (-0.3 dB) |
 
-Images: cloudflare, cloudflare, cloudflare, cloudflare, cloudflare, cloudflare
+Images: hfspace, hfspace, hfspace, hfspace, hfspace, hfspace
 
 
