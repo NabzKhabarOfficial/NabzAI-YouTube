@@ -663,6 +663,16 @@
       },
       "status": "succeeded"
     },
+    "9c29e6b56c89d21bc936f14abdbfee6cef615e945b16538309da6a9f28712e6a": {
+      "external_id": "TPonp9l6gX0",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-23T19:00:00.000Z",
+        "story_id": "alcatraz-escape",
+        "video_sha256_24": "c8aab4637ad719d11573eb60"
+      },
+      "status": "succeeded"
+    },
     "9cfbe714af54d597e92291e41c7ff81422a265e23f26d21c4fea8c45ef4055c6": {
       "external_id": "6af6d95e562501e68e960387",
       "metadata": {
