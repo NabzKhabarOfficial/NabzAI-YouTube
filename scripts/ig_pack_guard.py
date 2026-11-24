@@ -15,15 +15,32 @@ Writes skip=true|false to $GITHUB_OUTPUT. Loads src/ig_pack.py straight from its
 """
 import importlib.util
 import os
+import sys
 from datetime import timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 spec = importlib.util.spec_from_file_location("ig_pack_light", ROOT / "src" / "ig_pack.py")
 pack = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pack)
 
 LOOKAHEAD_DAYS = 2
+
+inventory_spec = importlib.util.spec_from_file_location("ig_inventory_light", ROOT / "src" / "ig_inventory.py")
+inventory_module = importlib.util.module_from_spec(inventory_spec)
+inventory_spec.loader.exec_module(inventory_module)
+inventory = inventory_module.inventory_status(ROOT, reserve=14)
+print("Instagram story inventory: {} unused approved stories (reserve target: {})".format(
+    inventory["available"], inventory["reserve"]))
+if inventory["low"]:
+    print("::warning title=Instagram story reserve low::{} unused approved stories remain; target is {}. Replenish before the next weekly pack runs.".format(
+        inventory["available"], inventory["reserve"]))
+summary = os.getenv("GITHUB_STEP_SUMMARY")
+if summary:
+    with open(summary, "a", encoding="utf-8") as fh:
+        fh.write("### Instagram story inventory\n\n- Available: **{}**\n- Reserve target: **{}**\n- Status: **{}**\n\n".format(
+            inventory["available"], inventory["reserve"], "LOW" if inventory["low"] else "OK"))
 
 state = pack.load_json(pack.STATE_FILE, {})
 week = pack.pick_week(state, os.getenv("NABZ_PACK_WEEK", "").strip())

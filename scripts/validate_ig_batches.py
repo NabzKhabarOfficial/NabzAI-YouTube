@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -43,26 +44,38 @@ def validate_row(row: dict, source: Path) -> None:
 
 def main() -> int:
     files = sorted(ROOT.glob(BATCH_GLOB))
-    if len(files) != 10:
-        raise ValueError(
-            f"expected exactly 10 story batch files, found {len(files)}"
-        )
-    all_ids: set[str] = set()
+    if len(files) < 10:
+        raise ValueError(f"expected at least 10 story batch files, found {len(files)}")
+    numbers = []
     for path in files:
+        match = re.fullmatch(r"mysteries_batch(\d+)\.json", path.name)
+        if not match:
+            raise ValueError(f"unexpected story batch filename: {path.name}")
+        numbers.append(int(match.group(1)))
+    if numbers != list(range(1, len(files) + 1)):
+        raise ValueError(f"story batch numbering must be contiguous from 01; found {numbers}")
+
+    all_ids: set[str] = set()
+    total = 0
+    for number, path in zip(numbers, files):
         rows = json.loads(path.read_text(encoding="utf-8"))
-        if not isinstance(rows, list) or len(rows) != 15:
-            raise ValueError(f"{path}: expected exactly 15 stories")
+        if not isinstance(rows, list):
+            raise ValueError(f"{path}: expected a JSON story list")
+        if number <= 10 and len(rows) != 15:
+            raise ValueError(f"{path}: original batches must contain exactly 15 stories")
+        if number > 10 and not 1 <= len(rows) <= 25:
+            raise ValueError(f"{path}: extension batches must contain 1-25 stories")
         for row in rows:
             sid = row.get("id")
             if not sid or sid in all_ids:
                 raise ValueError(f"{path}: duplicate or missing id {sid!r}")
             all_ids.add(sid)
             validate_row(row, path)
-    if len(all_ids) != 150:
-        raise ValueError(
-            f"expected exactly 150 stories, found {len(all_ids)}"
-        )
-    print(f"Instagram batches valid: {len(files)} files, {len(all_ids)} stories")
+        total += len(rows)
+
+    if total < 150:
+        raise ValueError(f"expected at least 150 stories, found {total}")
+    print(f"Instagram batches valid: {len(files)} files, {total} stories")
     return 0
 
 
