@@ -20,8 +20,8 @@
     "04_2026-11-26_2125_princess-doe_story",
     "05_2026-11-27_2129_peter-bergmann",
     "06_2026-11-28_2132_jennifer-fairgate",
-    "car_meymand",
-    "car_yakhchal"
+    "car_band-e-kaisar",
+    "car_meymand"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -1340,6 +1340,16 @@
       "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_alamut_1.jpg"
     },
+    "car_band-e-kaisar": {
+      "at": "2026-11-24T19:00+03:30",
+      "audio_v": 1,
+      "cap": "06166a9b7a5c",
+      "due": "2026-11-28T17:33:00+03:30",
+      "kind": "carousel",
+      "post_id": "6b05ae3e15f4fbd321069b6f",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_band-e-kaisar_1.jpg"
+    },
     "car_behistun": {
       "at": "2026-10-28T19:43+03:30",
       "audio_v": 1,
@@ -1525,7 +1535,7 @@
       "due": "2026-11-24T17:37:00+03:30",
       "kind": "carousel",
       "post_id": "6b0068477efc64d5e42ef826",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_yakhchal_1.jpg"
     }
   },
