@@ -153,6 +153,16 @@
       },
       "status": "succeeded"
     },
+    "2537a993c6fb74f0ed65847be0de3fc1bbffbb0541f15f20c2aa9c942e96663d": {
+      "external_id": "6b04f65ff0d7b1e0dea56a75",
+      "metadata": {
+        "due": "2026-11-27T21:29:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-27_2129_peter-bergmann.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "25c5a702fbe60e6311f4f381ec0fcb2a51c8853a0894d2321d39ea3b62c5e07b": {
       "external_id": "6ae8acfe31e164b233edd5cd",
       "metadata": {
@@ -800,6 +810,16 @@
         "publish_at": "2026-11-24T19:00:00.000Z",
         "story_id": "lord-lucan",
         "video_sha256_24": "1cfa51d33afc2b3038fae7c8"
+      },
+      "status": "succeeded"
+    },
+    "af9662e9110ddeb54e4b5d37753376fe20e821c4c2cac048d59e6271a854f23a": {
+      "external_id": "6b04f6606734c08a26a53072",
+      "metadata": {
+        "due": "2026-11-28T21:32:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-28_2132_jennifer-fairgate.mp4?v=3"
       },
       "status": "succeeded"
     },

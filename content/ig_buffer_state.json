@@ -12,14 +12,14 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "01_2026-11-23_2133_uss-cyclops",
-    "01_2026-11-23_2133_uss-cyclops_story",
     "02_2026-11-24_2135_judge-crater",
     "02_2026-11-24_2135_judge-crater_story",
     "03_2026-11-25_2135_benjamin-bathurst",
     "03_2026-11-25_2135_benjamin-bathurst_story",
     "04_2026-11-26_2125_princess-doe",
     "04_2026-11-26_2125_princess-doe_story",
+    "05_2026-11-27_2129_peter-bergmann",
+    "06_2026-11-28_2132_jennifer-fairgate",
     "car_meymand",
     "car_yakhchal"
   ],
@@ -155,7 +155,7 @@
       "due": "2026-11-23T21:33:00+03:30",
       "kind": "reel",
       "post_id": "6aff7beeb3e65522f8362925",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-23_2133_uss-cyclops.mp4?v=3"
     },
     "01_2026-11-23_2133_uss-cyclops_story": {
@@ -165,7 +165,7 @@
       "due": "2026-11-23T21:48:00+03:30",
       "kind": "story",
       "post_id": "6b00c773dd205ed7799e3468",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-23_2133_uss-cyclops_story.mp4?v=2"
     },
@@ -624,6 +624,16 @@
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-13_2130_princess-caraboo_story.mp4?v=2"
     },
+    "05_2026-11-27_2129_peter-bergmann": {
+      "at": "2026-11-24T05:56+03:30",
+      "audio_v": 3,
+      "cap": "36c43608aed0",
+      "due": "2026-11-27T21:29:00+03:30",
+      "kind": "reel",
+      "post_id": "6b04f65ff0d7b1e0dea56a75",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-27_2129_peter-bergmann.mp4?v=3"
+    },
     "06_2026-10-14_2134_lead-masks": {
       "at": "2026-10-12T19:59+03:30",
       "audio_v": 3,
@@ -728,6 +738,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-14_2126_mary-rose_story.mp4?v=2"
+    },
+    "06_2026-11-28_2132_jennifer-fairgate": {
+      "at": "2026-11-24T05:56+03:30",
+      "audio_v": 3,
+      "cap": "c018fc74aed3",
+      "due": "2026-11-28T21:32:00+03:30",
+      "kind": "reel",
+      "post_id": "6b04f6606734c08a26a53072",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-28_2132_jennifer-fairgate.mp4?v=3"
     },
     "07_2026-10-15_1359_amelia-earhart": {
       "at": "2026-10-13T13:54+03:30",
