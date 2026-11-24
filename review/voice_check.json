@@ -618,5 +618,21 @@
     "beats_checked": 6,
     "reason": "",
     "events": []
+  },
+  {
+    "date": "2026-11-25",
+    "story": "glenn-miller",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "Baessell",
+        "heard": "The Norseman left Twinwood Farm with Miller, Norman B. Sell, and pilot John Morgan on board.",
+        "score": 0.56,
+        "kept": null
+      }
+    ]
   }
 ]

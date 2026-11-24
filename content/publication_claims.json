@@ -438,6 +438,16 @@
       },
       "status": "succeeded"
     },
+    "5fcba844a94ab2aebbbdffc331050098f5b305c2786a8dc9bfc04650fd78c621": {
+      "external_id": "z919B9CuOaQ",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-25T19:00:00.000Z",
+        "story_id": "glenn-miller",
+        "video_sha256_24": "99acffb204cf42d6b9da09be"
+      },
+      "status": "succeeded"
+    },
     "60ea9f00993c850d19d1644012d80341a2286589f7cf97d62fefa5a47a4dff21": {
       "external_id": "ic3MpYI0fFY",
       "metadata": {
