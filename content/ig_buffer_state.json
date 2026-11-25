@@ -12,14 +12,14 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "03_2026-11-25_2135_benjamin-bathurst",
-    "03_2026-11-25_2135_benjamin-bathurst_story",
+    "01_2026-11-30_2130_keddie-cabin-murders",
     "04_2026-11-26_2125_princess-doe",
     "04_2026-11-26_2125_princess-doe_story",
     "05_2026-11-27_2129_peter-bergmann",
     "05_2026-11-27_2129_peter-bergmann_story",
     "06_2026-11-28_2132_jennifer-fairgate",
     "06_2026-11-28_2132_jennifer-fairgate_story",
+    "07_2026-11-29_2129_setagaya-family-murders",
     "car_band-e-kaisar",
     "car_meymand"
   ],
@@ -168,6 +168,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-23_2133_uss-cyclops_story.mp4?v=2"
+    },
+    "01_2026-11-30_2130_keddie-cabin-murders": {
+      "at": "2026-11-26T03:12+03:30",
+      "audio_v": 3,
+      "cap": "46dc3190e94c",
+      "due": "2026-11-30T21:30:00+03:30",
+      "kind": "reel",
+      "post_id": "6b0772f4d4eda4b659be3def",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-30_2130_keddie-cabin-murders.mp4?v=3"
     },
     "02_2026-10-12_2049_flight-19": {
       "at": "2026-10-10T23:22+03:30",
@@ -402,7 +412,7 @@
       "due": "2026-11-25T21:35:00+03:30",
       "kind": "reel",
       "post_id": "6b035eb8c72676f5e9608fd5",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-25_2135_benjamin-bathurst.mp4?v=3"
     },
     "03_2026-11-25_2135_benjamin-bathurst_story": {
@@ -412,7 +422,7 @@
       "due": "2026-11-25T21:50:00+03:30",
       "kind": "story",
       "post_id": "6b04082bbeaafcdbe0de4e15",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/03_2026-11-25_2135_benjamin-bathurst_story.mp4?v=2"
     },
@@ -831,6 +841,16 @@
       "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-15_2133_dancing-forest_story.mp4?v=2"
+    },
+    "07_2026-11-29_2129_setagaya-family-murders": {
+      "at": "2026-11-26T03:12+03:30",
+      "audio_v": 3,
+      "cap": "ed03d217ab96",
+      "due": "2026-11-29T21:29:00+03:30",
+      "kind": "reel",
+      "post_id": "6b0772f3d4eda4b659be3d6e",
+      "status": "scheduled",
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-29_2129_setagaya-family-murders.mp4?v=3"
     },
     "08_2026-10-15_2233_kaz-ii": {
       "at": "2026-10-13T19:31+03:30",

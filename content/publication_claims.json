@@ -720,6 +720,16 @@
       },
       "status": "succeeded"
     },
+    "9ce35e795a9afb736a97c623ddcf3db9b7e01f15b90b2be72c56c70bcce25b73": {
+      "external_id": "6b0772f4d4eda4b659be3def",
+      "metadata": {
+        "due": "2026-11-30T21:30:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-30_2130_keddie-cabin-murders.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
     "9cfbe714af54d597e92291e41c7ff81422a265e23f26d21c4fea8c45ef4055c6": {
       "external_id": "6af6d95e562501e68e960387",
       "metadata": {
@@ -867,6 +877,16 @@
         "publish_at": "2026-11-20T19:00:00.000Z",
         "story_id": "ninth-legion",
         "video_sha256_24": "f142832b9596973562d74de4"
+      },
+      "status": "succeeded"
+    },
+    "b5c993dca3ff6272b8f4f2beaab176de1307ba816be18308507b2d01643fb617": {
+      "external_id": "6b0772f3d4eda4b659be3d6e",
+      "metadata": {
+        "due": "2026-11-29T21:29:00+03:30",
+        "kind": "reel",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-29_2129_setagaya-family-murders.mp4?v=3"
       },
       "status": "succeeded"
     },
