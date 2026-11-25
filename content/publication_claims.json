@@ -589,6 +589,16 @@
       },
       "status": "succeeded"
     },
+    "7c64d99bbe09467e957780d797dcee4fe323de6f44d9ab14d94adbad45798391": {
+      "external_id": "6b062555615ec212af710ebc",
+      "metadata": {
+        "due": "2026-11-28T21:47:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-28_2132_jennifer-fairgate_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "81e705983575c42787fb05d6aff625db63c3cc5463931fbe42fc0ef4f08c1d35": {
       "external_id": "6af38b7c91300263f781aabf",
       "metadata": {
@@ -1255,6 +1265,16 @@
         "publish_at": "2026-11-19T19:00:00.000Z",
         "story_id": "lost-army-of-cambyses",
         "video_sha256_24": "4d740fc7eac4c771051a8285"
+      },
+      "status": "succeeded"
+    },
+    "f902e7f98ad891444474d54335a69b331ec820f0a785f812a73c6c3826ad0e6e": {
+      "external_id": "6b062554919291941325bd4d",
+      "metadata": {
+        "due": "2026-11-27T21:44:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-27_2129_peter-bergmann_story.mp4?v=2"
       },
       "status": "succeeded"
     },

@@ -12,14 +12,14 @@
   "fail_streak": 0,
   "films_page": "9e43fe38f018",
   "hosted": [
-    "02_2026-11-24_2135_judge-crater",
-    "02_2026-11-24_2135_judge-crater_story",
     "03_2026-11-25_2135_benjamin-bathurst",
     "03_2026-11-25_2135_benjamin-bathurst_story",
     "04_2026-11-26_2125_princess-doe",
     "04_2026-11-26_2125_princess-doe_story",
     "05_2026-11-27_2129_peter-bergmann",
+    "05_2026-11-27_2129_peter-bergmann_story",
     "06_2026-11-28_2132_jennifer-fairgate",
+    "06_2026-11-28_2132_jennifer-fairgate_story",
     "car_band-e-kaisar",
     "car_meymand"
   ],
@@ -289,7 +289,7 @@
       "due": "2026-11-24T21:35:00+03:30",
       "kind": "reel",
       "post_id": "6aff7bef1a1724ac8f562551",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-24_2135_judge-crater.mp4?v=3"
     },
     "02_2026-11-24_2135_judge-crater_story": {
@@ -299,7 +299,7 @@
       "due": "2026-11-24T21:50:00+03:30",
       "kind": "story",
       "post_id": "6b00c77320a2d09a0ab4efb6",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/02_2026-11-24_2135_judge-crater_story.mp4?v=2"
     },
@@ -634,6 +634,17 @@
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-27_2129_peter-bergmann.mp4?v=3"
     },
+    "05_2026-11-27_2129_peter-bergmann_story": {
+      "at": "2026-11-25T03:29+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-27T21:44:00+03:30",
+      "kind": "story",
+      "post_id": "6b062554919291941325bd4d",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/05_2026-11-27_2129_peter-bergmann_story.mp4?v=2"
+    },
     "06_2026-10-14_2134_lead-masks": {
       "at": "2026-10-12T19:59+03:30",
       "audio_v": 3,
@@ -748,6 +759,17 @@
       "post_id": "6b04f6606734c08a26a53072",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-28_2132_jennifer-fairgate.mp4?v=3"
+    },
+    "06_2026-11-28_2132_jennifer-fairgate_story": {
+      "at": "2026-11-25T03:29+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-28T21:47:00+03:30",
+      "kind": "story",
+      "post_id": "6b062555615ec212af710ebc",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/06_2026-11-28_2132_jennifer-fairgate_story.mp4?v=2"
     },
     "07_2026-10-15_1359_amelia-earhart": {
       "at": "2026-10-13T13:54+03:30",
