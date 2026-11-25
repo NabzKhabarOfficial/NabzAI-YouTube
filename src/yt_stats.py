@@ -230,9 +230,12 @@ def build_report(now=None) -> dict:
             report.update(daily=a["daily"], traffic=a["traffic"], analytics=True)
         except Exception as exc:
             text = f"{type(exc).__name__}: {exc}"
-            report["warning"] = ("Retention/subscriber numbers missing: the refresh token needs the "
-                                 "yt-analytics.readonly scope. " if re.search(r"scope|insufficient|403|invalid_grant|accessNotConfigured|disabled", text, re.I)
-                                 else "Analytics call failed. ") + text[:200]
+            missing_analytics = bool(re.search(r"scope|insufficient|403|invalid_grant|accessNotConfigured|disabled", text, re.I))
+            report["warning"] = (
+                "Retention/subscriber numbers missing: the refresh token does not carry the "
+                "yt-analytics.readonly scope (it likely has only youtube.upload/force-ssl). "
+                "Regenerate it with all three scopes, then verify with scripts/check_yt_token_scopes.py. "
+                if missing_analytics else "Analytics call failed. ") + text[:200]
     report["findings"] = findings(videos, report["daily"], report["analytics"])
     return report
 
