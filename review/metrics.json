@@ -1,22 +1,22 @@
 {
-  "duration_seconds": 40.97,
+  "duration_seconds": 33.87,
   "resolution": "1080x1920",
   "video_codec": "h264",
   "audio_codec": "aac",
-  "file_mb": 18.35,
+  "file_mb": 14.64,
   "audio": {
-    "mean_volume": -18.1,
+    "mean_volume": -18.0,
     "max_volume": -0.4
   },
   "image_sources": [
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare",
-    "cloudflare"
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace",
+    "hfspace"
   ],
   "quality_passed": true,
-  "story_id": "glenn-miller",
+  "story_id": "ambrose-small",
   "story_bank": ""
 }

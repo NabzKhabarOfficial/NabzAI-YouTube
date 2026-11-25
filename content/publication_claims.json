@@ -950,6 +950,16 @@
       },
       "status": "succeeded"
     },
+    "c361af69160dcfb4a653d77716342c9cbc9322a6b744cdb9636ab1327c0e6add": {
+      "external_id": "HBiLpHjrRPA",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-26T19:00:00.000Z",
+        "story_id": "ambrose-small",
+        "video_sha256_24": "815f634a24656625da5121a3"
+      },
+      "status": "succeeded"
+    },
     "c449f2db5bd57350fb77c5e2d8e564974e0cd282e5e4f427db3ef0804925d5d7": {
       "external_id": "6ae327e3568655049ec0b0fb",
       "metadata": {

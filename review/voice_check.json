@@ -634,5 +634,33 @@
         "kept": null
       }
     ]
+  },
+  {
+    "date": "2026-11-26",
+    "story": "ambrose-small",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": [
+      {
+        "word": "banked",
+        "heard": "a millionaire bank of fortune, then vanished without touching a cent.",
+        "score": 0.57,
+        "kept": null
+      },
+      {
+        "word": "dollar",
+        "heard": "He sold his theaters, deposited a $1 million check, and left his office.",
+        "score": 0.43,
+        "kept": null
+      },
+      {
+        "word": "cheque",
+        "heard": "He sold his theaters, deposited a $1 million check, and left his office.",
+        "score": 0.43,
+        "kept": null
+      }
+    ]
   }
 ]
