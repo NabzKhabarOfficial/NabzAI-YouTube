@@ -2,15 +2,6 @@
   {
     "date": "2026-10-08",
     "story": "wow-signal",
-    "lang": "en",
-    "status": "ok",
-    "beats_checked": 0,
-    "reason": "",
-    "events": []
-  },
-  {
-    "date": "2026-10-08",
-    "story": "wow-signal",
     "lang": "fa",
     "status": "ok",
     "beats_checked": 0,
@@ -662,5 +653,14 @@
         "kept": null
       }
     ]
+  },
+  {
+    "date": "2026-11-27",
+    "story": "franklin-expedition",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
   }
 ]
