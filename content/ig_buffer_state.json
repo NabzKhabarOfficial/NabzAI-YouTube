@@ -20,8 +20,7 @@
     "06_2026-11-28_2132_jennifer-fairgate",
     "06_2026-11-28_2132_jennifer-fairgate_story",
     "07_2026-11-29_2129_setagaya-family-murders",
-    "car_band-e-kaisar",
-    "car_meymand"
+    "car_band-e-kaisar"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
   "org_id": "6aca87101f8562f188533a3e",
@@ -1498,7 +1497,7 @@
       "due": "2026-11-26T17:27:00+03:30",
       "kind": "carousel",
       "post_id": "6b030b0e846b0ee907982b9e",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/c_meymand_1.jpg"
     },
     "car_oxus-treasure": {
