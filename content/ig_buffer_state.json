@@ -13,13 +13,13 @@
   "films_page": "9e43fe38f018",
   "hosted": [
     "01_2026-11-30_2130_keddie-cabin-murders",
-    "04_2026-11-26_2125_princess-doe",
-    "04_2026-11-26_2125_princess-doe_story",
+    "01_2026-11-30_2130_keddie-cabin-murders_story",
     "05_2026-11-27_2129_peter-bergmann",
     "05_2026-11-27_2129_peter-bergmann_story",
     "06_2026-11-28_2132_jennifer-fairgate",
     "06_2026-11-28_2132_jennifer-fairgate_story",
     "07_2026-11-29_2129_setagaya-family-murders",
+    "07_2026-11-29_2129_setagaya-family-murders_story",
     "car_band-e-kaisar"
   ],
   "last_fail": "01_2026-11-02_1329_roanoke-colony: RuntimeError: Buffer queue state is unknown; provider reconciliation required before any mutation",
@@ -177,6 +177,17 @@
       "post_id": "6b0772f4d4eda4b659be3def",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-30_2130_keddie-cabin-murders.mp4?v=3"
+    },
+    "01_2026-11-30_2130_keddie-cabin-murders_story": {
+      "at": "2026-11-27T03:26+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-30T21:45:00+03:30",
+      "kind": "story",
+      "post_id": "6b08c77f70e2a88e2cdd81cd",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-30_2130_keddie-cabin-murders_story.mp4?v=2"
     },
     "02_2026-10-12_2049_flight-19": {
       "at": "2026-10-10T23:22+03:30",
@@ -558,7 +569,7 @@
       "due": "2026-11-26T21:25:00+03:30",
       "kind": "reel",
       "post_id": "6b035eb8d864a01105f87c7b",
-      "status": "scheduled",
+      "status": "sent",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-26_2125_princess-doe.mp4?v=3"
     },
     "04_2026-11-26_2125_princess-doe_story": {
@@ -568,7 +579,7 @@
       "due": "2026-11-26T21:40:00+03:30",
       "kind": "story",
       "post_id": "6b04082cbeaafcdbe0de4e4d",
-      "status": "scheduled",
+      "status": "sent",
       "story_v": 2,
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/04_2026-11-26_2125_princess-doe_story.mp4?v=2"
     },
@@ -850,6 +861,17 @@
       "post_id": "6b0772f3d4eda4b659be3d6e",
       "status": "scheduled",
       "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-29_2129_setagaya-family-murders.mp4?v=3"
+    },
+    "07_2026-11-29_2129_setagaya-family-murders_story": {
+      "at": "2026-11-27T03:26+03:30",
+      "audio_v": 1,
+      "cap": "da39a3ee5e6b",
+      "due": "2026-11-29T21:44:00+03:30",
+      "kind": "story",
+      "post_id": "6b08c77e548b6e180d430ad0",
+      "status": "scheduled",
+      "story_v": 2,
+      "url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-29_2129_setagaya-family-murders_story.mp4?v=2"
     },
     "08_2026-10-15_2233_kaz-ii": {
       "at": "2026-10-13T19:31+03:30",

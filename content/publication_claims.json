@@ -930,6 +930,16 @@
       },
       "status": "succeeded"
     },
+    "b9325582c7b68038d64a21fa391e910c8bdac5197976bf7768ec4ca4632558f8": {
+      "external_id": "6b08c77e548b6e180d430ad0",
+      "metadata": {
+        "due": "2026-11-29T21:44:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/07_2026-11-29_2129_setagaya-family-murders_story.mp4?v=2"
+      },
+      "status": "succeeded"
+    },
     "baa6bfd99a7834ea3216a105799d226f74fb4e6eaaa502c5b8e41ca36fc0bb48": {
       "external_id": "6adfbb44a72c078abdb7e3b2",
       "metadata": {
@@ -1278,6 +1288,16 @@
         "kind": "reel",
         "provider": "buffer",
         "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/15_2026-11-01_2059_ss-waratah.mp4?v=3"
+      },
+      "status": "succeeded"
+    },
+    "f14e2f9c56a402796b577f1ee2128cdaf847b7019c67fde31f6d996ac9831d4d": {
+      "external_id": "6b08c77f70e2a88e2cdd81cd",
+      "metadata": {
+        "due": "2026-11-30T21:45:00+03:30",
+        "kind": "story",
+        "provider": "buffer",
+        "video_url": "https://nabzkhabarofficial.github.io/nabz-reels/v/01_2026-11-30_2130_keddie-cabin-murders_story.mp4?v=2"
       },
       "status": "succeeded"
     },
