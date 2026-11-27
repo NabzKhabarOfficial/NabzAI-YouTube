@@ -2,15 +2,6 @@
   {
     "date": "2026-10-08",
     "story": "wow-signal",
-    "lang": "fa",
-    "status": "ok",
-    "beats_checked": 0,
-    "reason": "",
-    "events": []
-  },
-  {
-    "date": "2026-10-08",
-    "story": "wow-signal",
     "lang": "en",
     "status": "error",
     "beats_checked": 0,
@@ -657,6 +648,15 @@
   {
     "date": "2026-11-27",
     "story": "franklin-expedition",
+    "lang": "en",
+    "status": "ok",
+    "beats_checked": 6,
+    "reason": "",
+    "events": []
+  },
+  {
+    "date": "2026-11-28",
+    "story": "brian-shaffer",
     "lang": "en",
     "status": "ok",
     "beats_checked": 6,

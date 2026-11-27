@@ -538,6 +538,16 @@
       },
       "status": "succeeded"
     },
+    "7499ab9651d0a6e67bc5558545bc2150f82abafb11955a93e8dca127b624c3a7": {
+      "external_id": "GCPl2_DOXj8",
+      "metadata": {
+        "provider": "youtube",
+        "publish_at": "2026-11-28T19:00:00.000Z",
+        "story_id": "brian-shaffer",
+        "video_sha256_24": "2cd989d642fa0a60330034b9"
+      },
+      "status": "succeeded"
+    },
     "74f5dc797a011cb4bb14d30df56da2055371864ef6d9ef8d4f3f5dc634b826e2": {
       "external_id": "6b030b0e846b0ee907982b9e",
       "metadata": {
